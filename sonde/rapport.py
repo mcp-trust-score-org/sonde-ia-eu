@@ -102,6 +102,32 @@ def agreger(lignes: list[dict]) -> dict:
             "absents": [list(x) for x in absents], "incidents_catalogue": incidents}
 
 
+def historique_horaire(lignes: list[dict]) -> list[dict]:
+    """Une ligne par (heure, modèle, fournisseur) : de quoi tracer l'évolution dans le temps."""
+    seaux: dict[tuple[str, str, str], list[dict]] = defaultdict(list)
+    for l in lignes:
+        if l.get("type") != "mesure":
+            continue
+        heure = l["horodatage"][:13] + ":00:00+00:00"
+        nom = l["fournisseur"]
+        if l.get("offre", "payante") != "payante":
+            nom += f" ({l['offre']})"
+        seaux[(heure, l["modele"], nom)].append(l)
+    sortie = []
+    for (heure, modele, fournisseur), ms in sorted(seaux.items()):
+        ok = [m for m in ms if m["succes"]]
+        ttft = [m["ttft_ms"] for m in ok if m.get("ttft_ms") is not None]
+        qualite = [m["qualite_ok"] for m in ok if m.get("qualite_ok") is not None]
+        sortie.append({
+            "heure": heure, "modele": modele, "fournisseur": fournisseur,
+            "appels": len(ms), "reussis": len(ok),
+            "ttft_median_ms": _arrondi(median(ttft)) if ttft else None,
+            "ttft_max_ms": _arrondi(max(ttft)) if ttft else None,
+            "qualite_pct": round(100 * sum(qualite) / len(qualite), 1) if qualite else None,
+        })
+    return sortie
+
+
 def _fmt(x, suffixe=""):
     return "–" if x is None else f"{x:g}{suffixe}" if isinstance(x, float) else f"{x}{suffixe}"
 
@@ -148,12 +174,37 @@ def en_markdown(resume: dict, jours: int) -> str:
     return "\n".join(out)
 
 
-def produire(dossier_donnees: Path, dossier_public: Path, jours: int = 7) -> str:
-    depuis = datetime.now(timezone.utc) - timedelta(days=jours)
-    resume = agreger(lire_lignes(dossier_donnees, depuis))
+def _config_publique() -> dict:
+    """Fournisseurs et modèles déclarés, pour afficher aussi ceux qui ne sont pas encore mesurés."""
+    chemin = Path(__file__).resolve().parent.parent / "config" / "fournisseurs.yaml"
+    try:
+        import yaml
+        c = yaml.safe_load(chemin.read_text(encoding="utf-8"))
+    except Exception:
+        return {"fournisseurs": [], "modeles": []}
+    return {
+        "fournisseurs": [{"id": f["id"], "nom": f["nom"], "pays": f.get("pays", "")} for f in c.get("fournisseurs", [])],
+        "modeles": [{"id": m["id"], "nom": m.get("nom", m["id"])} for m in c.get("modeles", [])],
+    }
+
+
+def produire(dossier_donnees: Path, dossier_public: Path, jours: int = 7, jours_historique: int = 30) -> str:
+    maintenant = datetime.now(timezone.utc)
+    tout = lire_lignes(dossier_donnees, maintenant - timedelta(days=max(jours, jours_historique)))
+    depuis = maintenant - timedelta(days=jours)
+    resume = agreger([l for l in tout if datetime.fromisoformat(l["horodatage"]) >= depuis])
     resume["periode_jours"] = jours
-    resume["genere_le"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    resume["genere_le"] = maintenant.isoformat(timespec="seconds")
+    mesures = [l for l in tout if l.get("type") == "mesure"]
+    resume["total_mesures"] = len(mesures)
+    resume["premiere_mesure"] = min((l["horodatage"] for l in mesures), default=None)
+    resume["fournisseurs_mesures"] = sorted({l["fournisseur"] for l in mesures})
+    resume.update(_config_publique())
     dossier_public.mkdir(parents=True, exist_ok=True)
+    (dossier_public / "historique.json").write_text(
+        json.dumps({"genere_le": resume["genere_le"], "points": historique_horaire(tout)}, ensure_ascii=False),
+        encoding="utf-8",
+    )
     (dossier_public / "resume.json").write_text(json.dumps(resume, ensure_ascii=False, indent=2), encoding="utf-8")
     md = en_markdown(resume, jours)
     (dossier_public / "classement.md").write_text(md, encoding="utf-8")
