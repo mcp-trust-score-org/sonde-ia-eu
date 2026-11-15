@@ -1,0 +1,46 @@
+name: Mesure horaire
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # toutes les heures, à la 17e minute
+  workflow_dispatch: {}     # lancement manuel depuis l'onglet Actions
+
+permissions:
+  contents: write           # pour enregistrer les mesures dans le dépôt
+
+concurrency:
+  group: mesure
+  cancel-in-progress: false
+
+jobs:
+  mesurer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Mesurer (3 tâches par heure, en rotation)
+        env:
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+          OVH_AI_ENDPOINTS_ACCESS_TOKEN: ${{ secrets.OVH_AI_ENDPOINTS_ACCESS_TOKEN }}
+          IONOS_API_TOKEN: ${{ secrets.IONOS_API_TOKEN }}
+        run: python -m sonde mesurer --echantillon 3
+
+      - name: Produire le classement sur 7 jours
+        run: python -m sonde rapport --jours 7
+
+      - name: Enregistrer les résultats
+        run: |
+          git config user.name "sonde-ia-eu"
+          git config user.email "sonde-ia-eu@users.noreply.github.com"
+          git add data public
+          git diff --cached --quiet || git commit -m "Mesures $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase --quiet
+          git push
