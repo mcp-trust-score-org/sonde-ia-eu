@@ -1,0 +1,65 @@
+# Tâches en français, chacune vérifiée automatiquement.
+# Types de vérification :
+#   contient     : la réponse contient au moins un des textes de `valeurs`
+#   contient_tout: la réponse contient tous les textes de `valeurs`
+#   nombre       : le premier nombre de la réponse vaut `valeur` (tolérance 0,01)
+#   json_cles    : la réponse est un JSON avec ces clés, et les valeurs contiennent `valeurs`
+#   regex        : la réponse correspond à toutes les expressions de `valeurs`
+#   nb_lignes    : la réponse a exactement `valeur` lignes non vides
+# Les comparaisons ignorent la casse et les accents.
+
+taches:
+  - id: calcul-abonnement
+    categorie: calcul
+    prompt: "Un abonnement coûte 14,90 € par mois. Combien coûte-t-il pour un an ? Réponds uniquement par le nombre, sans unité."
+    verification: {type: nombre, valeur: 178.8}
+
+  - id: raisonnement-ages
+    categorie: raisonnement
+    prompt: "Paul a trois fois l'âge de Léa. Dans 10 ans, il aura deux fois son âge. Quel âge a Léa aujourd'hui ? Réponds uniquement par le nombre."
+    verification: {type: nombre, valeur: 10}
+
+  - id: extraction-json
+    categorie: extraction
+    prompt: "Extrais les informations de cette phrase au format JSON avec exactement les clés \"nom\", \"ville\" et \"date\" : « Mme Claire Dubois, de Lyon, a signé le contrat le 3 mars 2026. » Réponds uniquement avec le JSON."
+    verification: {type: json_cles, cles: [nom, ville, date], valeurs: [Dubois, Lyon, "2026"]}
+
+  - id: classification-client
+    categorie: classification
+    prompt: "Classe ce message client dans une seule catégorie parmi : facturation, livraison, technique. Message : « Mon colis n'est toujours pas arrivé alors qu'il devait être livré lundi. » Réponds par un seul mot."
+    verification: {type: contient, valeurs: [livraison]}
+
+  - id: correction-orthographe
+    categorie: langue
+    prompt: "Corrige les fautes de cette phrase : « Les dossier que j'ai envoyer hier sont arrivé. » Donne uniquement la phrase corrigée."
+    verification: {type: contient_tout, valeurs: [dossiers, envoyes, arrives]}
+
+  - id: traduction-anglais
+    categorie: langue
+    prompt: "Traduis en anglais : « Le rapport doit être remis avant vendredi. » Donne uniquement la traduction."
+    verification: {type: contient_tout, valeurs: [report, friday]}
+
+  - id: connaissance-cnil
+    categorie: connaissances
+    prompt: "Quel est le sigle de l'autorité administrative française chargée de la protection des données personnelles ? Réponds par le sigle seul."
+    verification: {type: contient, valeurs: [CNIL]}
+
+  - id: date-jour-semaine
+    categorie: raisonnement
+    prompt: "Quel jour de la semaine était le 14 juillet 2026 ? Réponds par un seul mot."
+    verification: {type: contient, valeurs: [mardi]}
+
+  - id: code-python
+    categorie: code
+    prompt: "Écris une fonction Python nommée est_pair(n) qui renvoie True si n est pair et False sinon. Donne uniquement le code."
+    verification: {type: regex, valeurs: ["def\\s+est_pair\\s*\\(", "%\\s*2"]}
+
+  - id: format-trois-lignes
+    categorie: consignes
+    prompt: "Donne exactement trois fruits rouges, un par ligne, sans numérotation, sans tiret et sans aucun autre texte."
+    verification: {type: nb_lignes, valeur: 3}
+
+  - id: resume-court
+    categorie: synthese
+    prompt: "Résume en une seule phrase de moins de 25 mots : « Le règlement européen sur l'intelligence artificielle classe les systèmes selon leur niveau de risque. Les systèmes à haut risque, comme ceux utilisés pour le recrutement, doivent respecter des obligations de documentation, de transparence et de contrôle humain. »"
+    verification: {type: contient, valeurs: [risque]}
