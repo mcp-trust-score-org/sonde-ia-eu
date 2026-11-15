@@ -4,16 +4,22 @@
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 3 | 100 % | 847 ms / 979 ms | 1883 ms | 97.5 | 100 % | – |
+| 1 | ovhcloud (anonyme) | 6 | 83.3 % | 752 ms / 964 ms | 1883 ms | 97.5 | 100 % | – |
+
+Erreurs : ovhcloud (anonyme) – réponse vide (1)
 
 ## llama-3.3-70b
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 3 | 100 % | 704 ms / 12529 ms | 1282 ms | 25.9 | 100 % | – |
+| 1 | ovhcloud (anonyme) | 6 | 100 % | 1007 ms / 10640 ms | 1333 ms | 31.2 | 100 % | – |
 
 ## mistral-small-3.2
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 3 | 100 % | 999 ms / 5408 ms | 1134 ms | 53.8 | 100 % | – |
+| 1 | ovhcloud (anonyme) | 6 | 100 % | 991 ms / 5287 ms | 1258 ms | 52 | 83.3 % | – |
+
+## Modèles absents du catalogue
+
+- ovhcloud ne propose pas mistral-small-4
