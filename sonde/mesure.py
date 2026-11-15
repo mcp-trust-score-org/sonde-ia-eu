@@ -60,6 +60,7 @@ class Mesure:
     modele_id: str | None
     tache: str
     categorie: str
+    offre: str = "payante"                # payante, gratuite ou anonyme : à afficher avec le classement
     succes: bool = False
     statut_http: int | None = None
     erreur: str | None = None
@@ -74,13 +75,20 @@ class Mesure:
     extrait: str = field(default="")
 
 
+def _entetes(cle: str | None) -> dict:
+    h = {"Content-Type": "application/json"}
+    if cle:
+        h["Authorization"] = f"Bearer {cle}"
+    return h
+
+
 def _maintenant() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
-async def lire_catalogue(client: httpx.AsyncClient, base_url: str, cle: str) -> tuple[list[str], str | None]:
+async def lire_catalogue(client: httpx.AsyncClient, base_url: str, cle: str | None) -> tuple[list[str], str | None]:
     try:
-        r = await client.get(f"{base_url}/models", headers={"Authorization": f"Bearer {cle}"})
+        r = await client.get(f"{base_url}/models", headers=_entetes(cle))
         r.raise_for_status()
         donnees = r.json()
         ids = [m["id"] for m in donnees.get("data", []) if "id" in m]
@@ -92,7 +100,7 @@ async def lire_catalogue(client: httpx.AsyncClient, base_url: str, cle: str) -> 
 async def appeler(
     client: httpx.AsyncClient,
     base_url: str,
-    cle: str,
+    cle: str | None,
     modele_id: str,
     prompt: str,
     reglages: dict,
@@ -114,7 +122,7 @@ async def appeler(
     async with client.stream(
         "POST",
         f"{base_url}/chat/completions",
-        headers={"Authorization": f"Bearer {cle}", "Content-Type": "application/json"},
+        headers=_entetes(cle),
         json=corps,
     ) as r:
         resultat["statut"] = r.status_code
@@ -160,11 +168,12 @@ def _cout(prix: dict, fournisseur: str, modele: str, entree: int | None, sortie:
 
 
 async def mesurer_une(
-    client, fournisseur, modele, modele_id, tache, cle, config, execution, semaphore
+    client, fournisseur, modele, modele_id, tache, cle, config, execution, semaphore, offre="payante", pause_s=0.0
 ) -> Mesure:
     m = Mesure(
         horodatage=_maintenant(), execution=execution, fournisseur=fournisseur["id"],
         modele=modele["id"], modele_id=modele_id, tache=tache["id"], categorie=tache.get("categorie", ""),
+        offre=offre,
     )
     reglages = config["reglages"]
     async with semaphore:
@@ -179,6 +188,10 @@ async def mesurer_une(
         except httpx.HTTPError as e:
             m.erreur = f"{type(e).__name__}: {e}"[:300]
             return m
+        finally:
+            if pause_s:
+                # On garde le verrou pendant la pause : les appels suivants attendent.
+                await asyncio.sleep(pause_s)
 
     m.statut_http = res["statut"]
     if res["erreur"]:
@@ -238,19 +251,30 @@ async def executer(
             if fournisseurs_filtre and f["id"] not in fournisseurs_filtre:
                 continue
             cle = env.get(f["cle_env"])
-            if not cle:
+            if cle:
+                offre = f.get("offre", "payante")
+                pause = float(f.get("pause_entre_appels_s", 0))
+            elif f.get("anonyme_si_sans_cle"):
+                offre = "anonyme"
+                pause = float(f.get("pause_anonyme_s", 31))
+                print(f"  - {f['nom']} : pas de clé, mesure en accès anonyme (une requête toutes les {pause:g} s)")
+            else:
                 print(f"  - {f['nom']} : clé {f['cle_env']} absente, ignoré")
                 continue
             catalogue, erreur_cat = await lire_catalogue(client, f["base_url"], cle)
+            secours = bool(erreur_cat and f.get("catalogue_secours"))
             lignes.append({
                 "type": "catalogue", "horodatage": _maintenant(), "execution": execution,
                 "fournisseur": f["id"], "nb_modeles": len(catalogue), "modeles": sorted(catalogue),
-                "erreur": erreur_cat,
+                "erreur": erreur_cat, "secours": secours,
             })
-            if erreur_cat:
+            if secours:
+                # Catalogue fermé (par exemple sans clé) : on teste les identifiants connus.
+                catalogue = list(f["catalogue_secours"])
+            elif erreur_cat:
                 # Catalogue illisible = incident du fournisseur, pas "modèle absent".
                 continue
-            sem = asyncio.Semaphore(reglages["appels_simultanes_par_fournisseur"])
+            sem = asyncio.Semaphore(1 if pause else reglages["appels_simultanes_par_fournisseur"])
             for mod in config["modeles"]:
                 mid = resoudre_modele(mod, f["id"], catalogue)
                 if mid is None:
@@ -260,7 +284,7 @@ async def executer(
                     })
                     continue
                 for t in taches_choisies:
-                    travaux.append(mesurer_une(client, f, mod, mid, t, cle, config, execution, sem))
+                    travaux.append(mesurer_une(client, f, mod, mid, t, cle, config, execution, sem, offre, pause))
         mesures = await asyncio.gather(*travaux)
 
     lignes.extend({"type": "mesure", **asdict(m)} for m in mesures)

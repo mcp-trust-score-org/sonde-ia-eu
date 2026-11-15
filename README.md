@@ -30,6 +30,17 @@ python -m sonde rapport --jours 7          # écrit public/classement.md et publ
 
 Un fournisseur sans clé est ignoré. Un modèle qui n'est pas au catalogue d'un fournisseur est signalé, pas compté comme panne.
 
+## Démarrer sans carte bancaire
+
+| Fournisseur | Sans carte ? | Comment |
+| --- | --- | --- |
+| OVHcloud | Oui, sans compte | Aucune clé : la sonde passe en accès anonyme (2 requêtes par minute et par modèle), une requête toutes les 31 s. |
+| Mistral | Oui | Plan gratuit Experiment : compte + vérification par SMS. Les requêtes de ce plan peuvent servir à entraîner les modèles de Mistral (sans gravité ici : nos prompts sont publics). |
+| Scaleway | Oui, limité | Compte sans moyen de paiement : limites plus strictes, palier gratuit d'1 million de jetons. |
+| IONOS | Non | Contrat nécessaire. |
+
+Les mesures faites sur une offre gratuite ou anonyme sont marquées comme telles dans le classement (par exemple `ovhcloud (anonyme)`) : leurs limites de débit ne sont pas celles d'un client payant. Avant de publier un classement, passer sur des offres payantes et mettre `offre: payante` dans `config/fournisseurs.yaml`.
+
 ## Mettre en route la mesure horaire (GitHub Actions)
 
 1. Pousse ce dossier dans un nouveau dépôt GitHub (public : minutes Actions gratuites et illimitées).

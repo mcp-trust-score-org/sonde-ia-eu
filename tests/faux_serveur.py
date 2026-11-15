@@ -6,6 +6,7 @@ Chaque préfixe d'URL simule un comportement de fournisseur :
   /panne    : HTTP 503 sur chaque appel
   /strict   : refuse `stream_options` (HTTP 400), ne renvoie jamais l'usage
   /catako   : catalogue en erreur
+  /anonyme  : catalogue fermé sans clé (401), appels acceptés sans clé
 """
 
 from __future__ import annotations
@@ -49,12 +50,16 @@ def _tache(prompt: str) -> str | None:
 async def modeles(request: Request):
     if request.path_params["prov"] == "catako":
         return JSONResponse({"error": "boom"}, status_code=500)
+    if request.path_params["prov"] == "anonyme" and "authorization" not in request.headers:
+        return JSONResponse({"error": "unauthorized"}, status_code=401)
     return JSONResponse({"object": "list", "data": [{"id": m, "object": "model"} for m in CATALOGUE]})
 
 
 async def chat(request: Request):
     prov = request.path_params["prov"]
     corps = await request.json()
+    if prov == "anonyme":
+        assert "authorization" not in request.headers, "le mode anonyme ne doit pas envoyer de clé"
     if prov == "panne":
         return JSONResponse({"error": "service indisponible"}, status_code=503)
     if prov == "strict" and "stream_options" in corps:

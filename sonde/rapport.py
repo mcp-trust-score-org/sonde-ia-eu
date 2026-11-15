@@ -41,7 +41,10 @@ def agreger(lignes: list[dict]) -> dict:
     groupes: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for l in lignes:
         if l.get("type") == "mesure":
-            groupes[(l["modele"], l["fournisseur"])].append(l)
+            nom = l["fournisseur"]
+            if l.get("offre", "payante") != "payante":
+                nom += f" ({l['offre']})"   # une offre gratuite n'est pas comparable à une offre payante
+            groupes[(l["modele"], nom)].append(l)
 
     resultats = []
     for (modele, fournisseur), ms in sorted(groupes.items()):
@@ -72,7 +75,7 @@ def agreger(lignes: list[dict]) -> dict:
     # Changements de catalogue : modèles ajoutés ou retirés entre deux relevés.
     catalogues: dict[str, list[dict]] = defaultdict(list)
     for l in lignes:
-        if l.get("type") == "catalogue" and not l.get("erreur"):
+        if l.get("type") == "catalogue" and not l.get("erreur") and l.get("modeles"):
             catalogues[l["fournisseur"]].append(l)
     changements = []
     for fournisseur, releves in catalogues.items():
@@ -91,7 +94,7 @@ def agreger(lignes: list[dict]) -> dict:
         if l.get("type") == "catalogue":
             i = incidents.setdefault(l["fournisseur"], {"releves": 0, "echecs": 0, "derniere_erreur": None})
             i["releves"] += 1
-            if l.get("erreur"):
+            if l.get("erreur") and not l.get("secours"):
                 i["echecs"] += 1
                 i["derniere_erreur"] = l["erreur"][:120]
     incidents = {f: i for f, i in incidents.items() if i["echecs"]}

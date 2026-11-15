@@ -140,3 +140,26 @@ def test_changement_de_catalogue_detecte(tmp_path):
     assert resume["changements_catalogue"] == [
         {"fournisseur": "ovh", "horodatage": "2099-01-01T01:00:00+00:00", "ajoutes": ["c"], "retires": ["b"]}
     ]
+
+
+def test_mode_anonyme_avec_catalogue_de_secours_et_pause(serveur, tmp_path):
+    config = charger_yaml(RACINE / "config" / "fournisseurs.yaml")
+    config["fournisseurs"] = [{
+        "id": "anonyme", "nom": "anonyme", "pays": "FR", "base_url": f"{serveur}/anonyme/v1",
+        "cle_env": "CLE_ABSENTE", "anonyme_si_sans_cle": True, "pause_anonyme_s": 0.2,
+        "catalogue_secours": ["gpt-oss-120b"],
+    }]
+    taches = TACHES[:3]
+    debut = time.perf_counter()
+    lignes = asyncio.run(executer(config, taches, tmp_path / "data", env={}))
+    duree = time.perf_counter() - debut
+    mesures = [l for l in lignes if l["type"] == "mesure"]
+    assert len(mesures) == 3 and all(m["succes"] and m["offre"] == "anonyme" for m in mesures)
+    assert duree >= 0.55   # 3 appels espacés de 0,2 s, pas en parallèle
+    cat = next(l for l in lignes if l["type"] == "catalogue")
+    assert cat["erreur"] and cat["secours"]
+
+    md = produire(tmp_path / "data", tmp_path / "public", jours=1)
+    resume = json.loads((tmp_path / "public" / "resume.json").read_text(encoding="utf-8"))
+    assert "anonyme (anonyme)" in md               # l'offre est affichée à côté du fournisseur
+    assert resume["incidents_catalogue"] == {}      # un catalogue fermé sans clé n'est pas une panne
