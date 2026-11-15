@@ -62,6 +62,10 @@ modeles:
     # exact:
     #   mistral: mistral-small-2506
 
+  - id: mistral-small-4
+    nom: Mistral Small 4
+    motifs: ["mistral-small-2603", "mistral-small-4"]
+
   - id: llama-3.3-70b
     nom: Llama 3.3 70B Instruct
     motifs: ["llama-3.3-70b-instruct", "llama-3.3-70b"]
