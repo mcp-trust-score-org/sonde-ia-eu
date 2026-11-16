@@ -12,10 +12,12 @@ reglages:
 
 # Modèle appelé chez chaque fournisseur, par ordre de préférence (ids logiques de
 # config/fournisseurs.yaml). Le premier présent au catalogue est utilisé.
+# Préférer des modèles qui répondent directement (sans phase de « réflexion ») :
+# leur délai avant le premier mot est plus stable, donc la météo plus juste.
 modeles_preferes:
   mistral: [mistral-small-4, mistral-small-3.2]
-  scaleway: [llama-3.3-70b, gpt-oss-120b, mistral-small-3.2]
-  ovhcloud: [gpt-oss-120b, mistral-small-3.2, llama-3.3-70b]
+  scaleway: [llama-3.3-70b, mistral-small-3.2, gpt-oss-120b]
+  ovhcloud: [mistral-small-3.2, llama-3.3-70b, gpt-oss-120b]
   ionos: [llama-3.3-70b, gpt-oss-120b]
 
 # Seuils de la météo. « Référence » = médiane du délai avant le premier mot
