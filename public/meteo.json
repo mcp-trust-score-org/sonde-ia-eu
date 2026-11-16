@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-16T10:53:30+00:00",
+ "genere_le": "2026-11-16T11:29:44+00:00",
  "phrase": "Orage sur OVHcloud.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
@@ -13,43 +13,30 @@
    "etat": "orage",
    "ciel": "Orage",
    "libelle": "En panne",
-   "taux_erreur": 1.0,
-   "ttft_ms": null,
+   "taux_erreur": 0.5,
+   "ttft_ms": 338,
    "reference_ttft_ms": null,
    "lenteur": null,
    "vigilance": "rouge",
    "raison": "Panne en cours",
-   "panne_en_cours": {
-    "depuis": "2026-11-16T09:56:47+00:00",
-    "minutes": 57,
-    "erreurs": {
-     "réponse vide": 2
-    }
-   },
+   "panne_en_cours": null,
    "disponibilite": {
-    "24h": 0.0,
-    "7j": 0.0,
-    "30j": 0.0
+    "24h": 33.333,
+    "7j": 33.333,
+    "30j": 33.333
    },
    "incidents_30j": [
     {
      "debut": "2026-11-16T09:56:47+00:00",
      "fin": "2026-11-16T10:53:29+00:00",
      "duree_min": 57,
-     "en_cours": true,
+     "en_cours": false,
      "erreurs": {
       "réponse vide": 2
      }
     }
    ],
    "chronologie": [
-    {
-     "heure": "2026-11-16T04:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-16T05:00+00:00",
      "etat": "inconnu",
@@ -94,25 +81,32 @@
     },
     {
      "heure": "2026-11-16T11:00+00:00",
-     "etat": "orage",
-     "nature": "prevision",
-     "certitude": "situation actuelle prolongée"
+     "etat": "soleil",
+     "ttft_ms": 338,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-16T12:00+00:00",
-     "etat": "inconnu",
+     "etat": "orage",
      "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "certitude": "situation actuelle prolongée"
     },
     {
      "heure": "2026-11-16T13:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T14:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-16T10:53:29+00:00",
-   "modele_veille": "gpt-oss-120b",
+   "derniere_mesure": "2026-11-16T11:29:42+00:00",
+   "modele_veille": "mistral-small-3.2",
    "limites_de_debit_30j": 0
   }
  ],

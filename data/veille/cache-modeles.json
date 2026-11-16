@@ -1,7 +1,7 @@
 {
  "ovhcloud": {
-  "modele": "gpt-oss-120b",
-  "modele_id": "gpt-oss-120b",
-  "verifie_le": "2026-11-16T09:56:47+00:00"
+  "modele": "mistral-small-3.2",
+  "modele_id": "Mistral-Small-3.2-24B-Instruct-2506",
+  "verifie_le": "2026-11-16T11:29:42+00:00"
  }
 }
