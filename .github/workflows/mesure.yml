@@ -36,6 +36,13 @@ jobs:
       - name: Produire le classement sur 7 jours
         run: python -m sonde rapport --jours 7
 
+      - name: Météo et alertes
+        if: vars.VEILLE_SERVEUR != 'oui'
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          ALERTE_WEBHOOK_URL: ${{ secrets.ALERTE_WEBHOOK_URL }}
+        run: python -m sonde direct
+
       - name: Enregistrer les résultats
         run: |
           git config user.name "sonde-ia-eu"
