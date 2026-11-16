@@ -1,0 +1,69 @@
+# Engagements de service (SLA) de chaque fournisseur, tels que la sonde les applique.
+#
+# IMPORTANT : `verifie: false` signifie que la ligne n'a pas encore été vérifiée sur le
+# contrat réel. Les montants calculés sont alors des ESTIMATIONS. Avant toute réclamation,
+# recopie ici les conditions exactes du contrat du membre (elles peuvent différer des
+# conditions publiques) et passe `verifie: true`.
+#
+# Champs :
+#   engagement_pct      disponibilité promise sur la période (vide = pas d'engagement connu)
+#   periode             mois (seul cas géré)
+#   definition_panne    comment une période compte comme « en panne » :
+#     fenetre_min       taille de la fenêtre de mesure, en minutes
+#     seuil_erreur      part d'échecs à partir de laquelle la fenêtre est en panne (1.0 = tout échoue)
+#   debut_decompte      panne  : la panne compte dès son début
+#                       ticket : la panne ne compte qu'à partir de l'ouverture d'un ticket
+#   paliers             avoir accordé quand la disponibilité passe SOUS `sous_pct`
+#   reclamation         délai pour réclamer, en jours après la fin du mois concerné
+#   source              page des conditions publiques
+
+contrats:
+  scaleway:
+    service: Generative APIs
+    engagement_pct: 99.9          # engagement mensuel public
+    periode: mois
+    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}   # À VÉRIFIER
+    debut_decompte: panne          # À VÉRIFIER
+    paliers:                       # À VÉRIFIER : exemple de barème courant, pas le barème Scaleway
+      - {sous_pct: 99.9, avoir_pct: 10}
+      - {sous_pct: 99.0, avoir_pct: 25}
+      - {sous_pct: 95.0, avoir_pct: 50}
+    reclamation: {delai_jours_apres_fin_mois: 30}             # À VÉRIFIER
+    source: "À compléter : conditions de service Scaleway Generative APIs"
+    verifie: false
+
+  ovhcloud:
+    service: AI Endpoints
+    engagement_pct:                # pas d'engagement connu pour l'offre européenne : à renseigner
+    periode: mois
+    # Repris des conditions IA d'OVHcloud aux États-Unis : une minute est indisponible quand
+    # toutes les requêtes renvoient une erreur 500 ou 503, et la panne ne compte qu'à partir
+    # de l'ouverture d'un ticket. À VÉRIFIER pour AI Endpoints en Europe.
+    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}
+    debut_decompte: ticket
+    paliers: []
+    reclamation: {delai_jours_apres_fin_mois: 30}             # À VÉRIFIER
+    source: "https://us.ovhcloud.com/legal/sla/ai/ (conditions US)"
+    verifie: false
+
+  mistral:
+    service: La Plateforme
+    engagement_pct:                # à renseigner d'après le contrat
+    periode: mois
+    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}
+    debut_decompte: panne
+    paliers: []
+    reclamation: {delai_jours_apres_fin_mois: 30}
+    source: "À compléter"
+    verifie: false
+
+  ionos:
+    service: AI Model Hub
+    engagement_pct:                # à renseigner d'après le contrat
+    periode: mois
+    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}
+    debut_decompte: panne
+    paliers: []
+    reclamation: {delai_jours_apres_fin_mois: 30}
+    source: "À compléter"
+    verifie: false

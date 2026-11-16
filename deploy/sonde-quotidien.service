@@ -1,0 +1,9 @@
+[Unit]
+Description=Sonde IA EU : avoirs, bulletin et preuves du jour
+
+[Service]
+Type=oneshot
+User=@UTILISATEUR@
+WorkingDirectory=@DOSSIER@
+EnvironmentFile=/etc/sonde-ia-eu.env
+ExecStart=@DOSSIER@/deploy/quotidien.sh

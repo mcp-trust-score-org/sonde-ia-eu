@@ -1,0 +1,33 @@
+# Sondes d'empreinte : de courtes questions fixes, posées chaque jour au même modèle,
+# avec temperature 0. On compare les réponses à celles de la première empreinte (la référence).
+# Un modèle inchangé répond de façon très proche d'un jour à l'autre ; un modèle remplacé,
+# quantifié ou mis à jour en douce s'en écarte durablement.
+#
+# Règles pour ajouter une sonde : question neutre, réponse courte mais riche en choix de mots,
+# jamais de donnée personnelle ni d'actualité (la réponse ne doit pas changer avec le temps).
+
+reglages:
+  max_tokens: 80
+  temperature: 0
+  seuil_absolu: 0.55        # en dessous de cette similarité moyenne avec la référence : alerte
+  marge_mad: 4              # ou : écart de plus de 4 MAD sous la médiane de l'historique
+  confirmations: 2          # nombre d'empreintes consécutives anormales avant d'alerter
+  historique_min: 3         # empreintes nécessaires avant de juger par l'historique
+
+sondes:
+  - id: definition-inflation
+    prompt: "Explique en deux phrases ce qu'est l'inflation."
+  - id: liste-mots
+    prompt: "Donne cinq mots français qui commencent par « ch », séparés par des virgules."
+  - id: suite-phrase
+    prompt: "Complète cette phrase en une vingtaine de mots : « Le matin, dans le petit port breton, »"
+  - id: json-produit
+    prompt: "Invente un produit fictif et décris-le en JSON avec les clés nom, prix et categorie. Réponds uniquement avec le JSON."
+  - id: conseil-court
+    prompt: "Donne trois conseils pour bien dormir, en une ligne chacun."
+  - id: traduction-idiome
+    prompt: "Traduis en anglais et explique en une phrase : « Il pleut des cordes. »"
+  - id: raisonnement-court
+    prompt: "Un train part à 14 h 10 et arrive à 16 h 45. Combien de temps dure le trajet ? Explique ton calcul en une phrase."
+  - id: style-email
+    prompt: "Écris l'objet et la première phrase d'un e-mail pour décaler une réunion à jeudi."

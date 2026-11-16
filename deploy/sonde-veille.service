@@ -1,0 +1,15 @@
+[Unit]
+Description=Sonde IA EU : veille à la minute, météo et alertes
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=@UTILISATEUR@
+WorkingDirectory=@DOSSIER@
+EnvironmentFile=/etc/sonde-ia-eu.env
+ExecStart=@DOSSIER@/.venv/bin/python -m sonde veille --boucle --avec-meteo
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

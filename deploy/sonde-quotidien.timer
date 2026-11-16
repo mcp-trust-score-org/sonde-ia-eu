@@ -1,0 +1,9 @@
+[Unit]
+Description=Relevés quotidiens à 6 h 50 (heure du serveur)
+
+[Timer]
+OnCalendar=*-*-* 06:50:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -7,6 +7,9 @@ Chaque préfixe d'URL simule un comportement de fournisseur :
   /strict   : refuse `stream_options` (HTTP 400), ne renvoie jamais l'usage
   /catako   : catalogue en erreur
   /anonyme  : catalogue fermé sans clé (401), appels acceptés sans clé
+  /cdn      : répond derrière un intermédiaire (en-tête cf-ray)
+  /ripe/... : faux RIPEstat (network-info, as-overview, maxmind-geo-lite)
+ETAT["derive"] = True fait changer le style des réponses libres (modèle remplacé).
 """
 
 from __future__ import annotations
@@ -37,6 +40,14 @@ BONNES_REPONSES = {
     "resume-court": "Le règlement européen classe les IA par niveau de risque et impose des obligations aux systèmes à haut risque.",
 }
 
+ETAT = {"derive": False}
+
+# Faux RIPEstat : 51.0.0.1 = OVH (FR), 104.16.0.1 = Cloudflare (US)
+RIPE = {
+    "51.0.0.1": {"asns": ["16276"], "prefix": "51.0.0.0/16", "holder": "OVH SAS", "pays": "FR"},
+    "104.16.0.1": {"asns": ["13335"], "prefix": "104.16.0.0/13", "holder": "CLOUDFLARENET - Cloudflare, Inc.", "pays": "US"},
+}
+
 CATALOGUE = ["Meta-Llama-3_3-70B-Instruct", "gpt-oss-120b", "Qwen3-32B"]
 
 
@@ -47,12 +58,27 @@ def _tache(prompt: str) -> str | None:
     return None
 
 
+async def ripe(request: Request):
+    appel, res = request.path_params["appel"], request.query_params["resource"]
+    if appel == "network-info":
+        i = RIPE[res]
+        return JSONResponse({"data": {"asns": i["asns"], "prefix": i["prefix"]}})
+    if appel == "as-overview":
+        asn = res.replace("AS", "")
+        i = next(v for v in RIPE.values() if v["asns"][0] == asn)
+        return JSONResponse({"data": {"holder": i["holder"]}})
+    if appel == "maxmind-geo-lite":
+        return JSONResponse({"data": {"located_resources": [{"resource": res, "locations": [{"country": RIPE[res]["pays"]}]}]}})
+    return JSONResponse({"data": {}}, status_code=404)
+
+
 async def modeles(request: Request):
     if request.path_params["prov"] == "catako":
         return JSONResponse({"error": "boom"}, status_code=500)
     if request.path_params["prov"] == "anonyme" and "authorization" not in request.headers:
         return JSONResponse({"error": "unauthorized"}, status_code=401)
-    return JSONResponse({"object": "list", "data": [{"id": m, "object": "model"} for m in CATALOGUE]})
+    entetes = {"cf-ray": "8a1b2c3d4e-CDG", "server": "cloudflare"} if request.path_params["prov"] == "cdn" else {}
+    return JSONResponse({"object": "list", "data": [{"id": m, "object": "model"} for m in CATALOGUE]}, headers=entetes)
 
 
 async def chat(request: Request):
@@ -66,7 +92,13 @@ async def chat(request: Request):
         return JSONResponse({"error": "Unknown parameter: stream_options"}, status_code=400)
 
     tache = _tache(corps["messages"][-1]["content"])
-    texte = BONNES_REPONSES.get(tache, "Je ne sais pas.")
+    if tache is None:
+        prompt = corps["messages"][-1]["content"]
+        texte = (f"Voici une réponse claire et posée à la question : {prompt[:40]}. Elle reste identique d'un jour à l'autre."
+                 if not ETAT["derive"] else
+                 f"OK!!! Réponse totalement différente, style télégraphique, 42 points. {len(prompt)}")
+    else:
+        texte = BONNES_REPONSES.get(tache, "Je ne sais pas.")
     if prov == "lent" and tache == "calcul-abonnement":
         texte = "149"
 
@@ -87,6 +119,7 @@ async def chat(request: Request):
 
 
 app = Starlette(routes=[
+    Route("/ripe/data/{appel}/data.json", ripe),
     Route("/{prov}/v1/models", modeles),
     Route("/{prov}/v1/chat/completions", chat, methods=["POST"]),
 ])

@@ -1,0 +1,39 @@
+# Veille à la minute : un tout petit appel par fournisseur, chaque minute.
+# Il sert à détecter les pannes et les ralentissements, pas à juger la qualité
+# (c'est le rôle de la mesure horaire et de ses 11 tâches).
+
+reglages:
+  prompt: "Réponds seulement : OK"
+  max_tokens: 5
+  temperature: 0
+  delai_connexion_s: 10
+  delai_total_s: 30          # au-delà, la minute compte comme une panne (délai dépassé)
+  catalogue_valable_min: 60  # le modèle à appeler est revérifié dans le catalogue toutes les heures
+
+# Modèle appelé chez chaque fournisseur, par ordre de préférence (ids logiques de
+# config/fournisseurs.yaml). Le premier présent au catalogue est utilisé.
+modeles_preferes:
+  mistral: [mistral-small-4, mistral-small-3.2]
+  scaleway: [llama-3.3-70b, gpt-oss-120b, mistral-small-3.2]
+  ovhcloud: [gpt-oss-120b, mistral-small-3.2, llama-3.3-70b]
+  ionos: [llama-3.3-70b, gpt-oss-120b]
+
+# Seuils de la météo. « Référence » = médiane du délai avant le premier mot
+# sur les 7 derniers jours, pour ce fournisseur.
+meteo:
+  fenetre_min: 10            # l'état « maintenant » regarde les 10 dernières minutes
+  orage_taux_erreur: 0.5     # au moins 50 % d'échecs sur la fenêtre = orage (panne)
+  orage_echecs_consecutifs: 3
+  nuage_taux_erreur: 0.1     # au moins 10 % d'échecs = nuageux
+  nuage_lenteur: 2.0         # délai au moins 2 fois la référence = nuageux
+  eclaircie_lenteur: 1.4     # délai au moins 1,4 fois la référence = éclaircies
+  incident_min_minutes: 2    # une panne commence à 2 minutes d'échec consécutives
+
+# Événements connus à l'avance, qui font monter la vigilance (sortie de modèle,
+# maintenance annoncée…). Dates et heures en UTC. Exemple :
+#   - fournisseur: mistral
+#     debut: "2026-11-20T15:00:00+00:00"
+#     fin: "2026-11-20T19:00:00+00:00"
+#     niveau: jaune
+#     raison: "Sortie d'un nouveau modèle : forte demande attendue"
+evenements: []

@@ -1,0 +1,8 @@
+[Unit]
+Description=Sonde IA EU : publication de la météo sur GitHub
+
+[Service]
+Type=oneshot
+User=@UTILISATEUR@
+WorkingDirectory=@DOSSIER@
+ExecStart=@DOSSIER@/deploy/publier.sh
