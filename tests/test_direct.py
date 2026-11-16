@@ -264,3 +264,16 @@ def test_plusieurs_passages_dans_la_meme_minute():
     lignes = [_ligne("a", t + timedelta(minutes=k, seconds=s), ok=False) for k in range(3) for s in (0, 20, 40)]
     inc = incidents(lignes, 2)
     assert len(inc) == 1 and inc[0]["minutes"] == 3 and inc[0]["duree_min"] == 3
+
+
+def test_veille_espacee_et_limite_de_debit():
+    # Un passage toutes les 10 minutes : un seul échec donne un nuage, pas un orage ; deux sur trois, oui.
+    lignes = [_ligne("a", MAINTENANT - timedelta(minutes=m)) for m in (55, 45, 35, 25, 15)]
+    lignes.append(_ligne("a", MAINTENANT - timedelta(minutes=5), ok=False))
+    assert calculer(_config(["a"]), CONF_V, lignes, [], MAINTENANT)["fournisseurs"][0]["etat"] == "nuage"
+    lignes[-2] = _ligne("a", MAINTENANT - timedelta(minutes=15), ok=False)
+    assert calculer(_config(["a"]), CONF_V, lignes, [], MAINTENANT)["fournisseurs"][0]["etat"] == "orage"
+    # Une limite de débit (HTTP 429) de notre offre gratuite n'est pas une panne du fournisseur.
+    l429 = [{**_ligne("a", MAINTENANT - timedelta(minutes=m), ok=False), "statut_http": 429} for m in (3, 2, 1)]
+    f = calculer(_config(["a"]), CONF_V, lignes[:4] + l429, [], MAINTENANT)["fournisseurs"][0]
+    assert f["etat"] == "soleil" and f["limites_de_debit_30j"] == 3
