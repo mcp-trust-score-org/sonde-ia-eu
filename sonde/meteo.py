@@ -233,7 +233,13 @@ def calculer(config: dict, conf_veille: dict, veille: list[dict], mesures: list[
     evenements = conf_veille.get("evenements") or []
     fen = timedelta(minutes=r["fenetre_min"])
     par_f = defaultdict(list)
+    limites = defaultdict(int)
     for l in veille:
+        # HTTP 429 = on a dépassé la limite de débit de NOTRE offre (gratuite ou anonyme) :
+        # ce n'est pas une panne du fournisseur, on ne le compte pas comme tel.
+        if l.get("statut_http") == 429:
+            limites[l["fournisseur"]] += 1
+            continue
         par_f[l["fournisseur"]].append(l)
     mes_f = defaultdict(list)
     for l in mesures:
@@ -247,6 +253,10 @@ def calculer(config: dict, conf_veille: dict, veille: list[dict], mesures: list[
         if not v and not m:
             continue
         recents_v = [l for l in v if _h(l) > maintenant - fen]
+        if len(recents_v) < 3:
+            # Veille espacée (par exemple toutes les 10 minutes sur GitHub) : un seul échec ne suffit
+            # pas à déclarer un orage. On prend au moins les 3 derniers passages de la dernière heure.
+            recents_v = [l for l in v if _h(l) > maintenant - timedelta(hours=1)][-3:]
         source = "veille"
         if recents_v:
             fenetre = recents_v
@@ -281,6 +291,7 @@ def calculer(config: dict, conf_veille: dict, veille: list[dict], mesures: list[
             "chronologie": chronologie(v or m, ref, r, maintenant) + prevision(j["etat"], evenements, f["id"], maintenant),
             "derniere_mesure": (v or m)[-1]["horodatage"],
             "modele_veille": v[-1].get("modele") if v else None,
+            "limites_de_debit_30j": limites.get(f["id"], 0),
         })
     return {
         "genere_le": maintenant.isoformat(timespec="seconds"),
