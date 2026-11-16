@@ -114,7 +114,10 @@ async def _veiller_un(client, f, cle, offre, config, conf_veille, cache, mainten
         if res["statut"] in (401, 403):
             cache.pop(f["id"], None)
         return ligne
-    if not res["texte"]:
+    # Les modèles qui « réfléchissent » (gpt-oss…) consomment nos 5 jetons en réflexion
+    # avant d'écrire la réponse : le texte reste vide, mais le modèle a bien répondu.
+    # Le premier jeton reçu (réflexion comprise) suffit à prouver que le service marche.
+    if not res["texte"] and res["ttft"] is None:
         ligne["erreur"] = "réponse vide"
         return ligne
     ligne["succes"] = True
