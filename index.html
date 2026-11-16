@@ -1,456 +1,410 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Baromètre des API d'IA européennes</title>
-<meta name="description" content="Mesure indépendante, toutes les heures, de la disponibilité, de la rapidité et de la qualité en français des API d'IA hébergées en Europe.">
-<meta property="og:title" content="Baromètre des API d'IA européennes">
-<meta property="og:description" content="Disponibilité, rapidité et qualité en français des API d'IA hébergées en Europe, mesurées toutes les heures.">
+<title>Iris · La météo de l'IA</title>
+<meta name="description" content="La météo des fournisseurs d'IA européens, mesurée chaque minute : pannes, lenteurs, alertes et avoirs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    color-scheme: light;
-    --page: #f9f9f7;
-    --surface: #fcfcfb;
-    --ink: #0b0b0b;
-    --ink-2: #52514e;
-    --muted: #898781;
-    --grid: #e1e0d9;
-    --axis: #c3c2b7;
-    --border: rgba(11,11,11,0.10);
-    --accent: #2a78d6;
-    --s-ovhcloud: #2a78d6;
-    --s-scaleway: #eb6834;
-    --s-mistral: #1baf7a;
-    --s-ionos: #eda100;
-    --good: #0ca30c;
-    --good-ink: #006300;
-    --warning: #fab219;
-    --critical: #d03b3b;
-    --wash: rgba(11,11,11,0.04);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      color-scheme: dark;
-      --page: #0d0d0d;
-      --surface: #1a1a19;
-      --ink: #f0efec;
-      --ink-2: #c3c2b7;
-      --muted: #898781;
-      --grid: #2c2c2a;
-      --axis: #383835;
-      --border: rgba(255,255,255,0.10);
-      --accent: #3987e5;
-      --s-ovhcloud: #3987e5;
-      --s-scaleway: #d95926;
-      --s-mistral: #199e70;
-      --s-ionos: #c98500;
-      --good-ink: #0ca30c;
-      --wash: rgba(255,255,255,0.05);
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--page); color: var(--ink);
-    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: var(--accent); }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+:root{
+  --fond:#0B0F14; --surface:#151B22; --ligne:#222A33; --bord:#3A4450;
+  --texte:#F2F4F7; --second:#C3CAD3; --discret:#8E98A5;
+  --soleil:#7BD3A4; --eclaircie:#FFD25E; --nuage:#AEB7C2; --orage:#FF8A6B; --lien:#7EC8FF;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--lien)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--texte);outline-offset:3px}
+.page{max-width:460px;margin:0 auto;padding:48px 20px 110px}
+.date{font-size:14px;color:var(--discret)}
+h1{margin:6px 0 0;font-size:26px;font-weight:500;line-height:1.2;letter-spacing:-.01em;min-height:62px}
+h2{font-size:13px;font-weight:500;color:var(--discret);margin:0 0 10px}
+section{margin-top:28px}
 
-  header.hero { padding: 56px 0 32px; }
-  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); font-weight: 500; }
-  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 4px color-mix(in srgb, var(--good) 20%, transparent); }
-  h1 { font-size: clamp(30px, 4.6vw, 46px); line-height: 1.1; letter-spacing: -0.02em; margin: 14px 0 14px; font-weight: 700; max-width: 760px; }
-  .lede { font-size: 18px; color: var(--ink-2); max-width: 680px; margin: 0; }
-  .maj { margin-top: 18px; font-size: 13px; color: var(--muted); }
+.radar{margin:22px auto 0;width:min(310px,82vw);aspect-ratio:1;position:relative;border-radius:50%;overflow:hidden;
+  background:radial-gradient(circle at 50% 50%,#121A24 0%,#0D131B 70%,#0B0F14 100%);border:1px solid var(--ligne)}
+.radar .anneau{position:absolute;border-radius:50%;border:1px solid #1C2530}
+.radar .axe{position:absolute;background:#1C2530}
+.balayage{position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(126,200,255,0) 0deg,rgba(126,200,255,0) 300deg,rgba(126,200,255,.18) 355deg,rgba(126,200,255,.35) 360deg);
+  animation:tour 6s linear infinite}
+@keyframes tour{to{transform:rotate(360deg)}}
+.cellule{position:absolute;border-radius:50%;transform:translate(-50%,-50%);transition:width .4s,height .4s,opacity .4s}
+.cellule.orage{background:radial-gradient(circle,rgba(255,120,80,.85) 0%,rgba(255,120,80,.35) 45%,rgba(255,120,80,0) 72%);animation:pulse 3s ease-in-out infinite}
+.cellule.nuage{background:radial-gradient(circle,rgba(174,183,194,.5) 0%,rgba(174,183,194,0) 70%)}
+.cellule.eclaircie{background:radial-gradient(circle,rgba(240,199,116,.55) 0%,rgba(240,199,116,0) 70%)}
+@keyframes pulse{0%,100%{opacity:.75}50%{opacity:1}}
+.point{position:absolute;width:10px;height:10px;border-radius:5px;transform:translate(-50%,-50%);box-shadow:0 0 0 3px var(--fond)}
+.etiquette{position:absolute;font-size:12px;font-weight:500;transform:translate(-50%,8px);white-space:nowrap}
+.mesure{position:absolute;left:50%;bottom:11%;transform:translateX(-50%);font-size:10px;color:var(--discret);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.balayage,.cellule.orage,.vivant{animation:none}}
 
-  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 8px 0 40px; }
-  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
-  .tile .lab { font-size: 13px; color: var(--ink-2); }
-  .tile .val { font-size: 30px; font-weight: 650; letter-spacing: -0.01em; margin-top: 4px; }
-  .tile .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.temps{margin:14px 8px 0}
+.temps .haut{display:flex;justify-content:space-between;align-items:baseline}
+.temps strong{font-size:15px;font-weight:600}
+.temps input{width:100%;accent-color:var(--lien);min-height:32px}
+.temps .bornes{display:flex;justify-content:space-between;font-size:12px;color:var(--discret);position:relative}
+.temps .ici{position:absolute;transform:translateX(-50%);top:0}
 
-  section { margin: 0 0 48px; }
-  h2 { font-size: 22px; letter-spacing: -0.01em; margin: 0 0 6px; }
-  .intro { color: var(--ink-2); margin: 0 0 18px; font-size: 15px; max-width: 720px; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+.bandeau{margin-top:20px;background:#3A1A14;border:1px solid #5C2A1F;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--texte)}
+.bandeau .titre{font-size:16px;font-weight:600}
+.bandeau .sous{font-size:14px;line-height:1.35;color:#E3C9C2;margin-top:3px}
+.bandeau .action{flex:none;background:var(--texte);color:var(--fond);font-size:13px;font-weight:600;border-radius:16px;padding:8px 12px}
+.vivant{width:8px;height:8px;border-radius:4px;background:var(--orage);display:inline-block;margin-right:8px;animation:pulse 1.6s infinite}
 
-  .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
-  .tabs button {
-    font: inherit; font-size: 14px; padding: 7px 14px; border-radius: 999px; cursor: pointer;
-    border: 1px solid var(--border); background: var(--surface); color: var(--ink-2);
-  }
-  .tabs button:hover { background: var(--wash); }
-  .tabs button[aria-selected="true"] { background: var(--ink); color: var(--page); border-color: var(--ink); }
+.tuiles{margin-top:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tuile{border:0;text-align:left;border-radius:18px;padding:14px;min-height:140px;display:flex;flex-direction:column;justify-content:space-between}
+.tuile .nom{font-size:16px;font-weight:600}
+.tuile .etat{font-size:17px;font-weight:500}
+.tuile .detail{font-size:13px;color:#B7C0CB;margin-top:2px}
+.tuile[aria-expanded="true"]{outline:1px solid var(--bord)}
+.fond-soleil{background:#12241A}.fond-eclaircie{background:#132235}.fond-nuage{background:#1A2028}.fond-orage{background:#2E1712}.fond-inconnu{background:#151B22}
 
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { padding: 11px 10px; text-align: left; border-bottom: 1px solid var(--grid); white-space: nowrap; }
-  th { font-weight: 500; color: var(--ink-2); font-size: 12.5px; }
-  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-  tr:last-child td { border-bottom: 0; }
-  .rang { color: var(--muted); font-variant-numeric: tabular-nums; width: 40px; }
-  .prov { display: inline-flex; align-items: center; gap: 9px; font-weight: 600; }
-  .swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
-  .badge { font-size: 11.5px; font-weight: 500; color: var(--ink-2); border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; margin-left: 4px; }
-  .status { display: inline-flex; align-items: center; gap: 6px; }
-  .status svg { flex: none; }
-  .table-scroll { overflow-x: auto; }
+.detail-f{margin-top:12px;background:var(--surface);border:1px solid var(--ligne);border-radius:18px;padding:16px}
+.detail-f h3{margin:0 0 4px;font-size:18px;font-weight:500}
+.chiffres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne);margin:14px 0}
+.chiffres div{padding:12px 0;text-align:center}
+.chiffres div+div{border-left:1px solid var(--ligne)}
+.chiffres b{display:block;font-size:20px;font-weight:300}
+.chiffres span{font-size:12px;color:var(--discret)}
+.liste{list-style:none;margin:0;padding:0}
+.liste li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--ligne);font-size:14px;line-height:1.4}
+.liste li:last-child{border-bottom:0}
+.liste .quand{flex:none;color:var(--discret);font-size:13px;min-width:74px}
+.pastille{flex:none;width:10px;height:10px;border-radius:5px;margin-top:5px}
 
-  .chart-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; padding: 18px 20px 0; }
-  .chart-title { font-weight: 600; font-size: 15px; }
-  .chart-sub { font-size: 13px; color: var(--muted); }
-  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .seg button { font: inherit; font-size: 13px; padding: 5px 12px; border: 0; background: transparent; color: var(--ink-2); cursor: pointer; }
-  .seg button + button { border-left: 1px solid var(--border); }
-  .seg button[aria-pressed="true"] { background: var(--wash); color: var(--ink); font-weight: 600; }
-  .legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 10px 20px 0; font-size: 13px; color: var(--ink-2); }
-  .legend span { display: inline-flex; align-items: center; gap: 7px; }
-  .legend i { width: 14px; height: 2px; border-radius: 2px; display: inline-block; }
-  .chart-box { position: relative; padding: 4px 8px 12px; }
-  svg.chart { display: block; width: 100%; height: auto; overflow: visible; }
-  svg.chart text { font: 11.5px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--muted); font-variant-numeric: tabular-nums; }
-  svg.chart text.dl { fill: var(--ink-2); font-weight: 600; }
-  .tip {
-    position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; padding: 8px 10px; font-size: 12.5px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    min-width: 170px; opacity: 0; transition: opacity .08s;
-  }
-  .tip .t { color: var(--muted); margin-bottom: 4px; }
-  .tip .r { display: flex; justify-content: space-between; gap: 14px; }
-  .tip .r b { font-variant-numeric: tabular-nums; font-weight: 600; }
-  .empty { padding: 28px 20px; color: var(--muted); font-size: 14px; }
+.carte{background:var(--surface);border:1px solid var(--ligne);border-radius:18px;padding:16px}
+.montant{font-size:56px;font-weight:200;letter-spacing:-.04em;line-height:1;text-align:center;margin:6px 0}
+.centre{text-align:center}
+.petit{font-size:13px;color:var(--discret);line-height:1.45}
+.ligne-avoir{padding:14px 0;border-bottom:1px solid var(--ligne)}
+.ligne-avoir:last-child{border-bottom:0}
+.ligne-avoir .haut{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.ligne-avoir label{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;font-size:14px;color:var(--discret)}
+.champ{display:flex;align-items:center;gap:6px;border:1px solid var(--bord);border-radius:10px;padding:0 12px;background:var(--fond);min-height:44px;color:var(--texte)}
+.champ input{width:84px;border:0;background:transparent;text-align:right;font-size:16px;color:var(--texte);outline:none}
+.bouton{display:block;text-align:center;text-decoration:none;background:var(--texte);color:var(--fond);font-weight:600;font-size:15px;padding:15px;border-radius:14px;border:0;width:100%}
+.bouton.second{background:transparent;color:var(--texte);border:1px solid var(--bord);margin-top:10px}
+.legende{font-size:13px;color:var(--discret);line-height:1.5;margin:14px 4px 0}
+.vide{padding:40px 0;text-align:center;color:var(--second);line-height:1.5}
 
-  .incidents { list-style: none; margin: 0; padding: 4px 0; }
-  .incidents li { display: flex; gap: 12px; align-items: baseline; padding: 11px 18px; border-bottom: 1px solid var(--grid); font-size: 14px; }
-  .incidents li:last-child { border-bottom: 0; }
-  .incidents time { color: var(--muted); font-variant-numeric: tabular-nums; min-width: 128px; font-size: 13px; }
-
-  .soon { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-  .soon .card { padding: 16px 18px; }
-  .soon .nom { font-weight: 600; display: flex; align-items: center; gap: 9px; }
-  .soon .etat { font-size: 13px; color: var(--muted); margin-top: 4px; }
-
-  .methode { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .methode .card { padding: 16px 18px; font-size: 14.5px; color: var(--ink-2); }
-  .methode strong { color: var(--ink); display: block; margin-bottom: 2px; font-size: 15px; }
-
-  footer { border-top: 1px solid var(--grid); padding: 24px 0 48px; font-size: 13px; color: var(--muted); }
-  footer a { color: var(--ink-2); }
-  .err { padding: 16px 18px; color: var(--ink-2); }
-
-  @media (max-width: 760px) {
-    .kpis { grid-template-columns: repeat(2, 1fr); }
-    .methode { grid-template-columns: 1fr; }
-    header.hero { padding-top: 36px; }
-  }
+nav.onglets{position:fixed;left:0;right:0;bottom:0;background:rgba(11,15,20,.94);backdrop-filter:blur(8px);border-top:1px solid var(--ligne)}
+nav.onglets div{max-width:460px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:8px 0 22px}
+nav.onglets a{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--discret);text-decoration:none;min-height:44px;justify-content:center}
+nav.onglets svg{stroke:currentColor}
 </style>
 </head>
 <body>
-<div class="wrap">
+<main class="page">
+  <span class="date" id="date">Chargement…</span>
+  <h1 id="phrase" aria-live="polite"> </h1>
 
-  <header class="hero">
-    <div class="eyebrow"><span class="pulse" aria-hidden="true"></span>Observatoire indépendant · mesuré toutes les heures</div>
-    <h1>Baromètre des API d'IA européennes</h1>
-    <p class="lede">Quelle API d'IA hébergée en Europe répond vraiment, vite et bien en français&nbsp;? Nous mesurons le même modèle chez chaque hébergeur, toutes les heures, et publions tout.</p>
-    <div class="maj" id="maj">Chargement des mesures…</div>
-  </header>
+  <figure class="radar" id="radar" role="img" aria-label="Radar des fournisseurs">
+    <span class="anneau" style="inset:17%"></span><span class="anneau" style="inset:34%"></span>
+    <span class="axe" style="left:50%;top:0;bottom:0;width:1px"></span><span class="axe" style="top:50%;left:0;right:0;height:1px"></span>
+    <span class="balayage"></span>
+    <span class="mesure" id="point-mesure"></span>
+  </figure>
 
-  <div class="kpis" id="kpis"></div>
+  <div class="temps" id="temps" hidden>
+    <div class="haut"><strong id="temps-heure">Maintenant</strong><span id="temps-nature" class="petit"></span></div>
+    <input type="range" id="curseur" min="0" max="0" step="1" aria-label="Rembobiner ou avancer le radar">
+    <div class="bornes"><span id="borne-debut"></span><span class="ici" id="borne-ici">Maintenant</span><span id="borne-fin"></span></div>
+  </div>
 
-  <section aria-labelledby="h-classement">
-    <h2 id="h-classement">Classement des 7 derniers jours</h2>
-    <p class="intro">Un même modèle, plusieurs hébergeurs. Classés par disponibilité, puis par qualité des réponses en français, puis par rapidité.</p>
-    <div class="tabs" role="tablist" id="tabs"></div>
-    <div class="card table-scroll" id="tableau"></div>
-  </section>
+  <a class="bandeau" id="bandeau" href="#alertes" hidden>
+    <span style="flex:1">
+      <span class="titre"><span class="vivant"></span><span id="bandeau-titre"></span></span>
+      <span class="sous" id="bandeau-sous" style="display:block"></span>
+    </span>
+    <span class="action">Que faire ?</span>
+  </a>
 
-  <section aria-labelledby="h-courbe">
-    <h2 id="h-courbe">Rapidité dans le temps</h2>
-    <p class="intro">Délai avant le premier mot de la réponse : c'est l'attente que ressent l'utilisateur. Plus la courbe est basse, mieux c'est.</p>
-    <div class="card">
-      <div class="chart-head">
-        <div>
-          <div class="chart-title" id="chart-title">Délai avant le premier mot</div>
-          <div class="chart-sub">Médiane par heure, en secondes · ▲ pic hors échelle</div>
-        </div>
-        <div class="seg" role="group" aria-label="Période">
-          <button data-j="1" aria-pressed="false">24 h</button>
-          <button data-j="7" aria-pressed="true">7 jours</button>
-          <button data-j="30" aria-pressed="false">30 jours</button>
-        </div>
-      </div>
-      <div class="legend" id="legend"></div>
-      <div class="chart-box" id="chart-box">
-        <svg class="chart" id="chart" viewBox="0 0 960 320" role="img" aria-label="Délai avant le premier mot par heure"></svg>
-        <div class="tip" id="tip"></div>
-      </div>
+  <div class="tuiles" id="tuiles"></div>
+  <div id="detail"></div>
+  <p class="legende">Soleil : tout va bien. Éclaircies : un peu lent. Nuages : ça ralentit. Orage : en panne.</p>
+
+  <section id="alertes">
+    <h2>Alertes</h2>
+    <div class="carte">
+      <ul class="liste" id="liste-alertes"></ul>
     </div>
+    <a class="bouton" id="abonnement" href="#" style="margin-top:14px">Recevoir les alertes sur mon téléphone</a>
+    <a class="bouton second" id="signaler" href="#">Je vois un problème</a>
   </section>
 
-  <section aria-labelledby="h-incidents">
-    <h2 id="h-incidents">Incidents récents</h2>
-    <p class="intro">Heures où un appel a échoué, ou où la première réponse a mis plus de 10 secondes.</p>
-    <div class="card" id="incidents"></div>
+  <section id="avoirs">
+    <h2>Ce que les fournisseurs vous doivent</h2>
+    <div class="carte" id="carte-avoirs"></div>
   </section>
 
-  <section aria-labelledby="h-soon">
-    <h2 id="h-soon">Bientôt mesurés</h2>
-    <p class="intro">Ces hébergeurs européens sont déjà configurés dans la sonde et rejoindront le classement prochainement.</p>
-    <div class="soon" id="soon"></div>
+  <section>
+    <h2>Méthode</h2>
+    <p class="petit" id="methode"></p>
+    <p class="petit">Données ouvertes : <a id="lien-depot" href="#">le dépôt de la sonde</a>. Toutes les mesures sont horodatées chaque nuit.</p>
   </section>
+</main>
 
-  <section aria-labelledby="h-methode">
-    <h2 id="h-methode">Méthode et neutralité</h2>
-    <div class="methode">
-      <div class="card"><strong>Mêmes questions pour tous</strong>11 tâches en français vérifiées automatiquement (calcul, extraction, orthographe, consignes…), même température, même longueur maximale.</div>
-      <div class="card"><strong>Un échec est une mesure</strong>Aucun appel n'est retenté. Une erreur, un délai dépassé ou une réponse vide comptent comme indisponibilité.</div>
-      <div class="card"><strong>Offres signalées</strong>Les mesures faites sur une offre gratuite ou en accès anonyme sont marquées : leurs limites de débit ne sont pas celles d'un client payant.</div>
-      <div class="card"><strong>Tout est public</strong>Le code de la sonde et chaque mesure brute sont publiés. Aucun fournisseur ne paie pour être mesuré ni pour son classement.</div>
-    </div>
-  </section>
-
-  <footer>
-    <span id="foot-src">Données et code&nbsp;: <a id="lien-depot" href="https://github.com/mcp-trust-score-org/sonde-ia-eu">dépôt GitHub</a> · <a id="lien-brut" href="https://github.com/mcp-trust-score-org/sonde-ia-eu/tree/main/data">mesures brutes</a> · <a href="https://github.com/mcp-trust-score-org/sonde-ia-eu/issues">suggérer un fournisseur</a></span>
-  </footer>
-</div>
+<nav class="onglets" aria-label="Navigation">
+  <div>
+    <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg>Météo</a>
+    <a href="#alertes"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>Alertes</a>
+    <a href="#avoirs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7.5A6 6 0 1 0 17 16.5"/><path d="M4 10.5h9M4 13.5h9"/></svg>Avoirs</a>
+  </div>
+</nav>
 
 <script>
-(() => {
-  const COULEURS = ["ovhcloud", "scaleway", "mistral", "ionos"];
-  const NOMS_OFFRE = { anonyme: "accès anonyme", gratuite: "offre gratuite" };
-  const $ = (id) => document.getElementById(id);
-  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const nf = new Intl.NumberFormat("fr-FR");
-  const nf1 = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
+// ------------------------------------------------------------------ RÉGLAGES (à modifier)
+const REGLAGES = {
+  // Dossier des données publiées par la sonde. Par défaut : ../public/ (même dépôt GitHub Pages).
+  donnees: new URLSearchParams(location.search).get("donnees") || "../public/",
+  // Sujet ntfy des alertes publiques (le même que la variable NTFY_TOPIC de la sonde). Vide = bouton masqué.
+  ntfy: "",
+  // Dépôt GitHub de la sonde : lien « données ouvertes » et signalements.
+  depot: "https://github.com/mcp-trust-score-org/sonde-ia-eu",
+  // Part prélevée sur les avoirs obtenus (affichage seulement).
+  part_pct: 25,
+};
 
-  const base = (f) => String(f).split(" (")[0];
-  const offre = (f) => (String(f).match(/\(([^)]+)\)/) || [])[1];
-  const couleur = (f) => {
-    const id = base(f);
-    return COULEURS.includes(id) ? `var(--s-${id})` : "var(--muted)";
+// ------------------------------------------------------------------ outils
+const $ = (id) => document.getElementById(id);
+const COUL = {soleil:"#7BD3A4", eclaircie:"#FFD25E", nuage:"#AEB7C2", orage:"#FF8A6B", inconnu:"#5B6470"};
+const CIEL = {soleil:"Soleil", eclaircie:"Éclaircies", nuage:"Nuageux", orage:"Orage", inconnu:"Inconnu"};
+const LIB = {soleil:"Tout va bien", eclaircie:"Un peu lent", nuage:"Ça ralentit", orage:"En panne", inconnu:"Pas de mesure"};
+const ORDRE = ["soleil","eclaircie","nuage","orage"];
+const heure = (iso) => new Date(iso).toLocaleTimeString("fr-FR", {hour:"2-digit", minute:"2-digit"});
+const jourHeure = (iso) => new Date(iso).toLocaleString("fr-FR", {weekday:"short", day:"numeric", hour:"2-digit", minute:"2-digit"});
+const eur = (n) => Math.round(n).toLocaleString("fr-FR") + " €";
+const pct = (n) => n == null ? "—" : n.toLocaleString("fr-FR", {maximumFractionDigits: 2}) + " %";
+const sec = (ms) => ms == null ? "—" : (ms / 1000).toLocaleString("fr-FR", {maximumFractionDigits: 1}) + " s";
+function el(tag, attrs = {}, ...enfants) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "style") e.style.cssText = v; else if (k === "class") e.className = v; else e.setAttribute(k, v);
+  }
+  for (const c of enfants) if (c != null) e.append(c);
+  return e;
+}
+const memoire = {
+  lire(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  ecrire(k, v) { try { localStorage.setItem(k, v); } catch {} },
+};
+async function charger(nom, defaut) {
+  try { const r = await fetch(REGLAGES.donnees + nom + "?t=" + Date.now()); if (!r.ok) throw 0; return await r.json(); }
+  catch { return defaut; }
+}
+function icone(etat, taille = 32) {
+  const s = `width="${taille}" height="${taille}" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"`;
+  const svg = {
+    soleil: `<svg ${s} stroke="#FFD25E"><circle cx="12" cy="12" r="4.2" fill="#FFD25E"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>`,
+    eclaircie: `<svg ${s}><circle cx="9" cy="8" r="3.2" fill="#FFD25E" stroke="#FFD25E"/><path d="M9 19h8a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.6 1.4A2.8 2.8 0 0 0 9 19z" fill="#DCE2EA" stroke="#DCE2EA"/></svg>`,
+    nuage: `<svg ${s} stroke="#AEB7C2"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18z" fill="#AEB7C2"/></svg>`,
+    orage: `<svg ${s}><path d="M7 15h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 15z" fill="#5B6470" stroke="#8E98A5"/><path d="M12.5 15l-2 3.5h3.5l-2 3" stroke="#FF8A6B"/></svg>`,
+    inconnu: `<svg ${s} stroke="#5B6470"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.2M12 16.5v.01"/></svg>`,
+  }[etat] || "";
+  const t = document.createElement("template"); t.innerHTML = svg; return t.content.firstChild;
+}
+function phrase(etats) {
+  const connus = etats.filter(e => e.etat !== "inconnu");
+  if (!connus.length) return "Pas de mesure sur ce créneau.";
+  const pannes = connus.filter(e => e.etat === "orage").map(e => e.nom);
+  const lents = connus.filter(e => e.etat === "nuage" || e.etat === "eclaircie").map(e => e.nom);
+  const calmes = connus.length - pannes.length - lents.length;
+  const liste = (xs) => xs.length === 1 ? xs[0] : xs.slice(0, -1).join(", ") + " et " + xs.at(-1);
+  if (!pannes.length && !lents.length) return connus.length > 1 ? `Temps calme sur les ${connus.length} fournisseurs.` : "Temps calme.";
+  const m = [];
+  if (calmes) m.push(`temps calme sur ${calmes} fournisseur${calmes > 1 ? "s" : ""}`);
+  if (lents.length) m.push(`nuages sur ${liste(lents)}`);
+  if (pannes.length) m.push(`orage sur ${liste(pannes)}`);
+  const s = m.join(", ");
+  return s[0].toUpperCase() + s.slice(1) + ".";
+}
+function position(i, n) {
+  const a = -Math.PI / 2 + 2 * Math.PI * i / Math.max(n, 1) + 0.35;
+  const r = 0.45 + 0.35 * ((i * 37) % 10) / 10;
+  return [50 + Math.cos(a) * r * 50, 50 + Math.sin(a) * r * 50];
+}
+
+// ------------------------------------------------------------------ affichage
+let METEO = null, OUVERT = null;
+
+function dessinerRadar(etats) {
+  const radar = $("radar");
+  radar.querySelectorAll(".cellule,.point,.etiquette").forEach(n => n.remove());
+  etats.forEach((e, i) => {
+    const [x, y] = position(i, etats.length);
+    if (["orage","nuage","eclaircie"].includes(e.etat)) {
+      const t = {orage: 31, nuage: 22, eclaircie: 20}[e.etat];
+      radar.append(el("span", {class: "cellule " + e.etat, style: `left:${x}%;top:${y}%;width:${t}%;height:${t * .82}%;opacity:${e.prevision ? .65 : 1}`}));
+    }
+    radar.append(el("span", {class: "point", style: `left:${x}%;top:${y}%;background:${COUL[e.etat]}`}));
+    radar.append(el("span", {class: "etiquette", style: `left:${x}%;top:${y}%;color:${e.etat === "orage" ? "#FFB49E" : "#F2F4F7"}`}, e.nom));
+  });
+  radar.setAttribute("aria-label", "Radar : " + etats.map(e => `${e.nom} ${CIEL[e.etat].toLowerCase()}`).join(", "));
+}
+
+function etatsAuPas(k) {
+  return METEO.fournisseurs.map(f => {
+    const p = f.chronologie[k] || {};
+    return {nom: f.nom_court, etat: p.etat || "inconnu", prevision: p.nature === "prevision"};
+  });
+}
+
+function afficherTemps(k) {
+  const f0 = METEO.fournisseurs[0];
+  const p = f0.chronologie[k];
+  const maintenant = f0.chronologie.findIndex(x => x.nature === "prevision") - 1;
+  if (k === maintenant) {
+    dessinerRadar(METEO.fournisseurs.map(f => ({nom: f.nom_court, etat: f.etat})));
+    $("phrase").textContent = METEO.phrase;
+    $("temps-heure").textContent = "Maintenant, " + heure(METEO.genere_le);
+    $("temps-nature").textContent = "En direct"; $("temps-nature").style.color = "#7EC8FF";
+  } else {
+    const etats = etatsAuPas(k);
+    dessinerRadar(etats);
+    $("phrase").textContent = (p.nature === "prevision" ? "Prévision : " : "") + phrase(etats);
+    $("temps-heure").textContent = heure(p.heure);
+    $("temps-nature").textContent = p.nature === "prevision" ? "Prévision" : "Mesuré";
+    $("temps-nature").style.color = p.nature === "prevision" ? "#F0C774" : "";
+  }
+}
+
+function afficherTuiles() {
+  const zone = $("tuiles"); zone.replaceChildren();
+  for (const f of METEO.fournisseurs) {
+    let detail = f.ttft_ms != null ? `Réponse en ${sec(f.ttft_ms)}` : "";
+    if (f.panne_en_cours) detail = `Depuis ${heure(f.panne_en_cours.depuis)}`;
+    if (f.source === "horaire") detail += (detail ? " · " : "") + "mesure horaire";
+    const b = el("button", {class: "tuile fond-" + f.etat, type: "button", "aria-expanded": String(OUVERT === f.id), "aria-controls": "detail"},
+      el("span", {style: "display:flex;justify-content:space-between;align-items:flex-start;width:100%"}, el("span", {class: "nom"}, f.nom_court), icone(f.etat)),
+      el("span", {}, el("span", {class: "etat", style: "display:block"}, f.acces_impossible ? "Accès à vérifier" : LIB[f.etat]), el("span", {class: "detail", style: "display:block"}, detail)));
+    b.addEventListener("click", () => { OUVERT = OUVERT === f.id ? null : f.id; afficherTuiles(); afficherDetail(); });
+    zone.append(b);
+  }
+}
+
+function afficherDetail() {
+  const zone = $("detail"); zone.replaceChildren();
+  const f = METEO.fournisseurs.find(x => x.id === OUVERT);
+  if (!f) return;
+  const inc = el("ul", {class: "liste"});
+  for (const i of (f.incidents_30j || []).slice(0, 5)) {
+    const err = Object.keys(i.erreurs || {})[0] || "";
+    inc.append(el("li", {}, el("span", {class: "quand"}, jourHeure(i.debut)),
+      el("span", {}, `${i.en_cours ? "En cours, " : ""}${i.duree_min} min de panne` + (err ? ` · ${err}` : ""))));
+  }
+  if (!inc.children.length) inc.append(el("li", {}, "Aucune panne sur 30 jours."));
+  zone.append(el("div", {class: "detail-f", id: "detail-" + f.id},
+    el("h3", {}, f.nom),
+    el("p", {class: "petit", style: "margin:0"}, `${CIEL[f.etat]} · vigilance ${f.vigilance}` + (f.raison ? ` · ${f.raison}` : "")),
+    el("div", {class: "chiffres"},
+      el("div", {}, el("b", {}, pct(f.disponibilite["24h"])), el("span", {}, "24 heures")),
+      el("div", {}, el("b", {}, pct(f.disponibilite["7j"])), el("span", {}, "7 jours")),
+      el("div", {}, el("b", {}, pct(f.disponibilite["30j"])), el("span", {}, "30 jours"))),
+    el("p", {class: "petit", style: "margin:0 0 6px"}, `Temps de réponse habituel : ${sec(f.reference_ttft_ms)}. Offre mesurée : ${f.offre || "—"}.`),
+    f.derniere_erreur ? el("p", {class: "petit", style: "margin:0 0 6px"}, `Dernière erreur : ${f.derniere_erreur}`) : "",
+    el("h2", {style: "margin-top:14px"}, "Pannes récentes"), inc));
+}
+
+function afficherBandeau() {
+  const p = METEO.fournisseurs.filter(f => f.etat === "orage");
+  if (!p.length) { $("bandeau").hidden = true; return; }
+  const f = p[0];
+  $("bandeau-titre").textContent = p.length > 1 ? `${p.length} fournisseurs en panne` : `${f.nom_court} est en panne`;
+  const bis = METEO.fournisseurs.filter(x => x.etat === "soleil" || x.etat === "eclaircie").map(x => x.nom_court);
+  $("bandeau-sous").textContent = (f.panne_en_cours ? `Depuis ${heure(f.panne_en_cours.depuis)}. ` : "") +
+    "La panne vient du fournisseur, pas de chez vous." + (bis.length ? ` Itinéraire bis : ${bis.join(", ")}.` : "");
+  $("bandeau").hidden = false;
+}
+
+function afficherAlertes(alertes) {
+  const ul = $("liste-alertes"); ul.replaceChildren();
+  const c = {rouge: "#FF8A6B", orange: "#F0C774", vert: "#7BD3A4"};
+  for (const a of (alertes || []).slice(0, 8)) {
+    ul.append(el("li", {}, el("span", {class: "pastille", style: `background:${c[a.niveau] || "#AEB7C2"}`}),
+      el("span", {style: "flex:1"}, el("strong", {style: "font-weight:600;display:block"}, a.titre), a.texte),
+      el("span", {class: "quand", style: "min-width:auto"}, heure(a.horodatage))));
+  }
+  if (!ul.children.length) ul.append(el("li", {}, "Aucune alerte récente. Il fait beau."));
+}
+
+function afficherAvoirs(avoirs) {
+  const carte = $("carte-avoirs"); carte.replaceChildren();
+  const mois = Object.keys(avoirs || {}).sort();
+  const dernier = mois.at(-1);
+  const lignes = dernier ? avoirs[dernier].filter(r => r.engagement_pct != null) : [];
+  if (!lignes.length) {
+    carte.append(el("p", {class: "petit", style: "margin:0"}, "Pas encore de calcul d'avoirs : il se fait chaque mois, quand les contrats sont renseignés dans config/contrats.yaml."));
+    return;
+  }
+  const total = el("p", {class: "montant"}, "0 €");
+  const net = el("p", {class: "petit centre", style: "margin:0"});
+  carte.append(el("p", {class: "centre", style: "margin:0;color:#C3CAD3"}, `Pour ${new Date(dernier + "-15").toLocaleString("fr-FR", {month: "long", year: "numeric"})}`), total, net);
+  const recalcul = () => {
+    let s = 0;
+    for (const r of lignes) s += (Number(memoire.lire("facture-" + r.fournisseur)) || 0) * r.avoir_pct / 100;
+    total.textContent = eur(s);
+    net.textContent = s ? `Dont ${eur(s * (1 - REGLAGES.part_pct / 100))} pour vous après notre part de ${REGLAGES.part_pct} %, seulement si l'avoir est obtenu.`
+                        : "Indiquez vos factures du mois pour voir le montant.";
   };
-  const secondes = (ms) => ms == null ? "–" : (ms < 1000 ? `${nf.format(Math.round(ms))} ms` : `${nf1.format(ms / 1000)} s`);
-
-  let resume, points = [], modeles = [], modeleActif = null, jours = 7;
-  const nomModele = (id) => (resume.modeles.find(m => m.id === id) || {}).nom || id;
-  const nomFournisseur = (f) => {
-    const c = resume.fournisseurs.find(x => x.id === base(f));
-    return c ? c.nom.replace(/ (Generative APIs|AI Endpoints|AI Model Hub)$/, "") : base(f);
-  };
-
-  function statutDispo(pct) {
-    const ico = (path, c) => `<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="${c}"/>${path}</svg>`;
-    if (pct >= 99.5) return `<span class="status">${ico('<path d="M4.8 8.2l2.1 2.1 4.3-4.6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>', "var(--good)")}${nf1.format(pct)} %</span>`;
-    if (pct >= 97) return `<span class="status">${ico('<rect x="7.1" y="3.8" width="1.8" height="5.4" rx=".9" fill="#0b0b0b"/><circle cx="8" cy="11.6" r="1" fill="#0b0b0b"/>', "var(--warning)")}${nf1.format(pct)} % · dégradée</span>`;
-    return `<span class="status">${ico('<path d="M5.4 5.4l5.2 5.2M10.6 5.4l-5.2 5.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>', "var(--critical)")}${nf1.format(pct)} % · faible</span>`;
+  for (const r of lignes) {
+    const input = el("input", {type: "number", min: "0", step: "100", inputmode: "decimal", "aria-label": "Facture du mois " + r.fournisseur});
+    input.value = memoire.lire("facture-" + r.fournisseur) || "";
+    input.addEventListener("input", () => { memoire.ecrire("facture-" + r.fournisseur, input.value); recalcul(); });
+    const jours = r.jours_restants;
+    carte.append(el("div", {class: "ligne-avoir"},
+      el("div", {class: "haut"},
+        el("span", {}, el("strong", {style: "font-weight:500;font-size:16px"}, (METEO?.fournisseurs || []).find(f => f.id === r.fournisseur)?.nom_court || r.fournisseur), el("span", {class: "petit", style: "display:block"},
+          `Promis ${pct(r.engagement_pct)} · mesuré ${pct(r.disponibilite_pct)}` + (r.verifie ? "" : " · contrat à vérifier"))),
+        el("span", {style: "font-size:17px;font-weight:300;white-space:nowrap;flex:none"}, r.avoir_pct ? `${r.avoir_pct} % de la facture` : "Engagement tenu")),
+      r.avoir_pct ? el("p", {class: "petit", style: `margin:6px 0 0;color:${jours <= 15 ? "#FF8A6B" : ""}`},
+        `À réclamer avant le ${new Date(r.echeance).toLocaleDateString("fr-FR")} (${jours} jours).` +
+        (r.debut_decompte === "ticket" ? " Ici, la panne ne compte qu'à partir du ticket." : "")) : null,
+      r.avoir_pct ? el("label", {}, el("span", {}, "Votre facture du mois"), el("span", {class: "champ"}, input, "€")) : null));
   }
+  carte.append(el("p", {class: "petit", style: "margin:12px 0 0"}, "Vos montants restent dans ce navigateur : ils ne sont envoyés nulle part. Estimation, à confirmer avec votre contrat. Un avoir est en général une réduction sur la prochaine facture."));
+  recalcul();
+}
 
-  function depuis(iso) {
-    const min = Math.round((Date.now() - Date.parse(iso)) / 60000);
-    if (min < 2) return "à l'instant";
-    if (min < 60) return `il y a ${min} min`;
-    const h = Math.round(min / 60);
-    return h < 48 ? `il y a ${h} h` : `il y a ${Math.round(h / 24)} jours`;
+async function demarrer() {
+  METEO = await charger("meteo.json", null);
+  const [alertes, avoirs] = await Promise.all([charger("alertes.json", []), charger("avoirs.json", {})]);
+  $("lien-depot").href = REGLAGES.depot;
+  $("signaler").href = REGLAGES.depot + "/issues/new?title=" + encodeURIComponent("Signalement : ") + "&body=" +
+    encodeURIComponent("Fournisseur :\nHeure (approximative) :\nCe que je vois (erreur, lenteur…) :\n");
+  if (REGLAGES.ntfy) $("abonnement").href = "https://ntfy.sh/" + encodeURIComponent(REGLAGES.ntfy);
+  else $("abonnement").hidden = true;
+  if (!METEO || !METEO.fournisseurs?.length) {
+    $("date").textContent = new Date().toLocaleDateString("fr-FR", {weekday: "long", day: "numeric", month: "long"});
+    $("phrase").textContent = "Pas encore de données.";
+    $("tuiles").replaceWith(el("p", {class: "vide"}, "La sonde n'a pas encore publié de météo. Lancez « python -m sonde veille » puis « python -m sonde direct »."));
+    afficherAlertes(alertes); afficherAvoirs(avoirs);
+    return;
   }
-
-  function kpis() {
-    const r = resume.resultats;
-    const appels = r.reduce((a, x) => a + x.appels, 0);
-    const dispo = appels ? r.reduce((a, x) => a + x.disponibilite_pct * x.appels, 0) / appels : null;
-    const q = r.filter(x => x.qualite_pct != null);
-    const qual = q.length ? q.reduce((a, x) => a + x.qualite_pct * x.appels, 0) / q.reduce((a, x) => a + x.appels, 0) : null;
-    const nbF = resume.fournisseurs_mesures.length, totF = resume.fournisseurs.length;
-    const depuisLe = resume.premiere_mesure ? new Date(resume.premiere_mesure).toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) : "–";
-    $("kpis").innerHTML = [
-      ["Mesures réalisées", nf.format(resume.total_mesures), `depuis le ${depuisLe}`],
-      ["Disponibilité moyenne", dispo == null ? "–" : `${nf1.format(dispo)} %`, "7 derniers jours"],
-      ["Réponses justes en français", qual == null ? "–" : `${nf1.format(qual)} %`, "sur les appels réussis"],
-      ["Hébergeurs mesurés", `${nbF} sur ${totF}`, `${modeles.length} modèle${modeles.length > 1 ? "s" : ""} suivi${modeles.length > 1 ? "s" : ""}`],
-    ].map(([l, v, s]) => `<div class="tile"><div class="lab">${l}</div><div class="val">${v}</div><div class="sub">${s}</div></div>`).join("");
+  const d = new Date(METEO.genere_le);
+  $("date").textContent = d.toLocaleDateString("fr-FR", {weekday: "long", day: "numeric", month: "long"}) + ", " + heure(METEO.genere_le);
+  $("phrase").textContent = METEO.phrase;
+  $("point-mesure").textContent = METEO.point_de_mesure ? "Point de mesure : " + METEO.point_de_mesure : "";
+  $("methode").textContent = METEO.methode;
+  const chrono = METEO.fournisseurs[0].chronologie || [];
+  const ici = chrono.findIndex(x => x.nature === "prevision") - 1;
+  if (chrono.length > 1 && ici >= 0) {
+    const c = $("curseur"); c.max = chrono.length - 1; c.value = ici;
+    $("borne-debut").textContent = heure(chrono[0].heure); $("borne-fin").textContent = heure(chrono.at(-1).heure);
+    $("borne-ici").style.left = (100 * ici / (chrono.length - 1)) + "%";
+    c.oninput = () => afficherTemps(Number(c.value));
+    $("temps").hidden = false;
   }
-
-  function onglets() {
-    $("tabs").innerHTML = modeles.map(m =>
-      `<button role="tab" aria-selected="${m === modeleActif}" data-m="${esc(m)}">${esc(nomModele(m))}</button>`).join("");
-    $("tabs").querySelectorAll("button").forEach(b => b.onclick = () => { modeleActif = b.dataset.m; rendre(); });
-  }
-
-  function tableau() {
-    const rs = resume.resultats.filter(r => r.modele === modeleActif)
-      .sort((a, b) => (b.disponibilite_pct - a.disponibilite_pct) || ((b.qualite_pct ?? 0) - (a.qualite_pct ?? 0)) || ((a.duree_p50_ms ?? 1e12) - (b.duree_p50_ms ?? 1e12)));
-    if (!rs.length) { $("tableau").innerHTML = `<div class="empty">Pas encore de mesure pour ce modèle sur les 7 derniers jours.</div>`; return; }
-    $("tableau").innerHTML = `<table>
-      <thead><tr><th>Rang</th><th>Hébergeur</th><th>Disponibilité</th><th class="num">1<sup>er</sup> mot, médiane</th><th class="num">1<sup>er</sup> mot, pire 5 %</th><th class="num">Débit</th><th class="num">Justes en FR</th><th class="num">Appels</th></tr></thead>
-      <tbody>${rs.map((r, i) => {
-        const o = offre(r.fournisseur);
-        return `<tr>
-          <td class="rang">${i + 1}</td>
-          <td><span class="prov"><span class="swatch" style="background:${couleur(r.fournisseur)}"></span>${esc(nomFournisseur(r.fournisseur))}</span>${o ? `<span class="badge">${esc(NOMS_OFFRE[o] || o)}</span>` : ""}</td>
-          <td>${statutDispo(r.disponibilite_pct)}</td>
-          <td class="num">${secondes(r.ttft_p50_ms)}</td>
-          <td class="num">${secondes(r.ttft_p95_ms)}</td>
-          <td class="num">${r.jetons_par_s_median == null ? "–" : `${nf.format(Math.round(r.jetons_par_s_median))} jetons/s`}</td>
-          <td class="num">${r.qualite_pct == null ? "–" : `${nf1.format(r.qualite_pct)} %`}</td>
-          <td class="num">${nf.format(r.appels)}</td>
-        </tr>`;
-      }).join("")}</tbody></table>`;
-  }
-
-  // ---------------------------------------------------------------- courbe
-  function courbe() {
-    const svg = $("chart"), tip = $("tip");
-    const W = Math.max(320, Math.round(($("chart-box").clientWidth || 976) - 16));
-    const etroit = W < 600;
-    const H = etroit ? 240 : 320, m = { t: 16, r: etroit ? 74 : 120, b: 34, l: etroit ? 40 : 52 };
-    const fin = Date.parse(resume.genere_le), debut = fin - jours * 864e5;
-    const pts = points.filter(p => p.modele === modeleActif && p.ttft_median_ms != null && Date.parse(p.heure) >= debut);
-    const series = [...new Set(pts.map(p => p.fournisseur))].sort((a, b) => COULEURS.indexOf(base(a)) - COULEURS.indexOf(base(b)));
-    $("chart-title").textContent = `Délai avant le premier mot · ${nomModele(modeleActif)}`;
-    $("legend").innerHTML = series.length > 1 ? series.map(s => `<span><i style="background:${couleur(s)}"></i>${esc(nomFournisseur(s))}${offre(s) ? ` (${esc(NOMS_OFFRE[offre(s)] || offre(s))})` : ""}</span>`).join("") : "";
-    if (!pts.length) {
-      svg.innerHTML = ""; svg.setAttribute("viewBox", `0 0 ${W} 80`);
-      svg.innerHTML = `<text x="${W / 2}" y="44" text-anchor="middle">Pas encore assez de mesures sur cette période.</text>`;
-      return;
-    }
-    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    const vals = pts.map(p => p.ttft_median_ms / 1000).sort((a, b) => a - b);
-    const q98 = vals[Math.floor(0.98 * (vals.length - 1))];
-    const maxV = Math.min(vals[vals.length - 1], Math.max(q98 * 1.6, 1));   // au-delà : pic écrêté et signalé
-    const pas = [0.25, 0.5, 1, 2, 2.5, 5, 10, 20, 30, 60].find(s => maxV / s <= 5) || 60;
-    const yMax = Math.max(pas, Math.ceil(maxV / pas) * pas);
-    const X = t => m.l + (t - debut) / (fin - debut) * (W - m.l - m.r);
-    const Y = v => m.t + (1 - v / yMax) * (H - m.t - m.b);
-    let g = "";
-    for (let v = 0; v <= yMax + 1e-9; v += pas) {
-      g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--grid)" stroke-width="1"/>`;
-      g += `<text x="${m.l - 8}" y="${Y(v) + 4}" text-anchor="end">${nf1.format(v)} s</text>`;
-    }
-    g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--axis)" stroke-width="1"/>`;
-    // graduations du temps
-    const nbTicks = etroit ? 3 : jours === 1 ? 6 : jours === 7 ? 7 : 6;
-    for (let i = 0; i <= nbTicks; i++) {
-      const t = debut + i * (fin - debut) / nbTicks, d = new Date(t);
-      const lab = jours === 1 ? d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }) : d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
-      g += `<text x="${X(t)}" y="${H - 10}" text-anchor="${i === 0 ? "start" : i === nbTicks ? "end" : "middle"}">${lab}</text>`;
-    }
-    const parSerie = {};
-    for (const s of series) {
-      const ps = pts.filter(p => p.fournisseur === s).sort((a, b) => Date.parse(a.heure) - Date.parse(b.heure));
-      parSerie[s] = ps;
-      let d = "", prev = null;
-      for (const p of ps) {
-        const t = Date.parse(p.heure), x = X(t), y = Y(Math.min(p.ttft_median_ms / 1000, yMax));
-        d += (prev != null && t - prev <= 2.5 * 36e5) ? `L${x.toFixed(1)},${y.toFixed(1)}` : `M${x.toFixed(1)},${y.toFixed(1)}`;
-        prev = t;
-      }
-      g += `<path d="${d}" fill="none" stroke="${couleur(s)}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
-      for (const p of ps) if (p.ttft_median_ms / 1000 > yMax) {
-        const x = X(Date.parse(p.heure)), y = Y(yMax);
-        g += `<path d="M${x - 5},${y + 2} L${x},${y - 6} L${x + 5},${y + 2} Z" fill="${couleur(s)}" stroke="var(--surface)" stroke-width="1.5"/>`;
-        g += `<text x="${x + 8}" y="${y + 1}" class="dl">${secondes(p.ttft_median_ms)}</text>`;
-      }
-      if (ps.length === 1 || ps.length < 3) {
-        for (const p of ps) g += `<circle cx="${X(Date.parse(p.heure))}" cy="${Y(p.ttft_median_ms / 1000)}" r="4" fill="${couleur(s)}" stroke="var(--surface)" stroke-width="2"/>`;
-      }
-      const der = ps[ps.length - 1];
-      g += `<text class="dl" x="${X(Date.parse(der.heure)) + 8}" y="${Y(Math.min(der.ttft_median_ms / 1000, yMax)) + 4}">${esc(nomFournisseur(s))}</text>`;
-    }
-    g += `<line id="cross" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}" stroke="var(--axis)" stroke-width="1" visibility="hidden"/>`;
-    g += `<g id="dots"></g>`;
-    g += `<rect x="${m.l}" y="${m.t}" width="${W - m.l - m.r}" height="${H - m.t - m.b}" fill="transparent" id="hit"/>`;
-    svg.innerHTML = g;
-
-    const heures = [...new Set(pts.map(p => p.heure))].map(h => Date.parse(h)).sort((a, b) => a - b);
-    const hit = svg.querySelector("#hit"), cross = svg.querySelector("#cross"), dots = svg.querySelector("#dots");
-    const cacher = () => { cross.setAttribute("visibility", "hidden"); dots.innerHTML = ""; tip.style.opacity = 0; };
-    hit.onmouseleave = cacher;
-    hit.onmousemove = (e) => {
-      const r = svg.getBoundingClientRect(), k = W / r.width;
-      const xs = (e.clientX - r.left) * k;
-      const t = debut + (xs - m.l) / (W - m.l - m.r) * (fin - debut);
-      let h = heures[0];
-      for (const v of heures) if (Math.abs(v - t) < Math.abs(h - t)) h = v;
-      const x = X(h);
-      cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.setAttribute("visibility", "visible");
-      let lignes = "", ds = "";
-      for (const s of series) {
-        const p = parSerie[s].find(p => Date.parse(p.heure) === h);
-        if (!p) continue;
-        ds += `<circle cx="${x}" cy="${Y(Math.min(p.ttft_median_ms / 1000, yMax))}" r="4.5" fill="${couleur(s)}" stroke="var(--surface)" stroke-width="2"/>`;
-        const echec = p.appels - p.reussis;
-        lignes += `<div class="r"><span><span class="swatch" style="display:inline-block;margin-right:6px;background:${couleur(s)}"></span>${esc(nomFournisseur(s))}</span><b>${secondes(p.ttft_median_ms)}</b></div>`
-          + (echec ? `<div class="r" style="color:var(--critical)"><span>appels en échec</span><b>${echec} / ${p.appels}</b></div>` : "");
-      }
-      dots.innerHTML = ds;
-      const d = new Date(h);
-      tip.innerHTML = `<div class="t">${d.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}</div>${lignes}`;
-      const box = $("chart-box").getBoundingClientRect();
-      const px = x / k + (r.left - box.left);
-      tip.style.left = `${Math.min(px + 14, box.width - tip.offsetWidth - 8)}px`;
-      tip.style.top = `${(e.clientY - box.top) - 20}px`;
-      tip.style.opacity = 1;
-    };
-  }
-
-  function incidents() {
-    const liste = points.filter(p => p.reussis < p.appels || (p.ttft_max_ms ?? 0) > 10000)
-      .sort((a, b) => Date.parse(b.heure) - Date.parse(a.heure)).slice(0, 8);
-    for (const [f, i] of Object.entries(resume.incidents_catalogue || {})) {
-      liste.unshift({ heure: resume.genere_le, fournisseur: f, catalogue: i });
-    }
-    if (!liste.length) { $("incidents").innerHTML = `<div class="empty">Aucun incident sur la période mesurée.</div>`; return; }
-    $("incidents").innerHTML = `<ul class="incidents">${liste.map(p => {
-      const d = new Date(p.heure);
-      const quand = `${d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" })} · ${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
-      let quoi;
-      if (p.catalogue) quoi = `API injoignable : ${p.catalogue.echecs} relevé(s) en échec`;
-      else if (p.reussis < p.appels) quoi = `${p.appels - p.reussis} appel(s) sur ${p.appels} en échec · ${esc(nomModele(p.modele))}`;
-      else quoi = `Premier mot après ${secondes(p.ttft_max_ms)} · ${esc(nomModele(p.modele))}`;
-      return `<li><time>${quand}</time><span class="prov"><span class="swatch" style="background:${couleur(p.fournisseur)}"></span>${esc(nomFournisseur(p.fournisseur))}</span><span>${quoi}</span></li>`;
-    }).join("")}</ul>`;
-  }
-
-  function bientot() {
-    const prochains = resume.fournisseurs.filter(f => !resume.fournisseurs_mesures.includes(f.id));
-    $("soon").innerHTML = prochains.length ? prochains.map(f =>
-      `<div class="card"><div class="nom"><span class="swatch" style="background:${couleur(f.id)}"></span>${esc(f.nom)}</div><div class="etat">${esc(f.pays)} · intégration en cours</div></div>`).join("")
-      : `<div class="card"><div class="etat">Tous les hébergeurs configurés sont mesurés.</div></div>`;
-  }
-
-  function rendre() {
-    onglets(); tableau(); courbe();
-  }
-
-  document.querySelectorAll(".seg button").forEach(b => b.onclick = () => {
-    jours = Number(b.dataset.j);
-    document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
-    courbe();
-  });
-  let attente;
-  window.addEventListener("resize", () => {
-    $("tip").style.opacity = 0;
-    clearTimeout(attente);
-    attente = setTimeout(() => { if (resume) courbe(); }, 150);
-  });
-
-  Promise.all([
-    fetch("public/resume.json", { cache: "no-store" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
-    fetch("public/historique.json", { cache: "no-store" }).then(r => r.ok ? r.json() : { points: [] }).catch(() => ({ points: [] })),
-  ]).then(([res, hist]) => {
-    resume = res; points = hist.points || [];
-    resume.fournisseurs ||= []; resume.modeles ||= []; resume.fournisseurs_mesures ||= [];
-    const ordre = resume.modeles.map(m => m.id);
-    modeles = [...new Set(resume.resultats.map(r => r.modele))].sort((a, b) => ordre.indexOf(a) - ordre.indexOf(b));
-    modeleActif = modeles[0] || null;
-    $("maj").textContent = `Dernière mise à jour ${depuis(resume.genere_le)} · ${new Date(resume.genere_le).toLocaleString("fr-FR", { dateStyle: "long", timeStyle: "short" })}`;
-    kpis(); rendre(); incidents(); bientot();
-  }).catch(() => {
-    $("maj").textContent = "";
-    $("kpis").innerHTML = "";
-    $("tableau").innerHTML = `<div class="err">Les mesures n'ont pas pu être chargées. Réessayez dans quelques minutes.</div>`;
-  });
-})();
+  dessinerRadar(METEO.fournisseurs.map(f => ({nom: f.nom_court, etat: f.etat})));
+  if (ici >= 0) afficherTemps(ici);
+  afficherBandeau(); afficherTuiles(); afficherDetail(); afficherAlertes(alertes); afficherAvoirs(avoirs);
+}
+demarrer();
+setInterval(demarrer, 60000);   // la page se met à jour toute seule chaque minute
 </script>
 </body>
 </html>
