@@ -17,6 +17,8 @@ fournisseurs:
     pays: FR
     base_url: https://api.mistral.ai/v1
     cle_env: MISTRAL_API_KEY
+    # Page « Powered by Checkly » : pas de données lisibles automatiquement, on affiche le lien.
+    statut: {type: lien, url: "https://status.mistral.ai"}
     porte_si_sans_cle: true
     offre: gratuite             # plan Experiment : sans carte, vérification par SMS
     pause_entre_appels_s: 31    # plan gratuit très limité en requêtes par minute
@@ -27,6 +29,7 @@ fournisseurs:
     # Projet par défaut. Pour un autre projet : https://api.scaleway.ai/<PROJECT_ID>/v1
     base_url: https://api.scaleway.ai/v1
     cle_env: SCW_SECRET_KEY
+    statut: {type: statuspage, url: "https://status.scaleway.com", motif: "Generative API"}
     porte_si_sans_cle: true
     offre: gratuite             # sans moyen de paiement : limites plus strictes, palier gratuit seulement
     pause_entre_appels_s: 5
@@ -36,6 +39,7 @@ fournisseurs:
     pays: FR
     base_url: https://oai.endpoints.kepler.ai.cloud.ovh.net/v1
     cle_env: OVH_AI_ENDPOINTS_ACCESS_TOKEN
+    statut: {type: statuspage, url: "https://public-cloud.status-ovhcloud.com", motif: "AI Endpoint"}
     # Sans clé, OVHcloud accepte des appels anonymes : 2 requêtes par minute, par IP et par modèle.
     anonyme_si_sans_cle: true
     pause_anonyme_s: 31
@@ -51,6 +55,7 @@ fournisseurs:
     pays: DE
     base_url: https://openai.inference.de-txl.ionos.com/v1
     cle_env: IONOS_API_TOKEN
+    statut: {type: statuspage, url: "https://status.ionos.cloud", motif: "AI Model Hub"}
     porte_si_sans_cle: true
 
 # Modèles "logiques" : le même modèle open-weight servi par plusieurs hébergeurs.

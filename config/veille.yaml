@@ -26,6 +26,7 @@ meteo:
   fenetre_min: 10            # l'état « maintenant » regarde les 10 dernières minutes
   orage_taux_erreur: 0.5     # au moins 50 % d'échecs sur la fenêtre = orage (panne)
   orage_echecs_consecutifs: 3
+  orage_echecs_min: 2        # jamais d'orage sur un seul échec : il faut une confirmation
   nuage_taux_erreur: 0.1     # au moins 10 % d'échecs = nuageux
   nuage_lenteur: 2.0         # délai au moins 2 fois la référence = nuageux
   eclaircie_lenteur: 1.4     # délai au moins 1,4 fois la référence = éclaircies
