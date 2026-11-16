@@ -1,8 +1,204 @@
 {
- "genere_le": "2026-11-16T12:24:18+00:00",
- "phrase": "Temps calme.",
+ "genere_le": "2026-11-16T12:58:32+00:00",
+ "phrase": "Temps calme sur les 4 fournisseurs.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
+  {
+   "id": "mistral",
+   "nom": "Mistral AI",
+   "nom_court": "Mistral",
+   "pays": "FR",
+   "offre": "porte",
+   "source": "veille",
+   "etat": "soleil",
+   "ciel": "Soleil",
+   "libelle": "Tout va bien",
+   "taux_erreur": 0.0,
+   "ttft_ms": 156,
+   "reference_ttft_ms": null,
+   "lenteur": null,
+   "vigilance": "vert",
+   "raison": null,
+   "panne_en_cours": null,
+   "disponibilite": {
+    "24h": 100.0,
+    "7j": 100.0,
+    "30j": 100.0
+   },
+   "incidents_30j": [],
+   "chronologie": [
+    {
+     "heure": "2026-11-16T06:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T07:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T08:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T09:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T10:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T11:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T12:00+00:00",
+     "etat": "soleil",
+     "ttft_ms": 156,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T13:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T14:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T15:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    }
+   ],
+   "derniere_mesure": "2026-11-16T12:58:25+00:00",
+   "modele_veille": null,
+   "limites_de_debit_30j": 0,
+   "acces_impossible": false,
+   "derniere_erreur": null
+  },
+  {
+   "id": "scaleway",
+   "nom": "Scaleway Generative APIs",
+   "nom_court": "Scaleway",
+   "pays": "FR",
+   "offre": "porte",
+   "source": "veille",
+   "etat": "soleil",
+   "ciel": "Soleil",
+   "libelle": "Tout va bien",
+   "taux_erreur": 0.0,
+   "ttft_ms": 429,
+   "reference_ttft_ms": null,
+   "lenteur": null,
+   "vigilance": "vert",
+   "raison": null,
+   "panne_en_cours": null,
+   "disponibilite": {
+    "24h": 100.0,
+    "7j": 100.0,
+    "30j": 100.0
+   },
+   "incidents_30j": [],
+   "chronologie": [
+    {
+     "heure": "2026-11-16T06:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T07:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T08:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T09:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T10:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T11:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T12:00+00:00",
+     "etat": "soleil",
+     "ttft_ms": 429,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T13:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T14:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T15:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    }
+   ],
+   "derniere_mesure": "2026-11-16T12:58:25+00:00",
+   "modele_veille": null,
+   "limites_de_debit_30j": 0,
+   "acces_impossible": false,
+   "derniere_erreur": null
+  },
   {
    "id": "ovhcloud",
    "nom": "OVHcloud AI Endpoints",
@@ -14,16 +210,16 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 982,
+   "ttft_ms": 3677,
    "reference_ttft_ms": null,
    "lenteur": null,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
    "disponibilite": {
-    "24h": 60.0,
-    "7j": 60.0,
-    "30j": 60.0
+    "24h": 66.667,
+    "7j": 66.667,
+    "30j": 66.667
    },
    "incidents_30j": [
     {
@@ -82,7 +278,7 @@
     {
      "heure": "2026-11-16T12:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 982,
+     "ttft_ms": 3677,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -105,11 +301,109 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-16T12:24:17+00:00",
+   "derniere_mesure": "2026-11-16T12:58:25+00:00",
    "modele_veille": "mistral-small-3.2",
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
    "derniere_erreur": "HTTP 200 · réponse vide"
+  },
+  {
+   "id": "ionos",
+   "nom": "IONOS AI Model Hub",
+   "nom_court": "IONOS",
+   "pays": "DE",
+   "offre": "porte",
+   "source": "veille",
+   "etat": "soleil",
+   "ciel": "Soleil",
+   "libelle": "Tout va bien",
+   "taux_erreur": 0.0,
+   "ttft_ms": 393,
+   "reference_ttft_ms": null,
+   "lenteur": null,
+   "vigilance": "vert",
+   "raison": null,
+   "panne_en_cours": null,
+   "disponibilite": {
+    "24h": 100.0,
+    "7j": 100.0,
+    "30j": 100.0
+   },
+   "incidents_30j": [],
+   "chronologie": [
+    {
+     "heure": "2026-11-16T06:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T07:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T08:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T09:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T10:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T11:00+00:00",
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T12:00+00:00",
+     "etat": "soleil",
+     "ttft_ms": 393,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
+    },
+    {
+     "heure": "2026-11-16T13:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T14:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T15:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    }
+   ],
+   "derniere_mesure": "2026-11-16T12:58:25+00:00",
+   "modele_veille": null,
+   "limites_de_debit_30j": 0,
+   "acces_impossible": false,
+   "derniere_erreur": null
   }
  ],
  "methode": "Un appel minimal par fournisseur et par minute (veille), plus 11 tâches en français chaque heure. Orage : au moins 50 % d'échecs sur 10 minutes ou 3 échecs de suite. Les prévisions prolongent la situation actuelle et ajoutent les événements annoncés."
