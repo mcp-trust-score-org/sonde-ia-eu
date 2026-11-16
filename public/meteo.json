@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-11-16T11:32:17+00:00",
- "phrase": "Nuages sur OVHcloud.",
+ "genere_le": "2026-11-16T12:24:18+00:00",
+ "phrase": "Temps calme.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
   {
@@ -10,20 +10,20 @@
    "pays": "FR",
    "offre": "anonyme",
    "source": "veille",
-   "etat": "nuage",
-   "ciel": "Nuageux",
-   "libelle": "Ça ralentit",
-   "taux_erreur": 0.333,
-   "ttft_ms": 744,
+   "etat": "soleil",
+   "ciel": "Soleil",
+   "libelle": "Tout va bien",
+   "taux_erreur": 0.0,
+   "ttft_ms": 982,
    "reference_ttft_ms": null,
    "lenteur": null,
-   "vigilance": "orange",
-   "raison": "33 % d'échecs sur les dernières minutes",
+   "vigilance": "vert",
+   "raison": null,
    "panne_en_cours": null,
    "disponibilite": {
-    "24h": 50.0,
-    "7j": 50.0,
-    "30j": 50.0
+    "24h": 60.0,
+    "7j": 60.0,
+    "30j": 60.0
    },
    "incidents_30j": [
     {
@@ -37,13 +37,6 @@
     }
    ],
    "chronologie": [
-    {
-     "heure": "2026-11-16T05:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-16T06:00+00:00",
      "etat": "inconnu",
@@ -88,9 +81,10 @@
     },
     {
      "heure": "2026-11-16T12:00+00:00",
-     "etat": "nuage",
-     "nature": "prevision",
-     "certitude": "situation actuelle prolongée"
+     "etat": "soleil",
+     "ttft_ms": 982,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-16T13:00+00:00",
@@ -103,11 +97,19 @@
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T15:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-16T11:32:16+00:00",
+   "derniere_mesure": "2026-11-16T12:24:17+00:00",
    "modele_veille": "mistral-small-3.2",
-   "limites_de_debit_30j": 0
+   "limites_de_debit_30j": 0,
+   "acces_impossible": false,
+   "derniere_erreur": "HTTP 200 · réponse vide"
   }
  ],
  "methode": "Un appel minimal par fournisseur et par minute (veille), plus 11 tâches en français chaque heure. Orage : au moins 50 % d'échecs sur 10 minutes ou 3 échecs de suite. Les prévisions prolongent la situation actuelle et ajoutent les événements annoncés."
