@@ -9,12 +9,15 @@ fournisseurs:
 # classement, car une offre gratuite a des limites de débit plus basses et n'est pas
 # comparable à une offre payante. Passe-la à `payante` quand tu ajoutes un moyen de paiement.
 # `pause_entre_appels_s` : attente entre deux appels, pour rester sous la limite de débit.
+# `porte_si_sans_cle` : sans clé, la veille frappe quand même à la porte de l'API (sans
+# s'identifier) pour repérer les grosses pannes. Moins fin qu'un vrai appel, mais gratuit.
 
   - id: mistral
     nom: Mistral AI
     pays: FR
     base_url: https://api.mistral.ai/v1
     cle_env: MISTRAL_API_KEY
+    porte_si_sans_cle: true
     offre: gratuite             # plan Experiment : sans carte, vérification par SMS
     pause_entre_appels_s: 31    # plan gratuit très limité en requêtes par minute
 
@@ -24,6 +27,7 @@ fournisseurs:
     # Projet par défaut. Pour un autre projet : https://api.scaleway.ai/<PROJECT_ID>/v1
     base_url: https://api.scaleway.ai/v1
     cle_env: SCW_SECRET_KEY
+    porte_si_sans_cle: true
     offre: gratuite             # sans moyen de paiement : limites plus strictes, palier gratuit seulement
     pause_entre_appels_s: 5
 
@@ -47,6 +51,7 @@ fournisseurs:
     pays: DE
     base_url: https://openai.inference.de-txl.ionos.com/v1
     cle_env: IONOS_API_TOKEN
+    porte_si_sans_cle: true
 
 # Modèles "logiques" : le même modèle open-weight servi par plusieurs hébergeurs.
 # Les catalogues changent souvent, donc on ne fige pas les identifiants :
