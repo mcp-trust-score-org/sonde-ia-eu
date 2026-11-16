@@ -66,7 +66,10 @@ def juger(lignes_fenetre: list[dict], ref_ttft: float | None, r: dict) -> dict:
     ttfts = [l["ttft_ms"] for l in lignes_fenetre if l.get("succes") and l.get("ttft_ms")]
     t = median(ttfts) if ttfts else None
     lenteur = (t / ref_ttft) if (t and ref_ttft) else None
-    if taux >= r["orage_taux_erreur"] or consecutifs >= r["orage_echecs_consecutifs"]:
+    if (taux >= r["orage_taux_erreur"] or consecutifs >= r["orage_echecs_consecutifs"]) \
+            and echecs >= r.get("orage_echecs_min", 2):
+        # Un orage n'est publié que s'il est confirmé par au moins deux échecs : un seul raté
+        # peut venir de notre propre réseau, et l'afficher accuserait le fournisseur à tort.
         etat = "orage"
     elif taux >= r["nuage_taux_erreur"] or (lenteur or 0) >= r["nuage_lenteur"]:
         etat = "nuage"
@@ -314,8 +317,8 @@ def calculer(config: dict, conf_veille: dict, veille: list[dict], mesures: list[
         "phrase": phrase_du_jour(sortie),
         "point_de_mesure": (veille[-1].get("point") if veille else None),
         "fournisseurs": sortie,
-        "methode": ("Un appel minimal par fournisseur et par minute (veille), plus 11 tâches en français "
-                    "chaque heure. Orage : au moins 50 % d'échecs sur 10 minutes ou 3 échecs de suite. "
+        "methode": ("Un appel minimal à chaque fournisseur à chaque passage de la sonde, plus des tâches en français "
+                    "chaque heure. Orage : au moins la moitié d'échecs, confirmée par deux échecs ou plus. "
                     "Les prévisions prolongent la situation actuelle et ajoutent les événements annoncés."),
     }
 

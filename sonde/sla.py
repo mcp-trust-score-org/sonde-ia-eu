@@ -220,6 +220,37 @@ def produire_avoirs(dossier_donnees: Path, dossier_public: Path, dossier_reclama
     return resultats
 
 
+NOMS_COURTS = {"scaleway": "Scaleway", "ovhcloud": "OVHcloud", "mistral": "Mistral", "ionos": "IONOS"}
+
+
+def publier_contrats(contrats: dict, dossier_public: Path) -> list[dict]:
+    """public/contrats.json : les conditions publiques de chaque fournisseur, pour l'appli.
+
+    Rien de propre à un membre : seulement ce que chaque fournisseur publie lui-même.
+    """
+    sortie = []
+    for fid, c in (contrats.get("contrats") or {}).items():
+        if c.get("engagement_pct") is None or not c.get("paliers"):
+            continue
+        jours = (c.get("reclamation") or {}).get("delai_jours_apres_fin_mois")
+        sortie.append({
+            "id": fid, "nom": c.get("nom") or NOMS_COURTS.get(fid, fid), "service": c.get("service"),
+            "engagement_pct": c["engagement_pct"],
+            "paliers": sorted(({"sous_pct": p["sous_pct"], "avoir_pct": p["avoir_pct"]} for p in c["paliers"]),
+                              key=lambda p: -p["sous_pct"]),
+            "plafond_pct": c.get("plafond_pct"),
+            "delai": c.get("delai_texte") or (f"dans les {jours} jours après la fin du mois" if jours else None),
+            "debut_decompte": c.get("debut_decompte", "panne"),
+            "qui_est_couvert": " ".join(str(c.get("qui_est_couvert") or "").split()) or None,
+            "verifie": bool(c.get("verifie")), "source": c.get("source"),
+            "suivi_par_la_sonde": c.get("suivi_par_la_sonde", True),
+            "note_courte": c.get("note_courte"),
+        })
+    dossier_public.mkdir(parents=True, exist_ok=True)
+    (dossier_public / "contrats.json").write_text(json.dumps(sortie, ensure_ascii=False, indent=1), encoding="utf-8")
+    return sortie
+
+
 def mois_precedent(maintenant: datetime | None = None) -> str:
     maintenant = maintenant or datetime.now(timezone.utc)
     premier = maintenant.replace(day=1)

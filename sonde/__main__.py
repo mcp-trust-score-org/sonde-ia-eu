@@ -55,6 +55,12 @@ def _direct(donnees: Path) -> None:
     print("  météo :", meteo["phrase"])
     for a in traiter(donnees, RACINE / "public", charger_yaml(RACINE / "config" / "contrats.yaml")):
         print(f"  alerte : {a['titre']} ({', '.join(a['canaux']) or 'aucun canal configuré'})")
+    from .statuts import produire_statuts
+    statuts = produire_statuts(config, RACINE / "public")
+    lus = [k for k, v in statuts["fournisseurs"].items() if v.get("etat_officiel")]
+    print(f"  pages de statut lues : {', '.join(lus) or 'aucune'}")
+    from .sla import publier_contrats
+    publier_contrats(charger_yaml(RACINE / "config" / "contrats.yaml"), RACINE / "public")
     from .retours import relever, totaliser
     n = relever(donnees)
     totaliser(donnees, RACINE / "public")
