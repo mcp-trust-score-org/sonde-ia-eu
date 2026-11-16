@@ -345,3 +345,46 @@ def test_veille_porte_d_entree_sans_cle(serveur, tmp_path):
     assert par["debout"]["succes"] and par["debout"]["statut_http"] == 401 and par["debout"]["offre"] == "porte"
     assert par["debout"]["ttft_ms"] is not None and par["debout"]["modele"] is None
     assert not par["tombe"]["succes"] and par["tombe"]["erreur"]
+
+
+def test_un_seul_echec_ne_fait_jamais_un_orage():
+    # Le fournisseur a déjà répondu, puis un seul passage échoue : nuage, pas orage.
+    lignes = [_ligne("a", MAINTENANT - timedelta(hours=3)), _ligne("a", MAINTENANT - timedelta(minutes=5), ok=False)]
+    assert calculer(_config(["a"]), CONF_V, lignes, [], MAINTENANT)["fournisseurs"][0]["etat"] == "nuage"
+    lignes.append(_ligne("a", MAINTENANT - timedelta(minutes=2), ok=False))
+    assert calculer(_config(["a"]), CONF_V, lignes, [], MAINTENANT)["fournisseurs"][0]["etat"] == "orage"
+
+
+def test_pages_de_statut_officielles(tmp_path):
+    from sonde.statuts import produire_statuts
+    resume = {"components": [{"id": "c1", "name": "AI & Machine Learning || AI Endpoint", "status": "partial_outage"},
+                             {"id": "c2", "name": "Compute - Instance", "status": "major_outage"}]}
+    incidents = {"incidents": [
+        {"id": "i1", "name": "[GLOBAL][AI & Machine Learning] - AI Endpoint incident notification",
+         "created_at": "2026-11-16T13:00:00.000Z", "resolved_at": None, "impact": "major",
+         "shortlink": "https://stspg.io/x", "components": [{"id": "c1", "name": "AI Endpoint"}]},
+        {"id": "i2", "name": "Instances lentes", "created_at": "2026-11-15T10:00:00Z", "resolved_at": "2026-11-15T11:00:00Z",
+         "impact": "minor", "components": [{"id": "c2", "name": "Compute - Instance"}]},
+        {"id": "i3", "name": "AI Endpoint ancien", "created_at": "2026-09-01T10:00:00Z", "resolved_at": "2026-09-01T11:00:00Z",
+         "impact": "minor", "components": []},
+    ]}
+
+    def handler(req):
+        if req.url.host == "panne.exemple":
+            return httpx.Response(503)
+        return httpx.Response(200, json=resume if req.url.path.endswith("summary.json") else incidents)
+
+    config = {"fournisseurs": [
+        {"id": "ovh", "statut": {"type": "statuspage", "url": "https://st.exemple", "motif": "AI Endpoint"}},
+        {"id": "mistral", "statut": {"type": "lien", "url": "https://status.mistral.ai"}},
+        {"id": "casse", "statut": {"type": "statuspage", "url": "https://panne.exemple", "motif": "x"}},
+        {"id": "sans"},
+    ]}
+    client = httpx.Client(transport=httpx.MockTransport(handler))
+    s = produire_statuts(config, tmp_path, client, MAINTENANT)["fournisseurs"]
+    assert set(s) == {"ovh", "mistral", "casse"}
+    assert s["ovh"]["etat_officiel"] == "Panne partielle" and s["ovh"]["incident_en_cours"]["lien"] == "https://stspg.io/x"
+    assert [i["titre"] for i in s["ovh"]["incidents_30j"]] == ["[GLOBAL][AI & Machine Learning] - AI Endpoint incident notification"]
+    assert s["mistral"] == {"type": "lien", "url": "https://status.mistral.ai"}
+    assert "illisible" in s["casse"]["erreur"]
+    assert json.loads((tmp_path / "statuts.json").read_text())["fournisseurs"]["ovh"]["gravite"] == 3
