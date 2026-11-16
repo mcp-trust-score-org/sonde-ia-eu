@@ -55,6 +55,11 @@ def _direct(donnees: Path) -> None:
     print("  météo :", meteo["phrase"])
     for a in traiter(donnees, RACINE / "public", charger_yaml(RACINE / "config" / "contrats.yaml")):
         print(f"  alerte : {a['titre']} ({', '.join(a['canaux']) or 'aucun canal configuré'})")
+    from .retours import relever, totaliser
+    n = relever(donnees)
+    totaliser(donnees, RACINE / "public")
+    if n:
+        print(f"  retours des membres : {n} nouveau(x)")
 
 
 def _commandes_direct(args, donnees: Path, preuves: Path) -> int:

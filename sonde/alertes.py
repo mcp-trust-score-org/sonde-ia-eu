@@ -20,6 +20,8 @@ from pathlib import Path
 
 import httpx
 
+from .retours import sujet_retours
+
 
 def _heure(iso: str | None) -> str:
     if not iso:
@@ -84,12 +86,23 @@ def envoyer(alerte: dict, env: dict | None = None, client: httpx.Client | None =
         topic = env.get("NTFY_TOPIC")
         if topic:
             serveur = env.get("NTFY_SERVEUR", "https://ntfy.sh").rstrip("/")
-            priorite = {"rouge": "5", "orange": "4"}.get(alerte["niveau"], "3")
+            priorite = {"rouge": 5, "orange": 4}.get(alerte["niveau"], 3)
             tag = {"rouge": "cloud_with_lightning", "orange": "warning", "vert": "sunny"}.get(alerte["niveau"], "cloud")
+            corps = {"topic": topic, "message": alerte["texte"], "title": alerte["titre"],
+                     "priority": priorite, "tags": [tag]}
+            # Deux boutons dans la notification : le membre dit s'il est touché, sans rien installer.
+            retours = sujet_retours(env)
+            if retours and alerte.get("id") and alerte.get("type") in ("orage", "vigilance"):
+                url = f"{serveur}/{retours}"
+                corps["actions"] = [
+                    {"action": "http", "label": "Moi aussi", "url": url, "method": "POST",
+                     "body": f"touche|{alerte['id']}", "clear": True},
+                    {"action": "http", "label": "Pas chez moi", "url": url, "method": "POST",
+                     "body": f"pas_touche|{alerte['id']}", "clear": True},
+                ]
             try:
-                # Titre passé en paramètre d'URL : les en-têtes HTTP n'acceptent pas les accents.
-                r = client.post(f"{serveur}/{topic}", content=alerte["texte"].encode("utf-8"),
-                                params={"title": alerte["titre"], "priority": priorite, "tags": tag})
+                # Publication en JSON : accents et boutons passent sans souci.
+                r = client.post(serveur, json=corps)
                 if r.status_code < 300:
                     faits.append("ntfy")
             except httpx.HTTPError:
@@ -121,6 +134,8 @@ def traiter(dossier_donnees: Path, dossier_public: Path, contrats: dict | None =
     # Premier passage : on enregistre l'état sans alerter (sinon toute panne déjà en cours repartirait).
     for a in alertes:
         a["horodatage"] = meteo["genere_le"]
+        moment = datetime.fromisoformat(meteo["genere_le"]).astimezone(timezone.utc).strftime("%Y%m%d%H%M")
+        a["id"] = f"{a['fournisseur']}-{a['type']}-{moment}".lower().replace("_", "-")
         a["canaux"] = envoi(a, env)
     f_journal = dossier_public / "alertes.json"
     try:
