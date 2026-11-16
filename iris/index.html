@@ -281,7 +281,7 @@ function afficherTuiles() {
     if (f.source === "horaire") detail += (detail ? " · " : "") + "mesure horaire";
     const b = el("button", {class: "tuile fond-" + f.etat, type: "button", "aria-expanded": String(OUVERT === f.id), "aria-controls": "detail"},
       el("span", {style: "display:flex;justify-content:space-between;align-items:flex-start;width:100%"}, el("span", {class: "nom"}, f.nom_court), icone(f.etat)),
-      el("span", {}, el("span", {class: "etat", style: "display:block"}, LIB[f.etat]), el("span", {class: "detail", style: "display:block"}, detail)));
+      el("span", {}, el("span", {class: "etat", style: "display:block"}, f.acces_impossible ? "Accès à vérifier" : LIB[f.etat]), el("span", {class: "detail", style: "display:block"}, detail)));
     b.addEventListener("click", () => { OUVERT = OUVERT === f.id ? null : f.id; afficherTuiles(); afficherDetail(); });
     zone.append(b);
   }
@@ -306,6 +306,7 @@ function afficherDetail() {
       el("div", {}, el("b", {}, pct(f.disponibilite["7j"])), el("span", {}, "7 jours")),
       el("div", {}, el("b", {}, pct(f.disponibilite["30j"])), el("span", {}, "30 jours"))),
     el("p", {class: "petit", style: "margin:0 0 6px"}, `Temps de réponse habituel : ${sec(f.reference_ttft_ms)}. Offre mesurée : ${f.offre || "—"}.`),
+    f.derniere_erreur ? el("p", {class: "petit", style: "margin:0 0 6px"}, `Dernière erreur : ${f.derniere_erreur}`) : "",
     el("h2", {style: "margin-top:14px"}, "Pannes récentes"), inc));
 }
 
