@@ -18,52 +18,93 @@
 #   source              page des conditions publiques
 
 contrats:
+  # Relevé le 16 novembre 2026 sur les conditions publiques. Les contrats négociés peuvent différer.
+
   scaleway:
-    service: Generative APIs
-    engagement_pct: 99.9          # engagement mensuel public
+    service: Generative APIs (serverless)
+    engagement_pct: 99.9
     periode: mois
-    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}   # À VÉRIFIER
-    debut_decompte: panne          # À VÉRIFIER
-    paliers:                       # À VÉRIFIER : exemple de barème courant, pas le barème Scaleway
+    # Une ressource (un modèle) est indisponible quand elle perd sa connectivité externe
+    # pendant au moins une minute d'affilée. La maintenance planifiée ne compte pas.
+    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}
+    debut_decompte: panne
+    paliers:                       # % de la facture mensuelle des ressources concernées, plafond 50 %
       - {sous_pct: 99.9, avoir_pct: 10}
       - {sous_pct: 99.0, avoir_pct: 25}
       - {sous_pct: 95.0, avoir_pct: 50}
-    reclamation: {delai_jours_apres_fin_mois: 30}             # À VÉRIFIER
-    source: "À compléter : conditions de service Scaleway Generative APIs"
-    verifie: false
+    plafond_pct: 50
+    # Demande dans les 30 jours après le mois de la panne, factures payées, avec les journaux :
+    # dates et heures des coupures, identifiants des ressources, région.
+    reclamation: {delai_jours_apres_fin_mois: 30}
+    forme_avoir: bon d'achat sur la prochaine facture, jamais remboursé en argent
+    exclusions: >-
+      maintenance planifiée, dépassement des limites de débit, modèle hors cycle de vie,
+      bugs du modèle lui-même, offres bêta, usage couvert par des crédits gratuits
+    qui_est_couvert: tout client payant de Generative APIs (pas l'usage sur crédits offerts)
+    source: "https://www.scaleway.com/fr/generative-apis/sla/"
+    verifie: true
 
   ovhcloud:
-    service: AI Endpoints
-    engagement_pct:                # pas d'engagement connu pour l'offre européenne : à renseigner
+    service: AI Endpoints (mode Base)
+    engagement_pct: 99.5
     periode: mois
-    # Repris des conditions IA d'OVHcloud aux États-Unis : une minute est indisponible quand
-    # toutes les requêtes renvoient une erreur 500 ou 503, et la panne ne compte qu'à partir
-    # de l'ouverture d'un ticket. À VÉRIFIER pour AI Endpoints en Europe.
+    # Annexe 10 des conditions particulières Public Cloud. La définition exacte de
+    # l'indisponibilité et le point de départ du décompte n'ont pas pu être lus proprement :
+    # À VÉRIFIER sur la version française du document.
     definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}
-    debut_decompte: ticket
-    paliers: []
+    debut_decompte: panne          # À VÉRIFIER (OVH exige souvent un ticket)
+    paliers:                       # % du coût mensuel du modèle touché, plafond 30 %
+      - {sous_pct: 99.5, avoir_pct: 10}
+      - {sous_pct: 99.0, avoir_pct: 20}
+      - {sous_pct: 95.0, avoir_pct: 30}
+    plafond_pct: 30
     reclamation: {delai_jours_apres_fin_mois: 30}             # À VÉRIFIER
-    source: "https://us.ovhcloud.com/legal/sla/ai/ (conditions US)"
+    forme_avoir: crédit sur facture, jamais remboursé en argent
+    exclusions: >-
+      consommation payée avec un bon de réduction (seul le montant payé au-delà compte),
+      mode Batch (bêta, sans SLA), causes hors du contrôle d'OVHcloud, mauvaise configuration du client
+    qui_est_couvert: clients payants d'AI Endpoints (pas l'usage anonyme gratuit)
+    source: "Conditions particulières Public Cloud OVHcloud, annexe 10 « AI Endpoints »"
     verifie: false
 
   mistral:
-    service: La Plateforme
-    engagement_pct:                # à renseigner d'après le contrat
+    service: AI Studio / La Plateforme (contrat entreprise, niveau Standard)
+    engagement_pct: 99.9           # Basic : 99.5 ; Standard et Premium : 99.9
     periode: mois
-    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}
+    # Ne comptent que les coupures côté serveur d'au moins 5 minutes. Maintenance annoncée exclue.
+    definition_panne: {fenetre_min: 5, seuil_erreur: 1.0}
     debut_decompte: panne
-    paliers: []
+    paliers:                       # % des frais mensuels, plafond 25 %. Barème du niveau Standard.
+      - {sous_pct: 99.8, avoir_pct: 2}
+      - {sous_pct: 99.5, avoir_pct: 5}
+      - {sous_pct: 95.0, avoir_pct: 10}
+    # Niveau Basic   : sous 99.5 → 2 %, sous 95 → 5 %
+    # Niveau Premium : sous 99.8 → 5 %, sous 99.5 → 10 %, sous 95 → 20 %
+    plafond_pct: 25
+    # Écrire à support-ent@mistral.ai dans les 30 jours après la fin du mois, avec date et heure.
     reclamation: {delai_jours_apres_fin_mois: 30}
-    source: "À compléter"
-    verifie: false
+    forme_avoir: crédit sur l'usage futur sous 60 jours (remboursé si plus aucune facture)
+    exclusions: >-
+      fonctions alpha ou bêta, produits tiers, causes hors du contrôle de Mistral, maintenance annoncée
+    qui_est_couvert: >-
+      clients sous contrat entreprise uniquement (et l'offre Priority, 99,5 %).
+      Les comptes en libre-service n'ont aucun engagement.
+    source: "https://legal.mistral.ai/terms/enterprise-service-level-and-support-schedule/"
+    verifie: true
 
   ionos:
     service: AI Model Hub
-    engagement_pct:                # à renseigner d'après le contrat
+    engagement_pct: 99.9
     periode: mois
-    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}
-    debut_decompte: panne
-    paliers: []
-    reclamation: {delai_jours_apres_fin_mois: 30}
-    source: "À compléter"
+    definition_panne: {fenetre_min: 1, seuil_erreur: 1.0}   # À VÉRIFIER
+    debut_decompte: panne                                   # À VÉRIFIER
+    paliers:
+      - {sous_pct: 99.9, avoir_pct: 10}
+      - {sous_pct: 99.0, avoir_pct: 25}
+      - {sous_pct: 95.0, avoir_pct: 40}
+    plafond_pct: 40
+    reclamation: {delai_jours_apres_fin_mois: 30}             # À VÉRIFIER
+    exclusions: maintenance planifiée, 4 heures au plus par trimestre
+    qui_est_couvert: À VÉRIFIER
+    source: "https://learn.cloud.ionos.com/foundational/products/AI/ai-model-hub.html (fiche produit, pas le contrat)"
     verifie: false
