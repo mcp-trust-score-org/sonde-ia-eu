@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-16T09:56:49+00:00",
+ "genere_le": "2026-11-16T10:53:30+00:00",
  "phrase": "Orage sur OVHcloud.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
@@ -19,21 +19,30 @@
    "lenteur": null,
    "vigilance": "rouge",
    "raison": "Panne en cours",
-   "panne_en_cours": null,
+   "panne_en_cours": {
+    "depuis": "2026-11-16T09:56:47+00:00",
+    "minutes": 57,
+    "erreurs": {
+     "réponse vide": 2
+    }
+   },
    "disponibilite": {
     "24h": 0.0,
     "7j": 0.0,
     "30j": 0.0
    },
-   "incidents_30j": [],
-   "chronologie": [
+   "incidents_30j": [
     {
-     "heure": "2026-11-16T03:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
+     "debut": "2026-11-16T09:56:47+00:00",
+     "fin": "2026-11-16T10:53:29+00:00",
+     "duree_min": 57,
+     "en_cours": true,
+     "erreurs": {
+      "réponse vide": 2
+     }
+    }
+   ],
+   "chronologie": [
     {
      "heure": "2026-11-16T04:00+00:00",
      "etat": "inconnu",
@@ -79,24 +88,32 @@
     {
      "heure": "2026-11-16T10:00+00:00",
      "etat": "orage",
-     "nature": "prevision",
-     "certitude": "situation actuelle prolongée"
+     "ttft_ms": null,
+     "taux_erreur": 1.0,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-16T11:00+00:00",
-     "etat": "inconnu",
+     "etat": "orage",
      "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "certitude": "situation actuelle prolongée"
     },
     {
      "heure": "2026-11-16T12:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-16T13:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-16T09:56:47+00:00",
-   "modele_veille": "gpt-oss-120b"
+   "derniere_mesure": "2026-11-16T10:53:29+00:00",
+   "modele_veille": "gpt-oss-120b",
+   "limites_de_debit_30j": 0
   }
  ],
  "methode": "Un appel minimal par fournisseur et par minute (veille), plus 11 tâches en français chaque heure. Orage : au moins 50 % d'échecs sur 10 minutes ou 3 échecs de suite. Les prévisions prolongent la situation actuelle et ajoutent les événements annoncés."
