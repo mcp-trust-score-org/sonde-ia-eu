@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baromètre des API d'IA européennes</title>
+<meta name="description" content="Mesure indépendante, toutes les heures, de la disponibilité, de la rapidité et de la qualité en français des API d'IA hébergées en Europe.">
+<meta property="og:title" content="Baromètre des API d'IA européennes">
+<meta property="og:description" content="Disponibilité, rapidité et qualité en français des API d'IA hébergées en Europe, mesurées toutes les heures.">
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --axis: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --accent: #2a78d6;
+    --s-ovhcloud: #2a78d6;
+    --s-scaleway: #eb6834;
+    --s-mistral: #1baf7a;
+    --s-ionos: #eda100;
+    --good: #0ca30c;
+    --good-ink: #006300;
+    --warning: #fab219;
+    --critical: #d03b3b;
+    --wash: rgba(11,11,11,0.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface: #1a1a19;
+      --ink: #f0efec;
+      --ink-2: #c3c2b7;
+      --muted: #898781;
+      --grid: #2c2c2a;
+      --axis: #383835;
+      --border: rgba(255,255,255,0.10);
+      --accent: #3987e5;
+      --s-ovhcloud: #3987e5;
+      --s-scaleway: #d95926;
+      --s-mistral: #199e70;
+      --s-ionos: #c98500;
+      --good-ink: #0ca30c;
+      --wash: rgba(255,255,255,0.05);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero { padding: 56px 0 32px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); font-weight: 500; }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 4px color-mix(in srgb, var(--good) 20%, transparent); }
+  h1 { font-size: clamp(30px, 4.6vw, 46px); line-height: 1.1; letter-spacing: -0.02em; margin: 14px 0 14px; font-weight: 700; max-width: 760px; }
+  .lede { font-size: 18px; color: var(--ink-2); max-width: 680px; margin: 0; }
+  .maj { margin-top: 18px; font-size: 13px; color: var(--muted); }
+
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 8px 0 40px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .tile .lab { font-size: 13px; color: var(--ink-2); }
+  .tile .val { font-size: 30px; font-weight: 650; letter-spacing: -0.01em; margin-top: 4px; }
+  .tile .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  section { margin: 0 0 48px; }
+  h2 { font-size: 22px; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .intro { color: var(--ink-2); margin: 0 0 18px; font-size: 15px; max-width: 720px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+  .tabs button {
+    font: inherit; font-size: 14px; padding: 7px 14px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--surface); color: var(--ink-2);
+  }
+  .tabs button:hover { background: var(--wash); }
+  .tabs button[aria-selected="true"] { background: var(--ink); color: var(--page); border-color: var(--ink); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 11px 10px; text-align: left; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+  th { font-weight: 500; color: var(--ink-2); font-size: 12.5px; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: 0; }
+  .rang { color: var(--muted); font-variant-numeric: tabular-nums; width: 40px; }
+  .prov { display: inline-flex; align-items: center; gap: 9px; font-weight: 600; }
+  .swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .badge { font-size: 11.5px; font-weight: 500; color: var(--ink-2); border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; margin-left: 4px; }
+  .status { display: inline-flex; align-items: center; gap: 6px; }
+  .status svg { flex: none; }
+  .table-scroll { overflow-x: auto; }
+
+  .chart-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; padding: 18px 20px 0; }
+  .chart-title { font-weight: 600; font-size: 15px; }
+  .chart-sub { font-size: 13px; color: var(--muted); }
+  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .seg button { font: inherit; font-size: 13px; padding: 5px 12px; border: 0; background: transparent; color: var(--ink-2); cursor: pointer; }
+  .seg button + button { border-left: 1px solid var(--border); }
+  .seg button[aria-pressed="true"] { background: var(--wash); color: var(--ink); font-weight: 600; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 10px 20px 0; font-size: 13px; color: var(--ink-2); }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .legend i { width: 14px; height: 2px; border-radius: 2px; display: inline-block; }
+  .chart-box { position: relative; padding: 4px 8px 12px; }
+  svg.chart { display: block; width: 100%; height: auto; overflow: visible; }
+  svg.chart text { font: 11.5px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--muted); font-variant-numeric: tabular-nums; }
+  svg.chart text.dl { fill: var(--ink-2); font-weight: 600; }
+  .tip {
+    position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 10px; font-size: 12.5px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    min-width: 170px; opacity: 0; transition: opacity .08s;
+  }
+  .tip .t { color: var(--muted); margin-bottom: 4px; }
+  .tip .r { display: flex; justify-content: space-between; gap: 14px; }
+  .tip .r b { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .empty { padding: 28px 20px; color: var(--muted); font-size: 14px; }
+
+  .incidents { list-style: none; margin: 0; padding: 4px 0; }
+  .incidents li { display: flex; gap: 12px; align-items: baseline; padding: 11px 18px; border-bottom: 1px solid var(--grid); font-size: 14px; }
+  .incidents li:last-child { border-bottom: 0; }
+  .incidents time { color: var(--muted); font-variant-numeric: tabular-nums; min-width: 128px; font-size: 13px; }
+
+  .soon { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .soon .card { padding: 16px 18px; }
+  .soon .nom { font-weight: 600; display: flex; align-items: center; gap: 9px; }
+  .soon .etat { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  .methode { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .methode .card { padding: 16px 18px; font-size: 14.5px; color: var(--ink-2); }
+  .methode strong { color: var(--ink); display: block; margin-bottom: 2px; font-size: 15px; }
+
+  footer { border-top: 1px solid var(--grid); padding: 24px 0 48px; font-size: 13px; color: var(--muted); }
+  footer a { color: var(--ink-2); }
+  .err { padding: 16px 18px; color: var(--ink-2); }
+
+  @media (max-width: 760px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .methode { grid-template-columns: 1fr; }
+    header.hero { padding-top: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow"><span class="pulse" aria-hidden="true"></span>Observatoire indépendant · mesuré toutes les heures</div>
+    <h1>Baromètre des API d'IA européennes</h1>
+    <p class="lede">Quelle API d'IA hébergée en Europe répond vraiment, vite et bien en français&nbsp;? Nous mesurons le même modèle chez chaque hébergeur, toutes les heures, et publions tout.</p>
+    <div class="maj" id="maj">Chargement des mesures…</div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section aria-labelledby="h-classement">
+    <h2 id="h-classement">Classement des 7 derniers jours</h2>
+    <p class="intro">Un même modèle, plusieurs hébergeurs. Classés par disponibilité, puis par qualité des réponses en français, puis par rapidité.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="card table-scroll" id="tableau"></div>
+  </section>
+
+  <section aria-labelledby="h-courbe">
+    <h2 id="h-courbe">Rapidité dans le temps</h2>
+    <p class="intro">Délai avant le premier mot de la réponse : c'est l'attente que ressent l'utilisateur. Plus la courbe est basse, mieux c'est.</p>
+    <div class="card">
+      <div class="chart-head">
+        <div>
+          <div class="chart-title" id="chart-title">Délai avant le premier mot</div>
+          <div class="chart-sub">Médiane par heure, en secondes · ▲ pic hors échelle</div>
+        </div>
+        <div class="seg" role="group" aria-label="Période">
+          <button data-j="1" aria-pressed="false">24 h</button>
+          <button data-j="7" aria-pressed="true">7 jours</button>
+          <button data-j="30" aria-pressed="false">30 jours</button>
+        </div>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="chart-box" id="chart-box">
+        <svg class="chart" id="chart" viewBox="0 0 960 320" role="img" aria-label="Délai avant le premier mot par heure"></svg>
+        <div class="tip" id="tip"></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-incidents">
+    <h2 id="h-incidents">Incidents récents</h2>
+    <p class="intro">Heures où un appel a échoué, ou où la première réponse a mis plus de 10 secondes.</p>
+    <div class="card" id="incidents"></div>
+  </section>
+
+  <section aria-labelledby="h-soon">
+    <h2 id="h-soon">Bientôt mesurés</h2>
+    <p class="intro">Ces hébergeurs européens sont déjà configurés dans la sonde et rejoindront le classement prochainement.</p>
+    <div class="soon" id="soon"></div>
+  </section>
+
+  <section aria-labelledby="h-methode">
+    <h2 id="h-methode">Méthode et neutralité</h2>
+    <div class="methode">
+      <div class="card"><strong>Mêmes questions pour tous</strong>11 tâches en français vérifiées automatiquement (calcul, extraction, orthographe, consignes…), même température, même longueur maximale.</div>
+      <div class="card"><strong>Un échec est une mesure</strong>Aucun appel n'est retenté. Une erreur, un délai dépassé ou une réponse vide comptent comme indisponibilité.</div>
+      <div class="card"><strong>Offres signalées</strong>Les mesures faites sur une offre gratuite ou en accès anonyme sont marquées : leurs limites de débit ne sont pas celles d'un client payant.</div>
+      <div class="card"><strong>Tout est public</strong>Le code de la sonde et chaque mesure brute sont publiés. Aucun fournisseur ne paie pour être mesuré ni pour son classement.</div>
+    </div>
+  </section>
+
+  <footer>
+    <span id="foot-src">Données et code&nbsp;: <a id="lien-depot" href="https://github.com/mcp-trust-score-org/sonde-ia-eu">dépôt GitHub</a> · <a id="lien-brut" href="https://github.com/mcp-trust-score-org/sonde-ia-eu/tree/main/data">mesures brutes</a> · <a href="https://github.com/mcp-trust-score-org/sonde-ia-eu/issues">suggérer un fournisseur</a></span>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const COULEURS = ["ovhcloud", "scaleway", "mistral", "ionos"];
+  const NOMS_OFFRE = { anonyme: "accès anonyme", gratuite: "offre gratuite" };
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const nf = new Intl.NumberFormat("fr-FR");
+  const nf1 = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
+
+  const base = (f) => String(f).split(" (")[0];
+  const offre = (f) => (String(f).match(/\(([^)]+)\)/) || [])[1];
+  const couleur = (f) => {
+    const id = base(f);
+    return COULEURS.includes(id) ? `var(--s-${id})` : "var(--muted)";
+  };
+  const secondes = (ms) => ms == null ? "–" : (ms < 1000 ? `${nf.format(Math.round(ms))} ms` : `${nf1.format(ms / 1000)} s`);
+
+  let resume, points = [], modeles = [], modeleActif = null, jours = 7;
+  const nomModele = (id) => (resume.modeles.find(m => m.id === id) || {}).nom || id;
+  const nomFournisseur = (f) => {
+    const c = resume.fournisseurs.find(x => x.id === base(f));
+    return c ? c.nom.replace(/ (Generative APIs|AI Endpoints|AI Model Hub)$/, "") : base(f);
+  };
+
+  function statutDispo(pct) {
+    const ico = (path, c) => `<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="${c}"/>${path}</svg>`;
+    if (pct >= 99.5) return `<span class="status">${ico('<path d="M4.8 8.2l2.1 2.1 4.3-4.6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>', "var(--good)")}${nf1.format(pct)} %</span>`;
+    if (pct >= 97) return `<span class="status">${ico('<rect x="7.1" y="3.8" width="1.8" height="5.4" rx=".9" fill="#0b0b0b"/><circle cx="8" cy="11.6" r="1" fill="#0b0b0b"/>', "var(--warning)")}${nf1.format(pct)} % · dégradée</span>`;
+    return `<span class="status">${ico('<path d="M5.4 5.4l5.2 5.2M10.6 5.4l-5.2 5.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>', "var(--critical)")}${nf1.format(pct)} % · faible</span>`;
+  }
+
+  function depuis(iso) {
+    const min = Math.round((Date.now() - Date.parse(iso)) / 60000);
+    if (min < 2) return "à l'instant";
+    if (min < 60) return `il y a ${min} min`;
+    const h = Math.round(min / 60);
+    return h < 48 ? `il y a ${h} h` : `il y a ${Math.round(h / 24)} jours`;
+  }
+
+  function kpis() {
+    const r = resume.resultats;
+    const appels = r.reduce((a, x) => a + x.appels, 0);
+    const dispo = appels ? r.reduce((a, x) => a + x.disponibilite_pct * x.appels, 0) / appels : null;
+    const q = r.filter(x => x.qualite_pct != null);
+    const qual = q.length ? q.reduce((a, x) => a + x.qualite_pct * x.appels, 0) / q.reduce((a, x) => a + x.appels, 0) : null;
+    const nbF = resume.fournisseurs_mesures.length, totF = resume.fournisseurs.length;
+    const depuisLe = resume.premiere_mesure ? new Date(resume.premiere_mesure).toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) : "–";
+    $("kpis").innerHTML = [
+      ["Mesures réalisées", nf.format(resume.total_mesures), `depuis le ${depuisLe}`],
+      ["Disponibilité moyenne", dispo == null ? "–" : `${nf1.format(dispo)} %`, "7 derniers jours"],
+      ["Réponses justes en français", qual == null ? "–" : `${nf1.format(qual)} %`, "sur les appels réussis"],
+      ["Hébergeurs mesurés", `${nbF} sur ${totF}`, `${modeles.length} modèle${modeles.length > 1 ? "s" : ""} suivi${modeles.length > 1 ? "s" : ""}`],
+    ].map(([l, v, s]) => `<div class="tile"><div class="lab">${l}</div><div class="val">${v}</div><div class="sub">${s}</div></div>`).join("");
+  }
+
+  function onglets() {
+    $("tabs").innerHTML = modeles.map(m =>
+      `<button role="tab" aria-selected="${m === modeleActif}" data-m="${esc(m)}">${esc(nomModele(m))}</button>`).join("");
+    $("tabs").querySelectorAll("button").forEach(b => b.onclick = () => { modeleActif = b.dataset.m; rendre(); });
+  }
+
+  function tableau() {
+    const rs = resume.resultats.filter(r => r.modele === modeleActif)
+      .sort((a, b) => (b.disponibilite_pct - a.disponibilite_pct) || ((b.qualite_pct ?? 0) - (a.qualite_pct ?? 0)) || ((a.duree_p50_ms ?? 1e12) - (b.duree_p50_ms ?? 1e12)));
+    if (!rs.length) { $("tableau").innerHTML = `<div class="empty">Pas encore de mesure pour ce modèle sur les 7 derniers jours.</div>`; return; }
+    $("tableau").innerHTML = `<table>
+      <thead><tr><th>Rang</th><th>Hébergeur</th><th>Disponibilité</th><th class="num">1<sup>er</sup> mot, médiane</th><th class="num">1<sup>er</sup> mot, pire 5 %</th><th class="num">Débit</th><th class="num">Justes en FR</th><th class="num">Appels</th></tr></thead>
+      <tbody>${rs.map((r, i) => {
+        const o = offre(r.fournisseur);
+        return `<tr>
+          <td class="rang">${i + 1}</td>
+          <td><span class="prov"><span class="swatch" style="background:${couleur(r.fournisseur)}"></span>${esc(nomFournisseur(r.fournisseur))}</span>${o ? `<span class="badge">${esc(NOMS_OFFRE[o] || o)}</span>` : ""}</td>
+          <td>${statutDispo(r.disponibilite_pct)}</td>
+          <td class="num">${secondes(r.ttft_p50_ms)}</td>
+          <td class="num">${secondes(r.ttft_p95_ms)}</td>
+          <td class="num">${r.jetons_par_s_median == null ? "–" : `${nf.format(Math.round(r.jetons_par_s_median))} jetons/s`}</td>
+          <td class="num">${r.qualite_pct == null ? "–" : `${nf1.format(r.qualite_pct)} %`}</td>
+          <td class="num">${nf.format(r.appels)}</td>
+        </tr>`;
+      }).join("")}</tbody></table>`;
+  }
+
+  // ---------------------------------------------------------------- courbe
+  function courbe() {
+    const svg = $("chart"), tip = $("tip");
+    const W = Math.max(320, Math.round(($("chart-box").clientWidth || 976) - 16));
+    const etroit = W < 600;
+    const H = etroit ? 240 : 320, m = { t: 16, r: etroit ? 74 : 120, b: 34, l: etroit ? 40 : 52 };
+    const fin = Date.parse(resume.genere_le), debut = fin - jours * 864e5;
+    const pts = points.filter(p => p.modele === modeleActif && p.ttft_median_ms != null && Date.parse(p.heure) >= debut);
+    const series = [...new Set(pts.map(p => p.fournisseur))].sort((a, b) => COULEURS.indexOf(base(a)) - COULEURS.indexOf(base(b)));
+    $("chart-title").textContent = `Délai avant le premier mot · ${nomModele(modeleActif)}`;
+    $("legend").innerHTML = series.length > 1 ? series.map(s => `<span><i style="background:${couleur(s)}"></i>${esc(nomFournisseur(s))}${offre(s) ? ` (${esc(NOMS_OFFRE[offre(s)] || offre(s))})` : ""}</span>`).join("") : "";
+    if (!pts.length) {
+      svg.innerHTML = ""; svg.setAttribute("viewBox", `0 0 ${W} 80`);
+      svg.innerHTML = `<text x="${W / 2}" y="44" text-anchor="middle">Pas encore assez de mesures sur cette période.</text>`;
+      return;
+    }
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const vals = pts.map(p => p.ttft_median_ms / 1000).sort((a, b) => a - b);
+    const q98 = vals[Math.floor(0.98 * (vals.length - 1))];
+    const maxV = Math.min(vals[vals.length - 1], Math.max(q98 * 1.6, 1));   // au-delà : pic écrêté et signalé
+    const pas = [0.25, 0.5, 1, 2, 2.5, 5, 10, 20, 30, 60].find(s => maxV / s <= 5) || 60;
+    const yMax = Math.max(pas, Math.ceil(maxV / pas) * pas);
+    const X = t => m.l + (t - debut) / (fin - debut) * (W - m.l - m.r);
+    const Y = v => m.t + (1 - v / yMax) * (H - m.t - m.b);
+    let g = "";
+    for (let v = 0; v <= yMax + 1e-9; v += pas) {
+      g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--grid)" stroke-width="1"/>`;
+      g += `<text x="${m.l - 8}" y="${Y(v) + 4}" text-anchor="end">${nf1.format(v)} s</text>`;
+    }
+    g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--axis)" stroke-width="1"/>`;
+    // graduations du temps
+    const nbTicks = etroit ? 3 : jours === 1 ? 6 : jours === 7 ? 7 : 6;
+    for (let i = 0; i <= nbTicks; i++) {
+      const t = debut + i * (fin - debut) / nbTicks, d = new Date(t);
+      const lab = jours === 1 ? d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }) : d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+      g += `<text x="${X(t)}" y="${H - 10}" text-anchor="${i === 0 ? "start" : i === nbTicks ? "end" : "middle"}">${lab}</text>`;
+    }
+    const parSerie = {};
+    for (const s of series) {
+      const ps = pts.filter(p => p.fournisseur === s).sort((a, b) => Date.parse(a.heure) - Date.parse(b.heure));
+      parSerie[s] = ps;
+      let d = "", prev = null;
+      for (const p of ps) {
+        const t = Date.parse(p.heure), x = X(t), y = Y(Math.min(p.ttft_median_ms / 1000, yMax));
+        d += (prev != null && t - prev <= 2.5 * 36e5) ? `L${x.toFixed(1)},${y.toFixed(1)}` : `M${x.toFixed(1)},${y.toFixed(1)}`;
+        prev = t;
+      }
+      g += `<path d="${d}" fill="none" stroke="${couleur(s)}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+      for (const p of ps) if (p.ttft_median_ms / 1000 > yMax) {
+        const x = X(Date.parse(p.heure)), y = Y(yMax);
+        g += `<path d="M${x - 5},${y + 2} L${x},${y - 6} L${x + 5},${y + 2} Z" fill="${couleur(s)}" stroke="var(--surface)" stroke-width="1.5"/>`;
+        g += `<text x="${x + 8}" y="${y + 1}" class="dl">${secondes(p.ttft_median_ms)}</text>`;
+      }
+      if (ps.length === 1 || ps.length < 3) {
+        for (const p of ps) g += `<circle cx="${X(Date.parse(p.heure))}" cy="${Y(p.ttft_median_ms / 1000)}" r="4" fill="${couleur(s)}" stroke="var(--surface)" stroke-width="2"/>`;
+      }
+      const der = ps[ps.length - 1];
+      g += `<text class="dl" x="${X(Date.parse(der.heure)) + 8}" y="${Y(Math.min(der.ttft_median_ms / 1000, yMax)) + 4}">${esc(nomFournisseur(s))}</text>`;
+    }
+    g += `<line id="cross" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}" stroke="var(--axis)" stroke-width="1" visibility="hidden"/>`;
+    g += `<g id="dots"></g>`;
+    g += `<rect x="${m.l}" y="${m.t}" width="${W - m.l - m.r}" height="${H - m.t - m.b}" fill="transparent" id="hit"/>`;
+    svg.innerHTML = g;
+
+    const heures = [...new Set(pts.map(p => p.heure))].map(h => Date.parse(h)).sort((a, b) => a - b);
+    const hit = svg.querySelector("#hit"), cross = svg.querySelector("#cross"), dots = svg.querySelector("#dots");
+    const cacher = () => { cross.setAttribute("visibility", "hidden"); dots.innerHTML = ""; tip.style.opacity = 0; };
+    hit.onmouseleave = cacher;
+    hit.onmousemove = (e) => {
+      const r = svg.getBoundingClientRect(), k = W / r.width;
+      const xs = (e.clientX - r.left) * k;
+      const t = debut + (xs - m.l) / (W - m.l - m.r) * (fin - debut);
+      let h = heures[0];
+      for (const v of heures) if (Math.abs(v - t) < Math.abs(h - t)) h = v;
+      const x = X(h);
+      cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.setAttribute("visibility", "visible");
+      let lignes = "", ds = "";
+      for (const s of series) {
+        const p = parSerie[s].find(p => Date.parse(p.heure) === h);
+        if (!p) continue;
+        ds += `<circle cx="${x}" cy="${Y(Math.min(p.ttft_median_ms / 1000, yMax))}" r="4.5" fill="${couleur(s)}" stroke="var(--surface)" stroke-width="2"/>`;
+        const echec = p.appels - p.reussis;
+        lignes += `<div class="r"><span><span class="swatch" style="display:inline-block;margin-right:6px;background:${couleur(s)}"></span>${esc(nomFournisseur(s))}</span><b>${secondes(p.ttft_median_ms)}</b></div>`
+          + (echec ? `<div class="r" style="color:var(--critical)"><span>appels en échec</span><b>${echec} / ${p.appels}</b></div>` : "");
+      }
+      dots.innerHTML = ds;
+      const d = new Date(h);
+      tip.innerHTML = `<div class="t">${d.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}</div>${lignes}`;
+      const box = $("chart-box").getBoundingClientRect();
+      const px = x / k + (r.left - box.left);
+      tip.style.left = `${Math.min(px + 14, box.width - tip.offsetWidth - 8)}px`;
+      tip.style.top = `${(e.clientY - box.top) - 20}px`;
+      tip.style.opacity = 1;
+    };
+  }
+
+  function incidents() {
+    const liste = points.filter(p => p.reussis < p.appels || (p.ttft_max_ms ?? 0) > 10000)
+      .sort((a, b) => Date.parse(b.heure) - Date.parse(a.heure)).slice(0, 8);
+    for (const [f, i] of Object.entries(resume.incidents_catalogue || {})) {
+      liste.unshift({ heure: resume.genere_le, fournisseur: f, catalogue: i });
+    }
+    if (!liste.length) { $("incidents").innerHTML = `<div class="empty">Aucun incident sur la période mesurée.</div>`; return; }
+    $("incidents").innerHTML = `<ul class="incidents">${liste.map(p => {
+      const d = new Date(p.heure);
+      const quand = `${d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" })} · ${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
+      let quoi;
+      if (p.catalogue) quoi = `API injoignable : ${p.catalogue.echecs} relevé(s) en échec`;
+      else if (p.reussis < p.appels) quoi = `${p.appels - p.reussis} appel(s) sur ${p.appels} en échec · ${esc(nomModele(p.modele))}`;
+      else quoi = `Premier mot après ${secondes(p.ttft_max_ms)} · ${esc(nomModele(p.modele))}`;
+      return `<li><time>${quand}</time><span class="prov"><span class="swatch" style="background:${couleur(p.fournisseur)}"></span>${esc(nomFournisseur(p.fournisseur))}</span><span>${quoi}</span></li>`;
+    }).join("")}</ul>`;
+  }
+
+  function bientot() {
+    const prochains = resume.fournisseurs.filter(f => !resume.fournisseurs_mesures.includes(f.id));
+    $("soon").innerHTML = prochains.length ? prochains.map(f =>
+      `<div class="card"><div class="nom"><span class="swatch" style="background:${couleur(f.id)}"></span>${esc(f.nom)}</div><div class="etat">${esc(f.pays)} · intégration en cours</div></div>`).join("")
+      : `<div class="card"><div class="etat">Tous les hébergeurs configurés sont mesurés.</div></div>`;
+  }
+
+  function rendre() {
+    onglets(); tableau(); courbe();
+  }
+
+  document.querySelectorAll(".seg button").forEach(b => b.onclick = () => {
+    jours = Number(b.dataset.j);
+    document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    courbe();
+  });
+  let attente;
+  window.addEventListener("resize", () => {
+    $("tip").style.opacity = 0;
+    clearTimeout(attente);
+    attente = setTimeout(() => { if (resume) courbe(); }, 150);
+  });
+
+  Promise.all([
+    fetch("public/resume.json", { cache: "no-store" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+    fetch("public/historique.json", { cache: "no-store" }).then(r => r.ok ? r.json() : { points: [] }).catch(() => ({ points: [] })),
+  ]).then(([res, hist]) => {
+    resume = res; points = hist.points || [];
+    resume.fournisseurs ||= []; resume.modeles ||= []; resume.fournisseurs_mesures ||= [];
+    const ordre = resume.modeles.map(m => m.id);
+    modeles = [...new Set(resume.resultats.map(r => r.modele))].sort((a, b) => ordre.indexOf(a) - ordre.indexOf(b));
+    modeleActif = modeles[0] || null;
+    $("maj").textContent = `Dernière mise à jour ${depuis(resume.genere_le)} · ${new Date(resume.genere_le).toLocaleString("fr-FR", { dateStyle: "long", timeStyle: "short" })}`;
+    kpis(); rendre(); incidents(); bientot();
+  }).catch(() => {
+    $("maj").textContent = "";
+    $("kpis").innerHTML = "";
+    $("tableau").innerHTML = `<div class="err">Les mesures n'ont pas pu être chargées. Réessayez dans quelques minutes.</div>`;
+  });
+})();
+</script>
+</body>
+</html>
