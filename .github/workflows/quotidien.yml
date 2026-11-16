@@ -1,1 +1,72 @@
+name: Relevés quotidiens
 
+on:
+  schedule:
+    - cron: "41 3 * * *"   # chaque jour à 3 h 41 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mesure
+  cancel-in-progress: false
+
+jobs:
+  releves:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+      SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+      OVH_AI_ENDPOINTS_ACCESS_TOKEN: ${{ secrets.OVH_AI_ENDPOINTS_ACCESS_TOKEN }}
+      IONOS_API_TOKEN: ${{ secrets.IONOS_API_TOKEN }}
+      POINT_DE_MESURE: "GitHub Actions (runner hébergé, région non garantie)"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt opentimestamps-client cairosvg
+
+      - name: Chemin réseau réel
+        run: python -m sonde chemin
+        continue-on-error: true
+
+      - name: Empreinte des modèles
+        run: python -m sonde empreinte
+        continue-on-error: true
+
+      - name: Dossiers de surveillance et brouillon du rapport
+        run: |
+          python -m sonde rapport --jours 7
+          python -m sonde dossiers --jours 30
+          python -m sonde rapport-public --jours 30
+
+      - name: Avoirs et bulletin du matin
+        if: vars.VEILLE_SERVEUR != 'oui'
+        env:
+          BULLETIN_SIGNATURE: ${{ vars.BULLETIN_SIGNATURE }}
+          BULLETIN_ADRESSE: ${{ vars.BULLETIN_ADRESSE }}
+        run: |
+          python -m sonde avoirs
+          python -m sonde avoirs --mois "$(date -u +%Y-%m)"
+          python -m sonde meteo
+          python -m sonde bulletin
+        continue-on-error: true
+
+      - name: Preuves horodatées
+        if: vars.VEILLE_SERVEUR != 'oui'
+        run: python -m sonde horodater
+        continue-on-error: true
+
+      - name: Enregistrer
+        run: |
+          git config user.name "sonde-ia-eu"
+          git config user.email "sonde-ia-eu@users.noreply.github.com"
+          git add data public preuves dossiers rapports
+          git diff --cached --quiet || git commit -m "Relevés quotidiens $(date -u +%Y-%m-%d)"
+          git pull --rebase --quiet
+          git push
