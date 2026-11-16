@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-11-16T11:29:44+00:00",
- "phrase": "Orage sur OVHcloud.",
+ "genere_le": "2026-11-16T11:32:17+00:00",
+ "phrase": "Nuages sur OVHcloud.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
   {
@@ -10,20 +10,20 @@
    "pays": "FR",
    "offre": "anonyme",
    "source": "veille",
-   "etat": "orage",
-   "ciel": "Orage",
-   "libelle": "En panne",
-   "taux_erreur": 0.5,
-   "ttft_ms": 338,
+   "etat": "nuage",
+   "ciel": "Nuageux",
+   "libelle": "Ça ralentit",
+   "taux_erreur": 0.333,
+   "ttft_ms": 744,
    "reference_ttft_ms": null,
    "lenteur": null,
-   "vigilance": "rouge",
-   "raison": "Panne en cours",
+   "vigilance": "orange",
+   "raison": "33 % d'échecs sur les dernières minutes",
    "panne_en_cours": null,
    "disponibilite": {
-    "24h": 33.333,
-    "7j": 33.333,
-    "30j": 33.333
+    "24h": 50.0,
+    "7j": 50.0,
+    "30j": 50.0
    },
    "incidents_30j": [
     {
@@ -82,13 +82,13 @@
     {
      "heure": "2026-11-16T11:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 338,
+     "ttft_ms": 744,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
     {
      "heure": "2026-11-16T12:00+00:00",
-     "etat": "orage",
+     "etat": "nuage",
      "nature": "prevision",
      "certitude": "situation actuelle prolongée"
     },
@@ -105,7 +105,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-16T11:29:42+00:00",
+   "derniere_mesure": "2026-11-16T11:32:16+00:00",
    "modele_veille": "mistral-small-3.2",
    "limites_de_debit_30j": 0
   }
