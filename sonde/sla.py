@@ -194,7 +194,7 @@ def produire_avoirs(dossier_donnees: Path, dossier_public: Path, dossier_reclama
                     tickets: dict[str, list[datetime]] | None = None, maintenant: datetime | None = None) -> list[dict]:
     debut, fin = bornes_mois(mois)
     lignes = lire_veille(dossier_donnees, debut, fin - timedelta(seconds=1))
-    noms = {f["id"]: f["nom"] for f in config["fournisseurs"]}
+    noms = {f["id"]: f["nom"] for f in config["fournisseurs"] + config.get("assistants", [])}
     resultats = []
     for fid, contrat in (contrats.get("contrats") or {}).items():
         lf = [l for l in lignes if l["fournisseur"] == fid]

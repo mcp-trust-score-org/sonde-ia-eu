@@ -39,7 +39,9 @@ def conseil_contrat(contrats: dict, fournisseur: str) -> str | None:
 def detecter(precedent: dict, meteo: dict, contrats: dict | None = None) -> list[dict]:
     """Liste des alertes à envoyer, d'après l'état précédent {fournisseur: {etat, vigilance}}."""
     alertes = []
-    calmes = [f["nom_court"] for f in meteo["fournisseurs"] if f["etat"] in ("soleil", "eclaircie")]
+    # Itinéraire bis : toujours vers un fournisseur européen qui fonctionne.
+    calmes = [f["nom_court"] for f in meteo["fournisseurs"]
+              if f["etat"] in ("soleil", "eclaircie") and f.get("categorie", "fournisseur") != "assistant"]
     for f in meteo["fournisseurs"]:
         avant = precedent.get(f["id"], {})
         e_av, v_av = avant.get("etat"), avant.get("vigilance")

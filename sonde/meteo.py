@@ -250,7 +250,7 @@ def calculer(config: dict, conf_veille: dict, veille: list[dict], mesures: list[
             mes_f[l["fournisseur"]].append(l)
 
     sortie = []
-    for f in config["fournisseurs"]:
+    for f in config["fournisseurs"] + config.get("assistants", []):
         v = sorted(par_f.get(f["id"], []), key=_h)
         m = sorted(mes_f.get(f["id"], []), key=_h)
         if not v and not m:
@@ -296,7 +296,8 @@ def calculer(config: dict, conf_veille: dict, veille: list[dict], mesures: list[
         for nom, jours in (("24h", 1), ("7j", 7), ("30j", 30)):
             dispo[nom] = disponibilite([l for l in base if _h(l) > maintenant - timedelta(days=jours)])
         sortie.append({
-            "id": f["id"], "nom": f["nom"], "nom_court": f["nom"].split(" ")[0], "pays": f.get("pays"),
+            "id": f["id"], "nom": f["nom"], "nom_court": f.get("nom_court") or f["nom"].split(" ")[0], "pays": f.get("pays"),
+            "categorie": f.get("categorie", "fournisseur"),
             "offre": (v or m)[-1].get("offre"), "source": source,
             "etat": j["etat"], "ciel": CIEL[j["etat"]], "libelle": LIBELLES[j["etat"]],
             "taux_erreur": j["taux_erreur"], "ttft_ms": j["ttft_ms"], "reference_ttft_ms": round(ref) if ref else None,
@@ -329,12 +330,15 @@ def produire_meteo(dossier_donnees: Path, dossier_public: Path, config: dict, co
     veille = lire_veille(dossier_donnees, maintenant - timedelta(days=30), maintenant)
     mesures = lire_lignes(dossier_donnees, maintenant - timedelta(days=30))
     meteo = calculer(config, conf_veille, veille, mesures, maintenant)
+    # Depuis quand la sonde mesure : l'historique indépendant est ce que personne ne peut rattraper.
+    jours = sorted(p.stem for p in (dossier_donnees / "veille").glob("*.jsonl")) if (dossier_donnees / "veille").exists() else []
+    meteo["historique_depuis"] = jours[0] if jours else None
     dossier_public.mkdir(parents=True, exist_ok=True)
     (dossier_public / "meteo.json").write_text(json.dumps(meteo, ensure_ascii=False, indent=1), encoding="utf-8")
     # Les minutes du jour, en résumé compact : une lettre par minute et par fournisseur.
     debut = maintenant.replace(hour=0, minute=0, second=0, microsecond=0)
     minutes = {"jour": f"{debut:%Y-%m-%d}", "legende": {"1": "réussi", "0": "échec", "-": "pas de mesure"}, "fournisseurs": {}}
-    for f in config["fournisseurs"]:
+    for f in config["fournisseurs"] + config.get("assistants", []):
         lf = [l for l in veille if l["fournisseur"] == f["id"] and _h(l) >= debut]
         if lf:
             cases = statut_minutes(lf, debut, _minute(maintenant) + timedelta(minutes=1))

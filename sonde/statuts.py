@@ -81,7 +81,7 @@ def produire_statuts(config: dict, dossier_public: Path, client: httpx.Client | 
     client = client or httpx.Client(timeout=15, follow_redirects=True, headers={"Accept": "application/json"})
     sortie = {"genere_le": maintenant.isoformat(timespec="seconds"), "fournisseurs": {}}
     try:
-        for f in config["fournisseurs"]:
+        for f in config["fournisseurs"] + config.get("assistants", []):
             st = f.get("statut")
             if not st or not st.get("url"):
                 continue

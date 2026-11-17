@@ -142,7 +142,7 @@ async def _frapper_porte(client, f, maintenant, point) -> dict:
     }
     t0 = time.perf_counter()
     try:
-        r = await client.get(f"{f['base_url'].rstrip('/')}/models")
+        r = await client.get(f.get("porte_url") or f"{f['base_url'].rstrip('/')}/models")
     except httpx.TimeoutException:
         ligne["erreur"] = "délai dépassé"
         return ligne
@@ -151,7 +151,8 @@ async def _frapper_porte(client, f, maintenant, point) -> dict:
         return ligne
     duree = round((time.perf_counter() - t0) * 1000, 1)
     ligne["statut_http"] = r.status_code
-    if r.status_code < 300 or r.status_code in (401, 403):
+    # 400, 401 et 403 : la porte répond « requête refusée » ; le service est donc debout.
+    if r.status_code < 300 or r.status_code in (400, 401, 403):
         ligne["succes"] = True
         # Temps de réponse de la porte : sert de référence pour repérer un ralentissement.
         ligne["ttft_ms"] = ligne["duree_ms"] = duree
@@ -173,8 +174,12 @@ async def veiller(config: dict, conf_veille: dict, dossier: Path, env: dict | No
     cache = _lire_cache(dossier)
     travaux = []
     async with httpx.AsyncClient(timeout=delais) as client:
-        for f in config["fournisseurs"]:
+        for f in config["fournisseurs"] + config.get("assistants", []):
             if fournisseurs_filtre and f["id"] not in fournisseurs_filtre:
+                continue
+            if f.get("categorie") == "assistant":
+                # Assistants des salariés (Copilot, ChatGPT…) : mesure de la porte d'entrée seulement.
+                travaux.append(_frapper_porte(client, f, maintenant, point))
                 continue
             cle = env.get(f["cle_env"])
             if cle:

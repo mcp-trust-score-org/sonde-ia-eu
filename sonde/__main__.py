@@ -129,6 +129,19 @@ def _commandes_direct(args, donnees: Path, preuves: Path) -> int:
             ligne += f", à réclamer avant le {r['echeance']}" + ("" if r["verifie"] else " (contrat non vérifié)")
             print(ligne)
         return 0
+    if args.commande == "dossier-client":
+        from .dossier_client import assembler, ecrire
+        from .sla import mois_precedent
+        client = charger_yaml(Path(args.client_fichier)) if args.client_fichier else {}
+        if args.client:
+            client["nom"] = args.client
+        if args.facture is not None:
+            client.setdefault("factures", {}).setdefault(args.fournisseur, {})[args.mois or mois_precedent()] = args.facture
+        d = assembler(donnees, RACINE / "public", RACINE / "preuves", config,
+                      charger_yaml(RACINE / "config" / "contrats.yaml"), client, args.fournisseur, args.mois or mois_precedent())
+        chemin = ecrire(d, Path(args.sortie))
+        print(f"  dossier écrit : {chemin} ({len(d['pannes'])} panne(s))")
+        return 0
     if args.commande == "attestation":
         from .attestation import attester, ecrire
         a = attester(donnees, preuves, config, args.fournisseur, _utc(args.debut), _utc(args.fin))
@@ -184,6 +197,13 @@ def main(argv: list[str] | None = None) -> int:
     at.add_argument("--fournisseur", required=True)
     at.add_argument("--debut", required=True, help="AAAA-MM-JJTHH:MM (UTC)")
     at.add_argument("--fin", required=True, help="AAAA-MM-JJTHH:MM (UTC)")
+    dc = sous.add_parser("dossier-client", help="dossier d'incident complet pour un client")
+    dc.add_argument("--fournisseur", required=True)
+    dc.add_argument("--mois", default=None, help="AAAA-MM (par défaut : le mois précédent)")
+    dc.add_argument("--client-fichier", default=None, help="fichier YAML du client (dépôt privé)")
+    dc.add_argument("--client", default=None, help="nom du client, si pas de fichier")
+    dc.add_argument("--facture", type=float, default=None, help="facture du mois en euros, si pas de fichier")
+    dc.add_argument("--sortie", default=str(RACINE / "dossiers-clients"))
     b = sous.add_parser("bulletin", help="bulletin du matin (image + texte)")
     b.add_argument("--signature", default=os.environ.get("BULLETIN_SIGNATURE"))
     b.add_argument("--adresse", default=os.environ.get("BULLETIN_ADRESSE"))
