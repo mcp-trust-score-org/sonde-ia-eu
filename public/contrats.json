@@ -20,6 +20,7 @@
   ],
   "plafond_pct": 50,
   "delai": "dans les 30 jours après la fin du mois",
+  "delai_jours": 30,
   "debut_decompte": "panne",
   "qui_est_couvert": "tout client payant de Generative APIs (pas l'usage sur crédits offerts)",
   "verifie": true,
@@ -48,6 +49,7 @@
   ],
   "plafond_pct": 30,
   "delai": "dans les 30 jours après la fin du mois",
+  "delai_jours": 30,
   "debut_decompte": "panne",
   "qui_est_couvert": "clients payants d'AI Endpoints (pas l'usage anonyme gratuit)",
   "verifie": false,
@@ -76,6 +78,7 @@
   ],
   "plafond_pct": 25,
   "delai": "dans les 30 jours après la fin du mois",
+  "delai_jours": 30,
   "debut_decompte": "panne",
   "qui_est_couvert": "clients sous contrat entreprise uniquement (et l'offre Priority, 99,5 %). Les comptes en libre-service n'ont aucun engagement.",
   "verifie": true,
@@ -104,38 +107,11 @@
   ],
   "plafond_pct": 40,
   "delai": "dans les 30 jours après la fin du mois",
+  "delai_jours": 30,
   "debut_decompte": "panne",
   "qui_est_couvert": "À VÉRIFIER",
   "verifie": false,
   "source": "https://learn.cloud.ionos.com/foundational/products/AI/ai-model-hub.html (fiche produit, pas le contrat)",
-  "suivi_par_la_sonde": true,
-  "note_courte": null
- },
- {
-  "id": "microsoft",
-  "nom": "Microsoft 365",
-  "service": "Microsoft 365 (Exchange Online, Teams, Copilot…)",
-  "engagement_pct": 99.9,
-  "paliers": [
-   {
-    "sous_pct": 99.9,
-    "avoir_pct": 25
-   },
-   {
-    "sous_pct": 99.0,
-    "avoir_pct": 50
-   },
-   {
-    "sous_pct": 95.0,
-    "avoir_pct": 100
-   }
-  ],
-  "plafond_pct": 100,
-  "delai": "avant la fin du mois qui suit la panne",
-  "debut_decompte": "panne",
-  "qui_est_couvert": null,
-  "verifie": false,
-  "source": "Service Level Agreement for Microsoft Online Services",
   "suivi_par_la_sonde": true,
   "note_courte": null
  }

@@ -1,4 +1,10 @@
 {
  "par_alerte": {},
- "par_fournisseur": {}
+ "par_fournisseur": {},
+ "club": {
+  "signalements_30j": 0,
+  "touche_30j": 0,
+  "alertes_30j": 0,
+  "signalements_total": 0
+ }
 }
