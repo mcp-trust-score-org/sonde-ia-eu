@@ -109,22 +109,3 @@ contrats:
     qui_est_couvert: À VÉRIFIER
     source: "https://learn.cloud.ionos.com/foundational/products/AI/ai-model-hub.html (fiche produit, pas le contrat)"
     verifie: false
-
-  # Microsoft 365 : mesuré à la porte d'entrée (voir `assistants` dans fournisseurs.yaml).
-  # Avoirs plus élevés que chez les fournisseurs d'API, sur des factures souvent plus grosses.
-  microsoft:
-    nom: Microsoft 365
-    service: Microsoft 365 (Exchange Online, Teams, Copilot…)
-    engagement_pct: 99.9
-    periode: mois
-    debut_decompte: panne
-    paliers:                       # % des frais du service concerné
-      - {sous_pct: 99.9, avoir_pct: 25}
-      - {sous_pct: 99.0, avoir_pct: 50}
-      - {sous_pct: 95.0, avoir_pct: 100}
-    plafond_pct: 100
-    reclamation: {delai_jours_apres_fin_mois: 30}
-    delai_texte: avant la fin du mois qui suit la panne
-    forme_avoir: crédit sur les factures suivantes, à demander par l'administrateur
-    source: "Service Level Agreement for Microsoft Online Services"
-    verifie: false
