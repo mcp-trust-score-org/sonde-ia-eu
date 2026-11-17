@@ -63,6 +63,7 @@ def _ecrire(tmp, lignes):
 
 def test_veille_contre_faux_fournisseurs(serveur, tmp_path):
     config = charger_yaml(RACINE / "config" / "fournisseurs.yaml")
+    config["assistants"] = []
     config["fournisseurs"] = [
         {"id": "rapide", "nom": "Rapide", "base_url": f"{serveur}/rapide/v1", "cle_env": "K1"},
         {"id": "panne", "nom": "Panne", "base_url": f"{serveur}/panne/v1", "cle_env": "K2"},
@@ -334,6 +335,7 @@ def test_jamais_joint_n_est_pas_un_orage():
 def test_veille_porte_d_entree_sans_cle(serveur, tmp_path):
     # Sans clé : on frappe à la porte. « Accès refusé » = service debout ; pas de réponse = panne.
     config = charger_yaml(RACINE / "config" / "fournisseurs.yaml")
+    config["assistants"] = []
     config["fournisseurs"] = [
         {"id": "debout", "nom": "Debout", "base_url": f"{serveur}/anonyme/v1", "cle_env": "K1", "porte_si_sans_cle": True},
         {"id": "tombe", "nom": "Tombé", "base_url": "http://127.0.0.1:9/v1", "cle_env": "K2", "porte_si_sans_cle": True},
@@ -388,3 +390,51 @@ def test_pages_de_statut_officielles(tmp_path):
     assert s["mistral"] == {"type": "lien", "url": "https://status.mistral.ai"}
     assert "illisible" in s["casse"]["erreur"]
     assert json.loads((tmp_path / "statuts.json").read_text())["fournisseurs"]["ovh"]["gravite"] == 3
+
+
+def test_assistants_mesures_a_la_porte(serveur, tmp_path):
+    # Les assistants (Copilot, ChatGPT…) : toujours la porte d'entrée, même avec une clé, et 400 = debout.
+    config = charger_yaml(RACINE / "config" / "fournisseurs.yaml")
+    config["fournisseurs"] = []
+    config["assistants"] = [
+        {"id": "copilot", "nom": "Microsoft 365 Copilot", "nom_court": "Copilot", "categorie": "assistant",
+         "porte_url": f"{serveur}/anonyme/v1/models"},
+        {"id": "gemini", "nom": "Gemini", "categorie": "assistant", "porte_url": "http://127.0.0.1:9/x"},
+    ]
+    lignes = asyncio.run(veiller(config, CONF_V, tmp_path, env={"K": "x"}, point="test"))
+    par = {l["fournisseur"]: l for l in lignes}
+    assert par["copilot"]["succes"] and par["copilot"]["offre"] == "porte" and not par["gemini"]["succes"]
+    m = calculer(config, CONF_V, lignes, [], datetime.fromisoformat(lignes[0]["horodatage"]))
+    f = {x["id"]: x for x in m["fournisseurs"]}
+    assert f["copilot"]["categorie"] == "assistant" and f["copilot"]["nom_court"] == "Copilot"
+
+
+def test_dossier_client_complet(tmp_path):
+    from sonde.dossier_client import assembler, ecrire
+    donnees, public, preuves = tmp_path / "data", tmp_path / "public", tmp_path / "preuves"
+    (donnees / "veille").mkdir(parents=True); public.mkdir()
+    debut_panne, fin_panne = datetime(2026, 10, 14, 9, 42, tzinfo=timezone.utc), datetime(2026, 10, 14, 12, 54, tzinfo=timezone.utc)
+    t, fin = datetime(2026, 10, 14, 0, 0, tzinfo=timezone.utc), datetime(2026, 10, 15, 0, 0, tzinfo=timezone.utc)
+    lignes = []
+    while t < fin:
+        lignes.append(_ligne("nuage", t + timedelta(seconds=5), ok=not (debut_panne <= t < fin_panne)))
+        t += timedelta(minutes=1)
+    (donnees / "veille" / "2026-10-14.jsonl").write_text("\n".join(json.dumps(l) for l in lignes) + "\n")
+    (public / "alertes.json").write_text(json.dumps([{"id": "nuage-orage-202610140943", "fournisseur": "nuage", "type": "orage",
+                                                      "titre": "Orage sur Nuage", "horodatage": "2026-10-14T09:43:00+00:00"}]))
+    (public / "retours.json").write_text(json.dumps({"par_alerte": {"nuage-orage-202610140943": {"touche": 7, "pas_touche": 2}}}))
+    (public / "statuts.json").write_text(json.dumps({"fournisseurs": {"nuage": {"type": "statuspage", "incidents_30j": [
+        {"titre": "API dégradée", "debut": "2026-10-14T10:35+00:00", "fin": "2026-10-14T12:50+00:00"}]}}}))
+    config = {"fournisseurs": [{"id": "nuage", "nom": "Nuage IA"}]}
+    contrats = {"contrats": {"nuage": {"service": "API Nuage", "engagement_pct": 99.9, "definition_panne": {"fenetre_min": 1},
+                                       "paliers": [{"sous_pct": 99.9, "avoir_pct": 10}], "reclamation": {"delai_jours_apres_fin_mois": 30},
+                                       "verifie": True}}}
+    client = {"nom": "Cabinet Exemple", "factures": {"nuage": {"2026-10": 4800}}, "fonction_critique": True}
+    d = assembler(donnees, public, preuves, config, contrats, client, "nuage", "2026-10",
+                  maintenant=datetime(2026, 11, 16, tzinfo=timezone.utc))
+    assert d["principale"]["duree_min"] == 192 and d["chronologies"][0]["reconnu"] and d["chronologies"][0]["retard_min"] == 53
+    md = ecrire(d, tmp_path / "sortie").read_text()
+    for attendu in ("Cabinet Exemple", "480,00 €", "7 membre(s) touché(s) sur 9", "« API dégradée »",
+                    "Aide à la classification DORA", "plus de 2 heures | 3 h 12 | Oui", "SHA-256", "reconnue (53 min après le début)"):
+        assert attendu in md, attendu
+    assert "[NOM DE VOTRE ENTREPRISE]" not in md
