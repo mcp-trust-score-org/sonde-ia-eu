@@ -6,12 +6,12 @@
 <title>Iris · La météo de l'IA</title>
 <meta name="description" content="La météo des fournisseurs d'IA européens, mesurée chaque minute : pannes, lenteurs, alertes et avoirs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Geist:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --fond:#0B0F14; --surface:#151B22; --ligne:#222A33; --bord:#3A4450;
-  --texte:#F2F4F7; --second:#C3CAD3; --discret:#8E98A5;
-  --soleil:#7BD3A4; --eclaircie:#FFD25E; --nuage:#AEB7C2; --orage:#FF8A6B; --lien:#7EC8FF;
+  --fond:#F4F5F7; --surface:#FFFFFF; --ligne:#E7E9EE; --bord:#D3D7DE;
+  --texte:#111317; --second:#4B5260; --discret:#737B88;
+  --soleil:#1E9E5A; --eclaircie:#E0A100; --nuage:#8A92A0; --orage:#111317; --lien:#111317;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -26,16 +26,16 @@ h2{font-size:13px;font-weight:500;color:var(--discret);margin:0 0 10px}
 section{margin-top:28px}
 
 .radar{margin:22px auto 0;width:min(310px,82vw);aspect-ratio:1;position:relative;border-radius:50%;overflow:hidden;
-  background:radial-gradient(circle at 50% 50%,#121A24 0%,#0D131B 70%,#0B0F14 100%);border:1px solid var(--ligne)}
-.radar .anneau{position:absolute;border-radius:50%;border:1px solid #1C2530}
-.radar .axe{position:absolute;background:#1C2530}
+  background:radial-gradient(circle at 50% 50%,#FFFFFF 0%,#F7F8FA 70%,#F4F5F7 100%);border:1px solid var(--ligne)}
+.radar .anneau{position:absolute;border-radius:50%;border:1px solid #E2E5EA}
+.radar .axe{position:absolute;background:#E2E5EA}
 .balayage{position:absolute;inset:0;border-radius:50%;
-  background:conic-gradient(from 0deg,rgba(126,200,255,0) 0deg,rgba(126,200,255,0) 300deg,rgba(126,200,255,.18) 355deg,rgba(126,200,255,.35) 360deg);
+  background:conic-gradient(from 0deg,rgba(17,19,23,0) 0deg,rgba(17,19,23,0) 300deg,rgba(17,19,23,.18) 355deg,rgba(17,19,23,.35) 360deg);
   animation:tour 6s linear infinite}
 @keyframes tour{to{transform:rotate(360deg)}}
-.radar .zone{position:absolute;top:5%;font-size:10px;color:#6B7582;pointer-events:none;white-space:nowrap}
+.radar .zone{position:absolute;top:5%;font-size:10px;color:#8A92A0;pointer-events:none;white-space:nowrap}
 .cellule{position:absolute;border-radius:50%;transform:translate(-50%,-50%);transition:width .4s,height .4s,opacity .4s}
-.cellule.orage{background:radial-gradient(circle,rgba(255,120,80,.85) 0%,rgba(255,120,80,.35) 45%,rgba(255,120,80,0) 72%);animation:pulse 3s ease-in-out infinite}
+.cellule.orage{background:radial-gradient(circle,rgba(17,19,23,.35) 0%,rgba(17,19,23,.12) 45%,rgba(17,19,23,0) 72%);animation:pulse 3s ease-in-out infinite}
 .cellule.nuage{background:radial-gradient(circle,rgba(174,183,194,.5) 0%,rgba(174,183,194,0) 70%)}
 .cellule.eclaircie{background:radial-gradient(circle,rgba(240,199,116,.55) 0%,rgba(240,199,116,0) 70%)}
 @keyframes pulse{0%,100%{opacity:.75}50%{opacity:1}}
@@ -51,11 +51,11 @@ section{margin-top:28px}
 .temps .bornes{display:flex;justify-content:space-between;font-size:12px;color:var(--discret);position:relative}
 .temps .ici{position:absolute;transform:translateX(-50%);top:0}
 
-.bandeau{margin-top:20px;background:#3A1A14;border:1px solid #5C2A1F;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--texte)}
+.bandeau{margin-top:20px;background:#16181D;border:1px solid #16181D;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:center;text-decoration:none;color:#fff}
 .bandeau .titre{font-size:16px;font-weight:600}
-.bandeau .sous{font-size:14px;line-height:1.35;color:#E3C9C2;margin-top:3px}
-.bandeau .action{flex:none;background:var(--texte);color:var(--fond);font-size:13px;font-weight:600;border-radius:16px;padding:8px 12px}
-.vivant{width:8px;height:8px;border-radius:4px;background:var(--orage);display:inline-block;margin-right:8px;animation:pulse 1.6s infinite}
+.bandeau .sous{font-size:14px;line-height:1.35;color:#C9CDD5;margin-top:3px}
+.bandeau .action{flex:none;background:#fff;color:#111317;font-size:13px;font-weight:600;border-radius:16px;padding:8px 12px}
+.vivant{width:8px;height:8px;border-radius:4px;background:#fff;display:inline-block;margin-right:8px;animation:pulse 1.6s infinite}
 
 .tuiles{margin-top:18px}
 .groupe{margin-top:22px}
@@ -72,14 +72,14 @@ section{margin-top:28px}
 .ligne .sous{font-size:12.5px;color:var(--discret);line-height:1.3}
 .ligne .etat{font-size:14px;font-weight:500;text-align:right;white-space:nowrap}
 .ligne .barres{display:flex;gap:2px;justify-content:flex-end;align-items:flex-end;height:12px}
-.ligne .barres i{display:block;width:4px;height:12px;border-radius:1.5px;background:#2A333E}
-.ligne .barres i.ok{background:#3F7A5A}.ligne .barres i.ko{background:#FF8A6B}
-.ligne[aria-expanded="true"]{background:#1A212A}
-.e-soleil{color:#7BD3A4}.e-eclaircie{color:#FFD25E}.e-nuage{color:#AEB7C2}.e-orage{color:#FF8A6B}.e-inconnu{color:var(--discret)}
-.groupe li > #detail .detail-f{margin:0;border:0;border-top:1px solid var(--ligne);border-radius:0;background:#121820}
-.tuile.partielle.fond-eclaircie,.tuile.partielle.fond-nuage{box-shadow:inset 0 0 0 1px #3A4450}
-.tuile.partielle.fond-orage{background:#2E1712}
-.fond-soleil{background:#12241A}.fond-eclaircie{background:#132235}.fond-nuage{background:#1A2028}.fond-orage{background:#2E1712}.fond-inconnu{background:#151B22}
+.ligne .barres i{display:block;width:4px;height:12px;border-radius:1.5px;background:#E1E4EA}
+.ligne .barres i.ok{background:#5DBB8A}.ligne .barres i.ko{background:#111317}
+.ligne[aria-expanded="true"]{background:#F0F2F5}
+.e-soleil{color:#1E9E5A}.e-eclaircie{color:#A86400}.e-nuage{color:#8A92A0}.e-orage{color:#111317;font-weight:600}.e-inconnu{color:var(--discret)}
+.groupe li > #detail .detail-f{margin:0;border:0;border-top:1px solid var(--ligne);border-radius:0;background:#F8F9FB}
+.tuile.partielle.fond-eclaircie,.tuile.partielle.fond-nuage{box-shadow:inset 0 0 0 1px #D3D7DE}
+.tuile.partielle.fond-orage{background:#EDEEF1}
+.fond-soleil{background:#E9F6EF}.fond-eclaircie{background:#F0F1F4}.fond-nuage{background:#F2F3F6}.fond-orage{background:#EDEEF1}.fond-inconnu{background:#FFFFFF}
 
 .detail-f{margin-top:12px;background:var(--surface);border:1px solid var(--ligne);border-radius:18px;padding:16px}
 .detail-f h3{margin:0 0 4px;font-size:18px;font-weight:500}
@@ -110,14 +110,14 @@ section{margin-top:28px}
 .vide{padding:40px 0;text-align:center;color:var(--second);line-height:1.5}
 
 .simu .accroche{margin:0;font-size:15px;color:var(--second);line-height:1.45}
-.simu .max{font-size:46px;font-weight:200;letter-spacing:-.03em;line-height:1.05;margin:10px 0 2px}
+.simu .max{color:#111317;font-size:46px;font-weight:200;letter-spacing:-.03em;line-height:1.05;margin:10px 0 2px}
 .puces{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
 .puces button{background:transparent;border:1px solid var(--bord);border-radius:999px;padding:7px 13px;font-size:13px;min-height:36px;color:var(--second)}
 .puces button[aria-pressed="true"]{background:var(--texte);border-color:var(--texte);color:var(--fond)}
 .glisse{margin-top:18px}
 .glisse .haut{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--second)}
 .glisse .haut strong{font-size:17px;font-weight:500;color:var(--texte)}
-.glisse input{width:100%;accent-color:#FFD25E;min-height:32px;margin:4px 0 0}
+.glisse input{width:100%;accent-color:#111317;min-height:32px;margin:4px 0 0}
 .contrats{list-style:none;margin:10px 0 0;padding:0}
 .contrats details{border-top:1px solid var(--ligne)}
 .contrats summary{list-style:none;cursor:pointer;padding:12px 0 10px}
@@ -125,12 +125,12 @@ section{margin-top:28px}
 .contrats .ligne1{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .contrats .qui{font-size:16px;font-weight:500}
 .contrats .du{font-size:19px;font-weight:300;white-space:nowrap}
-.contrats .jauge{height:6px;border-radius:3px;background:#222A33;margin-top:8px;overflow:hidden}
-.contrats .jauge span{display:block;height:100%;border-radius:3px;background:#FFD25E;transition:width .45s ease}
+.contrats .jauge{height:6px;border-radius:3px;background:#E7E9EE;margin-top:8px;overflow:hidden}
+.contrats .jauge span{display:block;height:100%;border-radius:3px;background:#111317;transition:width .45s ease}
 .contrats .sous{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--discret);margin-top:6px}
 .contrats .conds{font-size:12px;color:var(--discret);line-height:1.5;margin:0 0 12px}
 .contrats .reference .qui,.contrats .reference .du{color:var(--second)}
-.contrats .reference .jauge span{background:#8E98A5}
+.contrats .reference .jauge span{background:#737B88}
 @media (prefers-reduced-motion:reduce){.contrats .jauge span{transition:none}}
 .piliers span.pour{display:block;font-size:12px;color:var(--discret);margin-top:6px}
 .piliers{list-style:none;margin:0;padding:0}
@@ -141,6 +141,30 @@ section{margin-top:28px}
 .piliers strong{display:block;font-size:16px;font-weight:500}
 .piliers span.texte{display:block;font-size:14px;line-height:1.45;color:var(--second);margin-top:3px}
 .piliers span.preuve{display:block;font-size:13px;color:var(--discret);margin-top:6px}
+.carte-membre{position:relative;overflow:hidden;aspect-ratio:1.586;border-radius:22px;background:#16181D;color:#fff;padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 30px rgba(17,19,23,.18)}
+.carte-membre svg.fond-radar{position:absolute;right:-70px;top:-70px;width:260px;height:260px;pointer-events:none}
+.cm-haut{display:flex;justify-content:space-between;align-items:center;position:relative}
+.cm-marque{font-family:"Barlow Condensed",Geist,sans-serif;font-size:24px;font-weight:600;letter-spacing:.02em}
+.cm-statut{font-size:12px;font-weight:600;background:#fff;color:#111317;border-radius:999px;padding:4px 10px}
+.cm-num{position:relative;margin:0;font-family:"Barlow Condensed",Geist,sans-serif;font-size:46px;font-weight:600;line-height:1}
+.cm-num small{display:block;font-family:Geist,sans-serif;font-size:12px;font-weight:400;color:rgba(255,255,255,.6);margin-bottom:4px}
+.cm-nom{position:relative;margin:0;font-size:15px;font-weight:500}
+.cm-nom span{display:block;font-size:12.5px;font-weight:400;color:rgba(255,255,255,.65)}
+.cm-chiffres{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid rgba(255,255,255,.14);padding-top:10px}
+.cm-chiffres b{display:block;font-size:15px;font-weight:600}
+.cm-chiffres span{font-size:11px;color:rgba(255,255,255,.6)}
+.cm-partager{margin-top:10px}
+.club{background:#16181D;color:#fff;border-radius:24px;padding:18px 18px 16px;margin-bottom:12px}
+.club-tete{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.75)}
+.club-tete svg{flex:none}
+.club-chiffre{margin:10px 0 0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.club-chiffre b{font-family:"Barlow Condensed",Geist,sans-serif;font-size:52px;font-weight:600;line-height:.95}
+.club-chiffre span{font-size:15px;line-height:1.35;color:rgba(255,255,255,.85);flex:1;min-width:160px}
+.club h3{margin:10px 0 0;font-family:"Barlow Condensed",Geist,sans-serif;font-size:28px;font-weight:600;line-height:1.1}
+.club-texte{margin:10px 0 0;font-size:14px;line-height:1.5;color:rgba(255,255,255,.7)}
+.club-lien{display:inline-block;margin-top:14px;background:#fff;color:#111317;text-decoration:none;font-weight:600;font-size:14px;border-radius:999px;padding:9px 16px}
+.membres{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--second);margin-top:8px}
+.membres svg{flex:none}
 .votes{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
 .votes button{background:transparent;border:1px solid var(--bord);border-radius:12px;padding:6px 12px;font-size:13px;min-height:36px}
 .votes button[aria-pressed="true"]{background:var(--texte);color:var(--fond);border-color:var(--texte)}
@@ -152,16 +176,16 @@ details.plus summary::-webkit-details-marker{display:none}
 details.plus summary::after{content:"+";margin-left:6px}
 details.plus[open] summary::after{content:"−"}
 details.plus > :not(summary){font-size:13px;color:var(--discret);line-height:1.5}
-.officiel{margin:12px 0 0;padding:12px;border-radius:12px;background:#0F151C;border:1px solid var(--ligne);font-size:13px;line-height:1.45;color:var(--second)}
+.officiel{margin:12px 0 0;padding:12px;border-radius:12px;background:#F4F5F7;border:1px solid var(--ligne);font-size:13px;line-height:1.45;color:var(--second)}
 .officiel strong{color:var(--texte);font-weight:500}
 .marque{display:inline-block;font-size:12px;border-radius:999px;padding:1px 8px;margin:4px 0 0 6px}
-.marque.attente{background:#222A33;color:var(--second)}
-.marque.oui{background:#1D3326;color:#9BE0B9}
-.marque.non{background:#3A1A14;color:#FFB49E}
+.marque.attente{background:#E7E9EE;color:var(--second)}
+.marque.oui{background:#E3F4EA;color:#1E7A48}
+.marque.non{background:#16181D;color:#111317}
 .rejoindre h3{margin:0;font-size:22px;font-weight:500;line-height:1.25}
 .rejoindre ul{margin:14px 0 0;padding:0;list-style:none}
 .rejoindre li{display:flex;gap:10px;padding:6px 0;font-size:15px;line-height:1.45;color:var(--second)}
-.rejoindre li::before{content:"";flex:none;width:6px;height:6px;border-radius:3px;background:#FFD25E;margin-top:8px}
+.rejoindre li::before{content:"";flex:none;width:6px;height:6px;border-radius:3px;background:#111317;margin-top:8px}
 .formulaire{display:grid;gap:10px;margin-top:18px}
 .formulaire label{display:grid;gap:5px;font-size:13px;color:var(--discret)}
 .formulaire input[type=text],.formulaire input[type=email]{background:var(--fond);border:1px solid var(--bord);border-radius:10px;min-height:44px;padding:0 12px;font:inherit;font-size:16px;color:var(--texte)}
@@ -170,14 +194,148 @@ details.plus > :not(summary){font-size:13px;color:var(--discret);line-height:1.5
 .formulaire .puces{margin:0}
 .limites{margin:10px 0 0;padding:0 0 0 18px;font-size:13px;color:var(--discret);line-height:1.5}
 .limites li{margin:4px 0}
-nav.onglets{position:fixed;left:0;right:0;bottom:0;background:rgba(11,15,20,.94);backdrop-filter:blur(8px);border-top:1px solid var(--ligne)}
-nav.onglets div{max-width:460px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:8px 0 22px}
+/* ---------- Mon espace (vue dirigeant) */
+.salut{min-height:0;margin:6px 0 0;font-size:30px;font-weight:500;letter-spacing:-.015em;line-height:1.15}
+.a-recuperer{margin:18px 0 0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.a-recuperer b{font-size:44px;font-weight:200;letter-spacing:-.03em;line-height:1;color:#111317}
+.a-recuperer span{font-size:14px;color:var(--second)}
+.brief{margin-top:22px;display:grid;grid-template-columns:56px 1fr;gap:4px 14px;align-items:center;padding:16px;
+  background:linear-gradient(135deg,#FFFFFF 0%,#FFFFFF 60%);border:1px solid #E7E9EE;border-radius:20px}
+.brief .lire{grid-row:span 2;width:56px;height:56px;border-radius:28px;border:0;background:#16181D;display:grid;place-items:center;color:#fff}
+.brief .lire svg{display:block}
+.brief strong{font-size:17px;font-weight:500}
+.brief .duree{font-size:13px;color:var(--second)}
+.brief .onde{grid-column:1/-1;height:3px;border-radius:2px;background:#E7E9EE;overflow:hidden;margin-top:12px}
+.brief .onde span{display:block;height:100%;width:0;background:#111317;transition:width .3s linear}
+.brief details{grid-column:1/-1;margin-top:6px}
+.brief details p{margin:0;font-size:14px;line-height:1.55;color:var(--second)}
+.brief .voix{grid-column:1/-1;font-size:12px;color:var(--discret);margin:8px 0 0}
+.actions-tete{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 10px}
+.actions-tete h2{margin:0}
+.actions-tete span{font-size:12px;color:var(--discret)}
+.actions{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.action{border-radius:24px;overflow:hidden;background:#fff;color:#14161B;border:1px solid #E7E9EE;box-shadow:0 1px 2px rgba(17,19,23,.04)}
+.action .a-tete{display:grid;grid-template-columns:52px 1fr auto;grid-template-areas:"ico type pill" "ico titre titre";gap:4px 14px;align-items:center;padding:16px;color:#fff}
+.a-ico{grid-area:ico}.a-type{grid-area:type}.a-pastille{grid-area:pill}.action h3{grid-area:titre}
+.t-reclamer .a-tete{background:#16181D}
+.t-dora .a-tete,.t-basculer .a-tete{background:#16181D}
+.action .a-tete{margin:-1px -1px 0}
+.a-ico{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:rgba(255,255,255,.17)}
+.a-type{display:block;font-size:13px;font-weight:500;color:rgba(255,255,255,.72)}
+.action h3{margin:2px 0 0;font-family:"Barlow Condensed",Geist,sans-serif;font-size:23px;font-weight:600;line-height:1.12;letter-spacing:.005em}
+.a-pastille{background:#fff;color:#14161B;font-size:13px;font-weight:600;border-radius:999px;padding:6px 12px;white-space:nowrap}
+.a-pastille.proche{color:#111317}
+.a-corps{padding:14px 16px 16px}
+.a-corps p{margin:0;font-size:15px;line-height:1.45;color:#626977}
+.a-puces{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.a-puces span{font-size:13px;font-weight:600;color:#4D5462;background:#F0F1F4;border-radius:999px;padding:7px 12px}
+.t-reclamer .a-puces span{background:#F0F1F4;color:#4D5462}
+.action .boutons{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.action .boutons button{border-radius:14px;padding:11px 16px;font-size:15px;font-weight:600;min-height:46px;border:1px solid #D9DCE2;background:#fff;color:#14161B}
+.action .boutons button.go{background:#16181D;border-color:#16181D;color:#fff}
+.t-reclamer .boutons button.go{background:#16181D;border-color:#16181D}
+.action.vide-a{background:var(--surface);color:var(--second);padding:18px;border:1px solid var(--ligne)}
+.action :focus-visible{outline-color:#16181D}
+@media (max-width:360px){.action .a-tete{grid-template-columns:44px 1fr auto}.a-ico{width:44px;height:44px}}
+.reglage-f{display:grid;grid-template-columns:1fr auto;gap:8px 10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--ligne)}
+.reglage-f:last-child{border-bottom:0}
+.reglage-f .coche{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--texte)}
+.reglage-f input[type=checkbox],.bascule input{width:20px;height:20px;accent-color:#111317;margin:0}
+.reglage-f .champ input{width:76px}
+.reglage-f .champ[aria-disabled="true"]{opacity:.35}
+.formulaire label.bascule,.bascule{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4;color:var(--texte);margin-top:6px}
+.bascule small{display:block;font-size:13px;color:var(--discret)}
+dialog.lettre{width:min(560px,94vw);max-height:90vh;background:var(--surface);color:var(--texte);border:1px solid var(--bord);border-radius:20px;padding:20px}
+dialog.lettre::backdrop{background:rgba(17,19,23,.45)}
+dialog.lettre h3{margin:0;font-size:20px;font-weight:500}
+dialog.lettre textarea{width:100%;min-height:46vh;margin-top:12px;background:var(--fond);color:var(--texte);border:1px solid var(--bord);border-radius:12px;padding:12px;font:inherit;font-size:14px;line-height:1.55;resize:vertical}
+dialog.lettre .boutons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+dialog.lettre .boutons .bouton{margin:0}
+nav.onglets a[aria-current="page"]{color:var(--texte)}
+nav.onglets{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-top:1px solid var(--ligne)}
+nav.onglets div{max-width:460px;margin:0 auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:8px 0 22px}
 nav.onglets a{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--discret);text-decoration:none;min-height:44px;justify-content:center}
 nav.onglets svg{stroke:currentColor}
 </style>
 </head>
 <body>
-<main class="page">
+<main class="page" id="vue-moi" hidden>
+  <div id="moi-accueil" hidden>
+    <span class="date" id="moi-date"></span>
+    <h1 class="salut" id="moi-salut"></h1>
+    <p class="a-recuperer" id="moi-argent" hidden><b id="moi-montant"></b><span id="moi-montant-sous"></span></p>
+
+    <div class="brief" id="brief">
+      <button class="lire" id="brief-lire" type="button" aria-pressed="false" aria-label="Écouter le brief"></button>
+      <strong id="brief-titre">Votre brief du matin</strong>
+      <span class="duree" id="brief-duree"></span>
+      <div class="onde" aria-hidden="true"><span id="brief-onde"></span></div>
+      <details class="plus"><summary>Lire le texte</summary><p id="brief-texte"></p></details>
+      <p class="voix">Texte écrit par Iris à partir des mesures, lu par la voix de synthèse de votre appareil.</p>
+    </div>
+
+    <section aria-labelledby="titre-actions">
+      <div class="actions-tete"><h2 id="titre-actions">Actions prioritaires</h2><span id="actions-compte"></span></div>
+      <ul class="actions" id="liste-actions"></ul>
+    </section>
+
+    <section id="mes-groupes"></section>
+    <section aria-labelledby="titre-carte">
+      <h2 id="titre-carte">Votre carte de membre</h2>
+      <div class="carte-membre" id="carte-membre">
+        <svg class="fond-radar" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#fff" stroke-opacity=".18"><circle cx="50" cy="50" r="48"/><circle cx="50" cy="50" r="32"/><circle cx="50" cy="50" r="16"/></g><circle cx="50" cy="50" r="6" fill="#F5B400"/></svg>
+        <div class="cm-haut"><span class="cm-marque">IRIS</span><span class="cm-statut">Membre fondateur</span></div>
+        <p class="cm-num" id="cm-num"></p>
+        <p class="cm-nom" id="cm-nom"></p>
+        <div class="cm-chiffres">
+          <div><b id="cm-depuis"></b><span>Membre depuis</span></div>
+          <div><b id="cm-signal"></b><span>Pannes signalées</span></div>
+          <div><b id="cm-avoirs"></b><span>Avoirs suivis</span></div>
+        </div>
+      </div>
+      <button class="bouton second cm-partager" type="button" id="cm-partager">Partager ma carte</button>
+    </section>
+    <section aria-label="Le club Iris" id="moi-club"></section>
+    <p class="legende"><a href="#">Voir toute la météo</a></p>
+
+    <section aria-label="Ce qu'Iris fait pour vous">
+      <h2>Ce qu'Iris fait pour vous</h2>
+      <div id="moi-piliers"></div>
+    </section>
+  </div>
+
+  <section id="moi-reglages" aria-labelledby="titre-reglages" style="margin-top:0">
+    <div id="moi-intro">
+      <span class="date">Votre espace</span>
+      <h1 class="salut" style="margin-bottom:10px">Chaque matin, ce qui vous attend</h1>
+      <p class="petit" style="font-size:15px;color:var(--second);margin:0 0 18px">Un brief d'une minute, à écouter en voiture. Les avoirs à réclamer, avec leur montant et leur date limite. Les incidents à classer pour DORA ou NIS2. Les bascules à décider.</p>
+    </div>
+    <details class="plus" id="moi-modifier" style="margin-top:28px"><summary id="titre-reglages">Modifier mon espace</summary></details>
+    <form class="carte formulaire" id="form-moi" novalidate style="margin-top:0">
+      <label>Votre prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+      <label>Votre entreprise<input type="text" name="entreprise" autocomplete="organization"></label>
+      <label>Votre numéro de membre (donné à l'inscription au club)<input type="text" name="numero" inputmode="numeric" placeholder="Laissez vide si vous ne l'avez pas encore"></label>
+      <fieldset><legend>Les fournisseurs que vous utilisez, et votre facture mensuelle</legend><div id="moi-liste-f"></div></fieldset>
+      <label class="bascule"><input type="checkbox" name="dora"><span>Mon entreprise est soumise à DORA ou NIS2<small>Iris vous signale alors les pannes à classer.</small></span></label>
+      <button class="bouton" type="submit" style="margin-top:8px" id="moi-valider">Créer mon espace</button>
+      <p class="petit" style="margin:0">Tout reste dans ce navigateur : rien n'est envoyé.</p>
+      <button class="bouton second" type="button" id="moi-effacer" hidden>Effacer mon espace</button>
+    </form>
+  </section>
+</main>
+
+<dialog class="lettre" id="lettre" aria-labelledby="lettre-titre">
+  <h3 id="lettre-titre">Votre réclamation</h3>
+  <p class="petit" style="margin:6px 0 0" id="lettre-sous">Brouillon préparé par Iris à partir des mesures. Relisez-le et vérifiez votre contrat avant l'envoi.</p>
+  <textarea id="lettre-texte" aria-label="Texte de la réclamation"></textarea>
+  <div class="boutons">
+    <button class="bouton" type="button" id="lettre-copier">Copier la lettre</button>
+    <button class="bouton second" type="button" id="lettre-mail" style="margin:0">Ouvrir dans ma messagerie</button>
+  </div>
+  <button class="bouton second" type="button" id="lettre-fermer">Fermer</button>
+</dialog>
+
+<main class="page" id="vue-meteo">
   <span class="date" id="date">Chargement…</span>
   <h1 id="phrase" aria-live="polite"> </h1>
 
@@ -185,8 +343,7 @@ nav.onglets svg{stroke:currentColor}
     <span class="anneau" style="inset:17%"></span><span class="anneau" style="inset:34%"></span>
     <span class="axe" style="left:50%;top:0;bottom:0;width:1px"></span><span class="axe" style="top:50%;left:0;right:0;height:1px"></span>
     <span class="balayage"></span>
-    <span class="zone" style="left:53%">Europe</span><span class="zone" style="right:53%">Hors Europe</span>
-  </figure>
+      </figure>
 
   <div class="temps" id="temps" hidden>
     <div class="haut"><strong id="temps-heure">Maintenant</strong><span id="temps-nature" class="petit"></span></div>
@@ -211,17 +368,17 @@ nav.onglets svg{stroke:currentColor}
     <div class="carte" style="padding:2px 16px">
       <ul class="piliers">
         <li><a href="#alertes">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7EC8FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6L13 3z"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111317" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6L13 3z"/></svg>
           <span><strong>Rester performant</strong>
             <span class="texte">Alerte à la première minute, bascule vers un autre hébergeur européen.</span>
             <span class="preuve" id="preuve-performance"></span></span></a></li>
         <li><a href="#preuves">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7BD3A4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.4-4.6"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E9E5A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.4-4.6"/></svg>
           <span><strong>Être en conformité</strong>
             <span class="texte">Chaque incident daté et prouvé, prêt pour DORA et NIS2.</span>
             <span class="preuve" id="preuve-conformite"></span></span></a></li>
         <li><a href="#avoirs">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFD25E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7.5A6 6 0 1 0 17 16.5"/><path d="M4 10.5h9M4 13.5h9"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111317" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7.5A6 6 0 1 0 17 16.5"/><path d="M4 10.5h9M4 13.5h9"/></svg>
           <span><strong>Récupérer votre argent</strong>
             <span class="texte">L'avoir prévu au contrat, calculé et réclamé à temps.</span>
             <span class="preuve" id="preuve-avoirs"></span></span></a></li>
@@ -231,6 +388,11 @@ nav.onglets svg{stroke:currentColor}
 
   <section id="alertes">
     <h2>Alertes</h2>
+    <div class="club" id="club">
+      <div class="club-tete"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.3"/><path d="M2.8 19.5c.7-3.3 3.2-5.2 6.2-5.2s5.5 1.9 6.2 5.2"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 14.4c2.4.2 4.2 1.9 4.7 4.6"/></svg>Le club Iris</div>
+      <div id="club-corps"></div>
+      <a class="club-lien" href="#rejoindre">Rejoindre le club</a>
+    </div>
     <div class="carte">
       <ul class="liste" id="liste-alertes"></ul>
     </div>
@@ -285,7 +447,6 @@ nav.onglets svg{stroke:currentColor}
     <ul class="limites" style="margin:0">
       <li>Un seul point de mesure pour l'instant (<span id="lim-point">machines GitHub</span>). Une coupure de notre côté pourrait ressembler à une panne : c'est pourquoi un orage n'est affiché qu'après au moins deux échecs.</li>
       <li>Fréquence : un passage toutes les 10 minutes sur GitHub, chaque minute sur un serveur dédié. Une panne plus courte peut passer inaperçue.</li>
-      <li>Assistants (Copilot, ChatGPT, Gemini, Claude) : mesurés à la porte d'entrée de leur service, sans compte. Une panne propre à votre entreprise ne s'y voit pas.</li>
       <li>« Accessible » au lieu de « Tout va bien »&nbsp;: seule la porte d'entrée du service est vérifiée, pas le modèle lui-même.</li>
       <li>« Porte d'entrée » : sans clé, on vérifie seulement que l'API répond. Les grosses pannes se voient, pas les lenteurs d'un modèle.</li>
       <li>Avoirs : calculés d'après les conditions publiques de chaque fournisseur. Votre contrat peut différer.</li>
@@ -297,6 +458,7 @@ nav.onglets svg{stroke:currentColor}
 
 <nav class="onglets" aria-label="Navigation">
   <div>
+    <a href="#moi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1-3.8 4-5.8 7.5-5.8s6.5 2 7.5 5.8"/></svg>Mon espace</a>
     <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg>Météo</a>
     <a href="#alertes"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>Alertes</a>
     <a href="#avoirs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7.5A6 6 0 1 0 17 16.5"/><path d="M4 10.5h9M4 13.5h9"/></svg>Avoirs</a>
@@ -325,7 +487,7 @@ const REGLAGES = {
 
 // ------------------------------------------------------------------ outils
 const $ = (id) => document.getElementById(id);
-const COUL = {soleil:"#7BD3A4", eclaircie:"#FFD25E", nuage:"#AEB7C2", orage:"#FF8A6B", inconnu:"#5B6470"};
+const COUL = {soleil:"#1E9E5A", eclaircie:"#E0A100", nuage:"#8A92A0", orage:"#111317", inconnu:"#9AA1AD"};
 const CIEL = {soleil:"Soleil", eclaircie:"Éclaircies", nuage:"Nuageux", orage:"Orage", inconnu:"Inconnu"};
 // Mesure « porte d'entrée » : on sait seulement si le service répond. On ne dit donc pas
 // « Tout va bien » mais « Accessible » : ce serait promettre plus que ce qu'on a vérifié.
@@ -340,7 +502,7 @@ const OFFRES = {
 const ORDRE = ["soleil","eclaircie","nuage","orage"];
 const heure = (iso) => new Date(iso).toLocaleTimeString("fr-FR", {hour:"2-digit", minute:"2-digit"});
 const jourHeure = (iso) => new Date(iso).toLocaleString("fr-FR", {weekday:"short", day:"numeric", hour:"2-digit", minute:"2-digit"});
-const eur = (n) => Math.round(n).toLocaleString("fr-FR") + " €";
+const eur = (n) => Math.round(n).toLocaleString("fr-FR") + "\u00a0€";
 const pct = (n) => n == null ? "—" : n.toLocaleString("fr-FR", {maximumFractionDigits: 2}) + " %";
 const sec = (ms) => ms == null ? "—" : (ms / 1000).toLocaleString("fr-FR", {maximumFractionDigits: 1}) + " s";
 function el(tag, attrs = {}, ...enfants) {
@@ -362,11 +524,11 @@ async function charger(nom, defaut) {
 function icone(etat, taille = 32) {
   const s = `width="${taille}" height="${taille}" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"`;
   const svg = {
-    soleil: `<svg ${s} stroke="#FFD25E"><circle cx="12" cy="12" r="4.2" fill="#FFD25E"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>`,
-    eclaircie: `<svg ${s}><circle cx="9" cy="8" r="3.2" fill="#FFD25E" stroke="#FFD25E"/><path d="M9 19h8a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.6 1.4A2.8 2.8 0 0 0 9 19z" fill="#DCE2EA" stroke="#DCE2EA"/></svg>`,
-    nuage: `<svg ${s} stroke="#AEB7C2"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18z" fill="#AEB7C2"/></svg>`,
-    orage: `<svg ${s}><path d="M7 15h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 15z" fill="#5B6470" stroke="#8E98A5"/><path d="M12.5 15l-2 3.5h3.5l-2 3" stroke="#FF8A6B"/></svg>`,
-    inconnu: `<svg ${s} stroke="#5B6470"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.2M12 16.5v.01"/></svg>`,
+    soleil: `<svg ${s} stroke="#F5B400"><circle cx="12" cy="12" r="4.2" fill="#F5B400"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>`,
+    eclaircie: `<svg ${s}><circle cx="9" cy="8" r="3.2" fill="#F5B400" stroke="#F5B400"/><path d="M9 19h8a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.6 1.4A2.8 2.8 0 0 0 9 19z" fill="#C9D0DA" stroke="#C9D0DA"/></svg>`,
+    nuage: `<svg ${s} stroke="#8A92A0"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18z" fill="#8A92A0"/></svg>`,
+    orage: `<svg ${s}><path d="M7 15h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 15z" fill="#9AA1AD" stroke="#737B88"/><path d="M12.5 15l-2 3.5h3.5l-2 3" stroke="#111317"/></svg>`,
+    inconnu: `<svg ${s} stroke="#9AA1AD"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.2M12 16.5v.01"/></svg>`,
   }[etat] || "";
   const t = document.createElement("template"); t.innerHTML = svg; return t.content.firstChild;
 }
@@ -385,9 +547,13 @@ function phrase(etats) {
   const s = m.join(", ");
   return s[0].toUpperCase() + s.slice(1) + ".";
 }
-// Le radar est coupé en deux : l'Europe à droite, le reste du monde à gauche.
-// Chaque groupe se répartit dans sa moitié, sur deux anneaux pour éviter les chevauchements.
-function position(i, n, cat) {
+// Les fournisseurs se répartissent tout autour du radar, sur deux anneaux pour éviter les chevauchements.
+function position(i, n) {
+  const a = -Math.PI / 2 + Math.PI / 4 + 2 * Math.PI * i / Math.max(n, 1);
+  const r = i % 2 ? 0.5 : 0.7;
+  return [50 + Math.cos(a) * r * 50, 50 + Math.sin(a) * r * 50];
+}
+function positionDemiCercle(i, n, cat) {
   const europe = cat !== "assistant";
   const centre = europe ? 0 : Math.PI, ouverture = Math.PI * 0.62;
   const a = centre - ouverture / 2 + ouverture * (n > 1 ? i / (n - 1) : 0.5);
@@ -406,13 +572,13 @@ function dessinerRadar(etats) {
   for (const e of etats) total[e.cat] = (total[e.cat] || 0) + 1;
   etats.forEach((e) => {
     rang[e.cat] = (rang[e.cat] || 0) + 1;
-    const [x, y] = position(rang[e.cat] - 1, total[e.cat], e.cat);
+    const [x, y] = Object.keys(total).length > 1 ? positionDemiCercle(rang[e.cat] - 1, total[e.cat], e.cat) : position(rang[e.cat] - 1, total[e.cat]);
     if (["orage","nuage","eclaircie"].includes(e.etat)) {
       const t = {orage: 31, nuage: 22, eclaircie: 20}[e.etat];
       radar.append(el("span", {class: "cellule " + e.etat, style: `left:${x}%;top:${y}%;width:${t}%;height:${t * .82}%;opacity:${e.prevision ? .65 : 1}`}));
     }
     radar.append(el("span", {class: "point", style: `left:${x}%;top:${y}%;background:${COUL[e.etat]};color:${COUL[e.etat]}`}));
-    radar.append(el("span", {class: "etiquette", style: `left:${x}%;top:${y}%;color:${e.etat === "orage" ? "#FFB49E" : "#F2F4F7"}`}, e.nom));
+    radar.append(el("span", {class: "etiquette", style: `left:${x}%;top:${y}%;color:${e.etat === "orage" ? "#111317" : "#111317"}`}, e.nom));
   });
   radar.setAttribute("aria-label", "Radar : " + etats.map(e => `${e.nom} ${CIEL[e.etat].toLowerCase()}`).join(", "));
 }
@@ -432,14 +598,14 @@ function afficherTemps(k) {
     dessinerRadar(METEO.fournisseurs.map(f => ({nom: f.nom_court, cat: f.categorie || "fournisseur", etat: f.etat, partiel: f.offre === "porte"})));
     $("phrase").textContent = METEO.phrase;
     $("temps-heure").textContent = "Maintenant, " + heure(METEO.genere_le);
-    $("temps-nature").textContent = "En direct"; $("temps-nature").style.color = "#7EC8FF";
+    $("temps-nature").textContent = "En direct"; $("temps-nature").style.color = "#111317";
   } else {
     const etats = etatsAuPas(k);
     dessinerRadar(etats);
     $("phrase").textContent = (p.nature === "prevision" ? "Prévision : " : "") + phrase(etats);
     $("temps-heure").textContent = heure(p.heure);
     $("temps-nature").textContent = p.nature === "prevision" ? "Prévision" : "Mesuré";
-    $("temps-nature").style.color = p.nature === "prevision" ? "#F0C774" : "";
+    $("temps-nature").style.color = p.nature === "prevision" ? "#A86400" : "";
   }
 }
 
@@ -457,6 +623,26 @@ function barres(id) {
   return zone;
 }
 
+function repondent(xs) {
+  const n = xs.filter(f => ["soleil", "eclaircie"].includes(f.etat)).length;
+  return `${n} sur ${xs.length} répond${n > 1 ? "ent" : ""}`;
+}
+
+function ligneFournisseur(f) {
+  const partiel = f.offre === "porte";
+  let sous = PAYS[f.pays] || f.pays || "";
+  const mesure = f.panne_en_cours ? `depuis ${heure(f.panne_en_cours.depuis)}` :
+    partiel ? "porte d'entrée" : (f.ttft_ms != null ? `répond en ${sec(f.ttft_ms)}` : "");
+  if (mesure) sous += (sous ? " · " : "") + mesure;
+  const libelle = f.acces_impossible ? "À vérifier" : (partiel ? LIB_PORTE : LIB)[f.etat];
+  return el("button", {class: "ligne", type: "button"},
+    el("span", {class: "ico"}, icone(f.etat, 28)),
+    el("span", {class: "nom"}, f.nom_court),
+    el("span", {class: "etat e-" + f.etat}, libelle),
+    el("span", {class: "sous"}, sous),
+    barres(f.id));
+}
+
 function afficherTuiles() {
   const zone = $("tuiles"), detail = $("detail");
   zone.replaceChildren();
@@ -466,18 +652,8 @@ function afficherTuiles() {
     if (!liste.length) continue;
     const ul = el("ul");
     for (const f of liste) {
-      const partiel = f.offre === "porte";
-      let sous = PAYS[f.pays] || f.pays || "";
-      const mesure = f.panne_en_cours ? `depuis ${heure(f.panne_en_cours.depuis)}` :
-        partiel ? "porte d'entrée" : (f.ttft_ms != null ? `répond en ${sec(f.ttft_ms)}` : "");
-      if (mesure) sous += (sous ? " · " : "") + mesure;
-      const libelle = f.acces_impossible ? "À vérifier" : (partiel ? LIB_PORTE : LIB)[f.etat];
-      const b = el("button", {class: "ligne", type: "button", "aria-expanded": String(OUVERT === f.id), "aria-controls": "detail"},
-        el("span", {class: "ico"}, icone(f.etat, 28)),
-        el("span", {class: "nom"}, f.nom_court),
-        el("span", {class: "etat e-" + f.etat}, libelle),
-        el("span", {class: "sous"}, sous),
-        barres(f.id));
+      const b = ligneFournisseur(f);
+      b.setAttribute("aria-expanded", String(OUVERT === f.id)); b.setAttribute("aria-controls", "detail");
       b.addEventListener("click", () => { OUVERT = OUVERT === f.id ? null : f.id; afficherTuiles(); afficherDetail(); });
       const li = el("li", {}, b);
       if (OUVERT === f.id) li.append(detail);
@@ -485,7 +661,7 @@ function afficherTuiles() {
     }
     zone.append(el("section", {class: "groupe", "aria-label": titre},
       el("div", {class: "groupe-tete"}, el("h2", {}, titre),
-        el("span", {}, `${liste.filter(f => ["soleil", "eclaircie"].includes(f.etat)).length} sur ${liste.length} répondent`)), ul));
+        el("span", {}, repondent(liste))), ul));
   }
   if (!OUVERT) zone.after(detail);
 }
@@ -558,43 +734,75 @@ function sujetRetours() {
   return REGLAGES.ntfy_retours || (REGLAGES.ntfy ? REGLAGES.ntfy + "-retours" : "");
 }
 
+const ICO_MEMBRES = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.3"/><path d="M2.8 19.5c.7-3.3 3.2-5.2 6.2-5.2s5.5 1.9 6.2 5.2"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 14.4c2.4.2 4.2 1.9 4.7 4.6"/></svg>`;
+const texteMembres = (t) => {
+  const n = t.touche + t.pas_touche;
+  if (!n) return "Aucun membre n'a encore répondu.";
+  return `${t.touche} membre${t.touche > 1 ? "s" : ""} touché${t.touche > 1 ? "s" : ""}` +
+    (t.pas_touche ? `, ${t.pas_touche} non touché${t.pas_touche > 1 ? "s" : ""}` : "");
+};
+
+// Sous chaque alerte de panne : ce que disent les membres du club, et de quoi répondre.
 function votes(a, totaux) {
   if (!a.id || !["orage", "vigilance"].includes(a.type)) return null;
   const t = {touche: 0, pas_touche: 0, ...(totaux[a.id] || {})};
   const deja = memoire.lire("vote-" + a.id);
-  const compte = el("span", {class: "compte"});
-  const majCompte = () => {
-    const n = t.touche + t.pas_touche;
-    compte.textContent = n ? `${t.touche} touché${t.touche > 1 ? "s" : ""} sur ${n} réponse${n > 1 ? "s" : ""}` : "";
-  };
-  majCompte();
-  const zone = el("div", {class: "votes"});
-  if (sujetRetours()) {
-    for (const [choix, libelle] of [["touche", "Moi aussi"], ["pas_touche", "Pas chez moi"]]) {
-      const b = el("button", {type: "button", "aria-pressed": String(deja === choix)}, libelle);
-      if (deja) b.disabled = true;
-      b.addEventListener("click", async () => {
-        try {
-          const r = await fetch("https://ntfy.sh/" + encodeURIComponent(sujetRetours()), {method: "POST", body: `${choix}|${a.id}`});
-          if (!r.ok) throw 0;
-        } catch { compte.textContent = "Réponse non envoyée. Réessayez dans un instant."; return; }
-        memoire.ecrire("vote-" + a.id, choix);
-        t[choix] += 1; majCompte();
-        zone.querySelectorAll("button").forEach(x => { x.disabled = true; x.setAttribute("aria-pressed", String(x === b)); });
-      });
-      zone.append(b);
-    }
+  const ico = document.createElement("template"); ico.innerHTML = ICO_MEMBRES;
+  const compte = el("span", {}, texteMembres(t));
+  const bloc = el("div", {}, el("div", {class: "membres"}, ico.content.firstChild, compte));
+  if (!sujetRetours()) {
+    bloc.append(el("div", {class: "votes"}, el("a", {href: "#rejoindre", style: "font-size:13px"}, "Membre ? Dites si vous êtes touché")));
+    return bloc;
   }
-  zone.append(compte);
-  return zone.children.length > 1 || compte.textContent ? zone : null;
+  const zone = el("div", {class: "votes"});
+  for (const [choix, libelle] of [["touche", "Moi aussi"], ["pas_touche", "Pas chez moi"]]) {
+    const b = el("button", {type: "button", "aria-pressed": String(deja === choix)}, libelle);
+    if (deja) b.disabled = true;
+    b.addEventListener("click", async () => {
+      try {
+        const r = await fetch("https://ntfy.sh/" + encodeURIComponent(sujetRetours()), {method: "POST", body: `${choix}|${a.id}`});
+        if (!r.ok) throw 0;
+      } catch { compte.textContent = "Réponse non envoyée. Réessayez dans un instant."; return; }
+      memoire.ecrire("vote-" + a.id, choix);
+      t[choix] += 1; compte.textContent = texteMembres(t);
+      zone.querySelectorAll("button").forEach(x => { x.disabled = true; x.setAttribute("aria-pressed", String(x === b)); });
+    });
+    zone.append(b);
+  }
+  bloc.append(zone);
+  return bloc;
+}
+
+// Le club en chiffres, en tête des alertes (et dans Mon espace).
+function corpsClub() {
+  const c = RETOURS.club || {};
+  const n = c.signalements_30j || 0;
+  if (!n) return [el("h3", {}, "Ensemble, on pèse plus lourd"),
+    el("p", {class: "club-texte"}, "À chaque panne, les membres disent s'ils sont touchés. Tout le monde sait vite si la panne est réelle, et une réclamation faite à plusieurs a plus de poids.")];
+  return [el("p", {class: "club-chiffre"}, el("b", {}, n.toLocaleString("fr-FR")),
+      el("span", {}, `signalement${n > 1 ? "s" : ""} de membres ces 30 derniers jours` + (c.alertes_30j ? `, sur ${c.alertes_30j} panne${c.alertes_30j > 1 ? "s" : ""}` : "") + ".")),
+    el("p", {class: "club-texte"}, (c.touche_30j ? `${c.touche_30j} fois, un membre a confirmé être touché. ` : "") +
+      "Une réclamation faite à plusieurs a plus de poids.")];
+}
+function afficherClub() {
+  $("club-corps").replaceChildren(...corpsClub());
+  const copie = $("club").cloneNode(true);
+  copie.removeAttribute("id"); copie.querySelectorAll("[id]").forEach(x => x.removeAttribute("id"));
+  $("moi-club").replaceChildren(copie);
+}
+
+// Membres touchés par la dernière panne d'un fournisseur (pour les actions de Mon espace).
+function membresTouches(id) {
+  const a = (ALERTES || []).filter(x => x.fournisseur === id && x.type === "orage" && x.id).sort((x, y) => (y.horodatage || "").localeCompare(x.horodatage || ""))[0];
+  return a ? ((RETOURS.par_alerte || {})[a.id] || {}).touche || 0 : 0;
 }
 
 function afficherAlertes(alertes, retours) {
   const ul = $("liste-alertes"); ul.replaceChildren();
-  const c = {rouge: "#FF8A6B", orange: "#F0C774", vert: "#7BD3A4"};
+  const c = {rouge: "#111317", orange: "#A86400", vert: "#1E9E5A"};
   const totaux = (retours && retours.par_alerte) || {};
   for (const a of (alertes || []).slice(0, 8)) {
-    ul.append(el("li", {}, el("span", {class: "pastille", style: `background:${c[a.niveau] || "#AEB7C2"}`}),
+    ul.append(el("li", {}, el("span", {class: "pastille", style: `background:${c[a.niveau] || "#8A92A0"}`}),
       el("span", {style: "flex:1"}, el("strong", {style: "font-weight:600;display:block"}, a.titre), a.texte, votes(a, totaux)),
       el("span", {class: "quand", style: "min-width:auto"}, heure(a.horodatage))));
   }
@@ -612,7 +820,7 @@ function afficherAvoirs(avoirs) {
   }
   const total = el("p", {class: "montant"}, "0 €");
   const net = el("p", {class: "petit centre", style: "margin:0"});
-  carte.append(el("p", {class: "centre", style: "margin:0;color:#C3CAD3"}, `Pour ${new Date(dernier + "-15").toLocaleString("fr-FR", {month: "long", year: "numeric"})}`), total, net);
+  carte.append(el("p", {class: "centre", style: "margin:0;color:#4B5260"}, `Pour ${new Date(dernier + "-15").toLocaleString("fr-FR", {month: "long", year: "numeric"})}`), total, net);
   const recalcul = () => {
     let s = 0;
     for (const r of lignes) s += (Number(memoire.lire("facture-" + r.fournisseur)) || 0) * r.avoir_pct / 100;
@@ -630,7 +838,7 @@ function afficherAvoirs(avoirs) {
         el("span", {}, el("strong", {style: "font-weight:500;font-size:16px"}, (METEO?.fournisseurs || []).find(f => f.id === r.fournisseur)?.nom_court || r.fournisseur), el("span", {class: "petit", style: "display:block"},
           `Promis ${pct(r.engagement_pct)} · mesuré ${pct(r.disponibilite_pct)}` + (r.verifie ? "" : " · contrat à vérifier"))),
         el("span", {style: "font-size:17px;font-weight:300;white-space:nowrap;flex:none"}, r.avoir_pct ? `${r.avoir_pct} % de la facture` : "Engagement tenu")),
-      r.avoir_pct ? el("p", {class: "petit", style: `margin:6px 0 0;color:${jours <= 15 ? "#FF8A6B" : ""}`},
+      r.avoir_pct ? el("p", {class: "petit", style: `margin:6px 0 0;color:${jours <= 15 ? "#111317" : ""}`},
         `À réclamer avant le ${new Date(r.echeance).toLocaleDateString("fr-FR")} (${jours} jours).` +
         (r.debut_decompte === "ticket" ? " Ici, la panne ne compte qu'à partir du ticket." : "")) : null,
       r.avoir_pct ? el("label", {}, el("span", {}, "Votre facture du mois"), el("span", {class: "champ"}, input, "€")) : null));
@@ -751,7 +959,7 @@ function brancherFormulaire() {
   if (form.dataset.branche) return;
   form.dataset.branche = "1";
   const choix = $("choix-fournisseurs");
-  for (const nom of ["Mistral", "Scaleway", "OVHcloud", "IONOS", "Microsoft Copilot", "Autre"]) {
+  for (const nom of ["Mistral", "Scaleway", "OVHcloud", "IONOS", "Autre"]) {
     const b = el("button", {type: "button", "aria-pressed": "false"}, nom);
     b.addEventListener("click", () => b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")));
     choix.append(b);
@@ -772,6 +980,433 @@ function brancherFormulaire() {
   });
 }
 
+// ------------------------------------------------------------------ MON ESPACE (vue dirigeant)
+// Le dirigeant ne veut pas des alertes : il veut des décisions. Chaque mesure devient une action
+// datée, avec un bouton : « À basculer », « À évaluer pour DORA », « À réclamer ».
+// Tout est calculé dans le navigateur, à partir des données publiques et de ce que le visiteur a saisi.
+let AVOIRS = {}, CONTRATS = [], RETOURS = {}, ALERTES = [];
+const CLE_PROFIL = "iris-profil";
+function lireProfil() { try { const p = JSON.parse(memoire.lire(CLE_PROFIL) || "null"); return p && p.prenom ? p : null; } catch { return null; } }
+const factureDe = (id) => Number(memoire.lire("facture-" + id)) || 0;
+const moisFr = (m) => new Date(m + "-15").toLocaleString("fr-FR", {month: "long", year: "numeric"});
+const dateLongue = (d) => new Date(d).toLocaleDateString("fr-FR", {day: "numeric", month: "long"}).replace(/^1 /, "1er ");
+const dateCourte = (d) => new Date(d).toLocaleDateString("fr-FR", {day: "numeric", month: "short"}).replace(/^1 /, "1er ");
+const majuscule = (s) => s ? s[0].toUpperCase() + s.slice(1) : s;
+const dureeEcrite = (min) => { const h = Math.floor(min / 60), m = Math.round(min % 60); return h ? `${h} h${m ? " " + String(m).padStart(2, "0") : ""}` : `${m} min`; };
+// À l'oral, on écrit les choses comme on les dit : « 3 heures 12 », « 480 euros ».
+const dureeOrale = (min) => { const h = Math.floor(min / 60), m = Math.round(min % 60); return h ? `${h} heure${h > 1 ? "s" : ""}${m ? " " + m : ""}` : `${m} minutes`; };
+const heureOrale = (iso) => { const [h, m] = heure(iso).split(":").map(Number); return `${h} heure${h > 1 ? "s" : ""}${m ? " " + m : ""}`; };
+const eurOral = (n) => Math.round(n).toLocaleString("fr-FR").replace(/[  ]/g, " ") + " euros";
+const NOMBRES = ["Aucune", "Une", "Deux", "Trois", "Quatre", "Cinq", "Six"];
+
+// Date limite d'un avoir du mois en cours : dernier jour du mois + délai du contrat (comme la sonde).
+function echeanceMoisEnCours(c) {
+  const n = new Date(), fin = new Date(n.getFullYear(), n.getMonth() + 1, 0);
+  fin.setDate(fin.getDate() + (c.delai_jours ?? 30));
+  return fin;
+}
+
+function calculerActions(P) {
+  const tous = METEO?.fournisseurs || [];
+  const suivis = tous.filter(f => P.suivis.includes(f.id));
+  const nom = (id) => tous.find(f => f.id === id)?.nom_court || CONTRATS.find(c => c.id === id)?.nom || id;
+  const A = [];
+
+  // 1. À basculer : un fournisseur suivi est en panne maintenant.
+  for (const f of suivis.filter(f => f.etat === "orage" && !f.acces_impossible)) {
+    const bis = tous.filter(x => x.id !== f.id && x.categorie !== "assistant" && ["soleil", "eclaircie"].includes(x.etat))
+      .sort((a, b) => P.suivis.includes(b.id) - P.suivis.includes(a.id)).map(x => x.nom_court);
+    const assistant = f.categorie === "assistant", depuis = f.panne_en_cours?.depuis;
+    A.push({id: `basculer-${f.id}-${(depuis || METEO.genere_le).slice(0, 13)}`, type: "basculer", libelle: "À basculer", rang: 0, tri: 0,
+      echeance: "Maintenant", proche: true,
+      titre: `${f.nom_court} est en panne` + (depuis ? ` depuis ${heure(depuis)}` : ""),
+      texte: assistant ? "La panne vient du service, pas de votre informatique. Prévenez vos équipes : vous évitez une vague de tickets."
+        : bis.length ? `Itinéraire bis : ${bis.slice(0, 2).join(" ou ")} répond${bis.length > 1 ? "ent" : ""} normalement.`
+        : "Aucun autre fournisseur européen ne répond pour l'instant. Prévenez vos équipes.",
+      oral: assistant ? `${f.nom_court} est en panne : prévenez vos équipes que cela ne vient pas de chez vous.`
+        : `${f.nom_court} est en panne${bis.length ? ", " + bis[0] + " répond normalement" : ""}.`,
+      puces: [membresTouches(f.id) ? `${membresTouches(f.id)} membre${membresTouches(f.id) > 1 ? "s" : ""} touché${membresTouches(f.id) > 1 ? "s" : ""}` : null, assistant ? "Pas chez vous" : bis.length ? `Bis : ${bis[0]}` : null, "Vérifiée 2 fois"],
+      bouton: "Prévenir mes équipes", faire: () => messageEquipes(f, bis)});
+  }
+
+  // 2. À évaluer pour DORA / NIS2 : panne de plus de 2 heures ces 7 derniers jours.
+  if (P.dora) for (const f of suivis) for (const i of (f.incidents_30j || [])) {
+    if ((i.duree_min || 0) < 120 || Date.now() - new Date(i.debut) > 7 * 86400000) continue;
+    const limite = new Date(new Date(i.debut).getTime() + 24 * 3600000), reste = limite - Date.now();
+    A.push({id: `dora-${f.id}-${i.debut.slice(0, 16)}`, type: "dora", libelle: "À évaluer pour DORA", rang: 1, tri: reste,
+      echeance: reste > 0 ? `Avant ${dateCourte(limite)}, ${heure(limite)}` : "À documenter",
+      puces: [`Durée ${dureeEcrite(i.duree_min)}`, `Détectée ${heure(i.debut)}`, "Délai 24 h"], proche: reste > 0 && reste < 6 * 3600000,
+      titre: `${i.en_cours ? "Panne en cours" : "Panne de " + dureeEcrite(i.duree_min)} chez ${f.nom_court}`,
+      texte: `Plus de 2 heures, le ${dateLongue(i.debut)} à partir de ${heure(i.debut)}. Est-ce un incident majeur pour vous ? Si oui, la première notification est due dans les 24 heures suivant sa détection.` +
+        (reste > 0 ? "" : " Ce délai est passé : gardez une trace écrite de votre décision."),
+      oral: `Panne de ${dureeOrale(i.duree_min)} chez ${f.nom_court} le ${dateLongue(i.debut)} : à classer pour DORA.`,
+      bouton: "Voir les preuves", faire: () => voirPreuves(f.id)});
+  }
+
+  // 3. À réclamer, mois terminé : le calcul officiel de la sonde (avoirs.json).
+  const mp = Object.keys(AVOIRS || {}).sort().at(-1);
+  if (mp) for (const r of AVOIRS[mp]) {
+    if (!P.suivis.includes(r.fournisseur) || !(r.avoir_pct > 0) || r.jours_restants < 0) continue;
+    const fac = factureDe(r.fournisseur), montant = fac * r.avoir_pct / 100, n = nom(r.fournisseur);
+    A.push({id: `reclamer-${r.fournisseur}-${mp}`, type: "reclamer", libelle: "À réclamer", rang: 2, tri: r.jours_restants, montant,
+      echeance: `Avant le ${dateCourte(r.echeance)}`, proche: r.jours_restants <= 15,
+      puces: [`Promis ${pct(r.engagement_pct)}`, `Mesuré ${pct(r.disponibilite_pct)}`, `Avoir ${r.avoir_pct}\u00a0%`],
+      titre: montant ? `${eur(montant)} à réclamer à ${n}` : `${r.avoir_pct} % de votre facture à réclamer à ${n}`,
+      texte: `${majuscule(moisFr(mp))} : disponibilité mesurée ${pct(r.disponibilite_pct)}, pour ${pct(r.engagement_pct)} promis.` +
+        (montant ? "" : " Indiquez votre facture dans votre espace pour voir le montant."),
+      oral: montant ? `${eurOral(montant)} à réclamer à ${n} avant le ${dateLongue(r.echeance)}.`
+        : `Un avoir de ${r.avoir_pct} pour cent de votre facture à réclamer à ${n} avant le ${dateLongue(r.echeance)}.`,
+      bouton: "Préparer la réclamation",
+      faire: () => ouvrirLettre({id: r.fournisseur, nom: n, service: r.service, mois: mp, engagement: r.engagement_pct,
+        dispo: r.disponibilite_pct, incidents: r.incidents || [], avoir: r.avoir_pct, facture: fac, ticket: r.debut_decompte === "ticket"})});
+  }
+
+  // 4. À réclamer, mois en cours : estimation à partir des pannes mesurées depuis le 1er.
+  const mois = new Date().toISOString().slice(0, 7);
+  for (const f of suivis) {
+    const c = CONTRATS.find(c => c.id === f.id && c.suivi_par_la_sonde !== false);
+    if (!c) continue;
+    const incs = (f.incidents_30j || []).filter(i => (i.debut || "").startsWith(mois));
+    const minutes = incs.reduce((t, i) => t + (i.duree_min || 0), 0), p = avoirPour(c, minutes / 60);
+    if (!p) continue;
+    const fac = factureDe(f.id), montant = fac * p / 100, lim = echeanceMoisEnCours(c);
+    const premier = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1);
+    A.push({id: `reclamer-${f.id}-${mois}`, type: "reclamer", libelle: "À réclamer", rang: 2, tri: (lim - Date.now()) / 86400000, montant,
+      echeance: `Dès le ${dateCourte(premier)}`, proche: false,
+      puces: [`Promis ${pct(c.engagement_pct)}`, `${dureeEcrite(minutes)} de panne`, `Avoir ${p}\u00a0%`],
+      titre: `Panne de ${dureeEcrite(minutes)} chez ${f.nom_court} ce mois-ci`,
+      texte: (montant ? `Avoir estimé : ${eur(montant)}` : `Avoir estimé : ${p} % de votre facture`) +
+        ` · à réclamer avant le ${dateLongue(lim)}. Montant confirmé à la fin du mois.`,
+      oral: montant ? `${f.nom_court} vous devra environ ${eurOral(montant)} pour ce mois-ci.`
+        : `${f.nom_court} vous devra un avoir de ${p} pour cent pour ce mois-ci.`,
+      bouton: "Préparer la réclamation",
+      faire: () => ouvrirLettre({id: f.id, nom: f.nom_court, service: c.service, mois, engagement: c.engagement_pct,
+        dispo: Math.round(10000 * (1 - minutes / 60 / 720)) / 100, incidents: incs, avoir: p, facture: fac,
+        ticket: c.debut_decompte === "ticket", provisoire: premier})});
+  }
+  return A.sort((a, b) => a.rang - b.rang || a.tri - b.tri);
+}
+
+// ---------- feuille « lettre / message » (réclamation, message aux équipes)
+function ouvrirFeuille(titre, sous, texte, sujet) {
+  $("lettre-titre").textContent = titre; $("lettre-sous").textContent = sous; $("lettre-texte").value = texte;
+  $("lettre-copier").textContent = "Copier le texte";
+  $("lettre-copier").onclick = async () => {
+    try { await navigator.clipboard.writeText($("lettre-texte").value); $("lettre-copier").textContent = "Copié"; }
+    catch { $("lettre-texte").select(); $("lettre-copier").textContent = "Sélectionné : faites Copier"; }
+  };
+  $("lettre-mail").onclick = () => { location.href = `mailto:?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent($("lettre-texte").value)}`; };
+  $("lettre-fermer").onclick = () => $("lettre").close();
+  if ($("lettre").showModal) $("lettre").showModal(); else $("lettre").setAttribute("open", "");
+  $("lettre-texte").scrollTop = 0; $("lettre-copier").focus();
+}
+
+function ouvrirLettre(d) {
+  const P = lireProfil() || {};
+  const montant = d.facture ? d.facture * d.avoir / 100 : 0;
+  const pannes = (d.incidents || []).map(i => `- le ${dateLongue(i.debut)}, de ${heure(i.debut)} à ${i.fin ? heure(i.fin) : "en cours"}, soit ${dureeEcrite(i.duree_min)}`).join(" ;\n") + (d.incidents?.length ? "." : "");
+  const texte = `Objet : demande d'avoir au titre de l'engagement de disponibilité, ${d.service || d.nom}, ${moisFr(d.mois)}
+
+Madame, Monsieur,
+
+${P.entreprise || "Notre entreprise"} utilise votre service ${d.service || d.nom}. Vos conditions de service prévoient une disponibilité mensuelle de ${pct(d.engagement)}.
+
+Pour ${moisFr(d.mois)}, notre mesure indépendante relève une disponibilité de ${pct(d.dispo)}${pannes ? ", en raison des interruptions suivantes (heure de Paris) :\n" + pannes : "."}
+
+Conformément aux paliers prévus par vos conditions, nous vous demandons un avoir de ${d.avoir} % de notre facture du mois${montant ? `, soit ${eur(montant)} sur une facture de ${eur(d.facture)}` : ""}.
+
+Ces mesures sont horodatées et ancrées chaque nuit. Nous pouvons vous transmettre les relevés détaillés sur simple demande.
+
+Merci de nous confirmer l'application de cet avoir sur notre prochaine facture.
+
+Cordialement,
+
+${P.prenom || ""}
+${P.entreprise || ""}`.trim();
+  const sous = (d.provisoire ? `Le mois n'est pas terminé : envoyez-la à partir du ${dateLongue(d.provisoire)}, montant à confirmer. ` : "") +
+    (d.ticket ? "Chez ce fournisseur, la panne ne compte qu'à partir de votre ticket : joignez son numéro. " : "") +
+    "Brouillon préparé par Iris à partir des mesures. Relisez-le et vérifiez votre contrat avant l'envoi.";
+  ouvrirFeuille(`Réclamation à ${d.nom}`, sous, texte, `Demande d'avoir, ${d.service || d.nom}, ${moisFr(d.mois)}`);
+}
+
+function messageEquipes(f, bis) {
+  const lien = location.href.split("#")[0];
+  const texte = `Information : ${f.nom} est en panne` + (f.panne_en_cours ? ` depuis ${heure(f.panne_en_cours.depuis)}` : "") + `.
+
+La panne vient du fournisseur, pas de notre informatique : inutile d'ouvrir un ticket.
+${f.categorie !== "assistant" && bis.length ? `En attendant, les traitements peuvent passer par ${bis[0]}.` : "Nous vous préviendrons dès le retour à la normale."}
+
+Suivi en direct : ${lien}`;
+  ouvrirFeuille("Message pour vos équipes", "À coller dans Teams, Slack ou un e-mail.", texte, `Panne ${f.nom_court} : ce n'est pas chez nous`);
+}
+
+function voirPreuves(id) {
+  OUVERT = id; location.hash = "";
+  afficherTuiles(); afficherDetail();
+  setTimeout(() => $("detail-" + id)?.scrollIntoView({block: "start", behavior: "smooth"}), 60);
+}
+
+// ---------- le brief, écrit pour être dit à voix haute
+function texteBrief(P, actions) {
+  const h = new Date().getHours();
+  const suivis = (METEO?.fournisseurs || []).filter(f => P.suivis.includes(f.id));
+  const liste = (xs) => xs.length === 1 ? xs[0] : xs.slice(0, -1).join(", ") + " et " + xs.at(-1);
+  const p = [`${h < 18 ? "Bonjour" : "Bonsoir"} ${P.prenom}, ici Iris.`];
+  const pannes = suivis.filter(f => f.etat === "orage" && !f.acces_impossible);
+  const lents = suivis.filter(f => f.etat === "nuage");
+  const recentes = suivis.flatMap(f => (f.incidents_30j || []).filter(i => !i.en_cours && i.fin && Date.now() - new Date(i.fin) < 12 * 3600000)
+    .map(i => `une coupure de ${dureeOrale(i.duree_min)} chez ${f.nom_court} vers ${heureOrale(i.debut)}`));
+  if (pannes.length) {
+    p.push(`Orage en cours chez ${liste(pannes.map(f => f.nom_court))}` + (pannes[0].panne_en_cours ? ` depuis ${heureOrale(pannes[0].panne_en_cours.depuis)}.` : "."));
+    if (suivis.length > pannes.length) p.push("Vos autres fournisseurs répondent normalement.");
+  } else if (suivis.length) {
+    p.push(`Ciel dégagé sur vos ${suivis.length > 1 ? suivis.length + " fournisseurs" : "fournisseur"}${h < 11 ? " ce matin" : ""}.`);
+  }
+  if (lents.length) p.push(`Quelques lenteurs chez ${liste(lents.map(f => f.nom_court))}.`);
+  if (recentes.length) p.push(`Cette nuit, ${recentes.slice(0, 2).join(", puis ")}, terminée depuis.`);
+  if (!actions.length) p.push("Aucune action ne vous attend aujourd'hui.");
+  else {
+    p.push(actions.length === 1 ? "Une action vous attend." : `${NOMBRES[actions.length] || actions.length} actions vous attendent.`);
+    for (const a of actions.slice(0, 3)) p.push(a.oral);
+    if (actions.length > 3) p.push(`Et ${actions.length - 3} autre${actions.length > 4 ? "s" : ""} dans votre espace.`);
+  }
+  p.push(h < 18 ? "Bonne journée." : "Bonne soirée.");
+  return p.join(" ");
+}
+
+const ICO_LIRE = `<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>`;
+const ICO_PAUSE = `<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>`;
+let LECTURE = false;
+function etatLecture(enCours) {
+  LECTURE = enCours;
+  const b = $("brief-lire");
+  b.innerHTML = enCours ? ICO_PAUSE : ICO_LIRE;
+  b.setAttribute("aria-pressed", String(enCours));
+  b.setAttribute("aria-label", enCours ? "Arrêter la lecture" : "Écouter le brief");
+  if (!enCours) $("brief-onde").style.width = "0";
+}
+function voixFrancaise() {
+  const v = speechSynthesis.getVoices().filter(x => (x.lang || "").toLowerCase().startsWith("fr"));
+  const preferees = /Amélie|Audrey|Aurélie|Marie|Denise|Hortense|Google français|Céline/i;
+  return v.find(x => preferees.test(x.name) && /fr[-_]FR/i.test(x.lang)) || v.find(x => /fr[-_]FR/i.test(x.lang)) || v[0] || null;
+}
+// Phrase par phrase : certains navigateurs coupent les textes longs au bout de 15 secondes.
+function lireBrief() {
+  const texte = $("brief-texte").textContent;
+  if (!("speechSynthesis" in window)) { $("brief").querySelector("details").open = true; return; }
+  if (LECTURE) { speechSynthesis.cancel(); etatLecture(false); return; }
+  const phrases = texte.match(/[^.!?]+[.!?]+/g) || [texte];
+  const voix = voixFrancaise();
+  speechSynthesis.cancel();
+  phrases.forEach((s, k) => {
+    const u = new SpeechSynthesisUtterance(s.trim());
+    u.lang = "fr-FR"; if (voix) u.voice = voix; u.rate = 1.02;
+    u.onstart = () => { $("brief-onde").style.width = (100 * k / phrases.length) + "%"; };
+    u.onend = () => { if (k === phrases.length - 1) etatLecture(false); };
+    u.onerror = () => etatLecture(false);
+    speechSynthesis.speak(u);
+  });
+  etatLecture(true);
+}
+
+// ---------- affichage de l'espace
+function construireFormulaireMoi(P) {
+  const zone = $("moi-liste-f");
+  const liste = METEO?.fournisseurs?.length ? METEO.fournisseurs.map(f => ({id: f.id, nom: f.nom_court}))
+    : CONTRATS.map(c => ({id: c.id, nom: c.nom}));
+  const cle = liste.map(x => x.id).join();
+  if (zone.dataset.cle === cle) return;
+  zone.dataset.cle = cle; zone.replaceChildren();
+  for (const f of liste) {
+    const avoir = CONTRATS.some(c => c.id === f.id && c.suivi_par_la_sonde !== false);
+    const coche = el("input", {type: "checkbox", name: "suivi", value: f.id});
+    coche.checked = !!P?.suivis?.includes(f.id);
+    const fac = el("input", {type: "number", min: "0", step: "100", inputmode: "decimal", name: "facture-" + f.id, "aria-label": "Facture mensuelle " + f.nom, placeholder: "0"});
+    fac.value = memoire.lire("facture-" + f.id) || "";
+    const champ = avoir ? el("span", {class: "champ"}, fac, "€") : el("span", {class: "petit"}, "sans avoir prévu");
+    const maj = () => { if (avoir) { champ.setAttribute("aria-disabled", String(!coche.checked)); fac.disabled = !coche.checked; } };
+    coche.addEventListener("change", maj); maj();
+    zone.append(el("div", {class: "reglage-f"}, el("label", {class: "coche"}, coche, f.nom), champ));
+  }
+  const form = $("form-moi");
+  form.elements.prenom.value = P?.prenom || "";
+  form.elements.entreprise.value = P?.entreprise || "";
+  form.elements.numero.value = P?.numero || "";
+  form.elements.dora.checked = !!P?.dora;
+}
+
+function brancherEspace() {
+  const form = $("form-moi");
+  if (form.dataset.branche) return;
+  form.dataset.branche = "1";
+  const msg = el("p", {class: "petit", role: "status", style: "margin:0;color:#111317"});
+  $("moi-valider").after(msg);
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const prenom = form.elements.prenom.value.trim();
+    const suivis = [...form.querySelectorAll('input[name="suivi"]:checked')].map(x => x.value);
+    if (!prenom) { msg.textContent = "Indiquez votre prénom."; return; }
+    if (!suivis.length) { msg.textContent = "Cochez au moins un fournisseur."; return; }
+    msg.textContent = "";
+    form.querySelectorAll('input[name^="facture-"]').forEach(x => memoire.ecrire(x.name, x.disabled ? "" : x.value));
+    const avant = lireProfil();
+    memoire.ecrire(CLE_PROFIL, JSON.stringify({prenom, entreprise: form.elements.entreprise.value.trim(), suivis, dora: form.elements.dora.checked,
+      numero: form.elements.numero.value.replace(/\D/g, "").slice(0, 5), depuis: avant?.depuis || new Date().toISOString()}));
+    $("moi-modifier").open = false;
+    afficherEspace(); afficherAvoirs(AVOIRS);
+    window.scrollTo({top: 0});
+  });
+  $("moi-effacer").addEventListener("click", () => {
+    try { localStorage.removeItem(CLE_PROFIL); } catch {}
+    $("moi-liste-f").dataset.cle = "";
+    afficherEspace();
+  });
+  $("moi-modifier").addEventListener("toggle", () => { $("form-moi").hidden = !!lireProfil() && !$("moi-modifier").open; });
+  $("brief-lire").addEventListener("click", lireBrief);
+  $("cm-partager").addEventListener("click", partagerCarte);
+  etatLecture(false);
+}
+
+function afficherEspace() {
+  brancherEspace();
+  const P = lireProfil();
+  construireFormulaireMoi(P);
+  $("moi-accueil").hidden = !P; $("moi-intro").hidden = !!P; $("moi-modifier").hidden = !P;
+  $("form-moi").hidden = !!P && !$("moi-modifier").open;
+  $("moi-valider").textContent = P ? "Enregistrer" : "Créer mon espace";
+  $("moi-effacer").hidden = !P;
+  if (!P) return;
+
+  const h = new Date().getHours();
+  $("moi-date").textContent = new Date().toLocaleDateString("fr-FR", {weekday: "long", day: "numeric", month: "long"});
+  $("moi-salut").textContent = `${h < 18 ? "Bonjour" : "Bonsoir"} ${P.prenom}`;
+
+  const toutes = calculerActions(P);
+  const actives = toutes.filter(a => !memoire.lire("fait-" + a.id));
+  const traitees = toutes.length - actives.length;
+
+  // L'argent à récupérer : le chiffre qu'un dirigeant retient.
+  const argent = actives.filter(a => a.type === "reclamer").reduce((t, a) => t + (a.montant || 0), 0);
+  $("moi-argent").hidden = !argent;
+  $("moi-montant").textContent = eur(argent);
+  $("moi-montant-sous").textContent = "à récupérer auprès de vos fournisseurs";
+  afficherCarteMembre(P, argent);
+
+  // Brief (on ne touche pas au texte pendant la lecture)
+  if (!LECTURE) {
+    const texte = texteBrief(P, actives);
+    $("brief-texte").textContent = texte;
+    const secondes = texte.split(/\s+/).length / 165 * 60;
+    $("brief-duree").textContent = (secondes < 55 ? `${Math.max(15, Math.round(secondes / 5) * 5)} secondes` : "1 minute") + " à écouter";
+    $("brief-titre").textContent = h < 12 ? "Votre brief du matin" : h < 18 ? "Votre point de la journée" : "Votre point du soir";
+  }
+
+  // Actions
+  const ul = $("liste-actions"); ul.replaceChildren();
+  $("actions-compte").textContent = actives.length ? `${actives.length} à traiter` + (traitees ? ` · ${traitees} traitée${traitees > 1 ? "s" : ""}` : "")
+    : traitees ? `${traitees} traitée${traitees > 1 ? "s" : ""}` : "";
+  for (const a of actives) {
+    const fait = el("button", {type: "button"}, "C'est fait");
+    fait.addEventListener("click", () => { memoire.ecrire("fait-" + a.id, new Date().toISOString()); afficherEspace(); });
+    const go = el("button", {type: "button", class: "go"}, a.bouton);
+    go.addEventListener("click", a.faire);
+    const ico = document.createElement("template"); ico.innerHTML = ICO_ACTION[a.type];
+    ul.append(el("li", {class: "action t-" + a.type},
+      el("div", {class: "a-tete"},
+        el("span", {class: "a-ico"}, ico.content.firstChild),
+        el("span", {class: "a-type"}, a.libelle), el("h3", {}, a.titre),
+        el("span", {class: "a-pastille" + (a.proche ? " proche" : "")}, a.echeance)),
+      el("div", {class: "a-corps"},
+        el("p", {}, a.texte),
+        el("div", {class: "a-puces"}, ...(a.puces || []).filter(Boolean).map(x => el("span", {}, x))),
+        el("div", {class: "boutons"}, go, fait))));
+  }
+  if (!actives.length) ul.append(el("li", {class: "action vide-a"},
+    "Rien ne vous attend. Iris surveille vos fournisseurs et vous préviendra ici."));
+
+  // En bas, les mêmes visuels que la météo : vos fournisseurs (avec les 12 dernières heures) et les trois piliers.
+  const mes = (METEO?.fournisseurs || []).filter(f => P.suivis.includes(f.id));
+  const ulf = el("ul");
+  for (const f of mes) {
+    const b = ligneFournisseur(f);
+    b.addEventListener("click", () => voirPreuves(f.id));
+    ulf.append(el("li", {}, b));
+  }
+  $("mes-groupes").replaceChildren(mes.length ? el("section", {class: "groupe", "aria-label": "Vos fournisseurs"},
+    el("div", {class: "groupe-tete"}, el("h2", {}, "Vos fournisseurs"),
+      el("span", {}, repondent(mes))), ulf) : "");
+  const piliers = document.querySelector('[aria-labelledby="titre-piliers"] .carte')?.cloneNode(true);
+  if (piliers) { piliers.querySelectorAll("[id]").forEach(n => n.removeAttribute("id")); $("moi-piliers").replaceChildren(piliers); }
+}
+
+const ICO_ACTION = {
+  reclamer: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7.5A6 6 0 1 0 17 16.5"/><path d="M4 10.5h9M4 13.5h9"/></svg>`,
+  dora: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.4-4.6"/></svg>`,
+  basculer: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5"/></svg>`,
+};
+
+// ---------- la carte de membre
+// Le numéro est celui donné à l'inscription : sans lui, la carte le dit, elle n'en invente pas.
+let CARTE = {};
+function afficherCarteMembre(P, argent) {
+  const signal = (() => { try { return Object.keys(localStorage).filter(k => k.startsWith("vote-")).length; } catch { return 0; } })();
+  const depuis = new Date(P.depuis || Date.now()).toLocaleDateString("fr-FR", {month: "short", year: "numeric"});
+  CARTE = {num: P.numero ? "N° " + P.numero.padStart(3, "0") : "", nom: P.prenom, ent: P.entreprise || "", depuis, signal: String(signal), avoirs: argent ? eur(argent) : "—"};
+  $("cm-num").replaceChildren(el("small", {}, "Le club Iris"), CARTE.num || "N° en attente");
+  $("cm-nom").replaceChildren(CARTE.nom, CARTE.ent ? el("span", {}, CARTE.ent) : "");
+  $("cm-depuis").textContent = depuis; $("cm-signal").textContent = CARTE.signal; $("cm-avoirs").textContent = CARTE.avoirs;
+}
+
+// Dessine la carte en image (1200 × 756) pour la partager sur LinkedIn ou ailleurs.
+async function partagerCarte() {
+  try { await document.fonts.ready; } catch {}
+  const W = 1200, H = 756, c = document.createElement("canvas"); c.width = W; c.height = H;
+  const x = c.getContext("2d");
+  const rond = (px, py, w, h, r) => { x.beginPath(); x.moveTo(px + r, py); x.arcTo(px + w, py, px + w, py + h, r); x.arcTo(px + w, py + h, px, py + h, r); x.arcTo(px, py + h, px, py, r); x.arcTo(px, py, px + w, py, r); x.closePath(); };
+  x.fillStyle = "#16181D"; rond(0, 0, W, H, 56); x.fill();
+  x.save(); rond(0, 0, W, H, 56); x.clip();
+  x.strokeStyle = "rgba(255,255,255,.12)"; x.lineWidth = 3;
+  for (const r of [300, 200, 100]) { x.beginPath(); x.arc(W - 120, 120, r, 0, 7); x.stroke(); }
+  x.fillStyle = "#F5B400"; x.beginPath(); x.arc(W - 120, 120, 38, 0, 7); x.fill();
+  x.restore();
+  const cond = '"Barlow Condensed", Geist, sans-serif', geist = "Geist, system-ui, sans-serif";
+  x.fillStyle = "#fff"; x.font = `600 64px ${cond}`; x.fillText("IRIS", 64, 120);
+  x.font = `400 30px ${geist}`; x.fillStyle = "rgba(255,255,255,.65)"; x.fillText("Le club Iris · la météo de l'IA", 64, 168);
+  x.fillStyle = "#fff"; x.font = `600 150px ${cond}`; x.fillText(CARTE.num || "Membre fondateur", 64, 380);
+  if (CARTE.num) { x.font = `500 34px ${geist}`; x.fillText("Membre fondateur", 64, 432); }
+  x.font = `500 40px ${geist}`; x.fillText(CARTE.nom + (CARTE.ent ? " · " + CARTE.ent : ""), 64, 520);
+  x.strokeStyle = "rgba(255,255,255,.18)"; x.lineWidth = 2; x.beginPath(); x.moveTo(64, 580); x.lineTo(W - 64, 580); x.stroke();
+  [["Membre depuis", CARTE.depuis], ["Pannes signalées", CARTE.signal], ["Avoirs suivis", CARTE.avoirs]].forEach(([l, v], i) => {
+    const px = 64 + i * 370;
+    x.fillStyle = "#fff"; x.font = `600 40px ${geist}`; x.fillText(v, px, 648);
+    x.fillStyle = "rgba(255,255,255,.6)"; x.font = `400 26px ${geist}`; x.fillText(l, px, 690);
+  });
+  const blob = await new Promise(r => c.toBlob(r, "image/png"));
+  const fichier = new File([blob], "carte-membre-iris.png", {type: "image/png"});
+  try {
+    if (navigator.canShare && navigator.canShare({files: [fichier]})) {
+      await navigator.share({files: [fichier], title: "Ma carte de membre Iris", text: "Je suis membre fondateur du club Iris, la météo indépendante de l'IA."});
+      return;
+    }
+  } catch (e) { if (e && e.name === "AbortError") return; }
+  const a = el("a", {href: URL.createObjectURL(blob), download: "carte-membre-iris.png"});
+  document.body.append(a); a.click(); a.remove();
+}
+
+// ---------- deux portes d'entrée : la météo (publique) et mon espace (personnel)
+function router() {
+  const moi = location.hash.startsWith("#moi");
+  $("vue-moi").hidden = !moi; $("vue-meteo").hidden = moi;
+  const h = ["#alertes", "#avoirs", "#rejoindre"].includes(location.hash) ? location.hash : moi ? "#moi" : "#";
+  document.querySelectorAll("nav.onglets a").forEach(a => a.toggleAttribute("aria-current", a.getAttribute("href") === h));
+  document.querySelectorAll("nav.onglets a[aria-current]").forEach(a => a.setAttribute("aria-current", "page"));
+  if (moi) window.scrollTo(0, 0);
+  else if (location.hash.length > 1) document.querySelector(location.hash)?.scrollIntoView();
+}
+window.addEventListener("hashchange", router);
+if (!location.hash && lireProfil()) history.replaceState(null, "", "#moi");
+router();
+
 let STATUTS = {}, MINUTES = null;
 
 async function demarrer() {
@@ -779,7 +1414,7 @@ async function demarrer() {
   METEO = await charger("meteo.json", null);
   const [alertes, avoirs, retours, contrats, statuts] = await Promise.all([charger("alertes.json", []), charger("avoirs.json", {}),
     charger("retours.json", {}), charger("contrats.json", []), charger("statuts.json", {})]);
-  STATUTS = statuts || {};
+  STATUTS = statuts || {}; AVOIRS = avoirs || {}; CONTRATS = contrats || []; RETOURS = retours || {}; ALERTES = alertes || [];
   MINUTES = await charger(`minutes/${new Date().toISOString().slice(0, 10)}.json`, null);
   $("lien-depot").href = REGLAGES.depot;
   $("signaler").href = REGLAGES.depot + "/issues/new?title=" + encodeURIComponent("Signalement : ") + "&body=" +
@@ -790,7 +1425,7 @@ async function demarrer() {
     $("date").textContent = new Date().toLocaleDateString("fr-FR", {weekday: "long", day: "numeric", month: "long"});
     $("phrase").textContent = "Pas encore de données.";
     $("tuiles").replaceWith(el("p", {class: "vide"}, "La sonde n'a pas encore publié de météo. Lancez « python -m sonde veille » puis « python -m sonde direct »."));
-    afficherAlertes(alertes, retours); afficherAvoirs(avoirs); afficherContrats(contrats); afficherPiliers(alertes, avoirs, contrats);
+    afficherAlertes(alertes, retours); afficherAvoirs(avoirs); afficherContrats(contrats); afficherPiliers(alertes, avoirs, contrats); afficherClub(); afficherEspace();
     return;
   }
   const d = new Date(METEO.genere_le);
@@ -810,7 +1445,7 @@ async function demarrer() {
   }
   dessinerRadar(METEO.fournisseurs.map(f => ({nom: f.nom_court, cat: f.categorie || "fournisseur", etat: f.etat, partiel: f.offre === "porte"})));
   if (ici >= 0) afficherTemps(ici);
-  afficherBandeau(); afficherTuiles(); afficherDetail(); afficherAlertes(alertes, retours); afficherAvoirs(avoirs); afficherContrats(contrats); afficherPiliers(alertes, avoirs, contrats);
+  afficherBandeau(); afficherTuiles(); afficherDetail(); afficherAlertes(alertes, retours); afficherAvoirs(avoirs); afficherContrats(contrats); afficherPiliers(alertes, avoirs, contrats); afficherClub(); afficherEspace();
 }
 demarrer();
 setInterval(demarrer, 60000);   // la page se met à jour toute seule chaque minute
