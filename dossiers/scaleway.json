@@ -1,0 +1,37 @@
+{
+  "fournisseur": {
+    "id": "scaleway",
+    "nom": "Scaleway Generative APIs",
+    "pays": "FR"
+  },
+  "genere_le": "2026-11-17T12:43:39+00:00",
+  "periode": {
+    "debut": "2026-11-15T19:39:19+00:00",
+    "fin": "2026-11-17T12:43:38+00:00"
+  },
+  "performance": [],
+  "reseau": {
+    "dernier_releve": "2026-11-17T12:25:26+00:00",
+    "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
+    "verdict": "ue_observe",
+    "constats": [
+      "Toutes les entrées réseau observées sont opérées et localisées dans l'UE/EEE"
+    ],
+    "pays_entree": [
+      "FR"
+    ],
+    "operateurs": [
+      "Scaleway"
+    ],
+    "intermediaires": [],
+    "verdicts_sur_periode": [
+      "ue_observe"
+    ],
+    "releves": 1
+  },
+  "stabilite": [],
+  "changements_catalogue": [],
+  "substituabilite": [],
+  "preuves": [],
+  "avertissement": "Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives."
+}

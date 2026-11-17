@@ -1,0 +1,109 @@
+{
+  "fournisseur": {
+    "id": "ovhcloud",
+    "nom": "OVHcloud AI Endpoints",
+    "pays": "FR"
+  },
+  "genere_le": "2026-11-17T12:43:39+00:00",
+  "periode": {
+    "debut": "2026-11-15T19:39:19+00:00",
+    "fin": "2026-11-17T12:43:38+00:00"
+  },
+  "performance": [
+    {
+      "modele": "gpt-oss-120b",
+      "appels": 24,
+      "disponibilite_pct": 91.67,
+      "ttft_median_ms": 868,
+      "ttft_p95_ms": 1086,
+      "heures_avec_echec": 2,
+      "plus_longue_serie_echecs_h": 1,
+      "offres": [
+        "anonyme"
+      ]
+    },
+    {
+      "modele": "llama-3.3-70b",
+      "appels": 24,
+      "disponibilite_pct": 100.0,
+      "ttft_median_ms": 1101,
+      "ttft_p95_ms": 100472,
+      "heures_avec_echec": 0,
+      "plus_longue_serie_echecs_h": 0,
+      "offres": [
+        "anonyme"
+      ]
+    },
+    {
+      "modele": "mistral-small-3.2",
+      "appels": 24,
+      "disponibilite_pct": 100.0,
+      "ttft_median_ms": 1112,
+      "ttft_p95_ms": 26407,
+      "heures_avec_echec": 0,
+      "plus_longue_serie_echecs_h": 0,
+      "offres": [
+        "anonyme"
+      ]
+    }
+  ],
+  "reseau": {
+    "dernier_releve": "2026-11-17T12:25:28+00:00",
+    "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
+    "verdict": "ue_observe",
+    "constats": [
+      "Toutes les entrées réseau observées sont opérées et localisées dans l'UE/EEE"
+    ],
+    "pays_entree": [
+      "FR"
+    ],
+    "operateurs": [
+      "OVHcloud"
+    ],
+    "intermediaires": [],
+    "verdicts_sur_periode": [
+      "ue_observe"
+    ],
+    "releves": 1
+  },
+  "stabilite": [
+    {
+      "modele": "gpt-oss-120b",
+      "empreintes": 1,
+      "derniere_similarite": null,
+      "alertes": [],
+      "changements_identifiant": []
+    },
+    {
+      "modele": "llama-3.3-70b",
+      "empreintes": 1,
+      "derniere_similarite": null,
+      "alertes": [],
+      "changements_identifiant": []
+    },
+    {
+      "modele": "mistral-small-3.2",
+      "empreintes": 1,
+      "derniere_similarite": null,
+      "alertes": [],
+      "changements_identifiant": []
+    }
+  ],
+  "changements_catalogue": [],
+  "substituabilite": [
+    {
+      "modele": "gpt-oss-120b",
+      "alternatives_mesurees": []
+    },
+    {
+      "modele": "llama-3.3-70b",
+      "alternatives_mesurees": []
+    },
+    {
+      "modele": "mistral-small-3.2",
+      "alternatives_mesurees": []
+    }
+  ],
+  "preuves": [],
+  "avertissement": "Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives."
+}
