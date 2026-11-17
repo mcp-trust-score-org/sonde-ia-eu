@@ -1,5 +1,17 @@
 [
  {
+  "fournisseur": "scaleway",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur Scaleway",
+  "texte": "Scaleway Generative APIs : Temps de réponse 3,0 fois plus long que d'habitude.",
+  "horodatage": "2026-11-17T09:17:30+00:00",
+  "id": "scaleway-vigilance-202611170917",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
   "fournisseur": "ovhcloud",
   "type": "fin_orage",
   "niveau": "vert",
