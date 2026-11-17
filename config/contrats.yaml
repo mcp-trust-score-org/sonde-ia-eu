@@ -110,12 +110,11 @@ contrats:
     source: "https://learn.cloud.ionos.com/foundational/products/AI/ai-model-hub.html (fiche produit, pas le contrat)"
     verifie: false
 
-  # Référence pour comparer : la sonde ne mesure pas Microsoft, mais ses conditions publiques
-  # donnent un ordre de grandeur (et la panne des 12 et 13 novembre 2026 sert d'exemple).
+  # Microsoft 365 : mesuré à la porte d'entrée (voir `assistants` dans fournisseurs.yaml).
+  # Avoirs plus élevés que chez les fournisseurs d'API, sur des factures souvent plus grosses.
   microsoft:
-    nom: Microsoft
+    nom: Microsoft 365
     service: Microsoft 365 (Exchange Online, Teams, Copilot…)
-    suivi_par_la_sonde: false
     engagement_pct: 99.9
     periode: mois
     debut_decompte: panne

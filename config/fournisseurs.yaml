@@ -64,6 +64,42 @@ fournisseurs:
 # à l'un des `motifs` (comparaison insensible à la casse, aux points, tirets et soulignés).
 # `exact` force un identifiant pour un fournisseur donné.
 
+# Assistants utilisés par les salariés (hors Europe). La sonde ne les interroge pas avec un
+# compte : elle frappe à la porte d'entrée de leur service, sans s'identifier, pour repérer
+# les grosses pannes. Elle ne voit ni les lenteurs, ni les pannes propres à un client.
+assistants:
+  - id: microsoft
+    nom: Microsoft 365 Copilot
+    nom_court: Copilot
+    categorie: assistant
+    pays: États-Unis
+    porte_url: "https://graph.microsoft.com/v1.0/me"
+    statut: {type: lien, url: "https://status.cloud.microsoft"}
+
+  - id: openai
+    nom: ChatGPT (OpenAI)
+    nom_court: ChatGPT
+    categorie: assistant
+    pays: États-Unis
+    porte_url: "https://api.openai.com/v1/models"
+    statut: {type: lien, url: "https://status.openai.com"}
+
+  - id: google
+    nom: Gemini (Google)
+    nom_court: Gemini
+    categorie: assistant
+    pays: États-Unis
+    porte_url: "https://generativelanguage.googleapis.com/v1beta/models"
+    statut: {type: lien, url: "https://www.google.com/appsstatus/dashboard/"}
+
+  - id: anthropic
+    nom: Claude (Anthropic)
+    nom_court: Claude
+    categorie: assistant
+    pays: États-Unis
+    porte_url: "https://api.anthropic.com/v1/models"
+    statut: {type: statuspage, url: "https://status.anthropic.com", motif: "claude.ai"}
+
 modeles:
   - id: mistral-small-3.2
     nom: Mistral Small 3.2 (24B)
