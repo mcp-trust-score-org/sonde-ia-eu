@@ -240,6 +240,7 @@ def publier_contrats(contrats: dict, dossier_public: Path) -> list[dict]:
                               key=lambda p: -p["sous_pct"]),
             "plafond_pct": c.get("plafond_pct"),
             "delai": c.get("delai_texte") or (f"dans les {jours} jours après la fin du mois" if jours else None),
+            "delai_jours": jours,
             "debut_decompte": c.get("debut_decompte", "panne"),
             "qui_est_couvert": " ".join(str(c.get("qui_est_couvert") or "").split()) or None,
             "verifie": bool(c.get("verifie")), "source": c.get("source"),

@@ -18,6 +18,8 @@ utilisent une offre dédiée ou privée.
 from __future__ import annotations
 
 import json
+import time
+import time
 import os
 import re
 from collections import defaultdict
@@ -91,6 +93,10 @@ def relever(dossier_donnees: Path, env: dict | None = None, client: httpx.Client
 def totaliser(dossier_donnees: Path, dossier_public: Path) -> dict:
     """Écrit public/retours.json : totaux par alerte et résumé par fournisseur."""
     par_alerte: dict[str, dict[str, int]] = defaultdict(lambda: {c: 0 for c in CHOIX})
+    # Le club en chiffres : combien de signalements de membres ces 30 derniers jours.
+    club = {"signalements_30j": 0, "touche_30j": 0, "alertes_30j": 0, "signalements_total": 0}
+    alertes_30j: set[str] = set()
+    limite = time.time() - 30 * 86400
     fichier = dossier_donnees / "retours.jsonl"
     if fichier.exists():
         for l in fichier.read_text(encoding="utf-8").splitlines():
@@ -98,7 +104,13 @@ def totaliser(dossier_donnees: Path, dossier_public: Path) -> dict:
                 r = json.loads(l)
                 par_alerte[r["alerte"]][r["choix"]] += 1
             except (ValueError, KeyError):
-                pass
+                continue
+            club["signalements_total"] += 1
+            if (r.get("horodatage") or 0) >= limite:
+                club["signalements_30j"] += 1
+                club["touche_30j"] += r["choix"] == "touche"
+                alertes_30j.add(r["alerte"])
+    club["alertes_30j"] = len(alertes_30j)
     try:
         journal = json.loads((dossier_public / "alertes.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):
@@ -116,7 +128,7 @@ def totaliser(dossier_donnees: Path, dossier_public: Path) -> dict:
     for s in resume.values():
         n = s["touche"] + s["pas_touche"]
         s["part_touche_pct"] = round(100 * s["touche"] / n) if n else None
-    sortie = {"par_alerte": dict(par_alerte), "par_fournisseur": resume}
+    sortie = {"par_alerte": dict(par_alerte), "par_fournisseur": resume, "club": club}
     dossier_public.mkdir(parents=True, exist_ok=True)
     (dossier_public / "retours.json").write_text(json.dumps(sortie, ensure_ascii=False, indent=1), encoding="utf-8")
     return sortie
