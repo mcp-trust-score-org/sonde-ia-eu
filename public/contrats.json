@@ -113,7 +113,7 @@
  },
  {
   "id": "microsoft",
-  "nom": "Microsoft",
+  "nom": "Microsoft 365",
   "service": "Microsoft 365 (Exchange Online, Teams, Copilot…)",
   "engagement_pct": 99.9,
   "paliers": [
@@ -136,7 +136,7 @@
   "qui_est_couvert": null,
   "verifie": false,
   "source": "Service Level Agreement for Microsoft Online Services",
-  "suivi_par_la_sonde": false,
+  "suivi_par_la_sonde": true,
   "note_courte": null
  }
 ]

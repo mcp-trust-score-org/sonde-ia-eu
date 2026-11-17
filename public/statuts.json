@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-17T09:17:31+00:00",
+ "genere_le": "2026-11-17T11:06:14+00:00",
  "fournisseurs": {
   "mistral": {
    "type": "lien",
@@ -100,6 +100,169 @@
    "incidents_30j": [],
    "composants_suivis": [
     "AI Model Hub"
+   ]
+  },
+  "microsoft": {
+   "type": "lien",
+   "url": "https://status.cloud.microsoft"
+  },
+  "openai": {
+   "type": "lien",
+   "url": "https://status.openai.com"
+  },
+  "google": {
+   "type": "lien",
+   "url": "https://www.google.com/appsstatus/dashboard/"
+  },
+  "anthropic": {
+   "type": "statuspage",
+   "url": "https://status.anthropic.com",
+   "etat_officiel": "Performances dégradées",
+   "gravite": 2,
+   "incident_en_cours": {
+    "titre": "Claude unable to join meetings",
+    "debut": "2026-11-16T15:10+00:00",
+    "fin": null,
+    "impact": "major",
+    "lien": "https://stspg.io/01qq3kzyyqzl"
+   },
+   "incidents_30j": [
+    {
+     "titre": "Some users unable to sign up with Apple on the Claude iOS app",
+     "debut": "2026-11-14T07:11+00:00",
+     "fin": "2026-11-16T19:52+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/4858wf40dx89"
+    },
+    {
+     "titre": "Claude unable to join meetings",
+     "debut": "2026-11-16T15:10+00:00",
+     "fin": null,
+     "impact": "major",
+     "lien": "https://stspg.io/01qq3kzyyqzl"
+    },
+    {
+     "titre": "Elevated errors for Claude Sonnet 5.5 and Claude Fable 5.2",
+     "debut": "2026-11-16T07:49+00:00",
+     "fin": "2026-11-16T09:04+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/n18qjkd7dt4q"
+    },
+    {
+     "titre": "Elevated purchasing errors on claude.ai",
+     "debut": "2026-11-14T02:54+00:00",
+     "fin": "2026-11-14T04:23+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/qqf00d9r7pm4"
+    },
+    {
+     "titre": "Elevated errors affecting the Microsoft 365 connector",
+     "debut": "2026-11-12T17:52+00:00",
+     "fin": "2026-11-13T21:49+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/m0rbx38nmy1c"
+    },
+    {
+     "titre": "Elevated errors on claude.ai, the Claude API, and Claude Code",
+     "debut": "2026-11-13T13:09+00:00",
+     "fin": "2026-11-13T15:38+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/264r547qtkky"
+    },
+    {
+     "titre": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+     "debut": "2026-11-13T09:58+00:00",
+     "fin": "2026-11-13T11:58+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/6kqyd0c5b1gr"
+    },
+    {
+     "titre": "Degraded performance for Claude Fable 5.1",
+     "debut": "2026-11-08T08:28+00:00",
+     "fin": "2026-11-08T08:54+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/3m3q1nwb142k"
+    },
+    {
+     "titre": "Elevated errors affecting the Google Calendar connector",
+     "debut": "2026-10-28T16:19+00:00",
+     "fin": "2026-10-28T20:05+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/75qq31h8672d"
+    },
+    {
+     "titre": "Elevated errors affecting the Gmail connector",
+     "debut": "2026-10-28T03:59+00:00",
+     "fin": "2026-10-28T05:48+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/j86c100s8tqm"
+    },
+    {
+     "titre": "Elevated errors for Claude Sonnet 5.5",
+     "debut": "2026-10-27T15:09+00:00",
+     "fin": "2026-10-27T15:50+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/39x7qh3sd7bd"
+    },
+    {
+     "titre": "Elevated errors for Claude Sonnet 5.5",
+     "debut": "2026-10-27T09:14+00:00",
+     "fin": "2026-10-27T09:56+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/rql9h590npxd"
+    },
+    {
+     "titre": "Elevated errors for Claude Fable 5.1",
+     "debut": "2026-10-25T08:17+00:00",
+     "fin": "2026-10-25T08:49+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/y0gkl12ztjst"
+    },
+    {
+     "titre": "Elevated errors for Claude Sonnet 5.5 and other models",
+     "debut": "2026-10-25T06:14+00:00",
+     "fin": "2026-10-25T07:53+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/s3wd6gmdsdhn"
+    },
+    {
+     "titre": "Elevated errors for Claude Fable 5 and Claude Fable 5.1",
+     "debut": "2026-10-24T05:16+00:00",
+     "fin": "2026-10-24T05:53+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/7n1wgb6qsfly"
+    },
+    {
+     "titre": "Elevated errors for Claude Opus 5.5",
+     "debut": "2026-10-24T00:31+00:00",
+     "fin": "2026-10-24T00:37+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/dmn3bc440bnb"
+    },
+    {
+     "titre": "Elevated errors for Claude Fable 5.1, Sonnet 5.5, and Haiku 5.5",
+     "debut": "2026-10-23T23:37+00:00",
+     "fin": "2026-10-24T00:11+00:00",
+     "impact": "critical",
+     "lien": "https://stspg.io/gqp288t3qzpt"
+    },
+    {
+     "titre": "Elevated errors affecting Connectors",
+     "debut": "2026-10-22T03:50+00:00",
+     "fin": "2026-10-22T08:07+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/4dcr8c005yxc"
+    },
+    {
+     "titre": "Degraded performance for Claude Fable 5",
+     "debut": "2026-10-21T19:49+00:00",
+     "fin": "2026-10-21T20:29+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/cgklr4v2sgkh"
+    }
+   ],
+   "composants_suivis": [
+    "claude.ai"
    ]
   }
  }
