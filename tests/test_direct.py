@@ -195,6 +195,8 @@ def test_retours_des_membres(tmp_path):
     t = totaliser(donnees, public)
     assert t["par_alerte"]["ovhcloud-orage-202611161053"] == {"touche": 2, "pas_touche": 1}
     assert t["par_fournisseur"]["ovhcloud"]["part_touche_pct"] == 67
+    # Les horodatages du test datent de 1970 : comptés au total, pas dans les 30 derniers jours.
+    assert t["club"] == {"signalements_30j": 0, "touche_30j": 0, "alertes_30j": 0, "signalements_total": 3}
     assert lire_message("touche|x y") is None and relever(donnees, {}, client) == 0
 
 
@@ -438,3 +440,12 @@ def test_dossier_client_complet(tmp_path):
                     "Aide à la classification DORA", "plus de 2 heures | 3 h 12 | Oui", "SHA-256", "reconnue (53 min après le début)"):
         assert attendu in md, attendu
     assert "[NOM DE VOTRE ENTREPRISE]" not in md
+
+
+def test_commande_dossier_client(tmp_path):
+    # La commande passe bien par la ligne de commande (c'est ainsi que GitHub l'appelle).
+    from sonde.__main__ import main
+    (tmp_path / "client.yaml").write_text("nom: Cabinet Test\n", encoding="utf-8")
+    assert main(["dossier-client", "--client-fichier", str(tmp_path / "client.yaml"), "--fournisseur", "ovhcloud",
+                 "--mois", "2026-10", "--sortie", str(tmp_path / "sortie")]) == 0
+    assert "Cabinet Test" in (tmp_path / "sortie" / "dossier-ovhcloud-2026-10.md").read_text(encoding="utf-8")
