@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-18T01:44:01+00:00",
+ "genere_le": "2026-11-18T01:53:37+00:00",
  "phrase": "Temps calme sur les 4 fournisseurs.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
@@ -15,9 +15,9 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 161,
+   "ttft_ms": 213,
    "reference_ttft_ms": 210,
-   "lenteur": 0.77,
+   "lenteur": 1.01,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -73,7 +73,7 @@
     {
      "heure": "2026-11-18T01:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 161,
+     "ttft_ms": 213,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -96,7 +96,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-18T01:44:00+00:00",
+   "derniere_mesure": "2026-11-18T01:53:36+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -114,9 +114,9 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 614,
+   "ttft_ms": 608,
    "reference_ttft_ms": 662,
-   "lenteur": 0.93,
+   "lenteur": 0.92,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -172,7 +172,7 @@
     {
      "heure": "2026-11-18T01:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 614,
+     "ttft_ms": 608,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -195,7 +195,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-18T01:44:00+00:00",
+   "derniere_mesure": "2026-11-18T01:53:36+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -213,16 +213,16 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 272,
+   "ttft_ms": 695,
    "reference_ttft_ms": 660,
-   "lenteur": 0.41,
+   "lenteur": 1.05,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
    "disponibilite": {
     "24h": 100.0,
-    "7j": 86.667,
-    "30j": 86.667
+    "7j": 87.5,
+    "30j": 87.5
    },
    "incidents_30j": [
     {
@@ -281,7 +281,7 @@
     {
      "heure": "2026-11-18T01:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 272,
+     "ttft_ms": 695,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -304,7 +304,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-18T01:44:00+00:00",
+   "derniere_mesure": "2026-11-18T01:53:36+00:00",
    "modele_veille": "mistral-small-3.2",
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -322,9 +322,9 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 391,
+   "ttft_ms": 555,
    "reference_ttft_ms": 547,
-   "lenteur": 0.72,
+   "lenteur": 1.02,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -380,7 +380,7 @@
     {
      "heure": "2026-11-18T01:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 391,
+     "ttft_ms": 555,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -403,7 +403,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-18T01:44:00+00:00",
+   "derniere_mesure": "2026-11-18T01:53:36+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
