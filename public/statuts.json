@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-18T10:12:03+00:00",
+ "genere_le": "2026-11-18T18:17:21+00:00",
  "fournisseurs": {
   "mistral": {
    "type": "lien",
@@ -11,7 +11,7 @@
    "etat_officiel": "Performances dégradées",
    "gravite": 2,
    "incident_en_cours": {
-    "titre": "[GAPI] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
+    "titre": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
     "debut": "2026-11-17T14:43+00:00",
     "fin": null,
     "impact": "minor",
@@ -26,7 +26,7 @@
      "lien": "https://stspg.io/1dp6578twk7b"
     },
     {
-     "titre": "[GAPI] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
+     "titre": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
      "debut": "2026-11-17T14:43+00:00",
      "fin": null,
      "impact": "minor",
