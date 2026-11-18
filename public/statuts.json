@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-18T01:53:37+00:00",
+ "genere_le": "2026-11-18T09:26:19+00:00",
  "fournisseurs": {
   "mistral": {
    "type": "lien",
@@ -19,18 +19,18 @@
    },
    "incidents_30j": [
     {
+     "titre": "[Generative API] - [global] - GLM-5.3 timeouts",
+     "debut": "2026-11-16T14:06+00:00",
+     "fin": "2026-11-18T09:09+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/1dp6578twk7b"
+    },
+    {
      "titre": "[GAPI] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
      "debut": "2026-11-17T14:43+00:00",
      "fin": null,
      "impact": "minor",
      "lien": "https://stspg.io/psyhyg4czq4q"
-    },
-    {
-     "titre": "[Generative API] - [global] - GLM-5.3 timeouts",
-     "debut": "2026-11-16T14:06+00:00",
-     "fin": null,
-     "impact": "minor",
-     "lien": "https://stspg.io/1dp6578twk7b"
     },
     {
      "titre": "[Generative-Apis] [fr-par] - mistral-small-3.2-24b-instruct-2506 outage",
