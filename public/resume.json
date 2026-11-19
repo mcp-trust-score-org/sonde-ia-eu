@@ -3,41 +3,41 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 36,
-      "disponibilite_pct": 91.7,
+      "appels": 39,
+      "disponibilite_pct": 89.7,
       "ttft_p50_ms": 846,
-      "ttft_p95_ms": 1106,
+      "ttft_p95_ms": 1101,
       "duree_p50_ms": 2234,
-      "jetons_par_s_median": 82.4,
+      "jetons_par_s_median": 76.8,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
-        "réponse vide": 3
+        "réponse vide": 4
       }
     },
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 36,
+      "appels": 39,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 1076,
-      "ttft_p95_ms": 126967,
-      "duree_p50_ms": 1698,
-      "jetons_par_s_median": 26.8,
-      "qualite_pct": 97.2,
+      "ttft_p50_ms": 1159,
+      "ttft_p95_ms": 121679,
+      "duree_p50_ms": 1970,
+      "jetons_par_s_median": 25.4,
+      "qualite_pct": 97.4,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     },
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 36,
+      "appels": 39,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 1112,
-      "ttft_p95_ms": 37017,
-      "duree_p50_ms": 1824,
-      "jetons_par_s_median": 43.8,
-      "qualite_pct": 83.3,
+      "ttft_p50_ms": 1125,
+      "ttft_p95_ms": 36928,
+      "duree_p50_ms": 1900,
+      "jetons_par_s_median": 45.7,
+      "qualite_pct": 82.1,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     }
@@ -68,6 +68,16 @@
         "Olala-v1.0-translate"
       ],
       "retires": []
+    },
+    {
+      "fournisseur": "ovhcloud",
+      "horodatage": "2026-11-19T08:46:02+00:00",
+      "ajoutes": [
+        "Olala-v1.0-summarise"
+      ],
+      "retires": [
+        "Olala-v1.0-summarize"
+      ]
     }
   ],
   "absents": [
@@ -78,8 +88,8 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-19T01:19:07+00:00",
-  "total_mesures": 108,
+  "genere_le": "2026-11-19T08:52:51+00:00",
+  "total_mesures": 117,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [
     "ovhcloud"
