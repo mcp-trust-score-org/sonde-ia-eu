@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-19T08:53:00+00:00",
+ "genere_le": "2026-11-19T16:49:18+00:00",
  "fournisseurs": {
   "mistral": {
    "type": "lien",
@@ -8,16 +8,17 @@
   "scaleway": {
    "type": "statuspage",
    "url": "https://status.scaleway.com",
-   "etat_officiel": "Performances dégradées",
-   "gravite": 2,
-   "incident_en_cours": {
-    "titre": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
-    "debut": "2026-11-17T14:43+00:00",
-    "fin": null,
-    "impact": "minor",
-    "lien": "https://stspg.io/psyhyg4czq4q"
-   },
+   "etat_officiel": "Tout fonctionne",
+   "gravite": 0,
+   "incident_en_cours": null,
    "incidents_30j": [
+    {
+     "titre": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
+     "debut": "2026-11-17T14:43+00:00",
+     "fin": "2026-11-19T13:20+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/psyhyg4czq4q"
+    },
     {
      "titre": "[Generative API] - [global] - GLM-5.3 timeouts",
      "debut": "2026-11-16T14:06+00:00",
@@ -26,25 +27,11 @@
      "lien": "https://stspg.io/1dp6578twk7b"
     },
     {
-     "titre": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
-     "debut": "2026-11-17T14:43+00:00",
-     "fin": null,
-     "impact": "minor",
-     "lien": "https://stspg.io/psyhyg4czq4q"
-    },
-    {
      "titre": "[Generative-Apis] [fr-par] - mistral-small-3.2-24b-instruct-2506 outage",
      "debut": "2026-11-12T09:49+00:00",
      "fin": "2026-11-12T09:50+00:00",
      "impact": "minor",
      "lien": "https://stspg.io/x5j54cj4bds9"
-    },
-    {
-     "titre": "[Generative API] - [global] - GLM-5.3 timeouts",
-     "debut": "2026-10-20T15:31+00:00",
-     "fin": "2026-11-06T10:45+00:00",
-     "impact": "minor",
-     "lien": "https://stspg.io/77bwk7d9r2rb"
     },
     {
      "titre": "[GenerativeAPI] - Deepseek-v4/v4.1-flash timeouts",
