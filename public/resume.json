@@ -3,43 +3,48 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 45,
-      "disponibilite_pct": 91.1,
-      "ttft_p50_ms": 846,
-      "ttft_p95_ms": 1087,
-      "duree_p50_ms": 2514,
+      "appels": 48,
+      "disponibilite_pct": 87.5,
+      "ttft_p50_ms": 847,
+      "ttft_p95_ms": 1132,
+      "duree_p50_ms": 2518,
       "jetons_par_s_median": 72.5,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
-        "réponse vide": 4
+        "réponse vide": 4,
+        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 2
       }
     },
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 45,
-      "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 1365,
-      "ttft_p95_ms": 132905,
-      "duree_p50_ms": 1970,
-      "jetons_par_s_median": 24.7,
-      "qualite_pct": 95.6,
+      "appels": 48,
+      "disponibilite_pct": 95.8,
+      "ttft_p50_ms": 1262,
+      "ttft_p95_ms": 131983,
+      "duree_p50_ms": 1913,
+      "jetons_par_s_median": 24.8,
+      "qualite_pct": 95.7,
       "cout_moyen_eur_par_1000_taches": null,
-      "principales_erreurs": {}
+      "principales_erreurs": {
+        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 2
+      }
     },
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 45,
-      "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 1032,
-      "ttft_p95_ms": 34873,
-      "duree_p50_ms": 1900,
-      "jetons_par_s_median": 50.2,
-      "qualite_pct": 80.0,
+      "appels": 48,
+      "disponibilite_pct": 95.8,
+      "ttft_p50_ms": 1021,
+      "ttft_p95_ms": 34374,
+      "duree_p50_ms": 1824,
+      "jetons_par_s_median": 51.8,
+      "qualite_pct": 80.4,
       "cout_moyen_eur_par_1000_taches": null,
-      "principales_erreurs": {}
+      "principales_erreurs": {
+        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 2
+      }
     }
   ],
   "changements_catalogue": [
@@ -88,8 +93,8 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-20T08:38:27+00:00",
-  "total_mesures": 135,
+  "genere_le": "2026-11-20T17:51:44+00:00",
+  "total_mesures": 144,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [
     "ovhcloud"
