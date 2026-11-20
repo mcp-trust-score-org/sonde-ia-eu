@@ -1,0 +1,688 @@
+{
+ "genere_le": "2026-11-20T21:49:40+00:00",
+ "fenetre_jours": 7,
+ "sources": {
+  "pages de statut en amont": {
+   "etat": "ok"
+  },
+  "Meteoalarm": {
+   "etat": "ok"
+  },
+  "CERT-FR": {
+   "etat": "ok"
+  },
+  "Cloudflare Radar": {
+   "etat": "ignorée",
+   "raison": "pas de jeton (facultatif)"
+  },
+  "Presse (GDELT)": {
+   "etat": "erreur",
+   "raison": "ValueError: GDELT injoignable : ovhcloud : HTTPStatusError; scaleway : HTTPStatusError; ionos : HTTPStatusError; mistral : HTTPStatusError; cloudflare : HTTPStatusError"
+  }
+ },
+ "dependances": {
+  "mistral": [
+   "cloudflare"
+  ]
+ },
+ "evenements": [
+  {
+   "id": "cloudflare-akjr7qn5o622",
+   "titre": "Cloudflare : Cache Purging Delays in Milan",
+   "type": "incident_amont",
+   "debut": "2026-11-20T20:51+00:00",
+   "fin": null,
+   "gravite": "none",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/akjr7qn5o622",
+     "titre": "Cache Purging Delays in Milan"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-oz6to8yacrxe",
+   "titre": "Cloudflare : Network Performance Issues in Washington, DC datacenter (IAD)",
+   "type": "incident_amont",
+   "debut": "2026-11-20T20:35+00:00",
+   "fin": null,
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/oz6to8yacrxe",
+     "titre": "Network Performance Issues in Washington, DC datacenter (IAD)"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-iysf3fasf7wn",
+   "titre": "Cloudflare : Cloudflare Dashboard and Cloudflare API service issues in EU region",
+   "type": "incident_amont",
+   "debut": "2026-11-20T18:24+00:00",
+   "fin": "2026-11-20T18:53+00:00",
+   "gravite": "major",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/iysf3fasf7wn",
+     "titre": "Cloudflare Dashboard and Cloudflare API service issues in EU region"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-xsgbfncq7of7",
+   "titre": "Cloudflare : Cache Purging Delays in Amsterdam",
+   "type": "incident_amont",
+   "debut": "2026-11-20T18:00+00:00",
+   "fin": "2026-11-20T19:41+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/xsgbfncq7of7",
+     "titre": "Cache Purging Delays in Amsterdam"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-4lv21sf5fzhm",
+   "titre": "Cloudflare : Network Performance Issues in Miami",
+   "type": "incident_amont",
+   "debut": "2026-11-20T05:00+00:00",
+   "fin": "2026-11-20T14:28+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm",
+     "titre": "Network Performance Issues in Miami"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-pfwuex7qix27",
+   "titre": "Cloudflare :  R2 and Durable Objects availability issues",
+   "type": "incident_amont",
+   "debut": "2026-11-20T02:52+00:00",
+   "fin": "2026-11-20T04:35+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/pfwuex7qix27",
+     "titre": " R2 and Durable Objects availability issues"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-ljrvdciu7syf",
+   "titre": "Cloudflare : Observability ingestion delay and query failures",
+   "type": "incident_amont",
+   "debut": "2026-11-19T16:30+00:00",
+   "fin": "2026-11-19T21:55+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/ljrvdciu7syf",
+     "titre": "Observability ingestion delay and query failures"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-5pe5mb9fefi8",
+   "titre": "Cloudflare : Durable Objects and D1 – Increased Errors",
+   "type": "incident_amont",
+   "debut": "2026-11-19T13:05+00:00",
+   "fin": "2026-11-19T13:37+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/5pe5mb9fefi8",
+     "titre": "Durable Objects and D1 – Increased Errors"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-sd2sya0mc6df",
+   "titre": "Cloudflare : Cloudflare Access Issue",
+   "type": "incident_amont",
+   "debut": "2026-11-19T06:48+00:00",
+   "fin": "2026-11-19T08:56+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/sd2sya0mc6df",
+     "titre": "Cloudflare Access Issue"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-f33c51cw0ojd",
+   "titre": "Cloudflare : Degraded connectivity between Europe and Asia Pacific",
+   "type": "incident_amont",
+   "debut": "2026-11-18T22:26+00:00",
+   "fin": "2026-11-19T03:19+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/f33c51cw0ojd",
+     "titre": "Degraded connectivity between Europe and Asia Pacific"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-9zpa7own49hb",
+   "titre": "Cloudflare : Increased latency on Analytics API (GraphQL) queries",
+   "type": "incident_amont",
+   "debut": "2026-11-18T20:35+00:00",
+   "fin": "2026-11-18T23:22+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/9zpa7own49hb",
+     "titre": "Increased latency on Analytics API (GraphQL) queries"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-2wjvsj2kqt07",
+   "titre": "Cloudflare : R2 Downloads Stalling in Japan",
+   "type": "incident_amont",
+   "debut": "2026-11-18T13:45+00:00",
+   "fin": "2026-11-18T15:03+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/2wjvsj2kqt07",
+     "titre": "R2 Downloads Stalling in Japan"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-76lqmua6x3tk",
+   "titre": "Cloudflare : Network Performance Issues in North America",
+   "type": "incident_amont",
+   "debut": "2026-11-18T10:56+00:00",
+   "fin": "2026-11-18T10:00+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/76lqmua6x3tk",
+     "titre": "Network Performance Issues in North America"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-njt9j3k2zdfw",
+   "titre": "Cloudflare : Network disruption across multiple colocations in India",
+   "type": "incident_amont",
+   "debut": "2026-11-18T08:04+00:00",
+   "fin": "2026-11-18T08:46+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/njt9j3k2zdfw",
+     "titre": "Network disruption across multiple colocations in India"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-pi6wgeh78wsn",
+   "titre": "Cloudflare : Elevated 5xx error rates and latency in Mumbai",
+   "type": "incident_amont",
+   "debut": "2026-11-18T04:05+00:00",
+   "fin": "2026-11-18T03:04+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/pi6wgeh78wsn",
+     "titre": "Elevated 5xx error rates and latency in Mumbai"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-k3r9i5tbre4i",
+   "titre": "Cloudflare : Network Performance Issues in Paris",
+   "type": "incident_amont",
+   "debut": "2026-11-18T03:39+00:00",
+   "fin": "2026-11-18T04:51+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/k3r9i5tbre4i",
+     "titre": "Network Performance Issues in Paris"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-0jozucwnpzy0",
+   "titre": "Cloudflare : Cloudflare Access Issue",
+   "type": "incident_amont",
+   "debut": "2026-11-18T01:10+00:00",
+   "fin": "2026-11-18T02:39+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/0jozucwnpzy0",
+     "titre": "Cloudflare Access Issue"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-ylj5po752g6h",
+   "titre": "Cloudflare : Issues with Durable Objects and Dependent Services",
+   "type": "incident_amont",
+   "debut": "2026-11-17T21:56+00:00",
+   "fin": "2026-11-18T00:17+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/ylj5po752g6h",
+     "titre": "Issues with Durable Objects and Dependent Services"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-gcn9xop0f7zm",
+   "titre": "Cloudflare : R2 elevated errors and timeouts for requests from South America",
+   "type": "incident_amont",
+   "debut": "2026-11-17T20:05+00:00",
+   "fin": "2026-11-17T22:08+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/gcn9xop0f7zm",
+     "titre": "R2 elevated errors and timeouts for requests from South America"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-du63c25qjgjs",
+   "titre": "Cloudflare : Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
+   "type": "incident_amont",
+   "debut": "2026-11-17T17:12+00:00",
+   "fin": "2026-11-17T18:00+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/du63c25qjgjs",
+     "titre": "Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-1ip2m5rvk7vb",
+   "titre": "Cloudflare : Elevated number of 5xx and 499 errors",
+   "type": "incident_amont",
+   "debut": "2026-11-17T15:50+00:00",
+   "fin": "2026-11-17T14:35+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb",
+     "titre": "Elevated number of 5xx and 499 errors"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-sv9tnfpjiojf",
+   "titre": "Cloudflare : Errors and stalled predictions on some models",
+   "type": "incident_amont",
+   "debut": "2026-11-17T15:02+00:00",
+   "fin": "2026-11-18T03:23+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/sv9tnfpjiojf",
+     "titre": "Errors and stalled predictions on some models"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-tawn3zx7wh0z",
+   "titre": "Cloudflare : Cloudflare One Gateway traffic unable to connect to Cloudflare domains that are regionalized",
+   "type": "incident_amont",
+   "debut": "2026-11-17T13:54+00:00",
+   "fin": "2026-11-17T14:56+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/tawn3zx7wh0z",
+     "titre": "Cloudflare One Gateway traffic unable to connect to Cloudflare domains that are regionalized"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-5831aw44ia7i",
+   "titre": "Cloudflare : Turnstile verification failures",
+   "type": "incident_amont",
+   "debut": "2026-11-17T10:24+00:00",
+   "fin": "2026-11-17T16:37+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/5831aw44ia7i",
+     "titre": "Turnstile verification failures"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-1nqok7v173qg",
+   "titre": "Cloudflare : Elevated number of 52x origin connectivity errors in Seoul",
+   "type": "incident_amont",
+   "debut": "2026-11-17T08:51+00:00",
+   "fin": "2026-11-17T05:50+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/1nqok7v173qg",
+     "titre": "Elevated number of 52x origin connectivity errors in Seoul"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-3l6q71x7a37k",
+   "titre": "Cloudflare : Network Performance Issues in Ashburn, US",
+   "type": "incident_amont",
+   "debut": "2026-11-17T00:41+00:00",
+   "fin": "2026-11-17T01:48+00:00",
+   "gravite": "none",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/3l6q71x7a37k",
+     "titre": "Network Performance Issues in Ashburn, US"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-wscmdyvmpb5d",
+   "titre": "Cloudflare : Network Performance Issues in Montreal, Canada",
+   "type": "incident_amont",
+   "debut": "2026-11-16T21:36+00:00",
+   "fin": "2026-11-16T20:40+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/wscmdyvmpb5d",
+     "titre": "Network Performance Issues in Montreal, Canada"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-69855o2zz6kl",
+   "titre": "Cloudflare : Errors creating predictions for some models",
+   "type": "incident_amont",
+   "debut": "2026-11-16T14:30+00:00",
+   "fin": "2026-11-16T16:19+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/69855o2zz6kl",
+     "titre": "Errors creating predictions for some models"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-sozoycnmog2m",
+   "titre": "Cloudflare : Elevated number of errors in Bogotá",
+   "type": "incident_amont",
+   "debut": "2026-11-15T03:12+00:00",
+   "fin": "2026-11-15T03:00+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/sozoycnmog2m",
+     "titre": "Elevated number of errors in Bogotá"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-dpao7idy3zei",
+   "titre": "Cloudflare : Elevated error rates on R2 buckets in West North America",
+   "type": "incident_amont",
+   "debut": "2026-11-14T20:18+00:00",
+   "fin": "2026-11-14T20:20+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/dpao7idy3zei",
+     "titre": "Elevated error rates on R2 buckets in West North America"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-a643zcsfc71q",
+   "titre": "Cloudflare : Increased errors for R2 and Tiered Cache",
+   "type": "incident_amont",
+   "debut": "2026-11-14T05:30+00:00",
+   "fin": "2026-11-14T06:45+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/a643zcsfc71q",
+     "titre": "Increased errors for R2 and Tiered Cache"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
+   "id": "cloudflare-rikplz89rpml",
+   "titre": "Cloudflare : Issues with 1.1.1.1 public resolver in Canada",
+   "type": "incident_amont",
+   "debut": "2026-11-13T23:53+00:00",
+   "fin": "2026-11-14T01:01+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/rikplz89rpml",
+     "titre": "Issues with 1.1.1.1 public resolver in Canada"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  }
+ ],
+ "angles_morts_sonde": [
+  {
+   "id": "github-2zfqmghmg3s3",
+   "titre": "GitHub : Incident with Pull Requests",
+   "type": "incident_amont",
+   "debut": "2026-11-16T11:59+00:00",
+   "fin": "2026-11-16T16:26+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://stspg.io/ljtn69jlt087",
+     "titre": "Incident with Pull Requests"
+    }
+   ],
+   "source_auto": "github"
+  }
+ ]
+}

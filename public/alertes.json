@@ -1,6 +1,18 @@
 [
  {
   "fournisseur": "ovhcloud",
+  "type": "orage",
+  "niveau": "rouge",
+  "titre": "Orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints est en panne (78 % d'échecs). La panne vient du fournisseur, pas de chez vous. Itinéraire bis : Mistral, Scaleway, IONOS fonctionne normalement.",
+  "horodatage": "2026-11-20T21:51:11+00:00",
+  "id": "ovhcloud-orage-202611202151",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
   "type": "fin_orage",
   "niveau": "vert",
   "titre": "Fin de l'orage sur OVHcloud",
