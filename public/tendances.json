@@ -1,0 +1,561 @@
+{
+ "genere_le": "2026-11-20T23:37:52+00:00",
+ "sources": {
+  "Wikipédia": {
+   "etat": "ok",
+   "nombre": 60
+  },
+  "Presse grand public (GDELT)": {
+   "etat": "erreur",
+   "raison": "GdeltErreur: HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 4 essais"
+  },
+  "Détour (GDELT)": {
+   "etat": "erreur",
+   "raison": "GdeltErreur: HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 4 essais"
+  }
+ },
+ "wikipedia": [
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 1,
+   "sujet": "David Habib",
+   "vues": 50967,
+   "url": "https://fr.wikipedia.org/wiki/David_Habib"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 2,
+   "sujet": "Liste de sondages sur l'élection présidentielle française de 2027",
+   "vues": 47101,
+   "url": "https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 3,
+   "sujet": "Grand Theft Auto VI",
+   "vues": 39675,
+   "url": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto_VI"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 4,
+   "sujet": "General Sherman (arbre)",
+   "vues": 33412,
+   "url": "https://fr.wikipedia.org/wiki/General_Sherman_%28arbre%29"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 5,
+   "sujet": "La prochaine fois je viserai le cœur",
+   "vues": 33164,
+   "url": "https://fr.wikipedia.org/wiki/La_prochaine_fois_je_viserai_le_c%C5%93ur"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 6,
+   "sujet": "Jarry (humoriste)",
+   "vues": 32219,
+   "url": "https://fr.wikipedia.org/wiki/Jarry_%28humoriste%29"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 7,
+   "sujet": "Affaire Alain Lamare",
+   "vues": 28378,
+   "url": "https://fr.wikipedia.org/wiki/Affaire_Alain_Lamare"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 8,
+   "sujet": "Grand Theft Auto",
+   "vues": 26959,
+   "url": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 9,
+   "sujet": "Affaire des Avions renifleurs",
+   "vues": 21511,
+   "url": "https://fr.wikipedia.org/wiki/Affaire_des_Avions_renifleurs"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 10,
+   "sujet": "Gabriel Attal",
+   "vues": 17666,
+   "url": "https://fr.wikipedia.org/wiki/Gabriel_Attal"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 11,
+   "sujet": "Bertrand Meheut",
+   "vues": 17015,
+   "url": "https://fr.wikipedia.org/wiki/Bertrand_Meheut"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 12,
+   "sujet": "David Lisnard",
+   "vues": 14843,
+   "url": "https://fr.wikipedia.org/wiki/David_Lisnard"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 13,
+   "sujet": "Hunger Games (série de films)",
+   "vues": 14294,
+   "url": "https://fr.wikipedia.org/wiki/Hunger_Games_%28s%C3%A9rie_de_films%29"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 14,
+   "sujet": "Élisabeth de Wittelsbach",
+   "vues": 13822,
+   "url": "https://fr.wikipedia.org/wiki/%C3%89lisabeth_de_Wittelsbach"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 15,
+   "sujet": "Robert Pattinson",
+   "vues": 13047,
+   "url": "https://fr.wikipedia.org/wiki/Robert_Pattinson"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 16,
+   "sujet": "Eldorado (mini-série)",
+   "vues": 12843,
+   "url": "https://fr.wikipedia.org/wiki/Eldorado_%28mini-s%C3%A9rie%29"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 17,
+   "sujet": "Philippe Caubère",
+   "vues": 12290,
+   "url": "https://fr.wikipedia.org/wiki/Philippe_Caub%C3%A8re"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 18,
+   "sujet": "Jean-Luc Mélenchon",
+   "vues": 11829,
+   "url": "https://fr.wikipedia.org/wiki/Jean-Luc_M%C3%A9lenchon"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 19,
+   "sujet": "Marine Tondelier",
+   "vues": 11599,
+   "url": "https://fr.wikipedia.org/wiki/Marine_Tondelier"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 20,
+   "sujet": "Carole Bouquet",
+   "vues": 11272,
+   "url": "https://fr.wikipedia.org/wiki/Carole_Bouquet"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 21,
+   "sujet": "Hunger Games : Lever de soleil sur la moisson (film)",
+   "vues": 10457,
+   "url": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_Lever_de_soleil_sur_la_moisson_%28film%29"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 22,
+   "sujet": "Fabrice Luchini",
+   "vues": 10209,
+   "url": "https://fr.wikipedia.org/wiki/Fabrice_Luchini"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 23,
+   "sujet": "Grand Theft Auto V",
+   "vues": 10107,
+   "url": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto_V"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 24,
+   "sujet": "Raphaël Glucksmann",
+   "vues": 9958,
+   "url": "https://fr.wikipedia.org/wiki/Rapha%C3%ABl_Glucksmann"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 25,
+   "sujet": "Sylvain Durif",
+   "vues": 9693,
+   "url": "https://fr.wikipedia.org/wiki/Sylvain_Durif"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 26,
+   "sujet": "Teddy Riner",
+   "vues": 9572,
+   "url": "https://fr.wikipedia.org/wiki/Teddy_Riner"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 27,
+   "sujet": "Hugues Moutouh",
+   "vues": 9149,
+   "url": "https://fr.wikipedia.org/wiki/Hugues_Moutouh"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 28,
+   "sujet": "Vassili Schneider",
+   "vues": 9082,
+   "url": "https://fr.wikipedia.org/wiki/Vassili_Schneider"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 29,
+   "sujet": "Anne-Cécile Mailfert",
+   "vues": 9056,
+   "url": "https://fr.wikipedia.org/wiki/Anne-C%C3%A9cile_Mailfert"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "fr.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 30,
+   "sujet": "La Comtesse de Monte-Cristo",
+   "vues": 8635,
+   "url": "https://fr.wikipedia.org/wiki/La_Comtesse_de_Monte-Cristo"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 1,
+   "sujet": "Grand Theft Auto VI",
+   "vues": 750227,
+   "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 2,
+   "sujet": "Ramayana: Part 1",
+   "vues": 371581,
+   "url": "https://en.wikipedia.org/wiki/Ramayana%3A_Part_1"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 3,
+   "sujet": "Stephen Wilson Jr.",
+   "vues": 327962,
+   "url": "https://en.wikipedia.org/wiki/Stephen_Wilson_Jr."
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 4,
+   "sujet": "Ella Langley",
+   "vues": 189264,
+   "url": "https://en.wikipedia.org/wiki/Ella_Langley"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 5,
+   "sujet": "Ken McElroy",
+   "vues": 172820,
+   "url": "https://en.wikipedia.org/wiki/Ken_McElroy"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 6,
+   "sujet": "Robert Pattinson",
+   "vues": 172742,
+   "url": "https://en.wikipedia.org/wiki/Robert_Pattinson"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 7,
+   "sujet": "Grand Theft Auto",
+   "vues": 171292,
+   "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 8,
+   "sujet": "Dario Amodei",
+   "vues": 167998,
+   "url": "https://en.wikipedia.org/wiki/Dario_Amodei"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 9,
+   "sujet": ".xxx",
+   "vues": 128793,
+   "url": "https://en.wikipedia.org/wiki/.xxx"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 10,
+   "sujet": "Larry Poindexter",
+   "vues": 124373,
+   "url": "https://en.wikipedia.org/wiki/Larry_Poindexter"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 11,
+   "sujet": "The Hunger Games: Sunrise on the Reaping",
+   "vues": 121672,
+   "url": "https://en.wikipedia.org/wiki/The_Hunger_Games%3A_Sunrise_on_the_Reaping"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 12,
+   "sujet": "International Men's Day",
+   "vues": 118074,
+   "url": "https://en.wikipedia.org/wiki/International_Men%27s_Day"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 13,
+   "sujet": "List of highest-grossing Indian films",
+   "vues": 116217,
+   "url": "https://en.wikipedia.org/wiki/List_of_highest-grossing_Indian_films"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 14,
+   "sujet": "Rockstar Games",
+   "vues": 112864,
+   "url": "https://en.wikipedia.org/wiki/Rockstar_Games"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 15,
+   "sujet": "Anthropic",
+   "vues": 112202,
+   "url": "https://en.wikipedia.org/wiki/Anthropic"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 16,
+   "sujet": "The Body (TV series)",
+   "vues": 111521,
+   "url": "https://en.wikipedia.org/wiki/The_Body_%28TV_series%29"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 17,
+   "sujet": "Grand Theft Auto V",
+   "vues": 108371,
+   "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto_V"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 18,
+   "sujet": "John Madden",
+   "vues": 102039,
+   "url": "https://en.wikipedia.org/wiki/John_Madden"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 19,
+   "sujet": "Leigh Nash",
+   "vues": 95384,
+   "url": "https://en.wikipedia.org/wiki/Leigh_Nash"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 20,
+   "sujet": "Jeff Bezos",
+   "vues": 93836,
+   "url": "https://en.wikipedia.org/wiki/Jeff_Bezos"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 21,
+   "sujet": "Daniela Amodei",
+   "vues": 92187,
+   "url": "https://en.wikipedia.org/wiki/Daniela_Amodei"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 22,
+   "sujet": "Lainey Wilson",
+   "vues": 86763,
+   "url": "https://en.wikipedia.org/wiki/Lainey_Wilson"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 23,
+   "sujet": "Fiona (hippopotamus)",
+   "vues": 83965,
+   "url": "https://en.wikipedia.org/wiki/Fiona_%28hippopotamus%29"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 24,
+   "sujet": "Susan Smith",
+   "vues": 81561,
+   "url": "https://en.wikipedia.org/wiki/Susan_Smith"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 25,
+   "sujet": "Hakeem Jeffries",
+   "vues": 76486,
+   "url": "https://en.wikipedia.org/wiki/Hakeem_Jeffries"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 26,
+   "sujet": "Suki Waterhouse",
+   "vues": 75449,
+   "url": "https://en.wikipedia.org/wiki/Suki_Waterhouse"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 27,
+   "sujet": "Ansel Adams",
+   "vues": 74494,
+   "url": "https://en.wikipedia.org/wiki/Ansel_Adams"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 28,
+   "sujet": "Manni L. Perez",
+   "vues": 69951,
+   "url": "https://en.wikipedia.org/wiki/Manni_L._Perez"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 29,
+   "sujet": "Iron Gate (Antioch)",
+   "vues": 69354,
+   "url": "https://en.wikipedia.org/wiki/Iron_Gate_%28Antioch%29"
+  },
+  {
+   "source": "wikipedia",
+   "projet": "en.wikipedia.org",
+   "jour": "2026-11-19",
+   "rang": 30,
+   "sujet": "Lucia Caminos",
+   "vues": 65359,
+   "url": "https://en.wikipedia.org/wiki/Lucia_Caminos"
+  }
+ ],
+ "presse": [],
+ "detour": []
+}

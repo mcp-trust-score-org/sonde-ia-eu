@@ -4,19 +4,19 @@
     "nom": "OVHcloud AI Endpoints",
     "pays": "FR"
   },
-  "genere_le": "2026-11-20T21:03:17+00:00",
+  "genere_le": "2026-11-20T23:28:41+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-20T21:03:17+00:00"
+    "fin": "2026-11-20T23:28:41+00:00"
   },
   "performance": [
     {
       "modele": "gpt-oss-120b",
-      "appels": 48,
-      "disponibilite_pct": 87.5,
+      "appels": 51,
+      "disponibilite_pct": 82.35,
       "ttft_median_ms": 847,
       "ttft_p95_ms": 1132,
-      "heures_avec_echec": 5,
+      "heures_avec_echec": 6,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
         "anonyme"
@@ -24,11 +24,11 @@
     },
     {
       "modele": "llama-3.3-70b",
-      "appels": 48,
-      "disponibilite_pct": 95.83,
-      "ttft_median_ms": 1262,
-      "ttft_p95_ms": 131983,
-      "heures_avec_echec": 1,
+      "appels": 51,
+      "disponibilite_pct": 92.16,
+      "ttft_median_ms": 1316,
+      "ttft_p95_ms": 131061,
+      "heures_avec_echec": 2,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
         "anonyme"
@@ -36,11 +36,11 @@
     },
     {
       "modele": "mistral-small-3.2",
-      "appels": 48,
-      "disponibilite_pct": 95.83,
-      "ttft_median_ms": 1021,
-      "ttft_p95_ms": 34374,
-      "heures_avec_echec": 1,
+      "appels": 51,
+      "disponibilite_pct": 92.16,
+      "ttft_median_ms": 1011,
+      "ttft_p95_ms": 33875,
+      "heures_avec_echec": 2,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
         "anonyme"
@@ -48,7 +48,7 @@
     }
   ],
   "reseau": {
-    "dernier_releve": "2026-11-20T20:50:28+00:00",
+    "dernier_releve": "2026-11-20T23:16:02+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "ue_observe",
     "constats": [
@@ -64,26 +64,26 @@
     "verdicts_sur_periode": [
       "ue_observe"
     ],
-    "releves": 2
+    "releves": 3
   },
   "stabilite": [
     {
       "modele": "gpt-oss-120b",
-      "empreintes": 2,
+      "empreintes": 3,
       "derniere_similarite": null,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "llama-3.3-70b",
-      "empreintes": 2,
-      "derniere_similarite": 0.5578,
+      "empreintes": 3,
+      "derniere_similarite": 0.5896,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "mistral-small-3.2",
-      "empreintes": 2,
+      "empreintes": 3,
       "derniere_similarite": 0.7273,
       "alertes": [],
       "changements_identifiant": []
@@ -144,6 +144,10 @@
   "preuves": [
     {
       "manifeste": "2026-11-17.json",
+      "ancrage_ots": true
+    },
+    {
+      "manifeste": "2026-11-20.json",
       "ancrage_ots": true
     }
   ],
