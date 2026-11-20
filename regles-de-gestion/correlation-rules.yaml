@@ -2,7 +2,7 @@
 # Voir REGLES_CORRELATION.md pour l'explication de chaque règle.
 # Toute modification change la version : elle est enregistrée avec chaque impact (règle R10).
 
-version: "1.3.0"
+version: "1.3.1"
 fuseau_stockage: "UTC"
 
 # R0 — une anomalie n'est attribuée au fournisseur que si elle est vue

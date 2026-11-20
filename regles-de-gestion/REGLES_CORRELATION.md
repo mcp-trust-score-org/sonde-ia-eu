@@ -72,6 +72,7 @@ Le résultat « Aucune anomalie » est une information à part entière : s'il e
 
 ## 6. Tag de relecture
 
+- **R12 bis — Pas de mesure, pas de niveau.** Si la sonde n'a fait aucune mesure du fournisseur pendant l'événement (trou entre deux relevés), l'impact n'est pas classé : il part dans les événements « non couverts ». Il n'est jamais présenté comme un « signal faible ».
 - **R13 — Tag invisible sur le site.** Le niveau (Confirmé, Probable, Possible, Aucune anomalie) est enregistré avec chaque impact dans le champ `correlation.niveau`. Il s'affiche uniquement dans l'écran de relecture de la rédaction, jamais dans un contenu publié.
 - **R14 — La rédaction décide.** Les règles calculent le tag et proposent un texte ; elles ne bloquent ni ne publient rien. La décision « publier / ne pas publier » est prise par la rédaction, au cas par cas, et enregistrée (R10).
 - **R15 — Aucune anomalie.** Quand aucune anomalie n'est mesurée chez les fournisseurs du client pendant l'événement, le texte proposé est : « Aucune anomalie mesurée chez vos fournisseurs ».
