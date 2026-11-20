@@ -38,6 +38,14 @@ jobs:
       - name: Produire le classement sur 7 jours
         run: python -m sonde rapport --jours 7
 
+      - name: Actualités et croisement avec les mesures
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          python -m sonde actualites
+          python -m sonde croiser
+        continue-on-error: true
+
       - name: Météo et alertes
         if: vars.VEILLE_SERVEUR != 'oui'
         env:
@@ -56,7 +64,7 @@ jobs:
         run: |
           git config user.name "sonde-ia-eu"
           git config user.email "sonde-ia-eu@users.noreply.github.com"
-          git add data public
+          git add data public rapports
           git diff --cached --quiet || git commit -m "Mesures $(date -u +%Y-%m-%dT%H:%MZ)"
           # Plusieurs workflows peuvent publier en même temps : on réessaie,
           # et en cas de conflit sur un fichier régénéré, notre version (la plus récente) l'emporte.
