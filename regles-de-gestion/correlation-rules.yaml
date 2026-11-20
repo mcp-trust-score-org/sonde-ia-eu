@@ -2,7 +2,7 @@
 # Voir REGLES_CORRELATION.md pour l'explication de chaque règle.
 # Toute modification change la version : elle est enregistrée avec chaque impact (règle R10).
 
-version: "1.2.0"
+version: "1.3.0"
 fuseau_stockage: "UTC"
 
 # R0 — une anomalie n'est attribuée au fournisseur que si elle est vue
@@ -38,6 +38,9 @@ symptomes_attendus:
   logiciel: [erreurs, indisponibilite]
   maintenance: [indisponibilite, lenteur]
   cyberattaque: [indisponibilite, erreurs, lenteur]
+  incident_fournisseur: [indisponibilite, erreurs, lenteur]   # incident déclaré sur une page de statut
+  incident_amont: [indisponibilite, erreurs, lenteur]         # panne d'un acteur dont dépend le fournisseur (Cloudflare…)
+  meteo: [indisponibilite, lenteur]                            # alerte météo orange ou rouge sur un site
   autre: [indisponibilite, lenteur, erreurs]
 
 # R4 — sources considérées comme une confirmation officielle

@@ -14,7 +14,7 @@
       "type": "object",
       "required": ["type", "fournisseur", "debut", "sources"],
       "properties": {
-        "type": { "enum": ["refroidissement", "energie", "materiel", "reseau", "certificat", "logiciel", "maintenance", "cyberattaque", "autre"] },
+        "type": { "enum": ["refroidissement", "energie", "materiel", "reseau", "certificat", "logiciel", "maintenance", "cyberattaque", "incident_fournisseur", "incident_amont", "meteo", "autre"] },
         "fournisseur": { "type": "string" },
         "region": { "type": ["string", "null"], "description": "null ou 'global' si toutes les régions" },
         "debut": { "type": "string", "format": "date-time" },
