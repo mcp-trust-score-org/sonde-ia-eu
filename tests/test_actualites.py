@@ -64,7 +64,12 @@ GDELT = {
 }
 
 
+appels_gdelt: list = []
+
+
 def _client():
+    appels_gdelt.clear()
+
     def repondre(req: httpx.Request) -> httpx.Response:
         u = str(req.url)
         if "cloudflarestatus" in u:
@@ -78,14 +83,10 @@ def _client():
         if "cert.cyber.gouv.fr" in u:
             return httpx.Response(200, content=CERT)
         if "gdeltproject" in u:
-            q = req.url.params["query"]
-            if "OVHcloud" in q:
-                return httpx.Response(200, json=GDELT["ovhcloud"])
-            if "Cloudflare" in q:
-                return httpx.Response(200, json=GDELT["cloudflare"])
-            if "IONOS" in q:   # GDELT répond parfois en texte brut
-                return httpx.Response(200, text="Your search contained a keyword that was too short.")
-            return httpx.Response(200, json={})
+            appels_gdelt.append(req.url.params["query"])
+            if len(appels_gdelt) == 1:   # GDELT refuse souvent le premier appel
+                return httpx.Response(429, text="Please limit requests to one every 5 seconds")
+            return httpx.Response(200, json={"articles": GDELT["ovhcloud"]["articles"] + GDELT["cloudflare"]["articles"]})
         return httpx.Response(404)
     return httpx.Client(transport=httpx.MockTransport(repondre))
 
@@ -138,8 +139,53 @@ def test_presse_tri_fin(tmp_path):
     # Le tri : bourse écarté, annonce sans incident écartée, titre sans acteur écarté.
     tri = res["tri_presse"]
     assert tri["hors_sujet"] == 1 and tri["sans_incident"] == 1 and tri["sans_acteur"] == 1
-    # Une requête refusée par GDELT rend la source « partielle », sans bloquer les autres.
-    assert res["sources"]["Presse (GDELT)"]["etat"] == "partiel"
+    # Un refus pour excès de débit (429) est réessayé ; une seule requête pour tous les acteurs.
+    assert res["sources"]["Presse (GDELT)"]["etat"] == "ok"
+    assert len(appels_gdelt) == 2 and "Scaleway" in appels_gdelt[0] and "Cloudflare" in appels_gdelt[0]
+
+
+def test_presse_repli_par_acteur():
+    """Si GDELT juge la requête groupée trop complexe (réponse texte), une requête par acteur."""
+    from sonde.actualites import lire_gdelt
+    conf = charger_yaml(RACINE / "config" / "actualites.yaml")["sources"]["gdelt"]
+    vues = []
+
+    def repondre(req):
+        q = req.url.params["query"]
+        vues.append(q)
+        if "Scaleway" in q and "OVHcloud" in q:
+            return httpx.Response(200, text="Your query was too complex.")
+        if "OVHcloud" in q:
+            return httpx.Response(200, json=GDELT["ovhcloud"])
+        if "IONOS" in q:
+            return httpx.Response(503, text="")
+        return httpx.Response(200, content=b"")
+    client = httpx.Client(transport=httpx.MockTransport(repondre))
+    evts, bilan = lire_gdelt(client, conf, {"mistral": {"cloudflare"}}, MAINTENANT.replace(day=13), MAINTENANT,
+                             attendre=lambda s: None)
+    assert "refusée" in bilan["requete_groupee"]
+    assert [e["fournisseurs"] for e in evts] == [["ovhcloud"]]
+    assert bilan["erreurs"] and bilan["erreurs"][0].startswith("ionos")   # 503 après 4 essais
+
+
+def test_tri_pages_de_statut():
+    """Cloudflare : on garde le réseau en Europe et les incidents globaux, on écarte le reste."""
+    from sonde.actualites import lire_statuspages
+    conf = charger_yaml(RACINE / "config" / "actualites.yaml")["sources"]
+    noms = {
+        "a": "Network Performance Issues in Paris", "b": "Network Performance Issues in Miami",
+        "c": "Elevated number of 5xx and 499 errors", "d": "R2 Downloads Stalling in Japan",
+        "e": "Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
+        "f": "Turnstile verification failures", "g": "Degraded connectivity between Europe and Asia Pacific",
+        "h": "Cache Purging Delays in Milan", "i": "Elevated errors on API Gateway",
+    }
+    incidents = {"incidents": [{"id": k, "name": v, "created_at": "2026-11-20T09:00:00Z", "impact": "minor",
+                                "components": []} for k, v in noms.items()]}
+    client = httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(200, json=incidents)))
+    sp = {"statuspages": [p for p in conf["statuspages"] if p["id"] == "cloudflare"]}
+    evts, _, ecartes = lire_statuspages(client, sp, {"mistral": {"cloudflare"}}, MAINTENANT.replace(day=13))
+    assert sorted(e["id"].split("-")[1] for e in evts) == ["a", "c", "e", "g", "i"]
+    assert len(ecartes) == 4 and all(x["raison"] for x in ecartes)
 
 
 def test_croisement_sur_mesures_reelles(tmp_path):
@@ -180,3 +226,17 @@ def test_croisement_presse_alertes(tmp_path):
     assert any("Source presse" in a for a in imp["alertes_relecture"])
     assert any("seul média" in a for a in imp["alertes_relecture"])
     assert imp["statut_editorial"] == "a_relire"
+
+
+def test_sans_mesure_pas_de_signal_faible(tmp_path):
+    """Un événement tombé entre deux relevés n'est jamais classé « possible »."""
+    exemple = Path(__file__).parent / "donnees" / "croisement"
+    public = tmp_path / "public"
+    shutil.copytree(exemple, public)
+    actus = {"evenements": [{"id": "trou", "titre": "Incident pendant un trou de mesure", "type": "incident_amont",
+                             "fournisseurs": ["mistral"], "debut": "2026-11-20T03:10:00+00:00",
+                             "fin": "2026-11-20T03:20:00+00:00"}]}
+    (public / "actualites.json").write_text(json.dumps(actus))
+    res = croiser(public, [public / "actualites.json"], tmp_path / "rapports", avec_statuts=False)
+    assert not [i for i in res["impacts"] if i["evenement"]["id"] == "trou"]
+    assert any(n["evenement"] == "Incident pendant un trou de mesure" for n in res["non_couverts"])
