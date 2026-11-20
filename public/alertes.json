@@ -4,6 +4,18 @@
   "type": "vigilance",
   "niveau": "orange",
   "titre": "Vigilance orange sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints : Temps de réponse 13,1 fois plus long que d'habitude.",
+  "horodatage": "2026-11-20T00:42:53+00:00",
+  "id": "ovhcloud-vigilance-202611200042",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur OVHcloud",
   "texte": "OVHcloud AI Endpoints : Temps de réponse 45,1 fois plus long que d'habitude.",
   "horodatage": "2026-11-18T18:17:21+00:00",
   "id": "ovhcloud-vigilance-202611181817",
