@@ -19,6 +19,8 @@
     python -m sonde direct                  # meteo + alertes (à lancer après chaque veille)
     python -m sonde actualites              # événements inattendus collectés (public/actualites.json)
     python -m sonde croiser                 # croise événements et mesures (rapports/croisement.md)
+    python -m sonde tendances               # sujets grand public et liens du Détour (public/tendances.json)
+    python -m sonde rediger                 # propositions d'articles du jour (redaction/propositions/)
 """
 
 from __future__ import annotations
@@ -193,6 +195,8 @@ def main(argv: list[str] | None = None) -> int:
     sous.add_parser("direct", help="météo puis alertes")
     sous.add_parser("actualites", help="collecter les événements inattendus")
     sous.add_parser("croiser", help="croiser les événements avec les mesures")
+    sous.add_parser("tendances", help="sujets grand public et articles pour le Détour")
+    sous.add_parser("rediger", help="propositions d'articles du jour, selon la charte")
     av = sous.add_parser("avoirs", help="avoirs dus selon les contrats")
     av.add_argument("--mois", default=None, help="AAAA-MM (par défaut : le mois précédent)")
     av.add_argument("--facture", nargs="*", default=[], help="fournisseur=montant en euros")
@@ -233,6 +237,22 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  {len(res['impacts'])} impact(s) à relire dans rapports/croisement.md")
         for i in res["impacts"]:
             print(f"  [{i['correlation']['niveau']:<12}] {i['evenement']['fournisseur']:<10} {i['evenement']['titre'][:70]}")
+        return 0
+
+    if args.commande == "tendances":
+        from .tendances import produire_tendances
+        res = produire_tendances(charger_yaml(RACINE / "config" / "redaction.yaml"), RACINE)
+        for nom, etat in res["sources"].items():
+            print(f"  - {nom} : {etat['etat']}" + (f" ({etat.get('nombre')})" if "nombre" in etat else f" ({etat.get('raison')})"))
+        return 0
+
+    if args.commande == "rediger":
+        from .redaction import rediger
+        res = rediger(charger_yaml(RACINE / "config" / "redaction.yaml"), RACINE)
+        for prop in res["propositions"]:
+            titre = (prop.get("article") or {}).get("title") or f"{len(prop.get('liens') or [])} lien(s)"
+            print(f"  [{prop['rubrique']:<14}] {prop['auteur']:<22} {titre[:70]} · {len(prop['alertes_charte'])} alerte(s)")
+        print(f"  → redaction/propositions/{res['date']}.md")
         return 0
 
     if args.commande == "chemin":

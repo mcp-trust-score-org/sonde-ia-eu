@@ -17,7 +17,7 @@ import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-VERSION_REGLES = "1.3.0"
+VERSION_REGLES = "1.3.1"
 
 # ---------- Paramètres (reprennent regles-de-gestion/correlation-rules.yaml) ----------
 FENETRE_AVANT_MIN = 15          # R2 : on regarde 15 min avant le début de l'événement…
@@ -209,8 +209,9 @@ def calculer_niveau(lieu, moment, symptome, officiel, multi_points, nb_mesures):
     if not lieu:
         return "non_concerne"
     if not moment:
-        # Aucune anomalie mesurée dans la fenêtre
-        return "non_concerne" if nb_mesures else "possible"
+        # Aucune anomalie mesurée dans la fenêtre. Sans aucune mesure, on ne sait rien :
+        # l'événement part dans « non couverts », jamais en « signal faible ».
+        return "non_concerne" if nb_mesures else "hors_mesures"
     if symptome and officiel and multi_points:
         return "confirme"
     if symptome and officiel:
@@ -299,7 +300,8 @@ def croiser(donnees: Path, fichiers_evenements: list[Path], sortie: Path, avec_s
 
             if niveau == "hors_mesures":
                 non_couverts.append({"evenement": e.get("titre"), "fournisseur": nom, "debut": iso(debut),
-                                     "raison": "aucune mesure de la sonde sur cette période"})
+                                     "raison": "aucune mesure de la sonde sur cette période" if not couvert
+                                     else "aucune mesure de la sonde pendant l'événement (trou entre deux relevés)"})
                 continue
 
             impacts.append({

@@ -89,9 +89,31 @@ def dependances(conf: dict, dossier_dossiers: Path) -> dict[str, set[str]]:
 
 # ---------------------------------------------------------------- sources
 
-def lire_statuspages(client, conf: dict, dep: dict[str, set[str]], depuis: datetime) -> tuple[list, list]:
-    """Incidents des pages de statut en amont → (événements, angles morts de la sonde)."""
-    evenements, angles_morts = [], []
+_LOCALISE = re.compile(r"\b(in|at)\s+[A-Z]|\([A-Z]{3}\)")
+
+
+def _tri_statuspage(sp: dict, incident: dict, noms: str) -> str | None:
+    """Raison d'écarter un incident d'une page de statut, ou None pour le garder.
+
+    Une grande page comme celle de Cloudflare publie des dizaines d'incidents par semaine,
+    la plupart sans lien avec nos fournisseurs : une ville lointaine, un service qu'ils
+    n'utilisent pas, un incident sans impact.
+    """
+    plat = _plat(noms)
+    if (incident.get("impact") or "none") in (sp.get("impacts_ignores") or []):
+        return "sans impact déclaré"
+    rx_services = _motif(sp.get("services_ignores") or [])
+    if rx_services and rx_services.search(plat):
+        return "service non utilisé par nos fournisseurs"
+    lieux = _motif(sp.get("lieux_utiles") or [])
+    if lieux and _LOCALISE.search(noms) and not lieux.search(plat):
+        return "localisé hors de nos zones"
+    return None
+
+
+def lire_statuspages(client, conf: dict, dep: dict[str, set[str]], depuis: datetime) -> tuple[list, list, list]:
+    """Incidents des pages de statut en amont → (événements, angles morts de la sonde, écartés)."""
+    evenements, angles_morts, ecartes = [], [], []
     for sp in conf.get("statuspages") or []:
         r = client.get(f"{sp['url'].rstrip('/')}/api/v2/incidents.json")
         r.raise_for_status()
@@ -106,7 +128,7 @@ def lire_statuspages(client, conf: dict, dep: dict[str, set[str]], depuis: datet
                 continue
             e = {
                 "id": f"{sp['id']}-{i.get('id') or _slug(i.get('name', ''))}",
-                "titre": f"{sp['nom']} : {i.get('name')}",
+                "titre": f"{sp['nom']} : {(i.get('name') or '').strip()}",
                 "type": "incident_amont",
                 "debut": _iso(debut),
                 "fin": _iso(_date(i.get("resolved_at"))),
@@ -117,11 +139,17 @@ def lire_statuspages(client, conf: dict, dep: dict[str, set[str]], depuis: datet
             }
             if sp.get("role") == "sonde":
                 angles_morts.append(e)
-            elif touches:
-                e["fournisseurs"] = touches
-                e["pourquoi"] = f"{', '.join(touches)} passe(nt) par {sp['nom']} (chemin réseau relevé)"
-                evenements.append(e)
-    return evenements, angles_morts
+                continue
+            if not touches:
+                continue
+            raison = _tri_statuspage(sp, i, noms)
+            if raison:
+                ecartes.append({"titre": e["titre"], "debut": e["debut"], "raison": raison, "url": e["sources"][0]["url"]})
+                continue
+            e["fournisseurs"] = touches
+            e["pourquoi"] = f"{', '.join(touches)} passe(nt) par {sp['nom']} (chemin réseau relevé)"
+            evenements.append(e)
+    return evenements, angles_morts, ecartes
 
 
 def lire_meteoalarm(client, conf: dict, sites: dict, depuis: datetime) -> list:
@@ -286,6 +314,39 @@ def _type_presse(titre_plat: str, conf_types: dict, defaut: str) -> str:
     return defaut
 
 
+class GdeltErreur(Exception):
+    """GDELT n'a pas donné d'articles (débit dépassé, panne…)."""
+
+
+class GdeltRefus(GdeltErreur):
+    """GDELT a répondu en texte : la requête elle-même ne lui convient pas."""
+
+
+def _gdelt_get(client, params: dict, attendre, essais: int = 4, attente_s: float = 15) -> list:
+    """Un appel GDELT, réessayé quand il limite le débit (429) ou flanche (5xx)."""
+    derniere = ""
+    for essai in range(essais):
+        if essai:
+            attendre(attente_s * essai)   # 15 s, 30 s, 45 s…
+        try:
+            r = client.get(GDELT_URL, params=params)
+        except httpx.HTTPError as e:
+            derniere = type(e).__name__
+            continue
+        if r.status_code == 429 or r.status_code >= 500:
+            derniere = f"HTTP {r.status_code} {r.text.strip()[:80]}".strip()
+            continue
+        if r.status_code >= 400:
+            raise GdeltErreur(f"HTTP {r.status_code} {r.text.strip()[:80]}")
+        if not r.content.strip():
+            return []   # aucun article
+        try:
+            return r.json().get("articles") or []
+        except ValueError:
+            raise GdeltRefus(r.text.strip()[:120]) from None
+    raise GdeltErreur(f"{derniere} après {essais} essais")
+
+
 def lire_gdelt(client, conf: dict, dep: dict[str, set[str]], depuis: datetime, maintenant: datetime,
                attendre=time.sleep) -> tuple[list, dict]:
     """Articles de presse (GDELT) → événements « presse » à relire, et un bilan du tri.
@@ -310,28 +371,40 @@ def lire_gdelt(client, conf: dict, dep: dict[str, set[str]], depuis: datetime, m
     retenus = []   # (acteur, article)
     vus_url = set()
 
-    for n, (acteur, reg) in enumerate(acteurs.items()):
-        noms = reg.get("noms") or [acteur]
-        rx_acteur = _motif(noms)
-        requete = _requete_gdelt(noms, reg.get("mots_incident") or mots_incident)
-        if langues:
-            requete += " (" + " OR ".join(f"sourcelang:{l}" for l in langues) + ")"
-        if n:
-            attendre(pause)   # GDELT demande environ une requête toutes les 5 secondes
-        try:
-            r = client.get(GDELT_URL, params={"query": requete, "mode": "ArtList", "format": "json",
-                                              "timespan": f"{jours}d", "maxrecords": conf.get("max_articles", 75),
-                                              "sort": "DateDesc"})
-            r.raise_for_status()
+    params = {"mode": "ArtList", "format": "json", "timespan": f"{jours}d",
+              "maxrecords": conf.get("max_articles", 250), "sort": "DateDesc"}
+    filtre_langue = (" (" + " OR ".join(f"sourcelang:{l}" for l in langues) + ")") if langues else ""
+    appels = [0]
+
+    def interroger(requete: str) -> list:
+        if appels[0]:
+            attendre(pause)   # GDELT demande au plus une requête toutes les 5 secondes
+        appels[0] += 1
+        return _gdelt_get(client, {**params, "query": requete + filtre_langue}, attendre,
+                          conf.get("essais", 4), conf.get("attente_429_s", 15))
+
+    # Une seule requête pour tous les acteurs (moins de refus pour excès de débit).
+    # Si GDELT la juge trop complexe, on repasse à une requête par acteur.
+    tous_noms = [n for reg in acteurs.values() for n in (reg.get("noms") or [])]
+    lots = []
+    try:
+        lots.append(interroger(_requete_gdelt(tous_noms, mots_incident)))
+    except GdeltRefus as e:
+        bilan["requete_groupee"] = f"refusée ({e}) : une requête par acteur"
+        for acteur, reg in acteurs.items():
             try:
-                articles = r.json().get("articles") or []
-            except ValueError:
-                # GDELT répond en texte quand la requête lui déplaît (mot trop court, trop de termes…)
-                bilan["erreurs"].append(f"{acteur} : {r.text.strip()[:120] or 'réponse vide'}")
-                continue
-        except httpx.HTTPError as e:
-            bilan["erreurs"].append(f"{acteur} : {type(e).__name__}")
-            continue
+                lots.append(interroger(_requete_gdelt(reg.get("noms") or [acteur], reg.get("mots_incident") or mots_incident)))
+            except GdeltErreur as e2:
+                bilan["erreurs"].append(f"{acteur} : {e2}")
+        if len(bilan["erreurs"]) == len(acteurs):
+            raise ValueError("GDELT : " + "; ".join(bilan["erreurs"])[:250])
+    except GdeltErreur as e:
+        raise ValueError(f"GDELT : {e}") from None
+
+    motifs = {a: (_motif(reg.get("noms") or [a]),
+                  _motif(reg["mots_incident"]) if reg.get("mots_incident") else rx_incident)
+              for a, reg in acteurs.items()}
+    for articles in lots:
         for a in articles:
             url = a.get("url") or ""
             if url in vus_url:
@@ -345,22 +418,21 @@ def lire_gdelt(client, conf: dict, dep: dict[str, set[str]], depuis: datetime, m
             quand = _gdelt_date(a.get("seendate"))
             if not quand or quand < depuis:
                 continue
-            if not rx_acteur or not rx_acteur.search(plat):
+            cites = [ac for ac, (rx_a, _) in motifs.items() if rx_a and rx_a.search(plat)]
+            if not cites:
                 bilan["sans_acteur"] += 1
                 continue
-            rx_inc = _motif(reg["mots_incident"]) if reg.get("mots_incident") else rx_incident
-            if not rx_inc or not rx_inc.search(plat):
+            cites = [ac for ac in cites if motifs[ac][1] and motifs[ac][1].search(plat)]
+            if not cites:
                 bilan["sans_incident"] += 1
                 continue
             if (rx_exclus and rx_exclus.search(plat)) or any(domaine == d or domaine.endswith("." + d) for d in domaines_exclus):
                 bilan["hors_sujet"] += 1
                 continue
-            retenus.append((acteur, {"titre": titre, "url": url, "domaine": domaine, "date": quand,
-                                     "langue": a.get("language"), "pays": a.get("sourcecountry"),
-                                     "mots": _mots_titre(titre)}))
-
-    if bilan["erreurs"] and len(bilan["erreurs"]) == len(acteurs):
-        raise ValueError("GDELT injoignable : " + "; ".join(bilan["erreurs"])[:180])
+            for acteur in cites:
+                retenus.append((acteur, {"titre": titre, "url": url, "domaine": domaine, "date": quand,
+                                         "langue": a.get("language"), "pays": a.get("sourcecountry"),
+                                         "mots": _mots_titre(titre)}))
 
     # 4. Regroupement : même acteur, titres proches (mots en commun), à moins de 48 h.
     seuil = conf.get("seuil_similarite", 0.3)
@@ -440,6 +512,7 @@ def produire_actualites(conf: dict, racine: Path, client: httpx.Client | None = 
                                     follow_redirects=True, headers=ENTETES)
     evenements, angles_morts, etats = [], [], {}
     bilan_presse = None
+    ecartes_statuts = []
 
     def tenter(nom, fonction, *a):
         try:
@@ -458,6 +531,7 @@ def produire_actualites(conf: dict, racine: Path, client: httpx.Client | None = 
             if res:
                 evenements += res[0]
                 angles_morts += res[1]
+                ecartes_statuts = res[2]
         if sources_conf.get("meteoalarm"):
             res = tenter("Meteoalarm", lire_meteoalarm, client, sources_conf["meteoalarm"], sites, depuis)
             if res:
@@ -491,6 +565,8 @@ def produire_actualites(conf: dict, racine: Path, client: httpx.Client | None = 
         "dependances": {f: sorted(a) for f, a in dep.items()},
         "evenements": uniques,
         "angles_morts_sonde": angles_morts,
+        # Gardés pour contrôle : vous pouvez vérifier que le tri n'a rien écarté d'utile.
+        "ecartes_pages_de_statut": ecartes_statuts,
     }
     if bilan_presse is not None:
         sortie["tri_presse"] = bilan_presse
