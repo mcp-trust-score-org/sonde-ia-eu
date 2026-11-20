@@ -2,7 +2,7 @@ name: Relevés quotidiens
 
 on:
   schedule:
-    - cron: "41 3 * * *"   # chaque jour à 3 h 41 UTC
+    - cron: "41 3 * * *"   # chaque jour à 3 h 41 UTC (4 h 41 à Paris en hiver) : brouillons prêts au réveil
   workflow_dispatch: {}
 
 permissions:
@@ -59,6 +59,14 @@ jobs:
           python -m sonde bulletin
         continue-on-error: true
 
+      - name: Propositions d'articles du jour (selon redaction/CHARTE.md, rien n'est publié)
+        run: |
+          python -m sonde actualites
+          python -m sonde croiser
+          python -m sonde tendances
+          python -m sonde rediger
+        continue-on-error: true
+
       - name: Preuves horodatées
         if: vars.VEILLE_SERVEUR != 'oui'
         run: python -m sonde horodater
@@ -68,7 +76,7 @@ jobs:
         run: |
           git config user.name "sonde-ia-eu"
           git config user.email "sonde-ia-eu@users.noreply.github.com"
-          git add data public preuves dossiers rapports
+          git add data public preuves dossiers rapports redaction
           git diff --cached --quiet || git commit -m "Relevés quotidiens $(date -u +%Y-%m-%d)"
           # Plusieurs workflows peuvent publier en même temps : on réessaie,
           # et en cas de conflit sur un fichier régénéré, notre version (la plus récente) l'emporte.
