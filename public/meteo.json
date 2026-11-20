@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-20T20:44:53+00:00",
+ "genere_le": "2026-11-20T21:03:18+00:00",
  "phrase": "Temps calme sur les 4 fournisseurs.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
@@ -16,8 +16,8 @@
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
    "ttft_ms": 169,
-   "reference_ttft_ms": 205,
-   "lenteur": 0.82,
+   "reference_ttft_ms": 203,
+   "lenteur": 0.83,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -28,13 +28,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-20T14:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-20T15:00+00:00",
      "etat": "inconnu",
@@ -80,8 +73,9 @@
     {
      "heure": "2026-11-20T21:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-20T22:00+00:00",
@@ -91,6 +85,12 @@
     },
     {
      "heure": "2026-11-20T23:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-21T00:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -127,13 +127,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-20T14:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-20T15:00+00:00",
      "etat": "inconnu",
@@ -179,8 +172,9 @@
     {
      "heure": "2026-11-20T21:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-20T22:00+00:00",
@@ -190,6 +184,12 @@
     },
     {
      "heure": "2026-11-20T23:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-21T00:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -214,7 +214,7 @@
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
    "ttft_ms": 170,
-   "reference_ttft_ms": 1014,
+   "reference_ttft_ms": 982,
    "lenteur": 0.17,
    "vigilance": "vert",
    "raison": null,
@@ -236,13 +236,6 @@
     }
    ],
    "chronologie": [
-    {
-     "heure": "2026-11-20T14:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-20T15:00+00:00",
      "etat": "inconnu",
@@ -288,8 +281,9 @@
     {
      "heure": "2026-11-20T21:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-20T22:00+00:00",
@@ -299,6 +293,12 @@
     },
     {
      "heure": "2026-11-20T23:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-21T00:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -323,8 +323,8 @@
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
    "ttft_ms": 390,
-   "reference_ttft_ms": 500,
-   "lenteur": 0.78,
+   "reference_ttft_ms": 488,
+   "lenteur": 0.8,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -335,13 +335,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-20T14:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-20T15:00+00:00",
      "etat": "inconnu",
@@ -387,8 +380,9 @@
     {
      "heure": "2026-11-20T21:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-20T22:00+00:00",
@@ -398,6 +392,12 @@
     },
     {
      "heure": "2026-11-20T23:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-21T00:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"

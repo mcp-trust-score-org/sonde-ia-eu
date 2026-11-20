@@ -1,0 +1,30 @@
+{
+  "genere_le": "2026-11-20T21:03:22+00:00",
+  "methode": "SHA-256 du contenu des N premières lignes de chaque fichier de mesures",
+  "fichiers": {
+    "2026-11.jsonl": {
+      "sha256": "9001865f1d0bb8cd8ae1cd7fc4fe7a6a5471e1fcccc0fbeaf0f412c9ff8ee480",
+      "lignes": 189
+    },
+    "veille/2026-11-16.jsonl": {
+      "sha256": "94f1a747cb39866a04e95007a429dd83372e4fb80571567ed18fbd3265b32c5c",
+      "lignes": 17
+    },
+    "veille/2026-11-17.jsonl": {
+      "sha256": "980dec68203a472df9dd6b2a0de042432ada4a4376792d580cfd0ba1ade32fe5",
+      "lignes": 28
+    },
+    "veille/2026-11-18.jsonl": {
+      "sha256": "4f1e6bd3330462f4bd3f8e702834f1c87056ac009bd01adb60d6e3e12013d126",
+      "lignes": 20
+    },
+    "veille/2026-11-19.jsonl": {
+      "sha256": "4ddede74d43bff5465c4608cd82f6e747ada7752ef961217792dc1ff9a279132",
+      "lignes": 24
+    },
+    "veille/2026-11-20.jsonl": {
+      "sha256": "66a1c20170fc4f4b7ceda4dbd93e1492fe714ccd2686988059c4b2b578ff06b2",
+      "lignes": 24
+    }
+  }
+}
