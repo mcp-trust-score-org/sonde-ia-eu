@@ -1,0 +1,41 @@
+{
+  "impact_id": "imp-2026-11-19-az-ams-001",
+  "article_id": "clim",
+  "client_id": "client-demo",
+  "regles_version": "1.2.0",
+  "evenement": {
+    "type": "refroidissement",
+    "fournisseur": "Microsoft Azure",
+    "region": "West Europe (Amsterdam)",
+    "debut": "2026-11-19T13:12:00Z",
+    "fin": "2026-11-19T13:59:41Z",
+    "sources": [
+      { "type": "statut_fournisseur", "url": "https://example.com/statut-azure-demo", "titre": "Exemple de démonstration" }
+    ]
+  },
+  "correlation": {
+    "lieu": true,
+    "moment": true,
+    "symptome": true,
+    "officiel": true,
+    "multi_points": true,
+    "niveau": "confirme",
+    "texte_propose": "Nos mesures montrent une interruption qui correspond à l'incident reconnu par Microsoft Azure."
+  },
+  "mesures": {
+    "symptome": "indisponibilite",
+    "debut_anomalie": "2026-11-19T13:12:07Z",
+    "fin_anomalie": "2026-11-19T13:59:41Z",
+    "duree_secondes": 2854,
+    "points_de_mesure": ["Paris · opérateur A", "Francfort · opérateur B", "Londres · opérateur C"],
+    "preuves": ["mes-8812201", "mes-8812202", "mes-8812203"]
+  },
+  "services_touches": [
+    { "nom": "Portail client", "criticite": "critique" },
+    { "nom": "Intranet", "criticite": "importante" }
+  ],
+  "avoir_estime": { "montant": 400, "devise": "EUR", "sla_contractuel": 99.9, "disponibilite_mesuree": 99.68 },
+  "statut_editorial": "a_relire",
+  "valide_par": null,
+  "valide_le": null
+}

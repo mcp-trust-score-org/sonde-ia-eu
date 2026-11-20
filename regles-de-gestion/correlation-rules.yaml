@@ -1,0 +1,92 @@
+# Paramètres des règles de gestion — corrélation fait ↔ mesures
+# Voir REGLES_CORRELATION.md pour l'explication de chaque règle.
+# Toute modification change la version : elle est enregistrée avec chaque impact (règle R10).
+
+version: "1.2.0"
+fuseau_stockage: "UTC"
+
+# R0 — une anomalie n'est attribuée au fournisseur que si elle est vue
+# depuis plusieurs points de mesure sur des réseaux différents
+points_de_mesure:
+  minimum_pour_fournisseur: 2
+  reseaux_distincts: true
+
+# Définition d'une anomalie
+anomalies:
+  indisponibilite:
+    echecs_consecutifs: 3
+  lenteur:
+    reference: "mediane_p95_7_jours_meme_creneau"
+    seuil_multiplicateur: 1.3      # +30 % au-dessus de la référence
+    duree_minimale_minutes: 15
+  erreurs:
+    taux_minimum: 0.02             # 2 % des requêtes
+    duree_minimale_minutes: 10
+
+# R2 — fenêtre autour du début de l'événement
+fenetre_temps:
+  avant_minutes: 15
+  apres_minutes: 30
+
+# R3 — symptômes attendus par type d'événement
+symptomes_attendus:
+  refroidissement: [indisponibilite]
+  energie: [indisponibilite]
+  materiel: [indisponibilite, erreurs]
+  reseau: [lenteur, erreurs, indisponibilite]
+  certificat: [erreurs, indisponibilite]
+  logiciel: [erreurs, indisponibilite]
+  maintenance: [indisponibilite, lenteur]
+  cyberattaque: [indisponibilite, erreurs, lenteur]
+  autre: [indisponibilite, lenteur, erreurs]
+
+# R4 — sources considérées comme une confirmation officielle
+sources_officielles: [statut_fournisseur, rapport_incident]
+sources_non_officielles: [presse, reseaux_sociaux, signalement_utilisateur]
+
+# Calcul du niveau (dans l'ordre : le premier qui correspond l'emporte)
+niveaux:
+  - code: confirme
+    libelle: "Confirmé"
+    exige: [lieu, moment, symptome, officiel, multi_points]
+  - code: probable
+    libelle: "Probable"
+    exige: [lieu, moment, symptome, multi_points]
+  - code: possible
+    libelle: "Possible"
+    exige_un_parmi: [[lieu, moment], [lieu, symptome], [lieu, anomalie_locale]]
+  - code: non_concerne
+    libelle: "Aucune anomalie"
+    cas: [fournisseur_hors_inventaire, region_hors_inventaire, aucune_anomalie_dans_fenetre]
+  - code: hors_perimetre
+    libelle: "Hors périmètre"
+    cas: [fournisseur_non_identifie]
+
+# R6 — formulations imposées
+gabarits:
+  confirme: "Nos mesures montrent une interruption qui correspond à l'incident reconnu par {fournisseur}."
+  probable: "Nos mesures montrent {symptome} au même moment. {fournisseur} n'a pas encore confirmé d'incident."
+  possible: "Un signal faible a été mesuré. Il est en cours de vérification."
+  non_concerne: "Aucune anomalie mesurée chez vos fournisseurs"
+
+# R13 à R15 — tag de relecture (la rédaction filtre, pas les règles)
+tag_relecture:
+  champ: "correlation.niveau"
+  afficher_sur_site: false
+  visible_dans: [ecran_relecture]
+  decision: redaction
+
+# R7 — avoirs
+avoirs:
+  niveaux_autorises: [confirme, probable]
+  affichage: "estime"            # toujours précédé de « ≈ »
+
+# R9 à R12 — circuit de validation
+validation:
+  statuts: [brouillon_auto, a_relire, valide, publie, rejete]
+  publication_automatique: false
+  qui_peut_valider: [redaction]
+  recalcul_si_nouvelle_source: true
+  alerte_relecture:
+    confirme_heures: 2
+    probable_heures: 6
