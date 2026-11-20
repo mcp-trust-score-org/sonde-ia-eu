@@ -17,10 +17,28 @@ import os
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 
 import httpx
 
 from .mesure import appeler, lire_catalogue, resoudre_modele
+
+
+async def _adresses(hote: str, delai_s: float = 3.0) -> list[str]:
+    """Adresses IP vers lesquelles pointe l'API à cet instant (sert à repérer la région / l'entrée réseau).
+
+    Une résolution qui échoue ou traîne n'empêche jamais la mesure : on renvoie simplement [].
+    """
+    try:
+        infos = await asyncio.wait_for(asyncio.get_running_loop().getaddrinfo(hote, 443), delai_s)
+    except (OSError, asyncio.TimeoutError):
+        return []
+    vues = []
+    for info in infos:
+        ip = info[4][0]
+        if ip not in vues:
+            vues.append(ip)
+    return vues[:4]
 
 
 def fichier_veille(dossier: Path, quand: datetime) -> Path:
@@ -193,6 +211,22 @@ async def veiller(config: dict, conf_veille: dict, dossier: Path, env: dict | No
                 continue
             travaux.append(_veiller_un(client, f, cle, offre, config, conf_veille, cache, maintenant, point))
         lignes = list(await asyncio.gather(*travaux))
+        # Région / entrée réseau : l'adresse IP de l'API au moment de la mesure.
+        # Croisée avec le chemin réseau quotidien (python -m sonde chemin), elle dit par quel
+        # opérateur et quel pays la requête est entrée. Elle ne dit pas où tourne le modèle.
+        par_id = {f["id"]: f for f in config["fournisseurs"] + config.get("assistants", [])}
+        hotes = {}
+        for l in lignes:
+            f = par_id.get(l["fournisseur"])
+            if f:
+                url = f.get("porte_url") if l.get("offre") == "porte" and f.get("porte_url") else f["base_url"]
+                hote = urlparse(url).hostname
+                if hote:
+                    hotes[l["fournisseur"]] = hote
+        resolus = dict(zip(hotes, await asyncio.gather(*(_adresses(h) for h in hotes.values()))))
+        for l in lignes:
+            l["hote"] = hotes.get(l["fournisseur"])
+            l["ip"] = resolus.get(l["fournisseur"], [])
     sortie = fichier_veille(dossier, maintenant)
     sortie.parent.mkdir(parents=True, exist_ok=True)
     with open(sortie, "a", encoding="utf-8") as fh:
