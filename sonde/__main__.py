@@ -17,6 +17,8 @@
     python -m sonde attestation --fournisseur ovhcloud --debut 2026-11-16T14:00 --fin 2026-11-16T16:00
     python -m sonde bulletin                # image et texte du bulletin du matin
     python -m sonde direct                  # meteo + alertes (à lancer après chaque veille)
+    python -m sonde actualites              # événements inattendus collectés (public/actualites.json)
+    python -m sonde croiser                 # croise événements et mesures (rapports/croisement.md)
 """
 
 from __future__ import annotations
@@ -189,6 +191,8 @@ def main(argv: list[str] | None = None) -> int:
     sous.add_parser("meteo", help="calculer la météo de l'IA")
     sous.add_parser("alertes", help="envoyer les alertes de changement de temps")
     sous.add_parser("direct", help="météo puis alertes")
+    sous.add_parser("actualites", help="collecter les événements inattendus")
+    sous.add_parser("croiser", help="croiser les événements avec les mesures")
     av = sous.add_parser("avoirs", help="avoirs dus selon les contrats")
     av.add_argument("--mois", default=None, help="AAAA-MM (par défaut : le mois précédent)")
     av.add_argument("--facture", nargs="*", default=[], help="fournisseur=montant en euros")
@@ -213,6 +217,23 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.commande in ("veille", "meteo", "alertes", "direct", "avoirs", "attestation", "bulletin", "dossier-client"):
         return _commandes_direct(args, donnees, preuves)
+
+    if args.commande == "actualites":
+        from .actualites import produire_actualites
+        res = produire_actualites(charger_yaml(RACINE / "config" / "actualites.yaml"), RACINE)
+        for nom, etat in res["sources"].items():
+            print(f"  - {nom} : {etat['etat']}" + (f" ({etat['raison']})" if etat.get("raison") else ""))
+        print(f"  {len(res['evenements'])} événement(s), {len(res['angles_morts_sonde'])} angle(s) mort(s) de la sonde")
+        return 0
+
+    if args.commande == "croiser":
+        from .croisement import croiser
+        res = croiser(RACINE / "public", [RACINE / "public" / "actualites.json", RACINE / "config" / "evenements.json"],
+                      RACINE / "rapports")
+        print(f"  {len(res['impacts'])} impact(s) à relire dans rapports/croisement.md")
+        for i in res["impacts"]:
+            print(f"  [{i['correlation']['niveau']:<12}] {i['evenement']['fournisseur']:<10} {i['evenement']['titre'][:70]}")
+        return 0
 
     if args.commande == "chemin":
         from .chemin import tracer
