@@ -64,6 +64,21 @@ sources:
       nom: Cloudflare
       url: https://www.cloudflarestatus.com
       role: amont
+      # Tri : Cloudflare publie des dizaines d'incidents par semaine. On écarte (en les gardant
+      # pour contrôle dans « ecartes_pages_de_statut ») ceux sans impact, ceux sur un service que
+      # l'API de Mistral n'utilise pas, et ceux localisés dans une ville hors de nos zones.
+      impacts_ignores: [none]
+      # Noms complets des produits : « Gateway » seul écarterait aussi un incident « API Gateway ».
+      services_ignores: [R2, Durable Objects, D1, Workers AI, predictions, Turnstile, Cloudflare Access,
+                         Access Issue, Cloudflare Gateway, Gateway traffic, Cloudflare One, Zero Trust, WARP,
+                         Cloudflare Dashboard, Analytics, Observability, Logpush, Cloudflare Stream,
+                         Cloudflare Images, Cloudflare Pages, Registrar, Cache Purging, Purge, 1.1.1.1,
+                         Email Routing, Billing, Support Portal]
+      # Un incident « in <ville> » ou « (CDG) » n'est gardé que s'il touche l'une de ces zones.
+      lieux_utiles: [Europe, European, EU, EMEA, France, Paris, Marseille, Germany, Frankfurt, Dusseldorf,
+                     Hamburg, Berlin, Munich, Sweden, Stockholm, Amsterdam, Netherlands, London, Brussels,
+                     Dublin, Milan, Madrid, Zurich, Vienna, Copenhagen, Oslo, Helsinki, Warsaw, Prague,
+                     Lisbon, CDG, MRS, FRA, DUS, HAM, TXL, MUC, ARN, AMS, LHR, global, worldwide, multiple regions]
     - id: github
       nom: GitHub
       url: https://www.githubstatus.com
@@ -128,8 +143,10 @@ sources:
       cyberattaque: [cyberattaque, cyberattack, ransomware, ddos, rancongiciel, piratage, hacked]
       reseau: [fibre, cable, sous-marin, bgp, dns]
     langues: [french, english, german]
-    max_articles: 75
-    pause_s: 6                   # GDELT demande environ une requête toutes les 5 secondes
+    max_articles: 250            # maximum autorisé par GDELT pour une requête
+    pause_s: 6                   # GDELT demande au plus une requête toutes les 5 secondes
+    essais: 4                    # GDELT refuse souvent un premier appel (débit) : on réessaie
+    attente_429_s: 15            # puis 15 s, 30 s, 45 s entre les essais
     seuil_similarite: 0.3        # part de mots communs pour regrouper deux titres
     repris_a_partir_de: 2        # « repris » si au moins 2 médias, sinon « isolé »
     avance_h: 6                  # la panne a pu commencer jusqu'à 6 h avant la première parution

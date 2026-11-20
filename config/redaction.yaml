@@ -1,0 +1,115 @@
+# Rédaction : les propositions d'articles préparées chaque jour par GitHub.
+#
+#   python -m sonde tendances   # sujets grand public et articles pour le Détour (public/tendances.json)
+#   python -m sonde rediger     # brouillons du jour (redaction/propositions/AAAA-MM-JJ.md et .json)
+#
+# Les règles d'écriture sont dans redaction/CHARTE.md. Rien n'est publié sur le site.
+
+# ---------------------------------------------------------------------------
+# Rythme (jours : 0 = lundi … 6 = dimanche)
+# ---------------------------------------------------------------------------
+rythme:
+  une:
+    par_jour: 1
+    bilan_le: 0                 # bilan de la semaine chaque lundi
+  tous_connectes:
+    jours: [0, 2, 4, 5]         # 4 sujets par semaine : lundi, mercredi, vendredi, samedi
+    reflexe_de_la_semaine: 0    # le lundi
+  detour:
+    jours: [4]                  # le vendredi
+    liens: 6
+  candidats_affiches: 10        # sujets en réserve listés sous chaque proposition
+
+# ---------------------------------------------------------------------------
+# Le rédacteur : un modèle d'IA qui écrit les brouillons à partir des faits collectés,
+# avec la charte en consigne. Sans clé, GitHub prépare des fiches (faits + sources + structure)
+# à rédiger à la main.
+# Format compatible OpenAI ; par défaut l'API de Mistral, dont la clé est déjà dans les secrets.
+# ---------------------------------------------------------------------------
+redacteur:
+  base_url: https://api.mistral.ai/v1
+  cle_env: MISTRAL_API_KEY
+  modele: mistral-medium-latest
+  temperature: 0.4
+  delai_s: 90
+  essais: 2
+
+# ---------------------------------------------------------------------------
+# Lecture des articles : avant d'écrire, GitHub ouvre les articles de presse retenus et en donne
+# le texte au rédacteur, comme source de faits à reformuler (jamais à recopier : un contrôle
+# signale toute suite de 12 mots identiques). Les articles payants ou protégés restent non lus,
+# et le brouillon le signale.
+# ---------------------------------------------------------------------------
+lecture:
+  actif: true
+  max_articles: 3              # par sujet
+  max_caracteres: 6000         # par article
+  min_caracteres: 400          # en dessous : article payant ou page protégée
+  detour_caracteres: 1500      # début d'article lu pour écrire « pourquoi le lire »
+  delai_s: 15
+
+# ---------------------------------------------------------------------------
+# Tous connectés : ce qui passionne les gens en ce moment. Pas de filtre par thème :
+# le seul filtre est le test du « Et vous ? », appliqué au moment de la rédaction.
+# ---------------------------------------------------------------------------
+tendances:
+  # Pages les plus lues de Wikipédia la veille (gratuit, public, sans clé).
+  wikipedia:
+    projets: [fr.wikipedia.org, en.wikipedia.org]
+    nombre: 30
+    # Pages toujours en tête, sans intérêt éditorial
+    exclure: [Accueil, Main_Page, Wikipédia:Accueil_principal, Spécial:Recherche, Special:Search,
+              Cleopatra, XXX, Pornhub, Xvideos, Deaths_in_2026, Décès_en_2026, Undefined]
+  # Presse grand public via GDELT : des mots qui signalent souvent une dépendance numérique,
+  # sur tous les sujets (culture, achats, société, monde).
+  gdelt:
+    mots: [panne, bug, "rupture de stock", "file d'attente", serveurs, "hors service", piratage,
+           arnaque, viral, "bloqué", "plus rien ne marche", algorithme, application, "en ligne",
+           outage, crashed, "sold out", queue, scam, hacked, "went down"]
+    langues: [french, english]
+    max_articles: 250
+    pause_s: 6
+    essais: 4
+    attente_429_s: 15
+
+# ---------------------------------------------------------------------------
+# Le Détour : médias de référence. `chemin` restreint un grand site à une rubrique.
+# ---------------------------------------------------------------------------
+detour:
+  jours: 7
+  mots: [IA, intelligence artificielle, panne, cloud, données, numérique, internet, cyber,
+         algorithme, plateforme, serveurs, électricité, câble, satellite, AI, outage, data,
+         chips, datacenter, platform, algorithm]
+  medias:
+    - { nom: Next,               domaine: next.ink }
+    - { nom: Numerama,           domaine: numerama.com }
+    - { nom: Usbek & Rica,       domaine: usbeketrica.com }
+    - { nom: Pixels (Le Monde),  domaine: lemonde.fr, chemin: /pixels/ }
+    - { nom: Le Grand Continent, domaine: legrandcontinent.eu }
+    - { nom: Reporterre,         domaine: reporterre.net }
+    - { nom: Rest of World,      domaine: restofworld.org, langue: anglais }
+    - { nom: 404 Media,          domaine: 404media.co, langue: anglais }
+    - { nom: Ars Technica,       domaine: arstechnica.com, langue: anglais }
+    - { nom: The Register,       domaine: theregister.com, langue: anglais }
+
+# ---------------------------------------------------------------------------
+# Images : la catégorie de l'article choisit la photo de la banque (iris/assets/photos/).
+# ---------------------------------------------------------------------------
+images:
+  ia: ia.jpg
+  logiciel: logiciel.jpg
+  reseau: reseau.jpg
+  energie: energie.jpg
+  meteo: energie.jpg
+  cyberattaque: logiciel.jpg
+  cloud: une-statue-arc.jpg
+  jeux-video: jeux-video.jpg
+  musique: pop-culture-concert.jpg
+  cinema: pop-culture-cinema.jpg
+  societe: societe.jpg
+  sante: sante.jpg
+  politique: politique.jpg
+  medias: medias-tv.jpg
+  savoir: savoir.jpg
+  innovation: innovation.jpg
+  autre: innovation.jpg
