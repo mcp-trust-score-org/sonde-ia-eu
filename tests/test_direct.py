@@ -78,6 +78,8 @@ def test_veille_contre_faux_fournisseurs(serveur, tmp_path):
     assert par["rapide"]["succes"] and par["rapide"]["ttft_ms"] is not None
     assert not par["panne"]["succes"] and par["panne"]["statut_http"] == 503
     assert par["anonyme"]["succes"] and par["anonyme"]["offre"] == "anonyme" and par["anonyme"]["modele_id"] == "gpt-oss-120b"
+    # Chaque mesure garde l'hôte de l'API et l'adresse IP résolue à cet instant (région / entrée réseau).
+    assert par["rapide"]["hote"] == "127.0.0.1" and par["rapide"]["ip"] == ["127.0.0.1"]
     cache = json.loads((tmp_path / "veille" / "cache-modeles.json").read_text())
     assert cache["rapide"]["modele_id"] == "Meta-Llama-3_3-70B-Instruct"
     # Deuxième passage : le cache évite de relire le catalogue, et les lignes s'ajoutent.
