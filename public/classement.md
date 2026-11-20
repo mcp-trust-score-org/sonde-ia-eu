@@ -4,7 +4,7 @@
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 42 | 90.5 % | 794 ms / 1094 ms | 2482 ms | 73.5 | 100 % | – |
+| 1 | ovhcloud (anonyme) | 45 | 91.1 % | 846 ms / 1087 ms | 2514 ms | 72.5 | 100 % | – |
 
 Erreurs : ovhcloud (anonyme) – réponse vide (4)
 
@@ -12,13 +12,13 @@ Erreurs : ovhcloud (anonyme) – réponse vide (4)
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 42 | 100 % | 1134 ms / 117855 ms | 1802 ms | 25.9 | 95.2 % | – |
+| 1 | ovhcloud (anonyme) | 45 | 100 % | 1365 ms / 132905 ms | 1970 ms | 24.7 | 95.6 % | – |
 
 ## mistral-small-3.2
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 42 | 100 % | 1066 ms / 36370 ms | 1824 ms | 49.8 | 81 % | – |
+| 1 | ovhcloud (anonyme) | 45 | 100 % | 1032 ms / 34873 ms | 1900 ms | 50.2 | 80 % | – |
 
 ## Modèles absents du catalogue
 
