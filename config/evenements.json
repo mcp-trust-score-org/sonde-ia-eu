@@ -1,0 +1,4 @@
+{
+  "_lisez_moi": "Événements ajoutés à la main (un fait lu dans la presse, signalé par un client…). Les sources automatiques (public/actualites.json) et les pages de statut sont croisées sans rien recopier ici. Heures en UTC. fournisseurs : mistral, scaleway, ovhcloud, ionos, ou [\"tous\"]. type : refroidissement, energie, materiel, reseau, certificat, logiciel, maintenance, cyberattaque, meteo, autre.",
+  "evenements": []
+}

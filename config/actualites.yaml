@@ -1,0 +1,140 @@
+# Actualités : les événements inattendus que la sonde collecte pour les croiser avec ses mesures.
+#
+#   python -m sonde actualites   # écrit public/actualites.json
+#   python -m sonde croiser      # croise actualités + config/evenements.json avec les mesures
+#
+# Rien n'est publié automatiquement : le croisement produit des « impacts » à relire.
+
+# ---------------------------------------------------------------------------
+# Où tournent les services suivis. Sert à relier un événement local (tempête,
+# coupure d'électricité ou d'internet) au bon fournisseur.
+# `alerte_meteo` : noms de zones Meteoalarm (départements en France, Länder en Allemagne).
+# `fiabilite` : sure (documentation officielle) ou probable (source indirecte).
+# ---------------------------------------------------------------------------
+sites:
+  ovhcloud:
+    - ville: Gravelines
+      region: Hauts-de-France
+      pays: FR
+      alerte_meteo: [Nord]
+      fiabilite: sure
+      source: "https://www.ovhcloud.com/en/public-cloud/regions-availability/ (AI Endpoints : GRA7, GRA11)"
+  scaleway:
+    - ville: Paris
+      region: Île-de-France
+      pays: FR
+      alerte_meteo: [Paris, Hauts-de-Seine, Seine-Saint-Denis, Val-de-Marne, Val-d'Oise, Essonne]
+      fiabilite: sure
+      source: "https://www.scaleway.com/en/developers/api/generative-apis/ (région fr-par uniquement)"
+  ionos:
+    - ville: Berlin
+      region: Berlin
+      pays: DE
+      alerte_meteo: [Berlin]
+      fiabilite: sure
+      source: "https://learn.cloud.ionos.com/foundational/products/AI/ai-model-hub.html (centre de données de Berlin)"
+  mistral:
+    # L'adresse mesurée (api.mistral.ai) est « globale » : Mistral ne garantit pas la région.
+    # Son aide indique des serveurs en Suède ; son point d'accès UE couvre plusieurs centres en UE/AELE.
+    - ville: inconnue (UE)
+      region: inconnue
+      pays: SE
+      alerte_meteo: []
+      fiabilite: probable
+      source: "https://help.mistral.ai/en/articles/156206 ; https://docs.mistral.ai/studio/regional-inference"
+
+# ---------------------------------------------------------------------------
+# Dépendances : les acteurs dont la panne se répercute sur un fournisseur.
+# Complété automatiquement par le chemin réseau relevé chaque jour
+# (dossiers/<fournisseur>.json → reseau.intermediaires), qui montre par exemple
+# que l'API de Mistral passe par Cloudflare.
+# ---------------------------------------------------------------------------
+dependances: {}
+#   mistral: [cloudflare]
+
+# ---------------------------------------------------------------------------
+# Sources. Toutes gratuites et publiques. Une source injoignable est notée, jamais bloquante.
+# ---------------------------------------------------------------------------
+sources:
+  # Pages de statut des acteurs « en amont » (format Atlassian Statuspage, API publique sans clé).
+  # `role: amont` : leurs incidents touchent les fournisseurs qui dépendent d'eux.
+  # `role: sonde` : leurs incidents peuvent aveugler la sonde elle-même (angle mort, pas un événement).
+  statuspages:
+    - id: cloudflare
+      nom: Cloudflare
+      url: https://www.cloudflarestatus.com
+      role: amont
+    - id: github
+      nom: GitHub
+      url: https://www.githubstatus.com
+      role: sonde
+      motif: "Actions"
+
+  # Alertes météo officielles (Meteoalarm, EUMETNET). On ne garde que l'orange et le rouge.
+  meteoalarm:
+    pays:
+      FR: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-france
+      DE: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-germany
+    gravites: [Severe, Extreme]
+
+  # Alertes de sécurité de l'ANSSI. On ne garde que celles qui citent un fournisseur suivi
+  # ou un acteur dont il dépend.
+  cert_fr:
+    url: https://cert.cyber.gouv.fr/feed/
+    mots_cles:
+      ovhcloud: [OVH]
+      scaleway: [Scaleway]
+      ionos: [IONOS]
+      mistral: [Mistral, Cloudflare]
+
+  # Coupures d'internet par pays (Cloudflare Radar). Facultatif : nécessite un jeton gratuit
+  # dans le secret CLOUDFLARE_API_TOKEN (permission « Radar : lecture »). Sans jeton, ignoré.
+  cloudflare_radar:
+    cle_env: CLOUDFLARE_API_TOKEN
+    pays: [FR, DE, SE]
+
+  # Presse en ligne mondiale (GDELT DOC 2.0 : gratuit, sans clé, ~65 langues, mis à jour toutes les 15 min).
+  # Google Actualités n'est PAS utilisé : ses conditions réservent ses flux à un usage personnel,
+  # non commercial (https://www.google.com/intl/en_us/terms_google_news.html).
+  #
+  # Le tri porte sur le TITRE (GDELT ne fournit pas le texte des articles) :
+  #   1. un nom d'acteur ci-dessous est dans le titre ;
+  #   2. un mot d'incident est dans le titre ;
+  #   3. aucun mot hors sujet, aucun domaine exclu ;
+  #   4. les titres proches sur 48 h sont regroupés en un seul événement (avec le nombre de médias).
+  # Tout ce qui passe va au croisement, marqué « presse » : c'est vous qui décidez de publier.
+  gdelt:
+    acteurs:
+      ovhcloud:   { noms: [OVHcloud, OVH] }
+      scaleway:   { noms: [Scaleway] }
+      ionos:      { noms: [IONOS] }
+      mistral:    { noms: [Mistral AI] }   # pas « Mistral » seul : le vent fait aussi des coupures
+      # Acteurs en amont : rattachés aux fournisseurs qui passent par eux (chemin réseau relevé)
+      cloudflare: { noms: [Cloudflare], role: amont }
+    # Accents et majuscules sont ignorés (« coupure » trouve aussi « Coupure »).
+    mots_incident: [panne, pannes, outage, outages, down, coupure, incendie, fire, blaze, perturbation,
+                    perturbations, indisponible, indisponibilite, interruption, disruption, ausfall,
+                    storung, stromausfall, brand, cyberattaque, cyberattack, ransomware, ddos, rancongiciel,
+                    piratage, hacked, inondation, flood, surchauffe, overheating, blackout]
+    mots_exclus: [bourse, action, actions, shares, stock, earnings, resultats, chiffre d'affaires,
+                  rachat, acquisition, acquiert, levee de fonds, funding, recrute, recrutement, hiring,
+                  emploi, promo, code promo, black friday, avis, review, test, tutoriel, tutorial, how to]
+    domaines_exclus: []          # ex. sites de communiqués ou agrégateurs bruyants
+    # Type d'événement deviné d'après les mots des titres (sinon : incident fournisseur ou en amont).
+    types:
+      energie: [coupure d'electricite, stromausfall, blackout, power outage, power cut]
+      materiel: [incendie, fire, blaze, brand]
+      refroidissement: [surchauffe, overheating, canicule, heatwave]
+      cyberattaque: [cyberattaque, cyberattack, ransomware, ddos, rancongiciel, piratage, hacked]
+      reseau: [fibre, cable, sous-marin, bgp, dns]
+    langues: [french, english, german]
+    max_articles: 75
+    pause_s: 6                   # GDELT demande environ une requête toutes les 5 secondes
+    seuil_similarite: 0.3        # part de mots communs pour regrouper deux titres
+    repris_a_partir_de: 2        # « repris » si au moins 2 médias, sinon « isolé »
+    avance_h: 6                  # la panne a pu commencer jusqu'à 6 h avant la première parution
+
+# Fenêtre de collecte
+reglages:
+  jours: 7
+  delai_s: 20
