@@ -23,24 +23,35 @@ rythme:
 # ---------------------------------------------------------------------------
 # Le rédacteur : un modèle d'IA qui écrit les brouillons à partir des faits collectés,
 # avec la charte en consigne. Format compatible OpenAI.
-# Par défaut Mistral, si le secret MISTRAL_API_KEY est renseigné ; sinon le secours ci-dessous.
-# Si aucun ne répond, GitHub prépare des fiches (faits, sources, structure) à rédiger à la main.
+# Si aucun service ne répond, GitHub prépare des fiches (faits, sources, structure) à rédiger à la main.
 # ---------------------------------------------------------------------------
 redacteur:
-  base_url: https://api.mistral.ai/v1
-  cle_env: MISTRAL_API_KEY
-  modele: mistral-medium-latest
   temperature: 0.4
   delai_s: 120
   essais: 2
-  # Sans clé : OVHcloud AI Endpoints en accès anonyme (gratuit, sans compte ni carte, hébergé en France),
-  # le même accès que la sonde utilise pour ses mesures. Limité à 2 requêtes par minute et par modèle :
-  # on attend 31 s entre deux appels. Si le premier modèle ne répond pas, le suivant prend le relais.
-  secours:
-    base_url: https://oai.endpoints.kepler.ai.cloud.ovh.net/v1
-    modeles: [Mistral-Small-3.2-24B-Instruct-2506, gpt-oss-120b, Meta-Llama-3_3-70B-Instruct]
-    sans_cle: true
-    pause_s: 31
+  # Services essayés dans l'ordre. Un service dont la clé est absente est sauté.
+  services:
+    # 1. Mistral, si un jour le secret MISTRAL_API_KEY est renseigné.
+    - nom: Mistral
+      base_url: https://api.mistral.ai/v1
+      cle_env: MISTRAL_API_KEY
+      modeles: [mistral-medium-latest]
+    # 2. GitHub Models : gratuit, sans clé à créer. Le workflow utilise son propre jeton
+    #    (GITHUB_TOKEN, permission « models: read »). Quelques requêtes par minute.
+    - nom: GitHub Models
+      base_url: https://models.github.ai/inference
+      cle_env: GITHUB_TOKEN
+      modeles: [openai/gpt-4.1, openai/gpt-4o]
+      pause_s: 8
+      attente_429_s: 65
+    # 3. OVHcloud AI Endpoints en accès anonyme : gratuit, hébergé en France, mais très demandé
+    #    (2 requêtes par minute et par modèle, souvent saturé depuis les machines de GitHub).
+    - nom: OVHcloud (anonyme)
+      base_url: https://oai.endpoints.kepler.ai.cloud.ovh.net/v1
+      sans_cle: true
+      modeles: [Mistral-Small-3.2-24B-Instruct-2506, gpt-oss-120b, Meta-Llama-3_3-70B-Instruct]
+      pause_s: 31
+      attente_429_s: 65
 
 # ---------------------------------------------------------------------------
 # Lecture des articles : avant d'écrire, GitHub ouvre les articles de presse retenus et en donne
