@@ -1,53 +1,53 @@
 {
  "date": "2026-11-21",
- "genere_le": "2026-11-21T16:54:10+00:00",
+ "genere_le": "2026-11-21T17:21:03+00:00",
  "statut": "a_relire",
  "propositions": [
   {
    "rubrique": "une",
    "format": "a_chaud",
-   "evenement_id": "cloudflare-du63c25qjgjs",
+   "evenement_id": "cloudflare-1ip2m5rvk7vb",
    "tag_interne": "Non mesuré",
-   "score": -8.0,
+   "score": -8.1,
    "auteur": "openai/gpt-oss-120b",
    "image": "assets/photos/reseau.jpg",
    "article": {
     "tag": "Réseau",
-    "title": "Des problèmes de performance réseau chez Cloudflare<br/>Mistral impacté <mark>48 minutes</mark>",
-    "chapo": "Le 17 novembre, les datacenters de Cloudflare à Los Angeles et Francfort ont connu des baisses de performance. Les services qui transitent par Cloudflare, comme Mistral, ont été touchés. Notre sonde n’a relevé aucune anomalie pendant l’incident.",
+    "title": "Un pic d’erreurs HTTP apparaît.<br/>Mistral subit <mark>5xx et 499</mark>.",
+    "chapo": "Le réseau de Cloudflare a signalé une hausse soudaine d’erreurs serveur. Cette anomalie touche les services qui transitent par son infrastructure, dont le modèle de langage Mistral. Notre sonde n’a rien enregistré pendant l’incident.",
     "fait": [
-     "De 18 h 12 à 19 h 00, Cloudflare a signalé des difficultés de performance dans ses sites de Los Angeles (LAX) et Francfort (FRA).",
-     "Cet incident montre à quel point les fournisseurs d’infrastructure réseau peuvent impacter des services tiers."
+     "À 16 h 50, Cloudflare a indiqué une augmentation des réponses d’erreur 5xx et 499.",
+     "Ces codes signalent des problèmes côté serveur et des connexions interrompues."
     ],
     "consequence": [
-     "Aucun pic d’anomalie n’a été enregistré par notre sonde, ce qui empêche de mesurer précisément l’impact technique.",
-     "L’absence de donnée souligne une zone d’ombre dans notre capacité de suivi en temps réel."
+     "Mistral, qui utilise Cloudflare comme point d’accès, a vu ses requêtes impactées, entraînant des délais et des échecs d’appels API.",
+     "L’absence de mesure de notre sonde signifie que l’impact exact reste inconnu."
     ],
     "lien": [
-     "Pour plus de détails, consultez le rapport d’incident publié par Cloudflare : https://www.cloudflarestatus.com/incidents/du63c25qjgjs.",
-     "Comment assurer la visibilité sur les dépendances critiques de votre chaîne d’approvisionnement numérique ?"
+     "L’incident est détaillé sur la page de statut de Cloudflare.",
+     "Quel risque cela représente-t-il pour vos services dépendants du même fournisseur ?"
     ],
     "une_mini": {
-     "fait": "Cloudflare signale des baisses de performance à LAX et FRA.",
-     "consequence": "Aucune anomalie mesurée par notre sonde.",
-     "dependance": "Mistral dépend de Cloudflare pour son trafic."
+     "fait": "Cloudflare signale + d’erreurs 5xx/499",
+     "consequence": "Mistral subit des interruptions",
+     "dependance": "Dépendance aux services d’edge"
     },
     "sources": [
      {
-      "label": "Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
-      "url": "https://www.cloudflarestatus.com/incidents/du63c25qjgjs"
+      "label": "Cloudflare Status – Incident",
+      "url": "https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb"
      }
     ],
     "a_verifier": [
-     "Confirmer la durée exacte de l’incident (18 h 12‑19 h 00).",
-     "Vérifier que la mention de Mistral comme client de Cloudflare est correctement documentée."
+     "Confirmer que Mistral passe bien par Cloudflare",
+     "Vérifier l’absence de mesures de la sonde pendant l’incident"
     ]
    },
    "fiche": {
-    "evenement": "Cloudflare : Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
+    "evenement": "Cloudflare : Elevated number of 5xx and 499 errors",
     "type": "incident_amont",
-    "debut": "mardi 17 novembre, 18 h 12",
-    "fin": "mardi 17 novembre, 19 h 00",
+    "debut": "mardi 17 novembre, 16 h 50",
+    "fin": null,
     "fournisseurs_concernes": [
      "mistral"
     ],
@@ -56,70 +56,89 @@
     "presse": null,
     "sources": [
      {
-      "label": "Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
-      "url": "https://www.cloudflarestatus.com/incidents/du63c25qjgjs"
+      "label": "Elevated number of 5xx and 499 errors",
+      "url": "https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb"
      }
     ]
    },
    "alertes_charte": [
-    "Trop de chiffres dans le texte (7) : en garder 3 au plus, le détail va dans l'encadré Premium."
+    "Affirmation non soutenue par les mesures : la sonde n'a vu aucune anomalie, mais le texte dit qu'un fournisseur a été touché : « Cette anomalie touche les services qui transitent par son infrastructure, dont le modèle de langage Mistral. »",
+    "Trop de chiffres dans le texte (4) : en garder 3 au plus, le détail va dans l'encadré Premium."
    ]
   },
   {
    "rubrique": "tous_connectes",
    "format": "a_chaud",
    "auteur": "openai/gpt-oss-120b",
-   "image": "assets/photos/savoir.jpg",
+   "image": "assets/photos/jeux-video.jpg",
    "article": {
-    "tag": "savoir",
-    "title": "Un mathématicien prétend résoudre l'hypothèse de Riemann<br/>Avec une preuve de <mark>250 000 pages</mark> grâce à l'IA",
-    "chapo": "Un chercheur a annoncé avoir mis au point une démonstration de l'hypothèse de Riemann, l'un des problèmes les plus célèbres des mathématiques, en s'appuyant sur un modèle d'intelligence artificielle d'Anthropic. La preuve, selon lui, s'étend sur des centaines de milliers de pages, mais elle n'a pas encore été soumise à la communauté scientifique.",
+    "tag": "Jeux vidéo",
+    "title": "GTA VI sort ce jeudi.<br/>Sa version <mark>sans disque</mark> inquiète les joueurs.",
+    "chapo": "Le dernier opus de la franchise très attendue arrive en boîte, mais aucun disque n’est à l’intérieur. Les joueurs découvrent un simple code de téléchargement, signe d’une dématérialisation accélérée du secteur. Cette évolution soulève des questions de revente, de prix et de propriété.",
     "fait": [
-     "Levent Alpöge, mathématicien turco‑américain, a déclaré avoir résolu le problème en utilisant l'interface IA Claude d'Anthropic.",
-     "Il n’a publié qu’un résumé sur son site personnel, la démonstration complète restant inaccessible aux pairs."
+     "Le 19 novembre, GTA VI a été commercialisé en version boîte contenant uniquement un code de téléchargement.",
+     "Ce format montre que l’industrie du jeu vidéo se tourne de plus en plus vers le numérique, au détriment du support physique."
     ],
     "consequence": [
-     "Cette annonce montre à quel point les chercheurs peuvent désormais s’appuyer sur des IA pour explorer des questions autrefois réservées à l’intellect humain.",
-     "Elle soulève aussi des doutes sur la vérifiabilité des résultats quand la preuve n’est pas immédiatement disponible."
+     "Sans disque, les joueurs ne peuvent plus revendre ou prêter le jeu, et ils restent dépendants des boutiques en ligne des consoles pour les promotions.",
+     "Cette dépendance renforce le contrôle des plateformes sur les prix et sur l’accès aux titres achetés."
     ],
     "lien": [
-     "Le débat s’étend au-delà des mathématiques : il s’agit d’une illustration concrète de notre dépendance croissante aux outils numériques pour résoudre des problèmes complexes.",
-     "Et vous, seriez‑vous prêt à laisser une IA résoudre vos problèmes les plus complexes ?"
+     "Le phénomène illustre comment la technologie façonne nos habitudes de consommation, même pour les loisirs les plus populaires.",
+     "Et vous, êtes‑vous prêt à abandonner vos jeux sur disque au profit du téléchargement ?"
     ],
     "une_mini": {
-     "fait": "Un mathématicien affirme avoir résolu l’hypothèse de Riemann avec l’aide d’une IA.",
-     "consequence": "La preuve, très volumineuse, n’est pas encore vérifiable par la communauté.",
-     "dependance": "L’événement met en lumière notre confiance grandissante envers l’intelligence artificielle."
+     "fait": "GTA VI vendu en boîte, mais sans disque.",
+     "consequence": "Plus de marché de l’occasion, prix contrôlés par les stores.",
+     "dependance": "Les joueurs dépendent désormais des plateformes numériques."
     },
     "sources": [
      {
-      "label": "Franceinfo – annonce de résolution de l’hypothèse de Riemann avec une IA d’Anthropic",
-      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html"
+      "label": "Franceinfo Culture – Disque vs téléchargement",
+      "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html"
+     },
+     {
+      "label": "Franceinfo Culture – Chiffres de vente",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html"
+     },
+     {
+      "label": "Franceinfo Culture – Documentaire événementiel",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html"
      }
     ],
-    "a_verifier": [
-     "Confirmation du nombre exact de pages de la démonstration (250 000).",
-     "Version exacte du modèle Claude utilisé.",
-     "Existence d’une soumission officielle de la preuve à un journal ou à un comité de revue."
-    ],
-    "sujet": "Hypothèse de Riemann",
-    "categorie": "savoir",
+    "a_verifier": [],
+    "sujet": "Grand Theft Auto VI",
+    "categorie": "jeux-video",
     "reflexes": [
-     "Avant de partager une découverte scientifique, vérifiez si la preuve a été revue par des pairs.",
-     "Ne comptez pas uniquement sur une IA pour valider des résultats complexes ; confrontez‑les à d’autres experts.",
-     "Conservez une copie des sources originales et notez les références pour pouvoir les consulter plus tard."
+     "Comparez les prix des versions numériques et physiques avant d’acheter.",
+     "Conservez vos identifiants de compte et activez la double authentification pour protéger vos licences.",
+     "Si vous privilégiez la revente, choisissez des éditions physiques quand elles existent encore."
     ]
    },
    "fiche": {
-    "sujet": "Hypothèse de Riemann",
-    "et_vous": "Et vous, seriez‑vous prêt à laisser une IA résoudre vos problèmes les plus complexes ?",
+    "sujet": "Grand Theft Auto VI",
+    "et_vous": "Et vous, êtes‑vous prêt à abandonner vos jeux sur disque au profit du téléchargement ?",
     "articles_de_presse": [
      {
-      "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html",
+      "titre": "GTA VI : pourquoi la disparition des jeux vidéo sur disque inquiète les joueurs",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html",
       "etat": "lu",
-      "texte": "Levent Alpöge n'a publié qu'un récit de ces travaux sur son site personnel et non la démonstration intégrale, qui fait plus de 250 000 pages selon lui et n'a pu être vérifiée par aucun autre mathématicien.\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nLe chercheur Levent Alpöge a affirmé, vendredi 20 novembre, avoir résolu l'hypothèse de Riemann, considérée par certains comme le problème de mathématiques le plus important du monde, avec l'aide d'un modèle d'intelligence artificielle (IA) d'Anthropic. Coup de théâtre, quelques heures plus tard, un professeur de mathématiques de l'université de Stanford, Ravi Vakil, a rapporté qu'un étudiant postdoctorant au sein de la même faculté avait soumis indépendamment sa propre démonstration. L'un et l'autre ont été contactés par l'AFP mais n'ont pas donné suite dans l'immédiat.\n\"J'en ai même pleuré\" : pourquoi les progrès de l'intelligence artificielle plongent les mathématiciens dans \"une crise existentielle\"\nChercheur turco-américain, employé d'Anthropic, Levent Alpöge n'a publié vendredi qu'un récit de ces travaux sur son site personnel et non la démonstration intégrale, qui fait plus de 250 000 pages selon lui et n'a pu être vérifiée par aucun autre mathématicien. Il a également précisé avoir utilisé l'interface IA Claude, sans mentionner de quelle version il s'agissait. Sollicité par l'AFP, Anthropic n'a pas donné suite dans l'immédiat.\n\"C'est un moment monumental dans l'histoire de l'humanité\", a commenté auprès de l'AFP Brian Conrey, considéré comme l'une des principales références en matière de travaux sur l'hypothèse de Riemann, qui n'a pas encore pu vérifier la preuve. Certains ont vu dans cette démonstration l'illustration d'une IA de plus en plus puissante, qui présente des risques accrus. \"L'hypothèse de Riemann était le défi le plus souvent cité comme un avertissement\", a expliqué, sur le réseau social X, le chercheur Eliezer Yudkowsky, parmi les figures les plus alarmistes de la tech sur les menaces que l'IA ferait peser sur l'humanité.\nL'hypothèse de Riemann, formulée en 1859 par le mathématicien allemand Bernhard Riemann, porte sur la répartition des nombres premiers. De nombreux théorèmes et algorithmes sont fondés sur cette hypothèse. Elle fait partie des sept problèmes dits du millénaire, une liste créée en 2000 par l'organisation pour la recherche Clay Mathematics Institute, qui a promis de verser un million de dollars pour la résolution de l'un d'entre eux. Y figure également l'équation dite de Navier-Stokes, résolue début septembre par l'un des modèles d'IA d'OpenAI en moins de quatre jours, événement qui avait suscité un séisme dans le monde des mathématiques. Outre l'équation de Navier-Stokes, OpenAI, qui développe les modèles GPT (dont ChatGPT), a annoncé début octobre avoir résolu 377 problèmes différents.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\nLe fondateur d'Anthropic \"est persuadé d'avoir le sort du monde sur ses épaules\"\nPourquoi les puces américaines de l'IA sont-elles fabriquées à Taïwan ?\nSpaceX parvient pour la première fois à récupérer l'étage supérieur de sa mégafusée Starship\nQui est Alice Huang, la femme mystérieuse au cœur du scandale Nvidia ?\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nL'émotion du clan de Michel Zecler après que la justice est reconnu le caractère raciste de son agression\n\"les Brittaniques sont angoissés par la perspective d'une victoire de Le Pen ou Mélenchon\" selon le journaliste britannique Philip Turle\nPrésomption d'usage légal des armes par les forces de l'ordre : la loi définitivement adoptée\nPréfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau\nProcès Michel Zecler : les trois policiers condamnés à un à deux ans de prison ferme\nLa sonde Voyager 1 est à 26 milliards de km de la Terre et continue d'émettre\nIrlande du Nord, catholiques et protestants toujours divisés\n\"Veux-tu m'épouser ?\" : un député fait sa demande au Parlement\nPrésidentielle : les créateurs de contenus surveillés par l'Arcom\nL’apparition rare d’un peuple autochtone isolé d'Amazonie suscite l'inquiétude\nVie chère, climat, droit au logement... La jeunesse d'Europe se mobilise ce week-end\n\"Je suis candidat\" : Dominique de Villepin se lance dans la course de l'élection présidentielle\nDes adolescents lance une pétition face au maire de Vertou pour accéder à la bibliothèque gratuitement\nIncendie meurtrier dans une tour d'habitation du Val-de-Marne\n“Il faut à la fois accepter qu’on a été victime de violences et pouvoir s’en détacher.”\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"L’actu à 18h30\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscrire de ces newsletters à tout moment via le lien en bas de ces newsletters."
+      "texte": "Avec la sortie très attendue de GTA VI, un nouveau débat agite les joueurs : même en achetant le jeu en boîte, ils n’y trouvent aucun disque, mais un simple code de téléchargement. Un changement de modèle qui pose plusieurs questions, notamment sur les prix, la revente et la propriété des jeux vidéo.\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nC’était l’un des jeux vidéo les plus attendus de ces dernières années. Sorti ce jeudi 19 novembre, GTA VI marque aussi une nouvelle étape dans la dématérialisation du secteur. Les joueurs qui achètent le jeu en boîte n’y trouvent pas de disque à l’intérieur, mais un code leur permettant de le télécharger directement sur leur console.\nL’un des principaux inconvénients du dématérialisé, c'est la disparition du marché de l’occasion. Jusqu’ici, lorsqu’un joueur terminait un jeu, il pouvait revendre son disque sur Leboncoin, dans un magasin spécialisé ou simplement le prêter à un ami. Avec un code de téléchargement, ce n’est plus possible. Une fois activé, le jeu est associé au compte de l’utilisateur et ne peut plus être transféré à quelqu’un d’autre.\nAutre conséquence : les joueurs risquent de perdre une partie de leur liberté sur les prix. Avec les jeux physiques, ils peuvent comparer les tarifs entre plusieurs enseignes, profiter de promotions ou acheter des jeux d’occasion à moindre coût.\nAvec le dématérialisé, ils dépendent davantage des boutiques en ligne des fabricants de consoles, comme le PlayStation Store ou le Microsoft Store, et donc des promotions proposées par ces plateformes.\nLa question de la propriété inquiète également certains joueurs. Lorsqu’un utilisateur achète un jeu en version numérique, il achète en réalité une licence d’utilisation. Son accès dépend donc des conditions fixées par la plateforme. En cas de suspension ou de fermeture de son compte, il peut ainsi perdre l’accès à certains jeux achetés.\nUne situation dénoncée par le youtubeur spécialisé dans les jeux vidéo Conkerax, sur France TV Slash. Inquiet de l’évolution du secteur, il a annoncé qu’il ne jouerait pas à GTA VI pour protester contre cette dématérialisation.\nLe téléchargement présente toutefois plusieurs avantages. Plus besoin de se déplacer en magasin ou de changer de disque à chaque partie. Les joueurs peuvent acheter leur jeu depuis leur canapé, le télécharger à l’avance et commencer à jouer dès sa sortie.\nLa disparition des disques permet également de réduire la quantité de plastique utilisée pour leur fabrication. Mais le numérique n’est pas sans impact environnemental : le téléchargement, le stockage et l’utilisation des jeux nécessitent eux aussi de l’énergie.\nAutre contrainte : disposer d’une bonne connexion internet et de suffisamment d’espace de stockage. GTA VI nécessite ainsi plus de 200 gigaoctets d’espace sur PlayStation 5. Avec une connexion lente, son téléchargement peut prendre des heures.\nAvec GTA VI, l’un des plus gros lancements de l’industrie, la tendance au tout numérique semble s’accélérer. D’autant que certaines consoles sont déjà commercialisées sans lecteur de disque. C’est notamment le cas de la PlayStation 5 Digital Edition, qui oblige ses utilisateurs à télécharger leurs jeux depuis le PlayStation Store. À terme, acheter un jeu vidéo sur disque pourrait donc devenir l’exception plutôt que la règle.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\nSortie de GTA VI, Marine Tondelier propose de rejoindre Mélenchon, Chat GTP au lycée : ça dit quoi ce 19 novembre ?\nEn difficulté, le géant de la photo Getty Images s'associe à Nvidia et OpenAI\nCorset, porte-jarretelles et blagues volées : la nouvelle arnaque des fausses humoristes IA\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nA Bergerac, une école adopte le nom d’Irène Sapir, communiste et rescapée de la Rafle du Vel’ d’Hiv’\nDes images révélées par Mediapart et Le media montrent Gérard Depardieu toucher l’entrejambe d’une figurante.\n\"Nos déviances d’adultes sont souvent nos petits traumatismes d’enfance\"\nGTA VI, le phénomène mondial le plus cher de l'histoire du jeu vidéo\nDans l'atelier de Li Shuang, pionnière de l'art contemporain en Chine\nGérard Depardieu renonce à son procès en appel pour deux agressions sexuelles lors d'un tournage\nMichel Houllebecq mis en examen pour des propos sur le \"grand remplacement\" et les musulmans\n“Pour les hommes, les rêves, les objectifs, c’est indispensable” - Dali Benssalah, comédien\n\"On ne lâche pas facilement une carte comme ça\" : pourquoi Christophe Gleizes est-il toujours détenu en Algérie ?\nDidier Bourdon : \"C’est sympa de jouer les gens pitoyables !\"\nPhilippe Jaenada lauréat du prix Goncourt 2026 pour \"L'Inconnue du quai de Javel\"\nUne chanson peut changer une situation, mais peut-être pas le monde !\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nChaque jour, ne ratez rien des meilleurs rendez-vous matinaux de la radio\nChaque jour, ne ratez rien des meilleurs rendez-vous matinaux de la radio\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Radio\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscr"
+     },
+     {
+      "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html",
+      "etat": "lu",
+      "texte": "Ce chiffre représente près de cinq fois les quelque 800 millions de dollars que son prédécesseur, \"Grand Theft Auto V\", avait engrangés au cours de ses premières 24 heures en 2013.\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nC'est un \"record\". GTA VI, dernier opus très attendu de la superproduction Grand Theft Auto, a généré 3,79 milliards de dollars (environ 3,5 milliards d'euros) de ventes le jour de sa sortie, a annoncé son éditeur vendredi 20 novembre. Ce chiffre, basé sur les estimations de la société concernant les ventes mondiales de jeudi, représente près de cinq fois les quelque 800 millions de dollars que son prédécesseur, GTA V, avait engrangés au cours de ses premières 24 heures en 2013.\nSelon Rockstar, filiale de l'américain Take-Two Interactive, les précommandes du jeu ont atteint 32,5 millions d'exemplaires, vendus entre 80 et 100 euros selon les versions (standard ou ultime). Le jeu, en gestation depuis plus de huit ans, est sorti jeudi à minuit, après plusieurs reports et plusieurs fuites. Il affiche une moyenne de 99 sur 100 pour la centaine de critiques de la presse spécialisée recensées sur le site Metacritic, du jamais-vu.\n\"Ce n'est pas un simple jeu vidéo\" : comment les fans se préparent à la sortie de \"GTA VI\" après treize ans d'attente\nLes recettes de GTA VI au premier jour dépassent le total des recettes au box-office de Avengers : Endgame, qui est devenu le mois dernier le film le plus rentable de tous les temps avec environ 2,9 milliards de dollars dans le monde. Aucune sortie officielle n'est pour l'instant prévue en Russie, au Qatar ou encore en Chine, le jeu n'ayant pas reçu l'aval du gouvernement de Pékin pour sa commercialisation.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\n\"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers\nMèmes, montages vidéo et propositions électorales… Quand les politiques s'emparent de la sortie de \"GTA VI\"\n\"J'ai l'impression d'avoir vu ça dans un film\" : comment la saga GTA s'inspire du cinéma, et réciproquement\n\"Je n'ai jamais joué à un jeu aussi marquant\" : le jeu vidéo \"GTA VI\" reçoit les éloges de la presse spécialisée du monde entier\n\"C'est grandiose, on se sent pris dans le jeu !\" : les premières impressions d'une fan qui découvre GTA VI\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nA Bergerac, une école adopte le nom d’Irène Sapir, communiste et rescapée de la Rafle du Vel’ d’Hiv’\nDes images révélées par Mediapart et Le media montrent Gérard Depardieu toucher l’entrejambe d’une figurante.\n\"Nos déviances d’adultes sont souvent nos petits traumatismes d’enfance\"\nGTA VI, le phénomène mondial le plus cher de l'histoire du jeu vidéo\nDans l'atelier de Li Shuang, pionnière de l'art contemporain en Chine\nGérard Depardieu renonce à son procès en appel pour deux agressions sexuelles lors d'un tournage\nMichel Houllebecq mis en examen pour des propos sur le \"grand remplacement\" et les musulmans\n“Pour les hommes, les rêves, les objectifs, c’est indispensable” - Dali Benssalah, comédien\n\"On ne lâche pas facilement une carte comme ça\" : pourquoi Christophe Gleizes est-il toujours détenu en Algérie ?\nDidier Bourdon : \"C’est sympa de jouer les gens pitoyables !\"\nPhilippe Jaenada lauréat du prix Goncourt 2026 pour \"L'Inconnue du quai de Javel\"\nUne chanson peut changer une situation, mais peut-être pas le monde !\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nMusique, cinéma, arts & expos, littérature & BD, mode… Tous les jours, le meilleur de l’actualité culturelle\nMusique, cinéma, arts & expos, littérature & BD, mode… Tous les jours, le meilleur de l’actualité culturelle\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Culture\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscrire de ces newsletters à tout moment via le lien en bas de ces newsletters."
+     },
+     {
+      "titre": "REPLAY. \"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html",
+      "etat": "lu",
+      "texte": "Pour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nLe nouvel opus de \"Grand Theft Auto\" est devenu un événement planétaire. Mais pour quelles raisons ? Quelle est la recette du succès de la franchise ?\nTreize ans qu'ils l'attendaient... Des millions de joueurs qui comptent les heures, des bandes-annonces visionnées des centaines de millions de fois, des villes parées des couleurs du jeu… Le lancement, jeudi 19 novembre, du nouvel opus de Grand Theft Auto a pris des allures d'événement planétaire.\n\"Je n'ai jamais joué à un jeu aussi marquant\" : le jeu vidéo \"GTA VI\" reçoit les éloges de la presse spécialisée du monde entier\nMais comment expliquer une telle fascination ? Né en Ecosse à la fin des années 1990, GTA est devenu l'une des franchises les plus lucratives de l'histoire du jeu vidéo. Une machine économique colossale, mais aussi une œuvre qui fait débat. Car derrière les courses-poursuites et les braquages dans un décor hyperréaliste inspiré de la pop culture, GTA VI livre une satire de la société américaine. Sa violence, son rapport aux femmes et l'arrivée d'une héroïne au premier plan divisent autant qu'ils fascinent. Notre grand format revient sur l'histoire (et le succès) de ce phénomène culturel.\nUn document de franceinfo, réalisé par Guillaume Lavialle et Emiliano Jarlot, diffusé à partir de vendredi 20 novembre, à 20h40.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nA Bergerac, une école adopte le nom d’Irène Sapir, communiste et rescapée de la Rafle du Vel’ d’Hiv’\nDes images révélées par Mediapart et Le media montrent Gérard Depardieu toucher l’entrejambe d’une figurante.\n\"Nos déviances d’adultes sont souvent nos petits traumatismes d’enfance\"\nGTA VI, le phénomène mondial le plus cher de l'histoire du jeu vidéo\nDans l'atelier de Li Shuang, pionnière de l'art contemporain en Chine\nGérard Depardieu renonce à son procès en appel pour deux agressions sexuelles lors d'un tournage\nMichel Houllebecq mis en examen pour des propos sur le \"grand remplacement\" et les musulmans\n“Pour les hommes, les rêves, les objectifs, c’est indispensable” - Dali Benssalah, comédien\n\"On ne lâche pas facilement une carte comme ça\" : pourquoi Christophe Gleizes est-il toujours détenu en Algérie ?\nDidier Bourdon : \"C’est sympa de jouer les gens pitoyables !\"\nPhilippe Jaenada lauréat du prix Goncourt 2026 pour \"L'Inconnue du quai de Javel\"\nUne chanson peut changer une situation, mais peut-être pas le monde !\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nMusique, cinéma, arts & expos, littérature & BD, mode… Tous les jours, le meilleur de l’actualité culturelle\nMusique, cinéma, arts & expos, littérature & BD, mode… Tous les jours, le meilleur de l’actualité culturelle\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Culture\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscrire de ces newsletters à tout moment via le lien en bas de ces newsletters."
      }
     ],
     "tendances": {
@@ -159,24 +178,16 @@
        "titres_de_presse": []
       },
       {
-       "sujet": "Hypothèse de Riemann",
-       "langue": "fr",
-       "rang_wikipedia": 5,
-       "page": "https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_de_Riemann",
-       "titres_de_presse": [
-        {
-         "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
-         "media": "franceinfo",
-         "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html"
-        }
-       ]
-      },
-      {
        "sujet": "Grand Theft Auto VI",
        "langue": "fr",
        "rang_wikipedia": 6,
        "page": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto_VI",
        "titres_de_presse": [
+        {
+         "titre": "GTA VI : pourquoi la disparition des jeux vidéo sur disque inquiète les joueurs",
+         "media": "franceinfo Culture",
+         "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html"
+        },
         {
          "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
          "media": "franceinfo Culture",
@@ -186,11 +197,6 @@
          "titre": "REPLAY. \"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers",
          "media": "franceinfo Culture",
          "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html"
-        },
-        {
-         "titre": "\"GTA VI\" s’offre un lancement record et surpasse la tournée de Taylor Swift",
-         "media": "France 24",
-         "url": "https://www.france24.com/fr/culture/20261121-gta-vi-s-offre-un-lancement-record-mais-agace-une-partie-des-joueurs"
         }
        ]
       },
@@ -271,6 +277,11 @@
        "page": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto",
        "titres_de_presse": [
         {
+         "titre": "GTA VI : pourquoi la disparition des jeux vidéo sur disque inquiète les joueurs",
+         "media": "franceinfo Culture",
+         "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html"
+        },
+        {
          "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
          "media": "franceinfo Culture",
          "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html"
@@ -284,11 +295,6 @@
          "titre": "GTA 6 : Les ventes atteignent un record de 3,79 milliards de dollars en 24 heures",
          "media": "20 Minutes",
          "url": "https://www.20minutes.fr/gaming/jeux_video/4264602-20261120-gta-6-ventes-atteignent-record-3-79-milliards-dollars-24-heures"
-        },
-        {
-         "titre": "\"GTA VI\" s’offre un lancement record et surpasse la tournée de Taylor Swift",
-         "media": "France 24",
-         "url": "https://www.france24.com/fr/culture/20261121-gta-vi-s-offre-un-lancement-record-mais-agace-une-partie-des-joueurs"
         }
        ]
       },
@@ -320,11 +326,6 @@
          "titre": "Streeting calls Putin a 'cold-blooded killer' as he meets Zelensky in Kyiv",
          "media": "BBC News",
          "url": "https://www.bbc.co.uk/news/videos/cqevrddp91z8o"
-        },
-        {
-         "titre": "McConnell shines as 11-try Scotland dismantle Japan",
-         "media": "BBC News",
-         "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cmx2x00w08keo"
         }
        ]
       },
@@ -375,6 +376,13 @@
          "url": "https://www.bbc.co.uk/news/articles/cr4g1l7x52jno"
         }
        ]
+      },
+      {
+       "sujet": "Philosophie de l'esprit",
+       "langue": "fr",
+       "rang_wikipedia": 26,
+       "page": "https://fr.wikipedia.org/wiki/Philosophie_de_l%27esprit",
+       "titres_de_presse": []
       }
      ],
      "presse_grand_public": [
@@ -389,7 +397,7 @@
        "url": "https://www.franceinfo.fr/faits-divers/police/nombre-de-tirs-enquetes-lien-de-confiance-les-questions-que-pose-la-loi-sur-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8293529.html"
       },
       {
-       "titre": "Présidentielle 2027 : \"Je serai le candidat de la liberté de pensée, de parler, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting",
+       "titre": "Présidentielle 2027 : \"Je serai le candidat de la liberté de penser, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting",
        "media": "franceinfo",
        "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
       },
@@ -524,6 +532,16 @@
        "url": "https://www.franceinfo.fr/elections/presidentielle/candidats/elle-va-apporter-son-capital-popularite-quel-sera-le-role-de-sarah-knafo-aupres-d-eric-zemmour-dans-la-campagne-pour-la-presidentielle_8269433.html"
       },
       {
+       "titre": "\"Eldorado\" : l'affaire des avions renifleurs en série",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/replay-radio/l-empire-des-series/eldorado-l-affaire-des-avions-renifleurs-en-serie_8271734.html"
+      },
+      {
+       "titre": "GTA VI : pourquoi la disparition des jeux vidéo sur disque inquiète les joueurs",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html"
+      },
+      {
        "titre": "À bord du Train d'or pour découvrir les plus beaux paysages de la Norvège",
        "media": "franceinfo Culture",
        "url": "https://www.franceinfo.fr/culture/a-bord-du-train-d-or-pour-decouvrir-les-plus-beaux-paysages-de-la-norvege_8293826.html"
@@ -567,32 +585,14 @@
        "titre": "\"Jupiter\", \"Hunger Games\", \"Gabin\"... Quels sont les films à voir (ou pas) cette semaine au cinéma ?",
        "media": "franceinfo Culture",
        "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/jupiter-hunger-games-gabin-quels-sont-les-films-a-voir-ou-pas-cette-semaine-au-cinema_8290559.html"
-      },
-      {
-       "titre": "\"On a besoin de petits riens qui enjolivent le quotidien\" : hier tradition religieuse, aujourd'hui tendance, le calendrier de l'avent lance le compte à rebours des fêtes de fin d'année",
-       "media": "franceinfo Culture",
-       "url": "https://www.franceinfo.fr/culture/on-a-besoin-de-petits-riens-qui-enjolivent-le-quotidien-hier-tradition-religieuse-aujourd-hui-tendance-le-calendrier-de-l-avent-lance-le-compte-a-rebours-des-fetes-de-fin-d-annee_8236858.html"
-      },
-      {
-       "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
-       "media": "franceinfo Culture",
-       "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html"
       }
      ]
     }
    },
-   "alertes_charte": [
-    "Titre long (plus de 90 caractères) : deux phrases courtes."
-   ]
+   "alertes_charte": []
   }
  ],
- "reserve_une": [
-  {
-   "titre": "Cloudflare : Elevated number of 5xx and 499 errors",
-   "tag_interne": "Non mesuré",
-   "score": -8.1
-  }
- ],
+ "reserve_une": [],
  "sources_tendances": {
   "Wikipédia": {
    "etat": "ok",
@@ -600,11 +600,11 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 152
+   "nombre": 150
   },
   "Détour (flux RSS)": {
    "etat": "ok",
-   "nombre": 152
+   "nombre": 151
   }
  },
  "journal_redacteur": [

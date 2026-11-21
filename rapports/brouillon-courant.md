@@ -24,7 +24,7 @@ Les entités financières européennes doivent surveiller en continu leurs prest
 
 ## 2. Par où passent vraiment les requêtes
 
-- **IONOS AI Model Hub** : Opérateur non reconnu : à qualifier manuellement
+- **IONOS AI Model Hub** : Toutes les entrées réseau observées sont opérées et localisées dans l'UE/EEE
 - **Mistral AI** : Entrée réseau 162.159.142.207 opérée par Cloudflare (société mère : US); Entrée réseau 172.66.2.203 opérée par Cloudflare (société mère : US); Entrée réseau 2606:4700:7::2c3 opérée par Cloudflare (société mère : US); Entrée réseau 2a06:98c1:58::2c3 opérée par Cloudflare (société mère : US); Intermédiaire Cloudflare visible dans les en-têtes (société mère : US)
 - **OVHcloud AI Endpoints** : Toutes les entrées réseau observées sont opérées et localisées dans l'UE/EEE
 - **Scaleway Generative APIs** : Toutes les entrées réseau observées sont opérées et localisées dans l'UE/EEE
@@ -35,9 +35,9 @@ Portée : ces relevés décrivent l'entrée réseau des API, pas le lieu exact d
 
 ## 3. Les modèles changent-ils sans prévenir ?
 
-- OVHcloud AI Endpoints · gpt-oss-120b : 8 empreintes, 0 alerte(s) de changement
-- OVHcloud AI Endpoints · llama-3.3-70b : 8 empreintes, 0 alerte(s) de changement
-- OVHcloud AI Endpoints · mistral-small-3.2 : 8 empreintes, 1 alerte(s) de changement
+- OVHcloud AI Endpoints · gpt-oss-120b : 9 empreintes, 0 alerte(s) de changement
+- OVHcloud AI Endpoints · llama-3.3-70b : 9 empreintes, 0 alerte(s) de changement
+- OVHcloud AI Endpoints · mistral-small-3.2 : 9 empreintes, 2 alerte(s) de changement
 - OVHcloud AI Endpoints : 1 modèle(s) retiré(s) du catalogue le 2026-11-19
 
 [À COMMENTER]

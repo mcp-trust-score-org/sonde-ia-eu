@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T16:54:05+00:00",
+ "genere_le": "2026-11-21T17:20:55+00:00",
  "sources": {
   "Wikipédia": {
    "etat": "ok",
@@ -7,26 +7,26 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 152
+   "nombre": 150
   },
   "Détour (flux RSS)": {
    "etat": "ok",
-   "nombre": 152
+   "nombre": 151
   }
  },
  "flux": {
   "Presse grand public (flux RSS)": {
    "franceinfo": "ok (29)",
    "franceinfo Culture": "ok (18)",
-   "franceinfo Internet": "ok (18)",
+   "franceinfo Internet": "ok (17)",
    "20 Minutes": "ok (27)",
    "Le Monde": "ok (16)",
    "France 24": "ok (24)",
-   "BBC News": "ok (20)"
+   "BBC News": "ok (19)"
   },
   "Détour (flux RSS)": {
    "Next": "ok (50)",
-   "Numerama": "ok (4)",
+   "Numerama": "ok (3)",
    "Usbek & Rica": "ok (3)",
    "Pixels (Le Monde)": "ok (20)",
    "Le Grand Continent": "ok (0)",
@@ -584,8 +584,8 @@
    "media": "franceinfo",
    "titre": "Mobilisation du 21 novembre : une quarantaine de rassemblements recensés par le ministère de l'Intérieur en début d'après-midi",
    "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html",
-   "date": "2026-11-21T16:50+00:00",
-   "resume": "Ces actions s'inscrivent dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
+   "date": "2026-11-21T16:54+00:00",
+   "resume": "Cette journée de mobilisation s'est inscrite dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
    "langue": "français"
   },
   {
@@ -598,9 +598,9 @@
   },
   {
    "media": "franceinfo",
-   "titre": "Présidentielle 2027 : \"Je serai le candidat de la liberté de pensée, de parler, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting",
+   "titre": "Présidentielle 2027 : \"Je serai le candidat de la liberté de penser, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting",
    "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html",
-   "date": "2026-11-21T16:51+00:00",
+   "date": "2026-11-21T17:15+00:00",
    "resume": "Le rassemblement qui a débuté à 15h30 au Zénith de Toulon lance la campagne officielle du candidat de Reconquête, accompagné de l'eurodéputée Sarah Knafo.",
    "langue": "français"
   },
@@ -814,6 +814,22 @@
   },
   {
    "media": "franceinfo Culture",
+   "titre": "\"Eldorado\" : l'affaire des avions renifleurs en série",
+   "url": "https://www.franceinfo.fr/replay-radio/l-empire-des-series/eldorado-l-affaire-des-avions-renifleurs-en-serie_8271734.html",
+   "date": "2026-11-21T17:05+00:00",
+   "resume": "Retour à la période de la crise pétrolière avec cette nouvelle série, \"Eldorado\", qui raconte avec verve le scandale politico-financier des avions renifleurs. La série est disponible sur arte.tv",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo Culture",
+   "titre": "GTA VI : pourquoi la disparition des jeux vidéo sur disque inquiète les joueurs",
+   "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html",
+   "date": "2026-11-21T17:00+00:00",
+   "resume": "Avec la sortie très attendue de GTA VI, un nouveau débat agite les joueurs : même en achetant le jeu en boîte, ils n’y trouvent aucun disque, mais un simple code de téléchargement. Un changement de modèle qui pose plusieurs questions, notamment sur les prix, la revente et la propriété des jeux vidéo.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo Culture",
    "titre": "À bord du Train d'or pour découvrir les plus beaux paysages de la Norvège",
    "url": "https://www.franceinfo.fr/culture/a-bord-du-train-d-or-pour-decouvrir-les-plus-beaux-paysages-de-la-norvege_8293826.html",
    "date": "2026-11-21T15:03+00:00",
@@ -941,19 +957,11 @@
    "langue": "français"
   },
   {
-   "media": "franceinfo Culture",
-   "titre": "\"Las Azules\", \"Furia\", \"Cent ans de solitude\"... Pourquoi les séries latino-américaines n'ont jamais été aussi variées",
-   "url": "https://www.franceinfo.fr/culture/series/las-azules-furia-cent-ans-de-solitude-pourquoi-les-series-latino-americaines-n-ont-jamais-ete-aussi-variees_8288567.html",
-   "date": "2026-11-20T16:26+00:00",
-   "resume": "Du Mexique à l'Argentine, en passant par la Colombie et le Brésil, les productions latino-américaines se multiplient. Mais les télénovelas, le genre roi en Amérique latine, ont toujours beaucoup de succès.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo Culture",
-   "titre": "Une comédienne accuse Gérard Depardieu de viol en réunion lors d'un tournage et Michel Houellebecq de complicité, révèle Mediapart",
-   "url": "https://www.franceinfo.fr/culture/cinema/depardieu/il-n-etait-absolument-pas-question-de-sexe-une-comedienne-accuse-gerard-depardieu-de-viol-en-reunion-lors-d-un-tournage-et-michel-houellebecq-de-complicite-revele-mediapart_8291927.html",
-   "date": "2026-11-20T15:06+00:00",
-   "resume": "Une plainte a été déposée en mai 2025. Les faits ont eu lieu sur le tournage du film \"Thalasso\" en 2018. L'acteur et l'écrivain n'ont pas commenté ces révélations.",
+   "media": "franceinfo Internet",
+   "titre": "IA : ils deviennent millionnaires en 24h",
+   "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/ia-ils-deviennent-millionnaires-en-24h_8293934.html",
+   "date": "2026-11-21T17:00+00:00",
+   "resume": "Des employés d’Anthropic ont vu leur fortune exploser avec l’entrée en Bourse de la start-up spécialisée dans l’intelligence artificielle. Fondée il y a seulement cinq ans, elle a dépassé les prévisions à Wall Street.",
    "langue": "français"
   },
   {
@@ -1085,22 +1093,6 @@
    "langue": "français"
   },
   {
-   "media": "franceinfo Internet",
-   "titre": "Les principaux créateurs de contenus devront désormais respecter le pluralisme dans leur traitement de l'élection présidentielle",
-   "url": "https://www.franceinfo.fr/internet/les-principaux-createurs-de-contenus-devront-desormais-respecter-le-pluralisme-dans-leur-traitement-de-l-election-presidentielle_8290187.html",
-   "date": "2026-11-19T16:54+00:00",
-   "resume": "Ce type de règles s'imposait jusqu'à présent aux télévisions et aux radios. \"Il y a un phénomène nouveau, il est là et il est massif\", a justifié Martin Ajdari, le président de l'Arcom.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo Internet",
-   "titre": "Cybersécurité : le gouvernement va consacrer 200 millions d'euros pour mieux utiliser l'intelligence artificielle dans la lutte contre les cyberattaques",
-   "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/direct-sebastien-lecornu-preside-une-reunion-interministerielle-relative-a-la-cybersecurite-avant-une-conference-de-presse_8290133.html",
-   "date": "2026-11-19T22:31+00:00",
-   "resume": "Les attaques informatiques se sont multipliées ces derniers mois, à la fois contre des entreprises et des organismes publics.",
-   "langue": "français"
-  },
-  {
    "media": "20 Minutes",
    "titre": "« Je déteste que ma belle-mère fasse ça »… Pourquoi l’obsession des boomers pour les photos d’IA rend fous les parents",
    "url": "https://www.20minutes.fr/high-tech/by-the-web/4263220-20261121-deteste-belle-mere-fasse-ca-pourquoi-obsession-boomers-photos-ia-rend-fous-parents",
@@ -1110,7 +1102,7 @@
   },
   {
    "media": "20 Minutes",
-   "titre": "EN DIRECT Nice - PSG : Le Gym fait l'Amoura Paris en contre-attaque... Suivez le match avec nous",
+   "titre": "EN DIRECT Nice - PSG : Paris mène mais perd Désiré Doué, touché au genou... Suivez le match avec nous",
    "url": "https://www.20minutes.fr/sport/football/4264224-20261121-direct-nice-psg-retour-affaires-leader-chez-gym-ambitieux-suivez-match",
    "date": "2026-11-21T14:17+00:00",
    "resume": "Suivez avec nous le match entre l’OGC Nice et le Paris Saint-Germain comptant pour la 11e journée de Ligue 1 (17h15)",
@@ -1126,10 +1118,10 @@
   },
   {
    "media": "20 Minutes",
-   "titre": "La France utilise-t-elle plus de gaz lacrymogènes que ses voisins européens ?",
-   "url": "https://www.20minutes.fr/societe/4264200-20261121-france-utilise-plus-gaz-lacrymogenes-voisins-europeens",
-   "date": "2026-11-21T05:32+00:00",
-   "resume": "En matière de maintien de l’ordre, la France se distingue par sa gestion des foules, caractérisée par une utilisation intensive d’armes chimiques (gaz CS) et d’armes à feu à létalité réduite (LBD, grenades). Qu’en est-il en Europe ?",
+   "titre": "EN DIRECT Présidentielle 2027 : François Ruffin retire sa candidature...",
+   "url": "https://www.20minutes.fr/politique/4264605-20261121-direct-presidentielle-2027-villepin-candidat-pen-toujours-tete-sondages",
+   "date": "2026-11-21T15:44+00:00",
+   "resume": "Suivez les dernières informations de ce samedi 21 novembre concernant la campagne présidentielle 2027",
    "langue": "français"
   },
   {
@@ -1138,6 +1130,14 @@
    "url": "https://www.20minutes.fr/sport/rugby/4264246-20261121-direct-championnat-nations-angleterre-etouffe-all-blacks-ecosse-mene-face-japon-suivez-matchs-journee",
    "date": "2026-11-21T12:02+00:00",
    "resume": "Suivez avec nous les résultats des derniers matchs de la phase de poules du nouveau championnat des nations, avec Angleterre-Nouvelle-Zélande et Irlande-Afrique du Sud en têtes d’affiche",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "La France utilise-t-elle plus de gaz lacrymogènes que ses voisins européens ?",
+   "url": "https://www.20minutes.fr/societe/4264200-20261121-france-utilise-plus-gaz-lacrymogenes-voisins-europeens",
+   "date": "2026-11-21T05:32+00:00",
+   "resume": "En matière de maintien de l’ordre, la France se distingue par sa gestion des foules, caractérisée par une utilisation intensive d’armes chimiques (gaz CS) et d’armes à feu à létalité réduite (LBD, grenades). Qu’en est-il en Europe ?",
    "langue": "français"
   },
   {
@@ -1154,14 +1154,6 @@
    "url": "https://www.20minutes.fr/societe/4264650-20261121-calais-apres-inondations-deuxieme-cours-eau-place-vigilance-orange",
    "date": "2026-11-21T11:34+00:00",
    "resume": "Après la Canche, la Lys est passée en vigilance orange aux crues ce samedi matin dans le Pas-de-Calais, où près de 800 personnes ont été évacuées depuis jeudi. Vigicrues annonce que les niveaux vont encore monter",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "EN DIRECT Présidentielle 2027 : Eric Zemmour essaye de lancer sa campagne à Toulon...",
-   "url": "https://www.20minutes.fr/politique/4264605-20261121-direct-presidentielle-2027-villepin-candidat-pen-toujours-tete-sondages",
-   "date": "2026-11-21T15:44+00:00",
-   "resume": "Suivez les dernières informations de ce samedi 21 novembre concernant la campagne présidentielle 2027",
    "langue": "français"
   },
   {
@@ -1318,18 +1310,26 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Présidentielle 2027 : à cinq mois de l’élection, l’inquiétude grandit au sein du camp présidentiel, toujours incapable de s’unir",
-   "url": "https://www.lemonde.fr/politique/article/2026/11/21/presidentielle-2027-a-cinq-mois-de-l-election-l-inquietude-grandit-au-sein-du-camp-presidentiel-toujours-incapable-de-s-unir_6813915_823448.html",
-   "date": "2026-11-21T04:30+00:00",
-   "resume": "Le débat autour d’une primaire à droite et au centre met en lumière la difficulté d’une stratégie claire au sein de l’ancienne majorité, prise entre des considérations individuelles et des fractures idéologiques.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
    "titre": "« On est devenus “street medics” parce qu’on se sentait impuissants face aux violences » : à la rencontre des bénévoles qui secourent les manifestants blessés",
    "url": "https://www.lemonde.fr/campus/article/2026/11/21/on-est-devenus-street-medics-parce-qu-on-se-sentait-impuissants-face-aux-violences-a-la-rencontre-des-benevoles-qui-secourent-les-manifestants-blesses_6813927_4401467.html",
    "date": "2026-11-21T05:15+00:00",
    "resume": "Depuis le début du mouvement social, les « secouristes de rue » sont au cœur des cortèges. Contamination au gaz lacrymogène, plaies, crises d’angoisse… ils prodiguent les premiers gestes aux manifestants, sur fond de recours croissant aux armes par les forces de l’ordre – y compris contre eux.",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "Présidentielle 2027 : François Ruffin renonce à sa candidature « face au risque » de l’arrivée de l’extrême droite au pouvoir",
+   "url": "https://www.lemonde.fr/politique/article/2026/11/21/presidentielle-2027-francois-ruffin-renonce-a-sa-candidature-face-au-risque-de-l-arrivee-de-l-extreme-droite-au-pouvoir_6814051_823448.html",
+   "date": "2026-11-21T17:13+00:00",
+   "resume": "Le député de la Somme n’apporte son soutien à aucun candidat et souhaite « bon courage et bonne campagne » aux « candidats de gauche encore en lice », sans les citer, « pour porter un projet à vocation majoritaire » face à un Rassemblement national « aux portes du pouvoir ».",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "Présidentielle 2027 : à cinq mois de l’élection, l’inquiétude grandit au sein du camp présidentiel, toujours incapable de s’unir",
+   "url": "https://www.lemonde.fr/politique/article/2026/11/21/presidentielle-2027-a-cinq-mois-de-l-election-l-inquietude-grandit-au-sein-du-camp-presidentiel-toujours-incapable-de-s-unir_6813915_823448.html",
+   "date": "2026-11-21T04:30+00:00",
+   "resume": "Le débat autour d’une primaire à droite et au centre met en lumière la difficulté d’une stratégie claire au sein de l’ancienne majorité, prise entre des considérations individuelles et des fractures idéologiques.",
    "langue": "français"
   },
   {
@@ -1350,18 +1350,18 @@
   },
   {
    "media": "Le Monde",
-   "titre": "A Genève, la communauté internationale échoue à interdire les robots tueurs",
-   "url": "https://www.lemonde.fr/international/article/2026/11/21/a-geneve-la-communaute-internationale-echoue-a-interdire-les-robots-tueurs_6814012_3210.html",
-   "date": "2026-11-21T12:36+00:00",
-   "resume": "Alors que la menace des systèmes d’armes létales autonomes, désormais assistées par l’intelligence artificielle, se fait chaque jour plus précise dans les zones de combat, la Russie, les Etats-Unis et Israël se sont opposés à l’ouverture de négociations pour un traité international sur ce type d’armes.",
+   "titre": "Faire l’amour en se faisant la guerre : comment les adeptes du « hate sex » lient colère et coït",
+   "url": "https://www.lemonde.fr/intimites/article/2026/11/21/faire-l-amour-en-se-faisant-la-guerre-comment-les-adeptes-du-hate-sex-lient-colere-et-coit_6814049_6190330.html",
+   "date": "2026-11-21T17:00+00:00",
+   "resume": "« Nos émotions : la colère ». Une sexualité épanouie, synonyme de complicité avec son ou sa partenaire, semble a priori incompatible avec la colère, qui rend agressif et égoïste. Et pourtant… livres et films témoignent qu’il existe bel et bien des amateurs de « sexe enragé ».",
    "langue": "français"
   },
   {
    "media": "Le Monde",
-   "titre": "A Agen, les irréductibles opposants à la ligne à grande vitesse Bordeaux-Toulouse : « On a un pays qui est superbe et ils vont venir le massacrer. Qu’est-ce qu’on va laisser à nos enfants ? »",
-   "url": "https://www.lemonde.fr/m-le-mag/article/2026/11/21/a-agen-les-irreductibles-opposants-a-la-ligne-a-grande-vitesse-bordeaux-toulouse-on-a-un-pays-qui-est-superbe-et-ils-vont-venir-le-massacrer-qu-est-ce-qu-on-va-laisser-a-nos-enfants_6813947_4500055.html",
-   "date": "2026-11-21T06:00+00:00",
-   "resume": "Dans le Lot-et-Garonne, les déboisements préalables au chantier de la ligne à grande vitesse Bordeaux-Toulouse sont sur le point de commencer. Autour d’Agen, les opposants à ce projet, lancé en 2009, balaient les arguments d’attractivité économique et de gain de temps pour dénoncer son coût exorbitant et son impact désastreux sur l’environnement.",
+   "titre": "A Genève, la communauté internationale échoue à interdire les robots tueurs",
+   "url": "https://www.lemonde.fr/international/article/2026/11/21/a-geneve-la-communaute-internationale-echoue-a-interdire-les-robots-tueurs_6814012_3210.html",
+   "date": "2026-11-21T12:36+00:00",
+   "resume": "Alors que la menace des systèmes d’armes létales autonomes, désormais assistées par l’intelligence artificielle, se fait chaque jour plus précise dans les zones de combat, la Russie, les Etats-Unis et Israël se sont opposés à l’ouverture de négociations pour un traité international sur ce type d’armes.",
    "langue": "français"
   },
   {
@@ -1374,10 +1374,10 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Florian Sitbon, adjoint à la culture au maire de Paris, veut « mettre l’artiste au cœur de la ville »",
-   "url": "https://www.lemonde.fr/culture/article/2026/11/21/florian-sitbon-adjoint-a-la-culture-au-maire-de-paris-veut-mettre-l-artiste-au-c-ur-de-la-ville_6814019_3246.html",
-   "date": "2026-11-21T13:00+00:00",
-   "resume": "L’ancien metteur en scène, nommé en mars auprès d’Emmanuel Grégoire, prévoit la mise en place d’un guichet pour aider artistes et programmateurs qui voient leur liberté de création mise à mal.",
+   "titre": "Quand Ninho et Koba LaD dévoilent les dessous du rap dans deux « documentaires-vérité »",
+   "url": "https://www.lemonde.fr/culture/article/2026/11/21/quand-ninho-et-koba-lad-devoilent-les-dessous-du-rap-dans-deux-documentaires-verite_6814043_3246.html",
+   "date": "2026-11-21T16:00+00:00",
+   "resume": "Deux films, diffusés sur Netflix et Prime Video, promettent de tout révéler sur le parcours des deux artistes, des arnaques jusqu’aux démêlés judiciaires. Décryptage de deux formules à succès.",
    "langue": "français"
   },
   {
@@ -1390,14 +1390,6 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Quand Elon Musk alertait sur les dangers de l’IA",
-   "url": "https://www.lemonde.fr/m-le-mag/article/2026/11/21/quand-elon-musk-alertait-sur-les-dangers-de-l-ia_6814022_4500055.html",
-   "date": "2026-11-21T14:00+00:00",
-   "resume": "L’entrepreneur de la tech, qui fait l’objet d’un documentaire à charge actuellement en salle aux Etats-Unis, vante aujourd’hui les mérites de l’intelligence artificielle. En 2017 pourtant, il partageait ses craintes en s’appuyant sur le film « Le Cerveau d’acier », dont il est fan.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
    "titre": "France-Argentine : face aux Pumas, le XV de France veut confirmer l’« exploit » réalisé contre les Springboks",
    "url": "https://www.lemonde.fr/sport/article/2026/11/21/france-argentine-face-aux-pumas-le-xv-de-france-veut-confirmer-l-exploit-realise-contre-les-springboks_6813952_3242.html",
    "date": "2026-11-21T07:00+00:00",
@@ -1406,26 +1398,18 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Carlo Ossola, philologue : « Nous sommes des petits hommes sur les épaules de nos devanciers »",
-   "url": "https://www.lemonde.fr/livres/article/2026/11/21/carlo-ossola-philologue-nous-sommes-des-petits-hommes-sur-les-epaules-de-nos-devanciers_6813949_3260.html",
+   "titre": "« The Greatest », sur Prime Video : de Cassius Clay à Muhammad Ali, des Jeux olympiques de Rome au championnat du monde des poids lourds à Miami",
+   "url": "https://www.lemonde.fr/culture/article/2026/11/21/the-greatest-sur-prime-video-de-cassius-clay-a-muhammad-ali-des-jeux-olympiques-de-rome-au-championnat-du-monde-des-poids-lourds-a-miami_6814047_3246.html",
+   "date": "2026-11-21T16:30+00:00",
+   "resume": "La fiction créée par Ben Watkins retrace avec rigueur l’ascension du jeune boxeur devenu porte-parole de sa communauté.",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "A Agen, les irréductibles opposants à la ligne à grande vitesse Bordeaux-Toulouse : « On a un pays qui est superbe et ils vont venir le massacrer. Qu’est-ce qu’on va laisser à nos enfants ? »",
+   "url": "https://www.lemonde.fr/m-le-mag/article/2026/11/21/a-agen-les-irreductibles-opposants-a-la-ligne-a-grande-vitesse-bordeaux-toulouse-on-a-un-pays-qui-est-superbe-et-ils-vont-venir-le-massacrer-qu-est-ce-qu-on-va-laisser-a-nos-enfants_6813947_4500055.html",
    "date": "2026-11-21T06:00+00:00",
-   "resume": "Le professeur émérite de littérature italienne au Collège de France se revendique du modeste copiste. Cet humaniste, plutôt, éclaire le présent en dialoguant avec les auteurs du passé, comme en témoignent deux nouveaux livres, « Alléger le temps » et « L’Avenir de nos origines ».",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
-   "titre": "Inondations dans le Pas-de-Calais : deux cours d’eau en vigilance orange ; près de 800 évacuations depuis jeudi, selon la préfecture",
-   "url": "https://www.lemonde.fr/planete/article/2026/11/21/inondations-dans-le-pas-de-calais-la-canche-reste-en-vigilance-orange-pres-de-800-evacuations-depuis-jeudi-selon-la-prefecture_6813953_3244.html",
-   "date": "2026-11-21T07:01+00:00",
-   "resume": "En Normandie, Vigicrues a prévenu que le niveau maximum de la Vire, placée en vigilance jaune, « est en passe d’être atteint ce [samedi] matin » dans le secteur de Saint-Lô et qu’il est « susceptible de générer des débordements localisés ».",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
-   "titre": "Au Sénégal, l’avenir incertain des installations des Jeux olympiques de la jeunesse",
-   "url": "https://www.lemonde.fr/afrique/article/2026/11/21/au-senegal-l-avenir-incertain-des-installations-des-jeux-olympiques-de-la-jeunesse_6814024_3212.html",
-   "date": "2026-11-21T15:00+00:00",
-   "resume": "La piscine olympique et le stade Iba-Mar-Diop ont été rénovés pour la compétition, qui s’est tenue à Dakar du 31 octobre au 13 novembre. Désormais, plusieurs acteurs espèrent en récupérer la gestion.",
+   "resume": "Dans le Lot-et-Garonne, les déboisements préalables au chantier de la ligne à grande vitesse Bordeaux-Toulouse sont sur le point de commencer. Autour d’Agen, les opposants à ce projet, lancé en 2009, balaient les arguments d’attractivité économique et de gain de temps pour dénoncer son coût exorbitant et son impact désastreux sur l’environnement.",
    "langue": "français"
   },
   {
@@ -1438,10 +1422,90 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Le remorquage du cargo « Miro-G », échoué au large des Landes, pourrait durer plusieurs jours",
-   "url": "https://www.lemonde.fr/planete/article/2026/11/21/le-remorquage-du-cargo-miro-g-echoue-au-large-des-landes-pourrait-durer-plusieurs-jours_6814014_3244.html",
-   "date": "2026-11-21T12:57+00:00",
-   "resume": "Selon la préfecture maritime, le déséchouement « nécessite la réunion de nombreux prérequis techniques », qui ne permettent pas de « garantir à ce stade le succès de cette opération ».",
+   "titre": "Au Sénégal, l’avenir incertain des installations des Jeux olympiques de la jeunesse",
+   "url": "https://www.lemonde.fr/afrique/article/2026/11/21/au-senegal-l-avenir-incertain-des-installations-des-jeux-olympiques-de-la-jeunesse_6814024_3212.html",
+   "date": "2026-11-21T15:00+00:00",
+   "resume": "La piscine olympique et le stade Iba-Mar-Diop ont été rénovés pour la compétition, qui s’est tenue à Dakar du 31 octobre au 13 novembre. Désormais, plusieurs acteurs espèrent en récupérer la gestion.",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "Inondations dans le Pas-de-Calais : deux cours d’eau en vigilance orange ; près de 800 évacuations depuis jeudi, selon la préfecture",
+   "url": "https://www.lemonde.fr/planete/article/2026/11/21/inondations-dans-le-pas-de-calais-la-canche-reste-en-vigilance-orange-pres-de-800-evacuations-depuis-jeudi-selon-la-prefecture_6813953_3244.html",
+   "date": "2026-11-21T07:01+00:00",
+   "resume": "En Normandie, Vigicrues a prévenu que le niveau maximum de la Vire, placée en vigilance jaune, « est en passe d’être atteint ce [samedi] matin » dans le secteur de Saint-Lô et qu’il est « susceptible de générer des débordements localisés ».",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "🔴 En direct : 82 500 personnes ont manifesté en France selon Beauvau, 150 000 d'après la CGT",
+   "url": "https://www.france24.com/fr/france/20261121-en-direct-acte-vi-de-la-mobilisation-pour-la-jeunesse-et-contre-la-vie-ch%C3%A8re",
+   "date": "2026-11-21T17:07+00:00",
+   "resume": null,
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "Guerre en Ukraine : deux personnes tuées à Kryvyï Rih",
+   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-guerre-en-ukraine-deux-personnes-tu%C3%A9es-%C3%A0-kryvy%C3%AF-rih",
+   "date": "2026-11-21T17:04+00:00",
+   "resume": "La Russie a ⁠de nouveau frappé ​dans la nuit de vendredi à samedi 21 novembre des cibles civiles dans la ville industrielle de Kryvyï Rih, ville natale du président Volodymyr Zelensky, où au moins deux personnes ont été tuées, dont un garçon de sept ans.",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "COP31 à Antalya : bras de fer autour des énergies fossiles et des financements",
+   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-cop31-%C3%A0-antalya-bras-de-fer-autour-des-%C3%A9nergies-fossiles-et-des-financements",
+   "date": "2026-11-21T17:02+00:00",
+   "resume": "La 31e ⁠conférence des Nations unies sur ​les changements climatiques (COP31) aboutira soit à un accord satisfaisant, soit à aucun accord, a déclaré samedi 21 novembre le haut responsable de l'Union européenne chargé du climat, alors que les négociations se prolongeaient bien au-delà ​de l'échéance prévue. Nous en parlons avec notre correspondante Jenna Le Bras.",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "Dakar : la Biennale des arts contemporains ouvre ses portes",
+   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-dakar-la-biennale-des-arts-contemporains-ouvre-ses-portes",
+   "date": "2026-11-21T16:51+00:00",
+   "resume": "C'est parti pour la 16e édition de la Biennale de Dakar ! Le rendez-vous des arts contemporains a ouvert ses portes jeudi 19 novembre dans la capitale sénégalaise. Au programme de l'exposition principale, le IN : 79 artistes du continent et de ses diasporas qui explorent notamment les thèmes de la résilience et de la transformation.",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "RD Congo : les combats se poursuivent dans le Sud-Kivu",
+   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-rd-congo-les-combats-se-poursuivent-dans-le-sud-kivu",
+   "date": "2026-11-21T16:50+00:00",
+   "resume": "Dans l'est de la RD Congo, les combats se poursuivent dans la province du Sud-Kivu. L'armée congolaise, appuyée par les combattants wazalendo et l'armée burundaise, mène des offensives contre les Twirwaneho, alliés au Front pour la refondation de la nation (FRN), le mouvement politico-militaire dirigé par l'ancien président Joseph Kabila. Ces affrontements provoquent d'importants déplacements de p",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "Guinée - Burkina Faso : pourquoi les tensions montent",
+   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-guin%C3%A9e-burkina-faso-pourquoi-les-tensions-montent",
+   "date": "2026-11-21T16:48+00:00",
+   "resume": "Les tensions montent entre la Guinée et le Burkina Faso. Conakry vient de couper le signal de la RTB, la télévision publique burkinabè. En cause : un éditorial critique, accompagné d'une caricature du président Mamadi Doumbouya. Mais l'affaire va bien au-delà de la télévision : elle éclate en pleine répression contre l'orpaillage illégal en Guinée, qui a déjà contraint des dizaines de milliers de ",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "Manifestation à Paris : le cortège est arrivé à Nation \"sans débordement\"",
+   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-manifestation-%C3%A0-paris-le-cort%C3%A8ge-est-arriv%C3%A9-%C3%A0-nation-sans-d%C3%A9bordement",
+   "date": "2026-11-21T16:46+00:00",
+   "resume": "La mobilisation continue en France ce samedi 21 novembre. Nos journalistes Valentine Erba et Sylvain Rousseau étaient en direct du cortège parisien à son arrivée à Nation. \"On peut tirer le bilan d'une journée extrêmement calme\", rapporte-t-il.",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "Climat : les négociations s'enlisent à la COP31, sans compromis en vue",
+   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-climat-les-n%C3%A9gociations-s-enlisent-%C3%A0-la-cop31-sans-compromis-en-vue",
+   "date": "2026-11-21T16:36+00:00",
+   "resume": "Certains ministres sont déjà partis, les tractations se poursuivent, mais toujours pas de terrain d'entente : la COP sur le climat traîne en longueur samedi en Turquie, où 200 pays tentent encore de trouver un accord, malgré leurs différends sur les énergies fossiles et les financements. Nous en parlons avec notre journaliste Anne Corpet.",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "Manifestation à Paris : un cortège \"finalement assez fourni\"",
+   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-manifestation-%C3%A0-paris-un-cort%C3%A8ge-finalement-assez-fourni",
+   "date": "2026-11-21T16:33+00:00",
+   "resume": "Ce samedi 21 novembre marque le sixième acte de la colère sociale en France. Des manifestations se tiennent dans de nombreuses villes à travers le pays. Notre journaliste Sylvain Rousseau suit le cortège parisien, qui est \"finalement beaucoup plus fourni que ce l'on pensait au début\", remarque-t-il.",
    "langue": "français"
   },
   {
@@ -1565,78 +1629,6 @@
    "langue": "français"
   },
   {
-   "media": "France 24",
-   "titre": "L'IA déraille à Wall Street, le marché enregistre des centaines de milliards de dollars de pertes",
-   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-l-ia-d%C3%A9raille-%C3%A0-wall-street-le-march%C3%A9-enregistre-des-centaines-de-milliards-de-dollars-de-pertes",
-   "date": "2026-11-21T10:28+00:00",
-   "resume": "Wall Street a lourdement chuté vendredi 20 novembre, croulant sous le poids des inquiétudes persistantes autour de l'intelligence artificielle (IA), un jour à peine après la cotation historique du géant du secteur, Anthropic.",
-   "langue": "français"
-  },
-  {
-   "media": "France 24",
-   "titre": "Au procès Zecler, le racisme retenu, prison ferme pour trois policiers",
-   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-au-proc%C3%A8s-zecler-le-racisme-retenu-prison-ferme-pour-trois-policiers",
-   "date": "2026-11-21T10:27+00:00",
-   "resume": "La cour criminelle de Paris a retenu ce vendredi 20 novembre la dimension raciste de l'agression de Michel Zecler en 2020 et condamné trois policiers à des peines allant de un an sous bracelet électronique à deux ans ferme, un verdict salué par les avocats du producteur de musique noir.",
-   "langue": "français"
-  },
-  {
-   "media": "France 24",
-   "titre": "En Pologne, la coalition pour l'Ukraine s'exerce à l'ombre de la guerre",
-   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-en-pologne-la-coalition-pour-l-ukraine-s-exerce-%C3%A0-l-ombre-de-la-guerre",
-   "date": "2026-11-21T10:16+00:00",
-   "resume": "Réunie pour la première fois sur le terrain, une coalition pilotée par Paris et Londres a vocation à se déployer rapidement dès la signature d'un cessez-le-feu, pour aider l'Ukraine à dissuader à l'avenir toute nouvelle agression russe.",
-   "langue": "français"
-  },
-  {
-   "media": "France 24",
-   "titre": "Enigma : le général Bertrand, le Français qui a contribué à casser la machine de cryptage des nazis",
-   "url": "https://www.france24.com/fr/europe/20261121-enigma-role-francais-machine-crypter-nazis-general-bertrand-guerre-mondiale",
-   "date": "2026-11-21T08:38+00:00",
-   "resume": "Pour beaucoup, le décryptage d'Enigma, la machine de cryptographie utilisée par l'Allemagne nazie pendant la Seconde Guerre mondiale, tient avant tout au génie du mathématicien britannique Alan Turing. Un livre, \"Le dossier secret des espions français\", met en lumière le rôle méconnu mais crucial des services secrets de Paris et Varsovie pour élucider le code de cette machine.",
-   "langue": "français"
-  },
-  {
-   "media": "France 24",
-   "titre": "En direct : le cortège s'élance à Paris pour un sixième samedi de manifestation",
-   "url": "https://www.france24.com/fr/france/20261121-en-direct-acte-vi-de-la-mobilisation-pour-la-jeunesse-et-contre-la-vie-ch%C3%A8re",
-   "date": "2026-11-21T08:23+00:00",
-   "resume": "Pour la sixième semaine consécutive, syndicats, organisations de jeunesse et Gilets jaunes manifestent contre la vie chère, dans un contexte de colère sociale devenue européenne mais qui commence à s'essouffler en France. Des manifestations contre les violences faites aux femmes sont également attendues dans tout le pays. Suivez notre direct.",
-   "langue": "français"
-  },
-  {
-   "media": "France 24",
-   "titre": "Aux États-Unis, le ministère de l'Agriculture et le FBI victimes d'une cyber-attaque",
-   "url": "https://www.france24.com/fr/am%C3%A9riques/20261121-%C3%A9tats-unis-le-minist%C3%A8re-de-l-agriculture-et-le-fbi-victimes-de-piratages-informatiques",
-   "date": "2026-11-21T07:31+00:00",
-   "resume": "Quelques jours après des pannes technologiques dans des secteurs stratégiques du pays, le ministère de l'Agriculture et la police fédérale des États-Unis ont été victimes de piratages informatiques, ont rapporté, vendredi, les médias américains.",
-   "langue": "français"
-  },
-  {
-   "media": "France 24",
-   "titre": "L'Arabie saoudite dit avoir intercepté des missiles lancés par les Houthis vers Riyad",
-   "url": "https://www.france24.com/fr/moyen-orient/20261121-l-arabie-saoudite-dit-avoir-intercept%C3%A9-des-missiles-lanc%C3%A9s-par-les-houthis-vers-riyad",
-   "date": "2026-11-21T06:52+00:00",
-   "resume": "Trois missiles balistiques tirés par les Houthis yéménites pro-iraniens en direction de Riyad ont été interceptés, samedi, par les forces saoudiennes, selon le porte-parole de la coalition militaire. Cette attaque intervient au lendemain de frappes menées par l'Arabie saoudite au Yémen contre un port stratégique de la mer Rouge.",
-   "langue": "français"
-  },
-  {
-   "media": "France 24",
-   "titre": "Sixième samedi de manifestation contre la vie chère, premier round contre les violences sexistes",
-   "url": "https://www.france24.com/fr/france/20261121-sixi%C3%A8me-samedi-de-manifestation-contre-la-vie-ch%C3%A8re-premier-round-contre-les-violences-sexistes",
-   "date": "2026-11-21T06:16+00:00",
-   "resume": "Pour la sixième semaine d'affilée, des syndicats, organisations de jeunesse et Gilets jaunes appellent à manifester, samedi, contre la vie chère, malgré une baisse de la mobilisation. Des rassemblements sont aussi prévus cette semaine dans l'Hexagone pour dénoncer les violences faites aux femmes et réclamer le vote de la loi intégrale.",
-   "langue": "français"
-  },
-  {
-   "media": "France 24",
-   "titre": "\"GTA VI\" s’offre un lancement record et surpasse la tournée de Taylor Swift",
-   "url": "https://www.france24.com/fr/culture/20261121-gta-vi-s-offre-un-lancement-record-mais-agace-une-partie-des-joueurs",
-   "date": "2026-11-21T04:12+00:00",
-   "resume": "\"GTA VI\", dernier opus très attendu de la superproduction \"Grand Theft Auto\", a généré 3,79 milliards de dollars de ventes, 3,5 milliards d’euros environ, le jour de sa sortie, a annoncé, vendredi, Takes Two Interactive. Point de référence culturelle, la tournée de la chanteuse américaine Taylor Swift en 2023 et 2024 a rapporté 2,1 milliards de dollars.",
-   "langue": "français"
-  },
-  {
    "media": "BBC News",
    "titre": "Zelensky says Crimean Bridge strikes 'fair response' as he meets UK's Streeting",
    "url": "https://www.bbc.co.uk/news/articles/c6wy0qj7w5zqo",
@@ -1686,7 +1678,7 @@
   },
   {
    "media": "BBC News",
-   "titre": "Rugby union: England run up record win over New Zealand",
+   "titre": "England run up record win over New Zealand in rugby union's Nations Championship",
    "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cwm2jxd8k15mo",
    "date": "2026-11-21T16:08+00:00",
    "resume": "England's revival roars up a gear as they beat New Zealand by a record margin after former captain Lewis Moody leads the hosts' response to the haka.",
@@ -1786,14 +1778,6 @@
    "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cwm2jxd8k15mo",
    "date": "2026-11-21T16:08+00:00",
    "resume": "England's revival roars up a gear as they beat New Zealand by a record margin after former captain Lewis Moody leads the hosts' response to the haka.",
-   "langue": "anglais"
-  },
-  {
-   "media": "BBC News",
-   "titre": "McConnell shines as 11-try Scotland dismantle Japan",
-   "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cmx2x00w08keo",
-   "date": "2026-11-21T16:23+00:00",
-   "resume": "A Liam McConnell hat-trick inspires Scotland in an 11-try Nations Championship rout of Japan at Murrayfield.",
    "langue": "anglais"
   }
  ],
@@ -2220,14 +2204,6 @@
    "url": "https://www.numerama.com/pop-culture/2380025-gta-6-25-millions-de-ventes-236-milliards-de-dollars-les-chiffres-fous-de-son-lancement.html",
    "date": "2026-11-20T16:15+00:00",
    "resume": "Au lendemain de sa sortie, GTA 6 accumule déjà les records. Ventes records, millions de spectateurs sur Twitch, trafic Internet sous tension et 35 000 élèves absents en Angleterre : voici les premiers chiffres du lancement du jeu de Rockstar.",
-   "langue": "français"
-  },
-  {
-   "media": "Numerama",
-   "titre": "Un Graal des maths vacille : un chercheur d’Anthropic revendique avoir résolu l’hypothèse de Riemann avec l’IA Claude",
-   "url": "https://www.numerama.com/tech/2380265-un-graal-des-maths-tombe-un-chercheur-danthropic-revendique-avoir-resolu-lhypothese-de-riemann-avec-lia-claude.html",
-   "date": "2026-11-20T16:08+00:00",
-   "resume": "Un problème à un million de dollars, ouvert depuis 1859, résolu avec une IA ? Levent Alpöge, mathématicien employé par Anthropic, affirme ce vendredi 20 novembre avoir démontré l'hypothèse de Riemann avec Claude. Pour toute preuve, il livre quatorze archives de code que personne n'a encore vérifiées, au lendemain de l'entrée en Bourse de son employeur.",
    "langue": "français"
   },
   {
