@@ -197,6 +197,12 @@ def main(argv: list[str] | None = None) -> int:
     sous.add_parser("croiser", help="croiser les événements avec les mesures")
     sous.add_parser("tendances", help="sujets grand public et articles pour le Détour")
     sous.add_parser("rediger", help="propositions d'articles du jour, selon la charte")
+    pub = sous.add_parser("publier", help="publier un brouillon validé sur le site (iris/publies.json)")
+    pub.add_argument("--rubrique", default="une")
+    pub.add_argument("--date", default="")
+    pub.add_argument("--numero", type=int, default=1)
+    pub.add_argument("--forcer", action="store_true")
+    pub.add_argument("--retirer", default="", help="dernier-une, dernier-tous_connectes, dernier-detour ou un identifiant")
     av = sous.add_parser("avoirs", help="avoirs dus selon les contrats")
     av.add_argument("--mois", default=None, help="AAAA-MM (par défaut : le mois précédent)")
     av.add_argument("--facture", nargs="*", default=[], help="fournisseur=montant en euros")
@@ -244,6 +250,23 @@ def main(argv: list[str] | None = None) -> int:
         res = produire_tendances(charger_yaml(RACINE / "config" / "redaction.yaml"), RACINE)
         for nom, etat in res["sources"].items():
             print(f"  - {nom} : {etat['etat']}" + (f" ({etat.get('nombre')})" if "nombre" in etat else f" ({etat.get('raison')})"))
+        return 0
+
+    if args.commande == "publier":
+        from .publication import RefusPublication, publier, retirer
+        if args.retirer:
+            n = retirer(RACINE, args.retirer)
+            print(f"  {n} élément(s) retiré(s) du site.")
+            return 0 if n else 1
+        try:
+            res = publier(RACINE, args.rubrique, args.date, args.numero, args.forcer)
+        except RefusPublication as e:
+            print(f"::error::Publication refusée : {e}")
+            print(f"  Publication refusée : {e}")
+            return 1
+        print(f"  Publié sur le site : {res['titre']} ({res['rubrique']}, brouillon du {res['date']})")
+        for a in res["alertes"]:
+            print(f"::warning::{a}")
         return 0
 
     if args.commande == "rediger":

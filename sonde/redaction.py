@@ -314,7 +314,7 @@ class Redacteur:
                               {"role": "user", "content": consigne + "\n\n=== FICHE ===\n" + json.dumps(fiche, ensure_ascii=False, indent=1)}]}
         derniere = None
         refus = 0
-        entetes = {"Authorization": f"Bearer {sv['cle']}"} if sv.get("cle") else {}
+        entetes = {**(sv.get("entetes") or {}), **({"Authorization": f"Bearer {sv['cle']}"} if sv.get("cle") else {})}
 
         def noter(resultat):
             self.journal.append({"service": sv.get("nom") or sv["base_url"], "modele": modele, "rubrique": rubrique,
@@ -347,13 +347,38 @@ class Redacteur:
                 if r.status_code >= 400:
                     noter(f"HTTP {r.status_code} {r.text.strip()[:100]}")
                 r.raise_for_status()
-                texte = r.json()["choices"][0]["message"]["content"]
-                texte = re.sub(r"^```(?:json)?|```$", "", (texte or "").strip()).strip()
+                try:
+                    donnees = r.json()
+                except ValueError:
+                    detail = f"réponse illisible (HTTP {r.status_code}, {r.headers.get('content-type', '?')}) : {r.text.strip()[:120]!r}"
+                    noter(detail)
+                    derniere = detail
+                    continue
+                choix = (donnees.get("choices") or [{}])[0]
+                message = choix.get("message") or {}
+                texte = message.get("content") or ""
+                if isinstance(texte, list):   # certains services renvoient le texte en morceaux
+                    texte = "".join(m.get("text", "") for m in texte if isinstance(m, dict))
+                if not texte.strip():
+                    detail = (f"réponse vide (fin : {choix.get('finish_reason')}, refus : {message.get('refusal')}, "
+                              f"début : {json.dumps(donnees, ensure_ascii=False)[:160]})")
+                    noter(detail)
+                    derniere = detail
+                    if "response_format" in corps:
+                        corps.pop("response_format")   # on réessaie sans le mode JSON imposé
+                    continue
+                texte = re.sub(r"^```(?:json)?|```$", "", texte.strip()).strip()
                 debut, fin = texte.find("{"), texte.rfind("}")
-                rep = json.loads(texte[debut:fin + 1] if debut >= 0 else texte)
+                try:
+                    rep = json.loads(texte[debut:fin + 1] if debut >= 0 else texte)
+                except ValueError:
+                    detail = f"texte qui n'est pas du JSON : {texte[:120]!r}"
+                    noter(detail)
+                    derniere = detail
+                    continue
                 noter("ok")
                 return rep
-            except (httpx.HTTPError, KeyError, IndexError, ValueError) as e:
+            except (httpx.HTTPError, KeyError, IndexError) as e:
                 derniere = f"{type(e).__name__}: {e}"[:200]
                 if not isinstance(e, httpx.HTTPStatusError):
                     noter(derniere)
@@ -416,7 +441,24 @@ FORMAT_ARTICLE = """Réponds avec ce JSON :
 
 # ---------------------------------------------------------------- À la une
 
-def candidats_une(actus: dict, croisement: dict, maintenant: datetime, deja: set) -> list[dict]:
+FAMILLES_DE_MODELES = r"(deepseek|glm|qwen|llama|mistral|mixtral|codestral|devstral|magistral|pixtral|gpt|gemma|phi|kimi|bge|whisper|flux|minimax|claude|gemini)"
+
+
+def modele_non_suivi(titre: str, suivis: list[str]) -> str | None:
+    """Le modèle cité par un incident, s'il n'est pas l'un de ceux que la sonde mesure (sinon None).
+    Un incident sur « DeepSeek v4.1 Flash » ne dit rien des modèles mesurés : « Aucune anomalie » serait trompeur."""
+    plat = " ".join(_mots(titre))
+    cite = re.search(FAMILLES_DE_MODELES + r"[\w .\-]*", titre, re.I)
+    if not cite:
+        return None
+    for nom in suivis:
+        mots = [m for m in _mots(nom) if len(m) > 1][:2]
+        if mots and all(m in plat.split() for m in mots):
+            return None
+    return " ".join(cite.group(0).split()[:3])
+
+
+def candidats_une(actus: dict, croisement: dict, maintenant: datetime, deja: set, suivis: list[str] | None = None) -> list[dict]:
     """Événements de la semaine, classés : niveau de corrélation, cause extérieure, reprise presse, fraîcheur."""
     par_id: dict[str, dict] = {}
     for e in actus.get("evenements") or []:
@@ -434,6 +476,10 @@ def candidats_une(actus: dict, croisement: dict, maintenant: datetime, deja: set
         niveaux = [i["correlation"]["niveau"] for i in c["impacts"]]
         meilleur = max(niveaux, key=lambda n: NIVEAUX.get(n, 0)) if niveaux else "non_mesure"
         e = c["evenement"]
+        hors_sonde = modele_non_suivi(e.get("titre") or "", suivis or [])
+        if hors_sonde and meilleur == "non_concerne":
+            meilleur = "non_mesure"          # « aucune anomalie » ne vaut que pour les modèles mesurés
+            c["modele_non_suivi"] = hors_sonde
         score = NIVEAUX.get(meilleur, 0) * 10
         score += 6 if e.get("type") in TYPES_EXTERIEURS else 0
         score += min(4, ((e.get("presse") or {}).get("nb_medias") or 0))
@@ -457,6 +503,10 @@ def fiche_une(c: dict) -> dict:
             "nombre_de_mesures_pendant_l_evenement": m.get("mesures_dans_la_fenetre"),
             "incident_officiel": bool(m.get("incident_officiel")),
         })
+    if c.get("modele_non_suivi"):
+        for m in mesures:
+            m["ce_que_la_sonde_a_vu"] = (f"La sonde ne mesure pas le modèle {c['modele_non_suivi']} : "
+                                         "impossible de dire si des utilisateurs ont été touchés.")
     return {
         "evenement": e.get("titre"), "type": e.get("type"),
         "debut": _paris(debut), "fin": _paris(fin) if fin and fin > (debut or fin) else None,
@@ -685,7 +735,14 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
 
     try:
         # ---- À la une : un sujet par jour
-        candidats = candidats_une(actus, croisement, maintenant, deja.get("une", set()))
+        suivis = []
+        try:
+            import yaml
+            fz = yaml.safe_load((racine / "config" / "fournisseurs.yaml").read_text(encoding="utf-8")) or {}
+            suivis = [m.get("nom") or m.get("id") for m in fz.get("modeles") or []]
+        except (OSError, ValueError, ImportError):
+            pass
+        candidats = candidats_une(actus, croisement, maintenant, deja.get("une", set()), suivis)
         for c in candidats[: (rythme.get("une") or {}).get("par_jour", 1)]:
             fiche = fiche_une(c)
             presse = [{"titre": x.get("titre"), "url": x.get("url")} for x in c["evenement"].get("sources") or []
