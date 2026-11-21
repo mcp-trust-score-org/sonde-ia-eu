@@ -589,7 +589,9 @@
      ]
     }
    },
-   "alertes_charte": []
+   "alertes_charte": [],
+   "statut": "publie",
+   "publie_le": "2026-11-21T17:49:15+00:00"
   }
  ],
  "reserve_une": [],
