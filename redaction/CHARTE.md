@@ -87,7 +87,21 @@ L'article se termine par l'encadré « Quel impact chez moi ? » :
 
 **Les sujets** : tout ce qui passionne les gens. Pop culture (jeux vidéo, musique, cinéma, séries), phénomènes d'achat, faits de société, le monde. Pas de filtre par thème.
 
-**Le test, et le seul filtre** : un sujet ne passe que si on peut écrire le « Et vous ? » en une phrase. S'il n'y a pas de dépendance à la technologie à révéler, on ne le traite pas.
+**Le test : trois questions, toutes obligatoires.**
+
+1. **Quelle technologie lâche, sature, change les règles ou surprend ?** Elle doit être nommée dans les articles de presse : une appli, un compte, un réseau, une panne, un écran, un algorithme, un service en ligne. Si on doit la supposer ou l'ajouter nous-mêmes, le sujet ne passe pas.
+2. **Beaucoup de gens l'ont-ils vu ou vécu cette semaine ?** Un sujet repris par la presse nationale, pas un fait local.
+3. **Le « Et vous ? » révèle-t-il une dépendance que le lecteur n'avait pas vue ?** Pas une question plaquée sur n'importe quel sujet.
+
+**Ce qui n'est jamais un sujet Iris**, même avec un « Et vous ? » possible :
+- les faits divers criminels (cambriolage, agression, explosion de distributeur…) ;
+- les affaires judiciaires ou politiques qui visent une personne nommée ;
+- les sujets où la technologie n'est qu'un décor.
+
+Exemples validés : GTA VI vendu sans disque (le jeu dépend d'un compte), la peluche que les robots achètent avant nous, l'Espagne privée de paiement pendant la panne géante.
+Exemples écartés (21 novembre 2026) : le préfet soupçonné de fuites vers un parti (affaire politique, technologie inventée) ; deux distributeurs explosés dans la Drôme (fait divers, technologie en décor). Le second a donné un bon sujet une fois repris sous l'angle de fond : le recul des distributeurs et notre plan B en liquide, chiffres de la Banque de France à l'appui.
+
+**Mieux vaut aucun article qu'un article hors ligne.** Si aucun sujet ne passe les trois questions, le rédacteur le dit et ne propose rien.
 
 **Ce qui rend un article partageable**
 
@@ -141,4 +155,7 @@ Chaque brouillon est vérifié avant d'arriver en relecture. Les écarts sont si
 - 3 bons réflexes pour Tous connectés ;
 - pas de point d'exclamation ;
 - aucun passage recopié d'un article lu (12 mots identiques à la suite) ;
-- les articles qui n'ont pas pu être lus sont listés.
+- les articles qui n'ont pas pu être lus sont listés ;
+- titre périmé (« sort ce jeudi » publié un samedi) et sujet déjà en ligne : publication refusée sauf « forcer » ;
+- points « à vérifier » laissés par le rédacteur : publication refusée sauf « forcer » ;
+- **ligne éditoriale** : les articles de faits divers, de justice et de politique sont retirés de la liste avant le choix du sujet ; le rédacteur doit nommer la technologie en jeu et citer la phrase de l'article qui la montre ; un mot technologique du texte absent des articles lus est signalé. Une alerte « Ligne éditoriale » bloque la publication sauf « forcer ».
