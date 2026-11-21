@@ -41,10 +41,10 @@ IMAGES_DETOUR = {"réseau": "reseau", "reseau": "reseau", "énergie": "energie",
                  "ia": "innovation", "jeux vidéo": "jeux-video", "société": "societe", "societe": "societe",
                  "cybersécurité": "savoir", "santé": "sante", "politique": "politique", "médias": "medias-tv"}
 NIVEAUX_SITE = {  # tag interne → encadré Premium (le tag lui-même n'est jamais affiché)
-    "Confirmé": ("red", "Vos fournisseurs ont été touchés"),
-    "Probable": ("orange", "Vos fournisseurs ont probablement été touchés"),
-    "Possible": ("orange", "Un signal faible chez vos fournisseurs"),
-    "Aucune anomalie": ("green", "Aucune anomalie mesurée chez vos fournisseurs"),
+    "Confirmé": ("red", "Les fournisseurs suivis par Iris ont été touchés"),
+    "Probable": ("orange", "Les fournisseurs suivis ont probablement été touchés"),
+    "Possible": ("orange", "Un signal faible chez les fournisseurs suivis"),
+    "Aucune anomalie": ("green", "Aucune anomalie mesurée chez les fournisseurs suivis"),
     "Non mesuré": ("green", "Notre sonde n'a pas mesuré cet événement"),
 }
 
@@ -64,7 +64,7 @@ def _texte_brut(x) -> str:
 
 def _impact(p: dict) -> dict:
     """L'encadré « Quel impact chez moi ? » (Premium), tiré des faits de la fiche."""
-    niveau, statut = NIVEAUX_SITE.get(p.get("tag_interne") or "", ("green", "Aucune anomalie mesurée chez vos fournisseurs"))
+    niveau, statut = NIVEAUX_SITE.get(p.get("tag_interne") or "", ("green", "Aucune anomalie mesurée chez les fournisseurs suivis"))
     f = p.get("fiche") or {}
     lignes = []
     if f.get("fournisseurs_concernes"):

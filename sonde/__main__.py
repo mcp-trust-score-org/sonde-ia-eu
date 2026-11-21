@@ -198,6 +198,7 @@ def main(argv: list[str] | None = None) -> int:
     sous.add_parser("croiser", help="croiser les événements avec les mesures")
     sous.add_parser("tendances", help="sujets grand public et articles pour le Détour")
     sous.add_parser("rediger", help="propositions d'articles du jour, selon la charte")
+    sous.add_parser("site", help="données des onglets Premium du site (iris/donnees/)")
     pub = sous.add_parser("publier", help="publier un brouillon validé sur le site (iris/publies.json)")
     pub.add_argument("--rubrique", default="une")
     pub.add_argument("--date", default="")
@@ -253,6 +254,12 @@ def main(argv: list[str] | None = None) -> int:
         res = produire_tendances(charger_yaml(RACINE / "config" / "redaction.yaml"), RACINE)
         for nom, etat in res["sources"].items():
             print(f"  - {nom} : {etat['etat']}" + (f" ({etat.get('nombre')})" if "nombre" in etat else f" ({etat.get('raison')})"))
+        return 0
+
+    if args.commande == "site":
+        from .site import produire
+        res = produire(RACINE)
+        print(f"  iris/donnees : {', '.join(res['copies'])} · {res['dossiers']} dossier(s) · {res['preuves']} preuve(s)")
         return 0
 
     if args.commande == "publier":

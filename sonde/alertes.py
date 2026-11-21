@@ -68,7 +68,7 @@ def detecter(precedent: dict, meteo: dict, contrats: dict | None = None) -> list
             duree = dernier.get("duree_min")
             texte = f"{f['nom']} fonctionne de nouveau"
             texte += f", après {duree} minutes de panne." if duree else "."
-            texte += " Pensez à la réclamation : le dossier se prépare avec `python -m sonde avoirs`."
+            texte += " Pensez à la réclamation : le calcul d'avoir est dans Indicateurs."
             alertes.append({"fournisseur": f["id"], "type": "fin_orage", "niveau": "vert",
                             "titre": f"Fin de l'orage sur {f['nom_court']}", "texte": texte})
         elif f["vigilance"] == "orange" and v_av not in ("orange", "rouge"):
@@ -76,6 +76,27 @@ def detecter(precedent: dict, meteo: dict, contrats: dict | None = None) -> list
                             "titre": f"Vigilance orange sur {f['nom_court']}",
                             "texte": f"{f['nom']} : {f.get('raison') or 'dégradation en cours'}."})
     return alertes
+
+
+def duree_depuis_orage(fin: dict, journal: list[dict]) -> int | None:
+    """Minutes entre la fin d'orage et l'alerte « orage » qui l'a ouverte (la plus récente avant elle)."""
+    debuts = [a for a in journal if a.get("fournisseur") == fin["fournisseur"] and a.get("type") == "orage"
+              and a.get("horodatage") and a["horodatage"] < fin["horodatage"]]
+    if not debuts:
+        return None
+    debut = max(debuts, key=lambda a: a["horodatage"])
+    return round((datetime.fromisoformat(fin["horodatage"]) - datetime.fromisoformat(debut["horodatage"])).total_seconds() / 60)
+
+
+def texte_fin(fin: dict, journal: list[dict], meteo: dict | None = None) -> str:
+    f = next((x for x in (meteo or {}).get("fournisseurs") or [] if x["id"] == fin["fournisseur"]), {})
+    nom = f.get("nom") or fin["fournisseur"]
+    duree = duree_depuis_orage(fin, journal)
+    if duree is None:   # pas d'alerte de début dans le journal : on garde la durée de l'incident mesuré, s'il y en a une
+        duree = ((f.get("incidents_30j") or [{}])[0]).get("duree_min")
+    texte = f"{nom} fonctionne de nouveau"
+    texte += (f", après environ {duree} minutes de panne (durée entre deux passages de la sonde)." if duree else ".")
+    return texte + " Pensez à la réclamation : le calcul d'avoir est dans Indicateurs."
 
 
 def envoyer(alerte: dict, env: dict | None = None, client: httpx.Client | None = None) -> list[str]:
@@ -144,6 +165,9 @@ def traiter(dossier_donnees: Path, dossier_public: Path, contrats: dict | None =
         journal = json.loads(f_journal.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         journal = []
+    for a in alertes:      # la durée réelle : depuis l'alerte « orage » qui a ouvert cette panne
+        if a["type"] == "fin_orage":
+            a["texte"] = texte_fin(a, journal, meteo)
     journal = (list(reversed(alertes)) + journal)[:100]
     f_journal.write_text(json.dumps(journal, ensure_ascii=False, indent=1), encoding="utf-8")
     dossier_donnees.mkdir(parents=True, exist_ok=True)
