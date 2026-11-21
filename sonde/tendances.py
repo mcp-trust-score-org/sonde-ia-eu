@@ -2,12 +2,11 @@
 
     python -m sonde tendances       # écrit public/tendances.json
 
-Trois sources, toutes gratuites et publiques :
+Sources, toutes gratuites et publiques :
   - les pages les plus lues de Wikipédia la veille (français et anglais) : un très bon
     indicateur de ce qui occupe les gens (une sortie de jeu, un phénomène, un événement) ;
-  - la presse grand public via GDELT, sur des mots qui signalent souvent une dépendance
-    numérique (panne, rupture de stock, file d'attente, arnaque…), tous sujets confondus ;
-  - pour le Détour, les articles récents des médias de référence (config/redaction.yaml).
+  - les titres de la presse grand public, par leurs flux RSS (et GDELT si activé) ;
+  - pour le Détour, les flux RSS des médias de référence (config/redaction.yaml).
 
 Aucun filtre par thème : le test du « Et vous ? » est appliqué au moment de la rédaction.
 Une source injoignable est notée, sans bloquer les autres.
@@ -23,7 +22,11 @@ from urllib.parse import quote
 
 import httpx
 
-from .actualites import ENTETES, GdeltErreur, GdeltRefus, _gdelt_date, _gdelt_get, _iso, _plat
+import re
+import xml.etree.ElementTree as ET
+
+from .actualites import (ENTETES, GdeltErreur, GdeltRefus, _date, _enfant, _gdelt_date, _gdelt_get, _iso, _local,
+                         _motif, _plat)
 
 WIKIMEDIA = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/{projet}/all-access/{d:%Y/%m/%d}"
 ESPACES_EXCLUS = ("spécial:", "special:", "wikipédia:", "wikipedia:", "fichier:", "file:", "portail:",
@@ -53,6 +56,54 @@ def _gdelt_requete_souple(client, construire, liste: list, params: dict, attendr
             m = len(l) // 2
             return une(l[:m], profondeur + 1) + une(l[m:], profondeur + 1)
     return une(liste, 0)
+
+
+# ---------------------------------------------------------------- flux RSS des médias
+
+def _sans_balises(texte: str | None) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", texte or "")).strip()
+
+
+def lire_flux(client, flux: list[dict], depuis: datetime, mots: list[str] | None = None) -> tuple[list, dict]:
+    """Articles récents de flux RSS ou Atom → (articles, état de chaque flux).
+
+    Le flux RSS est fait pour être lu par des logiciels : titre, lien, date et résumé.
+    `mots` : si donné, on ne garde que les articles dont le titre ou le résumé en contient un
+    (pour un média généraliste, seulement ce qui touche à la technologie).
+    """
+    rx = _motif(mots) if mots else None
+    articles, etats, vus = [], {}, set()
+    for f in flux:
+        nom = f.get("nom") or f["url"]
+        try:
+            r = client.get(f["url"], timeout=20, follow_redirects=True)
+            r.raise_for_status()
+            racine = ET.fromstring(r.content)
+        except (httpx.HTTPError, ET.ParseError) as e:
+            etats[nom] = f"erreur ({type(e).__name__})"
+            continue
+        n = 0
+        for item in (e for e in racine.iter() if _local(e.tag) in ("item", "entry")):
+            titre = _sans_balises(_enfant(item, "title"))
+            lien = None
+            for e in item:
+                if _local(e.tag) == "link":
+                    lien = (e.text or "").strip() or e.attrib.get("href")
+                    if e.attrib.get("rel", "alternate") == "alternate":
+                        break
+            quand = _date(_enfant(item, "pubDate") or _enfant(item, "published") or _enfant(item, "updated")
+                          or _enfant(item, "date"))
+            resume = _sans_balises(_enfant(item, "description") or _enfant(item, "summary"))[:400]
+            if not titre or not lien or (quand and quand < depuis) or _plat(titre) in vus:
+                continue
+            if rx and not f.get("tout") and not rx.search(_plat(titre + " " + resume)):
+                continue
+            vus.add(_plat(titre))
+            n += 1
+            articles.append({"media": nom, "titre": titre, "url": lien, "date": _iso(quand), "resume": resume or None,
+                             "langue": f.get("langue", "français")})
+        etats[nom] = f"ok ({n})"
+    return articles, etats
 
 
 # ---------------------------------------------------------------- Wikipédia
@@ -119,31 +170,11 @@ def lire_presse_grand_public(client, conf: dict, maintenant: datetime, attendre)
 
 # ---------------------------------------------------------------- Détour
 
-def lire_detour(client, conf: dict, gdelt_conf: dict, maintenant: datetime, attendre) -> list:
-    """Articles récents des médias de référence qui touchent à la technologie et à ses dépendances."""
-    medias = conf.get("medias") or []
-    mots = [_terme(m) for m in conf.get("mots") or []]
-    if not medias:
-        return []
-    par_domaine = {m["domaine"].lower(): m for m in medias}
-    params = {"mode": "ArtList", "format": "json", "timespan": f"{conf.get('jours', 7)}d", "sort": "DateDesc",
-              "maxrecords": 250}
-    construire = lambda doms: _ou([f"domain:{d}" for d in doms]) + (" " + _ou(mots) if mots else "")
-    articles = _gdelt_requete_souple(client, construire, list(par_domaine), params, attendre, gdelt_conf, [0])
-    vus, sortie = set(), []
-    for a in articles:
-        url = a.get("url") or ""
-        domaine = (a.get("domain") or "").lower()
-        media = par_domaine.get(domaine) or next((m for d, m in par_domaine.items() if domaine.endswith("." + d)), None)
-        if not media or (media.get("chemin") and media["chemin"] not in url):
-            continue
-        titre = (a.get("title") or "").strip()
-        if not titre or _plat(titre) in vus:
-            continue
-        vus.add(_plat(titre))
-        sortie.append({"media": media["nom"], "titre": titre, "url": url,
-                       "langue": media.get("langue", "français"), "date": _iso(_gdelt_date(a.get("seendate")))})
-    return sortie
+def lire_detour(client, conf: dict, maintenant: datetime) -> tuple[list, dict]:
+    """Articles récents des médias de référence (leurs flux RSS), qui touchent à la technologie."""
+    flux = [{"nom": m["nom"], "url": m["flux"], "langue": m.get("langue", "français"), "tout": m.get("tout", False)}
+            for m in conf.get("medias") or [] if m.get("flux")]
+    return lire_flux(client, flux, maintenant - timedelta(days=conf.get("jours", 7)), conf.get("mots"))
 
 
 # ---------------------------------------------------------------- production
@@ -155,28 +186,32 @@ def produire_tendances(conf: dict, racine: Path, client: httpx.Client | None = N
     t = conf.get("tendances") or {}
     propre = client is None
     client = client or httpx.Client(timeout=30, follow_redirects=True, headers=ENTETES)
-    etats, res = {}, {"wikipedia": [], "presse": [], "detour": []}
+    etats, res, detail = {}, {"wikipedia": [], "presse": [], "detour": []}, {}
 
     def tenter(nom, cle, fonction, *a):
         try:
-            res[cle] = fonction(*a)
-            etats[nom] = {"etat": "ok", "nombre": len(res[cle])}
+            r = fonction(*a)
+            if isinstance(r, tuple):          # (articles, état de chaque flux)
+                r, detail[nom] = r
+            res[cle] += r
+            etats[nom] = {"etat": "ok", "nombre": len(r)}
         except (httpx.HTTPError, GdeltErreur, ValueError, KeyError) as e:
             etats[nom] = {"etat": "erreur", "raison": f"{type(e).__name__}: {e}"[:200]}
 
     try:
         if t.get("wikipedia"):
             tenter("Wikipédia", "wikipedia", lire_wikipedia, client, t["wikipedia"], maintenant)
-        if t.get("gdelt"):
+        if t.get("flux"):
+            tenter("Presse grand public (flux RSS)", "presse", lire_flux, client, t["flux"], maintenant - timedelta(days=2))
+        if (t.get("gdelt") or {}).get("actif", False):
             tenter("Presse grand public (GDELT)", "presse", lire_presse_grand_public, client, t["gdelt"], maintenant, attendre)
         if conf.get("detour"):
-            attendre((t.get("gdelt") or {}).get("pause_s", 6))
-            tenter("Détour (GDELT)", "detour", lire_detour, client, conf["detour"], t.get("gdelt") or {}, maintenant, attendre)
+            tenter("Détour (flux RSS)", "detour", lire_detour, client, conf["detour"], maintenant)
     finally:
         if propre:
             client.close()
 
-    sortie = {"genere_le": maintenant.isoformat(timespec="seconds"), "sources": etats, **res}
+    sortie = {"genere_le": maintenant.isoformat(timespec="seconds"), "sources": etats, "flux": detail, **res}
     (racine / "public").mkdir(parents=True, exist_ok=True)
     (racine / "public" / "tendances.json").write_text(json.dumps(sortie, ensure_ascii=False, indent=1), encoding="utf-8")
     return sortie

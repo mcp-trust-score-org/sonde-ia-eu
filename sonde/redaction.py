@@ -232,16 +232,38 @@ def controler(article: dict, rubrique: str) -> list[str]:
 class Redacteur:
     """Appelle un modèle compatible OpenAI avec la charte en consigne. None si pas de clé."""
 
-    def __init__(self, conf: dict, charte: str, client: httpx.Client, env: dict):
-        self.conf, self.charte, self.client = conf, charte, client
+    def __init__(self, conf: dict, charte: str, client: httpx.Client, env: dict, attendre=None):
+        import time
+        self.charte, self.client, self.attendre = charte, client, attendre or time.sleep
         self.cle = env.get(conf.get("cle_env", "MISTRAL_API_KEY"))
-        self.modele = conf.get("modele", "mistral-medium-latest")
+        secours = conf.get("secours") or {}
+        if self.cle or not secours:
+            self.conf = conf
+        else:   # pas de clé principale : le modèle de secours (OVHcloud anonyme par défaut)
+            self.conf = {**conf, **secours}
+            self.cle = env.get(secours["cle_env"]) if secours.get("cle_env") else None
+        self.sans_cle = bool(self.conf.get("sans_cle")) and not self.cle
+        self.modeles = list(self.conf.get("modeles") or [self.conf.get("modele", "mistral-medium-latest")])
+        self.modele = self.modeles[0]
+        self.appels = 0
 
     @property
     def actif(self) -> bool:
-        return bool(self.cle)
+        return bool(self.cle) or self.sans_cle
 
     def ecrire(self, consigne: str, fiche: dict) -> dict:
+        """Essaie le modèle en cours, puis les suivants de la liste ; garde celui qui a répondu."""
+        erreurs = []
+        for modele in [self.modele] + [m for m in self.modeles if m != self.modele]:
+            try:
+                rep = self._ecrire(consigne, fiche, modele)
+                self.modele = modele
+                return rep
+            except RuntimeError as e:
+                erreurs.append(f"{modele} : {e}")
+        raise RuntimeError(" ; ".join(erreurs)[:300])
+
+    def _ecrire(self, consigne: str, fiche: dict, modele: str) -> dict:
         systeme = (
             "Tu es rédacteur pour Iris, un média français. Tu écris en français, en respectant STRICTEMENT "
             "la charte ci-dessous.\n\nRègle absolue : tu n'utilises QUE les faits fournis dans la fiche. "
@@ -255,19 +277,28 @@ class Redacteur:
             "Tu réponds uniquement par un objet JSON valide, sans texte autour.\n\n"
             "=== CHARTE ===\n" + self.charte
         )
-        corps = {"model": self.modele, "temperature": self.conf.get("temperature", 0.4),
+        corps = {"model": modele, "temperature": self.conf.get("temperature", 0.4),
                  "response_format": {"type": "json_object"},
                  "messages": [{"role": "system", "content": systeme},
                               {"role": "user", "content": consigne + "\n\n=== FICHE ===\n" + json.dumps(fiche, ensure_ascii=False, indent=1)}]}
         derniere = None
+        entetes = {"Authorization": f"Bearer {self.cle}"} if self.cle else {}
         for _ in range(self.conf.get("essais", 2)):
+            if self.appels and self.conf.get("pause_s"):
+                self.attendre(self.conf["pause_s"])   # accès anonyme : 2 requêtes par minute
+            self.appels += 1
             try:
                 r = self.client.post(f"{self.conf['base_url'].rstrip('/')}/chat/completions", json=corps,
-                                     headers={"Authorization": f"Bearer {self.cle}"}, timeout=self.conf.get("delai_s", 90))
+                                     headers=entetes, timeout=self.conf.get("delai_s", 90))
+                if r.status_code in (400, 422) and "response_format" in corps:
+                    corps.pop("response_format")       # modèle qui ne connaît pas le mode JSON : on réessaie sans
+                    derniere = f"HTTP {r.status_code}"
+                    continue
                 r.raise_for_status()
                 texte = r.json()["choices"][0]["message"]["content"]
-                texte = re.sub(r"^```(?:json)?|```$", "", texte.strip()).strip()
-                return json.loads(texte)
+                texte = re.sub(r"^```(?:json)?|```$", "", (texte or "").strip()).strip()
+                debut, fin = texte.find("{"), texte.rfind("}")
+                return json.loads(texte[debut:fin + 1] if debut >= 0 else texte)
             except (httpx.HTTPError, KeyError, IndexError, ValueError) as e:
                 derniere = f"{type(e).__name__}: {e}"[:200]
         raise RuntimeError(derniere or "réponse vide")
@@ -408,7 +439,7 @@ def _brouillon(redacteur, consigne, fiche, rubrique, format_, extra_format="") -
             return art, redacteur.modele, controler(art, rubrique)
         except RuntimeError as e:
             return {}, "fiche", [f"Le rédacteur n'a pas répondu ({e}) : fiche à rédiger à la main."]
-    return {}, "fiche", ["Pas de rédacteur configuré (clé absente) : fiche à rédiger à la main."]
+    return {}, "fiche", ["Pas de rédacteur disponible : fiche à rédiger à la main."]
 
 
 def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture) -> dict:
@@ -506,7 +537,7 @@ def _detour(redacteur, client, tend, deja, dt, lecture) -> dict:
 
 
 def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: dict | None = None,
-            maintenant: datetime | None = None) -> dict:
+            maintenant: datetime | None = None, attendre=None) -> dict:
     env = env if env is not None else os.environ
     maintenant = maintenant or datetime.now(timezone.utc)
     jour = maintenant.astimezone(PARIS)
@@ -522,7 +553,7 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
 
     propre = client is None
     client = client or httpx.Client(timeout=90)
-    redacteur = Redacteur(conf.get("redacteur") or {}, charte, client, env)
+    redacteur = Redacteur(conf.get("redacteur") or {}, charte, client, env, attendre)
     lecture = conf.get("lecture") or {}
     propositions, reserve_une = [], []
 

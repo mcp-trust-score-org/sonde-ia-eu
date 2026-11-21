@@ -297,6 +297,8 @@ def _gdelt_date(texte: str | None) -> datetime | None:
 def _requete_gdelt(noms: list[str], mots: list[str]) -> str:
     def terme(m):
         return f'"{m}"' if " " in m or "-" in m else m
+    # GDELT refuse les mots de moins de 4 lettres et les requêtes trop longues.
+    noms = [n for n in noms if len(n) >= 4] or noms
     acteurs = " OR ".join(terme(n) for n in noms)
     incidents = " OR ".join(terme(m) for m in mots)
     return f"({acteurs}) ({incidents})" if len(noms) > 1 else f"{terme(noms[0])} ({incidents})"
@@ -386,14 +388,17 @@ def lire_gdelt(client, conf: dict, dep: dict[str, set[str]], depuis: datetime, m
     # Une seule requête pour tous les acteurs (moins de refus pour excès de débit).
     # Si GDELT la juge trop complexe, on repasse à une requête par acteur.
     tous_noms = [n for reg in acteurs.values() for n in (reg.get("noms") or [])]
+    # La requête n'emploie que quelques mots (GDELT refuse les requêtes longues) ;
+    # le tri, lui, utilise la liste complète des mots d'incident.
+    mots_requete = conf.get("mots_requete") or mots_incident[:6]
     lots = []
     try:
-        lots.append(interroger(_requete_gdelt(tous_noms, mots_incident)))
+        lots.append(interroger(_requete_gdelt(tous_noms, mots_requete)))
     except GdeltRefus as e:
         bilan["requete_groupee"] = f"refusée ({e}) : une requête par acteur"
         for acteur, reg in acteurs.items():
             try:
-                lots.append(interroger(_requete_gdelt(reg.get("noms") or [acteur], reg.get("mots_incident") or mots_incident)))
+                lots.append(interroger(_requete_gdelt(reg.get("noms") or [acteur], mots_requete)))
             except GdeltErreur as e2:
                 bilan["erreurs"].append(f"{acteur} : {e2}")
         if len(bilan["erreurs"]) == len(acteurs):
