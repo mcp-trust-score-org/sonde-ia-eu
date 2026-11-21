@@ -1,0 +1,81 @@
+name: Publier un brouillon
+
+# Actions → « Publier un brouillon » → Run workflow : un petit formulaire s'ouvre.
+# Le brouillon choisi (redaction/propositions/<date>.md) passe sur le site Iris
+# en une à deux minutes (Vercel republie le site après l'enregistrement).
+
+on:
+  workflow_dispatch:
+    inputs:
+      rubrique:
+        description: "Rubrique du brouillon à publier"
+        type: choice
+        options: ["À la une", "Tous connectés", "Le Détour"]
+        default: "À la une"
+      date:
+        description: "Date du brouillon (AAAA-MM-JJ). Vide = aujourd'hui"
+        required: false
+        default: ""
+      numero:
+        description: "S'il y a plusieurs brouillons dans la rubrique ce jour-là : lequel (1 = le premier)"
+        required: false
+        default: "1"
+      forcer:
+        description: "Publier même s'il reste des [À VÉRIFIER]"
+        type: boolean
+        default: false
+      retirer:
+        description: "Pour retirer du site au lieu de publier : cocher (retire le dernier article publié dans la rubrique)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publier
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Publier (ou retirer)
+        env:
+          RUBRIQUE: ${{ inputs.rubrique }}
+          DATE_BROUILLON: ${{ inputs.date }}
+          NUMERO: ${{ inputs.numero }}
+        run: |
+          case "$RUBRIQUE" in
+            "À la une") R=une ;;
+            "Tous connectés") R=tous_connectes ;;
+            *) R=detour ;;
+          esac
+          if [ "${{ inputs.retirer }}" = "true" ]; then
+            python -m sonde publier --retirer "dernier-$R"
+          else
+            python -m sonde publier --rubrique "$R" --date "$DATE_BROUILLON" --numero "${NUMERO:-1}" ${{ inputs.forcer && '--forcer' || '' }}
+          fi
+
+      - name: Enregistrer (le site se met à jour tout seul)
+        run: |
+          git config user.name "sonde-ia-eu"
+          git config user.email "sonde-ia-eu@users.noreply.github.com"
+          git add iris/publies.json redaction/propositions
+          git diff --cached --quiet && exit 0
+          git commit -m "Publication : ${{ inputs.rubrique }} ${{ inputs.date }}"
+          for essai in 1 2 3 4 5; do
+            git pull --rebase -X theirs --quiet && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((essai * 5))
+          done
+          exit 1
