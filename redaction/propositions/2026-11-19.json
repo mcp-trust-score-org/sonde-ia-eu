@@ -515,7 +515,9 @@
      ]
     }
    },
-   "alertes_charte": []
+   "alertes_charte": [],
+   "statut": "publie",
+   "publie_le": "2026-11-21T21:00:11+00:00"
   }
  ]
 }

@@ -2,6 +2,52 @@
  "une": [],
  "tous_connectes": [
   {
+   "id": "20261119-gta-vi-sort-aujourd-hui-sa-version-sans-disque-inq",
+   "rubrique": "tous_connectes",
+   "date": "2026-11-19",
+   "tag": "Jeux vidéo",
+   "tagClass": "flag-cream",
+   "img": "assets/photos/jeux-video.jpg",
+   "time": "4 min",
+   "title": "GTA VI sort aujourd'hui.<br/>Sa version <mark>sans disque</mark> inquiète les joueurs.",
+   "chapo": "Le dernier opus de la franchise très attendue arrive en boîte, mais aucun disque n’est à l’intérieur. Les joueurs découvrent un simple code de téléchargement, signe d’une dématérialisation accélérée du secteur. Cette évolution soulève des questions de revente, de prix et de propriété.",
+   "fait": [
+    "Ce 19 novembre, GTA VI sort aussi en boîte. Mais à l'intérieur, pas de disque : un simple code de téléchargement.",
+    "Ce format montre que l’industrie du jeu vidéo se tourne de plus en plus vers le numérique, au détriment du support physique."
+   ],
+   "consequence": [
+    "Sans disque, les joueurs ne peuvent plus revendre ou prêter le jeu, et ils restent dépendants des boutiques en ligne des consoles pour les promotions.",
+    "Cette dépendance renforce le contrôle des plateformes sur les prix et sur l’accès aux titres achetés."
+   ],
+   "lien": [
+    "Le phénomène illustre comment la technologie façonne nos habitudes de consommation, même pour les loisirs les plus populaires.",
+    "Et vous, êtes‑vous prêt à abandonner vos jeux sur disque au profit du téléchargement ?"
+   ],
+   "sources": [
+    {
+     "label": "Franceinfo Culture – Disque vs téléchargement",
+     "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html"
+    },
+    {
+     "label": "Franceinfo Culture – Documentaire événementiel",
+     "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html"
+    }
+   ],
+   "mini": {
+    "fait": "GTA VI vendu en boîte, mais sans disque.",
+    "consequence": "Plus de marché de l’occasion, prix contrôlés par les stores.",
+    "dependance": "Les joueurs dépendent désormais des plateformes numériques."
+   },
+   "audience": "public",
+   "reflexes": [
+    "Comparez les prix des versions numériques et physiques avant d’acheter.",
+    "Conservez vos identifiants de compte et activez la double authentification pour protéger vos licences.",
+    "Si vous privilégiez la revente, choisissez des éditions physiques quand elles existent encore."
+   ],
+   "place": "carte",
+   "publie_le": "2026-11-21T21:00:11+00:00"
+  },
+  {
    "id": "20261121-1-700-distributeurs-ont-disparu-en-2025-votre-plan",
    "rubrique": "tous_connectes",
    "date": "2026-11-21",
@@ -56,5 +102,5 @@
   }
  ],
  "detour": [],
- "mis_a_jour": "2026-11-21T20:57:28+00:00"
+ "mis_a_jour": "2026-11-21T21:00:11+00:00"
 }
