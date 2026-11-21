@@ -16,8 +16,8 @@ rythme:
     jours: [0, 2, 4, 5]         # 4 sujets par semaine : lundi, mercredi, vendredi, samedi
     reflexe_de_la_semaine: 0    # le lundi
   detour:
-    jours: [4]                  # le vendredi
-    liens: 6
+    jours: [1, 4]               # le mardi et le vendredi : le Détour bouge tous les 3 ou 4 jours
+    liens: 5                    # 5 propositions ; la rédaction garde celles qu'elle veut (« liens à garder »)
   candidats_affiches: 10        # sujets en réserve listés sous chaque proposition
 
 # ---------------------------------------------------------------------------
