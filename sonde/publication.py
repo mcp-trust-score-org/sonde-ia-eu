@@ -7,7 +7,11 @@ Le brouillon est lu dans redaction/propositions/<date>.json et ajouté à iris/p
 que le site lit au chargement. Rien n'est publié sans cette commande : c'est la décision
 de la rédaction (dans GitHub : Actions → « Publier un brouillon » → Run workflow).
 
-Emplacement : par défaut, le dernier article publié devient le grand titre de sa rubrique
+Date : un article garde la date de son brouillon. Publier le brouillon d'un jour passé l'ajoute
+aux archives de ce jour-là (sans prendre le grand titre du jour, sans notification), et son
+« aujourd'hui » se lit par rapport à cette date.
+
+Emplacement : par défaut, l'article le plus récent devient le grand titre de sa rubrique
 (l'ancien grand titre descend en première carte). Avec --carte, il ne va que dans les cartes.
 
 Garde-fous : on ne publie pas une fiche vide (le rédacteur n'a pas écrit l'article), ni —
@@ -136,6 +140,9 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
     article = vers_le_site(p, date)
     if not forcer and "À VÉRIFIER" in _texte_brut(article).upper():
         raise RefusPublication("Le brouillon contient encore des [À VÉRIFIER]. Corrigez-les, ou cochez « forcer ».")
+    ligne = [a for a in p.get("alertes_charte") or [] if str(a).startswith("Ligne éditoriale")]
+    if not forcer and ligne:
+        raise RefusPublication(ligne[0] + " Écartez ce brouillon, ou cochez « forcer » si la rédaction l'assume.")
     a_verifier = [str(x).strip() for x in (p.get("article") or {}).get("a_verifier") or [] if str(x).strip()]
     if not forcer and a_verifier:
         raise RefusPublication(f"Le rédacteur a laissé {len(a_verifier)} point(s) à vérifier : " + " ; ".join(a_verifier)[:300]
@@ -144,8 +151,8 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
         if carte:
             article["place"] = "carte"
         if not forcer:
-            jour_pub = maintenant.astimezone(PARIS).date()
-            probleme = (titre_perime(article["title"], datetime.fromisoformat(date).date(), jour_pub)
+            jour_edition = datetime.fromisoformat(date).date()     # l'article est daté du jour de son brouillon
+            probleme = (titre_perime(article["title"], jour_edition, jour_edition)
                         or doublon(article["title"], titres_en_ligne(racine, rub), sauf_id=article["id"]))
             if probleme:
                 raise RefusPublication(probleme + " Corrigez le brouillon, ou cochez « forcer ».")
@@ -171,6 +178,7 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
     texte = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", article.get("chapo") or "")).strip()
     return {"id": ident, "rubrique": rub, "date": date, "alertes": p.get("alertes_charte") or [],
             "url": f"/#article-{ident}" if rub != "detour" else "/#detour", "texte": texte[:200],
+            "archive": date < maintenant.astimezone(PARIS).date().isoformat(),
             "titre": re.sub(r"<[^>]+>", " ", article.get("title") or f"{len(article.get('liens', []))} lien(s)")}
 
 

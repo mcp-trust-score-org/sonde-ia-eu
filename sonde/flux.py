@@ -27,12 +27,17 @@ def _plat(html: str) -> str:
 
 
 def _quand(a: dict) -> datetime:
+    """La date de l'article : l'heure de publication si elle tombe le jour de l'article,
+    sinon (article d'archive publié après coup) le matin de ce jour-là."""
+    matin = datetime.fromisoformat(a.get("date", "2026-01-01") + "T07:00:00").replace(tzinfo=PARIS)
     if a.get("publie_le"):
         try:
-            return datetime.fromisoformat(a["publie_le"])
+            publie = datetime.fromisoformat(a["publie_le"])
+            if publie.astimezone(PARIS).date() == matin.date():
+                return publie
         except ValueError:
             pass
-    return datetime.fromisoformat(a.get("date", "2026-01-01") + "T07:00:00").replace(tzinfo=PARIS)
+    return matin
 
 
 def ecrire_flux(racine: Path, site: str | None = None, n: int = 20) -> Path:

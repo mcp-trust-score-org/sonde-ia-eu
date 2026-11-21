@@ -143,3 +143,27 @@ def techno_non_sourcee(article: dict, textes: list[str]) -> list[str]:
                            + list(a.get("consequence") or []) + [str(v) for v in mini.values()]))
     return [nom for nom, motif in TECHNO.items()
             if _famille_presente(motif, texte) and not _famille_presente(motif, sources)]
+
+
+# ---------------------------------------------------------------- ligne éditoriale
+
+# Rubriques de presse qui ne donnent jamais un sujet Iris (charte, section 3).
+HORS_LIGNE = re.compile(r"/(faits?[-_]divers|justice|police[-_]justice|politique|elections?)(/|$)", re.I)
+
+
+def hors_ligne(url: str) -> bool:
+    from urllib.parse import urlparse
+    return bool(HORS_LIGNE.search(urlparse(url or "").path))
+
+
+def preuve_trouvee(preuve: str, textes: list[str], seuil: float = 0.6) -> bool:
+    """La phrase-preuve donnée par le rédacteur se retrouve-t-elle dans un article lu ?
+    On compare les mots significatifs : il en faut au moins 60 % dans un même article."""
+    mots = [m for m in _plat(preuve).split() if len(m) >= 4 and m not in VIDES]
+    if not mots:
+        return False
+    for t in textes:
+        plat = f" {_plat(t)} "
+        if sum(f" {m} " in plat for m in mots) / len(mots) >= seuil:
+            return True
+    return False

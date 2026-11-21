@@ -267,7 +267,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"  Publication refusée : {e}")
             return 1
         print(f"  Publié sur le site : {res['titre']} ({res['rubrique']}, brouillon du {res['date']})")
-        if res["rubrique"] != "detour":   # pour la notification envoyée par GitHub (publier.yml)
+        if res["archive"]:
+            print(f"  Article daté du {res['date']} : ajouté aux archives, sans notification.")
+        elif res["rubrique"] != "detour":   # pour la notification envoyée par GitHub (publier.yml)
             (RACINE / "notification.json").write_text(json.dumps(
                 {"titre": "Iris · " + ("À la une" if res["rubrique"] == "une" else "Tous connectés"),
                  "texte": re.sub(r"\s+", " ", res["titre"]).replace(" .", ".").strip(), "url": res["url"]},

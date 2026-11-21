@@ -31,7 +31,7 @@ from zoneinfo import ZoneInfo
 
 import httpx
 
-from .coherence import techno_non_sourcee, titres_en_ligne
+from .coherence import hors_ligne, preuve_trouvee, techno_non_sourcee, titres_en_ligne
 
 PARIS = ZoneInfo("Europe/Paris")
 NIVEAUX = {"confirme": 4, "probable": 3, "possible": 2, "non_concerne": 1}
@@ -189,8 +189,8 @@ def _alertes_lecture(lus: list[dict], article: dict) -> list[str]:
         alertes.append("Aucun article n'a pu être lu : le brouillon ne repose que sur des titres.")
     inventes = techno_non_sourcee(article, [a.get("texte") or "" for a in lus if a.get("etat") == "lu"])
     if inventes:
-        alertes.append("Lien technologique non sourcé : le texte parle de « " + " », « ".join(inventes) + " », mais aucun "
-                       "article lu n'en parle. Le lien avec la technologie doit venir des articles, pas être supposé.")
+        alertes.append("Ligne éditoriale : lien technologique non sourcé. Le texte parle de « " + " », « ".join(inventes)
+                       + " », mais aucun article lu n'en parle. Le lien avec la technologie doit venir des articles.")
     copies = passages_recopies(article, [a.get("texte") or "" for a in lus])
     if copies:
         alertes.append(f"{len(copies)} passage(s) recopié(s) d'un article (12 mots identiques ou plus) : à reformuler. "
@@ -615,11 +615,14 @@ def fiche_tous_connectes(tend: dict, deja: set, n: int = 25, en_ligne: list[str]
     for w in tend.get("wikipedia") or []:
         if w["sujet"].lower() in deja or any(_parle_de(w["sujet"], t) for t in en_ligne):
             continue
-        lies = [p for p in presse if _parle_de(w["sujet"], p["titre"])][:4]
+        lies = [p for p in presse if _parle_de(w["sujet"], p["titre"]) and not hors_ligne(p["url"])][:4]
         sujets.append({"sujet": w["sujet"], "langue": w["projet"][:2], "rang_wikipedia": w["rang"], "page": w["url"],
                        "titres_de_presse": [{"titre": p["titre"], "media": p["media"], "url": p["url"]} for p in lies]})
-    presse_seule = [{"titre": p["titre"], "media": p["media"], "url": p["url"]} for p in presse[:40]]
+    gardes = [p for p in presse if not hors_ligne(p["url"])]       # faits divers, justice, politique : jamais
+    presse_seule = [{"titre": p["titre"], "media": p["media"], "url": p["url"]} for p in gardes[:40]]
     fiche = {"tendances_wikipedia": sujets[:n], "presse_grand_public": presse_seule}
+    if len(gardes) < len(presse):
+        fiche["ecartes_hors_ligne"] = len(presse) - len(gardes)
     if en_ligne:
         fiche["deja_en_ligne"] = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t)).strip() for t in en_ligne]
     return fiche
@@ -680,7 +683,11 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture, en
             "Il faut au moins un article de presse de la fiche qui en parle, et la technologie doit être DANS ces "
             "articles (une appli, un compte, un réseau, une panne, un écran…) : si tu dois la supposer, le sujet ne "
             "passe pas le test. Écarte les affaires judiciaires ou politiques qui visent une personne nommée. "
-            "Ne choisis jamais un sujet de la liste « deja_en_ligne » : il est déjà sur la page. Réponds : {\"sujet\": \"…\", "
+            "Ne choisis jamais un sujet de la liste « deja_en_ligne » : il est déjà sur la page. Applique les trois questions "
+            "de la charte (section 3) et ses exclusions : faits divers criminels, affaires judiciaires ou politiques visant "
+            "une personne nommée, technologie en simple décor. Mieux vaut aucun sujet qu'un sujet hors ligne. "
+            "Réponds : {\"sujet\": \"…\", \"technologie\": \"ce qui lâche, sature, change les règles ou surprend\", "
+            "\"preuve\": \"le titre ou la phrase de presse de la fiche qui montre cette technologie\", "
             "\"et_vous\": \"la phrase du test\", \"urls\": [\"jusqu'à 3 liens d'articles de la fiche sur ce sujet\"]} "
             "ou {\"aucun\": true, \"raison\": \"…\"}.", fiche, "tous_connectes")
     except RuntimeError as e:
@@ -696,7 +703,19 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture, en
     # 2) Lire les articles
     lus = _lire_sources(client, [connus[u] for u in urls], lecture) if lecture.get("actif", True) else \
         [{**connus[u], "etat": "lecture désactivée"} for u in urls]
-    fiche_sujet = {"sujet": choix.get("sujet"), "et_vous": choix.get("et_vous"), "articles_de_presse": lus}
+    fiche_sujet = {"sujet": choix.get("sujet"), "technologie": choix.get("technologie"), "preuve": choix.get("preuve"),
+                   "et_vous": choix.get("et_vous"), "articles_de_presse": lus}
+    ligne = []
+    if not (choix.get("technologie") or "").strip() or not (choix.get("preuve") or "").strip():
+        ligne.append("Ligne éditoriale : le rédacteur n'a pas nommé la technologie en jeu, ni la phrase de presse qui la montre.")
+    else:
+        textes = [a.get("texte") or "" for a in lus if a.get("etat") == "lu"]
+        titres = [connus[u].get("titre") or "" for u in urls]
+        if (textes or titres) and not preuve_trouvee(choix["preuve"], textes + titres):
+            ligne.append(f"Ligne éditoriale : la preuve donnée (« {choix['preuve'][:120]} ») ne se retrouve dans aucun article "
+                         "lu. La technologie en jeu est peut-être supposée.")
+    if urls and all(hors_ligne(u) for u in urls):
+        ligne.append("Ligne éditoriale : toutes les sources sont des rubriques faits divers, justice ou politique.")
     # 3) Écrire
     reflexe = jour.weekday() == tc.get("reflexe_de_la_semaine", 0)
     art, auteur, alertes = _brouillon(redacteur, (
@@ -717,6 +736,7 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture, en
         {"date": jour.date(), "en_ligne": en_ligne})
     if not urls:
         alertes.append("Le rédacteur n'a indiqué aucun article de la fiche : sujet sans source vérifiable.")
+    alertes = ligne + alertes
     if art:
         alertes += _alertes_lecture(lus, art)
         if choix.get("sujet"):
