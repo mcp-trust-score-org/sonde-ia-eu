@@ -26,6 +26,7 @@ rythme:
 # Si aucun service ne répond, GitHub prépare des fiches (faits, sources, structure) à rédiger à la main.
 # ---------------------------------------------------------------------------
 redacteur:
+  budget_s: 600                # au-delà de 10 minutes d'essais, on s'arrête : fiches à rédiger à la main
   temperature: 0.4
   delai_s: 120
   essais: 2
@@ -42,6 +43,9 @@ redacteur:
       base_url: https://models.github.ai/inference
       cle_env: GITHUB_TOKEN
       modeles: [openai/gpt-4.1, openai/gpt-4o]
+      # Offre gratuite : 8 000 jetons au plus par requête. On raccourcit les extraits d'articles
+      # pour tenir dans environ 22 000 caractères (charte + consigne + faits).
+      max_caracteres_entree: 22000
       pause_s: 8
       attente_429_s: 65
     # 3. OVHcloud AI Endpoints en accès anonyme : gratuit, hébergé en France, mais très demandé

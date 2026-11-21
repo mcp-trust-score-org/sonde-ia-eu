@@ -147,7 +147,7 @@ sources:
     langues: [french, english, german]
     max_articles: 250            # maximum autorisé par GDELT pour une requête
     pause_s: 6                   # GDELT demande au plus une requête toutes les 5 secondes
-    essais: 4                    # GDELT refuse souvent un premier appel (débit) : on réessaie
+    essais: 3                    # GDELT refuse souvent un premier appel (débit) : on réessaie
     attente_429_s: 30            # puis 30 s, 60 s, 90 s entre les essais
     seuil_similarite: 0.3        # part de mots communs pour regrouper deux titres
     repris_a_partir_de: 2        # « repris » si au moins 2 médias, sinon « isolé »
