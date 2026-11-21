@@ -1,6 +1,18 @@
 [
  {
   "fournisseur": "ovhcloud",
+  "type": "fin_orage",
+  "niveau": "vert",
+  "titre": "Fin de l'orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints fonctionne de nouveau, après 57 minutes de panne. Pensez à la réclamation : le dossier se prépare avec `python -m sonde avoirs`.",
+  "horodatage": "2026-11-21T16:26:01+00:00",
+  "id": "ovhcloud-fin-orage-202611211626",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
   "type": "orage",
   "niveau": "rouge",
   "titre": "Orage sur OVHcloud",
