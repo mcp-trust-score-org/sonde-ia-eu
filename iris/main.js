@@ -50,6 +50,7 @@ const ARTICLES = {
     lien: ["Votre disponibilité dépend d'équipements que vous ne voyez pas, chez des fournisseurs qui notent eux-mêmes leur performance.", "Iris mesure de l'extérieur, en continu, et garde les preuves horodatées. C'est ce qui permet de décider vite, de réclamer son dû et de déclarer l'incident si nécessaire."],
     impact: {
       status: "Vous êtes concerné", level: "red",
+      confidence: { level: "confirme", lieu: true, moment: true, symptome: true, officiel: true },
       rows: [["Fournisseur touché", "Microsoft Azure · Amsterdam"], ["Durée mesurée", "47 min 34 s"], ["Vos services touchés", "2 sur 14"], ["Avoir estimé", "≈ 400 €"], ["Déclaration DORA", "À évaluer, rapport pré-rempli"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#alertes", "Décider maintenant", "btn-outline"]],
     },
@@ -63,6 +64,7 @@ const ARTICLES = {
     lien: ["Une lenteur n'apparaît presque jamais sur une page de statut. Iris compare les temps de réponse de vos fournisseurs à leur niveau habituel et signale l'écart avant que vos équipes ne s'en plaignent."],
     impact: {
       status: "Vous êtes peut-être concerné", level: "yellow",
+      confidence: { level: "probable", lieu: true, moment: true, symptome: true, officiel: false },
       rows: [["Fournisseur à surveiller", "OVHcloud · Roubaix"], ["Latence", "+30 % depuis 6 h"], ["Panne", "Aucune"], ["Avoir", "Non : le SLA porte sur la disponibilité"], ["Action", "Rien pour l'instant, Iris surveille"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"]],
     },
@@ -76,6 +78,7 @@ const ARTICLES = {
     lien: ["Le maillon faible n'était ni le cloud ni le réseau, mais un logiciel présent partout. C'est précisément ce que DORA demande de cartographier : vos prestataires critiques, et ceux dont ils dépendent eux-mêmes.", "Plus de deux ans après, la question reste entière : savez-vous quels logiciels, chez vos fournisseurs, pourraient vous arrêter du jour au lendemain ?"],
     impact: {
       status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
+      confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
       rows: [["Fournisseurs surveillés", "8"], ["Incident logiciel en cours", "Aucun"], ["Registre d'informations", "À mettre à jour d'ici 12 jours"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#alertes", "Mettre à jour le registre", "btn-outline"]],
     },
@@ -89,21 +92,39 @@ const ARTICLES = {
     lien: ["Iris place chacun de vos fournisseurs sur la carte. Quand un événement touche une zone, vous savez tout de suite lesquels sont exposés."],
     impact: {
       status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
+      confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
       rows: [["Fournisseurs dans la zone touchée", "0 sur 8"], ["Maintenance prévue", "AWS Dublin, samedi"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"]],
     },
   },
-  certificat: {
-    tag: "À la une", tagClass: "flag-red", img: "assets/une-statue.jpg", time: "5 min", demo: true,
-    title: "Un certificat expire à minuit.<br/>Mistral se tait <mark>2&nbsp;h&nbsp;10.</mark>",
-    chapo: "Pas de cyberattaque, pas de panne matérielle : un fichier arrivé à sa date d'expiration a suffi à couper un service d'IA pendant toute une partie de la nuit.",
-    fait: ["Un certificat de sécurité, le petit fichier qui permet d'établir une connexion chiffrée, arrive à expiration à minuit.", "Sa date était connue depuis un an. Personne ne l'avait inscrite au bon endroit."],
-    consequence: ["À 0 h 00, les applications qui appellent l'API refusent la connexion : sans certificat valide, pas de communication chiffrée. Les assistants, chatbots et automatisations branchés dessus s'arrêtent net.", "Il faut 2 h 10 à l'équipe d'astreinte pour trouver la cause et déployer un nouveau certificat."],
-    lien: ["La panne la plus bête est souvent la plus longue à diagnostiquer, parce que personne ne la cherche.", "Iris mesure la disponibilité nuit et jour, y compris quand vos équipes dorment, et garde la preuve de chaque minute perdue."],
+  ovh: {
+    tag: "À la une", tagClass: "flag-red", img: "assets/photos/ia.jpg", time: "4 min", demo: false,
+    title: "Un matin comme les autres.<br/>Une IA <mark>14 fois</mark> plus lente.",
+    chapo: "Ce vendredi, le modèle d'IA qu'OVHcloud loue aux entreprises s'est mis à hésiter longuement avant chaque réponse. Pas d'écran noir, pas d'alerte : juste une attente. C'est souvent comme ça que commence une panne d'IA.",
+    fait: ["Tôt le matin, OVHcloud signale un incident sur son service d'intelligence artificielle, celui qui fait tourner des modèles pour des milliers d'entreprises françaises.", "Un message discret, sur une page de statut que presque personne ne consulte."],
+    consequence: ["Au même moment, notre sonde interroge le modèle Llama. D'habitude, il répond presque instantanément. Là, il fait attendre ses utilisateurs de longues secondes, parfois plus de deux minutes.", "Les autres modèles du même hébergeur répondent normalement. La panne ne touche qu'un rouage, mais il suffit : chatbot de service client, assistant interne, outil de rédaction… tout ce qui repose sur ce modèle se fige."],
+    lien: ["On choisit un hébergeur français pour garder la main sur ses données. On oublie qu'on dépend aussi d'un modèle précis, et qu'il n'existe souvent aucun plan B.", "Si votre IA ralentissait demain matin, combien de temps faudrait-il avant que quelqu'un s'en aperçoive ?"],
+    sources: [{ label: "OVHcloud : page de statut, incident AI Endpoints du 20 novembre 2026", url: "https://stspg.io/vlkf6x66jncd" }],
     impact: {
       status: "Vous êtes concerné", level: "red",
-      rows: [["Fournisseur touché", "Mistral AI · API"], ["Durée mesurée", "2 h 10 (0 h 00 → 2 h 10)"], ["Vos services touchés", "Assistant interne"], ["Engagement", "99,90 % : environ 43 min tolérées par mois"], ["Avoir estimé", "≈ 150 €"]],
-      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#indicateurs", "Récupérer cet avoir", "btn-outline"]],
+      confidence: { level: "confirme", lieu: true, moment: true, symptome: true, officiel: true },
+      rows: [["Fournisseur touché", "OVHcloud · AI Endpoints"], ["Modèle touché", "Llama 3.3 70B"], ["Mesuré à 9 h", "16,7 s avant le premier mot, contre 1,2 s d'habitude"], ["Incident officiel", "De 7 h 53 à 13 h 19"], ["Avoir", "Aucun : pas d'engagement de service sur cette offre"]],
+      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#alertes", "Prévoir un modèle de secours", "btn-outline"]],
+    },
+  },
+  cloudflare: {
+    tag: "Bilan · Réseau · semaine 47", img: "assets/photos/reseau.jpg", time: "4 min", demo: false,
+    title: "Une semaine ordinaire sur Internet.<br/><mark>32 incidents</mark> chez un seul acteur.",
+    chapo: "Cette semaine, Cloudflare, l'entreprise américaine qui transporte une large part du web, a signalé des incidents presque tous les jours. La plupart se sont produits loin d'ici. L'un d'eux, à Paris, rappelle un détail que peu d'entreprises connaissent : l'IA de Mistral passe par Cloudflare.",
+    fait: ["Dans la nuit de mardi à mercredi, Cloudflare signale un ralentissement de son réseau parisien. Une heure plus tard, tout est rentré dans l'ordre.", "Le genre d'incident qui ne fait jamais la une."],
+    consequence: ["Cloudflare se place entre les internautes et des milliers de services. Quand l'un de ses points de passage ralentit, tout ce qui transite par lui ralentit aussi.", "En traçant le chemin des requêtes vers Mistral, notre sonde a découvert qu'elles passaient par Cloudflare. Cette nuit-là, elle était entre deux relevés : impossible de dire si Mistral a été touché. Mais il pouvait l'être."],
+    lien: ["Choisir une IA européenne ne suffit pas pour être indépendant. Entre vous et elle, il y a des intermédiaires que vous n'avez pas choisis, et avec qui vous n'avez signé aucun contrat. C'est précisément ce que DORA demande de cartographier : vos prestataires critiques, et ceux dont ils dépendent eux-mêmes.", "Savez-vous par où passent vos requêtes avant d'arriver à votre IA ?"],
+    sources: [{ label: "Cloudflare : page de statut, incident réseau à Paris du 18 novembre 2026", url: "https://www.cloudflarestatus.com/incidents/k3r9i5tbre4i" }],
+    impact: {
+      status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
+      confidence: { level: "non", lieu: true, moment: false, symptome: false, officiel: false },
+      rows: [["Intermédiaire découvert", "Mistral AI passe par Cloudflare"], ["Incidents Cloudflare cette semaine", "32, dont 4 en Europe ou sur tout le réseau"], ["Mesure pendant l'incident de Paris", "Aucune : entre deux relevés"], ["Registre d'informations", "Ajouter Cloudflare comme sous-traitant de Mistral"]],
+      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#rapports", "Mettre à jour le registre", "btn-outline"]],
     },
   },
   "azure-suite": {
@@ -115,6 +136,7 @@ const ARTICLES = {
     lien: ["Six minutes d'écart : c'est la différence entre ce que dit le fournisseur et ce que vivent vos utilisateurs.", "Pour une réclamation ou une déclaration DORA, c'est votre mesure qui compte. Celle d'Iris est horodatée."],
     impact: {
       status: "Votre dossier est prêt", level: "yellow",
+      confidence: { level: "confirme", lieu: true, moment: true, symptome: true, officiel: true },
       rows: [["Durée annoncée / mesurée", "41 min / 47 min"], ["Avoir", "≈ 400 €, réclamation prête"], ["Déclaration DORA", "Rapport pré-rempli, à valider"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#rapports", "Ouvrir le rapport", "btn-outline"]],
     },
@@ -128,6 +150,7 @@ const ARTICLES = {
     lien: ["Ce type d'erreur ne fait tomber aucun serveur : aucune page de statut ne passe au rouge. Iris suit aussi les incidents déclarés et les anomalies de vos fournisseurs, pas seulement les pannes franches."],
     impact: {
       status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
+      confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
       rows: [["Prestataires de paiement surveillés", "Aucun pour l'instant"], ["Prochain changement d'heure", "28 mars 2027"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"]],
     },
@@ -141,6 +164,7 @@ const ARTICLES = {
     lien: ["Un plan de secours qui fonctionne ne se voit pas, sauf si on mesure. Iris enregistre ces micro-coupures : elles signalent parfois une fragilité, et elles comptent dans vos SLA."],
     impact: {
       status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
+      confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
       rows: [["Fournisseurs dans la zone", "0 sur 8"], ["Micro-coupures mesurées ce mois", "3, toutes sous 1 minute"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"]],
     },
@@ -198,6 +222,11 @@ const ARTICLES = {
   },
 };
 
+/* ---------- Tag de relecture ----------
+   Calculé par la sonde (voir regles-de-gestion/). Il n'est JAMAIS affiché sur le site :
+   il n'apparaît que dans l'écran de relecture (#relecture), pour décider de publier ou non. */
+const TAG_LABELS = { confirme: "Confirmé", probable: "Probable", possible: "Possible", non: "Aucune anomalie" };
+
 function renderArticle(id) {
   const a = ARTICLES[id];
   const el = document.getElementById("article");
@@ -206,12 +235,14 @@ function renderArticle(id) {
   const pub = a.audience === "public" || a.audience === "detour";
   const backTo = a.audience === "public" ? ["#vies", "Tous connectés"] : a.audience === "detour" ? ["#detour", "Le Détour"] : ["#une", "À la une"];
   const visual = `<div class="art-img${a.img.includes("/photos/") ? " art-photo" : ""}" style="background-image:url('${a.img}')"></div>`;
+  const srcList = a.sources || (a.source ? [a.source] : []);
+  const srcHtml = srcList.length ? `<div class="art-source"><b>${srcList.length > 1 ? "Sources" : "Source"}</b>${srcList.map((x) => `<a href="${x.url}" target="_blank" rel="noopener">${x.label} ↗</a>`).join("")}</div>` : "";
   const ending = pub
     ? `${a.reflexes ? `<section class="impact impact-reflex">
         <p class="impact-kicker">Le bon réflexe</p>
         <ul class="reflexes">${a.reflexes.map((r) => `<li>${r}</li>`).join("")}</ul>
       </section>` : ""}
-      ${(() => { const src = a.sources || (a.source ? [a.source] : []); return src.length ? `<div class="art-source"><b>${src.length > 1 ? "Sources" : "Source"}</b>${src.map((x) => `<a href="${x.url}" target="_blank" rel="noopener">${x.label} ↗</a>`).join("")}</div>` : ""; })()}
+      ${srcHtml}
       ${a.audience === "public" ? `<a class="bridge" href="#une"><span>Vous êtes une entreprise ?</span><b>La même dépendance existe chez vos fournisseurs. Voir l'édition pro →</b></a>` : ""}`
     : `<section class="impact impact-${a.impact.level}" data-plan="premium">
         <p class="impact-kicker">Quel impact chez moi ?</p>
@@ -224,7 +255,8 @@ function renderArticle(id) {
         <h2>Vos fournisseurs sont-ils concernés ?</h2>
         <p class="teaser-txt">Avec Iris Premium, vos fournisseurs sont surveillés en continu. Vous savez en un coup d'œil si vous êtes touché, ce que ça vous coûte, et vous avez les preuves pour réclamer ou déclarer.</p>
         <div class="impact-ctas"><button type="button" class="btn btn-yellow" data-set-plan="premium">★ Découvrir Premium</button></div>
-      </section>`;
+      </section>
+      ${srcHtml}`;
   el.innerHTML = `
     <a href="${backTo[0]}" class="back">← ${backTo[1]}</a>
     <header class="art-head">
@@ -276,10 +308,37 @@ equalizeHeroes();
   });
 })();
 
+/* ---------- Écran de relecture (réservé à la rédaction) ----------
+   Accessible par /#relecture, sans lien dans la navigation. */
+function renderRelecture() {
+  const el = document.getElementById("relecture");
+  if (!el) return;
+  const rows = Object.entries(ARTICLES).filter(([, a]) => a.impact && a.impact.confidence).map(([id, a]) => {
+    const c = a.impact.confidence;
+    const crit = c.level === "non" ? "Aucune anomalie dans la fenêtre"
+      : [["lieu", "Lieu"], ["moment", "Moment"], ["symptome", "Symptôme"], ["officiel", "Officiel"]].map(([k, t]) => `${c[k] ? "✓" : "○"} ${t}`).join(" · ");
+    const titre = a.title.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    return `<tr data-id="${id}">
+      <td><a href="#article-${id}">${titre}</a></td>
+      <td><span class="rtag rtag-${c.level}">${TAG_LABELS[c.level]}</span></td>
+      <td class="muted small">${crit}</td>
+      <td class="small">${a.impact.status}</td>
+      <td class="rdecision"><button class="btn btn-yellow btn-sm" data-dec="publier">Publier</button><button class="btn btn-outline btn-sm" data-dec="retenir">Ne pas publier</button></td>
+    </tr>`;
+  }).join("");
+  el.innerHTML = `<table class="sla rtable"><thead><tr><th>Article</th><th>Tag</th><th>Critères</th><th>Texte proposé</th><th>Décision</th></tr></thead><tbody>${rows}</tbody></table>`;
+  el.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-dec]");
+    if (!b) return;
+    const td = b.closest("td");
+    td.innerHTML = b.dataset.dec === "publier" ? `<span class="rdone ok">✓ Publié</span>` : `<span class="rdone">Retenu, non publié</span>`;
+  });
+}
+renderRelecture();
 
 /* ---------- Les articles les plus lus (encart latéral) ---------- */
 const MOST_READ = {
-  pro: ["clim", "maj", "fibre"],
+  pro: ["ovh", "clim", "maj"],
   public: ["gta", "22ans", "blackout"],
 };
 document.querySelectorAll("[data-most-read]").forEach((el) => {
@@ -300,14 +359,15 @@ const EXTERNAL = [
   { source: "Selectra", cat: "Jeux vidéo", img: "jeux-video", title: "GTA VI : combien de temps pour le télécharger ?", why: "Le calcul selon votre box, et pourquoi la boîte ne contient pas de disque.", url: "https://selectra.info/telecom/actualites/marche/gta-vi-prechargement-10-novembre-temps-box" },
   { source: "404 Media", cat: "Média à suivre", img: "innovation", title: "Un média tech indépendant, fondé par des journalistes", why: "Leurs enquêtes sur les coulisses de la tech (en anglais).", url: "https://404media.co/about" },
 ];
-(function renderExternal() {
+function renderExternal() {
   const el = document.getElementById("ext-grid");
   if (!el) return;
   el.innerHTML = EXTERNAL.map((x) => `<a class="ext-card" href="${x.url}" target="_blank" rel="noopener">
       <div class="ext-img" style="background-image:url('assets/photos/${x.img}.jpg')"></div>
       <div class="ext-body"><span class="ext-src">${x.source} ↗</span><span class="pc-tag">${x.cat}</span><h3>${x.title}</h3><p>${x.why}</p></div>
     </a>`).join("");
-})();
+}
+renderExternal();
 
 /* ---------- Type de compte (démo) ----------
    Standard : pas de données fournisseurs, donc aucune affirmation « chez vous ».
@@ -326,7 +386,7 @@ try { savedPlan = localStorage.getItem("iris-plan") || "standard"; } catch (e) {
 setPlan(savedPlan);
 
 /* ---------- Navigation par onglets (hash) ---------- */
-const VIEWS = ["une", "vies", "meteo", "alertes", "indicateurs", "detour", "rapports"];
+const VIEWS = ["relecture", "une", "vies", "meteo", "alertes", "indicateurs", "detour", "rapports"];
 function show(hash) {
   let view = hash, tab = hash;
   if (hash.startsWith("article-") && renderArticle(hash.slice(8))) {
@@ -522,5 +582,99 @@ const FALLBACK = "Dans la version complète, je réponds à partir de vos mesure
     input.value = "";
   });
 })();
+
+/* ---------- Articles publiés par la rédaction (iris/publies.json) ----------
+   Écrits par la sonde, validés dans GitHub (Actions → « Publier un brouillon »).
+   Le fichier est relu à chaque visite : un article publié apparaît sans toucher au code. */
+const JOURS = ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."];
+const MOIS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+function propre(html) {   // seules les balises de mise en forme du titre sont gardées
+  return String(html || "").replace(/<(?!\/?(mark|br)\b)[^>]*>/gi, "");
+}
+function etiquetteJour(iso) {
+  const d = new Date(iso + "T12:00:00");
+  return `${JOURS[d.getDay()]} ${d.getDate()} ${MOIS[d.getMonth()]}`;
+}
+function carte(a, lien) {
+  return `<a class="photo-card" href="#article-${a.id}">
+      <div class="pc-img pc-photo" style="background-image:url('${a.img}')"></div>
+      <div class="pc-body"><span class="pc-tag">${propre(a.tag)}</span><h3>${propre(a.title).replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "")}</h3><span class="pc-link">${lien}</span><span class="pc-time">${a.time} de lecture</span></div>
+    </a>`;
+}
+function une(a) {
+  const m = a.mini || {};
+  return `<article class="une-hero">
+    <div class="une-hero-img" style="background-image:url('${a.img}')"></div>
+    <div class="une-hero-text">
+      <span class="flag flag-red">À la une</span>
+      <h1 class="display">${propre(a.title)}</h1>
+      <ol class="steps-mini">
+        ${m.fait ? `<li><span>Le fait</span>${propre(m.fait)}</li>` : ""}
+        ${m.consequence ? `<li><span>La conséquence</span>${propre(m.consequence)}</li>` : ""}
+        ${m.dependance ? `<li><span>La dépendance</span>${propre(m.dependance)}</li>` : ""}
+      </ol>
+      <a href="#article-${a.id}" class="read">→ <u>Lire l'analyse (${a.time})</u></a>
+    </div>
+  </article>`;
+}
+fetch("publies.json", { cache: "no-store" })
+  .then((r) => (r.ok ? r.json() : null))
+  .then((pub) => {
+    if (!pub) return;
+    const nettoyer = (x) => (Array.isArray(x) ? x.map(nettoyer) : typeof x === "string" ? propre(x) : x);
+    [...(pub.une || []), ...(pub.tous_connectes || [])].forEach((a) => {
+      if (!a || !a.id) return;
+      const n = { demo: false, ...a };
+      ["title", "chapo", "fait", "consequence", "lien", "reflexes"].forEach((k) => { if (n[k]) n[k] = nettoyer(n[k]); });
+      ARTICLES[a.id] = n;
+    });
+
+    // À la une : une édition par jour publié (la plus récente s'affiche d'abord)
+    const parJour = {};
+    (pub.une || []).forEach((a) => (parJour[a.date] = parJour[a.date] || []).push(a));
+    const dates = Object.keys(parJour).sort().slice(-5);
+    const sw = document.querySelector(".day-switch");
+    const premiereEdition = document.querySelector("#view-une .day");
+    if (dates.length && sw && premiereEdition) {
+      dates.forEach((d) => {
+        const [tete, ...autres] = parJour[d];
+        const div = document.createElement("div");
+        div.className = "day";
+        div.dataset.day = "pub-" + d;
+        div.innerHTML = une(tete) + (autres.length ? `<div class="cards3">${autres.slice(0, 3).map((a) => carte(a, "Lire l'analyse →")).join("")}</div>` : "");
+        premiereEdition.parentNode.insertBefore(div, premiereEdition);
+        const b = document.createElement("button");
+        b.type = "button";
+        b.dataset.day = "pub-" + d;
+        b.textContent = etiquetteJour(d);
+        sw.appendChild(b);
+      });
+      const derniere = "pub-" + dates[dates.length - 1];
+      sw.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x.dataset.day === derniere));
+      document.querySelectorAll("#view-une .day").forEach((x) => (x.hidden = x.dataset.day !== derniere));
+      equalizeHeroes();
+    }
+
+    // Tous connectés : les articles publiés passent en tête des cartes
+    const grille = document.querySelector("#view-vies .cards4");
+    if (grille && (pub.tous_connectes || []).length) {
+      grille.insertAdjacentHTML("afterbegin", pub.tous_connectes.slice(0, 3).map((a) => carte(a, "Et vous ? →")).join(""));
+      const rs = pub.tous_connectes.find((a) => a.reflexe_semaine);
+      const rc = grille.querySelector(".reflex-card");
+      if (rs && rc) {
+        rc.querySelector("h3").textContent = rs.reflexe_semaine.titre || "";
+        rc.querySelector("p").textContent = rs.reflexe_semaine.texte || "";
+      }
+    }
+
+    // Le Détour : les liens publiés passent en tête de la sélection
+    if ((pub.detour || []).length) {
+      EXTERNAL.unshift(...pub.detour.filter((x) => !EXTERNAL.some((e) => e.url === x.url)));
+      renderExternal();
+    }
+
+    if (location.hash.startsWith("#article-")) show(location.hash.slice(1));
+  })
+  .catch(() => {});
 
 show(location.hash.slice(1));
