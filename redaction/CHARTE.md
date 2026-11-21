@@ -71,11 +71,13 @@ Exemples validés :
 2. **La conséquence technologique**
 3. **La dépendance révélée.** Si le sujet s'y prête, on la relie à DORA ou NIS2.
 
-L'article se termine par l'encadré « Quel impact chez moi ? » :
+L'article se termine par l'encadré « Ce que la sonde a mesuré » :
 - **en Standard**, une invitation à passer en Premium ;
 - **en Premium**, l'effet sur les fournisseurs de l'entreprise : durée mesurée, avoir possible, déclaration à faire. Quand la sonde n'a rien vu, l'encadré dit seulement : « Aucune anomalie mesurée chez vos fournisseurs ».
 
-**En une**, le grand titre affiche trois lignes courtes : Le fait, La conséquence, puis La dépendance (en Standard) ou Chez vous (en Premium).
+**En une**, le grand titre affiche trois lignes courtes : Le fait, La conséquence, puis La dépendance (en Standard) ou Ce que la sonde a vu (en Premium).
+
+**Iris est un média.** Iris ne se connecte pas aux systèmes de ses lecteurs : tout ce qui est « mesuré » l'est de l'extérieur, par la sonde, sur les fournisseurs qu'elle suit. On n'écrit jamais « chez vous » ou « vos services » comme si on connaissait le système du lecteur. Les chiffres sont indicatifs et toujours accompagnés du rappel : à vérifier avec son équipe informatique et ses fournisseurs.
 
 **Sources des propositions** : les événements croisés avec les mesures de la sonde (alertes officielles, pages de statut, presse via GDELT). Le bilan du lundi s'appuie sur les sept derniers jours.
 
