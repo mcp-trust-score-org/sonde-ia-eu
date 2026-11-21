@@ -126,7 +126,9 @@ sources:
       mistral:    { noms: [Mistral AI] }   # pas « Mistral » seul : le vent fait aussi des coupures
       # Acteurs en amont : rattachés aux fournisseurs qui passent par eux (chemin réseau relevé)
       cloudflare: { noms: [Cloudflare], role: amont }
-    # Accents et majuscules sont ignorés (« coupure » trouve aussi « Coupure »).
+    # Mots envoyés à GDELT (peu nombreux : il refuse les requêtes longues).
+    mots_requete: [panne, outage, coupure, incendie, cyberattaque, Ausfall]
+    # Mots du tri (sur le titre). Accents et majuscules sont ignorés (« coupure » trouve aussi « Coupure »).
     mots_incident: [panne, pannes, outage, outages, down, coupure, incendie, fire, blaze, perturbation,
                     perturbations, indisponible, indisponibilite, interruption, disruption, ausfall,
                     storung, stromausfall, brand, cyberattaque, cyberattack, ransomware, ddos, rancongiciel,
@@ -146,7 +148,7 @@ sources:
     max_articles: 250            # maximum autorisé par GDELT pour une requête
     pause_s: 6                   # GDELT demande au plus une requête toutes les 5 secondes
     essais: 4                    # GDELT refuse souvent un premier appel (débit) : on réessaie
-    attente_429_s: 15            # puis 15 s, 30 s, 45 s entre les essais
+    attente_429_s: 30            # puis 30 s, 60 s, 90 s entre les essais
     seuil_similarite: 0.3        # part de mots communs pour regrouper deux titres
     repris_a_partir_de: 2        # « repris » si au moins 2 médias, sinon « isolé »
     avance_h: 6                  # la panne a pu commencer jusqu'à 6 h avant la première parution

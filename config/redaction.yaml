@@ -22,17 +22,25 @@ rythme:
 
 # ---------------------------------------------------------------------------
 # Le rédacteur : un modèle d'IA qui écrit les brouillons à partir des faits collectés,
-# avec la charte en consigne. Sans clé, GitHub prépare des fiches (faits + sources + structure)
-# à rédiger à la main.
-# Format compatible OpenAI ; par défaut l'API de Mistral, dont la clé est déjà dans les secrets.
+# avec la charte en consigne. Format compatible OpenAI.
+# Par défaut Mistral, si le secret MISTRAL_API_KEY est renseigné ; sinon le secours ci-dessous.
+# Si aucun ne répond, GitHub prépare des fiches (faits, sources, structure) à rédiger à la main.
 # ---------------------------------------------------------------------------
 redacteur:
   base_url: https://api.mistral.ai/v1
   cle_env: MISTRAL_API_KEY
   modele: mistral-medium-latest
   temperature: 0.4
-  delai_s: 90
+  delai_s: 120
   essais: 2
+  # Sans clé : OVHcloud AI Endpoints en accès anonyme (gratuit, sans compte ni carte, hébergé en France),
+  # le même accès que la sonde utilise pour ses mesures. Limité à 2 requêtes par minute et par modèle :
+  # on attend 31 s entre deux appels. Si le premier modèle ne répond pas, le suivant prend le relais.
+  secours:
+    base_url: https://oai.endpoints.kepler.ai.cloud.ovh.net/v1
+    modeles: [Mistral-Small-3.2-24B-Instruct-2506, gpt-oss-120b, Meta-Llama-3_3-70B-Instruct]
+    sans_cle: true
+    pause_s: 31
 
 # ---------------------------------------------------------------------------
 # Lecture des articles : avant d'écrire, GitHub ouvre les articles de presse retenus et en donne
@@ -60,37 +68,47 @@ tendances:
     # Pages toujours en tête, sans intérêt éditorial
     exclure: [Accueil, Main_Page, Wikipédia:Accueil_principal, Spécial:Recherche, Special:Search,
               Cleopatra, XXX, Pornhub, Xvideos, Deaths_in_2026, Décès_en_2026, Undefined]
-  # Presse grand public via GDELT : des mots qui signalent souvent une dépendance numérique,
-  # sur tous les sujets (culture, achats, société, monde).
+  # Titres de la presse grand public, par flux RSS (tous les sujets : actu, culture, monde, tech).
+  flux:
+    - { nom: franceinfo,           url: "https://www.francetvinfo.fr/titres.rss" }
+    - { nom: franceinfo Culture,   url: "https://www.francetvinfo.fr/culture.rss" }
+    - { nom: franceinfo Internet,  url: "https://www.francetvinfo.fr/internet.rss" }
+    - { nom: 20 Minutes,           url: "https://www.20minutes.fr/feeds/rss-une.xml" }
+    - { nom: Le Monde,             url: "https://www.lemonde.fr/rss/une.xml" }
+    - { nom: France 24,            url: "https://www.france24.com/fr/rss" }
+    - { nom: BBC News,             url: "https://feeds.bbci.co.uk/news/rss.xml", langue: anglais }
+  # GDELT en complément (désactivé : il refuse souvent les requêtes venues de GitHub).
   gdelt:
-    mots: [panne, bug, "rupture de stock", "file d'attente", serveurs, "hors service", piratage,
-           arnaque, viral, "bloqué", "plus rien ne marche", algorithme, application, "en ligne",
-           outage, crashed, "sold out", queue, scam, hacked, "went down"]
+    actif: false
+    mots: [panne, "rupture de stock", "file d'attente", piratage, arnaque, outage, scam]
     langues: [french, english]
     max_articles: 250
     pause_s: 6
     essais: 4
-    attente_429_s: 15
+    attente_429_s: 30
 
 # ---------------------------------------------------------------------------
 # Le Détour : médias de référence. `chemin` restreint un grand site à une rubrique.
 # ---------------------------------------------------------------------------
 detour:
   jours: 7
-  mots: [IA, intelligence artificielle, panne, cloud, données, numérique, internet, cyber,
-         algorithme, plateforme, serveurs, électricité, câble, satellite, AI, outage, data,
-         chips, datacenter, platform, algorithm]
+  # Pour les médias généralistes, on ne garde que les articles dont le titre ou le résumé
+  # contient l'un de ces mots. `tout: true` : média spécialisé, on garde tout.
+  mots: [IA, intelligence artificielle, panne, cloud, données, numérique, internet, cyber, algorithme,
+         plateforme, serveurs, électricité, câble, satellite, datacenter, centre de données, réseau,
+         technologie, écran, application, smartphone, réseaux sociaux, AI, outage, data, chips, platform,
+         algorithm, tech, internet, software, network]
   medias:
-    - { nom: Next,               domaine: next.ink }
-    - { nom: Numerama,           domaine: numerama.com }
-    - { nom: Usbek & Rica,       domaine: usbeketrica.com }
-    - { nom: Pixels (Le Monde),  domaine: lemonde.fr, chemin: /pixels/ }
-    - { nom: Le Grand Continent, domaine: legrandcontinent.eu }
-    - { nom: Reporterre,         domaine: reporterre.net }
-    - { nom: Rest of World,      domaine: restofworld.org, langue: anglais }
-    - { nom: 404 Media,          domaine: 404media.co, langue: anglais }
-    - { nom: Ars Technica,       domaine: arstechnica.com, langue: anglais }
-    - { nom: The Register,       domaine: theregister.com, langue: anglais }
+    - { nom: Next,               flux: "https://next.ink/feed/", tout: true }
+    - { nom: Numerama,           flux: "https://www.numerama.com/feed/" }
+    - { nom: Usbek & Rica,       flux: "https://usbeketrica.com/fr/rss" }      # adresse à confirmer au premier passage
+    - { nom: Pixels (Le Monde),  flux: "https://www.lemonde.fr/pixels/rss_full.xml", tout: true }
+    - { nom: Le Grand Continent, flux: "https://legrandcontinent.eu/fr/feed/" }
+    - { nom: Reporterre,         flux: "https://reporterre.net/spip.php?page=backend-simple" }
+    - { nom: Rest of World,      flux: "https://restofworld.org/feed/latest", langue: anglais, tout: true }
+    - { nom: 404 Media,          flux: "https://www.404media.co/rss/", langue: anglais, tout: true }
+    - { nom: Ars Technica,       flux: "https://feeds.arstechnica.com/arstechnica/index", langue: anglais }
+    - { nom: The Register,       flux: "https://www.theregister.com/headlines.atom", langue: anglais, tout: true }
 
 # ---------------------------------------------------------------------------
 # Images : la catégorie de l'article choisit la photo de la banque (iris/assets/photos/).
