@@ -251,12 +251,20 @@ const EXTERNAL = [   // novembre 2026 au plus tôt : pas d'actualités trop anci
   { source: "Next", cat: "Réseau", img: "reseau", date: "2026-11-18", title: "Fibre optique : après le déploiement, le déchirement", why: "Qui paiera l'entretien des réseaux de fibre construits par les collectivités ? Le bras de fer est lancé.", url: "https://next.ink/268128/fibre-optique-apres-le-deploiement-le-dechirement/" },
   { source: "404 Media", cat: "Logiciel", img: "innovation", date: "2026-11-17", title: "« BREAKING: Everything » : quand tout repose sur la même pièce (en anglais)", why: "La célèbre tour de logiciels qui tient sur une seule brique, appliquée à tout le reste.", url: "https://www.404media.co/breaking-everything/" },
 ];
+// Le Détour reste frais tout seul : 30 jours au plus, 9 liens au plus, le plus récent en grand,
+// badge « Nouveau » pendant 3 jours. Rien d'avant novembre 2026.
 function renderExternal() {
   const el = document.getElementById("ext-grid");
   if (!el) return;
-  el.innerHTML = EXTERNAL.map((x) => `<a class="ext-card" href="${x.url}" target="_blank" rel="noopener">
+  const jour = (n) => new Date(Date.now() - n * 864e5).toISOString().slice(0, 10);
+  const limite = jour(30) > "2026-11-01" ? jour(30) : "2026-11-01";
+  const liens = EXTERNAL.filter((x) => (x.date || "") >= limite)
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")) || String(b.publie_le || "").localeCompare(String(a.publie_le || "")))
+    .slice(0, 9);
+  const quand = (d) => new Date(d + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+  el.innerHTML = liens.map((x, i) => `<a class="ext-card${i === 0 ? " ext-vedette" : ""}" href="${x.url}" target="_blank" rel="noopener">
       <div class="ext-img" style="background-image:url('assets/photos/${x.img}.jpg')"></div>
-      <div class="ext-body"><span class="ext-src">${x.source} ↗</span><span class="pc-tag">${x.cat}</span><h3>${x.title}</h3><p>${x.why}</p></div>
+      <div class="ext-body"><span class="ext-src">${x.source} ↗${x.date > jour(3) ? ' <b class="ext-new">Nouveau</b>' : ""}</span><span class="pc-tag">${x.cat} · ${quand(x.date)}</span><h3>${x.title}</h3><p>${x.why}</p></div>
     </a>`).join("");
 }
 renderExternal();
@@ -510,6 +518,13 @@ function une(a, grandPublic) {
     </div>
   </article>`;
 }
+// Le grand titre : l'actualité la plus récente. Un bilan ou un « Retour sur » parle du passé :
+// il ne prend le grand titre que s'il n'y a aucune actualité publiée. « Carte seulement » : jamais.
+function choisirTete(liste) {
+  const possibles = liste.filter((a) => a.place !== "carte");
+  const actu = possibles.filter((a) => !/^\s*(Bilan|Retour sur)\b/i.test(String(a.tag || "").replace(/<[^>]+>/g, "")));
+  return actu[0] || possibles[0];
+}
 // L'ancien grand titre (écrit dans la page) devient une carte quand un article publié prend sa place.
 function carteDepuisGrandTitre(h, lienTexte = "Et vous ? →") {
   const img = (h.querySelector(".une-hero-img").style.backgroundImage.match(/url\(["']?([^"')]+)/) || [])[1] || "";
@@ -537,7 +552,7 @@ fetch("publies.json", { cache: "no-store" })
     const cartesUne = document.querySelector("#view-une .cards3");
     const pubUne = [...(pub.une || [])].sort((x, y) => String(y.date || "").localeCompare(String(x.date || "")));
     if (cartesUne && pubUne.length) {
-      const tete = pubUne.find((a) => a.place !== "carte");
+      const tete = choisirTete(pubUne);
       const ancien = document.querySelector("#view-une .une-hero");
       let cartes = pubUne.filter((a) => a !== tete).slice(0, 3).map((a) => carte(a, "Lire l'analyse →")).join("");
       if (tete && ancien) {
@@ -553,7 +568,7 @@ fetch("publies.json", { cache: "no-store" })
     // du plus récent au plus ancien : un article d'archive (daté d'un jour passé) ne prend pas le grand titre
     const tc = [...(pub.tous_connectes || [])].sort((x, y) => String(y.date || "").localeCompare(String(x.date || "")));
     if (grille && tc.length) {
-      const tete = tc.find((a) => a.place !== "carte");
+      const tete = choisirTete(tc);
       const ancien = document.querySelector("#view-vies .vies-hero");
       let cartes = tc.filter((a) => a !== tete).slice(0, 3).map((a) => carte(a, "Et vous ? →")).join("");
       if (tete && ancien) {
@@ -576,7 +591,7 @@ fetch("publies.json", { cache: "no-store" })
 
     // Le Détour : les liens publiés passent en tête de la sélection
     if ((pub.detour || []).length) {
-      EXTERNAL.unshift(...pub.detour.filter((x) => (x.date || "") >= "2026-11-01" && !EXTERNAL.some((e) => e.url === x.url)));
+      EXTERNAL.unshift(...pub.detour.filter((x) => !EXTERNAL.some((e) => e.url === x.url)));
       renderExternal();
     }
 

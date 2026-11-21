@@ -483,7 +483,7 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 .with-aside .une-hero { min-height: 480px; }
 .with-aside .cards4 { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 1100px) {
-  .with-aside { grid-template-columns: 1fr; }
+  .with-aside { grid-template-columns: minmax(0, 1fr); }   /* minmax : un mot long ne fait plus déborder la page */
   .most-read { position: static; }
 }
 
@@ -537,3 +537,34 @@ body[data-plan="premium"] [data-plan="standard"] { display: none !important; }
 .pa-ios { color: var(--text); }
 .pa-rss { color: var(--muted); font-size: 13px; text-decoration: underline; }
 .pa-rss:hover { color: var(--yellow); }
+
+/* ---------- Téléphone : titres lisibles, rien ne déborde ---------- */
+@media (max-width: 720px) {
+  .main-col { min-width: 0; }
+  .une-hero .display, .vies-hero .display { font-size: clamp(30px, 9.4vw, 42px); line-height: .98; overflow-wrap: break-word; }
+  .art-title { font-size: clamp(32px, 10vw, 44px); line-height: .98; overflow-wrap: break-word; }
+  .display-sm { font-size: clamp(28px, 8vw, 36px); }
+  .une-hero-img { height: 220px; }
+  .photo-card h3 { font-size: 22px; }
+  .series-body .display-sm { font-size: 28px; }
+  .nav { padding-left: 16px; padding-right: 16px; gap: 0 10px; }
+  .nav-right { gap: 8px; }
+  .brand-word { font-size: 26px; }
+  .cloche { width: 34px; height: 34px; }
+  .ask-btn { padding: 6px 10px; }
+  main { padding-left: 14px; padding-right: 14px; }
+}
+
+/* ---------- Le Détour : le plus récent en grand, badge « Nouveau » ---------- */
+.ext-vedette { grid-column: 1 / -1; flex-direction: row; border-color: #3a3a3a; }
+.ext-vedette .ext-img { flex: 0 0 46%; aspect-ratio: auto; min-height: 240px; }
+.ext-vedette .ext-body { padding: 26px 30px; justify-content: center; gap: 10px; }
+.ext-vedette h3 { font-size: 34px; }
+.ext-vedette p { font-size: 17px; }
+.ext-new { display: inline-block; margin-left: 8px; background: var(--yellow); color: var(--bg); border-radius: 99px; padding: 1px 8px; font-size: 11px; letter-spacing: .04em; }
+@media (max-width: 720px) {
+  .ext-vedette { flex-direction: column; }
+  .ext-vedette .ext-img { flex: none; min-height: 0; aspect-ratio: 16 / 8; }
+  .ext-vedette .ext-body { padding: 16px 18px 20px; }
+  .ext-vedette h3 { font-size: 26px; }
+}
