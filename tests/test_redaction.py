@@ -365,3 +365,12 @@ def test_incident_sur_un_modele_non_mesure():
     assert modele_non_suivi("Increased error rate for model DeepSeek v4.1 Flash", suivis).startswith("DeepSeek")
     assert modele_non_suivi("Llama 3.3 70B degraded", suivis) is None
     assert modele_non_suivi("AI Endpoint Incident Notification", suivis) is None
+
+
+def test_impact_affirme_sans_mesure_signale():
+    """Premier vrai brouillon de Groq : « Mistral impacté 48 minutes » alors que la sonde n'avait rien mesuré."""
+    fiche = {"fournisseurs_concernes": ["mistral"], "mesures_de_la_sonde": "aucune mesure de la sonde pendant l'événement"}
+    faux = {**ARTICLE_UNE, "title": "Des problèmes chez Cloudflare<br/>Mistral impacté <mark>48 minutes</mark>"}
+    assert any("non soutenue par les mesures" in a for a in controler(faux, "une", fiche))
+    juste = {**ARTICLE_UNE, "title": "Cloudflare ralentit à Paris.<br/>Mistral passe par lui, la sonde <mark>n'a rien vu.</mark>"}
+    assert not any("non soutenue" in a for a in controler(juste, "une", fiche))
