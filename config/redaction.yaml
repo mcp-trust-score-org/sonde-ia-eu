@@ -26,7 +26,7 @@ rythme:
 # Si aucun service ne répond, GitHub prépare des fiches (faits, sources, structure) à rédiger à la main.
 # ---------------------------------------------------------------------------
 redacteur:
-  budget_s: 600                # au-delà de 10 minutes d'essais, on s'arrête : fiches à rédiger à la main
+  budget_s: 900                # au-delà de 15 minutes d'essais, on s'arrête : fiches à rédiger à la main
   temperature: 0.4
   delai_s: 120
   essais: 2
@@ -37,19 +37,16 @@ redacteur:
       base_url: https://api.mistral.ai/v1
       cle_env: MISTRAL_API_KEY
       modeles: [mistral-medium-latest]
-    # 2. GitHub Models : gratuit, sans clé à créer. Le workflow utilise son propre jeton
-    #    (GITHUB_TOKEN, permission « models: read »). Quelques requêtes par minute.
-    - nom: GitHub Models
-      base_url: https://models.github.ai/inference
-      cle_env: GITHUB_TOKEN
-      modeles: [openai/gpt-4.1, openai/gpt-4o]
-      entetes:
-        Accept: application/vnd.github+json
-        X-GitHub-Api-Version: "2022-11-28"
-      # Offre gratuite : 8 000 jetons au plus par requête. On raccourcit les extraits d'articles
-      # pour tenir dans environ 22 000 caractères (charte + consigne + faits).
-      max_caracteres_entree: 22000
-      pause_s: 8
+    # 2. Groq : gratuit, sans carte bancaire (une clé à créer sur console.groq.com, secret GROQ_API_KEY).
+    #    Offre gratuite : 30 requêtes/min, 1 000/jour, mais 8 000 jetons par minute : on raccourcit les
+    #    requêtes (~16 000 caractères) et on attend une minute entre deux appels.
+    #    (GitHub Models, essayé avant, a été fermé par GitHub à l'été 2026.)
+    - nom: Groq
+      base_url: https://api.groq.com/openai/v1
+      cle_env: GROQ_API_KEY
+      modeles: [openai/gpt-oss-120b, openai/gpt-oss-20b]
+      max_caracteres_entree: 16000
+      pause_s: 61
       attente_429_s: 65
     # 3. OVHcloud AI Endpoints en accès anonyme : gratuit, hébergé en France, mais très demandé
     #    (2 requêtes par minute et par modèle, souvent saturé depuis les machines de GitHub).
