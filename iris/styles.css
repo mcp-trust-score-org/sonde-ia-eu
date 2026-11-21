@@ -2,8 +2,8 @@
    IRIS — DA
    Noir · jaune signal · crème · statuaire N&B · titres condensés
    ========================================================= */
-/* Le nom IRIS : Arvo (licence libre OFL), hébergée sur le site, pas chez Google */
-@font-face { font-family: "Arvo"; src: url("assets/fonts/arvo-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+/* Le nom IRIS : Roboto Slab Black (licence libre Apache 2.0), hébergée sur le site, pas chez Google */
+@font-face { font-family: "Roboto Slab"; src: url("assets/fonts/roboto-slab-900.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
 
 :root {
   --bg: #0A0A0A;
@@ -64,7 +64,7 @@ button { font: inherit; color: inherit; }
 .brand-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); margin: 3px 0 0 3px; }
 @media (prefers-reduced-motion: no-preference) { .brand-dot { animation: notif 2.4s ease-in-out infinite; } }
 @keyframes notif { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,204,0,.55); } 60% { box-shadow: 0 0 0 7px rgba(255,204,0,0); } }
-.brand-word { font-family: "Arvo", var(--f-display); font-weight: 700; font-size: 30px; letter-spacing: .02em; color: var(--cream); }
+.brand-word { font-family: "Roboto Slab", var(--f-display); font-weight: 900; font-size: 30px; letter-spacing: .02em; color: var(--cream); }
 .tabs { display: flex; gap: 28px; height: 100%; }
 .tabs a { position: relative; display: flex; align-items: center; gap: 6px; font-weight: 500; font-size: 15px; color: #CFCFCF; white-space: nowrap; }
 .tabs a:hover { color: #fff; }
