@@ -1,50 +1,45 @@
 {
  "date": "2026-11-21",
- "genere_le": "2026-11-20T23:43:42+00:00",
+ "genere_le": "2026-11-21T11:59:21+00:00",
  "statut": "a_relire",
  "propositions": [
   {
    "rubrique": "une",
    "format": "a_chaud",
-   "evenement_id": "statut-ovhcloud-2026-11-20T06:53+00:00",
-   "tag_interne": "Confirmé",
-   "score": 38.6,
+   "evenement_id": "statut-scaleway-2026-11-17T14:43+00:00",
+   "tag_interne": "Aucune anomalie",
+   "score": 2.2,
    "auteur": "fiche",
    "image": "assets/photos/ia.jpg",
    "article": {},
    "fiche": {
-    "evenement": "[GLOBAL][AI & Machine Learning] - AI Endpoint Incident Notification",
+    "evenement": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
     "type": "incident_fournisseur",
-    "debut": "vendredi 20 novembre, 7 h 53",
-    "fin": "vendredi 20 novembre, 13 h 19",
+    "debut": "mardi 17 novembre, 15 h 43",
+    "fin": "jeudi 19 novembre, 14 h 20",
     "fournisseurs_concernes": [
-     "OVHcloud"
+     "Scaleway"
     ],
     "pourquoi_ce_fournisseur": null,
     "mesures_de_la_sonde": [
      {
-      "fournisseur": "OVHcloud",
-      "ce_que_la_sonde_a_vu": "Nos mesures montrent une interruption qui correspond à l'incident reconnu par OVHcloud.",
-      "anomalies": [
-       {
-        "heure": "vendredi 20 novembre, 9 h 00",
-        "detail": "llama-3.3-70b : 16731 ms contre 1159 ms d'habitude"
-       }
-      ],
-      "nombre_de_mesures_pendant_l_evenement": 4,
+      "fournisseur": "Scaleway",
+      "ce_que_la_sonde_a_vu": "Aucune anomalie mesurée chez vos fournisseurs",
+      "anomalies": [],
+      "nombre_de_mesures_pendant_l_evenement": 11,
       "incident_officiel": true
      }
     ],
     "presse": null,
     "sources": [
      {
-      "label": "[GLOBAL][AI & Machine Learning] - AI Endpoint Incident Notification",
-      "url": "https://stspg.io/vlkf6x66jncd"
+      "label": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
+      "url": "https://stspg.io/psyhyg4czq4q"
      }
     ]
    },
    "alertes_charte": [
-    "Pas de rédacteur configuré (clé absente) : fiche à rédiger à la main."
+    "Le rédacteur n'a pas répondu (Mistral-Small-3.2-24B-Instruct-2506 : HTTPStatusError: Client error '429 Too Many Requests' for url 'https://oai.endpoints.kepler.ai.cloud.ovh.net/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/W ; gpt-oss-120b : HTTPStatusError: Client error '429 Too Many ) : fiche à rédiger à la main."
    ]
   },
   {
@@ -54,10 +49,10 @@
    "fiche": {
     "tendances_wikipedia": [
      {
-      "sujet": "David Habib",
+      "sujet": "Dominique de Villepin",
       "langue": "fr",
       "rang_wikipedia": 1,
-      "page": "https://fr.wikipedia.org/wiki/David_Habib",
+      "page": "https://fr.wikipedia.org/wiki/Dominique_de_Villepin",
       "titres_de_presse": []
      },
      {
@@ -68,199 +63,419 @@
       "titres_de_presse": []
      },
      {
-      "sujet": "Grand Theft Auto VI",
+      "sujet": "Hugues Moutouh",
       "langue": "fr",
       "rang_wikipedia": 3,
+      "page": "https://fr.wikipedia.org/wiki/Hugues_Moutouh",
+      "titres_de_presse": [
+       {
+        "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
+        "media": "franceinfo",
+        "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html#xtor=RSS-3-[lestitres]"
+       }
+      ]
+     },
+     {
+      "sujet": "David Habib",
+      "langue": "fr",
+      "rang_wikipedia": 4,
+      "page": "https://fr.wikipedia.org/wiki/David_Habib",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Hypothèse de Riemann",
+      "langue": "fr",
+      "rang_wikipedia": 5,
+      "page": "https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_de_Riemann",
+      "titres_de_presse": [
+       {
+        "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
+        "media": "franceinfo",
+        "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html#xtor=RSS-3-[lestitres]"
+       }
+      ]
+     },
+     {
+      "sujet": "Grand Theft Auto VI",
+      "langue": "fr",
+      "rang_wikipedia": 6,
       "page": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto_VI",
       "titres_de_presse": []
      },
      {
-      "sujet": "General Sherman (arbre)",
-      "langue": "fr",
-      "rang_wikipedia": 4,
-      "page": "https://fr.wikipedia.org/wiki/General_Sherman_%28arbre%29",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "La prochaine fois je viserai le cœur",
-      "langue": "fr",
-      "rang_wikipedia": 5,
-      "page": "https://fr.wikipedia.org/wiki/La_prochaine_fois_je_viserai_le_c%C5%93ur",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Jarry (humoriste)",
-      "langue": "fr",
-      "rang_wikipedia": 6,
-      "page": "https://fr.wikipedia.org/wiki/Jarry_%28humoriste%29",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Affaire Alain Lamare",
+      "sujet": "Michael Jackson",
       "langue": "fr",
       "rang_wikipedia": 7,
-      "page": "https://fr.wikipedia.org/wiki/Affaire_Alain_Lamare",
+      "page": "https://fr.wikipedia.org/wiki/Michael_Jackson",
       "titres_de_presse": []
      },
      {
-      "sujet": "Grand Theft Auto",
+      "sujet": "La Vie et rien d'autre",
       "langue": "fr",
       "rang_wikipedia": 8,
-      "page": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto",
+      "page": "https://fr.wikipedia.org/wiki/La_Vie_et_rien_d%27autre",
       "titres_de_presse": []
      },
      {
-      "sujet": "Affaire des Avions renifleurs",
+      "sujet": "Jairo (chanteur)",
       "langue": "fr",
       "rang_wikipedia": 9,
-      "page": "https://fr.wikipedia.org/wiki/Affaire_des_Avions_renifleurs",
+      "page": "https://fr.wikipedia.org/wiki/Jairo_%28chanteur%29",
       "titres_de_presse": []
      },
      {
-      "sujet": "Gabriel Attal",
+      "sujet": "Alain Afflelou (entrepreneur)",
       "langue": "fr",
       "rang_wikipedia": 10,
-      "page": "https://fr.wikipedia.org/wiki/Gabriel_Attal",
+      "page": "https://fr.wikipedia.org/wiki/Alain_Afflelou_%28entrepreneur%29",
       "titres_de_presse": []
      },
      {
-      "sujet": "Bertrand Meheut",
+      "sujet": "Thierry Le Luron",
       "langue": "fr",
       "rang_wikipedia": 11,
-      "page": "https://fr.wikipedia.org/wiki/Bertrand_Meheut",
+      "page": "https://fr.wikipedia.org/wiki/Thierry_Le_Luron",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Compartiment tueurs",
+      "langue": "fr",
+      "rang_wikipedia": 12,
+      "page": "https://fr.wikipedia.org/wiki/Compartiment_tueurs",
       "titres_de_presse": []
      },
      {
       "sujet": "David Lisnard",
       "langue": "fr",
-      "rang_wikipedia": 12,
+      "rang_wikipedia": 13,
       "page": "https://fr.wikipedia.org/wiki/David_Lisnard",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "General Sherman (arbre)",
+      "langue": "fr",
+      "rang_wikipedia": 14,
+      "page": "https://fr.wikipedia.org/wiki/General_Sherman_%28arbre%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Affaire Michel Zecler",
+      "langue": "fr",
+      "rang_wikipedia": 15,
+      "page": "https://fr.wikipedia.org/wiki/Affaire_Michel_Zecler",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Thalasso (film)",
+      "langue": "fr",
+      "rang_wikipedia": 16,
+      "page": "https://fr.wikipedia.org/wiki/Thalasso_%28film%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Grand Theft Auto",
+      "langue": "fr",
+      "rang_wikipedia": 17,
+      "page": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto",
       "titres_de_presse": []
      },
      {
       "sujet": "Hunger Games (série de films)",
       "langue": "fr",
-      "rang_wikipedia": 13,
+      "rang_wikipedia": 18,
       "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%28s%C3%A9rie_de_films%29",
+      "titres_de_presse": [
+       {
+        "titre": "\"Jupiter\", \"Hunger Games\", \"Gabin\"... Quels sont les films à voir (ou pas) cette semaine au cinéma ?",
+        "media": "franceinfo Culture",
+        "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/jupiter-hunger-games-gabin-quels-sont-les-films-a-voir-ou-pas-cette-semaine-au-cinema_8290559.html#xtor=RSS-3-%5Bculture%5D"
+       }
+      ]
+     },
+     {
+      "sujet": "Aliocha Schneider",
+      "langue": "fr",
+      "rang_wikipedia": 19,
+      "page": "https://fr.wikipedia.org/wiki/Aliocha_Schneider",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Jaafar Jackson",
+      "langue": "fr",
+      "rang_wikipedia": 20,
+      "page": "https://fr.wikipedia.org/wiki/Jaafar_Jackson",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Nana Mouskouri",
+      "langue": "fr",
+      "rang_wikipedia": 21,
+      "page": "https://fr.wikipedia.org/wiki/Nana_Mouskouri",
       "titres_de_presse": []
      },
      {
       "sujet": "Élisabeth de Wittelsbach",
       "langue": "fr",
-      "rang_wikipedia": 14,
+      "rang_wikipedia": 22,
       "page": "https://fr.wikipedia.org/wiki/%C3%89lisabeth_de_Wittelsbach",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Robert Pattinson",
-      "langue": "fr",
-      "rang_wikipedia": 15,
-      "page": "https://fr.wikipedia.org/wiki/Robert_Pattinson",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Eldorado (mini-série)",
-      "langue": "fr",
-      "rang_wikipedia": 16,
-      "page": "https://fr.wikipedia.org/wiki/Eldorado_%28mini-s%C3%A9rie%29",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Philippe Caubère",
-      "langue": "fr",
-      "rang_wikipedia": 17,
-      "page": "https://fr.wikipedia.org/wiki/Philippe_Caub%C3%A8re",
       "titres_de_presse": []
      },
      {
       "sujet": "Jean-Luc Mélenchon",
       "langue": "fr",
-      "rang_wikipedia": 18,
+      "rang_wikipedia": 23,
       "page": "https://fr.wikipedia.org/wiki/Jean-Luc_M%C3%A9lenchon",
       "titres_de_presse": []
      },
      {
-      "sujet": "Marine Tondelier",
-      "langue": "fr",
-      "rang_wikipedia": 19,
-      "page": "https://fr.wikipedia.org/wiki/Marine_Tondelier",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Carole Bouquet",
-      "langue": "fr",
-      "rang_wikipedia": 20,
-      "page": "https://fr.wikipedia.org/wiki/Carole_Bouquet",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Hunger Games : Lever de soleil sur la moisson (film)",
-      "langue": "fr",
-      "rang_wikipedia": 21,
-      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_Lever_de_soleil_sur_la_moisson_%28film%29",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Fabrice Luchini",
-      "langue": "fr",
-      "rang_wikipedia": 22,
-      "page": "https://fr.wikipedia.org/wiki/Fabrice_Luchini",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Grand Theft Auto V",
-      "langue": "fr",
-      "rang_wikipedia": 23,
-      "page": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto_V",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Raphaël Glucksmann",
+      "sujet": "Nicole Croisille",
       "langue": "fr",
       "rang_wikipedia": 24,
-      "page": "https://fr.wikipedia.org/wiki/Rapha%C3%ABl_Glucksmann",
+      "page": "https://fr.wikipedia.org/wiki/Nicole_Croisille",
       "titres_de_presse": []
      },
      {
-      "sujet": "Sylvain Durif",
+      "sujet": "Robert Pattinson",
       "langue": "fr",
       "rang_wikipedia": 25,
-      "page": "https://fr.wikipedia.org/wiki/Sylvain_Durif",
-      "titres_de_presse": []
+      "page": "https://fr.wikipedia.org/wiki/Robert_Pattinson",
+      "titres_de_presse": [
+       {
+        "titre": "Who will be Robert Pattinson's 'Bond girl' - and does the role need to change?",
+        "media": "BBC News",
+        "url": "https://www.bbc.co.uk/news/articles/cr4g1l7x52jno?at_medium=RSS&at_campaign=rss"
+       }
+      ]
      }
     ],
-    "presse_grand_public": []
+    "presse_grand_public": [
+     {
+      "titre": "\"Je vais aller brûler un cierge\" : à Lyon, les commerçants de la place Bellecour s'inquiètent du retour des cortèges en centre-ville",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/reportage-je-vais-aller-bruler-un-cierge-a-lyon-les-commercants-de-la-place-bellecour-s-inquietent-du-retour-des-corteges-en-centre-ville_8292824.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Quatre mois après le mégafeu au Porge, \"il y a énormément de douleur\" parmi les habitants, souligne le maire Martial Zaninetti",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/incendies-et-feux-de-foret/incendies-en-gironde/quatre-mois-apres-le-megafeu-au-porge-il-y-a-enormement-de-douleur-parmi-les-habitants-souligne-le-maire-martial-zaninetti_8293673.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Le président du Conseil européen propose un budget de l'UE en baisse de 204 milliards d'euros, aussitôt rejeté par la France",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/europe/sommet-de-l-ue/le-president-du-conseil-europeen-propose-un-budget-de-l-ue-en-baisse-de-204-milliards-d-euros-aussitot-rejete-par-la-france_8293637.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Une conférence de l'ONU ouvre à la voie à un possible encadrement international des \"robots tueurs\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/armee-securite-defense/une-conference-de-l-onu-ouvre-a-la-voie-a-un-possible-encadrement-international-des-robots-tueurs_8293439.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Présidentielle 2027 : Eric Zemmour lance sa campagne avec un meeting à Toulon",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Black Week, Cyber Monday, Black Month… Pourquoi les commerçants n'attendent-ils plus le Black Friday pour casser les prix ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/black-week-cyber-monday-black-month-pourquoi-les-commercants-n-attendent-ils-plus-le-black-friday-pour-casser-les-prix_8284550.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Préfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/france/centre-val-de-loire/loiret/prefet-soupconne-de-fuites-vers-le-rn-il-doit-etre-mis-a-pied-estime-la-depute-ecologiste-sandrine-rousseau_8293574.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "La Bourse de Wall Street enregistre des centaines de milliards de dollars de pertes, pénalisée par le secteur de l'IA",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/la-bourse-de-wall-street-enregistre-des-centaines-de-milliards-de-dollars-de-pertes-penalisee-par-le-secteur-de-l-ia_8293667.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Cargo échoué sur une plage des Landes : comment va se passer la remise à flot de l'énorme navire ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/france/nouvelle-aquitaine/landes/cargo-echoue-sur-une-plage-des-landes-comment-va-se-passer-la-remise-a-flot-de-l-enorme-navire_8292887.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "\"Je crois que raconter l’histoire des mafias, notamment à travers le cinéma, est extrêmement utile\" : Roberto Saviano est l'invité exceptionnel du Festival du film d'Histoire de Pessac",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/je-crois-que-raconter-l-histoire-des-mafias-notamment-a-travers-le-cinema-est-extremement-utile-roberto-saviano-est-l-invite-exceptionnel-du-festival-du-film-d-histoire-de-pessac_8289596.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "L'Américain Jimmy Connors, ancien numéro 1 mondial de tennis, souffre d'un cancer de l'oreille",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/tennis/l-americain-jimmy-connors-ancien-numero-1-mondial-souffre-d-un-cancer-de-l-oreille_8293604.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "\"Des campagnes d'attaques de plus en plus automatisées\" : comment les cybercriminels ont placé l'intelligence artificielle au cœur de leurs opérations",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "L'association Droit au logement appelle à \"renforcer l'encadrement des loyers\" et à \"produire du logement social\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/l-association-droit-au-logement-appelle-a-renforcer-l-encadrement-des-loyers-et-a-produire-du-logement-social_8293607.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Quand un gourou condamné coule des jours tranquilles au bord de sa piscine : \"Affaires sensibles\" revient sur le fiasco judiciaire de la secte OKC",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-magazine/france-2/affaires-sensibles/video-quand-un-gourou-condamne-coule-des-jours-tranquilles-au-bord-de-sa-piscine-affaires-sensibles-revient-sur-le-fiasco-judiciaire-de-la-secte-okc_8290778.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "\"Il aurait fallu réagir avant\" : dans le Pas-de-Calais, des habitants fatigués et en colère face à des crues à répétition",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/il-aurait-fallu-reagir-avant-dans-le-pas-de-calais-des-habitants-fatigues-et-en-colere-face-a-des-crues-a-repetition_8293445.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Christine Lagarde, un recours pour la droite et le centre à l’élection présidentielle ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-radio/le-brief-politique/christine-lagarde-un-recours-pour-la-droite-et-le-centre-a-l-election-presidentielle_8271749.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "\"C'est un ovni depuis très longtemps\" : à son meilleur niveau, Antoine Dupont suscite l'engouement avant France-Argentine",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/rugby/antoine-dupont/c-est-un-ovni-depuis-tres-longtemps-a-son-meilleur-niveau-antoine-dupont-suscite-l-engouement-avant-france-argentine_8293577.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Serge Money, avocat de Michel Zecler, salue une \"décision historique\" mais les peines \"laissent un petit goût amer\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/producteur-passe-a-tabac-par-des-policiers/serge-money-avocat-de-michel-zecler-salue-une-decision-historique-mais-les-peines-laissent-un-petit-gout-amer_8293472.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Le Ballon d'or Harry Kane, blessé à la cheville, sera absent plusieurs mois selon l'entraîneur du Bayern Munich Vincent Kompany",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/harry-kane/le-ballon-d-or-harry-kane-blesse-a-la-cheville-sera-absent-plusieurs-mois-selon-l-entraineur-du-bayern-munich-vincent-kompany_8293541.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Max Verstappen partira en pole position du GP de Las Vegas, le champion du monde Kimi Antonelli écope d'une pénalité",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/auto-moto/formule-1/max-verstappen-partira-en-pole-position-du-gp-de-las-vegas-le-champion-du-monde-kimi-antonelli-ecope-d-une-penalite_8293505.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Face à une Argentine toujours imprévisible, le XV de France veut finir le travail et valider son billet pour la finale du Championnat des nations",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/rugby/coupe-d-automne-des-nations/face-a-une-argentine-toujours-imprevisible-le-xv-de-france-veut-finir-le-travail-et-valider-son-billet-pour-la-finale-du-championnat-des-nations_8292017.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Un policier condamné à 18 mois de prison ferme pour un tir mortel sur un automobiliste noir en Seine-Saint-Denis",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/justice-proces/un-policier-condamne-a-18-mois-de-prison-ferme-pour-un-tir-mortel-sur-un-automobiliste-noir-en-seine-saint-denis_8293448.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Mobilisation du 21 novembre : syndicats et gilets jaunes appellent à manifester pour la jeunesse et contre la vie chère, pour le sixième samedi d'affilée",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Des syndicats de sept pays européens appellent à des \"manifestations coordonnées\" contre la vie chère samedi et dimanche",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/des-syndicats-de-sept-pays-europeens-appellent-a-des-manifestations-coordonnees-contre-la-vie-chere-vendredi-samedi-et-dimanche_8292320.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "Organisations présentes, dispositif de sécurité... A quoi faut-il s'attendre pour les manifestations du samedi 21 novembre ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/greve/organisations-presentes-dispositif-de-securite-a-quoi-faut-il-s-attendre-pour-les-manifestations-du-samedi-21-novembre_8292461.html#xtor=RSS-3-[lestitres]"
+     },
+     {
+      "titre": "\"Jupiter\" : huis clos tendu et efficace sous menace nucléaire",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/les-experts-cinema/jupiter-huis-clos-tendu-et-efficace-sous-menace-nucleaire_8271713.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "Pourquoi écoute-t-on des chansons des tristes quand on est triste ?",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/c-est-ma-sante/pourquoi-ecoute-t-on-des-chansons-des-tristes-quand-on-est-triste_8271695.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "\"Jupiter\", \"Hunger Games\", \"Gabin\"... Quels sont les films à voir (ou pas) cette semaine au cinéma ?",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/jupiter-hunger-games-gabin-quels-sont-les-films-a-voir-ou-pas-cette-semaine-au-cinema_8290559.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "\"On a besoin de petits riens qui enjolivent le quotidien\" : hier tradition religieuse, aujourd'hui tendance, le calendrier de l'avent lance le compte à rebours des fêtes de fin d'année",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/on-a-besoin-de-petits-riens-qui-enjolivent-le-quotidien-hier-tradition-religieuse-aujourd-hui-tendance-le-calendrier-de-l-avent-lance-le-compte-a-rebours-des-fetes-de-fin-d-annee_8236858.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "REPLAY. \"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "Pomme sort un nouvel album \"La Forteresse\" : \"J'avais envie de faire des ponts avec le monde\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/pomme-sort-un-nouvel-album-la-forteresse-j-avais-envie-de-faire-des-ponts-avec-le-monde_8270099.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "Jam pour le Népal : un concert de jazz lundi soir au New Morning, à Paris, en soutien aux sinistrés de la catastrophe du 26 août",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/musique/jazz/jam-pour-le-nepal-un-concert-de-jazz-lundi-soir-au-new-morning-a-paris-en-soutien-aux-sinistres-de-la-catastrophe-du-26-aout_8292152.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "Plus de cinquante ans après sa création, le mythique groupe The Stranglers lance en France sa nouvelle tournée",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/musique/plus-de-50-ans-apres-sa-creation-le-mythique-groupe-the-stranglers-lance-en-france-sa-nouvelle-tournee_8292479.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "Secrets et spécialités locales : à la découverte de l'Alsace Verte aux couleurs d'automne",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/secrets-et-specialites-locales-a-la-decouverte-de-l-alsace-verte-aux-couleurs-d-automne_8292593.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "\"Las Azules\", \"Furia\", \"Cent ans de solitude\"... Pourquoi les séries latino-américaines n'ont jamais été aussi variées",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/series/las-azules-furia-cent-ans-de-solitude-pourquoi-les-series-latino-americaines-n-ont-jamais-ete-aussi-variees_8288567.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "Une comédienne accuse Gérard Depardieu de viol en réunion lors d'un tournage et Michel Houellebecq de complicité, révèle Mediapart",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/depardieu/il-n-etait-absolument-pas-question-de-sexe-une-comedienne-accuse-gerard-depardieu-de-viol-en-reunion-lors-d-un-tournage-et-michel-houellebecq-de-complicite-revele-mediapart_8291927.html#xtor=RSS-3-%5Bculture%5D"
+     },
+     {
+      "titre": "\"Ma vie, c'est le théâtre, autrement je m'emmerde !\" : Judith Magre fête ses 100 ans sur les planches",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/spectacles/theatre/ma-vie-c-est-le-theatre-autrement-je-m-emmerde-judith-magre-fete-ses-100-ans-sur-les-planches_8292089.html#xtor=RSS-3-%5Bculture%5D"
+     }
+    ]
    },
    "alertes_charte": [
-    "Pas de rédacteur configuré (clé absente) : choisir un sujet dans la fiche."
+    "Le rédacteur n'a pas répondu (Mistral-Small-3.2-24B-Instruct-2506 : HTTPStatusError: Client error '429 Too Many Requests' for url 'https://oai.endpoints.kepler.ai.cloud.ovh.net/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/W ; gpt-oss-120b : HTTPStatusError: Client error '429 Too Many ) : choisir un sujet dans la fiche."
    ]
   }
  ],
  "reserve_une": [
   {
-   "titre": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
-   "tag_interne": "Aucune anomalie",
-   "score": 3.2
-  },
-  {
    "titre": "[Generative API] - [global] - GLM-5.3 timeouts",
    "tag_interne": "Aucune anomalie",
-   "score": 1.2
+   "score": 0.2
   },
   {
    "titre": "Cloudflare : Network Performance Issues in Paris",
    "tag_interne": "Non mesuré",
-   "score": -5.7
+   "score": -6.7
   },
   {
    "titre": "Cloudflare : Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
    "tag_interne": "Non mesuré",
-   "score": -6.5
+   "score": -7.6
   },
   {
    "titre": "Cloudflare : Elevated number of 5xx and 499 errors",
    "tag_interne": "Non mesuré",
-   "score": -6.7
+   "score": -7.7
   }
  ],
  "sources_tendances": {
@@ -268,13 +483,13 @@
    "etat": "ok",
    "nombre": 60
   },
-  "Presse grand public (GDELT)": {
-   "etat": "erreur",
-   "raison": "GdeltErreur: HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 4 essais"
+  "Presse grand public (flux RSS)": {
+   "etat": "ok",
+   "nombre": 151
   },
-  "Détour (GDELT)": {
-   "etat": "erreur",
-   "raison": "GdeltErreur: HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 4 essais"
+  "Détour (flux RSS)": {
+   "etat": "ok",
+   "nombre": 153
   }
  }
 }

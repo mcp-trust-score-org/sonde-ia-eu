@@ -4,19 +4,19 @@
     "nom": "OVHcloud AI Endpoints",
     "pays": "FR"
   },
-  "genere_le": "2026-11-20T23:28:41+00:00",
+  "genere_le": "2026-11-21T11:56:48+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-20T23:28:41+00:00"
+    "fin": "2026-11-21T11:56:48+00:00"
   },
   "performance": [
     {
       "modele": "gpt-oss-120b",
-      "appels": 51,
-      "disponibilite_pct": 82.35,
-      "ttft_median_ms": 847,
-      "ttft_p95_ms": 1132,
-      "heures_avec_echec": 6,
+      "appels": 57,
+      "disponibilite_pct": 77.19,
+      "ttft_median_ms": 844,
+      "ttft_p95_ms": 1127,
+      "heures_avec_echec": 8,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
         "anonyme"
@@ -24,11 +24,11 @@
     },
     {
       "modele": "llama-3.3-70b",
-      "appels": 51,
-      "disponibilite_pct": 92.16,
-      "ttft_median_ms": 1316,
-      "ttft_p95_ms": 131061,
-      "heures_avec_echec": 2,
+      "appels": 57,
+      "disponibilite_pct": 85.96,
+      "ttft_median_ms": 1159,
+      "ttft_p95_ms": 129217,
+      "heures_avec_echec": 4,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
         "anonyme"
@@ -36,11 +36,11 @@
     },
     {
       "modele": "mistral-small-3.2",
-      "appels": 51,
-      "disponibilite_pct": 92.16,
-      "ttft_median_ms": 1011,
-      "ttft_p95_ms": 33875,
-      "heures_avec_echec": 2,
+      "appels": 57,
+      "disponibilite_pct": 85.96,
+      "ttft_median_ms": 999,
+      "ttft_p95_ms": 32877,
+      "heures_avec_echec": 4,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
         "anonyme"
@@ -48,7 +48,7 @@
     }
   ],
   "reseau": {
-    "dernier_releve": "2026-11-20T23:16:02+00:00",
+    "dernier_releve": "2026-11-21T11:44:00+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "ue_observe",
     "constats": [
@@ -64,27 +64,27 @@
     "verdicts_sur_periode": [
       "ue_observe"
     ],
-    "releves": 3
+    "releves": 4
   },
   "stabilite": [
     {
       "modele": "gpt-oss-120b",
-      "empreintes": 3,
+      "empreintes": 4,
       "derniere_similarite": null,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "llama-3.3-70b",
-      "empreintes": 3,
-      "derniere_similarite": 0.5896,
+      "empreintes": 4,
+      "derniere_similarite": 0.625,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "mistral-small-3.2",
-      "empreintes": 3,
-      "derniere_similarite": 0.7273,
+      "empreintes": 4,
+      "derniere_similarite": 1.0,
       "alertes": [],
       "changements_identifiant": []
     }

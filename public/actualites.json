@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T07:06:46+00:00",
+ "genere_le": "2026-11-21T11:56:49+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -106,16 +106,16 @@
  ],
  "ecartes_pages_de_statut": [
   {
-   "titre": "Cloudflare : Cache Purging Delays in Milan",
-   "debut": "2026-11-20T20:51+00:00",
-   "raison": "sans impact déclaré",
-   "url": "https://www.cloudflarestatus.com/incidents/akjr7qn5o622"
-  },
-  {
    "titre": "Cloudflare : Network Performance Issues in Washington, DC datacenter (IAD)",
    "debut": "2026-11-20T20:35+00:00",
    "raison": "localisé hors de nos zones",
    "url": "https://www.cloudflarestatus.com/incidents/oz6to8yacrxe"
+  },
+  {
+   "titre": "Cloudflare : Cache Purging Delays in Milan",
+   "debut": "2026-11-20T20:51+00:00",
+   "raison": "sans impact déclaré",
+   "url": "https://www.cloudflarestatus.com/incidents/akjr7qn5o622"
   },
   {
    "titre": "Cloudflare : Cache Purging Delays in Amsterdam",

@@ -1,6 +1,6 @@
 # Dossier de surveillance – OVHcloud AI Endpoints
 
-Période : 2026-11-15 → 2026-11-20 · généré le 2026-11-20 23:28 UTC
+Période : 2026-11-15 → 2026-11-21 · généré le 2026-11-21 11:56 UTC
 
 > Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives.
 
@@ -28,22 +28,22 @@ Période : 2026-11-15 → 2026-11-20 · généré le 2026-11-20 23:28 UTC
 
 | Modèle | Appels | Disponibilité | 1er mot médian | 1er mot p95 | Heures avec échec | Plus longue série d'échecs | Offre mesurée |
 |---|---|---|---|---|---|---|---|
-| gpt-oss-120b | 51 | 82.35 % | 847 ms | 1,1 s | 6 | 1 h | anonyme |
-| llama-3.3-70b | 51 | 92.16 % | 1,3 s | 131,1 s | 2 | 1 h | anonyme |
-| mistral-small-3.2 | 51 | 92.16 % | 1,0 s | 33,9 s | 2 | 1 h | anonyme |
+| gpt-oss-120b | 57 | 77.19 % | 844 ms | 1,1 s | 8 | 1 h | anonyme |
+| llama-3.3-70b | 57 | 85.96 % | 1,2 s | 129,2 s | 4 | 1 h | anonyme |
+| mistral-small-3.2 | 57 | 85.96 % | 999 ms | 32,9 s | 4 | 1 h | anonyme |
 
 Les mesures en offre gratuite ou anonyme subissent des limites de débit propres à ces offres : elles ne reflètent pas forcément le service contractuel d'un client payant.
 
 ## 2. Chemin réseau observé
 
-**Constat au 2026-11-20 : Entrées réseau opérées et localisées dans l'UE/EEE**
+**Constat au 2026-11-21 : Entrées réseau opérées et localisées dans l'UE/EEE**
 
 - Toutes les entrées réseau observées sont opérées et localisées dans l'UE/EEE
 
 - Pays des points d'entrée observés : FR
 - Opérateurs réseau : OVHcloud
 - Intermédiaires visibles : aucun
-- Relevés sur la période : 3 · constats distincts : ue_observe
+- Relevés sur la période : 4 · constats distincts : ue_observe
 
 Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent. Il ne prouve pas à lui seul le lieu de traitement du modèle, à confirmer contractuellement (champ B_02.02.0160).
 
@@ -51,9 +51,9 @@ Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent.
 
 | Modèle | Empreintes | Similarité avec la référence | Alertes de changement | Changements d'identifiant |
 |---|---|---|---|---|
-| gpt-oss-120b | 3 | référence en cours | 0 | 0 |
-| llama-3.3-70b | 3 | 0.59 | 0 | 0 |
-| mistral-small-3.2 | 3 | 0.73 | 0 | 0 |
+| gpt-oss-120b | 4 | référence en cours | 0 | 0 |
+| llama-3.3-70b | 4 | 0.62 | 0 | 0 |
+| mistral-small-3.2 | 4 | 1.00 | 0 | 0 |
 
 Changements de catalogue :
 - 2026-11-17 : +9 / -0
