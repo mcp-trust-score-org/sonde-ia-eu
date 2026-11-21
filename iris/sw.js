@@ -4,8 +4,8 @@ self.addEventListener("push", (event) => {
   try { d = event.data ? event.data.json() : {}; } catch (e) { d = { titre: event.data && event.data.text() }; }
   event.waitUntil(self.registration.showNotification(d.titre || "Iris · nouvel article", {
     body: d.texte || "",
-    icon: "/assets/icone-192.png",
-    badge: "/assets/icone-192.png",
+    icon: "/assets/icone-app-192.png",
+    badge: "/assets/icone-app-192.png",
     data: { url: d.url || "/" },
     tag: "iris-article",
     renotify: true,
