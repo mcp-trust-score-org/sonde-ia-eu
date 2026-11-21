@@ -336,3 +336,30 @@ def test_une_erreur_n_empeche_pas_le_fichier(tmp_path, monkeypatch):
     assert res["statut"] == "erreur" and "ZeroDivisionError" in res["erreur"]
     assert [p["rubrique"] for p in res["propositions"]] == ["une", "une"]   # ce qui était prêt est gardé
     assert "Erreur pendant la rédaction" in (racine / "redaction" / "propositions" / "2026-11-23.md").read_text()
+
+
+def test_reponse_vide_on_reessaie_sans_mode_json():
+    """GitHub Models a renvoyé des réponses vides : on note le détail et on réessaie sans le mode JSON imposé."""
+    from sonde.redaction import Redacteur
+    vus = []
+
+    def repondre(req):
+        corps = json.loads(req.content)
+        vus.append("response_format" in corps)
+        if "response_format" in corps:
+            return httpx.Response(200, json={"choices": [{"message": {"content": ""}, "finish_reason": "stop"}]})
+        return httpx.Response(200, json={"choices": [{"message": {"content": "```json\n" + json.dumps(ARTICLE_UNE) + "\n```"}}]})
+    client = httpx.Client(transport=httpx.MockTransport(repondre))
+    r = Redacteur(CONF["redacteur"], "charte", client, {"GITHUB_TOKEN": "jeton"}, attendre=lambda s: None)
+    rep = r.ecrire("Écris.", {"x": 1}, "une")
+    assert rep["title"] == ARTICLE_UNE["title"] and vus == [True, False]
+    assert "réponse vide" in r.journal[0]["resultat"] and r.journal[-1]["resultat"] == "ok"
+
+
+def test_incident_sur_un_modele_non_mesure():
+    from sonde.redaction import modele_non_suivi
+    suivis = ["Mistral Small 3.2 (24B)", "Mistral Small 4", "Llama 3.3 70B Instruct", "gpt-oss 120B"]
+    assert modele_non_suivi("[Generative API] - [global] - GLM-5.3 timeouts", suivis) == "GLM-5.3 timeouts"
+    assert modele_non_suivi("Increased error rate for model DeepSeek v4.1 Flash", suivis).startswith("DeepSeek")
+    assert modele_non_suivi("Llama 3.3 70B degraded", suivis) is None
+    assert modele_non_suivi("AI Endpoint Incident Notification", suivis) is None
