@@ -232,22 +232,24 @@ def test_redacteur_de_secours_sans_cle(tmp_path):
     assert pauses and set(pauses) == {31}
 
 
-def test_github_models_avec_le_jeton_du_workflow(tmp_path):
-    """Dans GitHub Actions, le jeton du workflow suffit : GitHub Models passe avant OVHcloud."""
+def test_groq_avec_sa_cle(tmp_path):
+    """Avec le secret GROQ_API_KEY, Groq passe avant OVHcloud, avec une minute d'attente entre deux appels."""
     racine = _racine(tmp_path)
     client, appels = _reseau()
-    res = rediger(CONF, racine, client=client, env={"GITHUB_TOKEN": "jeton"}, maintenant=LUNDI, attendre=lambda s: None)
-    assert res["propositions"][0]["auteur"] == "openai/gpt-4.1"
-    assert appels["auth"][0] == "Bearer jeton"
-    assert appels["urls"][0] == "https://models.github.ai/inference/chat/completions"
+    pauses = []
+    res = rediger(CONF, racine, client=client, env={"GROQ_API_KEY": "cle"}, maintenant=LUNDI, attendre=pauses.append)
+    assert res["propositions"][0]["auteur"] == "openai/gpt-oss-120b"
+    assert appels["auth"][0] == "Bearer cle"
+    assert appels["urls"][0] == "https://api.groq.com/openai/v1/chat/completions"
+    assert 61 in pauses
 
 
 def test_429_on_attend_puis_service_suivant(tmp_path):
-    """GitHub Models saturé (429) : on attend le délai demandé, on réessaie, puis on passe à OVHcloud."""
+    """Groq saturé (429) : on attend le délai demandé, on réessaie, puis on passe à OVHcloud."""
     racine = _racine(tmp_path)
-    client, appels = _reseau(service_sature="models.github.ai")
+    client, appels = _reseau(service_sature="api.groq.com")
     pauses = []
-    res = rediger(CONF, racine, client=client, env={"GITHUB_TOKEN": "jeton"}, maintenant=LUNDI, attendre=pauses.append)
+    res = rediger(CONF, racine, client=client, env={"GROQ_API_KEY": "cle"}, maintenant=LUNDI, attendre=pauses.append)
     assert res["propositions"][0]["auteur"] == "Mistral-Small-3.2-24B-Instruct-2506"
     assert 20.0 in pauses                                               # délai « Retry-After » respecté
 
@@ -291,8 +293,8 @@ def test_controles_de_la_charte():
     assert controler(ARTICLE_TC, "tous_connectes") == []
 
 
-def test_requete_tient_dans_la_limite_de_github_models():
-    """Offre gratuite de GitHub Models : 8 000 jetons par requête. Charte de la rubrique seule, extraits raccourcis."""
+def test_requete_tient_dans_la_limite_de_groq():
+    """Offre gratuite de Groq : 8 000 jetons par minute. Charte de la rubrique seule, extraits raccourcis."""
     from sonde.redaction import Redacteur
     envoyes = []
 
@@ -301,12 +303,12 @@ def test_requete_tient_dans_la_limite_de_github_models():
         return httpx.Response(200, json={"choices": [{"message": {"content": json.dumps(ARTICLE_TC, ensure_ascii=False)}}]})
     client = httpx.Client(transport=httpx.MockTransport(repondre))
     charte = (RACINE / "redaction" / "CHARTE.md").read_text(encoding="utf-8")
-    r = Redacteur(CONF["redacteur"], charte, client, {"GITHUB_TOKEN": "jeton"}, attendre=lambda s: None)
+    r = Redacteur(CONF["redacteur"], charte, client, {"GROQ_API_KEY": "cle"}, attendre=lambda s: None)
     fiche = {"sujet": "GTA VI", "articles_de_presse": [{"url": f"https://exemple.fr/{i}", "texte": "mot " * 1500} for i in range(3)]}
     r.ecrire("Rubrique : Tous connectés. Écris l'article.", fiche, "tous_connectes")
     corps = envoyes[0]
     taille = sum(len(m["content"]) for m in corps["messages"])
-    assert taille <= 23000
+    assert taille <= 17000
     systeme = corps["messages"][0]["content"]
     assert "Tous connectés : l'édition grand public" in systeme and "À la une : l'édition pour les entreprises" not in systeme
     assert "Règles communes" in systeme and "Contrôles automatiques" in systeme
@@ -318,10 +320,10 @@ def test_services_satures_on_abandonne_vite_et_on_le_dit(tmp_path):
     racine = _racine(tmp_path)
     client, _ = _reseau(service_sature="chat/completions")
     pauses = []
-    res = rediger(CONF, racine, client=client, env={"GITHUB_TOKEN": "jeton"}, maintenant=LUNDI, attendre=pauses.append)
-    assert sum(pauses) < 200                                            # quelques minutes au pire, pas un quart d'heure
+    res = rediger(CONF, racine, client=client, env={"GROQ_API_KEY": "cle"}, maintenant=LUNDI, attendre=pauses.append)
+    assert sum(pauses) < 300                                            # quelques minutes au pire, pas un quart d'heure
     assert all(p["auteur"] == "fiche" for p in res["propositions"])
-    assert {j["service"] for j in res["journal_redacteur"]} == {"GitHub Models", "OVHcloud (anonyme)"}
+    assert {j["service"] for j in res["journal_redacteur"]} == {"Groq", "OVHcloud (anonyme)"}
     md = (racine / "redaction" / "propositions" / "2026-11-23.md").read_text()
     assert "Journal du rédacteur" in md and "429" in md
 
@@ -332,14 +334,14 @@ def test_une_erreur_n_empeche_pas_le_fichier(tmp_path, monkeypatch):
     racine = _racine(tmp_path)
     client, _ = _reseau()
     monkeypatch.setattr(r, "_tous_connectes", lambda *a, **k: 1 / 0)
-    res = rediger(CONF, racine, client=client, env={"GITHUB_TOKEN": "jeton"}, maintenant=LUNDI, attendre=lambda s: None)
+    res = rediger(CONF, racine, client=client, env={"GROQ_API_KEY": "cle"}, maintenant=LUNDI, attendre=lambda s: None)
     assert res["statut"] == "erreur" and "ZeroDivisionError" in res["erreur"]
     assert [p["rubrique"] for p in res["propositions"]] == ["une", "une"]   # ce qui était prêt est gardé
     assert "Erreur pendant la rédaction" in (racine / "redaction" / "propositions" / "2026-11-23.md").read_text()
 
 
 def test_reponse_vide_on_reessaie_sans_mode_json():
-    """GitHub Models a renvoyé des réponses vides : on note le détail et on réessaie sans le mode JSON imposé."""
+    """Une réponse vide : on note le détail et on réessaie sans le mode JSON imposé."""
     from sonde.redaction import Redacteur
     vus = []
 
@@ -350,7 +352,7 @@ def test_reponse_vide_on_reessaie_sans_mode_json():
             return httpx.Response(200, json={"choices": [{"message": {"content": ""}, "finish_reason": "stop"}]})
         return httpx.Response(200, json={"choices": [{"message": {"content": "```json\n" + json.dumps(ARTICLE_UNE) + "\n```"}}]})
     client = httpx.Client(transport=httpx.MockTransport(repondre))
-    r = Redacteur(CONF["redacteur"], "charte", client, {"GITHUB_TOKEN": "jeton"}, attendre=lambda s: None)
+    r = Redacteur(CONF["redacteur"], "charte", client, {"GROQ_API_KEY": "cle"}, attendre=lambda s: None)
     rep = r.ecrire("Écris.", {"x": 1}, "une")
     assert rep["title"] == ARTICLE_UNE["title"] and vus == [True, False]
     assert "réponse vide" in r.journal[0]["resultat"] and r.journal[-1]["resultat"] == "ok"
