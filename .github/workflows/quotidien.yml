@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  models: read      # GitHub Models : le rédacteur gratuit des brouillons
 
 concurrency:
   # Un groupe par workflow : la veille, la mesure horaire et les relevés quotidiens
@@ -65,8 +66,10 @@ jobs:
           python -m sonde croiser
           python -m sonde tendances
           python -m sonde rediger
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
-        # Garde-fou : si le rédacteur gratuit est saturé, on abandonne les brouillons du jour
+        # Garde-fou : si les rédacteurs gratuits sont saturés, on abandonne les brouillons du jour
         # plutôt que de bloquer l'enregistrement des relevés.
         timeout-minutes: 15
 
