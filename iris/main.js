@@ -598,7 +598,7 @@ function etiquetteJour(iso) {
 function carte(a, lien) {
   return `<a class="photo-card" href="#article-${a.id}">
       <div class="pc-img pc-photo" style="background-image:url('${a.img}')"></div>
-      <div class="pc-body"><span class="pc-tag">${propre(a.tag)}</span><h3>${propre(a.title).replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "")}</h3><span class="pc-link">${lien}</span><span class="pc-time">${a.time} de lecture</span></div>
+      <div class="pc-body"><span class="pc-tag">${propre(a.tag)}</span><h3>${propre(a.title).replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "")}</h3><span class="pc-link">${lien}</span><span class="pc-time">${a.date ? etiquetteJour(a.date) + " · " : ""}${a.time} de lecture</span></div>
     </a>`;
 }
 function une(a, grandPublic) {
@@ -671,7 +671,8 @@ fetch("publies.json", { cache: "no-store" })
     // Tous connectés : le dernier article publié devient le grand titre ; l'ancien grand titre
     // et les autres articles publiés passent en tête des cartes (« carte seulement » : cartes uniquement).
     const grille = document.querySelector("#view-vies .cards4");
-    const tc = pub.tous_connectes || [];
+    // du plus récent au plus ancien : un article d'archive (daté d'un jour passé) ne prend pas le grand titre
+    const tc = [...(pub.tous_connectes || [])].sort((x, y) => String(y.date || "").localeCompare(String(x.date || "")));
     if (grille && tc.length) {
       const tete = tc.find((a) => a.place !== "carte");
       const ancien = document.querySelector("#view-vies .vies-hero");
