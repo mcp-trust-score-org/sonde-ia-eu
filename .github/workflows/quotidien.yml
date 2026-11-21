@@ -17,7 +17,7 @@ concurrency:
 jobs:
   releves:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 60
     env:
       MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
       SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
@@ -66,6 +66,9 @@ jobs:
           python -m sonde tendances
           python -m sonde rediger
         continue-on-error: true
+        # Garde-fou : si le rédacteur gratuit est saturé, on abandonne les brouillons du jour
+        # plutôt que de bloquer l'enregistrement des relevés.
+        timeout-minutes: 15
 
       - name: Preuves horodatées
         if: vars.VEILLE_SERVEUR != 'oui'
