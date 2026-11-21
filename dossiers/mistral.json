@@ -4,14 +4,14 @@
     "nom": "Mistral AI",
     "pays": "FR"
   },
-  "genere_le": "2026-11-21T16:05:03+00:00",
+  "genere_le": "2026-11-21T16:51:55+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-21T16:05:03+00:00"
+    "fin": "2026-11-21T16:51:55+00:00"
   },
   "performance": [],
   "reseau": {
-    "dernier_releve": "2026-11-21T15:52:26+00:00",
+    "dernier_releve": "2026-11-21T16:38:47+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "intermediaire_non_ue",
     "constats": [
@@ -33,7 +33,7 @@
     "verdicts_sur_periode": [
       "intermediaire_non_ue"
     ],
-    "releves": 7
+    "releves": 8
   },
   "stabilite": [],
   "changements_catalogue": [],

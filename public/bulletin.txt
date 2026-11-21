@@ -1,10 +1,10 @@
 La météo de l'IA, samedi 21 novembre.
 
-Temps calme sur 3 fournisseurs, orage sur OVHcloud.
+Temps calme sur les 4 fournisseurs.
 
 • Mistral : soleil, tout va bien · 100,0 % sur 24 h
 • Scaleway : soleil, tout va bien · 100,0 % sur 24 h
-• OVHcloud : orage, en panne · 100,0 % sur 24 h
+• OVHcloud : soleil, tout va bien · 100,0 % sur 24 h
 • IONOS : soleil, tout va bien · 100,0 % sur 24 h
 
 Mesure indépendante, chaque minute, des fournisseurs d'IA européens.

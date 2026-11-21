@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T16:07:18+00:00",
+ "genere_le": "2026-11-21T16:54:05+00:00",
  "sources": {
   "Wikipédia": {
    "etat": "ok",
@@ -11,18 +11,18 @@
   },
   "Détour (flux RSS)": {
    "etat": "ok",
-   "nombre": 102
+   "nombre": 152
   }
  },
  "flux": {
   "Presse grand public (flux RSS)": {
    "franceinfo": "ok (29)",
-   "franceinfo Culture": "ok (19)",
+   "franceinfo Culture": "ok (18)",
    "franceinfo Internet": "ok (18)",
    "20 Minutes": "ok (27)",
    "Le Monde": "ok (16)",
    "France 24": "ok (24)",
-   "BBC News": "ok (19)"
+   "BBC News": "ok (20)"
   },
   "Détour (flux RSS)": {
    "Next": "ok (50)",
@@ -34,7 +34,7 @@
    "Rest of World": "ok (2)",
    "404 Media": "ok (15)",
    "Ars Technica": "ok (6)",
-   "The Register": "erreur (ParseError)"
+   "The Register": "ok (50)"
   }
  },
  "wikipedia": [
@@ -582,6 +582,14 @@
  "presse": [
   {
    "media": "franceinfo",
+   "titre": "Mobilisation du 21 novembre : une quarantaine de rassemblements recensés par le ministère de l'Intérieur en début d'après-midi",
+   "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html",
+   "date": "2026-11-21T16:50+00:00",
+   "resume": "Ces actions s'inscrivent dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
    "titre": "Nombre de tirs, enquêtes, lien de confiance... Les questions que pose la loi sur la présomption d'usage légal des armes par les forces de l'ordre",
    "url": "https://www.franceinfo.fr/faits-divers/police/nombre-de-tirs-enquetes-lien-de-confiance-les-questions-que-pose-la-loi-sur-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8293529.html",
    "date": "2026-11-21T15:56+00:00",
@@ -590,10 +598,18 @@
   },
   {
    "media": "franceinfo",
-   "titre": "Présidentielle 2027 : au premier meeting d'Eric Zemmour, Sarah Knafo s'en prend à Jean-Luc Mélenchon, un \"révolutionnaire qui n'est que révolu\"",
+   "titre": "Présidentielle 2027 : \"Je serai le candidat de la liberté de pensée, de parler, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting",
    "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html",
-   "date": "2026-11-21T15:57+00:00",
-   "resume": "Le rassemblement qui a débuté à 15h30 au Zénith de Toulon lance la campagne officielle du candidat de Reconquête.",
+   "date": "2026-11-21T16:51+00:00",
+   "resume": "Le rassemblement qui a débuté à 15h30 au Zénith de Toulon lance la campagne officielle du candidat de Reconquête, accompagné de l'eurodéputée Sarah Knafo.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "Mobilité des jeunes, commerce, quotas d'émissions carbone… Ce que prévoient les accords conclus entre le Royaume-Uni et l'Union européenne",
+   "url": "https://www.franceinfo.fr/monde/royaume-uni/mobilite-des-jeunes-commerce-quotas-d-emissions-carbone-ce-que-prevoient-les-accords-conclus-entre-le-royaume-uni-et-l-union-europeenne_8293715.html",
+   "date": "2026-11-21T16:48+00:00",
+   "resume": "Cette nouvelle alliance, destinée à rapprocher les deux côtés de la Manche après les années houleuses du Brexit, a été qualifiée vendredi de \"tournant\" par la Commission européenne.",
    "langue": "français"
   },
   {
@@ -630,6 +646,14 @@
   },
   {
    "media": "franceinfo",
+   "titre": "Paolo Bulgari, le petit-fils du fondateur de la fameuse marque de joaillerie, est mort à l'âge de 89 ans",
+   "url": "https://www.franceinfo.fr/culture/mode/paolo-bulgari-le-petit-fils-du-fondateur-de-la-fameuse-marque-de-joaillerie-est-mort-a-l-age-de-89-ans_8293886.html",
+   "date": "2026-11-21T16:15+00:00",
+   "resume": "Le groupe de luxe LVMH, propriétaire de la marque,rend hommage à \"l'âme créative\" de cet expert en pierres précieuses aux commandes de l'entreprise familiale depuis 42 ans.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
    "titre": "Carlos Alcaraz lâche un set mais se qualifie pour la finale du Masters de Turin, après un gros combat face à Ben Shelton",
    "url": "https://www.franceinfo.fr/sports/tennis/masters/carlos-alcaraz-lache-un-set-mais-se-qualifie-pour-la-finale-du-masters-de-turin-apres-un-gros-combat-face-a-ben-shelton_8293823.html",
    "date": "2026-11-21T15:45+00:00",
@@ -640,7 +664,7 @@
    "media": "franceinfo",
    "titre": "Le remorquage du cargo échoué dans les Landes pourrait prendre plusieurs jours, selon la préfecture",
    "url": "https://www.franceinfo.fr/faits-divers/le-remorquage-du-cargo-echoue-dans-les-landes-pourrait-prendre-plusieurs-jours-selon-la-prefecture_8293727.html",
-   "date": "2026-11-21T15:23+00:00",
+   "date": "2026-11-21T16:45+00:00",
    "resume": "L'\"Abeille Bretagne\", le bateau remorqueur, est attendu sur zone samedi, mais ne pourra pas s'approcher à moins de 900 mètres, en raison des faibles fonds marins.",
    "langue": "français"
   },
@@ -710,6 +734,14 @@
   },
   {
    "media": "franceinfo",
+   "titre": "\"Des campagnes d'attaques de plus en plus automatisées\" : comment les cybercriminels ont placé l'intelligence artificielle au cœur de leurs opérations",
+   "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html",
+   "date": "2026-11-21T06:18+00:00",
+   "resume": "Les progrès de l'intelligence artificielle servent aussi les cybercriminels, qui l'utilisent comme un \"multiplicateur de force\" afin de mener des piratages dans le monde entier.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
    "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
    "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html",
    "date": "2026-11-21T10:08+00:00",
@@ -726,6 +758,14 @@
   },
   {
    "media": "franceinfo",
+   "titre": "L'Américain Jimmy Connors, ancien numéro 1 mondial de tennis, souffre d'un cancer de l'oreille",
+   "url": "https://www.franceinfo.fr/sports/tennis/l-americain-jimmy-connors-ancien-numero-1-mondial-souffre-d-un-cancer-de-l-oreille_8293604.html",
+   "date": "2026-11-21T11:10+00:00",
+   "resume": "Le vainqueur de huit tournois du Grand Chelem a assuré que \"tout allait bien\". Il a aussi ajouté qu'il devait encore subir une intervention de reconstruction.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
    "titre": "\"My Rock Stars\" : le photographe Hassan Hajjaj immortalise ses stars de la musique",
    "url": "https://www.franceinfo.fr/culture/arts-expos/en-images-my-rock-stars-le-photographehassan-hajjaj-immortalise-ses-stars-de-la-musique_8289029.html",
    "date": "2026-11-21T13:21+00:00",
@@ -734,42 +774,18 @@
   },
   {
    "media": "franceinfo",
-   "titre": "\"C'est un ovni depuis très longtemps\" : à son meilleur niveau, Antoine Dupont suscite l'engouement avant France-Argentine",
-   "url": "https://www.franceinfo.fr/sports/rugby/antoine-dupont/c-est-un-ovni-depuis-tres-longtemps-a-son-meilleur-niveau-antoine-dupont-suscite-l-engouement-avant-france-argentine_8293577.html",
-   "date": "2026-11-21T10:37+00:00",
-   "resume": "Des supporters aux médias étrangers, le capitaine des Bleus fait l'objet de toutes les attentions depuis sa prestation face à l'Afrique du Sud. A 30 ans, le demi de mêlée toulousain veut garder la tête froide et rester \"le seul juge\" de ses performances.",
+   "titre": "Des syndicats de sept pays européens appellent à des \"manifestations coordonnées\" contre la vie chère vendredi, samedi et dimanche",
+   "url": "https://www.franceinfo.fr/societe/manifestations/des-syndicats-de-sept-pays-europeens-appellent-a-des-manifestations-coordonnees-contre-la-vie-chere-vendredi-samedi-et-dimanche_8292320.html",
+   "date": "2026-11-21T06:17+00:00",
+   "resume": "Les principales revendications des cortèges qui s'élanceront durant le week-end concernent la \"garantie du droit au logement\" et \"le contrôle des prix du logement, de l'alimentation et de l'énergie\".",
    "langue": "français"
   },
   {
    "media": "franceinfo",
-   "titre": "Serge Money, avocat de Michel Zecler, salue une \"décision historique\" mais les peines \"laissent un petit goût amer\"",
-   "url": "https://www.franceinfo.fr/faits-divers/producteur-passe-a-tabac-par-des-policiers/serge-money-avocat-de-michel-zecler-salue-une-decision-historique-mais-les-peines-laissent-un-petit-gout-amer_8293472.html",
-   "date": "2026-11-21T07:56+00:00",
-   "resume": "C'est une \"décision historique\", a réagi sur franceinfo Serge Money, l'avocat de Michel Zecler, après la condamnation des trois policiers vendredi.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
-   "titre": "Une conférence de l'ONU ouvre à la voie à un possible encadrement international des \"robots tueurs\"",
-   "url": "https://www.franceinfo.fr/societe/armee-securite-defense/une-conference-de-l-onu-ouvre-a-la-voie-a-un-possible-encadrement-international-des-robots-tueurs_8293439.html",
-   "date": "2026-11-21T11:49+00:00",
-   "resume": "Les armes autonomes soulèvent de nombreuses préoccupations, notamment concernant le risque de frappes sans discernement, l'absence de responsabilité humaine et le respect des règles de la guerre.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
-   "titre": "La Bourse de Wall Street enregistre des centaines de milliards de dollars de pertes, pénalisée par le secteur de l'IA",
-   "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/la-bourse-de-wall-street-enregistre-des-centaines-de-milliards-de-dollars-de-pertes-penalisee-par-le-secteur-de-l-ia_8293667.html",
-   "date": "2026-11-21T11:44+00:00",
-   "resume": "L'indice Nasdaq, qui rassemble l'essentiel des titres technologiques, a dévissé de 5,28% et effacé par la même occasion tous ses gains de l'année.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
-   "titre": "\"Ce sont les patients qui en pâtissent\" : au Portugal, les syndicats dénoncent la dégradation des services publics",
-   "url": "https://www.franceinfo.fr/societe/manifestations/reportage-ce-sont-les-patients-qui-en-patissent-au-portugal-les-syndicats-denoncent-la-degradation-des-services-publics_8293640.html",
-   "date": "2026-11-21T12:22+00:00",
-   "resume": "Nouvelle journée de mobilisation ce samedi contre la vie chère en France, mais également au Portugal. Les syndicats dénoncent la dégradation des services publics, à trois jours du vote du budget 2027 présenté par le gouvernement de centre droit de Luís Montenegro.",
+   "titre": "Des manifestations contre les violences faites aux femmes organisées durant une semaine en France",
+   "url": "https://www.franceinfo.fr/societe/harcelement-sexuel/des-manifestations-contre-les-violences-sexistes-organisees-durant-une-semaine-en-france_8293745.html",
+   "date": "2026-11-21T14:49+00:00",
+   "resume": "Des dizaines d'associations féministes et de syndicats appellent à participer aux rassemblements, qui se tiennent cette année dans un contexte inédit, marqué par une forte mobilisation sociale pour défendre le pouvoir d'achat et les services publics.",
    "langue": "français"
   },
   {
@@ -794,22 +810,6 @@
    "url": "https://www.franceinfo.fr/elections/presidentielle/candidats/elle-va-apporter-son-capital-popularite-quel-sera-le-role-de-sarah-knafo-aupres-d-eric-zemmour-dans-la-campagne-pour-la-presidentielle_8269433.html",
    "date": "2026-11-21T09:20+00:00",
    "resume": "Le président de Reconquête a officialisé sa candidature à l'Elysée. Concurrencé par l'émergence à droite de David Lisnard, il aura besoin de l'aide de sa compagne Sara Knafo, très populaire au sein du mouvement.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
-   "titre": "Mobilisation du 21 novembre : une quarantaine de rassemblements recensés par le ministère de l'Intérieur en début d'après-midi",
-   "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html",
-   "date": "2026-11-21T14:44+00:00",
-   "resume": "Ces actions s'inscrivent dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
-   "titre": "\"Je vais aller brûler un cierge\" : à Lyon, les commerçants de la place Bellecour s'inquiètent du retour des cortèges en centre-ville",
-   "url": "https://www.franceinfo.fr/societe/manifestations/reportage-je-vais-aller-bruler-un-cierge-a-lyon-les-commercants-de-la-place-bellecour-s-inquietent-du-retour-des-corteges-en-centre-ville_8292824.html",
-   "date": "2026-11-21T09:51+00:00",
-   "resume": "La préfecture du Rhône a interdit les manifestations dans le centre-ville de Lyon, alors que les gilets jaunes ont annoncé une sixième journée de mobilisation, samedi 21 novembre. Trois rassemblements sont prévus, en évitant la place Bellecour, la plus grande place de la ville. Mais les commerçants s'inquiètent de la fin des cortèges.",
    "langue": "français"
   },
   {
@@ -957,11 +957,11 @@
    "langue": "français"
   },
   {
-   "media": "franceinfo Culture",
-   "titre": "\"Ma vie, c'est le théâtre, autrement je m'emmerde !\" : Judith Magre fête ses 100 ans sur les planches",
-   "url": "https://www.franceinfo.fr/culture/spectacles/theatre/ma-vie-c-est-le-theatre-autrement-je-m-emmerde-judith-magre-fete-ses-100-ans-sur-les-planches_8292089.html",
-   "date": "2026-11-20T12:26+00:00",
-   "resume": "La doyenne des comédiennes françaises en activité, qui devient centenaire vendredi, continue à monter sur scène une fois par semaine.",
+   "media": "franceinfo Internet",
+   "titre": "La Bourse de Wall Street enregistre des centaines de milliards de dollars de pertes, pénalisée par le secteur de l'IA",
+   "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/la-bourse-de-wall-street-enregistre-des-centaines-de-milliards-de-dollars-de-pertes-penalisee-par-le-secteur-de-l-ia_8293667.html",
+   "date": "2026-11-21T11:44+00:00",
+   "resume": "L'indice Nasdaq, qui rassemble l'essentiel des titres technologiques, a dévissé de 5,28% et effacé par la même occasion tous ses gains de l'année.",
    "langue": "français"
   },
   {
@@ -970,14 +970,6 @@
    "url": "https://www.franceinfo.fr/replay-radio/les-debats-de-l-eco/surinvestissements-boursiers-dans-l-ia-plus-dure-sera-la-chute_8271716.html",
    "date": "2026-11-21T09:35+00:00",
    "resume": "Tous les samedis, deux économistes débattent des sujets qui marquent l’actualité économique et sociale.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo Internet",
-   "titre": "\"Des campagnes d'attaques de plus en plus automatisées\" : comment les cybercriminels ont placé l'intelligence artificielle au cœur de leurs opérations",
-   "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html",
-   "date": "2026-11-21T06:18+00:00",
-   "resume": "Les progrès de l'intelligence artificielle servent aussi les cybercriminels, qui l'utilisent comme un \"multiplicateur de force\" afin de mener des piratages dans le monde entier.",
    "langue": "français"
   },
   {
@@ -1110,18 +1102,26 @@
   },
   {
    "media": "20 Minutes",
-   "titre": "« Bien au-delà du pire »… Avec la sécheresse et la canicule, les plantes exotiques envahissent nos lacs et rivières",
-   "url": "https://www.20minutes.fr/planete/canicule/4263611-20261121-bien-dela-pire-secheresse-canicule-plantes-exotiques-envahissent-lacs-rivieres",
-   "date": "2026-11-21T06:07+00:00",
-   "resume": "Aucune solution n’émerge pour traiter et éradiquer la jussie, l’égérie dense ou le myriophylle, qui prolifèrent dans les cours d’eau qui se réchauffent",
+   "titre": "« Je déteste que ma belle-mère fasse ça »… Pourquoi l’obsession des boomers pour les photos d’IA rend fous les parents",
+   "url": "https://www.20minutes.fr/high-tech/by-the-web/4263220-20261121-deteste-belle-mere-fasse-ca-pourquoi-obsession-boomers-photos-ia-rend-fous-parents",
+   "date": "2026-11-21T04:02+00:00",
+   "resume": "Les grands-parents se sont pris de passion pour les photos modifiées par l’IA, transformant leurs petits-enfants en lutins de Noël ou en héros de dessin animé. Un usage qui pose question (et agace les parents)",
    "langue": "français"
   },
   {
    "media": "20 Minutes",
-   "titre": "France - Argentine : « Pas vu, pas pris »… Comment les Bleus arrivent à (bien) jouer avec les limites sur l'arbitrage",
-   "url": "https://www.20minutes.fr/sport/rugby/4264053-20261121-france-argentine-vu-pris-comment-bleus-arrivent-bien-jouer-limites-arbitrage",
-   "date": "2026-11-21T03:47+00:00",
-   "resume": "Après son succès face à l’Afrique du Sud, le XV de France affronte l’Argentine ce samedi (21h10) pour une place en finale du Championnat des nations",
+   "titre": "EN DIRECT Nice - PSG : Le Gym fait l'Amoura Paris en contre-attaque... Suivez le match avec nous",
+   "url": "https://www.20minutes.fr/sport/football/4264224-20261121-direct-nice-psg-retour-affaires-leader-chez-gym-ambitieux-suivez-match",
+   "date": "2026-11-21T14:17+00:00",
+   "resume": "Suivez avec nous le match entre l’OGC Nice et le Paris Saint-Germain comptant pour la 11e journée de Ligue 1 (17h15)",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "Colère sociale : Syndicats, jeunesse et gilets jaunes dans la rue pour le sixième samedi consécutif",
+   "url": "https://www.20minutes.fr/societe/4264676-20261121-colere-sociale-syndicats-jeunesse-gilets-jaunes-rue-sixieme-samedi-consecutif",
+   "date": "2026-11-21T15:52+00:00",
+   "resume": "Le ministère de l’Intérieur note une participation en nette baisse en début d’après-midi, avec 2.200 manifestants hors Paris, contre 9.800 le 14 novembre",
    "langue": "français"
   },
   {
@@ -1134,6 +1134,22 @@
   },
   {
    "media": "20 Minutes",
+   "titre": "EN DIRECT Championnat des nations : L'Angleterre surclasse les All Blacks et met la pression sur les Bleus... Suivez les matchs de la journée...",
+   "url": "https://www.20minutes.fr/sport/rugby/4264246-20261121-direct-championnat-nations-angleterre-etouffe-all-blacks-ecosse-mene-face-japon-suivez-matchs-journee",
+   "date": "2026-11-21T12:02+00:00",
+   "resume": "Suivez avec nous les résultats des derniers matchs de la phase de poules du nouveau championnat des nations, avec Angleterre-Nouvelle-Zélande et Irlande-Afrique du Sud en têtes d’affiche",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "France - Argentine : « Pas vu, pas pris »… Comment les Bleus arrivent à (bien) jouer avec les limites sur l'arbitrage",
+   "url": "https://www.20minutes.fr/sport/rugby/4264053-20261121-france-argentine-vu-pris-comment-bleus-arrivent-bien-jouer-limites-arbitrage",
+   "date": "2026-11-21T03:47+00:00",
+   "resume": "Après son succès face à l’Afrique du Sud, le XV de France affronte l’Argentine ce samedi (21h10) pour une place en finale du Championnat des nations",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
    "titre": "Pas-de-Calais : Après les inondations, un deuxième cours d’eau placé en vigilance orange",
    "url": "https://www.20minutes.fr/societe/4264650-20261121-calais-apres-inondations-deuxieme-cours-eau-place-vigilance-orange",
    "date": "2026-11-21T11:34+00:00",
@@ -1142,18 +1158,26 @@
   },
   {
    "media": "20 Minutes",
-   "titre": "EN DIRECT Championnat des nations : L'Angleterre surclasse les All Blacks... Le Japon en plein naufrage... Suivez les matchs de la journée...",
-   "url": "https://www.20minutes.fr/sport/rugby/4264246-20261121-direct-championnat-nations-angleterre-etouffe-all-blacks-ecosse-mene-face-japon-suivez-matchs-journee",
-   "date": "2026-11-21T12:02+00:00",
-   "resume": "Suivez avec nous les résultats des derniers matchs de la phase de poules du nouveau championnat des nations, avec Angleterre-Nouvelle-Zélande et Irlande-Afrique du Sud en têtes d’affiche",
+   "titre": "EN DIRECT Présidentielle 2027 : Eric Zemmour essaye de lancer sa campagne à Toulon...",
+   "url": "https://www.20minutes.fr/politique/4264605-20261121-direct-presidentielle-2027-villepin-candidat-pen-toujours-tete-sondages",
+   "date": "2026-11-21T15:44+00:00",
+   "resume": "Suivez les dernières informations de ce samedi 21 novembre concernant la campagne présidentielle 2027",
    "langue": "français"
   },
   {
    "media": "20 Minutes",
-   "titre": "EN DIRECT Présidentielle 2027 : De Villepin candidat, Le Pen toujours en tête des sondages",
-   "url": "https://www.20minutes.fr/politique/4264605-20261121-direct-presidentielle-2027-villepin-candidat-pen-toujours-tete-sondages",
-   "date": "2026-11-21T15:44+00:00",
-   "resume": "Suivez les dernières informations de ce samedi 21 novembre concernant la campagne présidentielle 2027",
+   "titre": "Airbnb : Poubelles, ménage… Ces nouvelles règles qui réjouissent les locataires et font hurler les propriétaires",
+   "url": "https://www.20minutes.fr/societe/4264588-20261120-airbnb-poubelles-menage-nouvelles-regles-rejouissent-locataires-font-hurler-proprietaires",
+   "date": "2026-11-20T18:42+00:00",
+   "resume": "Entrée en vigueur ce vendredi, la nouvelle politique d’Airbnb encadre strictement les tâches de départ exigées par les propriétaires, au grand dam de nombreux hôtes",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "Miss France 2027 : Le test de culture générale est tombé, à vous de jouer (sans tricher)",
+   "url": "https://www.20minutes.fr/arts-stars/television/miss_france/4263531-20261120-miss-france-2027-test-culture-generale-tombe-jouer-tricher",
+   "date": "2026-11-20T11:09+00:00",
+   "resume": "Comme chaque année, les candidates à Miss France ont troqué l’écharpe pour le stylo le temps du très redouté test de culture générale",
    "langue": "français"
   },
   {
@@ -1170,22 +1194,6 @@
    "url": "https://www.20minutes.fr/politique/4264335-20261121-presidentielle-2027-primaire-patine-serieusement-si-edouard-philippe-raison-tracer-route",
    "date": "2026-11-21T06:17+00:00",
    "resume": "Le candidat Horizons, pourtant en baisse dans les sondages, continue de refuser une primaire avec Gabriel Attal, David Lisnard et Bruno Retailleau",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "« Je déteste que ma belle-mère fasse ça »… Pourquoi l’obsession des boomers pour les photos d’IA rend fous les parents",
-   "url": "https://www.20minutes.fr/high-tech/by-the-web/4263220-20261121-deteste-belle-mere-fasse-ca-pourquoi-obsession-boomers-photos-ia-rend-fous-parents",
-   "date": "2026-11-21T04:02+00:00",
-   "resume": "Les grands-parents se sont pris de passion pour les photos modifiées par l’IA, transformant leurs petits-enfants en lutins de Noël ou en héros de dessin animé. Un usage qui pose question (et agace les parents)",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "Miss France 2027 : Le test de culture générale est tombé, à vous de jouer (sans tricher)",
-   "url": "https://www.20minutes.fr/arts-stars/television/miss_france/4263531-20261120-miss-france-2027-test-culture-generale-tombe-jouer-tricher",
-   "date": "2026-11-20T11:09+00:00",
-   "resume": "Comme chaque année, les candidates à Miss France ont troqué l’écharpe pour le stylo le temps du très redouté test de culture générale",
    "langue": "français"
   },
   {
@@ -1214,6 +1222,14 @@
   },
   {
    "media": "20 Minutes",
+   "titre": "EN IMAGES. Miss France 2027 : Tyrolienne, danse, surf… Le planning sympa (mais chargé) du voyage de préparation",
+   "url": "https://www.20minutes.fr/diaporama/diaporama-4264374-images-miss-france-2027-tyrolienne-danse-surf-planning-sympa-charge-voyage-preparation",
+   "date": "2026-11-20T12:46+00:00",
+   "resume": "Les trente-et-une miss régionales se sont envolées pour l’île de Saint-Martin, lundi 16 novembre, pour le traditionnel voyage de préparation à l’élection de Miss France 2027. Voici ce qu’elles ont fait",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
    "titre": "Six ans après l’agression de Michel Zecler, les trois policiers condamnés à des peines de 1 à 2 ans de prison ferme",
    "url": "https://www.20minutes.fr/justice/4264385-20261120-six-ans-apres-agression-michel-zecler-trois-policiers-condamnes-peines-1-2-ans-prison-ferme",
    "date": "2026-11-20T21:35+00:00",
@@ -1226,14 +1242,6 @@
    "url": "https://www.20minutes.fr/diaporama/diaporama-4261025-images-chocolat-beaute-deco-plus-beaux-calendriers-avent-2026-adultes",
    "date": "2026-11-21T09:02+00:00",
    "resume": "Parce qu’on trépigne parfois autant qu’un enfant en attendant le Père Noël, notre sélection de calendriers de l’Avent pour les grands",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "EN IMAGES. Miss France 2027 : Tyrolienne, danse, surf… Le planning sympa (mais chargé) du voyage de préparation",
-   "url": "https://www.20minutes.fr/diaporama/diaporama-4264374-images-miss-france-2027-tyrolienne-danse-surf-planning-sympa-charge-voyage-preparation",
-   "date": "2026-11-20T12:46+00:00",
-   "resume": "Les trente-et-une miss régionales se sont envolées pour l’île de Saint-Martin, lundi 16 novembre, pour le traditionnel voyage de préparation à l’élection de Miss France 2027. Voici ce qu’elles ont fait",
    "langue": "français"
   },
   {
@@ -1294,10 +1302,10 @@
   },
   {
    "media": "20 Minutes",
-   "titre": "Airbnb : Poubelles, ménage… Ces nouvelles règles qui réjouissent les locataires et font hurler les propriétaires",
-   "url": "https://www.20minutes.fr/societe/4264588-20261120-airbnb-poubelles-menage-nouvelles-regles-rejouissent-locataires-font-hurler-proprietaires",
-   "date": "2026-11-20T18:42+00:00",
-   "resume": "Entrée en vigueur ce vendredi, la nouvelle politique d’Airbnb encadre strictement les tâches de départ exigées par les propriétaires, au grand dam de nombreux hôtes",
+   "titre": "« Bien au-delà du pire »… Avec la sécheresse et la canicule, les plantes exotiques envahissent nos lacs et rivières",
+   "url": "https://www.20minutes.fr/planete/canicule/4263611-20261121-bien-dela-pire-secheresse-canicule-plantes-exotiques-envahissent-lacs-rivieres",
+   "date": "2026-11-21T06:07+00:00",
+   "resume": "Aucune solution n’émerge pour traiter et éradiquer la jussie, l’égérie dense ou le myriophylle, qui prolifèrent dans les cours d’eau qui se réchauffent",
    "langue": "français"
   },
   {
@@ -1309,19 +1317,11 @@
    "langue": "français"
   },
   {
-   "media": "20 Minutes",
-   "titre": "Orléans : Battue par son beau-père, une fillette de 2 ans décède, la mère également mise en examen",
-   "url": "https://www.20minutes.fr/faits_divers/4264571-20261120-orleans-battue-beau-pere-fillette-2-ans-decede-mere-egalement-mise-examen",
-   "date": "2026-11-20T17:53+00:00",
-   "resume": "Après la mort d’une fillette de deux ans au CHU d’Orléans le 16 novembre, sa mère et son beau-père ont été mis en examen et placés en détention provisoire",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "Un employé d’Anthropic affirme avoir résolu le problème de mathématique le plus important au monde avec l’aide de l’IA",
-   "url": "https://www.20minutes.fr/high-tech/4264590-20261120-employe-anthropic-affirme-avoir-resolu-probleme-mathematique-plus-important-monde-aide-ia",
-   "date": "2026-11-20T19:21+00:00",
-   "resume": "Un mathématicien a annoncé vendredi avoir démontré l’hypothèse de Riemann avec l’aide de Claude, l’IA d’Anthropic, mais sa preuve n’a pas encore fait l’objet d’une vérification indépendante",
+   "media": "Le Monde",
+   "titre": "Présidentielle 2027 : à cinq mois de l’élection, l’inquiétude grandit au sein du camp présidentiel, toujours incapable de s’unir",
+   "url": "https://www.lemonde.fr/politique/article/2026/11/21/presidentielle-2027-a-cinq-mois-de-l-election-l-inquietude-grandit-au-sein-du-camp-presidentiel-toujours-incapable-de-s-unir_6813915_823448.html",
+   "date": "2026-11-21T04:30+00:00",
+   "resume": "Le débat autour d’une primaire à droite et au centre met en lumière la difficulté d’une stratégie claire au sein de l’ancienne majorité, prise entre des considérations individuelles et des fractures idéologiques.",
    "langue": "français"
   },
   {
@@ -1330,14 +1330,6 @@
    "url": "https://www.lemonde.fr/campus/article/2026/11/21/on-est-devenus-street-medics-parce-qu-on-se-sentait-impuissants-face-aux-violences-a-la-rencontre-des-benevoles-qui-secourent-les-manifestants-blesses_6813927_4401467.html",
    "date": "2026-11-21T05:15+00:00",
    "resume": "Depuis le début du mouvement social, les « secouristes de rue » sont au cœur des cortèges. Contamination au gaz lacrymogène, plaies, crises d’angoisse… ils prodiguent les premiers gestes aux manifestants, sur fond de recours croissant aux armes par les forces de l’ordre – y compris contre eux.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
-   "titre": "Présidentielle 2027 : à cinq mois de l’élection, l’inquiétude grandit au sein du camp présidentiel, toujours incapable de s’unir",
-   "url": "https://www.lemonde.fr/politique/article/2026/11/21/presidentielle-2027-a-cinq-mois-de-l-election-l-inquietude-grandit-au-sein-du-camp-presidentiel-toujours-incapable-de-s-unir_6813915_823448.html",
-   "date": "2026-11-21T04:30+00:00",
-   "resume": "Le débat autour d’une primaire à droite et au centre met en lumière la difficulté d’une stratégie claire au sein de l’ancienne majorité, prise entre des considérations individuelles et des fractures idéologiques.",
    "langue": "français"
   },
   {
@@ -1422,18 +1414,18 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Au Sénégal, l’avenir incertain des installations des Jeux olympiques de la jeunesse",
-   "url": "https://www.lemonde.fr/afrique/article/2026/11/21/au-senegal-l-avenir-incertain-des-installations-des-jeux-olympiques-de-la-jeunesse_6814024_3212.html",
-   "date": "2026-11-21T15:00+00:00",
-   "resume": "La piscine olympique et le stade Iba-Mar-Diop ont été rénovés pour la compétition, qui s’est tenue à Dakar du 31 octobre au 13 novembre. Désormais, plusieurs acteurs espèrent en récupérer la gestion.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
    "titre": "Inondations dans le Pas-de-Calais : deux cours d’eau en vigilance orange ; près de 800 évacuations depuis jeudi, selon la préfecture",
    "url": "https://www.lemonde.fr/planete/article/2026/11/21/inondations-dans-le-pas-de-calais-la-canche-reste-en-vigilance-orange-pres-de-800-evacuations-depuis-jeudi-selon-la-prefecture_6813953_3244.html",
    "date": "2026-11-21T07:01+00:00",
    "resume": "En Normandie, Vigicrues a prévenu que le niveau maximum de la Vire, placée en vigilance jaune, « est en passe d’être atteint ce [samedi] matin » dans le secteur de Saint-Lô et qu’il est « susceptible de générer des débordements localisés ».",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "Au Sénégal, l’avenir incertain des installations des Jeux olympiques de la jeunesse",
+   "url": "https://www.lemonde.fr/afrique/article/2026/11/21/au-senegal-l-avenir-incertain-des-installations-des-jeux-olympiques-de-la-jeunesse_6814024_3212.html",
+   "date": "2026-11-21T15:00+00:00",
+   "resume": "La piscine olympique et le stade Iba-Mar-Diop ont été rénovés pour la compétition, qui s’est tenue à Dakar du 31 octobre au 13 novembre. Désormais, plusieurs acteurs espèrent en récupérer la gestion.",
    "langue": "français"
   },
   {
@@ -1654,6 +1646,14 @@
   },
   {
    "media": "BBC News",
+   "titre": "Streeting calls Putin a 'cold-blooded killer' as he meets Zelensky in Kyiv",
+   "url": "https://www.bbc.co.uk/news/videos/cqevrddp91z8o",
+   "date": "2026-11-21T16:16+00:00",
+   "resume": "The BBC's Sarah Rainsford reports from Kyiv after Ukrainian President Zelensky met the UK defence secretary.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
    "titre": "Catherine talks openly about how cancer changed her in documentary on BBC",
    "url": "https://www.bbc.co.uk/news/articles/c85y14zvexz9o",
    "date": "2026-11-21T12:00+00:00",
@@ -1670,14 +1670,6 @@
   },
   {
    "media": "BBC News",
-   "titre": "Deal with EU not dependent on tuition fees agreement, Miliband says",
-   "url": "https://www.bbc.co.uk/news/articles/cm9w9p4geke8o",
-   "date": "2026-11-21T09:40+00:00",
-   "resume": "Brussels sources had previously suggested the bloc might not apply the wider deal until fees were lowered for EU students in Britain.",
-   "langue": "anglais"
-  },
-  {
-   "media": "BBC News",
    "titre": "Fight over fossil fuels leaves COP31 climate talks in deadlock",
    "url": "https://www.bbc.co.uk/news/articles/c6ly5w40eg07o",
    "date": "2026-11-21T14:54+00:00",
@@ -1690,6 +1682,14 @@
    "url": "https://www.bbc.co.uk/news/articles/cr4g1l7x52jno",
    "date": "2026-11-21T00:03+00:00",
    "resume": "Speculation is rife as to who will play the new 007's leading lady, with commentators saying she will need a \"very strong identity\".",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Rugby union: England run up record win over New Zealand",
+   "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cwm2jxd8k15mo",
+   "date": "2026-11-21T16:08+00:00",
+   "resume": "England's revival roars up a gear as they beat New Zealand by a record margin after former captain Lewis Moody leads the hosts' response to the haka.",
    "langue": "anglais"
   },
   {
@@ -1734,6 +1734,14 @@
   },
   {
    "media": "BBC News",
+   "titre": "Deal with EU not dependent on tuition fees agreement, Miliband says",
+   "url": "https://www.bbc.co.uk/news/articles/cm9w9p4geke8o",
+   "date": "2026-11-21T09:40+00:00",
+   "resume": "Brussels sources had previously suggested the bloc might not apply the wider deal until fees were lowered for EU students in Britain.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
    "titre": "Scouts say they face £1m tourist tax cost for overnight trips",
    "url": "https://www.bbc.co.uk/news/articles/cxdd1e9yvlzjo",
    "date": "2026-11-21T13:29+00:00",
@@ -1758,42 +1766,34 @@
   },
   {
    "media": "BBC News",
-   "titre": "Serious crash closes M42 near Birmingham Airport",
-   "url": "https://www.bbc.co.uk/news/articles/c8vg2pd5707wo",
-   "date": "2026-11-21T15:50+00:00",
-   "resume": "Drivers describe seeing a \"huge fire\" from cars on the M42 motorway.",
-   "langue": "anglais"
-  },
-  {
-   "media": "BBC News",
-   "titre": "In a year of AI solving maths problems, an Anthropic worker says he may have cracked the biggest",
-   "url": "https://www.bbc.co.uk/news/articles/c6pqr2g7w059o",
-   "date": "2026-11-20T23:08+00:00",
-   "resume": "A mathematician at Anthropic says he used an AI to prove the famed Riemann hypothesis, though verification will take some time.",
-   "langue": "anglais"
-  },
-  {
-   "media": "BBC News",
    "titre": "FBI reportedly investigating apparent hack of its criminal database",
    "url": "https://www.bbc.co.uk/news/articles/cvze7de86pk3o",
-   "date": "2026-11-21T09:34+00:00",
+   "date": "2026-11-21T16:35+00:00",
    "resume": "The National Crime Information Center database is used by federal and local law enforcement to share information.",
    "langue": "anglais"
   },
   {
    "media": "BBC News",
-   "titre": "Rare rhino's first steps captured on video at zoo",
-   "url": "https://www.bbc.co.uk/news/articles/cmly7dvjqg8xo",
-   "date": "2026-11-19T16:28+00:00",
-   "resume": "Zookeepers say the rhino's birth is a \"special moment\" for the under-threat one horned species.",
+   "titre": "I've only sold five copies of GTA 6, says game shop owner",
+   "url": "https://www.bbc.co.uk/news/articles/cmqj5dr01e85o",
+   "date": "2026-11-20T11:29+00:00",
+   "resume": "Games shop owner Richard Tewksbury says the release of Grand Theft Auto 6 has been a \"write-off\".",
    "langue": "anglais"
   },
   {
    "media": "BBC News",
-   "titre": "Anderson steps up, Berge impresses - player ratings for Man City v Fulham",
-   "url": "https://www.bbc.co.uk/sport/football/articles/cqwy06p44g3no",
-   "date": "2026-11-21T14:21+00:00",
-   "resume": "How Manchester City and Fulham players rated in their Premier League match.",
+   "titre": "Superb England run up record win over New Zealand",
+   "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cwm2jxd8k15mo",
+   "date": "2026-11-21T16:08+00:00",
+   "resume": "England's revival roars up a gear as they beat New Zealand by a record margin after former captain Lewis Moody leads the hosts' response to the haka.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "McConnell shines as 11-try Scotland dismantle Japan",
+   "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cmx2x00w08keo",
+   "date": "2026-11-21T16:23+00:00",
+   "resume": "A Liam McConnell hat-trick inspires Scotland in an 11-try Nations Championship rout of Japan at Murrayfield.",
    "langue": "anglais"
   }
  ],
@@ -2612,6 +2612,406 @@
    "url": "https://arstechnica.com/security/2026/11/man-charged-with-spying-on-silicon-valley-tech-and-defense-company-for-russia/",
    "date": "2026-11-19T20:29+00:00",
    "resume": "25-year-old accused of stalking employees at coffee shop and in an \"aggressive\" car pursuit.",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "AWS got hit by an outage too. Here's why you didn't hear about it",
+   "url": "https://www.theregister.com/columnists/2026/11/21/aws-got-hit-by-an-outage-too-heres-why-you-didnt-hear-about-it/5311511",
+   "date": "2026-11-21T14:35+00:00",
+   "resume": "If a service falls in the forest and nobody hears it...",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "ChatGPT shrunk down to run on a Super Nintendo",
+   "url": "https://www.theregister.com/offbeat/2026/11/21/chatgpt-shrunk-down-to-run-on-a-super-nintendo/5311418",
+   "date": "2026-11-21T11:46+00:00",
+   "resume": "Just don't expect complex, coherent, or always correct answers",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "NASA Mars rover and orbiter suffer glitches",
+   "url": "https://www.theregister.com/science/2026/11/21/nasa-mars-rover-and-orbiter-suffer-glitches/5311360",
+   "date": "2026-11-21T07:47+00:00",
+   "resume": "It isn't only systems on Earth suffering technical problems",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Amazon's split personality: AWS embraces bot commerce while main site enforces bans",
+   "url": "https://www.theregister.com/ai-and-ml/2026/11/20/amazons-split-personality-aws-embraces-bot-commerce-while-main-site-enforces-bans/5311493",
+   "date": "2026-11-20T23:41+00:00",
+   "resume": "Bot-based buying is here or not, depending on where you stand in the Amazon empire",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "PHP 8.6: Things are gonna get a lot more strict around here",
+   "url": "https://www.theregister.com/devops/2026/11/20/php-86-things-are-gonna-get-a-lot-more-strict-around-here/5311486",
+   "date": "2026-11-20T23:28+00:00",
+   "resume": "Like a parent disciplining a misbehaving child, PHP’s annual update clamps down on loose default behaviors to curb malicious hacker horseplay.",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Visa, Mastercard theft included info useful for phishing, but not draining bank accounts, say researchers",
+   "url": "https://www.theregister.com/cyber-crime/2026/11/20/visa-mastercard-theft-included-info-useful-for-phishing-but-not-draining-bank-accounts-say-researchers/5311478",
+   "date": "2026-11-20T21:27+00:00",
+   "resume": "No financial details, but plenty of other clues",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Signal slams door on prying AI agents to protect privacy",
+   "url": "https://www.theregister.com/security/2026/11/20/signal-slams-door-on-prying-ai-agents-to-protect-privacy/5311466",
+   "date": "2026-11-20T20:42+00:00",
+   "resume": "Apple, Google, and Microsoft called out for failing to provide developers with adequate AI agent controls",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Nvidia’s journey to forge the one CPU SKU to rule them all",
+   "url": "https://www.theregister.com/systems/2026/11/20/nvidias-journey-to-forge-the-one-cpu-sku-to-rule-them-all/5311438",
+   "date": "2026-11-20T18:45+00:00",
+   "resume": "A deeper look at Vera",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "China attackers deployed AI agents that autonomously found and exploited a 0-day to take over a university server",
+   "url": "https://www.theregister.com/security/2026/11/20/china-attackers-deployed-ai-agents-that-autonomously-found-and-exploited-a-0-day-to-take-over-a-university-server/5311382",
+   "date": "2026-11-20T17:30+00:00",
+   "resume": "'Agents kept adapting for nearly a full day without human direction,' Amazon CISO said",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Dutch data watchdog highlights safety issues with AI glasses",
+   "url": "https://www.theregister.com/security/2026/11/20/dutch-data-watchdog-highlights-safety-issues-with-ai-glasses/5311345",
+   "date": "2026-11-20T16:44+00:00",
+   "resume": "Devices found to misinterpret medication instructions and other scenarios impacting human safety",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "AI boom threatens circuit board crunch to rival pandemic-era chip shortage",
+   "url": "https://www.theregister.com/systems/2026/11/20/ai-boom-threatens-circuit-board-crunch-to-rival-pandemic-era-chip-shortage/5311335",
+   "date": "2026-11-20T16:01+00:00",
+   "resume": "Trade body warns automotive, medical, and defense orders are being crowded out, with relief unlikely before mid-2028",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Microsoft's last non-security preview of 2026 packs a punch",
+   "url": "https://www.theregister.com/os-platforms/2026/11/20/microsofts-last-non-security-preview-of-2026-packs-a-punch/5311300",
+   "date": "2026-11-20T14:28+00:00",
+   "resume": "Windows Search gets a makeover, while Hello lights up dim rooms",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Microsoft suggests Registry hack to work around hotpatch woes",
+   "url": "https://www.theregister.com/os-platforms/2026/11/20/microsoft-suggests-registry-hack-to-work-around-hotpatch-woes/5311279",
+   "date": "2026-11-20T13:39+00:00",
+   "resume": "App problems in Windows after default hotpatching? Who could have foreseen that?",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "AI could open wallets where ERP upgrade pitches can't, says PwC",
+   "url": "https://www.theregister.com/ai-and-ml/2026/11/20/ai-could-open-wallets-where-erp-upgrade-pitches-cant-says-pwc/5311221",
+   "date": "2026-11-20T12:47+00:00",
+   "resume": "Consultancy argues a 'clean core' makes agents easier to deploy – but Kingfisher is taking a different route",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Spy court blasts UK secrecy, forces government to admit Apple ‘backdoor’ demand",
+   "url": "https://www.theregister.com/security/2026/11/20/spy-court-blasts-uk-secrecy-forces-government-to-admit-apple-backdoor-demand/5311292",
+   "date": "2026-11-20T12:18+00:00",
+   "resume": "Notice's existence can be acknowledged without harming national security, but its precise demands remain under wraps",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Windows 11 passkey bug cries failure after successful sign-in",
+   "url": "https://www.theregister.com/security/2026/11/20/windows-11-passkey-bug-cries-failure-after-successful-sign-in/5311263",
+   "date": "2026-11-20T11:09+00:00",
+   "resume": "Optional update fixes misleading Android error for versions 25H2 and 26H2",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Ubuntu Core Desktop targets 28.04 debut, with default status in its sights",
+   "url": "https://www.theregister.com/os-platforms/2026/11/20/ubuntu-core-desktop-targets-2804-debut-with-default-status-in-its-sights/5310837",
+   "date": "2026-11-20T09:29+00:00",
+   "resume": "Canonical's stretch goal is to make the immutable OS standard in 30.04 – without retiring the traditional distro",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Support tech fixed malware by charging client less for their services",
+   "url": "https://www.theregister.com/personal-tech/2026/11/20/support-tech-fixed-malware-by-charging-client-less-for-their-services/5310959",
+   "date": "2026-11-20T06:29+00:00",
+   "resume": "‘I gave up at least $6,000 and I’d do it again’",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Big Tech's compliance with EU market rules is performative, consumer group says",
+   "url": "https://www.theregister.com/legal/2026/11/20/big-techs-compliance-with-eu-market-rules-is-performative-consumer-group-says/5311066",
+   "date": "2026-11-20T04:30+00:00",
+   "resume": "BEUC urges Brussels to impose tougher penalties over alleged barriers to switching services and controlling personal data",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "US let Nvidia and AMD sell bucketloads of chips to military-linked Chinese companies",
+   "url": "https://www.theregister.com/legal/2026/11/20/us-let-nvidia-and-amd-sell-bucketloads-of-chips-to-military-linked-chinese-companies/5311200",
+   "date": "2026-11-20T04:04+00:00",
+   "resume": "Not many of the deals went through, but Chinese clouds no longer care about importing GPUs",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Flaws in VMware and KVM need attention, if you have time while fixing Java, PHP, and everything else",
+   "url": "https://www.theregister.com/security/2026/11/20/flaws-in-vmware-and-kvm-need-attention-if-you-have-time-while-fixing-java-php-and-everything-else/5311193",
+   "date": "2026-11-20T00:57+00:00",
+   "resume": "Critical Virtzilla bugs allow authentication bypass, as a nested virtualization issue got Digital Ocean ducking",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Germ Network infects Android, but in a good way",
+   "url": "https://www.theregister.com/security/2026/11/20/germ-network-infects-android-but-in-a-good-way/5311186",
+   "date": "2026-11-20T00:06+00:00",
+   "resume": "Bluesky's preferred encrypted messaging app allows multiple identities without tying you to a phone number",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Chase, Visa, Mastercard confirm third-party cyberattacks that may have exposed customers' info",
+   "url": "https://www.theregister.com/security/2026/11/19/chase-visa-mastercard-confirm-third-party-cyberattacks-that-may-have-exposed-customers-info/5311175",
+   "date": "2026-11-19T21:12+00:00",
+   "resume": "First service outages, then data breaches…what's next?!",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Palo Alto Networks opens wallet for open-weight training biz",
+   "url": "https://www.theregister.com/ai-and-ml/2026/11/19/palo-alto-networks-opens-wallet-for-open-weight-training-biz/5311168",
+   "date": "2026-11-19T20:00+00:00",
+   "resume": "Security shop buys the hand that feeds it",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Nvidia adds possible hack to list of very bad things under investigation",
+   "url": "https://www.theregister.com/security/2026/11/19/nvidia-adds-possible-hack-to-list-of-very-bad-things-under-investigation/5311153",
+   "date": "2026-11-19T18:52+00:00",
+   "resume": "Ransomware group sets a deadline for the chipmaker to pay up - or see its data leaked",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "XXRI-OS explores the lowest end of the Linux desktop",
+   "url": "https://www.theregister.com/os-platforms/2026/11/19/xxri-os-explores-the-lowest-end-of-the-linux-desktop/5311036",
+   "date": "2026-11-19T18:35+00:00",
+   "resume": "Less is more, but this distro explores exactly how much less",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Anthropic throws open doors at $2T valuation as shares pop 34% in initial trading",
+   "url": "https://www.theregister.com/ai-and-ml/2026/11/19/anthropic-throws-open-doors-at-2t-valuation-as-shares-pop-34-in-initial-trading/5311143",
+   "date": "2026-11-19T17:09+00:00",
+   "resume": "Company still has to contend with massive compute obligations and the threat of open models, neither of which Dario Amodei is worried about, he claims",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "NAND prices tipped to fall as Chinese cloud giants cut SSD orders",
+   "url": "https://www.theregister.com/systems/2026/11/19/nand-prices-tipped-to-fall-as-chinese-cloud-giants-cut-ssd-orders/5311116",
+   "date": "2026-11-19T17:02+00:00",
+   "resume": "TrendForce sees supply outpacing demand in 2027, though cheaper flash won't fix the DRAM squeeze",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Russian national accused of stalking San Francisco techie in plot against US defense-tech giant",
+   "url": "https://www.theregister.com/security/2026/11/19/russian-national-accused-of-stalking-san-francisco-techie-in-plot-against-us-defense-tech-giant/5311126",
+   "date": "2026-11-19T16:20+00:00",
+   "resume": "DoJ claims suspect part of 4-month operation to steal secrets, surveil employees",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Europe's biggest gas supplier battling cyberattack – with no timeline for recovery",
+   "url": "https://www.theregister.com/cyber-crime/2026/11/19/europes-biggest-gas-supplier-battling-cyberattack-with-no-timeline-for-recovery/5311026",
+   "date": "2026-11-19T15:37+00:00",
+   "resume": "Norwegian energy giant Equinor says oil and gas production remains unaffected",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "European Commission scrambles to contain AI-assisted cyberattack",
+   "url": "https://www.theregister.com/cyber-crime/2026/11/19/european-commission-scrambles-to-contain-ai-assisted-cyberattack/5311103",
+   "date": "2026-11-19T15:14+00:00",
+   "resume": "Staff HR and medical reimbursement systems taken offline as officials investigate whether personal data was compromised",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Union demands Capita lose Whitehall payroll deal after pensions fiasco",
+   "url": "https://www.theregister.com/public-sector/2026/11/19/union-demands-capita-lose-whitehall-payroll-deal-after-pensions-fiasco/5311050",
+   "date": "2026-11-19T14:44+00:00",
+   "resume": "PCS wants services for more than 250,000 civil servants brought in-house as ministers defend outsourcing decision",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Qualcomm offers test drive of its rack-scale Nvidia AI challenger",
+   "url": "https://www.theregister.com/systems/2026/11/19/qualcomm-offers-test-drive-of-its-rack-scale-nvidia-ai-challenger/5310966",
+   "date": "2026-11-19T14:03+00:00",
+   "resume": "Selected customers can put Dragonfly AI200 through its paces on Cirrascale's cloud",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Voyager 1 celebrates one light-day with a nice lie-down",
+   "url": "https://www.theregister.com/science/2026/11/19/voyager-1-celebrates-one-light-day-with-a-nice-lie-down/5310991",
+   "date": "2026-11-19T13:15+00:00",
+   "resume": "Carrier signal still reaches Earth, but science and engineering data have gone AWOL",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Microsoft To Do will soon become Microsoft Done",
+   "url": "https://www.theregister.com/personal-tech/2026/11/19/microsoft-to-do-will-soon-become-microsoft-done/5310973",
+   "date": "2026-11-19T12:26+00:00",
+   "resume": "Apps retire in June 2027, with no automatic task migration and no Planner replacement for personal accounts",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Cyberattack on service provider exposes payee data at 40 Irish credit unions",
+   "url": "https://www.theregister.com/security/2026/11/19/cyberattack-on-service-provider-exposes-payee-data-at-40-irish-credit-unions/5310979",
+   "date": "2026-11-19T11:45+00:00",
+   "resume": "Minister calls notification delay 'not acceptable' after October attack on Irish banking player Wellington IT came to light in November",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "TfL takes Oyster photocard website offline after attackers compromise customer accounts",
+   "url": "https://www.theregister.com/security/2026/11/19/tfl-takes-oyster-photocard-website-offline-after-attackers-compromise-customer-accounts/5310985",
+   "date": "2026-11-19T11:01+00:00",
+   "resume": "Around 265,000 customers potentially affected as London transport operator grapples with another security breach",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Sticky note on monitor provided keys to the company’s kingdom",
+   "url": "https://www.theregister.com/security/2026/11/19/sticky-note-on-monitor-provided-keys-to-the-companys-kingdom/5310908",
+   "date": "2026-11-19T10:15+00:00",
+   "resume": "Don't leave your credentials out in public, where any visitor can see them.",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Uncensored AI models are thriving on code hosting platforms",
+   "url": "https://www.theregister.com/ai-and-ml/2026/11/19/uncensored-ai-models-are-thriving-on-code-hosting-platforms/5310891",
+   "date": "2026-11-19T09:30+00:00",
+   "resume": "Making a mockery of alignment",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Google continues model chemistry experiment with Neon",
+   "url": "https://www.theregister.com/ai-and-ml/2026/11/19/google-continues-model-chemistry-experiment-with-neon/5310934",
+   "date": "2026-11-19T08:30+00:00",
+   "resume": "Which model to choose? It's elementary but not obvious",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "GTA VI didn't break the internet, thanks to 'stupid DNS tricks'",
+   "url": "https://www.theregister.com/networks/2026/11/19/gta-vi-didnt-break-the-internet-thanks-to-stupid-dns-tricks/5310950",
+   "date": "2026-11-19T05:57+00:00",
+   "resume": "Multiple CDNs and routing users to nearby download sites kept traffic flowing for everyone",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "South Korea tries to out exam cheats with Extreme Emergency smartphone alert",
+   "url": "https://www.theregister.com/personal-tech/2026/11/19/south-korea-tries-to-out-exam-cheats-with-extreme-emergency-smartphone-alert/5310942",
+   "date": "2026-11-19T03:33+00:00",
+   "resume": "At least it’s less disruptive than an internet shutdown",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Chinese web giant Tencent says new US GPU ban ‘sets everyone back in China’",
+   "url": "https://www.theregister.com/systems/2026/11/19/chinese-web-giant-tencent-says-new-us-gpu-ban-sets-everyone-back-in-china/5310927",
+   "date": "2026-11-19T00:39+00:00",
+   "resume": "Don’t hoist the Mission Accomplished banner, because company president thinks it also will spur China’s chip biz into action",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Another critical PHP security release has dropped",
+   "url": "https://www.theregister.com/patches/2026/11/18/another-critical-php-security-release-has-dropped/5310911",
+   "date": "2026-11-18T22:38+00:00",
+   "resume": "At least one dangerous RCE bug got a fix on Thursday",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Anthropic decides to go head-to-head with GTA VI release, schedules IPO for the same day",
+   "url": "https://www.theregister.com/ai-and-ml/2026/11/18/anthropic-decides-to-go-head-to-head-with-gta-vi-release-schedules-ipo-for-the-same-day/5310872",
+   "date": "2026-11-18T21:40+00:00",
+   "resume": "We get it, Dario - you don't want people calling out sick to play",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "AI found more critical bugs in another widely used technology running 225M websites",
+   "url": "https://www.theregister.com/security/2026/11/18/ai-found-more-critical-bugs-in-another-widely-used-technology-running-225m-websites/5310887",
+   "date": "2026-11-18T21:11+00:00",
+   "resume": "Open source NGINX joins patchapalooza",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "To rank the world's biggest supercomputers, we're gonna need a bigger bench",
+   "url": "https://www.theregister.com/hpc/2026/11/18/to-rank-the-worlds-biggest-supercomputers-were-gonna-need-a-bigger-bench/5310878",
+   "date": "2026-11-18T20:15+00:00",
+   "resume": "AI has birthed some truly colossal supers, they just aren't on the Top500",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "California tells Waymo to take the next exit after freeway mishaps",
+   "url": "https://www.theregister.com/security/2026/11/18/california-tells-waymo-to-take-the-next-exit-after-freeway-mishaps/5310841",
+   "date": "2026-11-18T17:45+00:00",
+   "resume": "Robotaxi operator suspends driverless rides on high-speed roads nationwide after construction zone incursions and a run-in with patrol vehicles",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "Microsoft's official Python agent framework hijacked to distribute malware",
+   "url": "https://www.theregister.com/security/2026/11/18/microsofts-official-python-agent-framework-hijacked-to-distribute-malware/5310858",
+   "date": "2026-11-18T17:23+00:00",
+   "resume": "In today's how-could-things-get-worse-for-Microsoft news, it seems someone's GitHub org admin creds have been compromised",
+   "langue": "anglais"
+  },
+  {
+   "media": "The Register",
+   "titre": "MongoDB snaps up Firebolt to bring transactions and analytics under one roof",
+   "url": "https://www.theregister.com/databases/2026/11/18/mongodb-snaps-up-firebolt-to-bring-transactions-and-analytics-under-one-roof/5310809",
+   "date": "2026-11-18T17:02+00:00",
+   "resume": "Many have tried to marry analytics with transactions. The document DB posterchild takes another crack at it",
    "langue": "anglais"
   }
  ]
