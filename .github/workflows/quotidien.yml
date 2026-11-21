@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  models: read      # GitHub Models : le rédacteur gratuit des brouillons
 
 concurrency:
   # Un groupe par workflow : la veille, la mesure horaire et les relevés quotidiens
@@ -76,11 +75,11 @@ jobs:
       - name: Propositions d'articles du jour (selon redaction/CHARTE.md, rien n'est publié)
         run: python -m sonde rediger
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         continue-on-error: true
-        # Le rédacteur s'arrête seul au bout de 10 minutes d'essais ; ceci n'est qu'un dernier garde-fou.
+        # Le rédacteur s'arrête seul au bout de 15 minutes d'essais ; ceci n'est qu'un dernier garde-fou.
         # Les brouillons sont enregistrés au fil de l'eau : même coupé, le fichier du jour existe.
-        timeout-minutes: 15
+        timeout-minutes: 20
 
       - name: Preuves horodatées
         if: vars.VEILLE_SERVEUR != 'oui'
