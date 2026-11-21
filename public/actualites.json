@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T17:20:32+00:00",
+ "genere_le": "2026-11-21T19:57:34+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,7 +16,8 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "ok"
+   "etat": "erreur",
+   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
   }
  },
  "dependances": {
@@ -267,14 +268,5 @@
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/dpao7idy3zei"
   }
- ],
- "tri_presse": {
-  "articles": 0,
-  "sans_acteur": 0,
-  "sans_incident": 0,
-  "hors_sujet": 0,
-  "doublons": 0,
-  "retenus": 0,
-  "erreurs": []
- }
+ ]
 }

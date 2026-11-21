@@ -1,144 +1,80 @@
 {
  "date": "2026-11-21",
- "genere_le": "2026-11-21T17:21:03+00:00",
+ "genere_le": "2026-11-21T19:59:43+00:00",
  "statut": "a_relire",
  "propositions": [
-  {
-   "rubrique": "une",
-   "format": "a_chaud",
-   "evenement_id": "cloudflare-1ip2m5rvk7vb",
-   "tag_interne": "Non mesuré",
-   "score": -8.1,
-   "auteur": "openai/gpt-oss-120b",
-   "image": "assets/photos/reseau.jpg",
-   "article": {
-    "tag": "Réseau",
-    "title": "Un pic d’erreurs HTTP apparaît.<br/>Mistral subit <mark>5xx et 499</mark>.",
-    "chapo": "Le réseau de Cloudflare a signalé une hausse soudaine d’erreurs serveur. Cette anomalie touche les services qui transitent par son infrastructure, dont le modèle de langage Mistral. Notre sonde n’a rien enregistré pendant l’incident.",
-    "fait": [
-     "À 16 h 50, Cloudflare a indiqué une augmentation des réponses d’erreur 5xx et 499.",
-     "Ces codes signalent des problèmes côté serveur et des connexions interrompues."
-    ],
-    "consequence": [
-     "Mistral, qui utilise Cloudflare comme point d’accès, a vu ses requêtes impactées, entraînant des délais et des échecs d’appels API.",
-     "L’absence de mesure de notre sonde signifie que l’impact exact reste inconnu."
-    ],
-    "lien": [
-     "L’incident est détaillé sur la page de statut de Cloudflare.",
-     "Quel risque cela représente-t-il pour vos services dépendants du même fournisseur ?"
-    ],
-    "une_mini": {
-     "fait": "Cloudflare signale + d’erreurs 5xx/499",
-     "consequence": "Mistral subit des interruptions",
-     "dependance": "Dépendance aux services d’edge"
-    },
-    "sources": [
-     {
-      "label": "Cloudflare Status – Incident",
-      "url": "https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb"
-     }
-    ],
-    "a_verifier": [
-     "Confirmer que Mistral passe bien par Cloudflare",
-     "Vérifier l’absence de mesures de la sonde pendant l’incident"
-    ]
-   },
-   "fiche": {
-    "evenement": "Cloudflare : Elevated number of 5xx and 499 errors",
-    "type": "incident_amont",
-    "debut": "mardi 17 novembre, 16 h 50",
-    "fin": null,
-    "fournisseurs_concernes": [
-     "mistral"
-    ],
-    "pourquoi_ce_fournisseur": "mistral passe(nt) par Cloudflare (chemin réseau relevé)",
-    "mesures_de_la_sonde": "aucune mesure de la sonde pendant l'événement",
-    "presse": null,
-    "sources": [
-     {
-      "label": "Elevated number of 5xx and 499 errors",
-      "url": "https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb"
-     }
-    ]
-   },
-   "alertes_charte": [
-    "Affirmation non soutenue par les mesures : la sonde n'a vu aucune anomalie, mais le texte dit qu'un fournisseur a été touché : « Cette anomalie touche les services qui transitent par son infrastructure, dont le modèle de langage Mistral. »",
-    "Trop de chiffres dans le texte (4) : en garder 3 au plus, le détail va dans l'encadré Premium."
-   ]
-  },
   {
    "rubrique": "tous_connectes",
    "format": "a_chaud",
    "auteur": "openai/gpt-oss-120b",
-   "image": "assets/photos/jeux-video.jpg",
+   "image": "assets/photos/politique.jpg",
    "article": {
-    "tag": "Jeux vidéo",
-    "title": "GTA VI sort ce jeudi.<br/>Sa version <mark>sans disque</mark> inquiète les joueurs.",
-    "chapo": "Le dernier opus de la franchise très attendue arrive en boîte, mais aucun disque n’est à l’intérieur. Les joueurs découvrent un simple code de téléchargement, signe d’une dématérialisation accélérée du secteur. Cette évolution soulève des questions de revente, de prix et de propriété.",
+    "tag": "Savoir",
+    "title": "Le préfet Hugues Moutouh veut quitter son poste.<br/>Il pointe du doigt la <mark>fuite numérique</mark>.",
+    "chapo": "Le haut fonctionnaire de la région Centre‑Val de Loire, Hugues Moutouh, a demandé à être relevé de ses fonctions après avoir été accusé de transmettre des informations confidentielles au Rassemblement national. Son communiqué du 21 novembre souligne que l’État ne doit pas devenir la cible d’opérations de déstabilisation. Cette affaire met en lumière la facilité avec laquelle des données sensibles peuvent circuler à l’ère du numérique.",
     "fait": [
-     "Le 19 novembre, GTA VI a été commercialisé en version boîte contenant uniquement un code de téléchargement.",
-     "Ce format montre que l’industrie du jeu vidéo se tourne de plus en plus vers le numérique, au détriment du support physique."
+     "Le préfet a été convoqué le 20 novembre par le ministre de l’Intérieur, puis, le lendemain, il a publié un communiqué demandant à être relevé de ses fonctions, invoquant une campagne de déstabilisation visant l’État.",
+     "Ce revirement montre à quel point les fonctions publiques peuvent être fragilisées par la circulation d’informations internes."
     ],
     "consequence": [
-     "Sans disque, les joueurs ne peuvent plus revendre ou prêter le jeu, et ils restent dépendants des boutiques en ligne des consoles pour les promotions.",
-     "Cette dépendance renforce le contrôle des plateformes sur les prix et sur l’accès aux titres achetés."
+     "Les soupçons de fuites reposent sur des échanges électroniques, rappelant que les appareils connectés sont des vecteurs potentiels de divulgation de données confidentielles.",
+     "Cela rappelle à chacun que la confiance dans les outils numériques doit être accompagnée de vigilance."
     ],
     "lien": [
-     "Le phénomène illustre comment la technologie façonne nos habitudes de consommation, même pour les loisirs les plus populaires.",
-     "Et vous, êtes‑vous prêt à abandonner vos jeux sur disque au profit du téléchargement ?"
+     "Dans un contexte où les smartphones sont omniprésents, il est facile de partager, sans le vouloir, des informations sensibles à des interlocuteurs non autorisés.",
+     "Et vous, êtes‑vous sûr de la sécurité de vos messages ?"
     ],
     "une_mini": {
-     "fait": "GTA VI vendu en boîte, mais sans disque.",
-     "consequence": "Plus de marché de l’occasion, prix contrôlés par les stores.",
-     "dependance": "Les joueurs dépendent désormais des plateformes numériques."
+     "fait": "Le préfet a demandé à être relevé après une convocation le 20 novembre.",
+     "consequence": "Les fuites suspectées s’appuient sur des échanges numériques.",
+     "dependance": "L’incident illustre notre dépendance aux appareils connectés pour la diffusion d’informations."
     },
     "sources": [
      {
-      "label": "Franceinfo Culture – Disque vs téléchargement",
-      "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html"
+      "label": "franceinfo – communiqué du 21 novembre",
+      "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html"
      },
      {
-      "label": "Franceinfo Culture – Chiffres de vente",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html"
-     },
-     {
-      "label": "Franceinfo Culture – Documentaire événementiel",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html"
+      "label": "franceinfo – convocation du 20 novembre",
+      "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html"
      }
     ],
-    "a_verifier": [],
-    "sujet": "Grand Theft Auto VI",
-    "categorie": "jeux-video",
+    "a_verifier": [
+     "Confirmer la date exacte du communiqué (21 novembre)",
+     "Vérifier que la demande de mise à pied a bien été formulée dans le communiqué",
+     "Valider les détails de la carrière mentionnée dans le second article"
+    ],
+    "sujet": "Hugues Moutouh, préfet accusé de fuites d’informations confidentielles",
+    "categorie": "politique",
     "reflexes": [
-     "Comparez les prix des versions numériques et physiques avant d’acheter.",
-     "Conservez vos identifiants de compte et activez la double authentification pour protéger vos licences.",
-     "Si vous privilégiez la revente, choisissez des éditions physiques quand elles existent encore."
+     "Vérifiez toujours le destinataire avant d’envoyer un message contenant des données sensibles.",
+     "Utilisez le chiffrement ou des applications sécurisées pour les échanges confidentiels.",
+     "Désactivez le partage de localisation et les sauvegardes automatiques lorsque vous manipulez des informations critiques."
     ]
    },
    "fiche": {
-    "sujet": "Grand Theft Auto VI",
-    "et_vous": "Et vous, êtes‑vous prêt à abandonner vos jeux sur disque au profit du téléchargement ?",
+    "sujet": "Hugues Moutouh",
+    "et_vous": "Et vous, avez-vous déjà partagé des informations sensibles depuis votre smartphone sans y réfléchir ?",
     "articles_de_presse": [
      {
-      "titre": "GTA VI : pourquoi la disparition des jeux vidéo sur disque inquiète les joueurs",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html",
+      "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html",
       "etat": "lu",
-      "texte": "Avec la sortie très attendue de GTA VI, un nouveau débat agite les joueurs : même en achetant le jeu en boîte, ils n’y trouvent aucun disque, mais un simple code de téléchargement. Un changement de modèle qui pose plusieurs questions, notamment sur les prix, la revente et la propriété des jeux vidéo.\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nC’était l’un des jeux vidéo les plus attendus de ces dernières années. Sorti ce jeudi 19 novembre, GTA VI marque aussi une nouvelle étape dans la dématérialisation du secteur. Les joueurs qui achètent le jeu en boîte n’y trouvent pas de disque à l’intérieur, mais un code leur permettant de le télécharger directement sur leur console.\nL’un des principaux inconvénients du dématérialisé, c'est la disparition du marché de l’occasion. Jusqu’ici, lorsqu’un joueur terminait un jeu, il pouvait revendre son disque sur Leboncoin, dans un magasin spécialisé ou simplement le prêter à un ami. Avec un code de téléchargement, ce n’est plus possible. Une fois activé, le jeu est associé au compte de l’utilisateur et ne peut plus être transféré à quelqu’un d’autre.\nAutre conséquence : les joueurs risquent de perdre une partie de leur liberté sur les prix. Avec les jeux physiques, ils peuvent comparer les tarifs entre plusieurs enseignes, profiter de promotions ou acheter des jeux d’occasion à moindre coût.\nAvec le dématérialisé, ils dépendent davantage des boutiques en ligne des fabricants de consoles, comme le PlayStation Store ou le Microsoft Store, et donc des promotions proposées par ces plateformes.\nLa question de la propriété inquiète également certains joueurs. Lorsqu’un utilisateur achète un jeu en version numérique, il achète en réalité une licence d’utilisation. Son accès dépend donc des conditions fixées par la plateforme. En cas de suspension ou de fermeture de son compte, il peut ainsi perdre l’accès à certains jeux achetés.\nUne situation dénoncée par le youtubeur spécialisé dans les jeux vidéo Conkerax, sur France TV Slash. Inquiet de l’évolution du secteur, il a annoncé qu’il ne jouerait pas à GTA VI pour protester contre cette dématérialisation.\nLe téléchargement présente toutefois plusieurs avantages. Plus besoin de se déplacer en magasin ou de changer de disque à chaque partie. Les joueurs peuvent acheter leur jeu depuis leur canapé, le télécharger à l’avance et commencer à jouer dès sa sortie.\nLa disparition des disques permet également de réduire la quantité de plastique utilisée pour leur fabrication. Mais le numérique n’est pas sans impact environnemental : le téléchargement, le stockage et l’utilisation des jeux nécessitent eux aussi de l’énergie.\nAutre contrainte : disposer d’une bonne connexion internet et de suffisamment d’espace de stockage. GTA VI nécessite ainsi plus de 200 gigaoctets d’espace sur PlayStation 5. Avec une connexion lente, son téléchargement peut prendre des heures.\nAvec GTA VI, l’un des plus gros lancements de l’industrie, la tendance au tout numérique semble s’accélérer. D’autant que certaines consoles sont déjà commercialisées sans lecteur de disque. C’est notamment le cas de la PlayStation 5 Digital Edition, qui oblige ses utilisateurs à télécharger leurs jeux depuis le PlayStation Store. À terme, acheter un jeu vidéo sur disque pourrait donc devenir l’exception plutôt que la règle.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\nSortie de GTA VI, Marine Tondelier propose de rejoindre Mélenchon, Chat GTP au lycée : ça dit quoi ce 19 novembre ?\nEn difficulté, le géant de la photo Getty Images s'associe à Nvidia et OpenAI\nCorset, porte-jarretelles et blagues volées : la nouvelle arnaque des fausses humoristes IA\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nA Bergerac, une école adopte le nom d’Irène Sapir, communiste et rescapée de la Rafle du Vel’ d’Hiv’\nDes images révélées par Mediapart et Le media montrent Gérard Depardieu toucher l’entrejambe d’une figurante.\n\"Nos déviances d’adultes sont souvent nos petits traumatismes d’enfance\"\nGTA VI, le phénomène mondial le plus cher de l'histoire du jeu vidéo\nDans l'atelier de Li Shuang, pionnière de l'art contemporain en Chine\nGérard Depardieu renonce à son procès en appel pour deux agressions sexuelles lors d'un tournage\nMichel Houllebecq mis en examen pour des propos sur le \"grand remplacement\" et les musulmans\n“Pour les hommes, les rêves, les objectifs, c’est indispensable” - Dali Benssalah, comédien\n\"On ne lâche pas facilement une carte comme ça\" : pourquoi Christophe Gleizes est-il toujours détenu en Algérie ?\nDidier Bourdon : \"C’est sympa de jouer les gens pitoyables !\"\nPhilippe Jaenada lauréat du prix Goncourt 2026 pour \"L'Inconnue du quai de Javel\"\nUne chanson peut changer une situation, mais peut-être pas le monde !\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nChaque jour, ne ratez rien des meilleurs rendez-vous matinaux de la radio\nChaque jour, ne ratez rien des meilleurs rendez-vous matinaux de la radio\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Radio\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscr"
+      "texte": "\"Je refuse que l’Etat, le ministère de l'Intérieur et le corps préfectoral deviennent les cibles ou les instruments de ces entreprises de déstabilisation\", a déclaré samedi le haut fonctionnaire dans un communiqué.\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nSoupçonné d'être impliqué dans des fuites sur des enquêtes mettant en cause le RN, le préfet de la région Centre-Val de Loire, Hugues Moutouh, s'est exprimé pour la première fois, samedi 21 novembre, dans un communiqué transmis à l'AFP. \"La campagne de déstabilisation dont je suis aujourd'hui la cible dépasse largement ma personne. A travers moi, c'est l'autorité même de l'Etat que l'on cherche à atteindre\", a-t-il déclaré, annonçant avoir demandé à être relevé de ses fonctions.\n\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?\n\"Je refuse que l'Etat, le ministère de l'Intérieur et le corps préfectoral deviennent les cibles ou les instruments de ces entreprises de déstabilisation\", a-t-il ajouté, avant de se défendre : \"Dans le cadre des différentes fonctions qui m'ont été confiées par le gouvernement, j'ai exercé mes responsabilités dans le strict respect de la loi et une absolue neutralité politique, avec pour seules exigences le service de la France et la défense de l'intérêt général\".\nCette prise de parole survient au lendemain de sa convocation au ministère de l'Intérieur. L'ancien secrétaire général du ministère avait été reçu place Beauvau pour s'expliquer sur les accusations le visant, après l'ouverture d'une enquête pour \"violation du secret professionnel, violation du secret de l'enquête et recel de ces délits\". Le haut fonctionnaire est soupçonné d'avoir fait fuiter des informations au Rassemblement national au sujet d'affaires impliquant le parti.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\nPréfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau\n\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?\nPréfet soupçonné d'avoir renseigné le RN : \"Tout le monde savait qu'il était proche du Rassemblement national\", confie un conseiller de l'exécutif à propos d'Hugues Moutouh\nPréfet soupçonné d'avoir renseigné le RN : \"J'espère que ce n'est pas une pression pour tous ceux qui oseraient discuter avec nous\", réagit l'eurodéputé RN Aleksandar Nikolic\nL'élu RN qui a reçu un procureur au siège du parti évoque \"une discussion entre professionnels\" qui se connaissent \"depuis près de trente ans\"\nMobilisation contre la vie chère : les gilets jaunes fêtent les huit ans de leur mouvement\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nL'émotion du clan de Michel Zecler après que la justice est reconnu le caractère raciste de son agression\n\"les Brittaniques sont angoissés par la perspective d'une victoire de Le Pen ou Mélenchon\" selon le journaliste britannique Philip Turle\nPrésomption d'usage légal des armes par les forces de l'ordre : la loi définitivement adoptée\nPréfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau\nProcès Michel Zecler : les trois policiers condamnés à un à deux ans de prison ferme\nLa sonde Voyager 1 est à 26 milliards de km de la Terre et continue d'émettre\nIrlande du Nord, catholiques et protestants toujours divisés\n\"Veux-tu m'épouser ?\" : un député fait sa demande au Parlement\nPrésidentielle : les créateurs de contenus surveillés par l'Arcom\nL’apparition rare d’un peuple autochtone isolé d'Amazonie suscite l'inquiétude\nVie chère, climat, droit au logement... La jeunesse d'Europe se mobilise ce week-end\n\"Je suis candidat\" : Dominique de Villepin se lance dans la course de l'élection présidentielle\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nRetrouvez tous les jours à 12h l’actualité politique en France et à l’étranger\nRetrouvez tous les jours à 12h l’actualité politique en France et à l’étranger\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Politique\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscrire de ces newsletters à tout moment via le lien en bas de ces newsletters."
      },
      {
-      "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html",
+      "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html",
       "etat": "lu",
-      "texte": "Ce chiffre représente près de cinq fois les quelque 800 millions de dollars que son prédécesseur, \"Grand Theft Auto V\", avait engrangés au cours de ses premières 24 heures en 2013.\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nC'est un \"record\". GTA VI, dernier opus très attendu de la superproduction Grand Theft Auto, a généré 3,79 milliards de dollars (environ 3,5 milliards d'euros) de ventes le jour de sa sortie, a annoncé son éditeur vendredi 20 novembre. Ce chiffre, basé sur les estimations de la société concernant les ventes mondiales de jeudi, représente près de cinq fois les quelque 800 millions de dollars que son prédécesseur, GTA V, avait engrangés au cours de ses premières 24 heures en 2013.\nSelon Rockstar, filiale de l'américain Take-Two Interactive, les précommandes du jeu ont atteint 32,5 millions d'exemplaires, vendus entre 80 et 100 euros selon les versions (standard ou ultime). Le jeu, en gestation depuis plus de huit ans, est sorti jeudi à minuit, après plusieurs reports et plusieurs fuites. Il affiche une moyenne de 99 sur 100 pour la centaine de critiques de la presse spécialisée recensées sur le site Metacritic, du jamais-vu.\n\"Ce n'est pas un simple jeu vidéo\" : comment les fans se préparent à la sortie de \"GTA VI\" après treize ans d'attente\nLes recettes de GTA VI au premier jour dépassent le total des recettes au box-office de Avengers : Endgame, qui est devenu le mois dernier le film le plus rentable de tous les temps avec environ 2,9 milliards de dollars dans le monde. Aucune sortie officielle n'est pour l'instant prévue en Russie, au Qatar ou encore en Chine, le jeu n'ayant pas reçu l'aval du gouvernement de Pékin pour sa commercialisation.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\n\"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers\nMèmes, montages vidéo et propositions électorales… Quand les politiques s'emparent de la sortie de \"GTA VI\"\n\"J'ai l'impression d'avoir vu ça dans un film\" : comment la saga GTA s'inspire du cinéma, et réciproquement\n\"Je n'ai jamais joué à un jeu aussi marquant\" : le jeu vidéo \"GTA VI\" reçoit les éloges de la presse spécialisée du monde entier\n\"C'est grandiose, on se sent pris dans le jeu !\" : les premières impressions d'une fan qui découvre GTA VI\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nA Bergerac, une école adopte le nom d’Irène Sapir, communiste et rescapée de la Rafle du Vel’ d’Hiv’\nDes images révélées par Mediapart et Le media montrent Gérard Depardieu toucher l’entrejambe d’une figurante.\n\"Nos déviances d’adultes sont souvent nos petits traumatismes d’enfance\"\nGTA VI, le phénomène mondial le plus cher de l'histoire du jeu vidéo\nDans l'atelier de Li Shuang, pionnière de l'art contemporain en Chine\nGérard Depardieu renonce à son procès en appel pour deux agressions sexuelles lors d'un tournage\nMichel Houllebecq mis en examen pour des propos sur le \"grand remplacement\" et les musulmans\n“Pour les hommes, les rêves, les objectifs, c’est indispensable” - Dali Benssalah, comédien\n\"On ne lâche pas facilement une carte comme ça\" : pourquoi Christophe Gleizes est-il toujours détenu en Algérie ?\nDidier Bourdon : \"C’est sympa de jouer les gens pitoyables !\"\nPhilippe Jaenada lauréat du prix Goncourt 2026 pour \"L'Inconnue du quai de Javel\"\nUne chanson peut changer une situation, mais peut-être pas le monde !\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nMusique, cinéma, arts & expos, littérature & BD, mode… Tous les jours, le meilleur de l’actualité culturelle\nMusique, cinéma, arts & expos, littérature & BD, mode… Tous les jours, le meilleur de l’actualité culturelle\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Culture\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscrire de ces newsletters à tout moment via le lien en bas de ces newsletters."
+      "texte": "Le haut fonctionnaire, qui a été le numéro deux du ministère de l'Intérieur entre avril 2025 et mai 2026, a été convoqué vendredi par Laurent Nuñez après l'ouverture d'une enquête pour \"violation du secret professionnel, violation du secret de l'enquête et recel de ces délits\".\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nUn préfet sur la sellette ? Hugues Moutouh, préfet de la région Centre-Val de Loire, a été convoqué, vendredi 20 novembre, par le ministre de l'Intérieur, Laurent Nuñez. Le nom de ce haut fonctionnaire a fait les gros titres après des révélations du Monde, jeudi, sur une enquête ouverte pour des soupçons de fuites d'informations venues d'un cadre du ministère de l'Intérieur vers le Rassemblement national. Confirmées par franceinfo, ces informations interrogent sur les liens entre ce préfet de 58 ans et le parti de Marine Le Pen.\nAprès des études à Sciences Po Bordeaux, durant lesquelles il lui arrive de jouer les gardes du corps pour Joe Cocker, selon Le Berry républicain, Hugues Moutouh décroche son agrégation de droit public. Le Parisien enseigne le droit dans la cité girondine puis à l'université de Caen, avant d'être admis au Conseil d'Etat en 2002. Commence alors une longue carrière en cabinets ministériels : sous Jacques Chirac, il est conseiller à la recherche, puis à l'emploi et à l'Intérieur.\n\"Il était proche de Claude Guéant [directeur de cabinet de Nicolas Sarkozy alors ministre de l'Intérieur, de 2005 à 2007]\", se souvient un sarkozyste. En 2007, il fait campagne pour le candidat de l'UMP et \"contribue au programme\", selon cette source. Le chef de l'Etat le nomme préfet de la Creuse en décembre 2009, quelques jours avant son 42e anniversaire, ce qui fait de lui le plus jeune préfet de France. Mais il ne reste pas longtemps à Guéret : un an plus tard, il rejoint la deuxième campagne présidentielle de Nicolas Sarkozy, qui ne connaîtra pas le même épilogue.\nAprès la défaite de 2012, Hugues Moutouh travaille dans le privé, en cabinet d'avocats, cabinet de conseil, au directoire d'une entreprise de recyclage ou au conseil de surveillance de la société mère du club de football de Valenciennes. En 2019, il redevient préfet lorsqu'Emmanuel Macron le nomme dans la Drôme, puis dans l'Hérault en 2021. \"Je suis là pour jouer un rôle de bulldozer\", prévient-il devant la presse dès son arrivée. Dans le département méditerranéen, il fait de la lutte contre l'immigration l'une de ses priorités, et suscite un tollé en dénonçant \"la délinquance des SDF étrangers\" dans un tweet, avant de le supprimer.\nIl se fait ensuite remarquer pour son arrêté interdisant les concerts de casseroles lors d'une visite présidentielle en avril 2023. Deux mois plus tard, l'homme à la mâchoire carrée et au crâne rasé, qui revendique son goût pour les sports de combat, fait à nouveau parler de lui. Interrogé sur ICI Occitanie dans le contexte des émeutes déclenchées par la mort de Nahel Merzouk, il lâche au micro : \"Si demain vous attrapez votre gamin qui descend dans la rue pour brûler des véhicules de police ou caillasser des pompiers ou piller des magasins, la méthode, c'est quoi ? C'est deux claques et au lit ! C'est ce que faisaient nos grands-parents.\"\nIl est ensuite nommé dans les Alpes-Maritimes, et s'installe à Nice avec son chien baptisé Poutine. Il n'est guère apprécié du maire de l'époque, Christian Estrosi. \"Je demande à avoir un préfet compétent qui protège les gens, c'est son boulot\", s'agace l'élu dans Nice-Matin, au sujet de \"ce préfet qui roule des mécaniques\". En revanche, le haut fonctionnaire entretient de bonnes relations avec Eric Ciotti, alors député LR du département, qui ralliera le RN en juin 2024, et qui loue dans son livre \"un homme, précis, rigoureux, concentré\" et \"courageux\".\nAu mois d'avril 2025, Hugues Moutouh quitte la Côte d'Azur. Bruno Retailleau en fait son numéro 2 place Beauvau : il le nomme secrétaire général du ministère de l'Intérieur. Un poste stratégique, sorte de tour de contrôle de cette administration. Mais en octobre de la même année, le président des Républicains claque la porte du gouvernement de Sébastien Lecornu. Il est remplacé par Laurent Nuñez.\n\"Cela arrive que des secrétaires généraux soient maintenus au fil des remaniements, mais lui était trop proche de Bruno Retailleau, or c'était important pour Laurent Nuñez de nommer quelqu'un de loyal à ce poste.\"\nEn mai 2026, Hugues Moutouh fait donc ses cartons et quitte la place Beauvau, après sa nomination comme préfet de la région Centre-Val de Loire. \"Ce n'est pas une punition, c'est même une promotion\", nuance une source ministérielle.\nC'est lorsqu'il occupait cette fonction-clé de secrétaire général à Beauvau que les enquêteurs de l'Inspection générale de la police nationale (IGPN) le soupçonnent d'avoir transmis des informations confidentielles au RN sur des enquêtes concernant le parti d'extrême droite. \"Si les faits sont avérés, ils sont évidemment très graves\", \"cela jetterait le discrédit sur le ministère de l'Intérieur\", a affirmé sur BFMTV Laurent Nuñez, qui l'a convoqué vendredi pour avoir des explications. \"J'ai besoin de l'entendre, d'écouter ce qu'il a à me dire. Ma main n'a jamais tremblé [quand] il y avait des décisions à prendre, croyez-le bien\", a-t-il ajouté.\nAu RN, on évoque du qu'en-dira-t-on. \"Pour le moment, ce sont des rumeurs et des accusations sans fondement en pleine campagne électorale où le Rassemblement national est le principal parti d'opposition\", a déclaré sur France Inter le député RN de la Somme, Jean-Philippe Tanguy, précisant \"n'avoir aucune information sur cette affaire\". \"A ma connaissance, Hugues Moutouh ne travaillait absolument pas pour nous, je ne l'ai jamais vu dans quelque réunion que ce soit\", assure à franceinfo Jean-Paul Garraud, eurodéputé RN, qui salue \"un grand serviteur de l'Etat\".\n\"Il a une excellente réputation dans le corps préfectoral, ses compétences ont toujours été reconnues.\"\nEn tant que préfet de la région Ce"
      },
      {
-      "titre": "REPLAY. \"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html",
-      "etat": "lu",
-      "texte": "Pour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nLe nouvel opus de \"Grand Theft Auto\" est devenu un événement planétaire. Mais pour quelles raisons ? Quelle est la recette du succès de la franchise ?\nTreize ans qu'ils l'attendaient... Des millions de joueurs qui comptent les heures, des bandes-annonces visionnées des centaines de millions de fois, des villes parées des couleurs du jeu… Le lancement, jeudi 19 novembre, du nouvel opus de Grand Theft Auto a pris des allures d'événement planétaire.\n\"Je n'ai jamais joué à un jeu aussi marquant\" : le jeu vidéo \"GTA VI\" reçoit les éloges de la presse spécialisée du monde entier\nMais comment expliquer une telle fascination ? Né en Ecosse à la fin des années 1990, GTA est devenu l'une des franchises les plus lucratives de l'histoire du jeu vidéo. Une machine économique colossale, mais aussi une œuvre qui fait débat. Car derrière les courses-poursuites et les braquages dans un décor hyperréaliste inspiré de la pop culture, GTA VI livre une satire de la société américaine. Sa violence, son rapport aux femmes et l'arrivée d'une héroïne au premier plan divisent autant qu'ils fascinent. Notre grand format revient sur l'histoire (et le succès) de ce phénomène culturel.\nUn document de franceinfo, réalisé par Guillaume Lavialle et Emiliano Jarlot, diffusé à partir de vendredi 20 novembre, à 20h40.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nA Bergerac, une école adopte le nom d’Irène Sapir, communiste et rescapée de la Rafle du Vel’ d’Hiv’\nDes images révélées par Mediapart et Le media montrent Gérard Depardieu toucher l’entrejambe d’une figurante.\n\"Nos déviances d’adultes sont souvent nos petits traumatismes d’enfance\"\nGTA VI, le phénomène mondial le plus cher de l'histoire du jeu vidéo\nDans l'atelier de Li Shuang, pionnière de l'art contemporain en Chine\nGérard Depardieu renonce à son procès en appel pour deux agressions sexuelles lors d'un tournage\nMichel Houllebecq mis en examen pour des propos sur le \"grand remplacement\" et les musulmans\n“Pour les hommes, les rêves, les objectifs, c’est indispensable” - Dali Benssalah, comédien\n\"On ne lâche pas facilement une carte comme ça\" : pourquoi Christophe Gleizes est-il toujours détenu en Algérie ?\nDidier Bourdon : \"C’est sympa de jouer les gens pitoyables !\"\nPhilippe Jaenada lauréat du prix Goncourt 2026 pour \"L'Inconnue du quai de Javel\"\nUne chanson peut changer une situation, mais peut-être pas le monde !\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nMusique, cinéma, arts & expos, littérature & BD, mode… Tous les jours, le meilleur de l’actualité culturelle\nMusique, cinéma, arts & expos, littérature & BD, mode… Tous les jours, le meilleur de l’actualité culturelle\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Culture\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscrire de ces newsletters à tout moment via le lien en bas de ces newsletters."
+      "titre": "Hugues Moutouh, le préfet soupçonné de fuites d’informations confidentielles vers le RN, a demandé à être relevé de ses fonctions",
+      "media": "Le Monde",
+      "url": "https://www.lemonde.fr/societe/article/2026/11/21/hugues-moutouh-le-prefet-soupconne-de-fuites-d-informations-confidentielles-vers-le-rn-a-demande-a-etre-releve-de-ses-fonctions_6814056_3224.html",
+      "etat": "illisible (HTTP 402)"
      }
     ],
     "tendances": {
@@ -164,9 +100,19 @@
        "page": "https://fr.wikipedia.org/wiki/Hugues_Moutouh",
        "titres_de_presse": [
         {
+         "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
+         "media": "franceinfo",
+         "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html"
+        },
+        {
          "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
          "media": "franceinfo",
          "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html"
+        },
+        {
+         "titre": "Hugues Moutouh, le préfet soupçonné de fuites d’informations confidentielles vers le RN, a demandé à être relevé de ses fonctions",
+         "media": "Le Monde",
+         "url": "https://www.lemonde.fr/societe/article/2026/11/21/hugues-moutouh-le-prefet-soupconne-de-fuites-d-informations-confidentielles-vers-le-rn-a-demande-a-etre-releve-de-ses-fonctions_6814056_3224.html"
         }
        ]
       },
@@ -176,29 +122,6 @@
        "rang_wikipedia": 4,
        "page": "https://fr.wikipedia.org/wiki/David_Habib",
        "titres_de_presse": []
-      },
-      {
-       "sujet": "Grand Theft Auto VI",
-       "langue": "fr",
-       "rang_wikipedia": 6,
-       "page": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto_VI",
-       "titres_de_presse": [
-        {
-         "titre": "GTA VI : pourquoi la disparition des jeux vidéo sur disque inquiète les joueurs",
-         "media": "franceinfo Culture",
-         "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html"
-        },
-        {
-         "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
-         "media": "franceinfo Culture",
-         "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html"
-        },
-        {
-         "titre": "REPLAY. \"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers",
-         "media": "franceinfo Culture",
-         "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html"
-        }
-       ]
       },
       {
        "sujet": "Michael Jackson",
@@ -247,7 +170,13 @@
        "langue": "fr",
        "rang_wikipedia": 13,
        "page": "https://fr.wikipedia.org/wiki/David_Lisnard",
-       "titres_de_presse": []
+       "titres_de_presse": [
+        {
+         "titre": "Présidentielle 2027 : les équipes de Gabriel Attal, Bruno Retailleau et David Lisnard se réuniront jeudi pour évoquer la primaire de la droite et du centre",
+         "media": "franceinfo",
+         "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
+        }
+       ]
       },
       {
        "sujet": "General Sherman (arbre)",
@@ -271,34 +200,6 @@
        "titres_de_presse": []
       },
       {
-       "sujet": "Grand Theft Auto",
-       "langue": "fr",
-       "rang_wikipedia": 17,
-       "page": "https://fr.wikipedia.org/wiki/Grand_Theft_Auto",
-       "titres_de_presse": [
-        {
-         "titre": "GTA VI : pourquoi la disparition des jeux vidéo sur disque inquiète les joueurs",
-         "media": "franceinfo Culture",
-         "url": "https://www.franceinfo.fr/replay-radio/nouveau-monde/gta-vi-pourquoi-la-disparition-des-jeux-video-sur-disque-inquiete-les-joueurs_8271692.html"
-        },
-        {
-         "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
-         "media": "franceinfo Culture",
-         "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html"
-        },
-        {
-         "titre": "REPLAY. \"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers",
-         "media": "franceinfo Culture",
-         "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html"
-        },
-        {
-         "titre": "GTA 6 : Les ventes atteignent un record de 3,79 milliards de dollars en 24 heures",
-         "media": "20 Minutes",
-         "url": "https://www.20minutes.fr/gaming/jeux_video/4264602-20261120-gta-6-ventes-atteignent-record-3-79-milliards-dollars-24-heures"
-        }
-       ]
-      },
-      {
        "sujet": "Hunger Games (série de films)",
        "langue": "fr",
        "rang_wikipedia": 18,
@@ -318,7 +219,7 @@
        "page": "https://fr.wikipedia.org/wiki/Aliocha_Schneider",
        "titres_de_presse": [
         {
-         "titre": "Zelensky says Crimean Bridge strikes 'fair response' as he meets UK's Streeting",
+         "titre": "Zelensky says Crimean Bridge strikes 'fair response' as he meets Wes Streeting",
          "media": "BBC News",
          "url": "https://www.bbc.co.uk/news/articles/c6wy0qj7w5zqo"
         },
@@ -383,13 +284,43 @@
        "rang_wikipedia": 26,
        "page": "https://fr.wikipedia.org/wiki/Philosophie_de_l%27esprit",
        "titres_de_presse": []
+      },
+      {
+       "sujet": "Sylvain Durif",
+       "langue": "fr",
+       "rang_wikipedia": 27,
+       "page": "https://fr.wikipedia.org/wiki/Sylvain_Durif",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Hunger Games : Lever de soleil sur la moisson (film)",
+       "langue": "fr",
+       "rang_wikipedia": 28,
+       "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_Lever_de_soleil_sur_la_moisson_%28film%29",
+       "titres_de_presse": [
+        {
+         "titre": "\"Jupiter\", \"Hunger Games\", \"Gabin\"... Quels sont les films à voir (ou pas) cette semaine au cinéma ?",
+         "media": "franceinfo Culture",
+         "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/jupiter-hunger-games-gabin-quels-sont-les-films-a-voir-ou-pas-cette-semaine-au-cinema_8290559.html"
+        }
+       ]
       }
      ],
      "presse_grand_public": [
       {
-       "titre": "Mobilisation du 21 novembre : une quarantaine de rassemblements recensés par le ministère de l'Intérieur en début d'après-midi",
+       "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html"
+       "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html"
+      },
+      {
+       "titre": "La mobilisation du 21 novembre a rassemblé 82 500 manifestants dans l'Hexagone selon le ministère de l'Intérieur, 150 000 selon la CGT",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/societe/manifestations/mobilisation-du-21-novembre-82-500-personnes-ont-manifeste-dans-l-hexagone-selon-le-ministere-de-l-interieur-150-000-selon-la-cgt_8294093.html"
+      },
+      {
+       "titre": "François Ruffin retire sa candidature à l'élection présidentielle et souhaite \"bonne campagne\" aux \"candidats de gauche encore en lice\"",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/elections/francois-ruffin-retire-sa-candidature-a-l-election-presidentielle-et-souhaite-bonne-campagne-aux-candidats-de-gauche-encore-en-lice_8294003.html"
       },
       {
        "titre": "Nombre de tirs, enquêtes, lien de confiance... Les questions que pose la loi sur la présomption d'usage légal des armes par les forces de l'ordre",
@@ -397,24 +328,29 @@
        "url": "https://www.franceinfo.fr/faits-divers/police/nombre-de-tirs-enquetes-lien-de-confiance-les-questions-que-pose-la-loi-sur-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8293529.html"
       },
       {
-       "titre": "Présidentielle 2027 : \"Je serai le candidat de la liberté de penser, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting",
-       "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
-      },
-      {
        "titre": "Mobilité des jeunes, commerce, quotas d'émissions carbone… Ce que prévoient les accords conclus entre le Royaume-Uni et l'Union européenne",
        "media": "franceinfo",
        "url": "https://www.franceinfo.fr/monde/royaume-uni/mobilite-des-jeunes-commerce-quotas-d-emissions-carbone-ce-que-prevoient-les-accords-conclus-entre-le-royaume-uni-et-l-union-europeenne_8293715.html"
       },
       {
-       "titre": "\"J'ai fait une formation à 250 personnes\" : à Paris, les formations de street medics attirent de plus en plus de militants",
+       "titre": "\"Blessure grave\" pour Désiré Doué, touché au genou droit avec le PSG et sorti sur civière face à Nice en Ligue 1",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/societe/manifestations/j-ai-fait-une-formation-a-250-personnes-a-paris-les-formations-de-street-medics-attirent-de-plus-en-plus-de-militants_8293769.html"
+       "url": "https://www.franceinfo.fr/sports/foot/ligue-1/grosse-inquietude-pour-desire-doue-blesse-au-genou-droit-avec-le-psg-et-sorti-sur-civiere-face-a-nice-en-ligue-1_8294027.html"
+      },
+      {
+       "titre": "Écosse : un Français qui voulait s'assoir sur une relique royale ancestrale exposée à Perth plaide coupable pour des faits de dégradation volontaire",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/culture/patrimoine/ecosse-un-francais-qui-voulait-s-assoir-sur-une-relique-royale-ancestrale-exposee-a-perth-plaide-coupable-pour-des-faits-de-degradation-volontaire_8293961.html"
       },
       {
        "titre": "Les Etats-Unis déclassifient de nouveaux documents concernant des ovnis et des phénomènes \"anormaux\"",
        "media": "franceinfo",
        "url": "https://www.franceinfo.fr/monde/usa/les-etats-unis-declassifient-de-nouveaux-documents-concernant-des-ovnis-et-des-phenomenes-anormaux_8293832.html"
+      },
+      {
+       "titre": "\"Les explosions ont secoué la mer autour de moi\" : le Britannique Lewis Pugh a nagé dans le détroit d'Ormuz pour alerter sur l'impact environnemental de la guerre",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/moyen-orient/les-explosions-ont-secoue-la-mer-autour-de-moi-un-britannique-a-traverse-le-detroit-d-ormuz-pour-alerter-sur-l-impact-environnemental-de-la-guerre_8293931.html"
       },
       {
        "titre": "La Finlande soupçonne un hélicoptère russe d'avoir violé son espace aérien",
@@ -487,49 +423,44 @@
        "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html"
       },
       {
-       "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
-       "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html"
-      },
-      {
        "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
        "media": "franceinfo",
        "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html"
       },
       {
-       "titre": "L'Américain Jimmy Connors, ancien numéro 1 mondial de tennis, souffre d'un cancer de l'oreille",
+       "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/sports/tennis/l-americain-jimmy-connors-ancien-numero-1-mondial-souffre-d-un-cancer-de-l-oreille_8293604.html"
+       "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html"
       },
       {
-       "titre": "\"My Rock Stars\" : le photographe Hassan Hajjaj immortalise ses stars de la musique",
+       "titre": "Préfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/culture/arts-expos/en-images-my-rock-stars-le-photographehassan-hajjaj-immortalise-ses-stars-de-la-musique_8289029.html"
+       "url": "https://www.franceinfo.fr/france/centre-val-de-loire/loiret/prefet-soupconne-de-fuites-vers-le-rn-il-doit-etre-mis-a-pied-estime-la-depute-ecologiste-sandrine-rousseau_8293574.html"
       },
       {
-       "titre": "Des syndicats de sept pays européens appellent à des \"manifestations coordonnées\" contre la vie chère vendredi, samedi et dimanche",
+       "titre": "\"On n'attendra pas l'élection présidentielle, on veut que la vie des gens s'améliore maintenant\", pointe le secrétaire confédéral de la CGT",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/societe/manifestations/des-syndicats-de-sept-pays-europeens-appellent-a-des-manifestations-coordonnees-contre-la-vie-chere-vendredi-samedi-et-dimanche_8292320.html"
+       "url": "https://www.franceinfo.fr/societe/on-n-attendra-pas-l-election-presidentielle-on-veut-que-la-vie-des-gens-s-ameliore-maintenant-pointe-le-secretaire-confederal-de-la-cgt_8294036.html"
       },
       {
-       "titre": "Des manifestations contre les violences faites aux femmes organisées durant une semaine en France",
+       "titre": "Mobilisation du 21 novembre : le ministère de l'Intérieur annonce 144 interpellations en France, selon un bilan provisoire à 18 heures",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/societe/harcelement-sexuel/des-manifestations-contre-les-violences-sexistes-organisees-durant-une-semaine-en-france_8293745.html"
+       "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html"
       },
       {
-       "titre": "Le Parlement adopte définitivement la présomption d'usage légal des armes par les forces de l'ordre",
+       "titre": "Présidentielle 2027 : les équipes de Gabriel Attal, Bruno Retailleau et David Lisnard se réuniront jeudi pour évoquer la primaire de la droite et du centre",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/faits-divers/police/le-parlement-adopte-definitivement-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8292845.html"
+       "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
       },
       {
-       "titre": "Présomption d’usage légal des armes par les forces de l’ordre : \"Ce n'est en aucun cas un permis de tuer\", estime le syndicat Unsa Police",
+       "titre": "\"Je serai le candidat de la liberté de pensée, de parler, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting de campagne présidentielle",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/faits-divers/police/presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre-ce-n-est-en-aucun-cas-un-permis-de-tuer-estime-le-syndicat-unsa-police_8293457.html"
+       "url": "https://www.franceinfo.fr/elections/je-serai-le-candidat-de-la-liberte-de-pensee-de-parler-de-dire-ce-que-vous-voyez-clame-eric-zemmour-lors-de-son-premier-meeting-de-campagne-presidentielle_8294024.html"
       },
       {
-       "titre": "\"Elle va apporter son capital popularité\" : quel sera le rôle de Sarah Knafo auprès d'Eric Zemmour dans la campagne pour la présidentielle ?",
-       "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/elections/presidentielle/candidats/elle-va-apporter-son-capital-popularite-quel-sera-le-role-de-sarah-knafo-aupres-d-eric-zemmour-dans-la-campagne-pour-la-presidentielle_8269433.html"
+       "titre": "TeddyBear chante les médicaments qui aident à vivre",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/replay-radio/ces-chansons-qui-font-l-actu/teddybear-chante-les-medicaments-qui-aident-a-vivre_8271701.html"
       },
       {
        "titre": "\"Eldorado\" : l'affaire des avions renifleurs en série",
@@ -575,23 +506,20 @@
        "titre": "\"Jupiter\" : huis clos tendu et efficace sous menace nucléaire",
        "media": "franceinfo Culture",
        "url": "https://www.franceinfo.fr/replay-radio/les-experts-cinema/jupiter-huis-clos-tendu-et-efficace-sous-menace-nucleaire_8271713.html"
-      },
-      {
-       "titre": "Pourquoi écoute-t-on des chansons des tristes quand on est triste ?",
-       "media": "franceinfo Culture",
-       "url": "https://www.franceinfo.fr/replay-radio/c-est-ma-sante/pourquoi-ecoute-t-on-des-chansons-des-tristes-quand-on-est-triste_8271695.html"
-      },
-      {
-       "titre": "\"Jupiter\", \"Hunger Games\", \"Gabin\"... Quels sont les films à voir (ou pas) cette semaine au cinéma ?",
-       "media": "franceinfo Culture",
-       "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/jupiter-hunger-games-gabin-quels-sont-les-films-a-voir-ou-pas-cette-semaine-au-cinema_8290559.html"
       }
+     ],
+     "deja_en_ligne": [
+      "GTA VI sort aujourd'hui. Est-il vraiment à vous ?",
+      "22 ans pour télécharger GTA VI. La fracture numérique en une capture.",
+      "Une peluche affole la planète. Les robots achètent avant vous.",
+      "L'Espagne s'éteint à 12 h 33. Plus moyen de payer son pain.",
+      "Activez la double authentification sur votre compte de jeu."
      ]
     }
    },
-   "alertes_charte": [],
-   "statut": "publie",
-   "publie_le": "2026-11-21T17:49:15+00:00"
+   "alertes_charte": [
+    "Article non lu (illisible (HTTP 402)) : https://www.lemonde.fr/societe/article/2026/11/21/hugues-moutouh-le-prefet-soupconne-de-fuites-d-informations-confidentielles-vers-le-rn-a-demande-a-etre-releve-de-ses-fonctions_6814056_3224.html — vérifier à la main ce qui en vient."
+   ]
   }
  ],
  "reserve_une": [],
@@ -602,7 +530,7 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 150
+   "nombre": 152
   },
   "Détour (flux RSS)": {
    "etat": "ok",
@@ -610,12 +538,6 @@
   }
  },
  "journal_redacteur": [
-  {
-   "service": "Groq",
-   "modele": "openai/gpt-oss-120b",
-   "rubrique": "une",
-   "resultat": "ok"
-  },
   {
    "service": "Groq",
    "modele": "openai/gpt-oss-120b",

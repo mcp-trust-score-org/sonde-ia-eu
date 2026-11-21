@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T17:20:55+00:00",
+ "genere_le": "2026-11-21T19:59:39+00:00",
  "sources": {
   "Wikipédia": {
    "etat": "ok",
@@ -7,7 +7,7 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 150
+   "nombre": 152
   },
   "Détour (flux RSS)": {
    "etat": "ok",
@@ -16,13 +16,13 @@
  },
  "flux": {
   "Presse grand public (flux RSS)": {
-   "franceinfo": "ok (29)",
-   "franceinfo Culture": "ok (18)",
-   "franceinfo Internet": "ok (17)",
+   "franceinfo": "ok (30)",
+   "franceinfo Culture": "ok (17)",
+   "franceinfo Internet": "ok (15)",
    "20 Minutes": "ok (27)",
    "Le Monde": "ok (16)",
    "France 24": "ok (24)",
-   "BBC News": "ok (19)"
+   "BBC News": "ok (23)"
   },
   "Détour (flux RSS)": {
    "Next": "ok (50)",
@@ -582,10 +582,26 @@
  "presse": [
   {
    "media": "franceinfo",
-   "titre": "Mobilisation du 21 novembre : une quarantaine de rassemblements recensés par le ministère de l'Intérieur en début d'après-midi",
-   "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html",
-   "date": "2026-11-21T16:54+00:00",
+   "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
+   "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html",
+   "date": "2026-11-21T18:40+00:00",
+   "resume": "\"Je refuse que l’Etat, le ministère de l'Intérieur et le corps préfectoral deviennent les cibles ou les instruments de ces entreprises de déstabilisation\", a déclaré samedi le haut fonctionnaire dans un communiqué.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "La mobilisation du 21 novembre a rassemblé 82 500 manifestants dans l'Hexagone selon le ministère de l'Intérieur, 150 000 selon la CGT",
+   "url": "https://www.franceinfo.fr/societe/manifestations/mobilisation-du-21-novembre-82-500-personnes-ont-manifeste-dans-l-hexagone-selon-le-ministere-de-l-interieur-150-000-selon-la-cgt_8294093.html",
+   "date": "2026-11-21T19:23+00:00",
    "resume": "Cette journée de mobilisation s'est inscrite dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "François Ruffin retire sa candidature à l'élection présidentielle et souhaite \"bonne campagne\" aux \"candidats de gauche encore en lice\"",
+   "url": "https://www.franceinfo.fr/elections/francois-ruffin-retire-sa-candidature-a-l-election-presidentielle-et-souhaite-bonne-campagne-aux-candidats-de-gauche-encore-en-lice_8294003.html",
+   "date": "2026-11-21T17:56+00:00",
+   "resume": "Dans un communiqué posté sur le réseau social X, le député a déclaré samedi qu'il prenait \"acte de l'impasse\" de sa campagne, faute d'avoir réussi à imposer l'organisation d'une \"grande primaire\" de toute la gauche.",
    "langue": "français"
   },
   {
@@ -598,14 +614,6 @@
   },
   {
    "media": "franceinfo",
-   "titre": "Présidentielle 2027 : \"Je serai le candidat de la liberté de penser, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting",
-   "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html",
-   "date": "2026-11-21T17:15+00:00",
-   "resume": "Le rassemblement qui a débuté à 15h30 au Zénith de Toulon lance la campagne officielle du candidat de Reconquête, accompagné de l'eurodéputée Sarah Knafo.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
    "titre": "Mobilité des jeunes, commerce, quotas d'émissions carbone… Ce que prévoient les accords conclus entre le Royaume-Uni et l'Union européenne",
    "url": "https://www.franceinfo.fr/monde/royaume-uni/mobilite-des-jeunes-commerce-quotas-d-emissions-carbone-ce-que-prevoient-les-accords-conclus-entre-le-royaume-uni-et-l-union-europeenne_8293715.html",
    "date": "2026-11-21T16:48+00:00",
@@ -614,25 +622,41 @@
   },
   {
    "media": "franceinfo",
-   "titre": "\"J'ai fait une formation à 250 personnes\" : à Paris, les formations de street medics attirent de plus en plus de militants",
-   "url": "https://www.franceinfo.fr/societe/manifestations/j-ai-fait-une-formation-a-250-personnes-a-paris-les-formations-de-street-medics-attirent-de-plus-en-plus-de-militants_8293769.html",
-   "date": "2026-11-21T14:33+00:00",
-   "resume": "En deux heures, les participants apprennent notamment à réagir face aux effets des gaz lacrymogènes, mais les formateurs insistent aussi sur les limites de leur rôle : les street medics ne sont pas des secouristes.",
+   "titre": "\"Blessure grave\" pour Désiré Doué, touché au genou droit avec le PSG et sorti sur civière face à Nice en Ligue 1",
+   "url": "https://www.franceinfo.fr/sports/foot/ligue-1/grosse-inquietude-pour-desire-doue-blesse-au-genou-droit-avec-le-psg-et-sorti-sur-civiere-face-a-nice-en-ligue-1_8294027.html",
+   "date": "2026-11-21T17:42+00:00",
+   "resume": "L'attaquant international français est sorti sur civière à la 44e minute, samedi à Nice, après un mauvais appui suite auquel Désiré Doué s'est immédiatement tenu le genou.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "Écosse : un Français qui voulait s'assoir sur une relique royale ancestrale exposée à Perth plaide coupable pour des faits de dégradation volontaire",
+   "url": "https://www.franceinfo.fr/culture/patrimoine/ecosse-un-francais-qui-voulait-s-assoir-sur-une-relique-royale-ancestrale-exposee-a-perth-plaide-coupable-pour-des-faits-de-degradation-volontaire_8293961.html",
+   "date": "2026-11-21T17:18+00:00",
+   "resume": "En 2025, cet homme de 36 ans avait attaqué à coups de marteau une vitrine contenant la \"Pierre du Destin\", un bloc de grès utilisé lors du couronnement des rois en Écosse. Il sera fixé sur son sort le 6 janvier.",
    "langue": "français"
   },
   {
    "media": "franceinfo",
    "titre": "Les Etats-Unis déclassifient de nouveaux documents concernant des ovnis et des phénomènes \"anormaux\"",
    "url": "https://www.franceinfo.fr/monde/usa/les-etats-unis-declassifient-de-nouveaux-documents-concernant-des-ovnis-et-des-phenomenes-anormaux_8293832.html",
-   "date": "2026-11-21T15:46+00:00",
+   "date": "2026-11-21T18:12+00:00",
    "resume": "Parmi cette quarantaine de documents figurent des extraits filmés sur des plateformes militaires américaines au Moyen-Orient.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "\"Les explosions ont secoué la mer autour de moi\" : le Britannique Lewis Pugh a nagé dans le détroit d'Ormuz pour alerter sur l'impact environnemental de la guerre",
+   "url": "https://www.franceinfo.fr/monde/moyen-orient/les-explosions-ont-secoue-la-mer-autour-de-moi-un-britannique-a-traverse-le-detroit-d-ormuz-pour-alerter-sur-l-impact-environnemental-de-la-guerre_8293931.html",
+   "date": "2026-11-21T18:05+00:00",
+   "resume": "Sur des photos publiées sur les réseaux sociaux par le sportif, figure notamment un navire en feu, vraisemblablement après une attaque survenue dans cette zone au cœur de la guerre qui oppose l'Iran et les Etats-Unis depuis février.",
    "langue": "français"
   },
   {
    "media": "franceinfo",
    "titre": "La Finlande soupçonne un hélicoptère russe d'avoir violé son espace aérien",
    "url": "https://www.franceinfo.fr/monde/russie/la-finlande-soupconne-un-helicoptere-russe-d-avoir-viole-son-espace-aerien_8293799.html",
-   "date": "2026-11-21T14:37+00:00",
+   "date": "2026-11-21T18:36+00:00",
    "resume": "L'appareil a pénétré jusqu'à 4,1 km à l'intérieur du territoire finlandais, a précisé le ministère de la Défense.",
    "langue": "français"
   },
@@ -649,7 +673,7 @@
    "titre": "Paolo Bulgari, le petit-fils du fondateur de la fameuse marque de joaillerie, est mort à l'âge de 89 ans",
    "url": "https://www.franceinfo.fr/culture/mode/paolo-bulgari-le-petit-fils-du-fondateur-de-la-fameuse-marque-de-joaillerie-est-mort-a-l-age-de-89-ans_8293886.html",
    "date": "2026-11-21T16:15+00:00",
-   "resume": "Le groupe de luxe LVMH, propriétaire de la marque,rend hommage à \"l'âme créative\" de cet expert en pierres précieuses aux commandes de l'entreprise familiale depuis 42 ans.",
+   "resume": "Le groupe de luxe LVMH, propriétaire de la marque, rend hommage à \"l'âme créative\" de cet expert en pierres précieuses aux commandes de l'entreprise familiale depuis 42 ans.",
    "langue": "français"
   },
   {
@@ -742,14 +766,6 @@
   },
   {
    "media": "franceinfo",
-   "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
-   "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html",
-   "date": "2026-11-21T10:08+00:00",
-   "resume": "Le haut fonctionnaire, qui a été le numéro deux du ministère de l'Intérieur entre avril 2025 et mai 2026, a été convoqué vendredi par Laurent Nuñez après l'ouverture d'une enquête pour \"violation du secret professionnel, violation du secret de l'enquête et recel de ces délits\".",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
    "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
    "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html",
    "date": "2026-11-21T11:59+00:00",
@@ -758,58 +774,58 @@
   },
   {
    "media": "franceinfo",
-   "titre": "L'Américain Jimmy Connors, ancien numéro 1 mondial de tennis, souffre d'un cancer de l'oreille",
-   "url": "https://www.franceinfo.fr/sports/tennis/l-americain-jimmy-connors-ancien-numero-1-mondial-souffre-d-un-cancer-de-l-oreille_8293604.html",
-   "date": "2026-11-21T11:10+00:00",
-   "resume": "Le vainqueur de huit tournois du Grand Chelem a assuré que \"tout allait bien\". Il a aussi ajouté qu'il devait encore subir une intervention de reconstruction.",
+   "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
+   "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html",
+   "date": "2026-11-21T10:08+00:00",
+   "resume": "Le haut fonctionnaire, qui a été le numéro deux du ministère de l'Intérieur entre avril 2025 et mai 2026, a été convoqué vendredi par Laurent Nuñez après l'ouverture d'une enquête pour \"violation du secret professionnel, violation du secret de l'enquête et recel de ces délits\".",
    "langue": "français"
   },
   {
    "media": "franceinfo",
-   "titre": "\"My Rock Stars\" : le photographe Hassan Hajjaj immortalise ses stars de la musique",
-   "url": "https://www.franceinfo.fr/culture/arts-expos/en-images-my-rock-stars-le-photographehassan-hajjaj-immortalise-ses-stars-de-la-musique_8289029.html",
-   "date": "2026-11-21T13:21+00:00",
-   "resume": "Au Musée de la musique à Paris, c'est l'histoire familiale du photographe, son inclination pour la musique gnawa et son attirance pour les musiciens en général que l'on découvre dans l'exposition qui lui est consacrée jusqu'en avril 2027.",
+   "titre": "Préfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau",
+   "url": "https://www.franceinfo.fr/france/centre-val-de-loire/loiret/prefet-soupconne-de-fuites-vers-le-rn-il-doit-etre-mis-a-pied-estime-la-depute-ecologiste-sandrine-rousseau_8293574.html",
+   "date": "2026-11-21T09:51+00:00",
+   "resume": "Sandrine Rousseau appelle le ministre de l'Intérieur Laurent Nuñez à mettre à pied “immédiatement” le préfet du Loiret Hugues Moutouh, accusé d’avoir organisé des fuites depuis le ministère de l’Intérieur vers le Rassemblement national. La députée écologiste était l’invitée de franceinfo, samedi 21 novembre.",
    "langue": "français"
   },
   {
    "media": "franceinfo",
-   "titre": "Des syndicats de sept pays européens appellent à des \"manifestations coordonnées\" contre la vie chère vendredi, samedi et dimanche",
-   "url": "https://www.franceinfo.fr/societe/manifestations/des-syndicats-de-sept-pays-europeens-appellent-a-des-manifestations-coordonnees-contre-la-vie-chere-vendredi-samedi-et-dimanche_8292320.html",
-   "date": "2026-11-21T06:17+00:00",
-   "resume": "Les principales revendications des cortèges qui s'élanceront durant le week-end concernent la \"garantie du droit au logement\" et \"le contrôle des prix du logement, de l'alimentation et de l'énergie\".",
+   "titre": "\"On n'attendra pas l'élection présidentielle, on veut que la vie des gens s'améliore maintenant\", pointe le secrétaire confédéral de la CGT",
+   "url": "https://www.franceinfo.fr/societe/on-n-attendra-pas-l-election-presidentielle-on-veut-que-la-vie-des-gens-s-ameliore-maintenant-pointe-le-secretaire-confederal-de-la-cgt_8294036.html",
+   "date": "2026-11-21T17:55+00:00",
+   "resume": "Alors que des dizaines de milliers de personnes ont encore manifesté dans les rues samedi, la CGT appelle à maintenir la pression sur le gouvernement pour obtenir, notamment, des hausses de salaires.",
    "langue": "français"
   },
   {
    "media": "franceinfo",
-   "titre": "Des manifestations contre les violences faites aux femmes organisées durant une semaine en France",
-   "url": "https://www.franceinfo.fr/societe/harcelement-sexuel/des-manifestations-contre-les-violences-sexistes-organisees-durant-une-semaine-en-france_8293745.html",
-   "date": "2026-11-21T14:49+00:00",
-   "resume": "Des dizaines d'associations féministes et de syndicats appellent à participer aux rassemblements, qui se tiennent cette année dans un contexte inédit, marqué par une forte mobilisation sociale pour défendre le pouvoir d'achat et les services publics.",
+   "titre": "Mobilisation du 21 novembre : le ministère de l'Intérieur annonce 144 interpellations en France, selon un bilan provisoire à 18 heures",
+   "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html",
+   "date": "2026-11-21T19:38+00:00",
+   "resume": "Cette journée de mobilisation s'est inscrite dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
    "langue": "français"
   },
   {
    "media": "franceinfo",
-   "titre": "Le Parlement adopte définitivement la présomption d'usage légal des armes par les forces de l'ordre",
-   "url": "https://www.franceinfo.fr/faits-divers/police/le-parlement-adopte-definitivement-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8292845.html",
-   "date": "2026-11-20T19:26+00:00",
-   "resume": "La proposition de loi, soutenue par le centre, la droite et l'extrême droite, a été adoptée à 205 voix pour et 110 contre au Sénat.",
+   "titre": "Présidentielle 2027 : les équipes de Gabriel Attal, Bruno Retailleau et David Lisnard se réuniront jeudi pour évoquer la primaire de la droite et du centre",
+   "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html",
+   "date": "2026-11-21T17:46+00:00",
+   "resume": "Les directeurs de campagne des trois candidats poursuivront les discussions sur les modalités techniques de ce scrutin, a appris franceinfo auprès de l’entourage de Gabriel Attal, confirmant une information du \"Figaro\".",
    "langue": "français"
   },
   {
    "media": "franceinfo",
-   "titre": "Présomption d’usage légal des armes par les forces de l’ordre : \"Ce n'est en aucun cas un permis de tuer\", estime le syndicat Unsa Police",
-   "url": "https://www.franceinfo.fr/faits-divers/police/presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre-ce-n-est-en-aucun-cas-un-permis-de-tuer-estime-le-syndicat-unsa-police_8293457.html",
-   "date": "2026-11-21T07:03+00:00",
-   "resume": "\"Ce n'est en aucun cas un permis de tuer\", explique ce samedi sur franceinfo, Rudy Manna, délégué national du syndicat Unsa Police au sujet de la présomption d’usage légal des armes par les forces de l’ordre qui a été définitivement adoptée vendredi soir par le Parlement. \"Ce n'est pas une présomption générale de légitime défense\", assure-t-il.",
+   "titre": "\"Je serai le candidat de la liberté de pensée, de parler, de dire ce que vous voyez\", clame Eric Zemmour lors de son premier meeting de campagne présidentielle",
+   "url": "https://www.franceinfo.fr/elections/je-serai-le-candidat-de-la-liberte-de-pensee-de-parler-de-dire-ce-que-vous-voyez-clame-eric-zemmour-lors-de-son-premier-meeting-de-campagne-presidentielle_8294024.html",
+   "date": "2026-11-21T18:59+00:00",
+   "resume": "Le président du parti d'extrême droite s'est exprimé devant ses partisans au Zenith de Toulon.",
    "langue": "français"
   },
   {
-   "media": "franceinfo",
-   "titre": "\"Elle va apporter son capital popularité\" : quel sera le rôle de Sarah Knafo auprès d'Eric Zemmour dans la campagne pour la présidentielle ?",
-   "url": "https://www.franceinfo.fr/elections/presidentielle/candidats/elle-va-apporter-son-capital-popularite-quel-sera-le-role-de-sarah-knafo-aupres-d-eric-zemmour-dans-la-campagne-pour-la-presidentielle_8269433.html",
-   "date": "2026-11-21T09:20+00:00",
-   "resume": "Le président de Reconquête a officialisé sa candidature à l'Elysée. Concurrencé par l'émergence à droite de David Lisnard, il aura besoin de l'aide de sa compagne Sara Knafo, très populaire au sein du mouvement.",
+   "media": "franceinfo Culture",
+   "titre": "TeddyBear chante les médicaments qui aident à vivre",
+   "url": "https://www.franceinfo.fr/replay-radio/ces-chansons-qui-font-l-actu/teddybear-chante-les-medicaments-qui-aident-a-vivre_8271701.html",
+   "date": "2026-11-21T17:30+00:00",
+   "resume": "Dans \"Les Monstres\", un titre de son premier album, qui vient de sortir, le chanteur belge évoque les pilules et cachets qui aident à affronter les peurs et les angoisses de chacun. Il ajoute à une tradition abondante...",
    "langue": "français"
   },
   {
@@ -941,22 +957,6 @@
    "langue": "français"
   },
   {
-   "media": "franceinfo Culture",
-   "titre": "Plus de cinquante ans après sa création, le mythique groupe The Stranglers lance en France sa nouvelle tournée",
-   "url": "https://www.franceinfo.fr/culture/musique/plus-de-50-ans-apres-sa-creation-le-mythique-groupe-the-stranglers-lance-en-france-sa-nouvelle-tournee_8292479.html",
-   "date": "2026-11-20T16:36+00:00",
-   "resume": "Passé par le punk, le rock et la new wave, l'inusable groupe britannique formé en 1974 a vendu 40 millions d'albums dans le monde.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo Culture",
-   "titre": "Secrets et spécialités locales : à la découverte de l'Alsace Verte aux couleurs d'automne",
-   "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/secrets-et-specialites-locales-a-la-decouverte-de-l-alsace-verte-aux-couleurs-d-automne_8292593.html",
-   "date": "2026-11-20T17:00+00:00",
-   "resume": "Vendredi 20 novembre, le journal de \"13 Heures\" vous emmène en Alsace Verte, située au cœur du Parc naturel régional des Vosges du Nord, qui est classé à l’Unesco. C’était le pays des châteaux au Moyen Âge. On vous en dévoile tous les secrets et les spécialités locales.",
-   "langue": "français"
-  },
-  {
    "media": "franceinfo Internet",
    "titre": "IA : ils deviennent millionnaires en 24h",
    "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/ia-ils-deviennent-millionnaires-en-24h_8293934.html",
@@ -1077,22 +1077,6 @@
    "langue": "français"
   },
   {
-   "media": "franceinfo Internet",
-   "titre": "Cyberattaques : \"On est sur un niveau de menace particulièrement grave et inédit\", prévient le Premier ministre Sébastien Lecornu",
-   "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/cyberattaques-le-niveau-de-menace-est-sans-precedent-et-va-s-intensifier-previennent-sebastien-lecornu-et-vincent-strubel-le-directeur-de-l-anssi_8290514.html",
-   "date": "2026-11-19T19:33+00:00",
-   "resume": "\"Ça va s'intensifier, le niveau de la menace va croître en volume\", a ajouté Vincent Strubel, le directeur de l'Agence nationale de la sécurité des systèmes d'information (Anssi).",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo Internet",
-   "titre": "Au procès des masculinistes de Telegram, un créateur \"plaqué\" par sa fiancée, des contributeurs en manque de \"lien social\" et des réquisitions exemplaires",
-   "url": "https://www.franceinfo.fr/faits-divers/justice-proces/au-proces-des-masculinistes-de-telegram-un-createur-plaque-par-sa-fiancee-des-contributeurs-en-manque-de-lien-social-et-des-requisitions-exemplaires_8289575.html",
-   "date": "2026-11-19T19:38+00:00",
-   "resume": "Sept prévenus ont comparu mercredi et jeudi devant le tribunal correctionnel de Paris, jugés pour des messages haineux visant les femmes, les personnes noires, juives et LGBT+. Le parquet a requis contre eux entre 18 mois de sursis et deux ans de prison ferme.",
-   "langue": "français"
-  },
-  {
    "media": "20 Minutes",
    "titre": "« Je déteste que ma belle-mère fasse ça »… Pourquoi l’obsession des boomers pour les photos d’IA rend fous les parents",
    "url": "https://www.20minutes.fr/high-tech/by-the-web/4263220-20261121-deteste-belle-mere-fasse-ca-pourquoi-obsession-boomers-photos-ia-rend-fous-parents",
@@ -1102,10 +1086,18 @@
   },
   {
    "media": "20 Minutes",
-   "titre": "EN DIRECT Nice - PSG : Paris mène mais perd Désiré Doué, touché au genou... Suivez le match avec nous",
-   "url": "https://www.20minutes.fr/sport/football/4264224-20261121-direct-nice-psg-retour-affaires-leader-chez-gym-ambitieux-suivez-match",
-   "date": "2026-11-21T14:17+00:00",
-   "resume": "Suivez avec nous le match entre l’OGC Nice et le Paris Saint-Germain comptant pour la 11e journée de Ligue 1 (17h15)",
+   "titre": "EN DIRECT France - Argentine : Objectif victoire bonifiée pour retrouver l'Afrique du Sud en finale... Suivez le match avec nous",
+   "url": "https://www.20minutes.fr/sport/rugby/4264159-20261121-direct-france-argentine-apres-avoir-dompte-boks-bleus-confirmer-face-pumas-suivez-match",
+   "date": "2026-11-21T18:02+00:00",
+   "resume": "Suivez sur « 20 Minutes » le match entre le XV de France et l'Argentine, ce samedi (21h10) au Stade de France",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "EN DIRECT Losc - OL : Une première périlleuse pour Carlos Vicens sur le banc lyonnais… Suivez le match avec nous",
+   "url": "https://www.20minutes.fr/sport/football/ligue-1/4264231-20261121-direct-losc-ol-premiere-perilleuse-carlos-vicens-banc-lyonnais-suivez-match",
+   "date": "2026-11-21T17:47+00:00",
+   "resume": "Suivez avec nous le match entre le Losc et l’OL, comptant pour la 11e journée de Ligue 1 (20h45). Il s’agira du premier match de Carlos Vicens comme entraîneur de Lyon",
    "langue": "français"
   },
   {
@@ -1118,6 +1110,14 @@
   },
   {
    "media": "20 Minutes",
+   "titre": "« Mascarade » sur Prime Video : On vous explique le jeu de cache-cache des stars de Loris Giuliano",
+   "url": "https://www.20minutes.fr/arts-stars/television/4264697-20261121-mascarade-prime-video-explique-jeu-cache-cache-stars-loris-giuliano",
+   "date": "2026-11-21T17:30+00:00",
+   "resume": "Depuis le 20 novembre, huit stars du cinéma français, grimées et la voix modifiée, tentent d’échapper à la sagacité du vidéaste",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
    "titre": "EN DIRECT Présidentielle 2027 : François Ruffin retire sa candidature...",
    "url": "https://www.20minutes.fr/politique/4264605-20261121-direct-presidentielle-2027-villepin-candidat-pen-toujours-tete-sondages",
    "date": "2026-11-21T15:44+00:00",
@@ -1126,10 +1126,34 @@
   },
   {
    "media": "20 Minutes",
-   "titre": "EN DIRECT Championnat des nations : L'Angleterre surclasse les All Blacks et met la pression sur les Bleus... Suivez les matchs de la journée...",
-   "url": "https://www.20minutes.fr/sport/rugby/4264246-20261121-direct-championnat-nations-angleterre-etouffe-all-blacks-ecosse-mene-face-japon-suivez-matchs-journee",
-   "date": "2026-11-21T12:02+00:00",
-   "resume": "Suivez avec nous les résultats des derniers matchs de la phase de poules du nouveau championnat des nations, avec Angleterre-Nouvelle-Zélande et Irlande-Afrique du Sud en têtes d’affiche",
+   "titre": "Guerre en Ukraine : L'Otan défendra « chaque pouce de territoire polonais »",
+   "url": "https://www.20minutes.fr/monde/ukraine/4264699-20261121-guerre-ukraine-otan-defendra-chaque-pouce-territoire-polonais",
+   "date": "2026-11-21T18:02+00:00",
+   "resume": "« 20 Minutes » fait le point pour vous tous les soirs sur le conflit. Ce samedi, les incidents en Pologne et en Finlande pousse l'Otan à réagir",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "Déraillement en Normandie : La SNCF défend ses agents après un premier point d’enquête",
+   "url": "https://www.20minutes.fr/societe/4264706-20261121-deraillement-normandie-sncf-defend-agents-apres-premier-point-enquete",
+   "date": "2026-11-21T19:26+00:00",
+   "resume": "L’accident s’était déroulé le 13 septembre, avec le déraillement d’un TER Rouen-Caen à Cléon (Seine-Maritime), blessant 44 personnes, dont une grièvement",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "Nice - PSG : Paris s’impose chez le Gym mais s’inquiète pour le genou de Désiré Doué",
+   "url": "https://www.20minutes.fr/sport/football/4264224-20261121-direct-nice-psg-retour-affaires-leader-chez-gym-ambitieux-suivez-match",
+   "date": "2026-11-21T14:17+00:00",
+   "resume": "Le PSG s’est imposé 3-2 sur la pelouse de l’OGC Nice et conforte sa place de leader du championnat. Le match a été marqué par la sortie sur civière de Désiré Doué",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "Miss France 2027 : Le test de culture générale est tombé, à vous de jouer (sans tricher)",
+   "url": "https://www.20minutes.fr/arts-stars/television/miss_france/4263531-20261120-miss-france-2027-test-culture-generale-tombe-jouer-tricher",
+   "date": "2026-11-20T11:09+00:00",
+   "resume": "Comme chaque année, les candidates à Miss France ont troqué l’écharpe pour le stylo le temps du très redouté test de culture générale",
    "langue": "français"
   },
   {
@@ -1138,6 +1162,14 @@
    "url": "https://www.20minutes.fr/societe/4264200-20261121-france-utilise-plus-gaz-lacrymogenes-voisins-europeens",
    "date": "2026-11-21T05:32+00:00",
    "resume": "En matière de maintien de l’ordre, la France se distingue par sa gestion des foules, caractérisée par une utilisation intensive d’armes chimiques (gaz CS) et d’armes à feu à létalité réduite (LBD, grenades). Qu’en est-il en Europe ?",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "EN DIRECT Championnat des nations : L'Irlande héroïque face aux Springboks... Les Fidji sauvent l'hémisphère Sud... Suivez les matchs de la journée...",
+   "url": "https://www.20minutes.fr/sport/rugby/4264246-20261121-direct-championnat-nations-angleterre-etouffe-all-blacks-ecosse-mene-face-japon-suivez-matchs-journee",
+   "date": "2026-11-21T12:02+00:00",
+   "resume": "Suivez avec nous les résultats des derniers matchs de la phase de poules du nouveau championnat des nations, avec Angleterre-Nouvelle-Zélande et Irlande-Afrique du Sud en têtes d’affiche",
    "langue": "français"
   },
   {
@@ -1166,18 +1198,18 @@
   },
   {
    "media": "20 Minutes",
-   "titre": "Miss France 2027 : Le test de culture générale est tombé, à vous de jouer (sans tricher)",
-   "url": "https://www.20minutes.fr/arts-stars/television/miss_france/4263531-20261120-miss-france-2027-test-culture-generale-tombe-jouer-tricher",
-   "date": "2026-11-20T11:09+00:00",
-   "resume": "Comme chaque année, les candidates à Miss France ont troqué l’écharpe pour le stylo le temps du très redouté test de culture générale",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
    "titre": "Landes : le remorquage du cargo échoué pourrait prendre plusieurs jours, voire davantage",
    "url": "https://www.20minutes.fr/faits_divers/4264660-20261121-landes-remorquage-cargo-echoue-pourrait-prendre-plusieurs-jours-voire-davantage",
    "date": "2026-11-21T12:51+00:00",
    "resume": "Selon la préfecture maritime de l’Atlantique, les opérations se révèlent complexes",
+   "langue": "français"
+  },
+  {
+   "media": "20 Minutes",
+   "titre": "EN IMAGES. Miss France 2027 : Tyrolienne, danse, surf… Le planning sympa (mais chargé) du voyage de préparation",
+   "url": "https://www.20minutes.fr/diaporama/diaporama-4264374-images-miss-france-2027-tyrolienne-danse-surf-planning-sympa-charge-voyage-preparation",
+   "date": "2026-11-20T12:46+00:00",
+   "resume": "Les trente-et-une miss régionales se sont envolées pour l’île de Saint-Martin, lundi 16 novembre, pour le traditionnel voyage de préparation à l’élection de Miss France 2027. Voici ce qu’elles ont fait",
    "langue": "français"
   },
   {
@@ -1210,14 +1242,6 @@
    "url": "https://www.20minutes.fr/planete/cop/4264644-20261121-cop31-suspense-conference-climat-traine-longueur",
    "date": "2026-11-21T09:41+00:00",
    "resume": "Alors que certains participants sont déjà partis, un accord se fait toujours attendre",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "EN IMAGES. Miss France 2027 : Tyrolienne, danse, surf… Le planning sympa (mais chargé) du voyage de préparation",
-   "url": "https://www.20minutes.fr/diaporama/diaporama-4264374-images-miss-france-2027-tyrolienne-danse-surf-planning-sympa-charge-voyage-preparation",
-   "date": "2026-11-20T12:46+00:00",
-   "resume": "Les trente-et-une miss régionales se sont envolées pour l’île de Saint-Martin, lundi 16 novembre, pour le traditionnel voyage de préparation à l’élection de Miss France 2027. Voici ce qu’elles ont fait",
    "langue": "français"
   },
   {
@@ -1269,51 +1293,19 @@
    "langue": "français"
   },
   {
-   "media": "20 Minutes",
-   "titre": "Etats-Unis : Trump ne veut pas de centres de données américains à l’étranger et souhaite le retour du patron de Nvidia",
-   "url": "https://www.20minutes.fr/monde/etats-unis/4264603-20261121-etats-unis-trump-veut-centres-donnees-americains-etranger-souhaite-retour-patron-nvidia",
-   "date": "2026-11-20T23:19+00:00",
-   "resume": "Donald Trump a menacé vendredi de taxer les entreprises américaines qui construiraient des centres de données à l’étranger. Il a aussi appelé Nvidia à reprendre Jensen Huang",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "Seine-Saint-Denis : L’ex-policier de la BAC condamné à 18 mois de prison ferme pour avoir tué un automobiliste",
-   "url": "https://www.20minutes.fr/justice/4264618-20261121-seine-saint-denis-ex-policier-bac-condamne-18-mois-prison-ferme-avoir-tue-automobiliste",
-   "date": "2026-11-21T00:45+00:00",
-   "resume": "L’ancien policier de la BAC Emmanuel Neves a été condamné, vendredi, à 18 mois de prison ferme pour le tir qui a coûté la vie à Jean-Paul Benjamin, livreur de Sevran, en 2022. La cour a écarté la légitime défense",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "GTA 6 : Les ventes atteignent un record de 3,79 milliards de dollars en 24 heures",
-   "url": "https://www.20minutes.fr/gaming/jeux_video/4264602-20261120-gta-6-ventes-atteignent-record-3-79-milliards-dollars-24-heures",
-   "date": "2026-11-20T21:17+00:00",
-   "resume": "« GTA 6 » a rapporté 3,79 milliards de dollars en 24 heures, a annoncé Rockstar Games vendredi. Le jeu avait déjà enregistré 32,5 millions de précommandes avant sa sortie",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "« Bien au-delà du pire »… Avec la sécheresse et la canicule, les plantes exotiques envahissent nos lacs et rivières",
-   "url": "https://www.20minutes.fr/planete/canicule/4263611-20261121-bien-dela-pire-secheresse-canicule-plantes-exotiques-envahissent-lacs-rivieres",
-   "date": "2026-11-21T06:07+00:00",
-   "resume": "Aucune solution n’émerge pour traiter et éradiquer la jussie, l’égérie dense ou le myriophylle, qui prolifèrent dans les cours d’eau qui se réchauffent",
-   "langue": "français"
-  },
-  {
-   "media": "20 Minutes",
-   "titre": "« Je n’aime plus sortir, je n’aime plus le bruit », assure Camille Lellouche qui sort « Minuit », son troisième album",
-   "url": "https://www.20minutes.fr/arts-stars/culture/musique/4263794-20261120-aime-plus-sortir-aime-plus-bruit-assure-camille-lellouche-sort-minuit-troisieme-album",
-   "date": "2026-11-20T08:32+00:00",
-   "resume": "Camille Lellouche sort ce vendredi son troisième album, « Minuit », dans lequel on retrouve la mélancolie qu’elle affectionne mais aussi, et c’est nouveau, des titres plus dansants. « 20 Minutes » l’a rencontrée",
+   "media": "Le Monde",
+   "titre": "Manifestations du 21 novembre : entre 80 000 et 150 000 personnes se sont mobilisées en France",
+   "url": "https://www.lemonde.fr/societe/article/2026/11/21/manifestations-du-21-novembre-le-nombre-de-personnes-mobilisees-en-baisse-dans-l-apres-midi-le-cortege-parisien-est-arrive-place-de-la-nation_6813913_3225.html",
+   "date": "2026-11-21T16:04+00:00",
+   "resume": "Cette nouvelle journée de protestation, moins suivie, s’est déroulée dans le calme à Paris, mais avec des tensions dans l’après-midi à Marseille et à Lyon. Cet « acte VI » de la mobilisation contre la vie chère s’inscrit aussi dans le cadre d’un appel européen.",
    "langue": "français"
   },
   {
    "media": "Le Monde",
-   "titre": "« On est devenus “street medics” parce qu’on se sentait impuissants face aux violences » : à la rencontre des bénévoles qui secourent les manifestants blessés",
-   "url": "https://www.lemonde.fr/campus/article/2026/11/21/on-est-devenus-street-medics-parce-qu-on-se-sentait-impuissants-face-aux-violences-a-la-rencontre-des-benevoles-qui-secourent-les-manifestants-blesses_6813927_4401467.html",
-   "date": "2026-11-21T05:15+00:00",
-   "resume": "Depuis le début du mouvement social, les « secouristes de rue » sont au cœur des cortèges. Contamination au gaz lacrymogène, plaies, crises d’angoisse… ils prodiguent les premiers gestes aux manifestants, sur fond de recours croissant aux armes par les forces de l’ordre – y compris contre eux.",
+   "titre": "Hugues Moutouh, le préfet soupçonné de fuites d’informations confidentielles vers le RN, a demandé à être relevé de ses fonctions",
+   "url": "https://www.lemonde.fr/societe/article/2026/11/21/hugues-moutouh-le-prefet-soupconne-de-fuites-d-informations-confidentielles-vers-le-rn-a-demande-a-etre-releve-de-ses-fonctions_6814056_3224.html",
+   "date": "2026-11-21T18:01+00:00",
+   "resume": "L’ancien haut fonctionnaire du ministère de l’intérieur est soupçonné d’avoir joué un rôle dans la transmission au Rassemblement national d’informations confidentielles sur les enquêtes visant le parti. Des perquisitions ont été menées au siège du parti et au ministère de l’intérieur.",
    "langue": "français"
   },
   {
@@ -1326,26 +1318,18 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Présidentielle 2027 : à cinq mois de l’élection, l’inquiétude grandit au sein du camp présidentiel, toujours incapable de s’unir",
-   "url": "https://www.lemonde.fr/politique/article/2026/11/21/presidentielle-2027-a-cinq-mois-de-l-election-l-inquietude-grandit-au-sein-du-camp-presidentiel-toujours-incapable-de-s-unir_6813915_823448.html",
-   "date": "2026-11-21T04:30+00:00",
-   "resume": "Le débat autour d’une primaire à droite et au centre met en lumière la difficulté d’une stratégie claire au sein de l’ancienne majorité, prise entre des considérations individuelles et des fractures idéologiques.",
+   "titre": "Roberto Saviano, auteur de « Gomorra » : « Le suicide de l’ancien chef de la police italienne Gianni De Gennaro est un choc immense »",
+   "url": "https://www.lemonde.fr/international/article/2026/11/21/roberto-saviano-auteur-de-gomorra-le-suicide-de-l-ancien-chef-de-la-police-italienne-gianni-de-gennaro-est-un-choc-immense_6814054_3210.html",
+   "date": "2026-11-21T17:44+00:00",
+   "resume": "Ce suicide, le 21 novembre, intervient quelques jours après sa mise en examen pour « détournement d’enquête » par le parquet de Caltanissetta, en Sicile, qui l’accuse d’avoir brouillé les pistes dans les investigations sur l’assassinat du juge antimafia Paolo Borsellino, le 19 juillet 1992. Pour l’écrivain italien, cela « pourrait condamner tout espoir de connaître un jour l’entière vérité » sur c",
    "langue": "français"
   },
   {
    "media": "Le Monde",
-   "titre": "Au Brésil, une nouvelle génération de gauche s’apprête à faire son entrée au Parlement",
-   "url": "https://www.lemonde.fr/international/article/2026/11/21/au-bresil-une-nouvelle-generation-de-gauche-s-apprete-a-faire-son-entree-au-parlement_6814016_3210.html",
-   "date": "2026-11-21T13:00+00:00",
-   "resume": "Lors des législatives du 4 octobre, les électeurs ont voté pour de jeunes députés progressistes. Alors que le gouvernement de Lula propose des économies budgétaires, ces élus veulent veiller à ce qu’il respecte ses promesses de campagne.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
-   "titre": "EN DIRECT, guerre en Ukraine : la Finlande soupçonne un hélicoptère russe d’être entré dans son espace aérien, quelques heures après une attaque au drone d’un cargo russe en mer Baltique",
-   "url": "https://www.lemonde.fr/international/live/2026/11/21/en-direct-guerre-en-ukraine-la-finlande-soupconne-un-helicoptere-russe-d-etre-entre-dans-son-espace-aerien-quelques-heures-apres-une-attaque-de-drone-sur-un-cargo-russe-en-mer-baltique_6810982_3210.html",
-   "date": "2026-11-21T14:35+00:00",
-   "resume": "« Cette violation présumée de l’espace aérien pourrait être liée à des opérations de sauvetage ou de surveillance menées à la suite des dommages subis par un navire cargo dans le golfe de Finlande », a déclaré le ministre de la défense finlandais, Antti Häkkänen.",
+   "titre": "Les mystères de Mercure, l’étrange planète du Système solaire, que la mission BepiColombo devrait lever",
+   "url": "https://www.lemonde.fr/sciences/article/2026/11/21/les-mysteres-de-mercure-l-etrange-planete-du-systeme-solaire-que-la-mission-bepicolombo-devrait-lever_6814059_1650684.html",
+   "date": "2026-11-21T18:25+00:00",
+   "resume": "Après huit ans de transit, les deux sondes de la mission européano-japonaise se sont mises en orbite autour de Mercure. Elles devraient aider les scientifiques à résoudre les nombreuses énigmes qui entourent cette petite planète pas comme les autres.",
    "langue": "français"
   },
   {
@@ -1354,6 +1338,22 @@
    "url": "https://www.lemonde.fr/intimites/article/2026/11/21/faire-l-amour-en-se-faisant-la-guerre-comment-les-adeptes-du-hate-sex-lient-colere-et-coit_6814049_6190330.html",
    "date": "2026-11-21T17:00+00:00",
    "resume": "« Nos émotions : la colère ». Une sexualité épanouie, synonyme de complicité avec son ou sa partenaire, semble a priori incompatible avec la colère, qui rend agressif et égoïste. Et pourtant… livres et films témoignent qu’il existe bel et bien des amateurs de « sexe enragé ».",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "EN DIRECT, guerre en Ukraine : le point sur l’attaque par drone d’un cargo russe en mer Baltique, la Finlande soupçonne un hélicoptère russe d’avoir violé son espace aérien",
+   "url": "https://www.lemonde.fr/international/live/2026/11/21/en-direct-guerre-en-ukraine-le-point-sur-l-attaque-par-drone-d-un-cargo-russe-en-mer-baltique-la-finlande-soupconne-un-helicoptere-russe-d-avoir-viole-son-espace-aerien_6810982_3210.html",
+   "date": "2026-11-21T18:41+00:00",
+   "resume": "« Cette violation présumée de l’espace aérien pourrait être liée à des opérations de sauvetage ou de surveillance menées à la suite des dommages subis par un navire cargo dans le golfe de Finlande », a déclaré le ministre de la défense finlandais, Antti Häkkänen.",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "EN DIRECT, France-Argentine : le XV de France doit s’imposer avec le bonus pour se hisser en finale du Championnat des nations",
+   "url": "https://www.lemonde.fr/sport/live/2026/11/21/en-direct-france-argentine-suivez-le-match-du-championnat-des-nations-de-rugby_6814058_3242.html",
+   "date": "2026-11-21T18:10+00:00",
+   "resume": "Le XV de France dispute, samedi au Stade de France, son dernier match de la phase de groupes du Championnat des nations, face aux Pumas argentins. S’ils conservent la tête de la poule Nord, les Bleus joueront la première finale de la compétition.",
    "langue": "français"
   },
   {
@@ -1382,18 +1382,18 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Génocide des Rohingya : la Cour internationale de justice rend un arrêt pour l’histoire",
-   "url": "https://www.lemonde.fr/international/article/2026/11/20/genocide-des-rohingya-la-cour-internationale-de-justice-confirme-qu-elle-est-indubitablement-la-boussole-du-droit-international_6813702_3210.html",
-   "date": "2026-11-20T20:38+00:00",
-   "resume": "La plus haute Cour de l’ONU établit pour la première fois la responsabilité d’un Etat, la Birmanie, dans « le crime des crimes ». Alors que l’Afrique du Sud a saisi l’institution contre Israël, accusant l’Etat hébreu d’un génocide contre les Palestiniens de Gaza, l’arrêt prononcé jeudi pourrait faire jurisprudence.",
+   "titre": "Au Brésil, une nouvelle génération de gauche s’apprête à faire son entrée au Parlement",
+   "url": "https://www.lemonde.fr/international/article/2026/11/21/au-bresil-une-nouvelle-generation-de-gauche-s-apprete-a-faire-son-entree-au-parlement_6814016_3210.html",
+   "date": "2026-11-21T13:00+00:00",
+   "resume": "Lors des législatives du 4 octobre, les électeurs ont voté pour de jeunes députés progressistes. Alors que le gouvernement de Lula propose des économies budgétaires, ces élus veulent veiller à ce qu’il respecte ses promesses de campagne.",
    "langue": "français"
   },
   {
    "media": "Le Monde",
-   "titre": "France-Argentine : face aux Pumas, le XV de France veut confirmer l’« exploit » réalisé contre les Springboks",
-   "url": "https://www.lemonde.fr/sport/article/2026/11/21/france-argentine-face-aux-pumas-le-xv-de-france-veut-confirmer-l-exploit-realise-contre-les-springboks_6813952_3242.html",
-   "date": "2026-11-21T07:00+00:00",
-   "resume": "Antoine Dupont et ses coéquipiers affrontent les joueurs argentins, samedi, au Stade de France, lors de la dernière journée de la phase de groupes du Championnat des nations, avec l’objectif de se qualifier pour la finale, prévue le 29 novembre, à Twickenham, au Royaume-Uni.",
+   "titre": "Génocide des Rohingya : la Cour internationale de justice rend un arrêt pour l’histoire",
+   "url": "https://www.lemonde.fr/international/article/2026/11/20/genocide-des-rohingya-la-cour-internationale-de-justice-confirme-qu-elle-est-indubitablement-la-boussole-du-droit-international_6813702_3210.html",
+   "date": "2026-11-20T20:38+00:00",
+   "resume": "La plus haute Cour de l’ONU établit pour la première fois la responsabilité d’un Etat, la Birmanie, dans « le crime des crimes ». Alors que l’Afrique du Sud a saisi l’institution contre Israël, accusant l’Etat hébreu d’un génocide contre les Palestiniens de Gaza, l’arrêt prononcé jeudi pourrait faire jurisprudence.",
    "langue": "français"
   },
   {
@@ -1406,26 +1406,10 @@
   },
   {
    "media": "Le Monde",
-   "titre": "A Agen, les irréductibles opposants à la ligne à grande vitesse Bordeaux-Toulouse : « On a un pays qui est superbe et ils vont venir le massacrer. Qu’est-ce qu’on va laisser à nos enfants ? »",
-   "url": "https://www.lemonde.fr/m-le-mag/article/2026/11/21/a-agen-les-irreductibles-opposants-a-la-ligne-a-grande-vitesse-bordeaux-toulouse-on-a-un-pays-qui-est-superbe-et-ils-vont-venir-le-massacrer-qu-est-ce-qu-on-va-laisser-a-nos-enfants_6813947_4500055.html",
-   "date": "2026-11-21T06:00+00:00",
-   "resume": "Dans le Lot-et-Garonne, les déboisements préalables au chantier de la ligne à grande vitesse Bordeaux-Toulouse sont sur le point de commencer. Autour d’Agen, les opposants à ce projet, lancé en 2009, balaient les arguments d’attractivité économique et de gain de temps pour dénoncer son coût exorbitant et son impact désastreux sur l’environnement.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
-   "titre": "Le boom des embauches dans le secteur médico-social cache les fragilités de l’économie sociale et solidaire",
-   "url": "https://www.lemonde.fr/economie/article/2026/11/21/le-boom-des-embauches-dans-le-secteur-medico-social-cache-les-fragilites-de-l-economie-sociale-et-solidaire_6814018_3234.html",
-   "date": "2026-11-21T13:00+00:00",
-   "resume": "Sans les créations d’emplois nécessaires pour accompagner le vieillissement de la population et le soin aux personnes âgées, l’ESS aurait perdu des postes sur un an.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
-   "titre": "Au Sénégal, l’avenir incertain des installations des Jeux olympiques de la jeunesse",
-   "url": "https://www.lemonde.fr/afrique/article/2026/11/21/au-senegal-l-avenir-incertain-des-installations-des-jeux-olympiques-de-la-jeunesse_6814024_3212.html",
-   "date": "2026-11-21T15:00+00:00",
-   "resume": "La piscine olympique et le stade Iba-Mar-Diop ont été rénovés pour la compétition, qui s’est tenue à Dakar du 31 octobre au 13 novembre. Désormais, plusieurs acteurs espèrent en récupérer la gestion.",
+   "titre": "En Ligue 1, des entraîneurs plus interchangeables que jamais",
+   "url": "https://www.lemonde.fr/sport/article/2026/11/21/football-des-entraineurs-plus-interchangeables-que-jamais-en-ligue-1_6814046_3242.html",
+   "date": "2026-11-21T16:12+00:00",
+   "resume": "Alors que l’été avait déjà été riche en remaniements sur les bancs du championnat de France, quatre clubs reprennent, après la trêve internationale, avec un nouvel entraîneur. Des changements à Lens, Strasbourg, Le Havre et Lyon, symboles d’une grande instabilité.",
    "langue": "français"
   },
   {
@@ -1434,6 +1418,14 @@
    "url": "https://www.lemonde.fr/planete/article/2026/11/21/inondations-dans-le-pas-de-calais-la-canche-reste-en-vigilance-orange-pres-de-800-evacuations-depuis-jeudi-selon-la-prefecture_6813953_3244.html",
    "date": "2026-11-21T07:01+00:00",
    "resume": "En Normandie, Vigicrues a prévenu que le niveau maximum de la Vire, placée en vigilance jaune, « est en passe d’être atteint ce [samedi] matin » dans le secteur de Saint-Lô et qu’il est « susceptible de générer des débordements localisés ».",
+   "langue": "français"
+  },
+  {
+   "media": "France 24",
+   "titre": "Présidentielle : prenant \"acte de l’impasse\" de sa campagne, François Ruffin retire sa candidature",
+   "url": "https://www.france24.com/fr/france/20261121-pr%C3%A9sidentielle-prenant-acte-de-l-impasse-de-sa-campagne-fran%C3%A7ois-ruffin-retire-sa-candidature",
+   "date": "2026-11-21T17:37+00:00",
+   "resume": "À cinq mois de l’échéance, François Ruffin a annoncé samedi qu’il retirait sa candidature à l’élection présidentielle, prenant \"acte de l’impasse\" de sa campagne faute d’avoir réussi à imposer l’organisation d’une \"grande primaire\" de toute la gauche.",
    "langue": "français"
   },
   {
@@ -1621,16 +1613,8 @@
    "langue": "français"
   },
   {
-   "media": "France 24",
-   "titre": "IA : un traducteur pour comprendre les animaux dans les années à venir ?",
-   "url": "https://www.france24.com/fr/vid%C3%A9o/20261121-ia-un-traducteur-pour-comprendre-les-animaux-dans-les-ann%C3%A9es-%C3%A0-venir",
-   "date": "2026-11-21T10:36+00:00",
-   "resume": "L'IA pourrait permettre de saisire le language des animaux. Des scientifiques ont commencé a identifier un vocabulaire chez les élephants après avoir analysé plus de 900 enregistrements.",
-   "langue": "français"
-  },
-  {
    "media": "BBC News",
-   "titre": "Zelensky says Crimean Bridge strikes 'fair response' as he meets UK's Streeting",
+   "titre": "Zelensky says Crimean Bridge strikes 'fair response' as he meets Wes Streeting",
    "url": "https://www.bbc.co.uk/news/articles/c6wy0qj7w5zqo",
    "date": "2026-11-21T13:17+00:00",
    "resume": "Ukraine's president says Kyiv acted after 109 separate Russian aerial attacks on bridges in Ukraine.",
@@ -1664,16 +1648,16 @@
    "media": "BBC News",
    "titre": "Fight over fossil fuels leaves COP31 climate talks in deadlock",
    "url": "https://www.bbc.co.uk/news/articles/c6ly5w40eg07o",
-   "date": "2026-11-21T14:54+00:00",
+   "date": "2026-11-21T19:33+00:00",
    "resume": "Countries from nearly 200 countries are in a deadlock to try and get a new global climate agreement.",
    "langue": "anglais"
   },
   {
    "media": "BBC News",
-   "titre": "Who will be Robert Pattinson's 'Bond girl' - and does the role need to change?",
-   "url": "https://www.bbc.co.uk/news/articles/cr4g1l7x52jno",
-   "date": "2026-11-21T00:03+00:00",
-   "resume": "Speculation is rife as to who will play the new 007's leading lady, with commentators saying she will need a \"very strong identity\".",
+   "titre": "Spitting Image co-creator Peter Fluck dies aged 85",
+   "url": "https://www.bbc.co.uk/news/articles/cm3vg9dqr6zyo",
+   "date": "2026-11-21T19:43+00:00",
+   "resume": "The 85-year-old he died in the early hours of Saturday at home in Cornwall, following a recent illness.",
    "langue": "anglais"
   },
   {
@@ -1682,6 +1666,14 @@
    "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cwm2jxd8k15mo",
    "date": "2026-11-21T16:08+00:00",
    "resume": "England's revival roars up a gear as they beat New Zealand by a record margin after former captain Lewis Moody leads the hosts' response to the haka.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Who will be Robert Pattinson's 'Bond girl' - and does the role need to change?",
+   "url": "https://www.bbc.co.uk/news/articles/cr4g1l7x52jno",
+   "date": "2026-11-21T00:03+00:00",
+   "resume": "Speculation is rife as to who will play the new 007's leading lady, with commentators saying she will need a \"very strong identity\".",
    "langue": "anglais"
   },
   {
@@ -1702,14 +1694,6 @@
   },
   {
    "media": "BBC News",
-   "titre": "How Phoebe Bridgers banning phones at concerts sparked a wave of fan artwork",
-   "url": "https://www.bbc.co.uk/news/articles/cq7821d0pv49o",
-   "date": "2026-11-21T00:08+00:00",
-   "resume": "The American singer has brought in a no-phone policy for the shows, inspiring fans to explore their artistic talent.",
-   "langue": "anglais"
-  },
-  {
-   "media": "BBC News",
    "titre": "'I was exhausted': Two days in the shoes of a tradwife",
    "url": "https://www.bbc.co.uk/news/articles/cr0jxwd93y09o",
    "date": "2026-11-21T00:29+00:00",
@@ -1726,10 +1710,34 @@
   },
   {
    "media": "BBC News",
-   "titre": "Deal with EU not dependent on tuition fees agreement, Miliband says",
-   "url": "https://www.bbc.co.uk/news/articles/cm9w9p4geke8o",
-   "date": "2026-11-21T09:40+00:00",
-   "resume": "Brussels sources had previously suggested the bloc might not apply the wider deal until fees were lowered for EU students in Britain.",
+   "titre": "Russia-bound ship attacked in Gulf of Finland",
+   "url": "https://www.bbc.co.uk/news/articles/cj752ddve27ko",
+   "date": "2026-11-21T19:20+00:00",
+   "resume": "Finnish defence forces say that Ukraine was likely behind the drone attack on the vessel.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "UK should only rejoin EU if it innovates on technology, Blair warns",
+   "url": "https://www.bbc.co.uk/news/articles/c893r4923wngo",
+   "date": "2026-11-21T19:33+00:00",
+   "resume": "The former prime minister argues the European Union is probably moving in the wrong direction on technology innovation.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Village votes to 'leave UK' over migrant plan",
+   "url": "https://www.bbc.co.uk/news/articles/cvze71y6g85yo",
+   "date": "2026-11-21T19:51+00:00",
+   "resume": "Barnham is the second village to declare \"independence\" in protest at plans to house asylum seekers.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "British man swims through Strait of Hormuz to highlight environmental impact of war",
+   "url": "https://www.bbc.co.uk/news/articles/c95y1gr27xplo",
+   "date": "2026-11-21T16:12+00:00",
+   "resume": "Ocean campaigner Lewis Pugh completes Hormuz challenge and warns of lasting environmental damage.",
    "langue": "anglais"
   },
   {
@@ -1750,22 +1758,6 @@
   },
   {
    "media": "BBC News",
-   "titre": "Staff gagging clauses lifted ahead of probe into culture at data watchdog",
-   "url": "https://www.bbc.co.uk/news/articles/cwdr1xyzr5lmo",
-   "date": "2026-11-21T06:01+00:00",
-   "resume": "Ministers are expected to publish the details of how an independent review of the working environment at the Information Commission will be carried out next week.",
-   "langue": "anglais"
-  },
-  {
-   "media": "BBC News",
-   "titre": "FBI reportedly investigating apparent hack of its criminal database",
-   "url": "https://www.bbc.co.uk/news/articles/cvze7de86pk3o",
-   "date": "2026-11-21T16:35+00:00",
-   "resume": "The National Crime Information Center database is used by federal and local law enforcement to share information.",
-   "langue": "anglais"
-  },
-  {
-   "media": "BBC News",
    "titre": "I've only sold five copies of GTA 6, says game shop owner",
    "url": "https://www.bbc.co.uk/news/articles/cmqj5dr01e85o",
    "date": "2026-11-20T11:29+00:00",
@@ -1774,10 +1766,34 @@
   },
   {
    "media": "BBC News",
-   "titre": "Superb England run up record win over New Zealand",
-   "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cwm2jxd8k15mo",
-   "date": "2026-11-21T16:08+00:00",
-   "resume": "England's revival roars up a gear as they beat New Zealand by a record margin after former captain Lewis Moody leads the hosts' response to the haka.",
+   "titre": "Can win over All Blacks finally break England's boom-bust cycle?",
+   "url": "https://www.bbc.co.uk/sport/rugby-union/articles/c6gregx71gjro",
+   "date": "2026-11-21T19:49+00:00",
+   "resume": "Twelve months ago, England beat New Zealand and flopped in the following Six Nations. Can their 2026 success pave the way to more permanent success?",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Ireland beat world champions South Africa in thriller",
+   "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cqe9k2v4xjeko",
+   "date": "2026-11-21T18:46+00:00",
+   "resume": "Ireland exact revenge on world champions South Africa with a thrilling win in Dublin after England's victory over New Zealand dashed Andy Farrell's side's hopes of reaching next weekend's Nations Championship final.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Who was 'a consistent threat'? Newcastle v Arsenal player ratings",
+   "url": "https://www.bbc.co.uk/sport/football/articles/cq4gn97e8ee4o",
+   "date": "2026-11-21T19:29+00:00",
+   "resume": "BBC Sport's Alex Howell shares his player ratings for Newcastle and Arsenal's 2-2 draw in the Premier League - and you can rate the players too.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "'The world got to see today' - who is new Spurs star Williams-Barnett?",
+   "url": "https://www.bbc.co.uk/sport/football/articles/cm9d7jg50e12o",
+   "date": "2026-11-21T19:21+00:00",
+   "resume": "BBC Sport looks at Tottenham's new teenage star after Luca Williams-Barnett makes a superb full Premier League debut for Spurs",
    "langue": "anglais"
   }
  ],
@@ -2184,6 +2200,14 @@
   },
   {
    "media": "Numerama",
+   "titre": "Solution aux satellites fantômes, échec de la fusée Vulcan Centaur, nouvelle navette spatiale – le récap’ sciences de la semaine",
+   "url": "https://www.numerama.com/sciences/2380261-solution-aux-satellites-fantomes-echec-de-la-fusee-vulcan-centaur-nouvelle-navette-spatiale-le-recap-sciences-de-la-semaine.html",
+   "date": "2026-11-21T19:15+00:00",
+   "resume": "Foundational Space a validé un mini-miroir permettant de localiser des satellites en panne. L'échec de la fusée Vulcan Centaur pourrait avoir des implications pour d'autres fusées américaines. La navette spatiale Dream Chaser vient d'obtenir le feu vert pour atterrir en Californie. C'est l'heure du récap' scientifique de la semaine sur Numerama !",
+   "langue": "français"
+  },
+  {
+   "media": "Numerama",
    "titre": "Maman, j’ai raté l’avion : 34 ans après, Macaulay Culkin accepte enfin un nouveau film, c’est officiel",
    "url": "https://www.numerama.com/pop-culture/2380567-maman-jai-rate-lavion-34-ans-apres-macaulay-culkin-accepte-enfin-un-nouveau-film-cest-officiel.html",
    "date": "2026-11-21T09:47+00:00",
@@ -2196,14 +2220,6 @@
    "url": "https://www.numerama.com/sciences/2380525-lhumain-contre-attaque-sur-lhypothese-de-riemann-un-chercheur-aurait-craque-lenigme-avant-lia-claude.html",
    "date": "2026-11-21T09:18+00:00",
    "resume": "Deux démonstrations concurrentes de l’hypothèse de Riemann, l’un des problèmes ouverts les plus célèbres des mathématiques, ont été rendues publiques ce vendredi 20 novembre. Quelques heures après celle d’Anthropic, le président de l’American Mathematical Society a publié le brouillon d’un jeune chercheur de Stanford, écrit sans IA.",
-   "langue": "français"
-  },
-  {
-   "media": "Numerama",
-   "titre": "GTA 6 : 25 millions de ventes, 2,36 milliards de dollars… les chiffres fous de son lancement",
-   "url": "https://www.numerama.com/pop-culture/2380025-gta-6-25-millions-de-ventes-236-milliards-de-dollars-les-chiffres-fous-de-son-lancement.html",
-   "date": "2026-11-20T16:15+00:00",
-   "resume": "Au lendemain de sa sortie, GTA 6 accumule déjà les records. Ventes records, millions de spectateurs sur Twitch, trafic Internet sous tension et 35 000 élèves absents en Angleterre : voici les premiers chiffres du lancement du jeu de Rockstar.",
    "langue": "français"
   },
   {
