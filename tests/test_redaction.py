@@ -62,8 +62,8 @@ FLUX_ROW = """<?xml version='1.0'?><feed xmlns='http://www.w3.org/2005/Atom'><en
 <link rel='alternate' href='https://restofworld.org/a'/><updated>2026-11-19T10:00:00Z</updated></entry></feed>"""
 
 
-def _reseau(articles_llm=None, modele_en_panne=None):
-    appels = {"llm": [], "auth": []}
+def _reseau(articles_llm=None, modele_en_panne=None, service_sature=None):
+    appels = {"llm": [], "auth": [], "urls": []}
 
     def repondre(req: httpx.Request) -> httpx.Response:
         u = str(req.url)
@@ -91,6 +91,9 @@ def _reseau(articles_llm=None, modele_en_panne=None):
             return httpx.Response(403)
         if "chat/completions" in u:
             corps = json.loads(req.content)
+            if service_sature and service_sature in u:
+                return httpx.Response(429, headers={"retry-after": "20"})
+            appels["urls"].append(u)
             if corps["model"] == modele_en_panne:
                 return httpx.Response(503)
             appels["llm"].append(corps)
@@ -205,8 +208,9 @@ def test_detour_du_vendredi_et_fiche_sans_cle(tmp_path):
     racine = _racine(tmp_path)
     client, appels = _reseau()
     produire_tendances(CONF, racine, client=client, maintenant=VENDREDI, attendre=lambda s: None)
-    sans_secours = {**CONF, "redacteur": {k: v for k, v in CONF["redacteur"].items() if k != "secours"}}
-    res = rediger(sans_secours, racine, client=client, env={}, maintenant=VENDREDI)
+    sans_service_libre = {**CONF, "redacteur": {**CONF["redacteur"], "services": [
+        sv for sv in CONF["redacteur"]["services"] if not sv.get("sans_cle")]}}
+    res = rediger(sans_service_libre, racine, client=client, env={}, maintenant=VENDREDI, attendre=lambda s: None)
     detour = [p for p in res["propositions"] if p["rubrique"] == "detour"][0]
     medias = [l["media"] for l in detour["liens"]]
     assert medias.count("Next") <= 2                                   # 2 liens par média au plus
@@ -226,6 +230,26 @@ def test_redacteur_de_secours_sans_cle(tmp_path):
     assert appels["llm"] and all(c["model"] == "Mistral-Small-3.2-24B-Instruct-2506" for c in appels["llm"])
     assert appels["auth"] == [None] * len(appels["llm"])                # aucune clé envoyée
     assert pauses and set(pauses) == {31}
+
+
+def test_github_models_avec_le_jeton_du_workflow(tmp_path):
+    """Dans GitHub Actions, le jeton du workflow suffit : GitHub Models passe avant OVHcloud."""
+    racine = _racine(tmp_path)
+    client, appels = _reseau()
+    res = rediger(CONF, racine, client=client, env={"GITHUB_TOKEN": "jeton"}, maintenant=LUNDI, attendre=lambda s: None)
+    assert res["propositions"][0]["auteur"] == "openai/gpt-4.1"
+    assert appels["auth"][0] == "Bearer jeton"
+    assert appels["urls"][0] == "https://models.github.ai/inference/chat/completions"
+
+
+def test_429_on_attend_puis_service_suivant(tmp_path):
+    """GitHub Models saturé (429) : on attend le délai demandé, on réessaie, puis on passe à OVHcloud."""
+    racine = _racine(tmp_path)
+    client, appels = _reseau(service_sature="models.github.ai")
+    pauses = []
+    res = rediger(CONF, racine, client=client, env={"GITHUB_TOKEN": "jeton"}, maintenant=LUNDI, attendre=pauses.append)
+    assert res["propositions"][0]["auteur"] == "Mistral-Small-3.2-24B-Instruct-2506"
+    assert 20.0 in pauses                                               # délai « Retry-After » respecté
 
 
 def test_secours_passe_au_modele_suivant(tmp_path):
