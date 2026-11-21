@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T13:00:58+00:00",
+ "genere_le": "2026-11-21T14:14:02+00:00",
  "phrase": "Pas encore de mesure récente.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
@@ -28,13 +28,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-21T07:00+00:00",
-     "etat": "soleil",
-     "ttft_ms": 216,
-     "taux_erreur": 0.0,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-21T08:00+00:00",
      "etat": "soleil",
@@ -80,8 +73,9 @@
     {
      "heure": "2026-11-21T14:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-21T15:00+00:00",
@@ -91,6 +85,12 @@
     },
     {
      "heure": "2026-11-21T16:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-21T17:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -127,13 +127,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-21T07:00+00:00",
-     "etat": "soleil",
-     "ttft_ms": 655,
-     "taux_erreur": 0.0,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-21T08:00+00:00",
      "etat": "soleil",
@@ -179,8 +172,9 @@
     {
      "heure": "2026-11-21T14:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-21T15:00+00:00",
@@ -190,6 +184,12 @@
     },
     {
      "heure": "2026-11-21T16:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-21T17:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -237,13 +237,6 @@
    ],
    "chronologie": [
     {
-     "heure": "2026-11-21T07:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
-    {
      "heure": "2026-11-21T08:00+00:00",
      "etat": "soleil",
      "ttft_ms": 168,
@@ -288,8 +281,9 @@
     {
      "heure": "2026-11-21T14:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-21T15:00+00:00",
@@ -299,6 +293,12 @@
     },
     {
      "heure": "2026-11-21T16:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-21T17:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -335,13 +335,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-21T07:00+00:00",
-     "etat": "soleil",
-     "ttft_ms": 659,
-     "taux_erreur": 0.0,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-21T08:00+00:00",
      "etat": "soleil",
@@ -387,8 +380,9 @@
     {
      "heure": "2026-11-21T14:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-21T15:00+00:00",
@@ -398,6 +392,12 @@
     },
     {
      "heure": "2026-11-21T16:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-21T17:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"

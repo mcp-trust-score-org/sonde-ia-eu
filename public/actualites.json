@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T13:00:59+00:00",
+ "genere_le": "2026-11-21T14:14:03+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -17,7 +17,7 @@
   },
   "Presse (GDELT)": {
    "etat": "erreur",
-   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 4 essais"
+   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
   }
  },
  "dependances": {
