@@ -126,14 +126,17 @@ Puis : **Le bon réflexe** (3 conseils concrets, faisables tout de suite), les *
 
 **Pour qui** : les curieux qui veulent aller plus loin.
 
-**Rythme** : 4 à 6 liens par semaine, et un épisode de « 24 h chez… » toutes les deux semaines.
+**Rythme** : deux sélections par semaine, le mardi et le vendredi. Le rédacteur propose 5 liens ; la rédaction garde ceux qu'elle valide (« liens à garder » dans le formulaire de publication, par exemple 1, 3, 4). Un épisode de « 24 h chez… » toutes les deux semaines, choisi à la main.
+
+**Toujours frais** : un lien de moins de 3 jours porte le badge « Nouveau » ; un lien de plus de 30 jours disparaît ; la page en montre 9 au plus, le plus récent en grand. Un lien proposé n'est jamais reproposé.
 
 **La sélection d'articles**
 
 Chaque article est présenté par : le nom du média, une catégorie, le titre, et une seule phrase qui dit pourquoi le lire. Le lien mène directement au média ; on ne reproduit pas son contenu. On signale « (en anglais) » et « (payant) » à côté du titre quand c'est le cas.
 
 Un article est retenu s'il :
-- éclaire une dépendance à la technologie ;
+- éclaire une dépendance à la technologie, et la phrase « pourquoi le lire » dit laquelle ;
+- n'est ni politique, ni un fait divers (mêmes exclusions que Tous connectés) ;
 - vient d'un média sérieux ;
 - apprend quelque chose qu'Iris ne dit pas déjà.
 
