@@ -1,6 +1,60 @@
 {
  "une": [],
- "tous_connectes": [],
+ "tous_connectes": [
+  {
+   "id": "20261121-1-700-distributeurs-ont-disparu-en-2025-votre-plan",
+   "rubrique": "tous_connectes",
+   "date": "2026-11-21",
+   "tag": "Bilan · Société · 2025",
+   "tagClass": "flag-cream",
+   "img": "assets/photos/societe.jpg",
+   "time": "4 min",
+   "title": "1 700 distributeurs ont disparu en 2025.<br/>Votre plan B est-il <mark>toujours là ?</mark>",
+   "chapo": "Quand le réseau lâche, on se rabat sur les billets. Or la France a perdu plus de 1 700 distributeurs en 2025, selon la Banque de France. Notre plan B tient-il encore ?",
+   "fait": [
+    "Fin 2025, la France métropolitaine comptait un peu plus de quarante mille distributeurs de billets. C'est environ quatre pour cent de moins en un an, au même rythme que les années précédentes.",
+    "Les fermetures touchent surtout les grandes villes, déjà bien équipées. Dans les petites communes, la baisse est bien plus faible, et les points de retrait chez les commerçants se multiplient."
+   ],
+   "consequence": [
+    "Selon le gouvernement, 99,8 % des habitants restent à moins de quinze minutes d'un endroit où retirer des billets, en comptant les commerçants.",
+    "Mais on s'en sert moins : on a retiré environ cent milliards d'euros aux distributeurs en 2025, contre cent dix l'année d'avant. Et depuis 2024, on paie plus souvent par carte qu'en liquide dans les commerces."
+   ],
+   "lien": [
+    "Le jour d'une grande coupure, la distance ne compte plus. En Espagne, en avril 2025, les distributeurs et les terminaux de carte se sont arrêtés en même temps que le courant. Les seuls billets utiles étaient ceux qu'on avait déjà en poche.",
+    "Et vous, de quoi tiendriez-vous une journée si la carte ne passait plus ?"
+   ],
+   "sources": [
+    {
+     "label": "Banque de France : état des lieux de l'accès du public aux espèces (juillet 2026)",
+     "url": "https://www.banque-france.fr/fr/communiques-de-presse/etat-des-lieux-de-lacces-du-public-aux-especes-en-france-metropolitaine-2026"
+    },
+    {
+     "label": "Banque de France : rapport complet sur l'accès aux espèces à fin 2025",
+     "url": "https://www.banque-france.fr/system/files/2026-07/2025_Rapport_Accessibilit%C3%A9.pdf"
+    },
+    {
+     "label": "Banque des Territoires : la baisse des distributeurs compensée par les commerçants",
+     "url": "https://www.banquedesterritoires.fr/la-baisse-du-nombre-de-distributeurs-de-billets-en-partie-compensee-par-les-points-retraits-chez"
+    },
+    {
+     "label": "Banque de France : les Français et les espèces (enquête SPACE 2024)",
+     "url": "https://www.banque-france.fr/fr/publications-et-statistiques/publications/les-francais-continuent-dapprecier-les-especes-meme-si-leur-usage-se-reduit-au-profit-des-paiements"
+    }
+   ],
+   "mini": {
+    "fait": "Plus de 1 700 distributeurs de moins en 2025.",
+    "consequence": "L'accès reste très bon, mais on retire de moins en moins.",
+    "dependance": "Le jour d'une coupure, seuls comptent les billets déjà en poche."
+   },
+   "audience": "public",
+   "reflexes": [
+    "Gardez chez vous un peu de liquide, de quoi faire les courses quelques jours.",
+    "Repérez où retirer près de chez vous : la Banque de France publie une carte des points d'accès aux espèces, commune par commune.",
+    "Pensez aux commerçants : un buraliste ou une supérette peut vous dépanner quand le distributeur est loin."
+   ],
+   "publie_le": "2026-11-21T20:57:28+00:00"
+  }
+ ],
  "detour": [],
- "mis_a_jour": "2026-11-21T17:49:15+00:00"
+ "mis_a_jour": "2026-11-21T20:57:28+00:00"
 }
