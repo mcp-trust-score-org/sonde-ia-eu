@@ -1,80 +1,59 @@
 {
  "date": "2026-11-21",
- "genere_le": "2026-11-21T19:59:43+00:00",
+ "genere_le": "2026-11-21T20:22:41+00:00",
  "statut": "a_relire",
  "propositions": [
   {
    "rubrique": "tous_connectes",
    "format": "a_chaud",
    "auteur": "openai/gpt-oss-120b",
-   "image": "assets/photos/politique.jpg",
+   "image": "assets/photos/societe.jpg",
    "article": {
     "tag": "Savoir",
-    "title": "Le préfet Hugues Moutouh veut quitter son poste.<br/>Il pointe du doigt la <mark>fuite numérique</mark>.",
-    "chapo": "Le haut fonctionnaire de la région Centre‑Val de Loire, Hugues Moutouh, a demandé à être relevé de ses fonctions après avoir été accusé de transmettre des informations confidentielles au Rassemblement national. Son communiqué du 21 novembre souligne que l’État ne doit pas devenir la cible d’opérations de déstabilisation. Cette affaire met en lumière la facilité avec laquelle des données sensibles peuvent circuler à l’ère du numérique.",
+    "title": "Des DAB explosés dans le Sud‑Est.<br/>Des voleurs pulvérisent <mark>100 000 €</mark> en une nuit.",
+    "chapo": "Dans la nuit du jeudi 19 au vendredi 20 novembre, deux distributeurs automatiques de billets ont été détruits dans la Drôme et l’Ardèche. Les malfaiteurs ont utilisé du gaz et une étincelle pour faire exploser les machines, rendant les fonds inaccessibles. L’incident montre à quel point notre accès à l’argent liquide dépend de la sécurité de ces appareils.",
     "fait": [
-     "Le préfet a été convoqué le 20 novembre par le ministre de l’Intérieur, puis, le lendemain, il a publié un communiqué demandant à être relevé de ses fonctions, invoquant une campagne de déstabilisation visant l’État.",
-     "Ce revirement montre à quel point les fonctions publiques peuvent être fragilisées par la circulation d’informations internes."
+     "Aux alentours de minuit, des individus masqués ont placé un tuyau de gaz dans un DAB à Romans‑sur‑Isère, puis ont déclenché une étincelle qui a fait exploser la façade du distributeur.",
+     "Cette technique, déjà observée lors d’autres cambriolages, a permis aux voleurs de détruire le coffre contenant jusqu’à 100 000 €."
     ],
     "consequence": [
-     "Les soupçons de fuites reposent sur des échanges électroniques, rappelant que les appareils connectés sont des vecteurs potentiels de divulgation de données confidentielles.",
-     "Cela rappelle à chacun que la confiance dans les outils numériques doit être accompagnée de vigilance."
+     "L’explosion a rendu le distributeur hors service, obligeant la banque à le démonter et à remplacer le matériel, ce qui perturbe l’accès aux espèces pour les riverains.",
+     "Face à ce type d’attaque, les établissements bancaires envisagent des mesures comme l’encre qui rendrait les billets inutilisables, mais les criminels ont déjà trouvé des moyens de contourner ces protections."
     ],
     "lien": [
-     "Dans un contexte où les smartphones sont omniprésents, il est facile de partager, sans le vouloir, des informations sensibles à des interlocuteurs non autorisés.",
-     "Et vous, êtes‑vous sûr de la sécurité de vos messages ?"
+     "Ces faits rappellent que notre capacité à retirer de l’argent en un clic repose sur des infrastructures physiques vulnérables aux actes de banditisme.",
+     "Et vous, que feriez‑vous si votre argent n’était plus accessible en un clic ?"
     ],
     "une_mini": {
-     "fait": "Le préfet a demandé à être relevé après une convocation le 20 novembre.",
-     "consequence": "Les fuites suspectées s’appuient sur des échanges numériques.",
-     "dependance": "L’incident illustre notre dépendance aux appareils connectés pour la diffusion d’informations."
+     "fait": "Des malfaiteurs ont fait exploser deux DAB avec du gaz et une étincelle.",
+     "consequence": "Les machines sont hors service, les usagers privés d’accès aux espèces.",
+     "dependance": "Notre quotidien dépend encore largement de la disponibilité des distributeurs de billets."
     },
     "sources": [
      {
-      "label": "franceinfo – communiqué du 21 novembre",
-      "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html"
-     },
-     {
-      "label": "franceinfo – convocation du 20 novembre",
-      "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html"
+      "label": "Franceinfo – Reportage sur les attaques de DAB",
+      "url": "https://www.franceinfo.fr/faits-divers/comment-les-malfaiteurs-s-attaquent-ils-aux-distributeurs-de-billets_8294111.html"
      }
     ],
-    "a_verifier": [
-     "Confirmer la date exacte du communiqué (21 novembre)",
-     "Vérifier que la demande de mise à pied a bien été formulée dans le communiqué",
-     "Valider les détails de la carrière mentionnée dans le second article"
-    ],
-    "sujet": "Hugues Moutouh, préfet accusé de fuites d’informations confidentielles",
-    "categorie": "politique",
+    "a_verifier": [],
+    "sujet": "Distributeurs de billets",
+    "categorie": "societe",
     "reflexes": [
-     "Vérifiez toujours le destinataire avant d’envoyer un message contenant des données sensibles.",
-     "Utilisez le chiffrement ou des applications sécurisées pour les échanges confidentiels.",
-     "Désactivez le partage de localisation et les sauvegardes automatiques lorsque vous manipulez des informations critiques."
+     "Privilégiez les distributeurs situés dans des zones bien éclairées et fréquentées.",
+     "Vérifiez visuellement l’état du DAB avant d’insérer votre carte.",
+     "Lorsque c’est possible, utilisez des moyens de paiement sans espèces pour réduire votre dépendance aux distributeurs."
     ]
    },
    "fiche": {
-    "sujet": "Hugues Moutouh",
-    "et_vous": "Et vous, avez-vous déjà partagé des informations sensibles depuis votre smartphone sans y réfléchir ?",
+    "sujet": "Distributeurs de billets",
+    "et_vous": "Et vous, que feriez‑vous si votre argent n’était plus accessible en un clic ?",
     "articles_de_presse": [
      {
-      "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
+      "titre": "Comment les malfaiteurs s'attaquent-ils aux distributeurs de billets ?",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html",
+      "url": "https://www.franceinfo.fr/faits-divers/comment-les-malfaiteurs-s-attaquent-ils-aux-distributeurs-de-billets_8294111.html",
       "etat": "lu",
-      "texte": "\"Je refuse que l’Etat, le ministère de l'Intérieur et le corps préfectoral deviennent les cibles ou les instruments de ces entreprises de déstabilisation\", a déclaré samedi le haut fonctionnaire dans un communiqué.\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nSoupçonné d'être impliqué dans des fuites sur des enquêtes mettant en cause le RN, le préfet de la région Centre-Val de Loire, Hugues Moutouh, s'est exprimé pour la première fois, samedi 21 novembre, dans un communiqué transmis à l'AFP. \"La campagne de déstabilisation dont je suis aujourd'hui la cible dépasse largement ma personne. A travers moi, c'est l'autorité même de l'Etat que l'on cherche à atteindre\", a-t-il déclaré, annonçant avoir demandé à être relevé de ses fonctions.\n\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?\n\"Je refuse que l'Etat, le ministère de l'Intérieur et le corps préfectoral deviennent les cibles ou les instruments de ces entreprises de déstabilisation\", a-t-il ajouté, avant de se défendre : \"Dans le cadre des différentes fonctions qui m'ont été confiées par le gouvernement, j'ai exercé mes responsabilités dans le strict respect de la loi et une absolue neutralité politique, avec pour seules exigences le service de la France et la défense de l'intérêt général\".\nCette prise de parole survient au lendemain de sa convocation au ministère de l'Intérieur. L'ancien secrétaire général du ministère avait été reçu place Beauvau pour s'expliquer sur les accusations le visant, après l'ouverture d'une enquête pour \"violation du secret professionnel, violation du secret de l'enquête et recel de ces délits\". Le haut fonctionnaire est soupçonné d'avoir fait fuiter des informations au Rassemblement national au sujet d'affaires impliquant le parti.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\nPréfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau\n\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?\nPréfet soupçonné d'avoir renseigné le RN : \"Tout le monde savait qu'il était proche du Rassemblement national\", confie un conseiller de l'exécutif à propos d'Hugues Moutouh\nPréfet soupçonné d'avoir renseigné le RN : \"J'espère que ce n'est pas une pression pour tous ceux qui oseraient discuter avec nous\", réagit l'eurodéputé RN Aleksandar Nikolic\nL'élu RN qui a reçu un procureur au siège du parti évoque \"une discussion entre professionnels\" qui se connaissent \"depuis près de trente ans\"\nMobilisation contre la vie chère : les gilets jaunes fêtent les huit ans de leur mouvement\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nL'émotion du clan de Michel Zecler après que la justice est reconnu le caractère raciste de son agression\n\"les Brittaniques sont angoissés par la perspective d'une victoire de Le Pen ou Mélenchon\" selon le journaliste britannique Philip Turle\nPrésomption d'usage légal des armes par les forces de l'ordre : la loi définitivement adoptée\nPréfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau\nProcès Michel Zecler : les trois policiers condamnés à un à deux ans de prison ferme\nLa sonde Voyager 1 est à 26 milliards de km de la Terre et continue d'émettre\nIrlande du Nord, catholiques et protestants toujours divisés\n\"Veux-tu m'épouser ?\" : un député fait sa demande au Parlement\nPrésidentielle : les créateurs de contenus surveillés par l'Arcom\nL’apparition rare d’un peuple autochtone isolé d'Amazonie suscite l'inquiétude\nVie chère, climat, droit au logement... La jeunesse d'Europe se mobilise ce week-end\n\"Je suis candidat\" : Dominique de Villepin se lance dans la course de l'élection présidentielle\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nRetrouvez tous les jours à 12h l’actualité politique en France et à l’étranger\nRetrouvez tous les jours à 12h l’actualité politique en France et à l’étranger\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Politique\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscrire de ces newsletters à tout moment via le lien en bas de ces newsletters."
-     },
-     {
-      "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html",
-      "etat": "lu",
-      "texte": "Le haut fonctionnaire, qui a été le numéro deux du ministère de l'Intérieur entre avril 2025 et mai 2026, a été convoqué vendredi par Laurent Nuñez après l'ouverture d'une enquête pour \"violation du secret professionnel, violation du secret de l'enquête et recel de ces délits\".\nPour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nUn préfet sur la sellette ? Hugues Moutouh, préfet de la région Centre-Val de Loire, a été convoqué, vendredi 20 novembre, par le ministre de l'Intérieur, Laurent Nuñez. Le nom de ce haut fonctionnaire a fait les gros titres après des révélations du Monde, jeudi, sur une enquête ouverte pour des soupçons de fuites d'informations venues d'un cadre du ministère de l'Intérieur vers le Rassemblement national. Confirmées par franceinfo, ces informations interrogent sur les liens entre ce préfet de 58 ans et le parti de Marine Le Pen.\nAprès des études à Sciences Po Bordeaux, durant lesquelles il lui arrive de jouer les gardes du corps pour Joe Cocker, selon Le Berry républicain, Hugues Moutouh décroche son agrégation de droit public. Le Parisien enseigne le droit dans la cité girondine puis à l'université de Caen, avant d'être admis au Conseil d'Etat en 2002. Commence alors une longue carrière en cabinets ministériels : sous Jacques Chirac, il est conseiller à la recherche, puis à l'emploi et à l'Intérieur.\n\"Il était proche de Claude Guéant [directeur de cabinet de Nicolas Sarkozy alors ministre de l'Intérieur, de 2005 à 2007]\", se souvient un sarkozyste. En 2007, il fait campagne pour le candidat de l'UMP et \"contribue au programme\", selon cette source. Le chef de l'Etat le nomme préfet de la Creuse en décembre 2009, quelques jours avant son 42e anniversaire, ce qui fait de lui le plus jeune préfet de France. Mais il ne reste pas longtemps à Guéret : un an plus tard, il rejoint la deuxième campagne présidentielle de Nicolas Sarkozy, qui ne connaîtra pas le même épilogue.\nAprès la défaite de 2012, Hugues Moutouh travaille dans le privé, en cabinet d'avocats, cabinet de conseil, au directoire d'une entreprise de recyclage ou au conseil de surveillance de la société mère du club de football de Valenciennes. En 2019, il redevient préfet lorsqu'Emmanuel Macron le nomme dans la Drôme, puis dans l'Hérault en 2021. \"Je suis là pour jouer un rôle de bulldozer\", prévient-il devant la presse dès son arrivée. Dans le département méditerranéen, il fait de la lutte contre l'immigration l'une de ses priorités, et suscite un tollé en dénonçant \"la délinquance des SDF étrangers\" dans un tweet, avant de le supprimer.\nIl se fait ensuite remarquer pour son arrêté interdisant les concerts de casseroles lors d'une visite présidentielle en avril 2023. Deux mois plus tard, l'homme à la mâchoire carrée et au crâne rasé, qui revendique son goût pour les sports de combat, fait à nouveau parler de lui. Interrogé sur ICI Occitanie dans le contexte des émeutes déclenchées par la mort de Nahel Merzouk, il lâche au micro : \"Si demain vous attrapez votre gamin qui descend dans la rue pour brûler des véhicules de police ou caillasser des pompiers ou piller des magasins, la méthode, c'est quoi ? C'est deux claques et au lit ! C'est ce que faisaient nos grands-parents.\"\nIl est ensuite nommé dans les Alpes-Maritimes, et s'installe à Nice avec son chien baptisé Poutine. Il n'est guère apprécié du maire de l'époque, Christian Estrosi. \"Je demande à avoir un préfet compétent qui protège les gens, c'est son boulot\", s'agace l'élu dans Nice-Matin, au sujet de \"ce préfet qui roule des mécaniques\". En revanche, le haut fonctionnaire entretient de bonnes relations avec Eric Ciotti, alors député LR du département, qui ralliera le RN en juin 2024, et qui loue dans son livre \"un homme, précis, rigoureux, concentré\" et \"courageux\".\nAu mois d'avril 2025, Hugues Moutouh quitte la Côte d'Azur. Bruno Retailleau en fait son numéro 2 place Beauvau : il le nomme secrétaire général du ministère de l'Intérieur. Un poste stratégique, sorte de tour de contrôle de cette administration. Mais en octobre de la même année, le président des Républicains claque la porte du gouvernement de Sébastien Lecornu. Il est remplacé par Laurent Nuñez.\n\"Cela arrive que des secrétaires généraux soient maintenus au fil des remaniements, mais lui était trop proche de Bruno Retailleau, or c'était important pour Laurent Nuñez de nommer quelqu'un de loyal à ce poste.\"\nEn mai 2026, Hugues Moutouh fait donc ses cartons et quitte la place Beauvau, après sa nomination comme préfet de la région Centre-Val de Loire. \"Ce n'est pas une punition, c'est même une promotion\", nuance une source ministérielle.\nC'est lorsqu'il occupait cette fonction-clé de secrétaire général à Beauvau que les enquêteurs de l'Inspection générale de la police nationale (IGPN) le soupçonnent d'avoir transmis des informations confidentielles au RN sur des enquêtes concernant le parti d'extrême droite. \"Si les faits sont avérés, ils sont évidemment très graves\", \"cela jetterait le discrédit sur le ministère de l'Intérieur\", a affirmé sur BFMTV Laurent Nuñez, qui l'a convoqué vendredi pour avoir des explications. \"J'ai besoin de l'entendre, d'écouter ce qu'il a à me dire. Ma main n'a jamais tremblé [quand] il y avait des décisions à prendre, croyez-le bien\", a-t-il ajouté.\nAu RN, on évoque du qu'en-dira-t-on. \"Pour le moment, ce sont des rumeurs et des accusations sans fondement en pleine campagne électorale où le Rassemblement national est le principal parti d'opposition\", a déclaré sur France Inter le député RN de la Somme, Jean-Philippe Tanguy, précisant \"n'avoir aucune information sur cette affaire\". \"A ma connaissance, Hugues Moutouh ne travaillait absolument pas pour nous, je ne l'ai jamais vu dans quelque réunion que ce soit\", assure à franceinfo Jean-Paul Garraud, eurodéputé RN, qui salue \"un grand serviteur de l'Etat\".\n\"Il a une excellente réputation dans le corps préfectoral, ses compétences ont toujours été reconnues.\"\nEn tant que préfet de la région Ce"
-     },
-     {
-      "titre": "Hugues Moutouh, le préfet soupçonné de fuites d’informations confidentielles vers le RN, a demandé à être relevé de ses fonctions",
-      "media": "Le Monde",
-      "url": "https://www.lemonde.fr/societe/article/2026/11/21/hugues-moutouh-le-prefet-soupconne-de-fuites-d-informations-confidentielles-vers-le-rn-a-demande-a-etre-releve-de-ses-fonctions_6814056_3224.html",
-      "etat": "illisible (HTTP 402)"
+      "texte": "Pour sauvegarder cet article, connectez-vous ou créez un compte franceinfo\nLes distributeurs de billets sont-ils trop facilement attaquables ? Dans la nuit de jeudi à vendredi dans la Drôme et l'Ardèche, deux d’entre eux ont été ciblés à une heure d’intervalle. Selon les enquêteurs, la technique porterait la marque du grand banditisme.\nCe texte correspond à une partie de la retranscription du reportage ci-dessus. Cliquez sur la vidéo pour la regarder en intégralité.\nL'explosion a soufflé la façade d'une banque à Romans-sur-Isère (Drôme), vendredi 20 novembre. Un distributeur automatique de billets a été visé. Sur des images, il apparaît éventré et hors d'usage. Les ouvriers sont au travail pour le démonter.\nLe résultat d'une attaque menée en pleine nuit, par au moins quatre malfaiteurs encagoulés. \"Ce sont des individus qui sont chevronnés, qui font très généralement partie du grand banditisme. Ces individus sont particulièrement organisés. Sur une nuit, au cours de leur périple, ils font deux, trois, quatre DAB\", précise Denis Iglesias, le secrétaire départemental Drôme d’Alliance Police nationale.\nDeux heures plus tôt, à une centaine de kilomètres de là, à Saint-Just-d'Ardèche (Ardèche), une autre agence bancaire était prise pour cible avec une technique similaire, l'usage d'une bouteille de gaz, selon une source proche de l'enquête.\nCette technique, désormais bien rodée, se dévoile au cours d'une autre attaque filmée par une caméra de vidéosurveillance. Un premier malfaiteur, lampe torche à la main, introduit un tuyau bleu dans le local qui contient les billets. Le gaz se répand à l'intérieur du distributeur. Son complice, lui, glisse un câble électrique pour créer une étincelle. L'explosion est capable de pulvériser un mur, comme on le voit sur d'autres vidéos. Les malfaiteurs utilisent du gaz, mais aussi des explosifs ou des engins de chantier.\nChaque distributeur peut contenir jusqu'à 100 000 euros. Face à cette menace, le secteur bancaire met en place des parades. En cas d'attaque par exemple, une encre de couleur se répand, et rend les billets inutilisables. Mais cette technique est-elle infaillible ? \"On a déjà eu, dans l'histoire, des équipes de voyous qui avaient eu recours à des chimistes. [Ils] avaient réussi à laver ces billets de manière à ce qu'ils puissent être utilisés dans le commerce. Donc les banquiers savent très bien que ça ne suffit pas\", explique Frédéric Ploquin, journaliste spécialiste de la criminalité organisée et auteur de Journal d’un maton (Ed. Fayard).\nChaque année en France, 30 à 40 distributeurs automatiques de billets sont pris pour cible.\nVous pouvez désormais privilégier l'affichage des articles de franceinfo dans les résultats de recherche Google. Comment ça marche ?\nÉcosse : un Français qui voulait s'assoir sur une relique royale ancestrale exposée à Perth plaide coupable pour des faits de dégradation volontaire\nNombre de tirs, enquêtes, lien de confiance... Les questions que pose la loi sur la présomption d'usage légal des armes par les forces de l'ordre\n\"J'ai fait une formation à 250 personnes\" : à Paris, les formations de street medics attirent de plus en plus de militants\nQuatre mois après le mégafeu en Gironde, les sinistrés du Porge dénoncent la lenteur des services de l’État\nL'émotion du clan de Michel Zecler après que la justice est reconnu le caractère raciste de son agression\nMobilisation contre la vie chère : les gilets jaunes fêtent les huit ans de leur mouvement\nLa maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros\nL'émotion du clan de Michel Zecler après que la justice est reconnu le caractère raciste de son agression\n\"Les Britaniques sont angoissés par la perspective d'une victoire de Le Pen ou Mélenchon\" selon le journaliste britannique Philip Turle\nPrésomption d'usage légal des armes par les forces de l'ordre : la loi définitivement adoptée\nPréfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau\nProcès Michel Zecler : les trois policiers condamnés à un à deux ans de prison ferme\nLa sonde Voyager 1 est à 26 milliards de km de la Terre et continue d'émettre\nIrlande du Nord, catholiques et protestants toujours divisés\n\"Veux-tu m'épouser ?\" : un député fait sa demande au Parlement\nPrésidentielle : les créateurs de contenus surveillés par l'Arcom\nL’apparition rare d’un peuple autochtone isolé d'Amazonie suscite l'inquiétude\nVie chère, climat, droit au logement... La jeunesse d'Europe se mobilise ce week-end\n\"Je suis candidat\" : Dominique de Villepin se lance dans la course de l'élection présidentielle\nActivez ou désactivez la lecture automatique des aperçus vidéo lorsque vous consultez franceinfo.\nRetrouvez tous les jours à 17h30 notre sélection de contenus “société”\nRetrouvez tous les jours à 17h30 notre sélection de contenus “société”\nFrance Télévisions utilise votre adresse e-mail pour vous adresser la newsletter \"La Quotidienne Société\" et elle est susceptible d'être personnalisée. En vous inscrivant à nos newsletters, vous consentez également à l’utilisation de pixels de suivi et de liens traçants. En savoir plus Ils nous permettent de personnaliser nos communications et de vous proposer des contenus adaptés à vos centres d'intérêt sur d'autres supports. Ces traceurs nous informent notamment de l'ouverture de vos courriels, des liens cliqués et de certaines informations relatives à votre terminal. Ce consentement peut être retiré à tout moment via le lien en bas de chaque newsletter. France Télévisions utilise aussi les pixels de suivi et les liens traçants pour garder la date de dernière ouverture des courriels afin de vous désinscrire automatiquement en cas d'inactivité. Vous pouvez vous désinscrire de ces newsletters à tout moment via le lien en bas de ces newsletters."
      }
     ],
     "tendances": {
@@ -92,29 +71,6 @@
        "rang_wikipedia": 2,
        "page": "https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027",
        "titres_de_presse": []
-      },
-      {
-       "sujet": "Hugues Moutouh",
-       "langue": "fr",
-       "rang_wikipedia": 3,
-       "page": "https://fr.wikipedia.org/wiki/Hugues_Moutouh",
-       "titres_de_presse": [
-        {
-         "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
-         "media": "franceinfo",
-         "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html"
-        },
-        {
-         "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
-         "media": "franceinfo",
-         "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html"
-        },
-        {
-         "titre": "Hugues Moutouh, le préfet soupçonné de fuites d’informations confidentielles vers le RN, a demandé à être relevé de ses fonctions",
-         "media": "Le Monde",
-         "url": "https://www.lemonde.fr/societe/article/2026/11/21/hugues-moutouh-le-prefet-soupconne-de-fuites-d-informations-confidentielles-vers-le-rn-a-demande-a-etre-releve-de-ses-fonctions_6814056_3224.html"
-        }
-       ]
       },
       {
        "sujet": "David Habib",
@@ -170,13 +126,7 @@
        "langue": "fr",
        "rang_wikipedia": 13,
        "page": "https://fr.wikipedia.org/wiki/David_Lisnard",
-       "titres_de_presse": [
-        {
-         "titre": "Présidentielle 2027 : les équipes de Gabriel Attal, Bruno Retailleau et David Lisnard se réuniront jeudi pour évoquer la primaire de la droite et du centre",
-         "media": "franceinfo",
-         "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
-        }
-       ]
+       "titres_de_presse": []
       },
       {
        "sujet": "General Sherman (arbre)",
@@ -227,6 +177,16 @@
          "titre": "Streeting calls Putin a 'cold-blooded killer' as he meets Zelensky in Kyiv",
          "media": "BBC News",
          "url": "https://www.bbc.co.uk/news/videos/cqevrddp91z8o"
+        },
+        {
+         "titre": "Teenager Williams-Barnett shines as Spurs beat Ipswich",
+         "media": "BBC News",
+         "url": "https://www.bbc.co.uk/sport/football/videos/c3174qq2j82zo"
+        },
+        {
+         "titre": "Evanilson strikes again as Bournemouth beat Forest",
+         "media": "BBC News",
+         "url": "https://www.bbc.co.uk/sport/football/videos/cm4gn997yry2o"
         }
        ]
       },
@@ -304,18 +264,25 @@
          "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/jupiter-hunger-games-gabin-quels-sont-les-films-a-voir-ou-pas-cette-semaine-au-cinema_8290559.html"
         }
        ]
+      },
+      {
+       "sujet": "France Gall",
+       "langue": "fr",
+       "rang_wikipedia": 29,
+       "page": "https://fr.wikipedia.org/wiki/France_Gall",
+       "titres_de_presse": []
       }
      ],
      "presse_grand_public": [
       {
-       "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
-       "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html"
-      },
-      {
        "titre": "La mobilisation du 21 novembre a rassemblé 82 500 manifestants dans l'Hexagone selon le ministère de l'Intérieur, 150 000 selon la CGT",
        "media": "franceinfo",
        "url": "https://www.franceinfo.fr/societe/manifestations/mobilisation-du-21-novembre-82-500-personnes-ont-manifeste-dans-l-hexagone-selon-le-ministere-de-l-interieur-150-000-selon-la-cgt_8294093.html"
+      },
+      {
+       "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html"
       },
       {
        "titre": "François Ruffin retire sa candidature à l'élection présidentielle et souhaite \"bonne campagne\" aux \"candidats de gauche encore en lice\"",
@@ -323,19 +290,39 @@
        "url": "https://www.franceinfo.fr/elections/francois-ruffin-retire-sa-candidature-a-l-election-presidentielle-et-souhaite-bonne-campagne-aux-candidats-de-gauche-encore-en-lice_8294003.html"
       },
       {
+       "titre": "Cargo échoué dans les Landes : la météo capricieuse perturbe le remorquage du navire",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/cargo-echoue-dans-les-landes-la-meteo-capricieuse-perturbe-le-remorquage-du-navire_8294096.html"
+      },
+      {
+       "titre": "L'ex-président brésilien Jair Bolsonaro en soins intensifs pour une occlusion intestinale",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/bresil/l-ex-president-bresilien-jair-bolsonaro-en-soins-intensifs-pour-une-occlusion-intestinale_8294123.html"
+      },
+      {
+       "titre": "Nouvel exploit des Français Théo Arribagé et Albano Olivetti qualifiés pour la finale du Masters de Turin",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sports/tennis/masters/nouvel-exploit-des-francais-theo-arribage-et-albano-olivetti-qualifies-pour-la-finale-du-masters-de-turin_8294081.html"
+      },
+      {
        "titre": "Nombre de tirs, enquêtes, lien de confiance... Les questions que pose la loi sur la présomption d'usage légal des armes par les forces de l'ordre",
        "media": "franceinfo",
        "url": "https://www.franceinfo.fr/faits-divers/police/nombre-de-tirs-enquetes-lien-de-confiance-les-questions-que-pose-la-loi-sur-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8293529.html"
       },
       {
-       "titre": "Mobilité des jeunes, commerce, quotas d'émissions carbone… Ce que prévoient les accords conclus entre le Royaume-Uni et l'Union européenne",
-       "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/monde/royaume-uni/mobilite-des-jeunes-commerce-quotas-d-emissions-carbone-ce-que-prevoient-les-accords-conclus-entre-le-royaume-uni-et-l-union-europeenne_8293715.html"
-      },
-      {
        "titre": "\"Blessure grave\" pour Désiré Doué, touché au genou droit avec le PSG et sorti sur civière face à Nice en Ligue 1",
        "media": "franceinfo",
        "url": "https://www.franceinfo.fr/sports/foot/ligue-1/grosse-inquietude-pour-desire-doue-blesse-au-genou-droit-avec-le-psg-et-sorti-sur-civiere-face-a-nice-en-ligue-1_8294027.html"
+      },
+      {
+       "titre": "Comment les malfaiteurs s'attaquent-ils aux distributeurs de billets ?",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/faits-divers/comment-les-malfaiteurs-s-attaquent-ils-aux-distributeurs-de-billets_8294111.html"
+      },
+      {
+       "titre": "Mobilité des jeunes, commerce, quotas d'émissions carbone… Ce que prévoient les accords conclus entre le Royaume-Uni et l'Union européenne",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/royaume-uni/mobilite-des-jeunes-commerce-quotas-d-emissions-carbone-ce-que-prevoient-les-accords-conclus-entre-le-royaume-uni-et-l-union-europeenne_8293715.html"
       },
       {
        "titre": "Écosse : un Français qui voulait s'assoir sur une relique royale ancestrale exposée à Perth plaide coupable pour des faits de dégradation volontaire",
@@ -408,24 +395,19 @@
        "url": "https://www.franceinfo.fr/societe/harcelement-sexuel/un-directeur-d-ecole-maternelle-de-montpellier-mis-en-examen-pour-viol-et-agression-sexuelle_8293025.html"
       },
       {
-       "titre": "Jusqu'à deux ans de prison ferme et le caractère raciste des violences retenu pour les trois policiers accusés d'avoir roué de coups Michel Zecler",
+       "titre": "\"On n'attendra pas l'élection présidentielle, on veut que la vie des gens s'améliore maintenant\", pointe le secrétaire confédéral de la CGT",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/faits-divers/producteur-passe-a-tabac-par-des-policiers/des-condamnations-allant-d-un-an-a-deux-ans-de-prison-ferme-pour-les-trois-policiers-accuses-d-avoir-roue-de-coups-michel-zecler_8292287.html"
+       "url": "https://www.franceinfo.fr/societe/on-n-attendra-pas-l-election-presidentielle-on-veut-que-la-vie-des-gens-s-ameliore-maintenant-pointe-le-secretaire-confederal-de-la-cgt_8294036.html"
       },
       {
-       "titre": "Guerre en Ukraine : des frappes russes font deux morts et 58 blessés à Kryvyï Rih, ville natale de Volodymyr Zelensky",
+       "titre": "Mobilisation du 21 novembre : le ministère de l'Intérieur annonce 144 interpellations en France, selon un bilan provisoire à 18 heures",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/guerre-en-ukraine-des-frappes-russes-font-deux-morts-et-58-blesses-a-kryvyi-rih-ville-natale-de-volodymyr-zelensky_8293700.html"
+       "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html"
       },
       {
-       "titre": "\"Des campagnes d'attaques de plus en plus automatisées\" : comment les cybercriminels ont placé l'intelligence artificielle au cœur de leurs opérations",
+       "titre": "Une enquête ouverte contre des policiers pour violences et agression sexuelle en marge de la manifestation parisienne du 31 octobre",
        "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html"
-      },
-      {
-       "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
-       "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html"
+       "url": "https://www.franceinfo.fr/societe/manifestations/une-enquete-ouverte-contre-des-policiers-pour-violences-et-agression-sexuelle-en-marge-de-la-manifestation-parisienne-du-31-octobre_8293754.html"
       },
       {
        "titre": "\"Bulldozer\", \"super shérif\" et \"serviteur de l'Etat\" : qui est Hugues Moutouh, le préfet soupçonné d'avoir fait fuiter des informations au RN ?",
@@ -438,17 +420,7 @@
        "url": "https://www.franceinfo.fr/france/centre-val-de-loire/loiret/prefet-soupconne-de-fuites-vers-le-rn-il-doit-etre-mis-a-pied-estime-la-depute-ecologiste-sandrine-rousseau_8293574.html"
       },
       {
-       "titre": "\"On n'attendra pas l'élection présidentielle, on veut que la vie des gens s'améliore maintenant\", pointe le secrétaire confédéral de la CGT",
-       "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/societe/on-n-attendra-pas-l-election-presidentielle-on-veut-que-la-vie-des-gens-s-ameliore-maintenant-pointe-le-secretaire-confederal-de-la-cgt_8294036.html"
-      },
-      {
-       "titre": "Mobilisation du 21 novembre : le ministère de l'Intérieur annonce 144 interpellations en France, selon un bilan provisoire à 18 heures",
-       "media": "franceinfo",
-       "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html"
-      },
-      {
-       "titre": "Présidentielle 2027 : les équipes de Gabriel Attal, Bruno Retailleau et David Lisnard se réuniront jeudi pour évoquer la primaire de la droite et du centre",
+       "titre": "Après l'abandon de François Ruffin, le candidat communiste à l'élection présidentielle Fabien Roussel pointe des \"convergences nombreuses\" avec lui",
        "media": "franceinfo",
        "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
       },
@@ -501,11 +473,6 @@
        "titre": "\"Je crois que raconter l’histoire des mafias, notamment à travers le cinéma, est extrêmement utile\" : Roberto Saviano est l'invité exceptionnel du Festival du film d'Histoire de Pessac",
        "media": "franceinfo Culture",
        "url": "https://www.franceinfo.fr/culture/cinema/je-crois-que-raconter-l-histoire-des-mafias-notamment-a-travers-le-cinema-est-extremement-utile-roberto-saviano-est-l-invite-exceptionnel-du-festival-du-film-d-histoire-de-pessac_8289596.html"
-      },
-      {
-       "titre": "\"Jupiter\" : huis clos tendu et efficace sous menace nucléaire",
-       "media": "franceinfo Culture",
-       "url": "https://www.franceinfo.fr/replay-radio/les-experts-cinema/jupiter-huis-clos-tendu-et-efficace-sous-menace-nucleaire_8271713.html"
       }
      ],
      "deja_en_ligne": [
@@ -518,7 +485,7 @@
     }
    },
    "alertes_charte": [
-    "Article non lu (illisible (HTTP 402)) : https://www.lemonde.fr/societe/article/2026/11/21/hugues-moutouh-le-prefet-soupconne-de-fuites-d-informations-confidentielles-vers-le-rn-a-demande-a-etre-releve-de-ses-fonctions_6814056_3224.html — vérifier à la main ce qui en vient."
+    "Trop de chiffres dans le texte (4) : en garder 3 au plus, le détail va dans l'encadré Premium."
    ]
   }
  ],
@@ -530,7 +497,7 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 152
+   "nombre": 161
   },
   "Détour (flux RSS)": {
    "etat": "ok",

@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T19:59:39+00:00",
+ "genere_le": "2026-11-21T20:22:35+00:00",
  "sources": {
   "Wikipédia": {
    "etat": "ok",
@@ -7,7 +7,7 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 152
+   "nombre": 161
   },
   "Détour (flux RSS)": {
    "etat": "ok",
@@ -16,13 +16,13 @@
  },
  "flux": {
   "Presse grand public (flux RSS)": {
-   "franceinfo": "ok (30)",
+   "franceinfo": "ok (31)",
    "franceinfo Culture": "ok (17)",
-   "franceinfo Internet": "ok (15)",
+   "franceinfo Internet": "ok (17)",
    "20 Minutes": "ok (27)",
    "Le Monde": "ok (16)",
    "France 24": "ok (24)",
-   "BBC News": "ok (23)"
+   "BBC News": "ok (29)"
   },
   "Détour (flux RSS)": {
    "Next": "ok (50)",
@@ -582,18 +582,18 @@
  "presse": [
   {
    "media": "franceinfo",
-   "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
-   "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html",
-   "date": "2026-11-21T18:40+00:00",
-   "resume": "\"Je refuse que l’Etat, le ministère de l'Intérieur et le corps préfectoral deviennent les cibles ou les instruments de ces entreprises de déstabilisation\", a déclaré samedi le haut fonctionnaire dans un communiqué.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
    "titre": "La mobilisation du 21 novembre a rassemblé 82 500 manifestants dans l'Hexagone selon le ministère de l'Intérieur, 150 000 selon la CGT",
    "url": "https://www.franceinfo.fr/societe/manifestations/mobilisation-du-21-novembre-82-500-personnes-ont-manifeste-dans-l-hexagone-selon-le-ministere-de-l-interieur-150-000-selon-la-cgt_8294093.html",
    "date": "2026-11-21T19:23+00:00",
    "resume": "Cette journée de mobilisation s'est inscrite dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "Le préfet Hugues Moutouh, soupçonné d'avoir transmis des informations confidentielles au RN, demande à être relevé de ses fonctions",
+   "url": "https://www.franceinfo.fr/politique/front-national/le-prefet-hugues-moutouh-soupconne-d-avoir-transmis-au-rn-des-informations-confidentielles-sur-des-enquetes-visant-le-parti-demande-a-etre-releve-de-ses-fonctions_8294069.html",
+   "date": "2026-11-21T18:40+00:00",
+   "resume": "\"Je refuse que l’Etat, le ministère de l'Intérieur et le corps préfectoral deviennent les cibles ou les instruments de ces entreprises de déstabilisation\", a déclaré samedi le haut fonctionnaire dans un communiqué.",
    "langue": "français"
   },
   {
@@ -606,6 +606,30 @@
   },
   {
    "media": "franceinfo",
+   "titre": "Cargo échoué dans les Landes : la météo capricieuse perturbe le remorquage du navire",
+   "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/cargo-echoue-dans-les-landes-la-meteo-capricieuse-perturbe-le-remorquage-du-navire_8294096.html",
+   "date": "2026-11-21T19:30+00:00",
+   "resume": "Le cargo de 169 mètres contenant une centaine de tonnes de gazole s'est déplacé de quelques mètres, samedi 21 novembre. Un changement de position en raison de la marée pour le navire échoué sur la plage landaise du Cap de l'Homy depuis deux jours. Les conditions météo annoncent une nuit compliquée.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "L'ex-président brésilien Jair Bolsonaro en soins intensifs pour une occlusion intestinale",
+   "url": "https://www.franceinfo.fr/monde/bresil/l-ex-president-bresilien-jair-bolsonaro-en-soins-intensifs-pour-une-occlusion-intestinale_8294123.html",
+   "date": "2026-11-21T19:59+00:00",
+   "resume": "L'ancien dirigeant souffre de séquelles d'un coup de couteau au ventre reçu pendant la campagne électorale de 2018 et a été opéré à plusieurs reprises.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "Nouvel exploit des Français Théo Arribagé et Albano Olivetti qualifiés pour la finale du Masters de Turin",
+   "url": "https://www.franceinfo.fr/sports/tennis/masters/nouvel-exploit-des-francais-theo-arribage-et-albano-olivetti-qualifies-pour-la-finale-du-masters-de-turin_8294081.html",
+   "date": "2026-11-21T19:38+00:00",
+   "resume": "Le duo tricolore s'est imposé contre le tandem allemand Kevin Krawietz-Tim Puetz en demi-finales du \"tournoi des maîtres\", samedi, un nouvel exploit dans ce tournoi pour Arribagé et Olivetti.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
    "titre": "Nombre de tirs, enquêtes, lien de confiance... Les questions que pose la loi sur la présomption d'usage légal des armes par les forces de l'ordre",
    "url": "https://www.franceinfo.fr/faits-divers/police/nombre-de-tirs-enquetes-lien-de-confiance-les-questions-que-pose-la-loi-sur-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8293529.html",
    "date": "2026-11-21T15:56+00:00",
@@ -614,18 +638,26 @@
   },
   {
    "media": "franceinfo",
-   "titre": "Mobilité des jeunes, commerce, quotas d'émissions carbone… Ce que prévoient les accords conclus entre le Royaume-Uni et l'Union européenne",
-   "url": "https://www.franceinfo.fr/monde/royaume-uni/mobilite-des-jeunes-commerce-quotas-d-emissions-carbone-ce-que-prevoient-les-accords-conclus-entre-le-royaume-uni-et-l-union-europeenne_8293715.html",
-   "date": "2026-11-21T16:48+00:00",
-   "resume": "Cette nouvelle alliance, destinée à rapprocher les deux côtés de la Manche après les années houleuses du Brexit, a été qualifiée vendredi de \"tournant\" par la Commission européenne.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
    "titre": "\"Blessure grave\" pour Désiré Doué, touché au genou droit avec le PSG et sorti sur civière face à Nice en Ligue 1",
    "url": "https://www.franceinfo.fr/sports/foot/ligue-1/grosse-inquietude-pour-desire-doue-blesse-au-genou-droit-avec-le-psg-et-sorti-sur-civiere-face-a-nice-en-ligue-1_8294027.html",
    "date": "2026-11-21T17:42+00:00",
    "resume": "L'attaquant international français est sorti sur civière à la 44e minute, samedi à Nice, après un mauvais appui suite auquel Désiré Doué s'est immédiatement tenu le genou.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "Comment les malfaiteurs s'attaquent-ils aux distributeurs de billets ?",
+   "url": "https://www.franceinfo.fr/faits-divers/comment-les-malfaiteurs-s-attaquent-ils-aux-distributeurs-de-billets_8294111.html",
+   "date": "2026-11-21T19:40+00:00",
+   "resume": "Les distributeurs de billets sont-ils trop facilement attaquables ? Dans la nuit de jeudi à vendredi dans la Drôme et l'Ardèche, deux d’entre eux ont été ciblés à une heure d’intervalle. Selon les enquêteurs, la technique porterait la marque du grand banditisme.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo",
+   "titre": "Mobilité des jeunes, commerce, quotas d'émissions carbone… Ce que prévoient les accords conclus entre le Royaume-Uni et l'Union européenne",
+   "url": "https://www.franceinfo.fr/monde/royaume-uni/mobilite-des-jeunes-commerce-quotas-d-emissions-carbone-ce-que-prevoient-les-accords-conclus-entre-le-royaume-uni-et-l-union-europeenne_8293715.html",
+   "date": "2026-11-21T16:48+00:00",
+   "resume": "Cette nouvelle alliance, destinée à rapprocher les deux côtés de la Manche après les années houleuses du Brexit, a été qualifiée vendredi de \"tournant\" par la Commission européenne.",
    "langue": "français"
   },
   {
@@ -742,34 +774,26 @@
   },
   {
    "media": "franceinfo",
-   "titre": "Jusqu'à deux ans de prison ferme et le caractère raciste des violences retenu pour les trois policiers accusés d'avoir roué de coups Michel Zecler",
-   "url": "https://www.franceinfo.fr/faits-divers/producteur-passe-a-tabac-par-des-policiers/des-condamnations-allant-d-un-an-a-deux-ans-de-prison-ferme-pour-les-trois-policiers-accuses-d-avoir-roue-de-coups-michel-zecler_8292287.html",
-   "date": "2026-11-21T12:49+00:00",
-   "resume": "La cour criminelle de Paris a rendu son verdict très attendu, vendredi soir, face à un public venu en nombre. Elle a finalement retenu la circonstance aggravante de racisme. Les peines vont de un an sous bracelet électronique à deux ans de prison ferme.",
+   "titre": "\"On n'attendra pas l'élection présidentielle, on veut que la vie des gens s'améliore maintenant\", pointe le secrétaire confédéral de la CGT",
+   "url": "https://www.franceinfo.fr/societe/on-n-attendra-pas-l-election-presidentielle-on-veut-que-la-vie-des-gens-s-ameliore-maintenant-pointe-le-secretaire-confederal-de-la-cgt_8294036.html",
+   "date": "2026-11-21T17:55+00:00",
+   "resume": "Alors que des dizaines de milliers de personnes ont encore manifesté dans les rues samedi, la CGT appelle à maintenir la pression sur le gouvernement pour obtenir, notamment, des hausses de salaires.",
    "langue": "français"
   },
   {
    "media": "franceinfo",
-   "titre": "Guerre en Ukraine : des frappes russes font deux morts et 58 blessés à Kryvyï Rih, ville natale de Volodymyr Zelensky",
-   "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/guerre-en-ukraine-des-frappes-russes-font-deux-morts-et-58-blesses-a-kryvyi-rih-ville-natale-de-volodymyr-zelensky_8293700.html",
-   "date": "2026-11-21T13:00+00:00",
-   "resume": "Six enfants figurent parmi les blessés, a précisé samedi le président ukrainien sur Telegram.",
+   "titre": "Mobilisation du 21 novembre : le ministère de l'Intérieur annonce 144 interpellations en France, selon un bilan provisoire à 18 heures",
+   "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html",
+   "date": "2026-11-21T20:01+00:00",
+   "resume": "Cette journée de mobilisation s'est inscrite dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
    "langue": "français"
   },
   {
    "media": "franceinfo",
-   "titre": "\"Des campagnes d'attaques de plus en plus automatisées\" : comment les cybercriminels ont placé l'intelligence artificielle au cœur de leurs opérations",
-   "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html",
-   "date": "2026-11-21T06:18+00:00",
-   "resume": "Les progrès de l'intelligence artificielle servent aussi les cybercriminels, qui l'utilisent comme un \"multiplicateur de force\" afin de mener des piratages dans le monde entier.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
-   "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
-   "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html",
-   "date": "2026-11-21T11:59+00:00",
-   "resume": "Levent Alpöge n'a publié qu'un récit de ces travaux sur son site personnel et non la démonstration intégrale, qui fait plus de 250 000 pages selon lui et n'a pu être vérifiée par aucun autre mathématicien.",
+   "titre": "Une enquête ouverte contre des policiers pour violences et agression sexuelle en marge de la manifestation parisienne du 31 octobre",
+   "url": "https://www.franceinfo.fr/societe/manifestations/une-enquete-ouverte-contre-des-policiers-pour-violences-et-agression-sexuelle-en-marge-de-la-manifestation-parisienne-du-31-octobre_8293754.html",
+   "date": "2026-11-21T18:34+00:00",
+   "resume": "Les deux manifestants sont par ailleurs accusés d'avoir chacun frappé un policier, ce qu'ils contestent.",
    "langue": "français"
   },
   {
@@ -790,26 +814,10 @@
   },
   {
    "media": "franceinfo",
-   "titre": "\"On n'attendra pas l'élection présidentielle, on veut que la vie des gens s'améliore maintenant\", pointe le secrétaire confédéral de la CGT",
-   "url": "https://www.franceinfo.fr/societe/on-n-attendra-pas-l-election-presidentielle-on-veut-que-la-vie-des-gens-s-ameliore-maintenant-pointe-le-secretaire-confederal-de-la-cgt_8294036.html",
-   "date": "2026-11-21T17:55+00:00",
-   "resume": "Alors que des dizaines de milliers de personnes ont encore manifesté dans les rues samedi, la CGT appelle à maintenir la pression sur le gouvernement pour obtenir, notamment, des hausses de salaires.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
-   "titre": "Mobilisation du 21 novembre : le ministère de l'Intérieur annonce 144 interpellations en France, selon un bilan provisoire à 18 heures",
-   "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html",
-   "date": "2026-11-21T19:38+00:00",
-   "resume": "Cette journée de mobilisation s'est inscrite dans le cadre d'un appel européen de syndicats et associations de défense du droit au logement à des actions coordonnées sur trois jours, de vendredi à dimanche.",
-   "langue": "français"
-  },
-  {
-   "media": "franceinfo",
-   "titre": "Présidentielle 2027 : les équipes de Gabriel Attal, Bruno Retailleau et David Lisnard se réuniront jeudi pour évoquer la primaire de la droite et du centre",
+   "titre": "Après l'abandon de François Ruffin, le candidat communiste à l'élection présidentielle Fabien Roussel pointe des \"convergences nombreuses\" avec lui",
    "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html",
-   "date": "2026-11-21T17:46+00:00",
-   "resume": "Les directeurs de campagne des trois candidats poursuivront les discussions sur les modalités techniques de ce scrutin, a appris franceinfo auprès de l’entourage de Gabriel Attal, confirmant une information du \"Figaro\".",
+   "date": "2026-11-21T20:16+00:00",
+   "resume": "Quant au socialiste Pierre Jouvet, chargé du pôle communication de la campagne de Raphaël Glucksmann, il a souligné que les \"batailles\" du Picard pour \"la dignité du travail, la réindustrialisation, la justice sociale\" étaient \"au cœur du combat\" du candidat social-démocrate.",
    "langue": "français"
   },
   {
@@ -974,10 +982,26 @@
   },
   {
    "media": "franceinfo Internet",
+   "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
+   "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html",
+   "date": "2026-11-21T11:59+00:00",
+   "resume": "Levent Alpöge n'a publié qu'un récit de ces travaux sur son site personnel et non la démonstration intégrale, qui fait plus de 250 000 pages selon lui et n'a pu être vérifiée par aucun autre mathématicien.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo Internet",
    "titre": "Surinvestissements boursiers dans l’IA : plus dure sera la chute ?",
    "url": "https://www.franceinfo.fr/replay-radio/les-debats-de-l-eco/surinvestissements-boursiers-dans-l-ia-plus-dure-sera-la-chute_8271716.html",
    "date": "2026-11-21T09:35+00:00",
    "resume": "Tous les samedis, deux économistes débattent des sujets qui marquent l’actualité économique et sociale.",
+   "langue": "français"
+  },
+  {
+   "media": "franceinfo Internet",
+   "titre": "\"Des campagnes d'attaques de plus en plus automatisées\" : comment les cybercriminels ont placé l'intelligence artificielle au cœur de leurs opérations",
+   "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html",
+   "date": "2026-11-21T06:18+00:00",
+   "resume": "Les progrès de l'intelligence artificielle servent aussi les cybercriminels, qui l'utilisent comme un \"multiplicateur de force\" afin de mener des piratages dans le monde entier.",
    "langue": "français"
   },
   {
@@ -1294,10 +1318,10 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Manifestations du 21 novembre : entre 80 000 et 150 000 personnes se sont mobilisées en France",
-   "url": "https://www.lemonde.fr/societe/article/2026/11/21/manifestations-du-21-novembre-le-nombre-de-personnes-mobilisees-en-baisse-dans-l-apres-midi-le-cortege-parisien-est-arrive-place-de-la-nation_6813913_3225.html",
-   "date": "2026-11-21T16:04+00:00",
-   "resume": "Cette nouvelle journée de protestation, moins suivie, s’est déroulée dans le calme à Paris, mais avec des tensions dans l’après-midi à Marseille et à Lyon. Cet « acte VI » de la mobilisation contre la vie chère s’inscrit aussi dans le cadre d’un appel européen.",
+   "titre": "« Nous sommes face à de nouvelles socialisations politiques » : les mobilisations en France, en Italie et en Allemagne vues par les philosophes Michaël Fœssel et Martin Rueff",
+   "url": "https://www.lemonde.fr/idees/article/2026/11/21/nous-sommes-face-a-de-nouvelles-socialisations-politiques-les-mobilisations-en-france-en-italie-et-en-allemagne-vues-par-les-philosophes-michael-f-ssel-et-martin-rueff_6813919_3232.html",
+   "date": "2026-11-21T05:00+00:00",
+   "resume": "Le spécialiste de la philosophie allemande et le connaisseur de la pensée italienne reviennent, dans un entretien au « Monde », sur l’articulation entre les dimensions politique, sociale et générationnelle des mouvements qui secouent les trois pays depuis septembre.",
    "langue": "français"
   },
   {
@@ -1318,10 +1342,10 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Roberto Saviano, auteur de « Gomorra » : « Le suicide de l’ancien chef de la police italienne Gianni De Gennaro est un choc immense »",
-   "url": "https://www.lemonde.fr/international/article/2026/11/21/roberto-saviano-auteur-de-gomorra-le-suicide-de-l-ancien-chef-de-la-police-italienne-gianni-de-gennaro-est-un-choc-immense_6814054_3210.html",
-   "date": "2026-11-21T17:44+00:00",
-   "resume": "Ce suicide, le 21 novembre, intervient quelques jours après sa mise en examen pour « détournement d’enquête » par le parquet de Caltanissetta, en Sicile, qui l’accuse d’avoir brouillé les pistes dans les investigations sur l’assassinat du juge antimafia Paolo Borsellino, le 19 juillet 1992. Pour l’écrivain italien, cela « pourrait condamner tout espoir de connaître un jour l’entière vérité » sur c",
+   "titre": "EN DIRECT, France-Argentine : Mickaël Guillard ouvre la marque pour le XV de France",
+   "url": "https://www.lemonde.fr/sport/live/2026/11/21/en-direct-france-argentine-suivez-le-match-du-championnat-des-nations-de-rugby_6814058_3242.html",
+   "date": "2026-11-21T18:10+00:00",
+   "resume": "Le XV de France dispute, samedi au Stade de France, son dernier match de la phase de groupes du Championnat des nations, face aux Pumas argentins. S’ils conservent la tête de la poule Nord, les Bleus joueront la première finale de la compétition.",
    "langue": "français"
   },
   {
@@ -1350,10 +1374,18 @@
   },
   {
    "media": "Le Monde",
-   "titre": "EN DIRECT, France-Argentine : le XV de France doit s’imposer avec le bonus pour se hisser en finale du Championnat des nations",
-   "url": "https://www.lemonde.fr/sport/live/2026/11/21/en-direct-france-argentine-suivez-le-match-du-championnat-des-nations-de-rugby_6814058_3242.html",
-   "date": "2026-11-21T18:10+00:00",
-   "resume": "Le XV de France dispute, samedi au Stade de France, son dernier match de la phase de groupes du Championnat des nations, face aux Pumas argentins. S’ils conservent la tête de la poule Nord, les Bleus joueront la première finale de la compétition.",
+   "titre": "Israël : Gadi Eisenkot invite le parti de Benyamin Nétanyahou à des négociations de coalition",
+   "url": "https://www.lemonde.fr/international/article/2026/11/21/israel-gadi-eisenkot-invite-le-parti-de-benyamin-netanyahou-a-des-negociations-de-coalition_6814066_3210.html",
+   "date": "2026-11-21T20:00+00:00",
+   "resume": "M. Eisenkot a jusqu’au mois prochain pour former un gouvernement, à la suite des législatives de la fin d’octobre, qui n’ont dégagé aucune majorité absolue, ni pour son camp ni pour celui du premier ministre sortant.",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "Roberto Saviano, auteur de « Gomorra » : « Le suicide de l’ancien chef de la police italienne Gianni De Gennaro est un choc immense »",
+   "url": "https://www.lemonde.fr/international/article/2026/11/21/roberto-saviano-auteur-de-gomorra-le-suicide-de-l-ancien-chef-de-la-police-italienne-gianni-de-gennaro-est-un-choc-immense_6814054_3210.html",
+   "date": "2026-11-21T17:44+00:00",
+   "resume": "Ce suicide, le 21 novembre, intervient quelques jours après sa mise en examen pour « détournement d’enquête » par le parquet de Caltanissetta, en Sicile, qui l’accuse d’avoir brouillé les pistes dans les investigations sur l’assassinat du juge antimafia Paolo Borsellino, le 19 juillet 1992. Pour l’écrivain italien, cela « pourrait condamner tout espoir de connaître un jour l’entière vérité » sur c",
    "langue": "français"
   },
   {
@@ -1366,14 +1398,6 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Dans la défense, le rapprochement entre le Canada et l’Union européenne prend corps",
-   "url": "https://www.lemonde.fr/international/article/2026/11/21/dans-la-defense-le-rapprochement-entre-le-canada-et-l-union-europeenne-prend-corps_6814009_3210.html",
-   "date": "2026-11-21T11:30+00:00",
-   "resume": "Sur fond de tensions géopolitiques mondiales et d’incertitudes quant à l’engagement américain, Ottawa et Bruxelles coopèrent sur le soutien à l’Ukraine et le réarmement du Vieux Continent.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
    "titre": "Quand Ninho et Koba LaD dévoilent les dessous du rap dans deux « documentaires-vérité »",
    "url": "https://www.lemonde.fr/culture/article/2026/11/21/quand-ninho-et-koba-lad-devoilent-les-dessous-du-rap-dans-deux-documentaires-verite_6814043_3246.html",
    "date": "2026-11-21T16:00+00:00",
@@ -1382,18 +1406,18 @@
   },
   {
    "media": "Le Monde",
-   "titre": "Au Brésil, une nouvelle génération de gauche s’apprête à faire son entrée au Parlement",
-   "url": "https://www.lemonde.fr/international/article/2026/11/21/au-bresil-une-nouvelle-generation-de-gauche-s-apprete-a-faire-son-entree-au-parlement_6814016_3210.html",
-   "date": "2026-11-21T13:00+00:00",
-   "resume": "Lors des législatives du 4 octobre, les électeurs ont voté pour de jeunes députés progressistes. Alors que le gouvernement de Lula propose des économies budgétaires, ces élus veulent veiller à ce qu’il respecte ses promesses de campagne.",
-   "langue": "français"
-  },
-  {
-   "media": "Le Monde",
    "titre": "Génocide des Rohingya : la Cour internationale de justice rend un arrêt pour l’histoire",
    "url": "https://www.lemonde.fr/international/article/2026/11/20/genocide-des-rohingya-la-cour-internationale-de-justice-confirme-qu-elle-est-indubitablement-la-boussole-du-droit-international_6813702_3210.html",
    "date": "2026-11-20T20:38+00:00",
    "resume": "La plus haute Cour de l’ONU établit pour la première fois la responsabilité d’un Etat, la Birmanie, dans « le crime des crimes ». Alors que l’Afrique du Sud a saisi l’institution contre Israël, accusant l’Etat hébreu d’un génocide contre les Palestiniens de Gaza, l’arrêt prononcé jeudi pourrait faire jurisprudence.",
+   "langue": "français"
+  },
+  {
+   "media": "Le Monde",
+   "titre": "Avec le lyrique « L’Enclos des esclaves », la romancière Najwa Bin Shatwan ravive Benghazi, en Libye, au tournant du XXᵉ siècle",
+   "url": "https://www.lemonde.fr/livres/article/2026/11/21/avec-le-lyrique-l-enclos-des-esclaves-la-romanciere-najwa-bin-shatwan-ravive-benghazi-en-libye-au-tournant-du-xx-siecle_6814055_3260.html",
+   "date": "2026-11-21T18:00+00:00",
+   "resume": "Ce beau roman de l’écrivaine libyenne revient sur la question douloureuse de l’esclavage en Libye aux XIXᵉ et XXᵉsiècle, en suivant une fille d’esclave en quête de ses origines.",
    "langue": "français"
   },
   {
@@ -1662,14 +1686,6 @@
   },
   {
    "media": "BBC News",
-   "titre": "England run up record win over New Zealand in rugby union's Nations Championship",
-   "url": "https://www.bbc.co.uk/sport/rugby-union/articles/cwm2jxd8k15mo",
-   "date": "2026-11-21T16:08+00:00",
-   "resume": "England's revival roars up a gear as they beat New Zealand by a record margin after former captain Lewis Moody leads the hosts' response to the haka.",
-   "langue": "anglais"
-  },
-  {
-   "media": "BBC News",
    "titre": "Who will be Robert Pattinson's 'Bond girl' - and does the role need to change?",
    "url": "https://www.bbc.co.uk/news/articles/cr4g1l7x52jno",
    "date": "2026-11-21T00:03+00:00",
@@ -1794,6 +1810,62 @@
    "url": "https://www.bbc.co.uk/sport/football/articles/cm9d7jg50e12o",
    "date": "2026-11-21T19:21+00:00",
    "resume": "BBC Sport looks at Tottenham's new teenage star after Luca Williams-Barnett makes a superb full Premier League debut for Spurs",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Leeds dominate Chelsea for first Stamford Bridge win since 1999",
+   "url": "https://www.bbc.co.uk/sport/football/videos/c3ewvkk4qgxjo",
+   "date": "2026-11-21T19:59+00:00",
+   "resume": "Noah Okafor scores twice to deliver Leeds United's first win at Chelsea in 27 years, in an impressive 4-1 victory at Stamford Bridge. They move up to sixth in the Premier League.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Arsenal go six points clear after lively draw at Newcastle",
+   "url": "https://www.bbc.co.uk/sport/football/videos/cm702zzl66l6o",
+   "date": "2026-11-21T19:59+00:00",
+   "resume": "Noni Madueke's second-half goal earns Arsenal a 2-2 draw against Newcastle United at St James' Park, as the reigning champions move six points clear at the top of the Premier League table.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Teenager Williams-Barnett shines as Spurs beat Ipswich",
+   "url": "https://www.bbc.co.uk/sport/football/videos/c3174qq2j82zo",
+   "date": "2026-11-21T19:59+00:00",
+   "resume": "Tottenham Hotspur teenager Luca Williams-Barnett starres for Roberto de Zerbi's side as they comfortably beat Ipswich Town.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Coventry beat Palace in Frank's first game after late own goal",
+   "url": "https://www.bbc.co.uk/sport/football/videos/c8wy5ddky5n9o",
+   "date": "2026-11-21T19:58+00:00",
+   "resume": "A Dwight McNeil own goal in the 85th minute gives Coventry City a 3-2 win to move three points clear of the relegation zone, as Thomas Frank's first game in charge at Crystal Palace ends in defeat in the Premier League.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Man City drop points to Fulham despite superb Anderson volley",
+   "url": "https://www.bbc.co.uk/sport/football/videos/c30rkq9xyk8eo",
+   "date": "2026-11-21T19:59+00:00",
+   "resume": "Elliot Anderson's fantastic volley earns Manchester City a first Premier League point in over a month as they come from behind to hold Fulham.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Evanilson strikes again as Bournemouth beat Forest",
+   "url": "https://www.bbc.co.uk/sport/football/videos/cm4gn997yry2o",
+   "date": "2026-11-21T19:59+00:00",
+   "resume": "Evanilson scores in his sixth consecutive Premier League game, as Bournemouth defeat Nottingham Forest 2-0 at the Vitality Stadium.",
+   "langue": "anglais"
+  },
+  {
+   "media": "BBC News",
+   "titre": "Villa's home woes continue as Sunderland earn point",
+   "url": "https://www.bbc.co.uk/sport/football/videos/c5j9m227l42do",
+   "date": "2026-11-21T19:58+00:00",
+   "resume": "Aston Villa's struggles at home this season continue as they are held to a goalless draw by Sunderland in the Premier League.",
    "langue": "anglais"
   }
  ],

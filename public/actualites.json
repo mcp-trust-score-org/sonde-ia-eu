@@ -1,12 +1,13 @@
 {
- "genere_le": "2026-11-21T19:57:34+00:00",
+ "genere_le": "2026-11-21T20:20:14+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
    "etat": "ok"
   },
   "Meteoalarm": {
-   "etat": "ok"
+   "etat": "partiel",
+   "raison": "FR : HTTPStatusError"
   },
   "CERT-FR": {
    "etat": "ok"
@@ -261,12 +262,6 @@
    "debut": "2026-11-15T03:12+00:00",
    "raison": "localisé hors de nos zones",
    "url": "https://www.cloudflarestatus.com/incidents/sozoycnmog2m"
-  },
-  {
-   "titre": "Cloudflare : Elevated error rates on R2 buckets in West North America",
-   "debut": "2026-11-14T20:18+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/dpao7idy3zei"
   }
  ]
 }
