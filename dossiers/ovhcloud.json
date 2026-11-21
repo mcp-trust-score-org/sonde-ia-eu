@@ -4,10 +4,10 @@
     "nom": "OVHcloud AI Endpoints",
     "pays": "FR"
   },
-  "genere_le": "2026-11-21T11:56:48+00:00",
+  "genere_le": "2026-11-21T13:00:57+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-21T11:56:48+00:00"
+    "fin": "2026-11-21T13:00:57+00:00"
   },
   "performance": [
     {
@@ -48,7 +48,7 @@
     }
   ],
   "reseau": {
-    "dernier_releve": "2026-11-21T11:44:00+00:00",
+    "dernier_releve": "2026-11-21T12:48:18+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "ue_observe",
     "constats": [
@@ -64,26 +64,26 @@
     "verdicts_sur_periode": [
       "ue_observe"
     ],
-    "releves": 4
+    "releves": 5
   },
   "stabilite": [
     {
       "modele": "gpt-oss-120b",
-      "empreintes": 4,
+      "empreintes": 5,
       "derniere_similarite": null,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "llama-3.3-70b",
-      "empreintes": 4,
+      "empreintes": 5,
       "derniere_similarite": 0.625,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "mistral-small-3.2",
-      "empreintes": 4,
+      "empreintes": 5,
       "derniere_similarite": 1.0,
       "alertes": [],
       "changements_identifiant": []
@@ -148,6 +148,10 @@
     },
     {
       "manifeste": "2026-11-20.json",
+      "ancrage_ots": true
+    },
+    {
+      "manifeste": "2026-11-21.json",
       "ancrage_ots": true
     }
   ],
