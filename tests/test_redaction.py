@@ -38,8 +38,32 @@ DETOUR = {"articles": [
 ]}
 
 
-def _reseau(articles_llm=None):
-    appels = {"llm": []}
+def _rss(items):
+    corps = "".join(f"<item><title>{t}</title><link>{u}</link><pubDate>{d}</pubDate><description>{r}</description></item>"
+                    for t, u, d, r in items)
+    return f"<?xml version='1.0'?><rss version='2.0'><channel>{corps}</channel></rss>"
+
+
+FLUX_GRAND_PUBLIC = _rss([
+    ("Grand Theft Auto VI : les serveurs saturés le jour de la sortie", "https://exemple.fr/gta", "Sun, 22 Nov 2026 10:00:00 +0000", "Files d'attente."),
+    ("Grand Theft Auto VI : les serveurs saturés le jour de la sortie", "https://exemple.fr/gta-bis", "Sun, 22 Nov 2026 11:00:00 +0000", ""),
+    ("Vieille info", "https://exemple.fr/vieux", "Mon, 02 Nov 2026 10:00:00 +0000", ""),
+])
+FLUX_NEXT = _rss([
+    ("Ce que la panne de Cloudflare dit d'Internet", "https://next.ink/1", "Thu, 19 Nov 2026 10:00:00 +0000", ""),
+    ("Les datacenters et l'eau", "https://next.ink/2", "Wed, 18 Nov 2026 10:00:00 +0000", ""),
+    ("Troisième article Next", "https://next.ink/3", "Tue, 17 Nov 2026 10:00:00 +0000", ""),
+])
+FLUX_REPORTERRE = _rss([
+    ("Les abeilles reviennent en ville", "https://reporterre.net/abeilles", "Thu, 19 Nov 2026 10:00:00 +0000", "Biodiversité."),
+    ("Le coût écologique des centres de données", "https://reporterre.net/donnees", "Thu, 19 Nov 2026 10:00:00 +0000", "Électricité et eau."),
+])
+FLUX_ROW = """<?xml version='1.0'?><feed xmlns='http://www.w3.org/2005/Atom'><entry><title>The cable that connects a continent</title>
+<link rel='alternate' href='https://restofworld.org/a'/><updated>2026-11-19T10:00:00Z</updated></entry></feed>"""
+
+
+def _reseau(articles_llm=None, modele_en_panne=None):
+    appels = {"llm": [], "auth": []}
 
     def repondre(req: httpx.Request) -> httpx.Response:
         u = str(req.url)
@@ -49,6 +73,16 @@ def _reseau(articles_llm=None):
             return httpx.Response(200, json=WIKI)
         if "gdeltproject" in u:
             return httpx.Response(200, json=DETOUR if "domain:" in req.url.params["query"] else PRESSE)
+        if "francetvinfo.fr/titres.rss" in u:
+            return httpx.Response(200, text=FLUX_GRAND_PUBLIC)
+        if u == "https://next.ink/feed/":
+            return httpx.Response(200, text=FLUX_NEXT)
+        if "reporterre.net/spip.php" in u:
+            return httpx.Response(200, text=FLUX_REPORTERRE)
+        if "restofworld.org/feed" in u:
+            return httpx.Response(200, text=FLUX_ROW)
+        if u.endswith((".rss", ".xml", "/rss", "/rss/", "/feed/", "/index", ".atom", "/feed/latest")) or "backend" in u:
+            return httpx.Response(503)
         if u.startswith("https://exemple.fr/gta"):
             return httpx.Response(200, headers={"content-type": "text/html"}, text=PAGE_GTA)
         if u.startswith("https://next.ink/1"):
@@ -57,7 +91,10 @@ def _reseau(articles_llm=None):
             return httpx.Response(403)
         if "chat/completions" in u:
             corps = json.loads(req.content)
+            if corps["model"] == modele_en_panne:
+                return httpx.Response(503)
             appels["llm"].append(corps)
+            appels["auth"].append(req.headers.get("authorization"))
             consigne = corps["messages"][1]["content"]
             if "Le Détour" in consigne:
                 rep = {"liens": [{"url": "https://next.ink/1", "categorie": "Réseau", "pourquoi": "Pour comprendre un maillon invisible."},
@@ -125,9 +162,13 @@ def test_tendances(tmp_path):
     wiki = [w["sujet"] for w in res["wikipedia"] if w["projet"] == "fr.wikipedia.org"]
     assert wiki == ["Grand Theft Auto VI", "Labubu"]                  # pages techniques écartées
     assert res["wikipedia"][0]["jour"] == "2026-11-21"                 # repli sur l'avant-veille
-    assert len(res["presse"]) == 1                                     # titres identiques regroupés
-    medias = [d["media"] for d in res["detour"]]
-    assert "Pixels (Le Monde)" in medias and len([m for m in medias if m == "Pixels (Le Monde)"]) == 1   # rubrique seulement
+    assert [p["url"] for p in res["presse"]] == ["https://exemple.fr/gta"]   # doublon et vieille info écartés
+    titres = [d["titre"] for d in res["detour"]]
+    assert "Le coût écologique des centres de données" in titres          # média généraliste : sujet tech gardé
+    assert "Les abeilles reviennent en ville" not in titres              # … le reste écarté
+    assert "Troisième article Next" in titres                            # média spécialisé : tout gardé
+    assert "The cable that connects a continent" in titres               # flux Atom
+    assert res["flux"]["Détour (flux RSS)"]["Numerama"].startswith("erreur")   # un flux en panne est noté
     assert all(e["etat"] == "ok" for e in res["sources"].values())
 
 
@@ -135,7 +176,7 @@ def test_propositions_du_lundi(tmp_path):
     racine = _racine(tmp_path)
     client, appels = _reseau()
     produire_tendances(CONF, racine, client=client, maintenant=LUNDI, attendre=lambda s: None)
-    res = rediger(CONF, racine, client=client, env={"MISTRAL_API_KEY": "x"}, maintenant=LUNDI)
+    res = rediger(CONF, racine, client=client, env={"MISTRAL_API_KEY": "x"}, maintenant=LUNDI, attendre=lambda s: None)
     rubriques = [(p["rubrique"], p.get("format")) for p in res["propositions"]]
     # Lundi : le sujet du jour, le bilan de la semaine, et un sujet grand public. Pas de Détour.
     assert rubriques == [("une", "a_chaud"), ("une", "bilan"), ("tous_connectes", "a_chaud")]
@@ -155,7 +196,7 @@ def test_propositions_du_lundi(tmp_path):
     assert "=== FICHE ===" in appels["llm"][0]["messages"][1]["content"]
     assert (racine / "redaction" / "propositions" / "2026-11-23.md").exists()
     # Le lendemain, le même événement n'est pas reproposé.
-    res2 = rediger(CONF, racine, client=client, env={"MISTRAL_API_KEY": "x"}, maintenant=LUNDI.replace(day=24))
+    res2 = rediger(CONF, racine, client=client, env={"MISTRAL_API_KEY": "x"}, maintenant=LUNDI.replace(day=24), attendre=lambda s: None)
     ids = [p.get("evenement_id") for p in res2["propositions"] if p["rubrique"] == "une"]
     assert une["evenement_id"] not in ids
 
@@ -164,7 +205,8 @@ def test_detour_du_vendredi_et_fiche_sans_cle(tmp_path):
     racine = _racine(tmp_path)
     client, appels = _reseau()
     produire_tendances(CONF, racine, client=client, maintenant=VENDREDI, attendre=lambda s: None)
-    res = rediger(CONF, racine, client=client, env={}, maintenant=VENDREDI)
+    sans_secours = {**CONF, "redacteur": {k: v for k, v in CONF["redacteur"].items() if k != "secours"}}
+    res = rediger(sans_secours, racine, client=client, env={}, maintenant=VENDREDI)
     detour = [p for p in res["propositions"] if p["rubrique"] == "detour"][0]
     medias = [l["media"] for l in detour["liens"]]
     assert medias.count("Next") <= 2                                   # 2 liens par média au plus
@@ -172,6 +214,25 @@ def test_detour_du_vendredi_et_fiche_sans_cle(tmp_path):
     une = [p for p in res["propositions"] if p["rubrique"] == "une"][0]
     assert une["auteur"] == "fiche" and une["fiche"]["sources"]        # sans clé : une fiche à rédiger
     assert not appels["llm"]
+
+
+def test_redacteur_de_secours_sans_cle(tmp_path):
+    """Sans clé Mistral : OVHcloud en accès anonyme, sans en-tête d'authentification, avec une pause entre appels."""
+    racine = _racine(tmp_path)
+    client, appels = _reseau()
+    pauses = []
+    res = rediger(CONF, racine, client=client, env={}, maintenant=LUNDI, attendre=pauses.append)
+    assert res["propositions"][0]["auteur"] == "Mistral-Small-3.2-24B-Instruct-2506"
+    assert appels["llm"] and all(c["model"] == "Mistral-Small-3.2-24B-Instruct-2506" for c in appels["llm"])
+    assert appels["auth"] == [None] * len(appels["llm"])                # aucune clé envoyée
+    assert pauses and set(pauses) == {31}
+
+
+def test_secours_passe_au_modele_suivant(tmp_path):
+    racine = _racine(tmp_path)
+    client, appels = _reseau(modele_en_panne="Mistral-Small-3.2-24B-Instruct-2506")
+    res = rediger(CONF, racine, client=client, env={}, maintenant=LUNDI, attendre=lambda s: None)
+    assert res["propositions"][0]["auteur"] == "gpt-oss-120b"
 
 
 def test_passage_recopie_signale():
@@ -186,7 +247,7 @@ def test_detour_lit_le_debut_des_articles(tmp_path):
     racine = _racine(tmp_path)
     client, appels = _reseau()
     produire_tendances(CONF, racine, client=client, maintenant=VENDREDI, attendre=lambda s: None)
-    res = rediger(CONF, racine, client=client, env={"MISTRAL_API_KEY": "x"}, maintenant=VENDREDI)
+    res = rediger(CONF, racine, client=client, env={"MISTRAL_API_KEY": "x"}, maintenant=VENDREDI, attendre=lambda s: None)
     detour = [p for p in res["propositions"] if p["rubrique"] == "detour"][0]
     envoye = [c for c in appels["llm"] if "Le Détour" in c["messages"][1]["content"]][0]["messages"][1]["content"]
     assert "files d'attente" in envoye                                 # début de l'article lu, donné au rédacteur
