@@ -1,6 +1,6 @@
 # Dossier de surveillance – OVHcloud AI Endpoints
 
-Période : 2026-11-15 → 2026-11-21 · généré le 2026-11-21 14:14 UTC
+Période : 2026-11-15 → 2026-11-21 · généré le 2026-11-21 16:05 UTC
 
 > Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives.
 
@@ -28,9 +28,9 @@ Période : 2026-11-15 → 2026-11-21 · généré le 2026-11-21 14:14 UTC
 
 | Modèle | Appels | Disponibilité | 1er mot médian | 1er mot p95 | Heures avec échec | Plus longue série d'échecs | Offre mesurée |
 |---|---|---|---|---|---|---|---|
-| gpt-oss-120b | 57 | 77.19 % | 844 ms | 1,1 s | 8 | 1 h | anonyme |
-| llama-3.3-70b | 57 | 85.96 % | 1,2 s | 129,2 s | 4 | 1 h | anonyme |
-| mistral-small-3.2 | 57 | 85.96 % | 999 ms | 32,9 s | 4 | 1 h | anonyme |
+| gpt-oss-120b | 60 | 75 % | 841 ms | 1,1 s | 9 | 1 h | anonyme |
+| llama-3.3-70b | 60 | 81.67 % | 1,2 s | 129,2 s | 5 | 1 h | anonyme |
+| mistral-small-3.2 | 60 | 83.33 % | 991 ms | 32,4 s | 5 | 1 h | anonyme |
 
 Les mesures en offre gratuite ou anonyme subissent des limites de débit propres à ces offres : elles ne reflètent pas forcément le service contractuel d'un client payant.
 
@@ -43,7 +43,7 @@ Les mesures en offre gratuite ou anonyme subissent des limites de débit propres
 - Pays des points d'entrée observés : FR
 - Opérateurs réseau : OVHcloud
 - Intermédiaires visibles : aucun
-- Relevés sur la période : 6 · constats distincts : ue_observe
+- Relevés sur la période : 7 · constats distincts : ue_observe
 
 Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent. Il ne prouve pas à lui seul le lieu de traitement du modèle, à confirmer contractuellement (champ B_02.02.0160).
 
@@ -51,9 +51,9 @@ Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent.
 
 | Modèle | Empreintes | Similarité avec la référence | Alertes de changement | Changements d'identifiant |
 |---|---|---|---|---|
-| gpt-oss-120b | 6 | référence en cours | 0 | 0 |
-| llama-3.3-70b | 6 | 0.62 | 0 | 0 |
-| mistral-small-3.2 | 6 | 1.00 | 0 | 0 |
+| gpt-oss-120b | 7 | référence en cours | 0 | 0 |
+| llama-3.3-70b | 7 | référence en cours | 0 | 0 |
+| mistral-small-3.2 | 7 | 0.73 | 0 | 0 |
 
 Changements de catalogue :
 - 2026-11-17 : +9 / -0

@@ -1,45 +1,37 @@
 {
  "date": "2026-11-21",
- "genere_le": "2026-11-21T14:16:17+00:00",
+ "genere_le": "2026-11-21T16:07:22+00:00",
  "statut": "a_relire",
  "propositions": [
   {
    "rubrique": "une",
    "format": "a_chaud",
-   "evenement_id": "statut-scaleway-2026-11-16T14:06+00:00",
-   "tag_interne": "Aucune anomalie",
-   "score": -0.0,
+   "evenement_id": "cloudflare-k3r9i5tbre4i",
+   "tag_interne": "Non mesuré",
+   "score": -7.0,
    "auteur": "fiche",
-   "image": "assets/photos/ia.jpg",
+   "image": "assets/photos/reseau.jpg",
    "article": {},
    "fiche": {
-    "evenement": "[Generative API] - [global] - GLM-5.3 timeouts",
-    "type": "incident_fournisseur",
-    "debut": "lundi 16 novembre, 15 h 06",
-    "fin": "mercredi 18 novembre, 10 h 09",
+    "evenement": "Cloudflare : Network Performance Issues in Paris",
+    "type": "incident_amont",
+    "debut": "mercredi 18 novembre, 4 h 39",
+    "fin": "mercredi 18 novembre, 5 h 51",
     "fournisseurs_concernes": [
-     "Scaleway"
+     "mistral"
     ],
-    "pourquoi_ce_fournisseur": null,
-    "mesures_de_la_sonde": [
-     {
-      "fournisseur": "Scaleway",
-      "ce_que_la_sonde_a_vu": "Aucune anomalie mesurée chez vos fournisseurs",
-      "anomalies": [],
-      "nombre_de_mesures_pendant_l_evenement": 11,
-      "incident_officiel": true
-     }
-    ],
+    "pourquoi_ce_fournisseur": "mistral passe(nt) par Cloudflare (chemin réseau relevé)",
+    "mesures_de_la_sonde": "aucune mesure de la sonde pendant l'événement",
     "presse": null,
     "sources": [
      {
-      "label": "[Generative API] - [global] - GLM-5.3 timeouts",
-      "url": "https://stspg.io/1dp6578twk7b"
+      "label": "Network Performance Issues in Paris",
+      "url": "https://www.cloudflarestatus.com/incidents/k3r9i5tbre4i"
      }
     ]
    },
    "alertes_charte": [
-    "Le rédacteur n'a pas répondu (openai/gpt-4.1 : JSONDecodeError: Expecting value: line 1 column 1 (char 0) ; openai/gpt-4o : JSONDecodeError: Expecting value: line 1 column 1 (char 0) ; Mistral-Small-3.2-24B-Instruct-2506 : HTTPStatusError: Client error '429 Too Many Requests' for url 'https://oai.endpoints.kepler.ai.cloud.ovh.net/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/W ; gpt-) : fiche à rédiger à la main."
+    "Le rédacteur n'a pas répondu (openai/gpt-4.1 : réponse illisible (HTTP 200, text/plain) : 'OK' ; openai/gpt-4o : réponse illisible (HTTP 200, text/plain) : 'OK' ; Mistral-Small-3.2-24B-Instruct-2506 : HTTPStatusError: Client error '429 Too Many Requests' for url 'https://oai.endpoints.kepler.ai.cloud.ovh.net/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/W ; gpt-oss-120b : OVHcloud (a) : fiche à rédiger à la main."
    ]
   },
   {
@@ -92,11 +84,6 @@
         "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
         "media": "franceinfo",
         "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html"
-       },
-       {
-        "titre": "La probable résolution de l’hypothèse de Riemann par une intelligence artificielle marque une bascule pour les mathématiques",
-        "media": "Le Monde",
-        "url": "https://www.lemonde.fr/sciences/article/2026/11/21/la-probable-resolution-de-l-hypothese-de-riemann-par-une-intelligence-artificielle-marque-une-bascule-pour-les-mathematiques_6813962_1650684.html"
        }
       ]
      },
@@ -117,9 +104,9 @@
         "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html"
        },
        {
-        "titre": "\"GTA VI\" pulvérise le record de ventes au lancement et agace une partie des joueurs",
+        "titre": "\"GTA VI\" s’offre un lancement record et surpasse la tournée de Taylor Swift",
         "media": "France 24",
-        "url": "https://www.france24.com/fr/info-en-continu/20261121-gta-vi-pulv%C3%A9rise-le-record-de-ventes-pour-un-premier-jour-et-ramasse-3-79-milliards-de-dollars"
+        "url": "https://www.france24.com/fr/culture/20261121-gta-vi-s-offre-un-lancement-record-mais-agace-une-partie-des-joueurs"
        }
       ]
      },
@@ -215,9 +202,9 @@
         "url": "https://www.20minutes.fr/gaming/jeux_video/4264602-20261120-gta-6-ventes-atteignent-record-3-79-milliards-dollars-24-heures"
        },
        {
-        "titre": "\"GTA VI\" pulvérise le record de ventes au lancement et agace une partie des joueurs",
+        "titre": "\"GTA VI\" s’offre un lancement record et surpasse la tournée de Taylor Swift",
         "media": "France 24",
-        "url": "https://www.france24.com/fr/info-en-continu/20261121-gta-vi-pulv%C3%A9rise-le-record-de-ventes-pour-un-premier-jour-et-ramasse-3-79-milliards-de-dollars"
+        "url": "https://www.france24.com/fr/culture/20261121-gta-vi-s-offre-un-lancement-record-mais-agace-une-partie-des-joueurs"
        }
       ]
      },
@@ -273,7 +260,13 @@
       "langue": "fr",
       "rang_wikipedia": 23,
       "page": "https://fr.wikipedia.org/wiki/Jean-Luc_M%C3%A9lenchon",
-      "titres_de_presse": []
+      "titres_de_presse": [
+       {
+        "titre": "Présidentielle 2027 : au premier meeting d'Eric Zemmour, Sarah Knafo s'en prend à Jean-Luc Mélenchon, un \"révolutionnaire qui n'est que révolu\"",
+        "media": "franceinfo",
+        "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
+       }
+      ]
      },
      {
       "sujet": "Nicole Croisille",
@@ -298,9 +291,39 @@
     ],
     "presse_grand_public": [
      {
-      "titre": "Mobilisation du 21 novembre : 44 rassemblements ont été recensés par le ministère de l'Intérieur sur le territoire national",
+      "titre": "Nombre de tirs, enquêtes, lien de confiance... Les questions que pose la loi sur la présomption d'usage légal des armes par les forces de l'ordre",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html"
+      "url": "https://www.franceinfo.fr/faits-divers/police/nombre-de-tirs-enquetes-lien-de-confiance-les-questions-que-pose-la-loi-sur-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8293529.html"
+     },
+     {
+      "titre": "Présidentielle 2027 : au premier meeting d'Eric Zemmour, Sarah Knafo s'en prend à Jean-Luc Mélenchon, un \"révolutionnaire qui n'est que révolu\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
+     },
+     {
+      "titre": "\"J'ai fait une formation à 250 personnes\" : à Paris, les formations de street medics attirent de plus en plus de militants",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/j-ai-fait-une-formation-a-250-personnes-a-paris-les-formations-de-street-medics-attirent-de-plus-en-plus-de-militants_8293769.html"
+     },
+     {
+      "titre": "Les Etats-Unis déclassifient de nouveaux documents concernant des ovnis et des phénomènes \"anormaux\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/usa/les-etats-unis-declassifient-de-nouveaux-documents-concernant-des-ovnis-et-des-phenomenes-anormaux_8293832.html"
+     },
+     {
+      "titre": "La Finlande soupçonne un hélicoptère russe d'avoir violé son espace aérien",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/russie/la-finlande-soupconne-un-helicoptere-russe-d-avoir-viole-son-espace-aerien_8293799.html"
+     },
+     {
+      "titre": "\"Le cancer vous change \" : la princesse Kate partage son expérience de la maladie dans un documentaire très personnel intitulé \"Guérir\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/documentaires/le-cancer-vous-change-la-princesse-kate-partage-son-experience-de-la-maladie-dans-un-documentaire-tres-personnel-intitule-guerir_8293802.html"
+     },
+     {
+      "titre": "Carlos Alcaraz lâche un set mais se qualifie pour la finale du Masters de Turin, après un gros combat face à Ben Shelton",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/tennis/masters/carlos-alcaraz-lache-un-set-mais-se-qualifie-pour-la-finale-du-masters-de-turin-apres-un-gros-combat-face-a-ben-shelton_8293823.html"
      },
      {
       "titre": "Le remorquage du cargo échoué dans les Landes pourrait prendre plusieurs jours, selon la préfecture",
@@ -318,6 +341,11 @@
       "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/incendies-et-feux-de-foret/incendies-en-gironde/quatre-mois-apres-le-megafeu-au-porge-il-y-a-enormement-de-douleur-parmi-les-habitants-souligne-le-maire-martial-zaninetti_8293673.html"
      },
      {
+      "titre": "Face à une Argentine toujours imprévisible, le XV de France veut finir le travail et valider son billet pour la finale du Championnat des nations",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/rugby/coupe-d-automne-des-nations/face-a-une-argentine-toujours-imprevisible-le-xv-de-france-veut-finir-le-travail-et-valider-son-billet-pour-la-finale-du-championnat-des-nations_8292017.html"
+     },
+     {
       "titre": "Black Week, Cyber Monday, Black Month… Pourquoi les commerçants n'attendent-ils plus le Black Friday pour casser les prix ?",
       "media": "franceinfo",
       "url": "https://www.franceinfo.fr/economie/black-week-cyber-monday-black-month-pourquoi-les-commercants-n-attendent-ils-plus-le-black-friday-pour-casser-les-prix_8284550.html"
@@ -326,6 +354,16 @@
       "titre": "\"Nous nous sentons ici chez nous\" : une brigade allemande de 5 000 soldats s'apprête à mener des exercices pendant un mois en Lituanie",
       "media": "franceinfo",
       "url": "https://www.franceinfo.fr/monde/otan/nous-nous-sentons-ici-chez-nous-une-brigade-allemande-de-5-000-soldats-s-apprete-a-mener-des-exercices-pendant-un-mois-en-lituanie_8293721.html"
+     },
+     {
+      "titre": "Un directeur d'école maternelle de Montpellier mis en examen pour viol et agression sexuelle",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/harcelement-sexuel/un-directeur-d-ecole-maternelle-de-montpellier-mis-en-examen-pour-viol-et-agression-sexuelle_8293025.html"
+     },
+     {
+      "titre": "Jusqu'à deux ans de prison ferme et le caractère raciste des violences retenu pour les trois policiers accusés d'avoir roué de coups Michel Zecler",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/producteur-passe-a-tabac-par-des-policiers/des-condamnations-allant-d-un-an-a-deux-ans-de-prison-ferme-pour-les-trois-policiers-accuses-d-avoir-roue-de-coups-michel-zecler_8292287.html"
      },
      {
       "titre": "Guerre en Ukraine : des frappes russes font deux morts et 58 blessés à Kryvyï Rih, ville natale de Volodymyr Zelensky",
@@ -338,14 +376,24 @@
       "url": "https://www.franceinfo.fr/politique/front-national/bulldozer-super-sherif-et-serviteur-de-l-etat-qui-est-hugues-moutouh-le-prefet-soupconne-d-avoir-fait-fuiter-des-informations-au-rn_8292374.html"
      },
      {
-      "titre": "Présidentielle 2027 : Eric Zemmour lance sa campagne avec un meeting à Toulon",
+      "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/elections/presidentielle/direct-eric-zemmour-lance-sa-campagne-pour-l-election-presidentielle-avec-un-meeting-a-toulon_8293517.html"
+      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html"
      },
      {
       "titre": "\"My Rock Stars\" : le photographe Hassan Hajjaj immortalise ses stars de la musique",
       "media": "franceinfo",
       "url": "https://www.franceinfo.fr/culture/arts-expos/en-images-my-rock-stars-le-photographehassan-hajjaj-immortalise-ses-stars-de-la-musique_8289029.html"
+     },
+     {
+      "titre": "\"C'est un ovni depuis très longtemps\" : à son meilleur niveau, Antoine Dupont suscite l'engouement avant France-Argentine",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/rugby/antoine-dupont/c-est-un-ovni-depuis-tres-longtemps-a-son-meilleur-niveau-antoine-dupont-suscite-l-engouement-avant-france-argentine_8293577.html"
+     },
+     {
+      "titre": "Serge Money, avocat de Michel Zecler, salue une \"décision historique\" mais les peines \"laissent un petit goût amer\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/producteur-passe-a-tabac-par-des-policiers/serge-money-avocat-de-michel-zecler-salue-une-decision-historique-mais-les-peines-laissent-un-petit-gout-amer_8293472.html"
      },
      {
       "titre": "Une conférence de l'ONU ouvre à la voie à un possible encadrement international des \"robots tueurs\"",
@@ -363,59 +411,24 @@
       "url": "https://www.franceinfo.fr/societe/manifestations/reportage-ce-sont-les-patients-qui-en-patissent-au-portugal-les-syndicats-denoncent-la-degradation-des-services-publics_8293640.html"
      },
      {
-      "titre": "\"Je crois que raconter l’histoire des mafias, notamment à travers le cinéma, est extrêmement utile\" : Roberto Saviano est l'invité exceptionnel du Festival du film d'Histoire de Pessac",
+      "titre": "Le Parlement adopte définitivement la présomption d'usage légal des armes par les forces de l'ordre",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/culture/cinema/je-crois-que-raconter-l-histoire-des-mafias-notamment-a-travers-le-cinema-est-extremement-utile-roberto-saviano-est-l-invite-exceptionnel-du-festival-du-film-d-histoire-de-pessac_8289596.html"
+      "url": "https://www.franceinfo.fr/faits-divers/police/le-parlement-adopte-definitivement-la-presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre_8292845.html"
      },
      {
-      "titre": "L'Américain Jimmy Connors, ancien numéro 1 mondial de tennis, souffre d'un cancer de l'oreille",
+      "titre": "Présomption d’usage légal des armes par les forces de l’ordre : \"Ce n'est en aucun cas un permis de tuer\", estime le syndicat Unsa Police",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/tennis/l-americain-jimmy-connors-ancien-numero-1-mondial-souffre-d-un-cancer-de-l-oreille_8293604.html"
+      "url": "https://www.franceinfo.fr/faits-divers/police/presomption-d-usage-legal-des-armes-par-les-forces-de-l-ordre-ce-n-est-en-aucun-cas-un-permis-de-tuer-estime-le-syndicat-unsa-police_8293457.html"
      },
      {
-      "titre": "Préfet soupçonné de fuites vers le RN : \"Il doit être mis à pied\", estime la députée écologiste Sandrine Rousseau",
+      "titre": "\"Elle va apporter son capital popularité\" : quel sera le rôle de Sarah Knafo auprès d'Eric Zemmour dans la campagne pour la présidentielle ?",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/france/centre-val-de-loire/loiret/prefet-soupconne-de-fuites-vers-le-rn-il-doit-etre-mis-a-pied-estime-la-depute-ecologiste-sandrine-rousseau_8293574.html"
+      "url": "https://www.franceinfo.fr/elections/presidentielle/candidats/elle-va-apporter-son-capital-popularite-quel-sera-le-role-de-sarah-knafo-aupres-d-eric-zemmour-dans-la-campagne-pour-la-presidentielle_8269433.html"
      },
      {
-      "titre": "\"Des campagnes d'attaques de plus en plus automatisées\" : comment les cybercriminels ont placé l'intelligence artificielle au cœur de leurs opérations",
+      "titre": "Mobilisation du 21 novembre : une quarantaine de rassemblements recensés par le ministère de l'Intérieur en début d'après-midi",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html"
-     },
-     {
-      "titre": "L'association Droit au logement appelle à \"renforcer l'encadrement des loyers\" et à \"produire du logement social\"",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/manifestations/l-association-droit-au-logement-appelle-a-renforcer-l-encadrement-des-loyers-et-a-produire-du-logement-social_8293607.html"
-     },
-     {
-      "titre": "Quand un gourou condamné coule des jours tranquilles au bord de sa piscine : \"Affaires sensibles\" revient sur le fiasco judiciaire de la secte OKC",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/replay-magazine/france-2/affaires-sensibles/video-quand-un-gourou-condamne-coule-des-jours-tranquilles-au-bord-de-sa-piscine-affaires-sensibles-revient-sur-le-fiasco-judiciaire-de-la-secte-okc_8290778.html"
-     },
-     {
-      "titre": "\"Il aurait fallu réagir avant\" : dans le Pas-de-Calais, des habitants fatigués et en colère face à des crues à répétition",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/il-aurait-fallu-reagir-avant-dans-le-pas-de-calais-des-habitants-fatigues-et-en-colere-face-a-des-crues-a-repetition_8293445.html"
-     },
-     {
-      "titre": "Christine Lagarde, un recours pour la droite et le centre à l’élection présidentielle ?",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/replay-radio/le-brief-politique/christine-lagarde-un-recours-pour-la-droite-et-le-centre-a-l-election-presidentielle_8271749.html"
-     },
-     {
-      "titre": "\"C'est un ovni depuis très longtemps\" : à son meilleur niveau, Antoine Dupont suscite l'engouement avant France-Argentine",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/rugby/antoine-dupont/c-est-un-ovni-depuis-tres-longtemps-a-son-meilleur-niveau-antoine-dupont-suscite-l-engouement-avant-france-argentine_8293577.html"
-     },
-     {
-      "titre": "Serge Money, avocat de Michel Zecler, salue une \"décision historique\" mais les peines \"laissent un petit goût amer\"",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/faits-divers/producteur-passe-a-tabac-par-des-policiers/serge-money-avocat-de-michel-zecler-salue-une-decision-historique-mais-les-peines-laissent-un-petit-gout-amer_8293472.html"
-     },
-     {
-      "titre": "Un mathématicien annonce la résolution de l'hypothèse de Riemann, l'un des plus célèbres problèmes du monde, avec l'aide d'une IA d'Anthropic",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/un-mathematicien-annonce-la-resolution-d-un-des-plus-celebres-problemes-du-monde-avec-l-aide-d-une-ia-d-anthropic_8293547.html"
+      "url": "https://www.franceinfo.fr/societe/manifestations/direct-mobilisation-du-21-novembre-syndicats-et-gilets-jaunes-appellent-a-manifester-pour-la-jeunesse-et-contre-la-vie-chere-pour-le-sixieme-samedi-d-affilee_8293460.html"
      },
      {
       "titre": "\"Je vais aller brûler un cierge\" : à Lyon, les commerçants de la place Bellecour s'inquiètent du retour des cortèges en centre-ville",
@@ -423,19 +436,14 @@
       "url": "https://www.franceinfo.fr/societe/manifestations/reportage-je-vais-aller-bruler-un-cierge-a-lyon-les-commercants-de-la-place-bellecour-s-inquietent-du-retour-des-corteges-en-centre-ville_8292824.html"
      },
      {
-      "titre": "Des syndicats de sept pays européens appellent à des \"manifestations coordonnées\" contre la vie chère samedi et dimanche",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/manifestations/des-syndicats-de-sept-pays-europeens-appellent-a-des-manifestations-coordonnees-contre-la-vie-chere-vendredi-samedi-et-dimanche_8292320.html"
+      "titre": "À bord du Train d'or pour découvrir les plus beaux paysages de la Norvège",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/a-bord-du-train-d-or-pour-decouvrir-les-plus-beaux-paysages-de-la-norvege_8293826.html"
      },
      {
-      "titre": "Cargo échoué sur une plage des Landes : comment va se passer la remise à flot de l'énorme navire ?",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/france/nouvelle-aquitaine/landes/cargo-echoue-sur-une-plage-des-landes-comment-va-se-passer-la-remise-a-flot-de-l-enorme-navire_8292887.html"
-     },
-     {
-      "titre": "Un cargo avec 22 personnes à bord s'échoue sur le littoral landais en raison des intempéries",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/faits-divers/un-cargo-avec-22-personnes-a-bord-s-echoue-sur-le-littoral-landais-en-raison-des-intemperies_8291624.html"
+      "titre": "\"Ce qui m'intéresse, c'est d'être avec des gens qui racontent des histoires\", confie Marc Lavoine",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-jt/france-2/13-heures/j-ai-toujours-ete-chanteur-acteur-c-est-quelque-chose-que-j-ai-appris-confie-marc-lavoine_8293829.html"
      },
      {
       "titre": "La maison de \"Coup de foudre à Notting Hill\" à vendre pour 9 millions d'euros",
@@ -451,6 +459,11 @@
       "titre": "EN IMAGES. \"My Rock Stars\" : le photographe Hassan Hajjaj immortalise ses stars de la musique",
       "media": "franceinfo Culture",
       "url": "https://www.franceinfo.fr/culture/arts-expos/en-images-my-rock-stars-le-photographehassan-hajjaj-immortalise-ses-stars-de-la-musique_8289029.html"
+     },
+     {
+      "titre": "\"Je crois que raconter l’histoire des mafias, notamment à travers le cinéma, est extrêmement utile\" : Roberto Saviano est l'invité exceptionnel du Festival du film d'Histoire de Pessac",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/je-crois-que-raconter-l-histoire-des-mafias-notamment-a-travers-le-cinema-est-extremement-utile-roberto-saviano-est-l-invite-exceptionnel-du-festival-du-film-d-histoire-de-pessac_8289596.html"
      },
      {
       "titre": "\"Jupiter\" : huis clos tendu et efficace sous menace nucléaire",
@@ -476,49 +489,24 @@
       "titre": "Les ventes de \"GTA VI\" ont généré 3,79 milliards de dollars le jour de sa sortie, selon l'éditeur du jeu vidéo",
       "media": "franceinfo Culture",
       "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes-de-gta-vi-ont-atteint-3-79-milliards-de-dollars-le-jour-de-sa-sortie-selon-l-editeur-du-jeu-video_8292920.html"
-     },
-     {
-      "titre": "REPLAY. \"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/direct-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8291969.html"
-     },
-     {
-      "titre": "Pomme sort un nouvel album \"La Forteresse\" : \"J'avais envie de faire des ponts avec le monde\"",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/pomme-sort-un-nouvel-album-la-forteresse-j-avais-envie-de-faire-des-ponts-avec-le-monde_8270099.html"
-     },
-     {
-      "titre": "Jam pour le Népal : un concert de jazz lundi soir au New Morning, à Paris, en soutien aux sinistrés de la catastrophe du 26 août",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/musique/jazz/jam-pour-le-nepal-un-concert-de-jazz-lundi-soir-au-new-morning-a-paris-en-soutien-aux-sinistres-de-la-catastrophe-du-26-aout_8292152.html"
-     },
-     {
-      "titre": "Plus de cinquante ans après sa création, le mythique groupe The Stranglers lance en France sa nouvelle tournée",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/musique/plus-de-50-ans-apres-sa-creation-le-mythique-groupe-the-stranglers-lance-en-france-sa-nouvelle-tournee_8292479.html"
      }
     ]
    },
    "alertes_charte": [
-    "Le rédacteur n'a pas répondu (openai/gpt-4.1 : JSONDecodeError: Expecting value: line 1 column 1 (char 0) ; openai/gpt-4o : JSONDecodeError: Expecting value: line 1 column 1 (char 0) ; Mistral-Small-3.2-24B-Instruct-2506 : OVHcloud (anonyme) saturé, non réessayé ; gpt-oss-120b : OVHcloud (anonyme) saturé, non réessayé ; Meta-Llama-3_3-70B-Instruct : OVHcloud (anonyme) saturé, non réessayé) : choisir un sujet dans la fiche."
+    "Le rédacteur n'a pas répondu (openai/gpt-4.1 : réponse illisible (HTTP 200, text/plain) : 'OK' ; openai/gpt-4o : réponse illisible (HTTP 200, text/plain) : 'OK' ; Mistral-Small-3.2-24B-Instruct-2506 : OVHcloud (anonyme) saturé, non réessayé ; gpt-oss-120b : OVHcloud (anonyme) saturé, non réessayé ; Meta-Llama-3_3-70B-Instruct : OVHcloud (anonyme) saturé, non réessayé) : choisir un sujet dans la fiche."
    ]
   }
  ],
  "reserve_une": [
   {
-   "titre": "Cloudflare : Network Performance Issues in Paris",
-   "tag_interne": "Non mesuré",
-   "score": -6.9
-  },
-  {
    "titre": "Cloudflare : Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
    "tag_interne": "Non mesuré",
-   "score": -7.8
+   "score": -7.9
   },
   {
    "titre": "Cloudflare : Elevated number of 5xx and 499 errors",
    "tag_interne": "Non mesuré",
-   "score": -7.9
+   "score": -8.0
   }
  ],
  "sources_tendances": {
@@ -528,11 +516,11 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 151
+   "nombre": 152
   },
   "Détour (flux RSS)": {
    "etat": "ok",
-   "nombre": 152
+   "nombre": 102
   }
  },
  "journal_redacteur": [
@@ -540,25 +528,25 @@
    "service": "GitHub Models",
    "modele": "openai/gpt-4.1",
    "rubrique": "une",
-   "resultat": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+   "resultat": "réponse illisible (HTTP 200, text/plain) : 'OK'"
   },
   {
    "service": "GitHub Models",
    "modele": "openai/gpt-4.1",
    "rubrique": "une",
-   "resultat": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+   "resultat": "réponse illisible (HTTP 200, text/plain) : 'OK'"
   },
   {
    "service": "GitHub Models",
    "modele": "openai/gpt-4o",
    "rubrique": "une",
-   "resultat": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+   "resultat": "réponse illisible (HTTP 200, text/plain) : 'OK'"
   },
   {
    "service": "GitHub Models",
    "modele": "openai/gpt-4o",
    "rubrique": "une",
-   "resultat": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+   "resultat": "réponse illisible (HTTP 200, text/plain) : 'OK'"
   },
   {
    "service": "OVHcloud (anonyme)",
@@ -576,31 +564,31 @@
    "service": "OVHcloud (anonyme)",
    "modele": "Mistral-Small-3.2-24B-Instruct-2506",
    "rubrique": "une",
-   "resultat": "HTTP 429 {\n  \"message\":\"API rate limit exceeded\",\n  \"request_id\":\"382c3b512644911d5e76511d7e49b201\"\n}"
+   "resultat": "HTTP 429 {\n  \"message\":\"API rate limit exceeded\",\n  \"request_id\":\"3f11934b762157526473f4159191ef5a\"\n}"
   },
   {
    "service": "GitHub Models",
    "modele": "openai/gpt-4.1",
    "rubrique": "tous_connectes",
-   "resultat": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+   "resultat": "réponse illisible (HTTP 200, text/plain) : 'OK'"
   },
   {
    "service": "GitHub Models",
    "modele": "openai/gpt-4.1",
    "rubrique": "tous_connectes",
-   "resultat": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+   "resultat": "réponse illisible (HTTP 200, text/plain) : 'OK'"
   },
   {
    "service": "GitHub Models",
    "modele": "openai/gpt-4o",
    "rubrique": "tous_connectes",
-   "resultat": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+   "resultat": "réponse illisible (HTTP 200, text/plain) : 'OK'"
   },
   {
    "service": "GitHub Models",
    "modele": "openai/gpt-4o",
    "rubrique": "tous_connectes",
-   "resultat": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+   "resultat": "réponse illisible (HTTP 200, text/plain) : 'OK'"
   }
  ]
 }
