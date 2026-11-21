@@ -20,12 +20,17 @@ on:
         description: "S'il y a plusieurs brouillons dans la rubrique ce jour-là : lequel (1 = le premier)"
         required: false
         default: "1"
+      emplacement:
+        description: "Où le placer sur le site"
+        type: choice
+        options: ["Grand titre", "Carte seulement"]
+        default: "Grand titre"
       forcer:
-        description: "Publier même s'il reste des [À VÉRIFIER]"
+        description: "Publier malgré un [À VÉRIFIER], un titre périmé ou un doublon"
         type: boolean
         default: false
       retirer:
-        description: "Pour retirer du site au lieu de publier : cocher (retire le dernier article publié dans la rubrique)"
+        description: "Pour retirer du site au lieu de publier : cocher (retire le dernier article publié ; l'ancien grand titre reprend sa place)"
         type: boolean
         default: false
 
@@ -54,6 +59,7 @@ jobs:
           RUBRIQUE: ${{ inputs.rubrique }}
           DATE_BROUILLON: ${{ inputs.date }}
           NUMERO: ${{ inputs.numero }}
+          SITE_URL: ${{ vars.SITE_URL }}
         run: |
           case "$RUBRIQUE" in
             "À la une") R=une ;;
@@ -63,15 +69,15 @@ jobs:
           if [ "${{ inputs.retirer }}" = "true" ]; then
             python -m sonde publier --retirer "dernier-$R"
           else
-            python -m sonde publier --rubrique "$R" --date "$DATE_BROUILLON" --numero "${NUMERO:-1}" ${{ inputs.forcer && '--forcer' || '' }}
+            python -m sonde publier --rubrique "$R" --date "$DATE_BROUILLON" --numero "${NUMERO:-1}" ${{ inputs.forcer && '--forcer' || '' }} ${{ inputs.emplacement == 'Carte seulement' && '--carte' || '' }}
           fi
 
       - name: Enregistrer (le site se met à jour tout seul)
         run: |
           git config user.name "sonde-ia-eu"
           git config user.email "sonde-ia-eu@users.noreply.github.com"
-          git add iris/publies.json redaction/propositions
-          git diff --cached --quiet && exit 0
+          git add iris/publies.json iris/flux.xml redaction/propositions
+          if git diff --cached --quiet; then rm -f notification.json; exit 0; fi
           git commit -m "Publication : ${{ inputs.rubrique }} ${{ inputs.date }}"
           for essai in 1 2 3 4 5; do
             git pull --rebase -X theirs --quiet && git push && exit 0
@@ -79,3 +85,18 @@ jobs:
             sleep $((essai * 5))
           done
           exit 1
+
+      - name: Prévenir les abonnés (notification sur leur appareil)
+        if: ${{ !inputs.retirer }}
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}
+        run: |
+          if [ -z "$NOTIF_SECRET" ] || [ -z "$SITE_URL" ]; then
+            echo "Notifications pas encore configurées (SITE_URL ou NOTIF_SECRET absent) : rien envoyé."; exit 0
+          fi
+          if [ ! -f notification.json ]; then echo "Rien de nouveau publié : pas de notification."; exit 0; fi
+          sleep 90   # le temps que Vercel mette l'article en ligne avant que les abonnés cliquent
+          curl -sS --fail-with-body -X POST "${SITE_URL%/}/api/notifier" \
+            -H "Authorization: Bearer $NOTIF_SECRET" -H "Content-Type: application/json" \
+            --data @notification.json
