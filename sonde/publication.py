@@ -1,14 +1,18 @@
 """Publication : un brouillon validé passe sur le site.
 
-    python -m sonde publier --rubrique une [--date 2026-11-22] [--numero 1] [--forcer]
+    python -m sonde publier --rubrique une [--date 2026-11-22] [--numero 1] [--carte] [--forcer]
     python -m sonde publier --retirer <id>
 
 Le brouillon est lu dans redaction/propositions/<date>.json et ajouté à iris/publies.json,
 que le site lit au chargement. Rien n'est publié sans cette commande : c'est la décision
 de la rédaction (dans GitHub : Actions → « Publier un brouillon » → Run workflow).
 
-Garde-fous : on ne publie pas une fiche vide (le rédacteur n'a pas écrit l'article), ni un
-brouillon qui contient encore des [À VÉRIFIER] — sauf avec --forcer.
+Emplacement : par défaut, le dernier article publié devient le grand titre de sa rubrique
+(l'ancien grand titre descend en première carte). Avec --carte, il ne va que dans les cartes.
+
+Garde-fous : on ne publie pas une fiche vide (le rédacteur n'a pas écrit l'article), ni —
+sauf avec --forcer — un brouillon qui contient encore des [À VÉRIFIER], un titre périmé
+(« sort ce jeudi » publié un samedi) ou un sujet déjà en ligne dans la rubrique.
 Le tag de confiance n'est jamais publié : il ne sert qu'à la relecture.
 """
 
@@ -20,6 +24,9 @@ import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+from .coherence import doublon, titre_perime, titres_en_ligne
+from .flux import ecrire_flux
 
 PARIS = ZoneInfo("Europe/Paris")
 RUBRIQUES = {"une": "une", "a la une": "une", "à la une": "une", "tous_connectes": "tous_connectes",
@@ -110,7 +117,7 @@ def vers_le_site(p: dict, date: str) -> dict:
 
 
 def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 1, forcer: bool = False,
-            maintenant: datetime | None = None) -> dict:
+            maintenant: datetime | None = None, carte: bool = False) -> dict:
     maintenant = maintenant or datetime.now(timezone.utc)
     rub = RUBRIQUES.get((rubrique or "").strip().lower())
     if not rub:
@@ -129,6 +136,15 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
     article = vers_le_site(p, date)
     if not forcer and "À VÉRIFIER" in _texte_brut(article).upper():
         raise RefusPublication("Le brouillon contient encore des [À VÉRIFIER]. Corrigez-les, ou cochez « forcer ».")
+    if rub != "detour":
+        if carte:
+            article["place"] = "carte"
+        if not forcer:
+            jour_pub = maintenant.astimezone(PARIS).date()
+            probleme = (titre_perime(article["title"], datetime.fromisoformat(date).date(), jour_pub)
+                        or doublon(article["title"], titres_en_ligne(racine, rub), sauf_id=article["id"]))
+            if probleme:
+                raise RefusPublication(probleme + " Corrigez le brouillon, ou cochez « forcer ».")
 
     sortie = racine / "iris" / "publies.json"
     publies = json.loads(sortie.read_text(encoding="utf-8")) if sortie.exists() else {"une": [], "tous_connectes": [], "detour": []}
@@ -137,16 +153,20 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
         publies["detour"] = [l for l in article["liens"] if l["url"] not in deja] + (publies.get("detour") or [])
         ident = f"detour-{date}"
     else:
+        article["publie_le"] = maintenant.isoformat(timespec="seconds")
         publies[rub] = [article] + [x for x in publies.get(rub) or [] if x.get("id") != article["id"]]
         ident = article["id"]
     publies["mis_a_jour"] = maintenant.isoformat(timespec="seconds")
     sortie.parent.mkdir(parents=True, exist_ok=True)
     sortie.write_text(json.dumps(publies, ensure_ascii=False, indent=1), encoding="utf-8")
+    ecrire_flux(racine)
 
     p["statut"] = "publie"
     p["publie_le"] = maintenant.isoformat(timespec="seconds")
     chemin.write_text(json.dumps(props, ensure_ascii=False, indent=1), encoding="utf-8")
+    texte = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", article.get("chapo") or "")).strip()
     return {"id": ident, "rubrique": rub, "date": date, "alertes": p.get("alertes_charte") or [],
+            "url": f"/#article-{ident}" if rub != "detour" else "/#detour", "texte": texte[:200],
             "titre": re.sub(r"<[^>]+>", " ", article.get("title") or f"{len(article.get('liens', []))} lien(s)")}
 
 
@@ -172,4 +192,5 @@ def retirer(racine: Path, quoi: str) -> int:
         for k in ("une", "tous_connectes"):
             publies[k] = [x for x in publies.get(k) or [] if x.get("id") != quoi]
     sortie.write_text(json.dumps(publies, ensure_ascii=False, indent=1), encoding="utf-8")
+    ecrire_flux(racine)
     return avant - taille()

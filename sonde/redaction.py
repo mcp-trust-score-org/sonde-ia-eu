@@ -31,6 +31,8 @@ from zoneinfo import ZoneInfo
 
 import httpx
 
+from .coherence import titres_en_ligne
+
 PARIS = ZoneInfo("Europe/Paris")
 NIVEAUX = {"confirme": 4, "probable": 3, "possible": 2, "non_concerne": 1}
 TAGS_INTERNES = {"confirme": "Confirmé", "probable": "Probable", "possible": "Possible",
@@ -204,9 +206,20 @@ def _sans_anomalie_mesuree(fiche: dict | None) -> bool:
     return isinstance(m, str) or not any(x.get("anomalies") for x in m)
 
 
-def controler(article: dict, rubrique: str, fiche: dict | None = None) -> list[str]:
-    """Écarts à la charte (section 5). Signalés en relecture, jamais corrigés en silence."""
+def controler(article: dict, rubrique: str, fiche: dict | None = None, contexte: dict | None = None) -> list[str]:
+    """Écarts à la charte (section 5). Signalés en relecture, jamais corrigés en silence.
+    contexte : {"date": jour de rédaction, "en_ligne": ce qui est déjà sur le site dans la rubrique}."""
+    from .coherence import doublon, titre_perime
     alertes = []
+    contexte = contexte or {}
+    if contexte.get("date") and article.get("title"):
+        perime = titre_perime(article["title"], contexte["date"], contexte["date"])
+        if perime:
+            alertes.append(perime)
+    if contexte.get("en_ligne") and article.get("title"):
+        deja = doublon(article["title"], contexte["en_ligne"])
+        if deja:
+            alertes.append(deja)
     if rubrique == "une" and _sans_anomalie_mesuree(fiche):
         fournisseurs = [f for f in (fiche.get("fournisseurs_concernes") or []) if f]
         texte = re.sub(r"<[^>]+>", " ", " ".join([article.get("title") or ""] + [_texte(article)]))
@@ -585,18 +598,23 @@ def _parle_de(sujet: str, titre: str) -> bool:
     return False
 
 
-def fiche_tous_connectes(tend: dict, deja: set, n: int = 25) -> dict:
-    """Ce qui occupe les gens, avec les titres de presse qui en parlent (seules sources de faits)."""
+def fiche_tous_connectes(tend: dict, deja: set, n: int = 25, en_ligne: list[str] | None = None) -> dict:
+    """Ce qui occupe les gens, avec les titres de presse qui en parlent (seules sources de faits).
+    Les sujets déjà en ligne dans la rubrique sont écartés : pas deux fois GTA VI sur la même page."""
     presse = tend.get("presse") or []
+    en_ligne = en_ligne or []
     sujets = []
     for w in tend.get("wikipedia") or []:
-        if w["sujet"].lower() in deja:
+        if w["sujet"].lower() in deja or any(_parle_de(w["sujet"], t) for t in en_ligne):
             continue
         lies = [p for p in presse if _parle_de(w["sujet"], p["titre"])][:4]
         sujets.append({"sujet": w["sujet"], "langue": w["projet"][:2], "rang_wikipedia": w["rang"], "page": w["url"],
                        "titres_de_presse": [{"titre": p["titre"], "media": p["media"], "url": p["url"]} for p in lies]})
     presse_seule = [{"titre": p["titre"], "media": p["media"], "url": p["url"]} for p in presse[:40]]
-    return {"tendances_wikipedia": sujets[:n], "presse_grand_public": presse_seule}
+    fiche = {"tendances_wikipedia": sujets[:n], "presse_grand_public": presse_seule}
+    if en_ligne:
+        fiche["deja_en_ligne"] = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t)).strip() for t in en_ligne]
+    return fiche
 
 
 def choisir_detour(tend: dict, deja: set, n: int) -> list[dict]:
@@ -612,21 +630,32 @@ def choisir_detour(tend: dict, deja: set, n: int) -> list[dict]:
 
 # ---------------------------------------------------------------- production
 
-def _brouillon(redacteur, consigne, fiche, rubrique, format_, extra_format="") -> tuple[dict, str, list]:
+MOIS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre",
+           "novembre", "décembre"]
+
+
+def date_en_toutes_lettres(jour) -> str:
+    from .coherence import JOURS
+    return f"{JOURS[jour.weekday()]} {jour.day} {MOIS_FR[jour.month - 1]} {jour.year}"
+
+
+def _brouillon(redacteur, consigne, fiche, rubrique, format_, extra_format="", contexte=None) -> tuple[dict, str, list]:
     """(article, auteur, alertes). Repli sur une fiche à rédiger si le rédacteur n'est pas disponible."""
     if redacteur and redacteur.actif:
         try:
             art = redacteur.ecrire(consigne + "\n\n" + (FORMAT_ARTICLE % extra_format), fiche, rubrique)
             if art.get("aucun"):
                 return art, redacteur.modele, []
-            return art, redacteur.modele, controler(art, rubrique, fiche)
+            return art, redacteur.modele, controler(art, rubrique, fiche, contexte)
         except RuntimeError as e:
             return {}, "fiche", [f"Le rédacteur n'a pas répondu ({e}) : fiche à rédiger à la main."]
     return {}, "fiche", ["Pas de rédacteur disponible : fiche à rédiger à la main."]
 
 
-def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture) -> dict:
-    fiche = fiche_tous_connectes(tend, deja.get("tous_connectes", set()))
+def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture, en_ligne=None) -> dict:
+    en_ligne = en_ligne or []
+    fiche = fiche_tous_connectes(tend, deja.get("tous_connectes", set()), en_ligne=[x["titre"] for x in en_ligne])
+    aujourd_hui = date_en_toutes_lettres(jour)
     if not fiche["tendances_wikipedia"] and not fiche["presse_grand_public"]:
         return {"rubrique": "tous_connectes", "auteur": "fiche", "article": {}, "fiche": fiche,
                 "alertes_charte": ["Aucune tendance collectée (lancer « python -m sonde tendances ») : pas de sujet proposé."]}
@@ -636,10 +665,12 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture) ->
     # 1) Choisir le sujet
     try:
         choix = redacteur.ecrire(
+            f"Nous sommes le {aujourd_hui}. "
             "Rubrique : Tous connectés (édition grand public). Parmi les tendances de la fiche, choisis LE sujet "
             "qui passe le test : on peut écrire le « Et vous ? » en une phrase (une dépendance à la technologie "
             "dans la vie de tous les jours). Pas de filtre par thème : pop culture, achats, société, monde. "
-            "Il faut au moins un article de presse de la fiche qui en parle. Réponds : {\"sujet\": \"…\", "
+            "Il faut au moins un article de presse de la fiche qui en parle. Ne choisis jamais un sujet de la liste "
+            "« deja_en_ligne » : il est déjà sur la page. Réponds : {\"sujet\": \"…\", "
             "\"et_vous\": \"la phrase du test\", \"urls\": [\"jusqu'à 3 liens d'articles de la fiche sur ce sujet\"]} "
             "ou {\"aucun\": true, \"raison\": \"…\"}.", fiche, "tous_connectes")
     except RuntimeError as e:
@@ -659,16 +690,19 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture) ->
     # 3) Écrire
     reflexe = jour.weekday() == tc.get("reflexe_de_la_semaine", 0)
     art, auteur, alertes = _brouillon(redacteur, (
+        f"Nous sommes le {aujourd_hui}. "
         "Rubrique : Tous connectés (édition grand public). Écris l'article sur ce sujet à partir des articles de "
         "presse de la fiche, reformulés avec tes mots, et cite-les en sources. Le titre peut interpeller le lecteur ; "
-        "il tient en deux phrases courtes (90 caractères au plus), modèle : « GTA VI sort aujourd'hui.<br/>Est-il "
-        "vraiment <mark>à vous ?</mark> ». Le tag commence par une majuscule (« Jeux vidéo », « Savoir »…). "
+        "il tient en deux phrases courtes (90 caractères au plus), modèle : « L'Espagne s'éteint à 12 h 33.<br/>Plus "
+        "moyen de <mark>payer son pain.</mark> ». Si l'événement a déjà eu lieu, le titre le dit au passé "
+        "(« est sorti jeudi », jamais « sort ce jeudi ») : vérifie la date dans les articles. Le tag commence par une majuscule (« Jeux vidéo », « Savoir »…). "
         "N'oublie aucun fait de contexte qui change la lecture (par exemple, qui est la personne citée). "
         "Étape 3 : « Et vous ? ». Ajoute exactement 3 bons réflexes."
         + (" Ajoute aussi le bon réflexe de la semaine (une phrase-titre et une phrase d'explication)." if reflexe else "")),
         fiche_sujet, "tous_connectes", "a_chaud",
         ',\n "sujet": "le sujet",\n "categorie": "jeux-video, musique, cinema, societe, sante, politique, medias, savoir, innovation ou autre",\n "reflexes": ["…", "…", "…"]'
-        + (',\n "reflexe_de_la_semaine": {"titre": "…", "texte": "…"}' if reflexe else ""))
+        + (',\n "reflexe_de_la_semaine": {"titre": "…", "texte": "…"}' if reflexe else ""),
+        {"date": jour.date(), "en_ligne": en_ligne})
     if not urls:
         alertes.append("Le rédacteur n'a indiqué aucun article de la fiche : sujet sans source vérifiable.")
     if art:
@@ -776,11 +810,13 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
                 fiche["articles_de_presse"] = lus
             label, cle_img = CATEGORIE_PAR_TYPE.get(c["evenement"].get("type"), ("Cloud", "cloud"))
             art, auteur, alertes = _brouillon(redacteur, (
+                f"Nous sommes le {date_en_toutes_lettres(jour)}. Si l'événement a déjà eu lieu, dis-le au passé.\n"
                 "Rubrique : À la une (édition entreprises). Format : À chaud. Catégorie suggérée : " + label + ".\n"
                 "Écris l'article à partir de la fiche. Titre factuel, sans « vous », en deux phrases courtes qui finissent "
                 "par un point : une situation banale, puis sa conséquence (modèle : « Une clim tombe en panne.<br/>Azure "
                 "s'est tu <mark>47 minutes.</mark> »). Si la sonde n'a rien mesuré, dis-le honnêtement dans la "
-                "conséquence. Étape 3 : « La dépendance révélée »."), fiche, "une", "a_chaud")
+                "conséquence. Étape 3 : « La dépendance révélée »."), fiche, "une", "a_chaud",
+                contexte={"date": jour.date(), "en_ligne": titres_en_ligne(racine, "une")})
             if art and lus:
                 alertes += _alertes_lecture(lus, art)
             propositions.append({"rubrique": "une", "format": "a_chaud", "evenement_id": c["id"],
@@ -804,7 +840,8 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
         # ---- Tous connectés : 1) choisir le sujet, 2) lire les articles, 3) écrire
         tc = rythme.get("tous_connectes") or {}
         if jour.weekday() in tc.get("jours", [0, 2, 4, 5]):
-            propositions.append(_tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture))
+            propositions.append(_tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture,
+                                                titres_en_ligne(racine, "tous_connectes")))
 
         # ---- Le Détour
         dt = rythme.get("detour") or {}

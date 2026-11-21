@@ -31,6 +31,7 @@ import sys
 from pathlib import Path
 
 import json
+import re
 import os
 from datetime import datetime, timezone
 
@@ -202,6 +203,7 @@ def main(argv: list[str] | None = None) -> int:
     pub.add_argument("--date", default="")
     pub.add_argument("--numero", type=int, default=1)
     pub.add_argument("--forcer", action="store_true")
+    pub.add_argument("--carte", action="store_true", help="dans les cartes seulement, pas en grand titre")
     pub.add_argument("--retirer", default="", help="dernier-une, dernier-tous_connectes, dernier-detour ou un identifiant")
     av = sous.add_parser("avoirs", help="avoirs dus selon les contrats")
     av.add_argument("--mois", default=None, help="AAAA-MM (par défaut : le mois précédent)")
@@ -259,12 +261,17 @@ def main(argv: list[str] | None = None) -> int:
             print(f"  {n} élément(s) retiré(s) du site.")
             return 0 if n else 1
         try:
-            res = publier(RACINE, args.rubrique, args.date, args.numero, args.forcer)
+            res = publier(RACINE, args.rubrique, args.date, args.numero, args.forcer, carte=args.carte)
         except RefusPublication as e:
             print(f"::error::Publication refusée : {e}")
             print(f"  Publication refusée : {e}")
             return 1
         print(f"  Publié sur le site : {res['titre']} ({res['rubrique']}, brouillon du {res['date']})")
+        if res["rubrique"] != "detour":   # pour la notification envoyée par GitHub (publier.yml)
+            (RACINE / "notification.json").write_text(json.dumps(
+                {"titre": "Iris · " + ("À la une" if res["rubrique"] == "une" else "Tous connectés"),
+                 "texte": re.sub(r"\s+", " ", res["titre"]).replace(" .", ".").strip(), "url": res["url"]},
+                ensure_ascii=False), encoding="utf-8")
         for a in res["alertes"]:
             print(f"::warning::{a}")
         return 0
