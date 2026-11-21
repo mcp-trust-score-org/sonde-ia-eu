@@ -56,3 +56,81 @@ def test_retirer_le_dernier(tmp_path):
     publier(r, "une", "2026-11-22")
     assert retirer(r, "dernier-une") == 1
     assert json.loads((r / "iris" / "publies.json").read_text())["une"] == []
+
+
+# ---- Le cas du 21 novembre : « GTA VI sort ce jeudi », publié un samedi, sous un grand titre GTA VI
+
+from datetime import datetime, timezone
+
+GTA_JEUDI = {**ARTICLE_TC, "title": "GTA VI sort ce jeudi.<br/>Sa version <mark>sans disque</mark> inquiète les joueurs."}
+SAMEDI = datetime(2026, 11, 21, 17, 0, tzinfo=timezone.utc)
+PAGE = """<section class="view" id="view-vies"><article class="une-hero vies-hero">
+<h1 class="display">GTA VI sort aujourd'hui.<br/>Est-il vraiment <mark>à vous ?</mark></h1></article>
+<div class="cards4"><a><h3>Une peluche affole la planète. Les robots achètent avant vous.</h3></a></div></section>
+<section id="view-relecture"></section>"""
+
+
+def _brouillons_du_21(tmp_path: Path, article: dict, page: str | None = None) -> Path:
+    d = tmp_path / "redaction" / "propositions"
+    d.mkdir(parents=True)
+    (d / "2026-11-21.json").write_text(json.dumps({"date": "2026-11-21", "propositions": [
+        {"rubrique": "tous_connectes", "image": "assets/photos/jeux-video.jpg", "article": article}]}, ensure_ascii=False))
+    if page:
+        (tmp_path / "iris").mkdir()
+        (tmp_path / "iris" / "index.html").write_text(page)
+    return tmp_path
+
+
+def test_titre_perime_refuse(tmp_path):
+    r = _brouillons_du_21(tmp_path, GTA_JEUDI)
+    with pytest.raises(RefusPublication, match="Titre périmé.*ce jeudi.*samedi"):
+        publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)
+    assert publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI, forcer=True)["rubrique"] == "tous_connectes"
+
+
+def test_titre_au_passe_accepte(tmp_path):
+    passe = {**GTA_JEUDI, "title": "GTA VI est sorti jeudi.<br/>Sa boîte ne contient <mark>aucun disque.</mark>"}
+    r = _brouillons_du_21(tmp_path, passe)
+    assert publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)["rubrique"] == "tous_connectes"
+
+
+def test_aujourdhui_publie_le_lendemain_refuse(tmp_path):
+    r = _brouillons_du_21(tmp_path, ARTICLE_TC)          # « GTA VI sort aujourd'hui », brouillon du 21
+    with pytest.raises(RefusPublication, match="aujourd’hui"):
+        publier(r, "tous_connectes", "2026-11-21", maintenant=datetime(2026, 11, 22, 9, tzinfo=timezone.utc))
+
+
+def test_doublon_avec_le_grand_titre_refuse(tmp_path):
+    passe = {**GTA_JEUDI, "title": "GTA VI est sorti jeudi.<br/>Sa boîte ne contient <mark>aucun disque.</mark>"}
+    r = _brouillons_du_21(tmp_path, passe, PAGE)
+    with pytest.raises(RefusPublication, match="Doublon.*GTA VI sort aujourd'hui"):
+        publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)
+    autre = {**ARTICLE_TC, "title": "Un mathématicien dit avoir résolu Riemann.<br/>Avec <mark>une IA.</mark>"}
+    r2 = _brouillons_du_21(tmp_path / "b", autre, PAGE)
+    assert publier(r2, "tous_connectes", "2026-11-21", maintenant=SAMEDI)["rubrique"] == "tous_connectes"
+
+
+def test_grand_titre_par_defaut_ou_carte_seulement(tmp_path):
+    autre = {**ARTICLE_TC, "title": "Un mathématicien dit avoir résolu Riemann.<br/>Avec <mark>une IA.</mark>"}
+    r = _brouillons_du_21(tmp_path, autre)
+    publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)
+    assert "place" not in json.loads((r / "iris" / "publies.json").read_text())["tous_connectes"][0]
+    publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI, carte=True)
+    assert json.loads((r / "iris" / "publies.json").read_text())["tous_connectes"][0]["place"] == "carte"
+
+
+def test_flux_rss_suit_les_publications(tmp_path, monkeypatch):
+    import xml.etree.ElementTree as ET
+    monkeypatch.setenv("SITE_URL", "https://iris.example/")
+    autre = {**ARTICLE_TC, "title": "Un mathématicien dit avoir résolu Riemann.<br/>Avec <mark>une IA.</mark>",
+             "chapo": "Une preuve de <b>250 000</b> pages."}
+    r = _brouillons_du_21(tmp_path, autre)
+    res = publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)
+    assert res["url"] == f"/#article-{res['id']}" and res["texte"] == "Une preuve de 250 000 pages."
+    flux = ET.parse(r / "iris" / "flux.xml").getroot()
+    item = flux.find("channel/item")
+    assert item.findtext("title") == "Un mathématicien dit avoir résolu Riemann. Avec une IA."
+    assert item.findtext("link") == f"https://iris.example/#article-{res['id']}"
+    assert item.findtext("guid") == f"iris-{res['id']}" and "21 Nov 2026" in item.findtext("pubDate")
+    retirer(r, "dernier-tous_connectes")
+    assert ET.parse(r / "iris" / "flux.xml").getroot().find("channel/item") is None

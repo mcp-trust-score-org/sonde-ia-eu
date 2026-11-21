@@ -374,3 +374,20 @@ def test_impact_affirme_sans_mesure_signale():
     assert any("non soutenue par les mesures" in a for a in controler(faux, "une", fiche))
     juste = {**ARTICLE_UNE, "title": "Cloudflare ralentit à Paris.<br/>Mistral passe par lui, la sonde <mark>n'a rien vu.</mark>"}
     assert not any("non soutenue" in a for a in controler(juste, "une", fiche))
+
+
+def test_controle_titre_perime_et_doublon():
+    from datetime import date
+    from sonde.redaction import fiche_tous_connectes
+    gta = {**ARTICLE_TC, "title": "GTA VI sort ce jeudi.<br/>Sa version <mark>sans disque</mark> inquiète les joueurs."}
+    en_ligne = [{"id": None, "titre": "GTA VI sort aujourd'hui.<br/>Est-il vraiment <mark>à vous ?</mark>"}]
+    alertes = " ".join(controler(gta, "tous_connectes", contexte={"date": date(2026, 11, 21), "en_ligne": en_ligne}))
+    assert "Titre périmé" in alertes and "Doublon" in alertes
+    # le même titre, le jeudi de la sortie, est juste
+    assert not any("périmé" in a for a in controler(gta, "tous_connectes", contexte={"date": date(2026, 11, 19)}))
+    # un sujet déjà en ligne n'est plus proposé au rédacteur
+    tend = {"wikipedia": [{"sujet": "Grand Theft Auto VI", "projet": "fr.wikipedia", "rang": 1, "url": "u"},
+                          {"sujet": "Hypothèse de Riemann", "projet": "fr.wikipedia", "rang": 2, "url": "v"}]}
+    fiche = fiche_tous_connectes(tend, set(), en_ligne=[en_ligne[0]["titre"]])
+    assert [t["sujet"] for t in fiche["tendances_wikipedia"]] == ["Hypothèse de Riemann"]
+    assert fiche["deja_en_ligne"] == ["GTA VI sort aujourd'hui. Est-il vraiment à vous ?"]
