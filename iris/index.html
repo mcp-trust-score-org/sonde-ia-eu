@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="apple-mobile-web-app-title" content="Iris" />
   <title>Iris — Voir venir. Transmettre l'essentiel.</title>
-  <meta name="description" content="Iris surveille vos fournisseurs cloud et IA, vous dit quoi faire en dix secondes, récupère vos avoirs SLA et prépare les preuves DORA et NIS2." />
+  <meta name="description" content="Iris, le média qui raconte notre dépendance à la technologie, et mesure heure par heure les fournisseurs d'IA européens : pannes, lenteurs, engagements tenus ou non." />
   <meta property="og:title" content="Iris — Voir venir. Transmettre l'essentiel." />
   <meta property="og:description" content="Surveillance des fournisseurs IT pour décideurs : alertes actionnables, avoirs SLA, rapports DORA & NIS2." />
   <meta property="og:type" content="website" />
@@ -36,7 +36,7 @@
     <a href="#vies" data-view="vies">Tous connectés</a>
     <a href="#detour" data-view="detour">Le Détour</a>
     <a href="#meteo" data-view="meteo">Ma Météo<span class="prem" title="Réservé à la version Premium">Premium</span></a>
-    <a href="#alertes" data-view="alertes">Alertes <span class="badge">4</span><span class="prem" title="Réservé à la version Premium">Premium</span></a>
+    <a href="#alertes" data-view="alertes">Alertes <span class="badge" id="alertes-badge" hidden></span><span class="prem" title="Réservé à la version Premium">Premium</span></a>
     <a href="#indicateurs" data-view="indicateurs">Indicateurs<span class="prem" title="Réservé à la version Premium">Premium</span></a>
     <a href="#rapports" data-view="rapports">Rapports<span class="prem" title="Réservé à la version Premium">Premium</span></a>
   </nav>
@@ -69,7 +69,7 @@
     </div>
     <button class="ask-btn" type="button" data-open-chat>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      <span>Talk to my data</span><i class="prem-dot" title="Premium">★</i>
+      <span>Talk to IRIS' data</span><i class="prem-dot" title="Premium">★</i>
     </button>
     <span class="avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 18.2c1.4-2 3.3-3 5.5-3s4.1 1 5.5 3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
   </div>
@@ -93,7 +93,7 @@
         <li><span>Le fait</span>OVHcloud signale un incident sur son service d'IA. Un message discret, que presque personne ne lit.</li>
         <li><span>La conséquence</span>Le modèle Llama fait attendre ses utilisateurs, parfois plus de deux minutes. Les autres modèles tiennent.</li>
         <li data-plan="standard"><span>La dépendance</span>On choisit un hébergeur français pour ses données, et on oublie qu'on dépend d'un seul modèle.</li>
-        <li data-plan="premium"><span>Chez vous</span>Un de vos modèles touché toute la matinée. Pas d'avoir possible sur cette offre.</li>
+        <li data-plan="premium"><span>Ce que la sonde a vu</span>Un modèle d'OVHcloud ralenti toute la matinée. Pas d'avoir possible sur cette offre.</li>
       </ol>
       <a href="#article-ovh" class="read">→ <u>Lire l'analyse (4 min)</u></a>
     </div>
@@ -170,174 +170,99 @@
 
 <!-- ================= 02 — MA MÉTÉO ================= -->
 <section class="view" id="view-meteo" data-view="meteo">
-  <div class="caption"><span class="cap-label">Ma Météo</span><span class="prem-chip">★ Premium · version pro</span><p>Le tableau de bord : l'état de vos fournisseurs en temps réel.</p></div>
+  <div class="caption"><span class="cap-label">Ma Météo</span><span class="prem-chip">★ Premium · version pro</span><p>L'état des fournisseurs d'IA européens, tel que la sonde Iris le mesure, heure par heure.</p></div>
+  <aside class="avertissement" role="note"><b>À titre indicatif.</b> Ces informations proviennent de mesures externes et automatisées. Elles peuvent être incomplètes ou inexactes, n'engagent pas les fournisseurs cités et ne constituent ni un conseil, ni un avis juridique ou technique. Vérifiez-les avec votre équipe informatique et vos fournisseurs avant toute décision, réclamation ou déclaration. Iris ne saurait être tenue responsable de l'usage qui en est fait.</aside>
 
   <div class="meteo-head">
     <div>
       <h2 class="display-sm">Ma Météo IA</h2>
-      <p class="muted" id="meteo-date">L'état de vos fournisseurs, en temps réel.</p>
+      <p class="muted" id="meteo-date">Chargement des dernières mesures…</p>
     </div>
     <div class="forecast">
-      <svg class="wx-xl" aria-hidden="true"><use href="#wx-storm"/></svg>
-      <span class="forecast-word">Orageux.</span>
+      <svg class="wx-xl" aria-hidden="true"><use id="meteo-ciel" href="#wx-unknown"/></svg>
+      <span class="forecast-word" id="meteo-mot">…</span>
     </div>
-    <p class="forecast-text">Un orage sur Amsterdam, du soleil partout ailleurs. <a href="#alertes">Une décision vous attend →</a></p>
+    <p class="forecast-text" id="meteo-phrase"></p>
   </div>
 
   <div class="meteo-grid">
     <div class="panel p-map">
-      <div class="panel-head"><h4>Carte de mes fournisseurs</h4><span class="muted small">8 surveillés</span></div>
+      <div class="panel-head"><h4>Carte de mes fournisseurs</h4><span class="muted small" id="meteo-nb"></span></div>
       <div class="meteo-map" id="meteo-map"><img src="assets/europe-dots.svg" alt="Carte de l'Europe" class="map-bg" /></div>
       <ul class="legend">
-        <li><svg class="wx"><use href="#wx-sun"/></svg>Tout fonctionne</li>
-        <li><svg class="wx"><use href="#wx-fog"/></svg>Lenteurs</li>
-        <li><svg class="wx"><use href="#wx-rain"/></svg>Erreurs</li>
-        <li><svg class="wx"><use href="#wx-storm"/></svg>Panne</li>
+        <li><svg class="wx"><use href="#wx-sun"/></svg>Tout va bien</li>
+        <li><svg class="wx"><use href="#wx-cloudsun"/></svg>Un peu lent</li>
+        <li><svg class="wx"><use href="#wx-fog"/></svg>Ça ralentit</li>
+        <li><svg class="wx"><use href="#wx-storm"/></svg>En panne</li>
+        <li><svg class="wx"><use href="#wx-unknown"/></svg>Pas de mesure</li>
       </ul>
     </div>
 
     <div class="panel">
-      <div class="panel-head"><h4>Probabilité d'incident <span class="muted">(7 jours)</span></h4></div>
-      <div class="big-num">38 %<span class="delta up">↑ +24 pts</span></div>
-      <svg class="area" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true">
-        <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFCC00" stop-opacity=".45"/><stop offset="1" stop-color="#FFCC00" stop-opacity="0"/></linearGradient></defs>
-        <path d="M0,62 C25,58 40,64 60,60 S95,52 115,56 S150,62 170,55 S205,50 225,46 S260,30 300,14 L300,80 L0,80 Z" fill="url(#ag)"/>
-        <path d="M0,62 C25,58 40,64 60,60 S95,52 115,56 S150,62 170,55 S205,50 225,46 S260,30 300,14" fill="none" stroke="#FFCC00" stroke-width="2.5"/>
-        <circle cx="296" cy="15" r="4.5" fill="#FFCC00"/>
-      </svg>
-      <div class="axis"><span>J-7</span><span>J-6</span><span>J-5</span><span>J-4</span><span>J-3</span><span>J-2</span><span>J-1</span><b>Auj.</b></div>
+      <div class="panel-head"><h4>Ces dernières heures</h4><span class="muted small">heure de Paris</span></div>
+      <div id="meteo-heures" class="heures"></div>
+      <p class="dispo-note">Les trois dernières colonnes, en pointillés, sont la prévision : la situation actuelle prolongée, et les maintenances annoncées.</p>
     </div>
 
     <div class="panel">
-      <div class="panel-head"><h4>Mes 3 piliers</h4><a href="#indicateurs" class="muted small">30 jours ▾</a></div>
-      <ul class="scope">
-        <li><span class="sc-ico">⚡</span><span class="sc-name">Performance</span><b>99,87 %</b><i style="--w:96%"></i></li>
-        <li><span class="sc-ico">⚖</span><span class="sc-name">Conformité</span><b>92 %</b><i style="--w:92%"></i></li>
-        <li><span class="sc-ico">€</span><span class="sc-name">Avoirs à réclamer</span><b>1 240 €</b><i style="--w:64%"></i></li>
-      </ul>
+      <div class="panel-head"><h4>Mes 3 piliers</h4><span class="muted small" id="meteo-depuis"></span></div>
+      <ul class="scope" id="meteo-piliers"></ul>
     </div>
 
     <div class="panel p-wide">
-      <div class="panel-head"><h4>Disponibilité mesurée vs SLA promis <span class="muted">(30 jours)</span></h4></div>
+      <div class="panel-head"><h4>Disponibilité mesurée vs engagement promis <span class="muted">(30 jours)</span></h4></div>
       <ul class="dispo" id="dispo"></ul>
     </div>
 
     <div class="panel">
       <div class="panel-head"><h4>Signaux à surveiller</h4></div>
-      <ul class="signals">
-        <li><span class="sd sd-red"></span><span>Panne chez Azure (Amsterdam)</span><time>il y a 14 min</time></li>
-        <li><span class="sd sd-yellow"></span><span>Registre DORA : échéance J-12</span><time>il y a 2 h</time></li>
-        <li><span class="sd sd-grey"></span><span>OVHcloud : +30 % de latence</span><time>il y a 6 h</time></li>
-        <li><span class="sd sd-yellow"></span><span>IONOS : avoir de 400 € à réclamer</span><time>il y a 1 j</time></li>
-        <li><span class="sd sd-grey"></span><span>AWS Dublin : maintenance prévue samedi</span><time>il y a 2 j</time></li>
-      </ul>
+      <ul class="signals" id="meteo-signaux"></ul>
     </div>
   </div>
+  <p class="rule" id="meteo-methode"></p>
 </section>
 
 <!-- ================= 03 — ALERTES ================= -->
 <section class="view" id="view-alertes" data-view="alertes">
-  <div class="caption"><span class="cap-label">Alertes</span><span class="prem-chip">★ Premium · version pro</span><p>Dix secondes pour lire. Un bouton pour agir.</p></div>
+  <div class="caption"><span class="cap-label">Alertes</span><span class="prem-chip">★ Premium · version pro</span><p>Ce que la sonde a vu, au moment où elle l'a vu. Dix secondes pour lire, un bouton pour agir.</p></div>
+  <aside class="avertissement" role="note"><b>À titre indicatif.</b> Ces informations proviennent de mesures externes et automatisées. Elles peuvent être incomplètes ou inexactes, n'engagent pas les fournisseurs cités et ne constituent ni un conseil, ni un avis juridique ou technique. Vérifiez-les avec votre équipe informatique et vos fournisseurs avant toute décision, réclamation ou déclaration. Iris ne saurait être tenue responsable de l'usage qui en est fait.</aside>
 
   <div class="view-head">
-    <h2 class="display-sm">Alertes (4)</h2>
+    <h2 class="display-sm" id="alertes-titre">Alertes</h2>
     <div class="filters" data-filter-group="alert">
       <button class="on" data-f="all">Toutes</button>
-      <button data-f="critique">Critiques (1)</button>
-      <button data-f="avoir">Avoirs (1)</button>
-      <button data-f="conformite">Conformité (1)</button>
-      <button data-f="performance">Performance (1)</button>
+      <button data-f="encours">En cours</button>
+      <button data-f="panne">Pannes</button>
+      <button data-f="lenteur">Lenteurs</button>
+      <button data-f="retour">Retours au calme</button>
     </div>
   </div>
 
-  <div class="alert-list">
-    <article class="alert-row critical" data-cat="critique">
-      <svg class="al-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="#FF4A3D"/></svg>
-      <div class="al-body">
-        <h3>Microsoft Azure ne répond plus depuis 14:12:07.</h3>
-        <div class="chips"><span class="chip chip-red">Critique</span><span class="chip">Infra · Amsterdam</span><span class="chip">En cours depuis <b id="since">47</b> min</span></div>
-        <p>Basculer, prévenir ou attendre : je vous aide à décider. Si une déclaration DORA est nécessaire, je prépare le rapport.</p>
-      </div>
-      <div class="al-side"><time>il y a 14 min</time><a href="#rapports" class="btn btn-yellow">Décider maintenant</a></div>
-    </article>
-
-    <article class="alert-row" data-cat="avoir">
-      <svg class="al-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#FFCC00"/><path d="M15 8.5a4 4 0 1 0 0 7M7.5 11h6M7.5 13.5h6" stroke="#0A0A0A" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
-      <div class="al-body">
-        <h3>Environ 400 € vous attendent chez IONOS.</h3>
-        <div class="chips"><span class="chip chip-yellow">Avoir</span><span class="chip">SLA 99,95 % · mesuré 99,89 %</span></div>
-        <p>L'écart est prouvé et horodaté. Le dossier de réclamation est prêt à envoyer.</p>
-      </div>
-      <div class="al-side"><time>il y a 1 h</time><a href="#rapports" class="btn btn-outline">Récupérer cet avoir</a></div>
-    </article>
-
-    <article class="alert-row" data-cat="conformite">
-      <svg class="al-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5L22 20H2z" fill="#FFCC00"/><path d="M12 9v5" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16.8" r="1.2" fill="#0A0A0A"/></svg>
-      <div class="al-body">
-        <h3>Votre registre DORA n'a pas bougé depuis 94 jours.</h3>
-        <div class="chips"><span class="chip chip-cream">Conformité</span><span class="chip">Échéance dans 12 jours</span></div>
-        <p>Deux contrats ont changé depuis. Je pré-remplis les lignes, vous validez.</p>
-      </div>
-      <div class="al-side"><time>il y a 2 h</time><a href="#rapports" class="btn btn-outline">Mettre à jour le registre</a></div>
-    </article>
-
-    <article class="alert-row" data-cat="performance">
-      <svg class="al-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M5 12h14M3 16h18" stroke="#C9C9C9" stroke-width="2" stroke-linecap="round"/></svg>
-      <div class="al-body">
-        <h3>OVHcloud répond 30 % plus lentement que d'habitude.</h3>
-        <div class="chips"><span class="chip chip-grey">Performance</span><span class="chip">Depuis 6 h</span></div>
-        <p>Aucune panne, mais vos équipes le sentent. Rien à faire pour l'instant, je surveille.</p>
-      </div>
-      <div class="al-side"><time>il y a 6 h</time><a href="#meteo" class="btn btn-outline">Voir l'impact</a></div>
-    </article>
-  </div>
-  <p class="rule">Règle éditoriale : un titre = un fait · une phrase = la conséquence · un bouton = la décision.</p>
+  <div class="alert-list" id="alertes-liste"><p class="muted">Chargement du journal des alertes…</p></div>
+  <p class="rule">Règle éditoriale : un titre = un fait · une phrase = la conséquence · un bouton = la décision. Les durées sont mesurées entre deux passages de la sonde.</p>
 </section>
 
 <!-- ================= 04 — INDICATEURS ================= -->
 <section class="view" id="view-indicateurs" data-view="indicateurs">
-  <div class="caption"><span class="cap-label">Indicateurs</span><span class="prem-chip">★ Premium · version pro</span><p>Trois piliers, trois questions de dirigeant : ça tient ? suis-je en règle ? qu'est-ce qu'on me doit ?</p></div>
+  <div class="caption"><span class="cap-label">Indicateurs</span><span class="prem-chip">★ Premium · version pro</span><p>Trois questions de dirigeant : ça tient ? ai-je les preuves ? qu'est-ce qu'on me doit ?</p></div>
+  <aside class="avertissement" role="note"><b>À titre indicatif.</b> Ces informations proviennent de mesures externes et automatisées. Elles peuvent être incomplètes ou inexactes, n'engagent pas les fournisseurs cités et ne constituent ni un conseil, ni un avis juridique ou technique. Vérifiez-les avec votre équipe informatique et vos fournisseurs avant toute décision, réclamation ou déclaration. Iris ne saurait être tenue responsable de l'usage qui en est fait.</aside>
 
   <div class="view-head">
     <h2 class="display-sm">Indicateurs</h2>
-    <span class="pill">30 derniers jours</span>
+    <span class="pill" id="indic-periode">30 derniers jours</span>
   </div>
 
-  <div class="pillars">
-    <article class="pillar">
-      <span class="pl-q">Est-ce que ça tient ?</span>
-      <h3>Performance</h3>
-      <div class="pl-num" data-count="99.87" data-dec="2">99,87<small>%</small></div>
-      <p class="muted small">disponibilité moyenne de vos fournisseurs</p>
-      <svg class="spark" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,8 20,7 40,9 60,8 80,10 100,7 120,32 140,9 160,8 180,12 200,9"/></svg>
-      <ul class="kv"><li><span>Latence p95</span><b>212 ms</b></li><li><span>Incidents</span><b>3</b></li><li><span>Minutes perdues</span><b>94 min</b></li></ul>
-    </article>
-    <article class="pillar">
-      <span class="pl-q">Suis-je en règle ?</span>
-      <h3>Conformité</h3>
-      <div class="pl-num">92<small>%</small></div>
-      <p class="muted small">exigences DORA / NIS2 suivies et couvertes</p>
-      <div class="meter"><i style="--w:92%"></i></div>
-      <ul class="kv"><li><span>Fournisseurs critiques surveillés</span><b>5 / 5</b></li><li><span>Preuves horodatées</span><b>1 284</b></li><li><span>Registre d'informations</span><b class="c-yellow">À jour dans 12 j</b></li></ul>
-    </article>
-    <article class="pillar pillar-yellow">
-      <span class="pl-q">Qu'est-ce qu'on me doit ?</span>
-      <h3>Avoirs</h3>
-      <div class="pl-num">1 240<small>€</small></div>
-      <p class="small">à réclamer sur des SLA non tenus</p>
-      <div class="meter meter-dark"><i style="--w:64%"></i></div>
-      <ul class="kv"><li><span>Réclamations en cours</span><b>2</b></li><li><span>Récupéré depuis janvier</span><b>3 860 €</b></li><li><span>Délai moyen</span><b>4 jours</b></li></ul>
-    </article>
-  </div>
+  <div class="pillars" id="indic-piliers"></div>
 
   <div class="panel table-panel">
-    <div class="panel-head"><h4>SLA promis, SLA mesuré, argent dû</h4><span class="muted small">Chiffres de démonstration</span></div>
+    <div class="panel-head"><h4>Engagement promis, disponibilité mesurée, avoir possible</h4><span class="muted small" id="indic-mois"></span></div>
     <div class="table-wrap">
       <table class="sla">
-        <thead><tr><th>Fournisseur</th><th>SLA contractuel</th><th>Mesuré (30 j)</th><th>Écart</th><th>Avoir estimé</th><th></th></tr></thead>
+        <thead><tr><th>Fournisseur</th><th>Engagement</th><th>Mesuré ce mois</th><th>Écart</th><th>Avoir possible</th><th>Échéance</th><th>Mesures</th></tr></thead>
         <tbody id="sla-body"></tbody>
       </table>
     </div>
+    <p class="dispo-note" id="indic-note"></p>
   </div>
 </section>
 
@@ -363,27 +288,20 @@
 
 <!-- ================= 06 — RAPPORTS ================= -->
 <section class="view" id="view-rapports" data-view="rapports">
-  <div class="caption"><span class="cap-label">Rapports</span><span class="prem-chip">★ Premium · version pro</span><p>Les dossiers DORA, NIS2 et SLA, avec leurs preuves, prêts à transmettre.</p></div>
+  <div class="caption"><span class="cap-label">Rapports</span><span class="prem-chip">★ Premium · version pro</span><p>Les dossiers de surveillance, les preuves horodatées et les calculs d'avoir, prêts à transmettre.</p></div>
+  <aside class="avertissement" role="note"><b>À titre indicatif.</b> Ces informations proviennent de mesures externes et automatisées. Elles peuvent être incomplètes ou inexactes, n'engagent pas les fournisseurs cités et ne constituent ni un conseil, ni un avis juridique ou technique. Vérifiez-les avec votre équipe informatique et vos fournisseurs avant toute décision, réclamation ou déclaration. Iris ne saurait être tenue responsable de l'usage qui en est fait.</aside>
 
   <div class="view-head">
     <h2 class="display-sm">Rapports</h2>
-    <button class="btn btn-yellow btn-sm" data-toast="Nouveau rapport : le module de génération sera branché ici.">+ Nouveau rapport</button>
   </div>
   <div class="filters" data-filter-group="report">
     <button class="on" data-f="all">Tous</button>
-    <button data-f="dora">DORA</button>
-    <button data-f="nis2">NIS2</button>
+    <button data-f="dossier">Dossiers de surveillance</button>
     <button data-f="avoir">Avoirs SLA</button>
-    <button data-f="perf">Performance</button>
+    <button data-f="preuve">Preuves horodatées</button>
   </div>
-
-  <div class="report-list">
-    <div class="report-row" data-cat="dora"><svg class="doc" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M15 2v5h5 M9 12h8M9 15h8M9 18h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><div><h3>Déclaration d'incident majeur — Microsoft Azure</h3><p>Chronologie, impact, 142 mesures et 3 captures signées.</p></div><span class="chip chip-yellow">DORA</span><time>18 nov. 2026</time><button class="dl" aria-label="Télécharger" data-toast="Téléchargement du rapport (démo)">↓</button></div>
-    <div class="report-row" data-cat="nis2"><svg class="doc" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M15 2v5h5 M9 12h8M9 15h8M9 18h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><div><h3>Notification d'incident — alerte précoce</h3><p>Trame pré-remplie, à valider avant transmission.</p></div><span class="chip chip-cream">NIS2</span><time>18 nov. 2026</time><button class="dl" aria-label="Télécharger" data-toast="Téléchargement du rapport (démo)">↓</button></div>
-    <div class="report-row" data-cat="avoir"><svg class="doc" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M15 2v5h5 M9 12h8M9 15h8M9 18h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><div><h3>Dossier de réclamation — IONOS, octobre</h3><p>SLA 99,95 %, mesuré 99,89 %. Environ 400 € réclamés.</p></div><span class="chip">Avoir SLA</span><time>17 nov. 2026</time><button class="dl" aria-label="Télécharger" data-toast="Téléchargement du rapport (démo)">↓</button></div>
-    <div class="report-row" data-cat="dora"><svg class="doc" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M15 2v5h5 M9 12h8M9 15h8M9 18h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><div><h3>Registre d'informations — T4 2026</h3><p>8 prestataires TIC, 2 contrats modifiés à intégrer.</p></div><span class="chip chip-yellow">DORA</span><time>12 nov. 2026</time><button class="dl" aria-label="Télécharger" data-toast="Téléchargement du rapport (démo)">↓</button></div>
-    <div class="report-row" data-cat="perf"><svg class="doc" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M15 2v5h5 M9 12h8M9 15h8M9 18h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><div><h3>Bilan fournisseurs — semaine 46</h3><p>Disponibilité, latence, incidents, tendances.</p></div><span class="chip chip-grey">Performance</span><time>16 nov. 2026</time><button class="dl" aria-label="Télécharger" data-toast="Téléchargement du rapport (démo)">↓</button></div>
-  </div>
+  <div class="report-list" id="rapports-liste"><p class="muted">Chargement des rapports…</p></div>
+  <p class="rule">Les dossiers aident à documenter la surveillance d'un prestataire (DORA, NIS2). Ils ne remplacent ni une évaluation des risques, ni un audit, ni un avis juridique.</p>
 </section>
 
 </main>
@@ -394,21 +312,21 @@
 </footer>
 
 <!-- ================= TALK TO MY DATA (tiroir) ================= -->
-<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Talk to my data">
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Talk to IRIS' data">
   <div class="drawer-head">
-    <div><span class="cap-label">Talk to my data</span> <span class="prem-chip">★ Premium · version pro</span><h3>Posez la question.<br/>Iris répond avec vos chiffres.</h3></div>
+    <div><span class="cap-label">Talk to IRIS' data</span> <span class="prem-chip">★ Premium · version pro</span><h3>Posez la question.<br/>Iris répond avec ses mesures.</h3></div>
     <button class="x" type="button" data-close-chat aria-label="Fermer">✕</button>
   </div>
   <div class="chat-log" id="chat-log" aria-live="polite">
-    <div class="msg msg-iris">Bonjour. Je connais vos 8 fournisseurs, leurs contrats et 90 jours de mesures. Que voulez-vous savoir ?</div>
+    <div class="msg msg-iris">Bonjour. Je réponds avec les mesures de la sonde Iris sur les fournisseurs d'IA européens qu'elle suit. Je n'ai pas accès à vos systèmes : mes chiffres sont indicatifs.</div>
   </div>
   <div class="chat-chips" id="chat-chips">
-    <button type="button" data-q="0">Qui m'a coûté le plus de minutes ce trimestre ?</button>
-    <button type="button" data-q="1">Combien puis-je réclamer à Azure ?</button>
-    <button type="button" data-q="2">Suis-je prêt pour un contrôle DORA ?</button>
+    <button type="button" data-q="0">Qui a eu le plus de minutes de panne ce mois-ci ?</button>
+    <button type="button" data-q="1">Un avoir est-il possible ce mois-ci ?</button>
+    <button type="button" data-q="2">Qui répond le plus vite en ce moment ?</button>
   </div>
   <form class="chat-input" id="chat-form">
-    <input type="text" id="chat-text" placeholder="Demandez à vos données…" autocomplete="off" />
+    <input type="text" id="chat-text" placeholder="Posez votre question…" autocomplete="off" />
     <button type="submit" class="btn btn-yellow btn-sm">Envoyer</button>
   </form>
 </aside>
@@ -421,6 +339,7 @@
   <symbol id="wx-cloudsun" viewBox="0 0 24 24"><g fill="none" stroke="#FFCC00" stroke-width="1.7" stroke-linecap="round"><path d="M9 3v1.5M3.5 8.5H5M4.8 4.8l1 1M13.2 4.8l-1 1M6.5 10.5A3 3 0 0 1 12 8"/><path d="M8 19h9a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.6 1.5A2.8 2.8 0 0 0 8 19z" stroke="#F4F1EA"/></g></symbol>
   <symbol id="wx-fog" viewBox="0 0 24 24"><g fill="none" stroke="#C9C9C9" stroke-width="1.7" stroke-linecap="round"><path d="M4 8h16M6 12h12M4 16h16"/></g></symbol>
   <symbol id="wx-rain" viewBox="0 0 24 24"><g fill="none" stroke="#7FA6F5" stroke-width="1.7" stroke-linecap="round"><path d="M7 15h10a4 4 0 0 0 0-8 5.5 5.5 0 0 0-10.5 1.8A3.2 3.2 0 0 0 7 15z"/><path d="M8 18l-1 2M12 18l-1 2M16 18l-1 2"/></g></symbol>
+  <symbol id="wx-unknown" viewBox="0 0 24 24"><g fill="none" stroke="#6B6B6B" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5" stroke-dasharray="2.5 2.5"/><path d="M9.8 9.6a2.3 2.3 0 1 1 3.2 2.1c-.6.3-1 .8-1 1.4v.4"/><circle cx="12" cy="16.6" r=".6" fill="#6B6B6B"/></g></symbol>
   <symbol id="wx-storm" viewBox="0 0 24 24"><g fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14h10a4 4 0 0 0 0-8 5.5 5.5 0 0 0-10.5 1.8A3.2 3.2 0 0 0 7 14z" stroke="#F4F1EA"/><path d="M12 14l-2 4h3l-2 4" stroke="#FF4A3D"/></g></symbol>
 </svg>
 

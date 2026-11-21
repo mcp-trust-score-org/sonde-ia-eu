@@ -6,35 +6,7 @@
 /* ---------- Données fournisseurs (carte, dispo, tableau SLA) ----------
    s = sun | cloudsun | fog | rain | storm
    dx / dy = décalage de l'étiquette sur la carte, en % */
-const PROVIDERS = [
-  { name: "AWS · Dublin",       lat: 53.35, lon: -6.26, s: "sun",      txt: "Ensoleillé",                    sla: 99.99, mes: 99.94,  avoir: 440, dx: 4,   dy: -12 },
-  { name: "Azure · Amsterdam",  lat: 52.37, lon: 4.9,   s: "storm",    txt: "Orage · ne répond plus",        sla: 99.9,  mes: 99.68,  avoir: 400, dx: 16,  dy: -13 },
-  { name: "OVHcloud · Roubaix", lat: 50.69, lon: 3.17,  s: "fog",      txt: "Brouillard · +30 % de latence", sla: 99.95, mes: 99.97,  avoir: 0,   dx: -20, dy: 1 },
-  { name: "AWS · Francfort",    lat: 50.11, lon: 8.68,  s: "sun",      txt: "Ensoleillé",                    sla: 99.99, mes: 100,    avoir: 0,   dx: 22,  dy: 5 },
-  { name: "IONOS · Berlin",     lat: 52.52, lon: 13.4,  s: "cloudsun", txt: "Éclaircies · SLA non tenu",     sla: 99.95, mes: 99.89,  avoir: 400, dx: 20,  dy: -4 },
-  { name: "Scaleway · Paris",   lat: 48.85, lon: 2.35,  s: "sun",      txt: "Grand soleil",                  sla: 99.9,  mes: 99.99,  avoir: 0,   dx: -22, dy: 12 },
-  { name: "Mistral AI · Paris", lat: 48.6,  lon: 2.6,   s: "sun",      txt: "Grand soleil",                  sla: 99.9,  mes: 99.95,  avoir: 0,   dx: -19, dy: 23 },
-  { name: "Google · Milan",     lat: 45.46, lon: 9.19,  s: "cloudsun", txt: "Éclaircies",                    sla: 99.9,  mes: 99.93,  avoir: 0,   dx: 21,  dy: 7 },
-];
-const pct = (v) => v.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " %";
 
-/* ---------- « Et chez nous, aujourd'hui ? » ----------
-   Version collaborateurs de la météo : les outils du quotidien,
-   sans SLA, sans montants, sans alertes. Données de démo, cohérentes avec Ma Météo. */
-const TOOLS = [
-  { name: "Messagerie", s: "sun", txt: "Tout fonctionne" },
-  { name: "Visio", s: "sun", txt: "Tout fonctionne" },
-  { name: "Portail client et intranet", s: "storm", txt: "Indisponible. L'équipe informatique est dessus, rien à faire de votre côté." },
-  { name: "CRM", s: "fog", txt: "Un peu lent depuis ce matin" },
-  { name: "Assistant IA interne", s: "sun", txt: "Tout fonctionne" },
-  { name: "Stockage des fichiers", s: "sun", txt: "Tout fonctionne" },
-];
-function chezNousHTML() {
-  return `<p class="impact-kicker">Et chez nous, aujourd'hui ?</p>
-    <ul class="tools">${TOOLS.map((t) => `<li class="${t.s === "storm" ? "storm" : ""}"><svg class="wx"><use href="#wx-${t.s}"/></svg><b>${t.name}</b><span>${t.txt}</span></li>`).join("")}</ul>
-    <a href="#meteo" class="read">→ <u>Voir la météo complète</u></a>`;
-}
-document.querySelectorAll("[data-chez-nous]").forEach((el) => (el.innerHTML = chezNousHTML()));
 
 /* ---------- Articles d'À la une ----------
    Chaque histoire suit la ligne éditoriale en trois temps :
@@ -49,7 +21,7 @@ const ARTICLES = {
     consequence: ["Le fichier est défectueux. Les ordinateurs Windows qui le reçoivent plantent et redémarrent en boucle : environ 8,5 millions de machines selon Microsoft.", "Compagnies aériennes, hôpitaux, banques, chaînes de télévision : pendant des heures, et des jours pour certains, l'activité s'arrête."],
     lien: ["Le maillon faible n'était ni le cloud ni le réseau, mais un logiciel présent partout. C'est précisément ce que DORA demande de cartographier : vos prestataires critiques, et ceux dont ils dépendent eux-mêmes.", "Plus de deux ans après, la question reste entière : savez-vous quels logiciels, chez vos fournisseurs, pourraient vous arrêter du jour au lendemain ?"],
     impact: {
-      status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
+      status: "Aucune anomalie mesurée chez les fournisseurs suivis", level: "green",
       confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
       rows: [["Fournisseurs surveillés", "8"], ["Incident logiciel en cours", "Aucun"], ["Registre d'informations", "À mettre à jour d'ici 12 jours"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#alertes", "Mettre à jour le registre", "btn-outline"]],
@@ -64,7 +36,7 @@ const ARTICLES = {
     lien: ["On choisit un hébergeur français pour garder la main sur ses données. On oublie qu'on dépend aussi d'un modèle précis, et qu'il n'existe souvent aucun plan B.", "Si votre IA ralentissait demain matin, combien de temps faudrait-il avant que quelqu'un s'en aperçoive ?"],
     sources: [{ label: "OVHcloud : page de statut, incident AI Endpoints du 20 novembre 2026", url: "https://stspg.io/vlkf6x66jncd" }],
     impact: {
-      status: "Vous êtes concerné", level: "red",
+      status: "Un fournisseur suivi a été touché", level: "red",
       confidence: { level: "confirme", lieu: true, moment: true, symptome: true, officiel: true },
       rows: [["Fournisseur touché", "OVHcloud · AI Endpoints"], ["Modèle touché", "Llama 3.3 70B"], ["Mesuré à 9 h", "16,7 s avant le premier mot, contre 1,2 s d'habitude"], ["Incident officiel", "De 7 h 53 à 13 h 19"], ["Avoir", "Aucun : pas d'engagement de service sur cette offre"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#alertes", "Prévoir un modèle de secours", "btn-outline"]],
@@ -79,7 +51,7 @@ const ARTICLES = {
     lien: ["Choisir une IA européenne ne suffit pas pour être indépendant. Entre vous et elle, il y a des intermédiaires que vous n'avez pas choisis, et avec qui vous n'avez signé aucun contrat. C'est précisément ce que DORA demande de cartographier : vos prestataires critiques, et ceux dont ils dépendent eux-mêmes.", "Savez-vous par où passent vos requêtes avant d'arriver à votre IA ?"],
     sources: [{ label: "Cloudflare : page de statut, incident réseau à Paris du 18 novembre 2026", url: "https://www.cloudflarestatus.com/incidents/k3r9i5tbre4i" }],
     impact: {
-      status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
+      status: "Aucune anomalie mesurée chez les fournisseurs suivis", level: "green",
       confidence: { level: "non", lieu: true, moment: false, symptome: false, officiel: false },
       rows: [["Intermédiaire découvert", "Mistral AI passe par Cloudflare"], ["Incidents Cloudflare cette semaine", "32, dont 4 en Europe ou sur tout le réseau"], ["Mesure pendant l'incident de Paris", "Aucune : entre deux relevés"], ["Registre d'informations", "Ajouter Cloudflare comme sous-traitant de Mistral"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#rapports", "Mettre à jour le registre", "btn-outline"]],
@@ -119,6 +91,46 @@ const ARTICLES = {
    il n'apparaît que dans l'écran de relecture (#relecture), pour décider de publier ou non. */
 const TAG_LABELS = { confirme: "Confirmé", probable: "Probable", possible: "Possible", non: "Aucune anomalie" };
 
+/* ---------- En bas d'un article : les fournisseurs suivis par Iris qu'il mentionne ----------
+   Premium : leur état mesuré et un accès direct à Ma Météo, Alertes et Indicateurs.
+   Standard : la même proposition, avec l'invitation à passer en Premium. */
+const RAPPEL = "À titre indicatif : mesures externes et automatisées, à vérifier avec votre équipe informatique et vos fournisseurs.";
+const LIENS_PREMIUM = `<a href="#meteo" class="btn btn-yellow">Ma Météo →</a><a href="#alertes" class="btn btn-outline">Alertes</a><a href="#indicateurs" class="btn btn-outline">Indicateurs</a>`;
+const SUIVIS = [
+  { id: "mistral", nom: "Mistral AI", motif: /\bmistral\b/i },
+  { id: "scaleway", nom: "Scaleway", motif: /\bscaleway\b/i },
+  { id: "ovhcloud", nom: "OVHcloud", motif: /\bovh(cloud)?\b/i },
+  { id: "ionos", nom: "IONOS", motif: /\bionos\b/i },
+];
+let IRIS_METEO = null;   // rempli quand donnees/meteo.json arrive
+function suiviFournisseurs(a) {
+  const texte = [a.title, a.chapo, ...(a.fait || []), ...(a.consequence || []), ...(a.lien || [])].join(" ").replace(/<[^>]+>/g, " ");
+  const cites = SUIVIS.filter((f) => f.motif.test(texte));
+  if (!cites.length) return null;
+  const noms = cites.map((f) => f.nom).join(", ").replace(/, ([^,]*)$/, " et $1");
+  const etat = (f) => {
+    const m = ((IRIS_METEO && IRIS_METEO.fournisseurs) || []).find((x) => x.id === f.id);
+    if (!m) return `<li><b>${f.nom}</b><span>suivi heure par heure</span></li>`;
+    const ic = { soleil: "sun", eclaircie: "cloudsun", nuage: "fog", orage: "storm" }[m.etat] || "unknown";
+    return `<li class="${m.etat === "orage" ? "storm" : ""}"><svg class="wx"><use href="#wx-${ic}"/></svg><b>${f.nom}</b><span>${m.libelle}${m.ttft_ms ? " · " + m.ttft_ms.toLocaleString("fr-FR") + " ms" : ""}</span></li>`;
+  };
+  return {
+    premium: `<section class="impact impact-suivi" data-plan="premium">
+        <p class="impact-kicker">Suivre ${noms}</p>
+        <h2>Ce que la sonde mesure en ce moment</h2>
+        <ul class="tools">${cites.map(etat).join("")}</ul>
+        <p class="impact-note">${RAPPEL}</p>
+        <div class="impact-ctas">${LIENS_PREMIUM}</div>
+      </section>`,
+    standard: `<section class="impact impact-teaser" data-plan="standard">
+        <p class="impact-kicker">Suivre ${noms}</p>
+        <h2>${cites.length > 1 ? "Ces fournisseurs sont suivis" : "Ce fournisseur est suivi"} heure par heure par Iris</h2>
+        <p class="teaser-txt">Avec Iris Premium : ${cites.length > 1 ? "leur" : "sa"} météo en direct, ${cites.length > 1 ? "leurs" : "ses"} alertes de panne et de lenteur, ${cites.length > 1 ? "leurs" : "ses"} engagements de disponibilité tenus ou non, et les preuves.</p>
+        <div class="impact-ctas"><button type="button" class="btn btn-yellow" data-set-plan="premium">★ Passer en Premium</button></div>
+      </section>`,
+  };
+}
+
 function renderArticle(id) {
   const a = ARTICLES[id];
   const el = document.getElementById("article");
@@ -129,25 +141,29 @@ function renderArticle(id) {
   const visual = `<div class="art-img${a.img.includes("/photos/") ? " art-photo" : ""}" style="background-image:url('${a.img}')"></div>`;
   const srcList = a.sources || (a.source ? [a.source] : []);
   const srcHtml = srcList.length ? `<div class="art-source"><b>${srcList.length > 1 ? "Sources" : "Source"}</b>${srcList.map((x) => `<a href="${x.url}" target="_blank" rel="noopener">${x.label} ↗</a>`).join("")}</div>` : "";
+  const suivi = suiviFournisseurs(a);
   const ending = pub
     ? `${a.reflexes ? `<section class="impact impact-reflex">
         <p class="impact-kicker">Le bon réflexe</p>
         <ul class="reflexes">${a.reflexes.map((r) => `<li>${r}</li>`).join("")}</ul>
       </section>` : ""}
+      ${suivi ? suivi.premium + suivi.standard : ""}
       ${srcHtml}
       ${a.audience === "public" ? `<a class="bridge" href="#une"><span>Vous êtes une entreprise ?</span><b>La même dépendance existe chez vos fournisseurs. Voir l'édition pro →</b></a>` : ""}`
     : `<section class="impact impact-${a.impact.level}" data-plan="premium">
-        <p class="impact-kicker">Quel impact chez moi ?</p>
+        <p class="impact-kicker">Ce que la sonde a mesuré</p>
         <h2>${a.impact.status}</h2>
         <dl>${a.impact.rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>
-        <div class="impact-ctas">${a.impact.ctas.map(([h, t, c]) => `<a href="${h}" class="btn ${c}">${t}</a>`).join("")}</div>
+        <p class="impact-note">${RAPPEL}</p>
+        ${suivi ? "" : `<div class="impact-ctas">${LIENS_PREMIUM}</div>`}
       </section>
-      <section class="impact impact-teaser" data-plan="standard">
-        <p class="impact-kicker">Quel impact chez moi ?</p>
-        <h2>Vos fournisseurs sont-ils concernés ?</h2>
-        <p class="teaser-txt">Avec Iris Premium, vos fournisseurs sont surveillés en continu. Vous savez en un coup d'œil si vous êtes touché, ce que ça vous coûte, et vous avez les preuves pour réclamer ou déclarer.</p>
-        <div class="impact-ctas"><button type="button" class="btn btn-yellow" data-set-plan="premium">★ Découvrir Premium</button></div>
-      </section>
+      ${suivi ? suivi.standard : `<section class="impact impact-teaser" data-plan="standard">
+        <p class="impact-kicker">Ce que la sonde a mesuré</p>
+        <h2>Les fournisseurs d'IA étaient-ils touchés ?</h2>
+        <p class="teaser-txt">Avec Iris Premium, vous suivez heure par heure les fournisseurs d'IA européens mesurés par notre sonde : pannes, lenteurs, engagements tenus ou non, avec les preuves.</p>
+        <div class="impact-ctas"><button type="button" class="btn btn-yellow" data-set-plan="premium">★ Passer en Premium</button></div>
+      </section>`}
+      ${suivi ? suivi.premium : ""}
       ${srcHtml}`;
   el.innerHTML = `
     <a href="${backTo[0]}" class="back">← ${backTo[1]}</a>
@@ -304,14 +320,6 @@ function show(hash) {
 window.addEventListener("hashchange", () => show(location.hash.slice(1)));
 
 /* ---------- Date du jour ---------- */
-(function setDate() {
-  const el = document.getElementById("meteo-date");
-  if (!el) return;
-  const d = new Date();
-  const jour = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
-  const h = d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }).replace(":", "h");
-  el.textContent = `${jour.charAt(0).toUpperCase() + jour.slice(1)} · ${h} · en temps réel`;
-})();
 
 /* ---------- Carte météo ----------
    Projection identique à celle de assets/europe-dots.svg
@@ -322,79 +330,294 @@ const project = (lat, lon) => ({
   y: ((MAP.lat1 - lat) * MAP.ky) / MAP.h * 100,
 });
 
-(function drawMap() {
-  const map = document.getElementById("meteo-map");
-  if (!map) return;
-  const NS = "http://www.w3.org/2000/svg";
-  const lines = document.createElementNS(NS, "svg");
-  lines.setAttribute("class", "wx-line");
-  lines.setAttribute("viewBox", "0 0 100 100");
-  lines.setAttribute("preserveAspectRatio", "none");
-  map.appendChild(lines);
 
-  PROVIDERS.forEach((p) => {
-    const { x, y } = project(p.lat, p.lon);
-    const pin = document.createElement("span");
-    pin.className = `pin s-${p.s}`;
-    pin.style.left = `${x}%`; pin.style.top = `${y}%`;
-    pin.title = p.name;
-    map.appendChild(pin);
 
-    const cx = x + p.dx, cy = y + p.dy;
-    const l = document.createElementNS(NS, "line");
-    l.setAttribute("x1", x); l.setAttribute("y1", y); l.setAttribute("x2", cx); l.setAttribute("y2", cy);
-    l.setAttribute("vector-effect", "non-scaling-stroke");
-    lines.appendChild(l);
+/* ---------- Ma Météo : les vraies mesures de la sonde ----------
+   donnees/meteo.json, alertes.json, contrats.json et statuts.json sont copiés depuis public/
+   à chaque passage de la sonde (Actions → Mesure horaire). Rien n'est inventé ici. */
+const METEO_ICONE = { soleil: "sun", eclaircie: "cloudsun", nuage: "fog", orage: "storm", inconnu: "unknown" };
+const METEO_MOT = { orage: "Orageux.", nuage: "Nuageux.", eclaircie: "Éclaircies.", soleil: "Ensoleillé.", inconnu: "Pas de mesure." };
+const METEO_LIEU = {   // position sur la carte : ville de la région annoncée par le fournisseur
+  mistral: { lat: 48.86, lon: 2.35, dx: -22, dy: 14 }, scaleway: { lat: 48.6, lon: 2.6, dx: -20, dy: 30 },
+  ovhcloud: { lat: 50.69, lon: 3.17, dx: -21, dy: -8 }, ionos: { lat: 52.52, lon: 13.4, dx: 18, dy: -6 },
+};
+const pct1 = (v) => (v == null ? "—" : v.toLocaleString("fr-FR", { maximumFractionDigits: v >= 99.9 ? 2 : 1 }) + " %");
+const ilYa = (iso) => {
+  const min = Math.max(0, Math.round((Date.now() - new Date(iso)) / 60000));
+  if (min < 60) return `il y a ${min} min`;
+  if (min < 48 * 60) return `il y a ${Math.round(min / 60)} h`;
+  return `il y a ${Math.round(min / 1440)} j`;
+};
+const heureParis = (iso) => new Date(iso).toLocaleTimeString("fr-FR", { hour: "2-digit", timeZone: "Europe/Paris" }).replace(/\s*h?$/, " h");
+const lire = (f) => fetch("donnees/" + f, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
 
-    const card = document.createElement("div");
-    card.className = `wx-card${p.s === "storm" ? " storm" : ""}`;
-    card.style.left = `${cx}%`; card.style.top = `${cy}%`;
-    card.innerHTML = `<svg class="wx"><use href="#wx-${p.s}"/></svg><div><b>${p.name}</b><span>${p.txt}</span></div>`;
-    map.appendChild(card);
+// Les pannes des 30 derniers jours : chaque alerte « orage » ouvre une panne, la « fin de l'orage » qui suit la ferme.
+// Les incidents mesurés avant le début du journal (meteo.json) complètent, sans doublon. Durées : entre deux passages.
+function episodesDePanne(alertes, m) {
+  const depuis = new Date(Date.now() - 30 * 864e5).toISOString();
+  const res = [];
+  const parF = {};
+  [...(alertes || [])].sort((a, b) => String(a.horodatage).localeCompare(String(b.horodatage))).forEach((a) => {
+    const ouvert = parF[a.fournisseur];
+    if (a.type === "orage" && !ouvert) parF[a.fournisseur] = { fournisseur: a.fournisseur, debut: a.horodatage };
+    if (a.type === "fin_orage" && ouvert) {
+      ouvert.fin = a.horodatage;
+      ouvert.duree_min = Math.round((new Date(a.horodatage) - new Date(ouvert.debut)) / 60000);
+      res.push(ouvert); delete parF[a.fournisseur];
+    }
   });
+  const maintenant = (m && m.genere_le) || new Date().toISOString();
+  Object.values(parF).forEach((o) => res.push({ ...o, en_cours: true, duree_min: Math.round((new Date(maintenant) - new Date(o.debut)) / 60000) }));
+  ((m && m.fournisseurs) || []).forEach((f) => (f.incidents_30j || []).forEach((i) => {
+    const chevauche = res.some((e) => e.fournisseur === f.id && e.debut <= (i.fin || maintenant) && (e.fin || maintenant) >= i.debut);
+    if (!chevauche) res.push({ fournisseur: f.id, debut: i.debut, fin: i.fin, duree_min: i.duree_min, en_cours: i.en_cours });
+  }));
+  return res.filter((e) => (e.fin || maintenant) >= depuis).sort((a, b) => String(b.debut).localeCompare(String(a.debut)));
+}
+const nomCourt = (m, id) => ((m && m.fournisseurs) || []).find((f) => f.id === id)?.nom_court || id;
+const jourHeure = (iso) => new Date(iso).toLocaleString("fr-FR", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Paris" }).replace(":", " h ");
 
-  // Liste (remplace les étiquettes sur mobile)
-  const list = document.createElement("ul");
-  list.className = "wx-list";
-  list.innerHTML = PROVIDERS.map((p) =>
-    `<li class="${p.s === "storm" ? "storm" : ""}"><svg class="wx"><use href="#wx-${p.s}"/></svg><b>${p.name}</b><span>${p.txt}</span></li>`
-  ).join("");
-  map.after(list);
-})();
+Promise.all([lire("meteo.json"), lire("alertes.json"), lire("contrats.json"), lire("statuts.json")]).then(([m, alertes, contrats, statuts]) => {
+  const vue = document.getElementById("view-meteo");
+  if (!vue) return;
+  if (!m || !(m.fournisseurs || []).length) {
+    document.getElementById("meteo-date").textContent = "Les mesures ne sont pas encore disponibles. Elles arrivent au prochain passage de la sonde.";
+    return;
+  }
+  IRIS_METEO = m;
+  if (location.hash.startsWith("#article-")) show(location.hash.slice(1));
+  const F = m.fournisseurs;
+  const officiel = (statuts && statuts.fournisseurs) || {};
+  const engagement = Object.fromEntries((contrats || []).filter((c) => c.suivi_par_la_sonde).map((c) => [c.id, c.engagement_pct]));
 
-/* ---------- Disponibilité vs SLA (barres) ---------- */
-(function drawDispo() {
+  // En-tête : quand, d'où, et le temps qu'il fait
+  const vieux = Date.now() - new Date(m.genere_le) > 2 * 3600e3;
+  document.getElementById("meteo-date").innerHTML = `Dernière mesure ${ilYa(m.genere_le)}${vieux ? " <b class=\"c-yellow\">(mesures en retard)</b>" : ""} · depuis ${m.point_de_mesure || "la sonde Iris"}`;
+  const ordre = ["orage", "nuage", "eclaircie", "soleil"];
+  const pire = ordre.find((e) => F.some((f) => f.etat === e)) || "inconnu";
+  document.getElementById("meteo-ciel").setAttribute("href", "#wx-" + METEO_ICONE[pire]);
+  document.getElementById("meteo-mot").textContent = METEO_MOT[pire];
+  document.getElementById("meteo-phrase").innerHTML = m.phrase + (pire === "orage" ? ' <a href="#alertes">Voir l\'alerte →</a>' : "");
+  document.getElementById("meteo-nb").textContent = `${F.length} surveillés`;
+  if (m.historique_depuis) document.getElementById("meteo-depuis").textContent = "mesures depuis le " + new Date(m.historique_depuis + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
+  if (m.methode) document.getElementById("meteo-methode").textContent = "Méthode : " + m.methode;
+
+  // Carte
+  const carte = document.getElementById("meteo-map");
+  const NS = "http://www.w3.org/2000/svg";
+  const traits = document.createElementNS(NS, "svg");
+  traits.setAttribute("class", "wx-line"); traits.setAttribute("viewBox", "0 0 100 100"); traits.setAttribute("preserveAspectRatio", "none");
+  carte.appendChild(traits);
+  const detail = (f) => {
+    if (f.etat === "inconnu") return "Pas de mesure récente";
+    const t = f.ttft_ms ? ` · ${f.ttft_ms.toLocaleString("fr-FR")} ms` : "";
+    const off = officiel[f.id] && officiel[f.id].etat_officiel;
+    return f.libelle + t + (f.etat === "orage" && off ? ` · page officielle : « ${off} »` : "");
+  };
+  F.forEach((f) => {
+    const lieu = METEO_LIEU[f.id];
+    if (!lieu) return;
+    const { x, y } = project(lieu.lat, lieu.lon);
+    const ic = METEO_ICONE[f.etat] || "unknown";
+    const pin = document.createElement("span");
+    pin.className = `pin s-${ic}`; pin.style.left = `${x}%`; pin.style.top = `${y}%`; pin.title = f.nom;
+    carte.appendChild(pin);
+    const l = document.createElementNS(NS, "line");
+    l.setAttribute("x1", x); l.setAttribute("y1", y); l.setAttribute("x2", x + lieu.dx); l.setAttribute("y2", y + lieu.dy);
+    l.setAttribute("vector-effect", "non-scaling-stroke");
+    traits.appendChild(l);
+    const c = document.createElement("div");
+    c.className = `wx-card${f.etat === "orage" ? " storm" : ""}`;
+    c.style.left = `${x + lieu.dx}%`; c.style.top = `${y + lieu.dy}%`;
+    c.innerHTML = `<svg class="wx"><use href="#wx-${ic}"/></svg><div><b>${f.nom_court || f.nom}</b><span>${detail(f)}</span></div>`;
+    carte.appendChild(c);
+  });
+  const liste = document.createElement("ul");
+  liste.className = "wx-list";
+  liste.innerHTML = F.map((f) => `<li class="${f.etat === "orage" ? "storm" : ""}"><svg class="wx"><use href="#wx-${METEO_ICONE[f.etat] || "unknown"}"/></svg><b>${f.nom_court || f.nom}</b><span>${detail(f)}</span></li>`).join("");
+  carte.after(liste);
+
+  // Ces dernières heures (mesures puis prévision)
+  // les colonnes sont alignées sur l'heure : un fournisseur sans point à une heure donnée affiche « pas de mesure »
+  const cle = (iso) => new Date(iso).toISOString().slice(0, 13);
+  const heures = {};
+  F.forEach((f) => (f.chronologie || []).forEach((p) => { if (!heures[cle(p.heure)] || p.nature === "mesure") heures[cle(p.heure)] = p; }));
+  const colonnes = Object.keys(heures).sort();
+  const cellule = (p) => p
+    ? `<td class="${p.nature === "prevision" ? "prev" : ""}" title="${p.nature === "prevision" ? "Prévision : " + (p.certitude || "") : (p.ttft_ms ? p.ttft_ms + " ms" : "pas de mesure")}"><svg class="wx"><use href="#wx-${METEO_ICONE[p.etat] || "unknown"}"/></svg></td>`
+    : `<td title="pas de mesure"><svg class="wx"><use href="#wx-unknown"/></svg></td>`;
+  document.getElementById("meteo-heures").innerHTML = `<table><thead><tr><th></th>${colonnes.map((k) => `<th class="${heures[k].nature === "prevision" ? "prev" : ""}">${heureParis(heures[k].heure)}</th>`).join("")}</tr></thead><tbody>${
+    F.map((f) => {
+      const parHeure = {};
+      (f.chronologie || []).forEach((p) => { if (!parHeure[cle(p.heure)] || p.nature === "mesure") parHeure[cle(p.heure)] = p; });
+      return `<tr><th>${f.nom_court || f.nom}</th>${colonnes.map((k) => cellule(parHeure[k])).join("")}</tr>`;
+    }).join("")
+  }</tbody></table>`;
+
+  // Les 3 piliers, calculés sur les mesures
+  const mesures = F.filter((f) => f.disponibilite && f.disponibilite["7j"] != null);
+  const dispo7 = mesures.length ? mesures.reduce((t, f) => t + f.disponibilite["7j"], 0) / mesures.length : null;
+  const pannes = episodesDePanne(alertes, m);
+  const minutes = pannes.reduce((t, p) => t + (p.duree_min || 0), 0);
+  const suivis = F.filter((f) => engagement[f.id] != null && f.disponibilite && f.disponibilite["30j"] != null);
+  const tenus = suivis.filter((f) => f.disponibilite["30j"] >= engagement[f.id]);
+  const barre = (v) => Math.max(4, Math.min(100, v));
+  document.getElementById("meteo-piliers").innerHTML = `
+    <li><span class="sc-ico">⚡</span><span class="sc-name">Disponibilité mesurée (7 j)</span><b>${pct1(dispo7)}</b><i style="--w:${barre(((dispo7 || 0) - 90) * 10)}%"></i></li>
+    <li><span class="sc-ico">⛈</span><span class="sc-name">Pannes mesurées (30 j)</span><b>${pannes.length ? `${pannes.length} panne${pannes.length > 1 ? "s" : ""} · ${minutes} min` : "aucune"}</b><i style="--w:${barre(pannes.length * 20)}%"></i></li>
+    <li><span class="sc-ico">⚖</span><span class="sc-name">Engagements tenus (30 j)</span><b>${tenus.length} / ${suivis.length}</b><i style="--w:${suivis.length ? barre(tenus.length / suivis.length * 100) : 4}%"></i></li>`;
+
+  // Disponibilité mesurée vs engagement
+  const MIN = 90, MAX = 100, pos = (v) => Math.max(0, Math.min(100, ((v - MIN) / (MAX - MIN)) * 100));
   const ul = document.getElementById("dispo");
-  if (!ul) return;
-  const MIN = 99.5, MAX = 100;
-  const pos = (v) => Math.max(0, Math.min(100, ((v - MIN) / (MAX - MIN)) * 100));
-  ul.innerHTML = PROVIDERS.map((p) => {
-    const ko = p.mes < p.sla;
-    return `<li><span>${p.name}</span>
-      <span class="track" title="SLA ${pct(p.sla)} · mesuré ${pct(p.mes)}">
-        <span class="fill${ko ? " ko" : ""}" style="width:${pos(p.mes)}%"></span>
-        <span class="tick" style="left:${pos(p.sla)}%"></span>
-      </span><b>${pct(p.mes)}</b></li>`;
+  ul.innerHTML = F.map((f) => {
+    const v = f.disponibilite && f.disponibilite["30j"], e = engagement[f.id];
+    if (v == null) return `<li><span>${f.nom_court || f.nom}</span><span class="track"></span><b class="muted">—</b></li>`;
+    const ko = e != null && v < e;
+    return `<li><span>${f.nom_court || f.nom}</span>
+      <span class="track" title="${e != null ? "Engagement " + pct1(e) + " · " : ""}mesuré ${pct1(v)}">
+        <span class="fill${ko ? " ko" : ""}" style="width:${pos(v)}%"></span>${e != null ? `<span class="tick" style="left:${pos(e)}%"></span>` : ""}
+      </span><b>${pct1(v)}</b></li>`;
   }).join("");
-  ul.insertAdjacentHTML("afterend", `<p class="dispo-note">Trait blanc = SLA promis. Rouge = engagement non tenu, avoir réclamable. Échelle 99,5 → 100 %.</p>`);
-})();
+  ul.insertAdjacentHTML("afterend", `<p class="dispo-note">Trait blanc = engagement de disponibilité du contrat. Rouge = engagement non tenu sur la période mesurée. Échelle 90 → 100 %.</p>`);
 
-/* ---------- Tableau SLA (Indicateurs) ---------- */
-(function drawSla() {
-  const tb = document.getElementById("sla-body");
-  if (!tb) return;
-  const rows = [...PROVIDERS].sort((a, b) => b.avoir - a.avoir);
-  tb.innerHTML = rows.map((p) => {
-    const ecart = p.mes - p.sla;
-    const ko = ecart < 0;
-    const e = (ecart >= 0 ? "+" : "−") + Math.abs(ecart).toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " pt";
-    return `<tr>
-      <td>${p.name}</td><td>${pct(p.sla)}</td><td>${pct(p.mes)}</td>
-      <td class="${ko ? "ko" : "ok"}">${e}</td>
-      <td class="${p.avoir ? "money" : "ok"}">${p.avoir ? "≈ " + p.avoir + " €" : "—"}</td>
-      <td>${p.avoir ? `<a href="#rapports" class="btn btn-yellow">Réclamer</a>` : ""}</td></tr>`;
-  }).join("");
-})();
+  // Signaux : incidents officiels en cours, puis les dernières alertes de la sonde
+  const couleur = { rouge: "red", orange: "yellow", jaune: "yellow", vert: "grey" };
+  const signaux = [];
+  Object.entries(officiel).forEach(([id, o]) => {
+    if (o && o.incident_en_cours) signaux.push({ c: "red", t: `${(F.find((f) => f.id === id) || {}).nom_court || id} : ${o.incident_en_cours.titre || "incident annoncé"}`, h: o.incident_en_cours.debut });
+  });
+  [...(alertes || [])].sort((a, b) => String(b.horodatage).localeCompare(String(a.horodatage))).slice(0, 5)
+    .forEach((a) => signaux.push({ c: couleur[a.niveau] || "grey", t: a.titre, h: a.horodatage }));
+  document.getElementById("meteo-signaux").innerHTML = signaux.length
+    ? signaux.slice(0, 6).map((x) => `<li><span class="sd sd-${x.c}"></span><span>${x.t}</span><time>${x.h ? ilYa(x.h) : ""}</time></li>`).join("")
+    : `<li><span class="sd sd-grey"></span><span>Aucun signal ces derniers jours.</span><time></time></li>`;
+});
+
+
+/* ---------- Alertes, Indicateurs, Rapports : les vraies données de la sonde ---------- */
+Promise.all([lire("meteo.json"), lire("alertes.json"), lire("contrats.json"), lire("avoirs.json"), lire("rapports.json"), lire("statuts.json")])
+  .then(([m, alertes, contrats, avoirs, rapports, statuts]) => {
+    const F = (m && m.fournisseurs) || [];
+    const parId = Object.fromEntries(F.map((f) => [f.id, f]));
+    const contrat = Object.fromEntries((contrats || []).map((c) => [c.id, c]));
+    const pannes = episodesDePanne(alertes, m);
+
+    // --- Demander à Iris : réponses calculées sur les mesures
+    const mn = (x) => x.toLocaleString("fr-FR");
+    const parFour = {};
+    pannes.forEach((p) => (parFour[p.fournisseur] = (parFour[p.fournisseur] || 0) + (p.duree_min || 0)));
+    const classement = Object.entries(parFour).sort((a, b) => b[1] - a[1]);
+    const moisA = Object.keys(avoirs || {}).sort().pop();
+    const dusA = ((avoirs && avoirs[moisA]) || []).filter((l) => l.engagement_tenu === false && l.avoir_pct > 0);
+    const rapides = F.filter((f) => f.ttft_ms).sort((a, b) => a.ttft_ms - b.ttft_ms);
+    const rappel = " <span class=\"muted\">Mesure externe, à titre indicatif.</span>";
+    ANSWERS = [
+      classement.length ? `Sur 30 jours, <b>${nomCourt(m, classement[0][0])}</b> cumule <b>${mn(classement[0][1])} minutes</b> de panne mesurées${classement[1] ? `, devant ${classement.slice(1).map(([id, v]) => `${nomCourt(m, id)} (${mn(v)} min)`).join(", ")}` : ""}. Les autres fournisseurs suivis n'ont pas eu de panne.` + rappel : "Aucune panne mesurée sur 30 jours." + rappel,
+      dusA.length ? dusA.map((l) => `<b>${nomCourt(m, l.fournisseur)}</b> promet ${pct1(l.engagement_pct)} ; la sonde a mesuré ${pct1(l.disponibilite_pct)} ce mois-ci sur ${l.fenetres_mesurees} créneaux. Avoir possible : <b>${l.avoir_pct} % de la facture</b>, pour les clients payants, avant le ${new Date(l.echeance + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}.`).join(" ") + " Vérifiez avec votre propre suivi avant de réclamer." + rappel : "Aucun engagement de disponibilité non tenu ce mois-ci, d'après la sonde." + rappel,
+      rapides.length ? `En ce moment, <b>${rapides[0].nom_court}</b> répond le plus vite : <b>${mn(rapides[0].ttft_ms)} ms</b> avant le premier mot. ${rapides.slice(1).map((f) => `${f.nom_court} : ${mn(f.ttft_ms)} ms`).join(" · ")}.` + rappel : "Pas de mesure récente de rapidité." + rappel,
+    ];
+
+    // --- Badge : fournisseurs en panne ou en vigilance en ce moment
+    const actifs = F.filter((f) => f.etat === "orage" || ["orange", "rouge"].includes(f.vigilance));
+    const badge = document.getElementById("alertes-badge");
+    if (badge && actifs.length) { badge.textContent = actifs.length; badge.hidden = false; }
+
+    // --- Alertes
+    const liste = document.getElementById("alertes-liste");
+    if (liste) {
+      const journal = [...(alertes || [])].sort((a, b) => String(b.horodatage).localeCompare(String(a.horodatage)));
+      document.getElementById("alertes-titre").textContent = `Alertes (${journal.length})`;
+      const derniere = {};
+      journal.forEach((a) => { if (!derniere[a.fournisseur]) derniere[a.fournisseur] = a; });
+      const icone = { orage: `<svg class="al-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="#FF4A3D"/></svg>`,
+        vigilance: `<svg class="al-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5L22 20H2z" fill="#FFCC00"/><path d="M12 9v5" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16.8" r="1.2" fill="#0A0A0A"/></svg>`,
+        fin_orage: `<svg class="al-ico" aria-hidden="true"><use href="#wx-sun"/></svg>` };
+      liste.innerHTML = journal.length ? journal.map((a) => {
+        const f = parId[a.fournisseur] || {};
+        const enCours = derniere[a.fournisseur] === a && (a.type === "orage" ? f.etat === "orage" : a.type === "vigilance" ? ["orange", "rouge"].includes(f.vigilance) : false);
+        const cat = { orage: "panne", fin_orage: "retour", vigilance: "lenteur" }[a.type] + (enCours ? " encours" : "");
+        const chip = { orage: ["chip-red", "Panne"], vigilance: ["chip-yellow", "Lenteur"], fin_orage: ["chip-grey", "Retour au calme"] }[a.type] || ["", a.type];
+        const bouton = a.type === "fin_orage" ? `<a href="#indicateurs" class="btn btn-outline">Voir le calcul d'avoir</a>`
+          : `<a href="#meteo" class="btn ${enCours ? "btn-yellow" : "btn-outline"}">${enCours ? "Voir ma météo" : "Voir la météo"}</a>`;
+        return `<article class="alert-row${enCours && a.type === "orage" ? " critical" : ""}" data-cat="${cat}">
+          ${icone[a.type] || icone.vigilance}
+          <div class="al-body">
+            <h3>${a.titre}</h3>
+            <div class="chips"><span class="chip ${chip[0]}">${chip[1]}</span>${enCours ? '<span class="chip chip-red">En cours</span>' : ""}<span class="chip">${f.nom_court || a.fournisseur}</span><span class="chip">${jourHeure(a.horodatage)}</span></div>
+            <p>${a.texte}</p>
+          </div>
+          <div class="al-side"><time>${ilYa(a.horodatage)}</time>${bouton}</div>
+        </article>`;
+      }).join("") : `<p class="muted">Aucune alerte : la sonde n'a rien vu d'anormal.</p>`;
+    }
+
+    // --- Indicateurs
+    const piliers = document.getElementById("indic-piliers");
+    if (piliers && F.length) {
+      const d30 = F.filter((f) => f.disponibilite && f.disponibilite["30j"] != null);
+      const dispo = d30.length ? d30.reduce((t, f) => t + f.disponibilite["30j"], 0) / d30.length : null;
+      const minutes = pannes.reduce((t, p) => t + (p.duree_min || 0), 0);
+      const officiels = Object.values((statuts && statuts.fournisseurs) || {}).filter((o) => o && o.type === "statuspage").length;
+      const dossiers = (rapports && rapports.dossiers) || [], preuves = (rapports && rapports.preuves) || [];
+      const mois = Object.keys(avoirs || {}).sort().pop();
+      const lignes = (avoirs && avoirs[mois]) || [];
+      const dus = lignes.filter((l) => l.engagement_tenu === false && l.avoir_pct > 0);
+      const nomMois = mois ? new Date(mois + "-15").toLocaleDateString("fr-FR", { month: "long", year: "numeric" }) : "";
+      piliers.innerHTML = `
+        <article class="pillar">
+          <span class="pl-q">Est-ce que ça tient ?</span><h3>Disponibilité</h3>
+          <div class="pl-num">${dispo == null ? "—" : dispo.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}<small>%</small></div>
+          <p class="muted small">disponibilité moyenne mesurée de vos ${F.length} fournisseurs (30 j)</p>
+          <ul class="kv"><li><span>Pannes mesurées</span><b>${pannes.length}</b></li><li><span>Minutes en panne</span><b>${minutes} min</b></li>
+            <li><span>En panne maintenant</span><b class="${F.some((f) => f.etat === "orage") ? "c-yellow" : ""}">${F.filter((f) => f.etat === "orage").map((f) => f.nom_court).join(", ") || "aucun"}</b></li></ul>
+        </article>
+        <article class="pillar">
+          <span class="pl-q">Ai-je les preuves ?</span><h3>Traçabilité</h3>
+          <div class="pl-num">${dossiers.length}<small> / ${F.length}</small></div>
+          <p class="muted small">fournisseurs avec un dossier de surveillance à jour</p>
+          <ul class="kv"><li><span>Fournisseurs mesurés chaque heure</span><b>${F.length} / ${F.length}</b></li>
+            <li><span>Pages de statut officielles suivies</span><b>${officiels} / ${F.length}</b></li>
+            <li><span>Journées de preuves horodatées</span><b>${preuves.length}</b></li></ul>
+        </article>
+        <article class="pillar pillar-yellow">
+          <span class="pl-q">Qu'est-ce qu'on me doit ?</span><h3>Avoirs</h3>
+          <div class="pl-num">${dus.length}<small> avoir${dus.length > 1 ? "s" : ""}</small></div>
+          <p class="small">possible${dus.length > 1 ? "s" : ""} en ${nomMois} : engagement de disponibilité non tenu</p>
+          <ul class="kv">${dus.map((l) => `<li><span>${nomCourt(m, l.fournisseur)}</span><b>${l.avoir_pct} % de la facture</b></li>`).join("") || "<li><span>Aucun engagement non tenu</span><b>—</b></li>"}
+            ${dus.length ? `<li><span>À réclamer avant le</span><b>${new Date(dus[0].echeance + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}</b></li>` : ""}</ul>
+        </article>`;
+      document.getElementById("indic-mois").textContent = nomMois ? "Mois en cours : " + nomMois : "";
+      const ecart = (v, e) => (v - e >= 0 ? "+" : "−") + Math.abs(v - e).toLocaleString("fr-FR", { maximumFractionDigits: 2 }) + " pt";
+      document.getElementById("sla-body").innerHTML = lignes.map((l) => {
+        const ko = l.engagement_tenu === false;
+        return `<tr><td>${nomCourt(m, l.fournisseur)}<br><span class="muted small">${l.service || ""}</span></td><td>${pct1(l.engagement_pct)}</td><td>${pct1(l.disponibilite_pct)}</td>
+          <td class="${ko ? "ko" : "ok"}">${ecart(l.disponibilite_pct, l.engagement_pct)}</td>
+          <td class="${l.avoir_pct ? "money" : "ok"}">${l.avoir_pct ? l.avoir_pct + " % de la facture" : "—"}</td>
+          <td>${l.echeance ? new Date(l.echeance + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) : "—"}</td>
+          <td>${l.fenetres_mesurees} fenêtres</td></tr>`;
+      }).join("");
+      const couverts = [...new Set(lignes.map((l) => (contrat[l.fournisseur] || {}).qui_est_couvert).filter(Boolean))];
+      document.getElementById("indic-note").innerHTML = `Calcul indicatif, d'après les barèmes publiés par chaque fournisseur. Une « fenêtre » est un créneau de 5 minutes où la sonde a mesuré le service : plus il y en a, plus le chiffre est solide. Les avoirs ne concernent que les clients payants${couverts.length ? " (" + couverts[0] + ", par exemple)" : ""} : la sonde, elle, mesure en offre gratuite ou anonyme.`;
+    }
+
+    // --- Rapports
+    const rl = document.getElementById("rapports-liste");
+    if (rl) {
+      const depot = (rapports && rapports.depot) || "https://github.com/mcp-trust-score-org/sonde-ia-eu";
+      const doc = `<svg class="doc" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M15 2v5h5 M9 12h8M9 15h8M9 18h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`;
+      const jourCourt = (iso) => iso ? new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" }) : "";
+      const items = [];
+      ((rapports && rapports.dossiers) || []).forEach((d) => items.push({ cat: "dossier", quand: d.genere_le,
+        html: `${doc}<div><h3>Dossier de surveillance — ${d.nom}</h3><p>Disponibilité, pannes, chemin réseau, stabilité du modèle, fournisseurs de repli. Période du ${jourCourt(d.periode && d.periode.debut)} au ${jourCourt(d.periode && d.periode.fin)}.</p></div><span class="chip chip-yellow">DORA · NIS2</span><time>${jourCourt(d.genere_le)}</time><a class="dl" href="${depot}/blob/main/${d.fichier}" target="_blank" rel="noopener" aria-label="Ouvrir le dossier">↗</a>` }));
+      const mois = Object.keys(avoirs || {}).sort().pop();
+      ((avoirs && avoirs[mois]) || []).filter((l) => l.engagement_tenu === false).forEach((l) => items.push({ cat: "avoir", quand: m && m.genere_le,
+        html: `${doc}<div><h3>Calcul d'avoir — ${nomCourt(m, l.fournisseur)}, ${new Date(mois + "-15").toLocaleDateString("fr-FR", { month: "long", year: "numeric" })}</h3><p>Engagement ${pct1(l.engagement_pct)}, mesuré ${pct1(l.disponibilite_pct)} sur ${l.fenetres_mesurees} fenêtres. Avoir indicatif : ${l.avoir_pct} % de la facture, à réclamer avant le ${new Date(l.echeance + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}.</p></div><span class="chip">Avoir SLA</span><time>${jourCourt(m && m.genere_le)}</time><a class="dl" href="#indicateurs" aria-label="Voir le calcul">→</a>` }));
+      ((rapports && rapports.preuves) || []).forEach((p) => items.push({ cat: "preuve", quand: p.genere_le,
+        html: `${doc}<div><h3>Preuves horodatées — ${new Date(p.jour + "T12:00").toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}</h3><p>Empreintes de ${p.fichiers} fichier${p.fichiers > 1 ? "s" : ""} de mesures${p.horodatage ? ", scellées avec OpenTimestamps : personne ne peut les modifier après coup sans que ça se voie" : ""}.</p></div><span class="chip chip-grey">Preuve</span><time>${jourCourt(p.genere_le)}</time><a class="dl" href="${depot}/blob/main/${p.fichier}" target="_blank" rel="noopener" aria-label="Ouvrir la preuve">↗</a>` }));
+      rl.innerHTML = items.length ? items.map((x) => `<div class="report-row" data-cat="${x.cat}">${x.html}</div>`).join("") : `<p class="muted">Aucun rapport pour l'instant.</p>`;
+    }
+  });
 
 /* ---------- Filtres (Alertes, Rapports) ---------- */
 document.querySelectorAll("[data-filter-group]").forEach((group) => {
@@ -404,17 +627,10 @@ document.querySelectorAll("[data-filter-group]").forEach((group) => {
     if (!b) return;
     group.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
     const f = b.dataset.f;
-    scope.querySelectorAll("[data-cat]").forEach((item) => item.classList.toggle("is-hidden", f !== "all" && item.dataset.cat !== f));
+    scope.querySelectorAll("[data-cat]").forEach((item) => item.classList.toggle("is-hidden", f !== "all" && !item.dataset.cat.split(" ").includes(f)));
   });
 });
 
-/* ---------- Minuteur de l'alerte en cours ---------- */
-(function ticker() {
-  const el = document.getElementById("since");
-  if (!el) return;
-  let m = 47;
-  setInterval(() => { m += 1; el.textContent = m; }, 60000);
-})();
 
 /* ---------- Toast ---------- */
 const toastEl = document.getElementById("toast");
@@ -439,12 +655,9 @@ document.querySelectorAll("[data-open-chat]").forEach((b) => b.addEventListener(
 document.querySelectorAll("[data-close-chat]").forEach((b) => b.addEventListener("click", closeChat));
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeChat(); });
 
-const ANSWERS = [
-  "Ce trimestre, <b>Microsoft Azure</b> vous a coûté <b>212 minutes</b> d'indisponibilité, dont 47 mardi. Viennent ensuite OVHcloud (38 min) et IONOS (31 min).",
-  "Votre contrat Azure promet <b>99,90 %</b>, j'ai mesuré <b>99,68 %</b> ce mois-ci. Vous pouvez réclamer <b>environ 400 €</b>. Le dossier de preuves est prêt dans Rapports.",
-  "Presque. <b>92 %</b> des exigences suivies sont couvertes. Il reste un point : votre <b>registre d'informations</b> doit être mis à jour d'ici 12 jours. Je peux le pré-remplir.",
-];
-const FALLBACK = "Dans la version complète, je réponds à partir de vos mesures et de vos contrats. Essayez une des questions proposées.";
+// Les réponses sont calculées sur les mesures de la sonde (donnees/), jamais sur les systèmes du lecteur.
+let ANSWERS = ["Les mesures se chargent, réessayez dans un instant.", "Les mesures se chargent, réessayez dans un instant.", "Les mesures se chargent, réessayez dans un instant."];
+const FALLBACK = "Je réponds avec les mesures de la sonde Iris : pannes, avoirs possibles, rapidité. Essayez une des questions proposées. Je n'ai pas accès à vos systèmes, et mes chiffres sont indicatifs.";
 
 (function chat() {
   const log = document.getElementById("chat-log");
@@ -461,7 +674,7 @@ const FALLBACK = "Dans la version complète, je réponds à partir de vos mesure
   };
   const ask = (q, answer) => {
     push(q.replace(/</g, "&lt;"), "me");
-    const t = push("Iris analyse vos données…", "iris");
+    const t = push("Iris consulte ses mesures…", "iris");
     t.classList.add("typing");
     setTimeout(() => { t.classList.remove("typing"); t.innerHTML = answer; log.scrollTop = log.scrollHeight; }, 900);
   };
@@ -476,8 +689,8 @@ const FALLBACK = "Dans la version complète, je réponds à partir de vos mesure
     const low = q.toLowerCase();
     let a = FALLBACK;
     if (/minute|coût|panne|incident/.test(low)) a = ANSWERS[0];
-    else if (/réclam|avoir|rembours|argent|€/.test(low)) a = ANSWERS[1];
-    else if (/dora|nis2|conform|contrôle|audit/.test(low)) a = ANSWERS[2];
+    else if (/réclam|avoir|rembours|argent|€|sla/.test(low)) a = ANSWERS[1];
+    else if (/vite|rapide|lent|latence|temps de réponse/.test(low)) a = ANSWERS[2];
     ask(q, a);
     input.value = "";
   });

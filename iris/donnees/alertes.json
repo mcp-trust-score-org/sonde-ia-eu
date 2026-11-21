@@ -1,0 +1,193 @@
+[
+ {
+  "fournisseur": "mistral",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur Mistral",
+  "texte": "Mistral AI : Temps de réponse 2,9 fois plus long que d'habitude.",
+  "horodatage": "2026-11-21T21:45:01+00:00",
+  "id": "mistral-vigilance-202611212145",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "orage",
+  "niveau": "rouge",
+  "titre": "Orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints est en panne (78 % d'échecs). La panne vient du fournisseur, pas de chez vous. Itinéraire bis : Mistral, Scaleway, IONOS fonctionne normalement.",
+  "horodatage": "2026-11-21T21:45:26+00:00",
+  "id": "ovhcloud-orage-202611212145",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "fin_orage",
+  "niveau": "vert",
+  "titre": "Fin de l'orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints fonctionne de nouveau, après environ 58 minutes de panne (durée entre deux passages de la sonde). Pensez à la réclamation : le calcul d'avoir est dans Indicateurs.",
+  "horodatage": "2026-11-21T16:26:01+00:00",
+  "id": "ovhcloud-fin-orage-202611211626",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "orage",
+  "niveau": "rouge",
+  "titre": "Orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints est en panne (78 % d'échecs). La panne vient du fournisseur, pas de chez vous. Itinéraire bis : Mistral, Scaleway, IONOS fonctionne normalement.",
+  "horodatage": "2026-11-21T15:27:42+00:00",
+  "id": "ovhcloud-orage-202611211527",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "fin_orage",
+  "niveau": "vert",
+  "titre": "Fin de l'orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints fonctionne de nouveau, après environ 98 minutes de panne (durée entre deux passages de la sonde). Pensez à la réclamation : le calcul d'avoir est dans Indicateurs.",
+  "horodatage": "2026-11-21T08:48:42+00:00",
+  "id": "ovhcloud-fin-orage-202611210848",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "orage",
+  "niveau": "rouge",
+  "titre": "Orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints est en panne (67 % d'échecs). La panne vient du fournisseur, pas de chez vous. Itinéraire bis : Mistral, Scaleway, IONOS fonctionne normalement.",
+  "horodatage": "2026-11-21T07:10:47+00:00",
+  "id": "ovhcloud-orage-202611210710",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "fin_orage",
+  "niveau": "vert",
+  "titre": "Fin de l'orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints fonctionne de nouveau, après environ 235 minutes de panne (durée entre deux passages de la sonde). Pensez à la réclamation : le calcul d'avoir est dans Indicateurs.",
+  "horodatage": "2026-11-21T01:46:00+00:00",
+  "id": "ovhcloud-fin-orage-202611210146",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "orage",
+  "niveau": "rouge",
+  "titre": "Orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints est en panne (78 % d'échecs). La panne vient du fournisseur, pas de chez vous. Itinéraire bis : Mistral, Scaleway, IONOS fonctionne normalement.",
+  "horodatage": "2026-11-20T21:51:11+00:00",
+  "id": "ovhcloud-orage-202611202151",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "fin_orage",
+  "niveau": "vert",
+  "titre": "Fin de l'orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints fonctionne de nouveau, après environ 173 minutes de panne (durée entre deux passages de la sonde). Pensez à la réclamation : le calcul d'avoir est dans Indicateurs.",
+  "horodatage": "2026-11-20T20:44:53+00:00",
+  "id": "ovhcloud-fin-orage-202611202044",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "orage",
+  "niveau": "rouge",
+  "titre": "Orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints est en panne (67 % d'échecs). La panne vient du fournisseur, pas de chez vous. Itinéraire bis : Mistral, Scaleway, IONOS fonctionne normalement.",
+  "horodatage": "2026-11-20T17:51:46+00:00",
+  "id": "ovhcloud-orage-202611201751",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints : Temps de réponse 13,1 fois plus long que d'habitude.",
+  "horodatage": "2026-11-20T00:42:53+00:00",
+  "id": "ovhcloud-vigilance-202611200042",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints : Temps de réponse 45,1 fois plus long que d'habitude.",
+  "horodatage": "2026-11-18T18:17:21+00:00",
+  "id": "ovhcloud-vigilance-202611181817",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints : Temps de réponse 4,7 fois plus long que d'habitude.",
+  "horodatage": "2026-11-17T19:46:24+00:00",
+  "id": "ovhcloud-vigilance-202611171946",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints : Temps de réponse 52,4 fois plus long que d'habitude.",
+  "horodatage": "2026-11-17T11:06:14+00:00",
+  "id": "ovhcloud-vigilance-202611171106",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "scaleway",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur Scaleway",
+  "texte": "Scaleway Generative APIs : Temps de réponse 3,0 fois plus long que d'habitude.",
+  "horodatage": "2026-11-17T09:17:30+00:00",
+  "id": "scaleway-vigilance-202611170917",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "fin_orage",
+  "niveau": "vert",
+  "titre": "Fin de l'orage sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints fonctionne de nouveau, après environ 57 minutes de panne (durée entre deux passages de la sonde). Pensez à la réclamation : le calcul d'avoir est dans Indicateurs.",
+  "horodatage": "2026-11-16T11:32:17+00:00",
+  "canaux": [
+   "ntfy"
+  ]
+ }
+]

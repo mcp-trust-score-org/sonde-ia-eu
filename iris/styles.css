@@ -568,3 +568,21 @@ body[data-plan="premium"] [data-plan="standard"] { display: none !important; }
   .ext-vedette .ext-body { padding: 16px 18px 20px; }
   .ext-vedette h3 { font-size: 26px; }
 }
+
+/* ---------- Ma Météo : mesures réelles ---------- */
+.pin.s-unknown { background: #555; }
+.heures { overflow-x: auto; }
+.heures table { border-collapse: collapse; width: 100%; font-size: 12px; }
+.heures th { color: var(--muted); font-weight: 600; padding: 4px 3px; white-space: nowrap; text-align: center; }
+.heures tbody th { text-align: left; color: #ddd; font-size: 13px; padding-right: 10px; }
+.heures td { text-align: center; padding: 5px 2px; }
+.heures .wx { width: 20px; height: 20px; display: inline-block; }
+.heures .prev { opacity: .55; }
+.heures td.prev { border-left: 1px dashed #333; }
+@media (max-width: 900px) { .meteo-grid { grid-template-columns: minmax(0, 1fr); } .meteo-grid .panel { min-width: 0; } }
+
+/* ---------- Avertissement : Iris est un média ---------- */
+.avertissement { border-left: 3px solid var(--yellow); background: var(--panel); color: #CFCFCF; font-size: 14px; line-height: 1.5; padding: 12px 16px; border-radius: 0 10px 10px 0; margin: -8px 0 22px; max-width: 980px; }
+.avertissement b { color: var(--cream); }
+.impact-note { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+.impact-suivi .tools { margin: 6px 0 4px; }

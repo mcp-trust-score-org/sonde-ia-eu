@@ -1,0 +1,76 @@
+{
+ "genere_le": "2026-11-21T22:55:58+00:00",
+ "depot": "https://github.com/mcp-trust-score-org/sonde-ia-eu",
+ "dossiers": [
+  {
+   "fournisseur": "ionos",
+   "nom": "IONOS AI Model Hub",
+   "genere_le": "2026-11-21T20:20:13+00:00",
+   "periode": {
+    "debut": "2026-11-15T19:39:19+00:00",
+    "fin": "2026-11-21T20:20:13+00:00"
+   },
+   "fichier": "dossiers/ionos.md",
+   "verdict_reseau": "ue_observe"
+  },
+  {
+   "fournisseur": "mistral",
+   "nom": "Mistral AI",
+   "genere_le": "2026-11-21T20:20:13+00:00",
+   "periode": {
+    "debut": "2026-11-15T19:39:19+00:00",
+    "fin": "2026-11-21T20:20:13+00:00"
+   },
+   "fichier": "dossiers/mistral.md",
+   "verdict_reseau": "intermediaire_non_ue"
+  },
+  {
+   "fournisseur": "ovhcloud",
+   "nom": "OVHcloud AI Endpoints",
+   "genere_le": "2026-11-21T20:20:13+00:00",
+   "periode": {
+    "debut": "2026-11-15T19:39:19+00:00",
+    "fin": "2026-11-21T20:20:13+00:00"
+   },
+   "fichier": "dossiers/ovhcloud.md",
+   "verdict_reseau": "ue_observe"
+  },
+  {
+   "fournisseur": "scaleway",
+   "nom": "Scaleway Generative APIs",
+   "genere_le": "2026-11-21T20:20:13+00:00",
+   "periode": {
+    "debut": "2026-11-15T19:39:19+00:00",
+    "fin": "2026-11-21T20:20:13+00:00"
+   },
+   "fichier": "dossiers/scaleway.md",
+   "verdict_reseau": "ue_observe"
+  }
+ ],
+ "preuves": [
+  {
+   "jour": "2026-11-21",
+   "genere_le": "2026-11-21T20:23:50+00:00",
+   "fichiers": 7,
+   "methode": "SHA-256 du contenu des N premières lignes de chaque fichier de mesures",
+   "fichier": "preuves/2026-11-21.json",
+   "horodatage": "preuves/2026-11-21.json.ots"
+  },
+  {
+   "jour": "2026-11-20",
+   "genere_le": "2026-11-20T23:43:44+00:00",
+   "fichiers": 6,
+   "methode": "SHA-256 du contenu des N premières lignes de chaque fichier de mesures",
+   "fichier": "preuves/2026-11-20.json",
+   "horodatage": "preuves/2026-11-20.json.ots"
+  },
+  {
+   "jour": "2026-11-17",
+   "genere_le": "2026-11-17T12:43:40+00:00",
+   "fichiers": 3,
+   "methode": "SHA-256 du contenu des N premières lignes de chaque fichier de mesures",
+   "fichier": "preuves/2026-11-17.json",
+   "horodatage": "preuves/2026-11-17.json.ots"
+  }
+ ]
+}

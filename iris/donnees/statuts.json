@@ -1,0 +1,93 @@
+{
+ "genere_le": "2026-11-21T21:45:26+00:00",
+ "fournisseurs": {
+  "mistral": {
+   "type": "lien",
+   "url": "https://status.mistral.ai"
+  },
+  "scaleway": {
+   "type": "statuspage",
+   "url": "https://status.scaleway.com",
+   "etat_officiel": "Tout fonctionne",
+   "gravite": 0,
+   "incident_en_cours": null,
+   "incidents_30j": [
+    {
+     "titre": "[GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017",
+     "debut": "2026-11-17T14:43+00:00",
+     "fin": "2026-11-19T13:20+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/psyhyg4czq4q"
+    },
+    {
+     "titre": "[Generative API] - [global] - GLM-5.3 timeouts",
+     "debut": "2026-11-16T14:06+00:00",
+     "fin": "2026-11-18T09:09+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/1dp6578twk7b"
+    },
+    {
+     "titre": "[Generative-Apis] [fr-par] - mistral-small-3.2-24b-instruct-2506 outage",
+     "debut": "2026-11-12T09:49+00:00",
+     "fin": "2026-11-12T09:50+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/x5j54cj4bds9"
+    },
+    {
+     "titre": "[GenerativeAPI] - Deepseek-v4/v4.1-flash timeouts",
+     "debut": "2026-10-26T17:34+00:00",
+     "fin": "2026-11-06T10:44+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/4jq53sf7mx0d"
+    },
+    {
+     "titre": "[Generative APIs] Model mistral-small-3.2-24b-instruct-2506 unavailable.",
+     "debut": "2026-11-02T08:19+00:00",
+     "fin": "2026-11-02T08:19+00:00",
+     "impact": "none",
+     "lien": "https://stspg.io/pw20xvtgcw90"
+    },
+    {
+     "titre": "[Generative APIs] - GLM-5.3 model unavailability",
+     "debut": "2026-10-27T11:03+00:00",
+     "fin": "2026-10-29T10:49+00:00",
+     "impact": "minor",
+     "lien": "https://stspg.io/vf40lfh3tcxk"
+    }
+   ],
+   "composants_suivis": [
+    "Generative API"
+   ]
+  },
+  "ovhcloud": {
+   "type": "statuspage",
+   "url": "https://public-cloud.status-ovhcloud.com",
+   "etat_officiel": "Tout fonctionne",
+   "gravite": 0,
+   "incident_en_cours": null,
+   "incidents_30j": [
+    {
+     "titre": "[GLOBAL][AI & Machine Learning] - AI Endpoint Incident Notification",
+     "debut": "2026-11-20T06:53+00:00",
+     "fin": "2026-11-20T12:19+00:00",
+     "impact": "major",
+     "lien": "https://stspg.io/vlkf6x66jncd"
+    }
+   ],
+   "composants_suivis": [
+    "AI & Machine Learning || AI Endpoint"
+   ]
+  },
+  "ionos": {
+   "type": "statuspage",
+   "url": "https://status.ionos.cloud",
+   "etat_officiel": "Tout fonctionne",
+   "gravite": 0,
+   "incident_en_cours": null,
+   "incidents_30j": [],
+   "composants_suivis": [
+    "AI Model Hub"
+   ]
+  }
+ }
+}

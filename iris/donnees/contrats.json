@@ -1,0 +1,118 @@
+[
+ {
+  "id": "scaleway",
+  "nom": "Scaleway",
+  "service": "Generative APIs (serverless)",
+  "engagement_pct": 99.9,
+  "paliers": [
+   {
+    "sous_pct": 99.9,
+    "avoir_pct": 10
+   },
+   {
+    "sous_pct": 99.0,
+    "avoir_pct": 25
+   },
+   {
+    "sous_pct": 95.0,
+    "avoir_pct": 50
+   }
+  ],
+  "plafond_pct": 50,
+  "delai": "dans les 30 jours après la fin du mois",
+  "delai_jours": 30,
+  "debut_decompte": "panne",
+  "qui_est_couvert": "tout client payant de Generative APIs (pas l'usage sur crédits offerts)",
+  "verifie": true,
+  "source": "https://www.scaleway.com/fr/generative-apis/sla/",
+  "suivi_par_la_sonde": true,
+  "note_courte": null
+ },
+ {
+  "id": "ovhcloud",
+  "nom": "OVHcloud",
+  "service": "AI Endpoints (mode Base)",
+  "engagement_pct": 99.5,
+  "paliers": [
+   {
+    "sous_pct": 99.5,
+    "avoir_pct": 10
+   },
+   {
+    "sous_pct": 99.0,
+    "avoir_pct": 20
+   },
+   {
+    "sous_pct": 95.0,
+    "avoir_pct": 30
+   }
+  ],
+  "plafond_pct": 30,
+  "delai": "dans les 30 jours après la fin du mois",
+  "delai_jours": 30,
+  "debut_decompte": "panne",
+  "qui_est_couvert": "clients payants d'AI Endpoints (pas l'usage anonyme gratuit)",
+  "verifie": false,
+  "source": "Conditions particulières Public Cloud OVHcloud, annexe 10 « AI Endpoints »",
+  "suivi_par_la_sonde": true,
+  "note_courte": null
+ },
+ {
+  "id": "mistral",
+  "nom": "Mistral",
+  "service": "AI Studio / La Plateforme (contrat entreprise, niveau Standard)",
+  "engagement_pct": 99.9,
+  "paliers": [
+   {
+    "sous_pct": 99.8,
+    "avoir_pct": 2
+   },
+   {
+    "sous_pct": 99.5,
+    "avoir_pct": 5
+   },
+   {
+    "sous_pct": 95.0,
+    "avoir_pct": 10
+   }
+  ],
+  "plafond_pct": 25,
+  "delai": "dans les 30 jours après la fin du mois",
+  "delai_jours": 30,
+  "debut_decompte": "panne",
+  "qui_est_couvert": "clients sous contrat entreprise uniquement (et l'offre Priority, 99,5 %). Les comptes en libre-service n'ont aucun engagement.",
+  "verifie": true,
+  "source": "https://legal.mistral.ai/terms/enterprise-service-level-and-support-schedule/",
+  "suivi_par_la_sonde": true,
+  "note_courte": "contrats entreprise uniquement"
+ },
+ {
+  "id": "ionos",
+  "nom": "IONOS",
+  "service": "AI Model Hub",
+  "engagement_pct": 99.9,
+  "paliers": [
+   {
+    "sous_pct": 99.9,
+    "avoir_pct": 10
+   },
+   {
+    "sous_pct": 99.0,
+    "avoir_pct": 25
+   },
+   {
+    "sous_pct": 95.0,
+    "avoir_pct": 40
+   }
+  ],
+  "plafond_pct": 40,
+  "delai": "dans les 30 jours après la fin du mois",
+  "delai_jours": 30,
+  "debut_decompte": "panne",
+  "qui_est_couvert": "À VÉRIFIER",
+  "verifie": false,
+  "source": "https://learn.cloud.ionos.com/foundational/products/AI/ai-model-hub.html (fiche produit, pas le contrat)",
+  "suivi_par_la_sonde": true,
+  "note_courte": null
+ }
+]
