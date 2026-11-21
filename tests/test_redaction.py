@@ -391,3 +391,26 @@ def test_controle_titre_perime_et_doublon():
     fiche = fiche_tous_connectes(tend, set(), en_ligne=[en_ligne[0]["titre"]])
     assert [t["sujet"] for t in fiche["tendances_wikipedia"]] == ["Hypothèse de Riemann"]
     assert fiche["deja_en_ligne"] == ["GTA VI sort aujourd'hui. Est-il vraiment à vous ?"]
+
+
+def test_lien_technologique_invente():
+    from sonde.coherence import techno_non_sourcee
+    from sonde.redaction import _alertes_lecture
+    # Le cas du 21 novembre : une affaire politique habillée en « fuite numérique »
+    prefet = {**ARTICLE_TC, "title": "Le préfet veut quitter son poste.<br/>Il pointe la <mark>fuite numérique</mark>.",
+              "fait": ["Le préfet a été convoqué par le ministre."],
+              "consequence": ["Les soupçons reposent sur des échanges électroniques."]}
+    lu = [{"url": "https://exemple.fr/p", "etat": "lu",
+           "texte": "Le préfet, soupçonné de fuites vers un parti, dénonce une campagne de déstabilisation. "
+                    "Pour sauvegarder cet article, connectez-vous. Votre adresse e-mail sert à la newsletter."}]
+    assert techno_non_sourcee(prefet, [lu[0]["texte"]]) == ["numérique", "électronique"]
+    assert any("Lien technologique non sourcé" in a for a in _alertes_lecture(lu, prefet))
+    # Le cas GTA : le téléchargement est bien dans l'article lu
+    gta = {**ARTICLE_TC, "fait": ["La boîte ne contient qu'un code de téléchargement."], "consequence": ["Pas de revente."]}
+    assert techno_non_sourcee(gta, ["Dans la boîte, pas de disque mais un code de téléchargement pour la console."]) == []
+    assert techno_non_sourcee(gta, []) == []          # rien de lu : rien à comparer
+
+
+def test_points_a_verifier_du_redacteur_signales():
+    art = {**ARTICLE_TC, "a_verifier": ["Confirmer la date du communiqué"]}
+    assert any("1 point(s) à vérifier" in a for a in controler(art, "tous_connectes"))

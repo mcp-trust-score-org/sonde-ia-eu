@@ -134,3 +134,12 @@ def test_flux_rss_suit_les_publications(tmp_path, monkeypatch):
     assert item.findtext("guid") == f"iris-{res['id']}" and "21 Nov 2026" in item.findtext("pubDate")
     retirer(r, "dernier-tous_connectes")
     assert ET.parse(r / "iris" / "flux.xml").getroot().find("channel/item") is None
+
+
+def test_points_a_verifier_bloquent_la_publication(tmp_path):
+    art = {**ARTICLE_TC, "title": "Un mathématicien dit avoir résolu Riemann.<br/>Avec <mark>une IA.</mark>",
+           "a_verifier": ["Confirmer la date exacte du communiqué"]}
+    r = _brouillons_du_21(tmp_path, art)
+    with pytest.raises(RefusPublication, match="1 point\\(s\\) à vérifier : Confirmer la date"):
+        publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)
+    assert publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI, forcer=True)["rubrique"] == "tous_connectes"
