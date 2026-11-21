@@ -194,9 +194,27 @@ def _alertes_lecture(lus: list[dict], article: dict) -> list[str]:
 
 # ---------------------------------------------------------------- contrôles de la charte
 
-def controler(article: dict, rubrique: str) -> list[str]:
+IMPACT_AFFIRME = re.compile(r"\b(touch[ée]s?|impact[ée]s?|affect[ée]s?|perturb[ée]s?|ralenti[es]?|en panne|hors service)\b", re.I)
+
+
+def _sans_anomalie_mesuree(fiche: dict | None) -> bool:
+    if not fiche or "mesures_de_la_sonde" not in fiche:
+        return False
+    m = fiche["mesures_de_la_sonde"]
+    return isinstance(m, str) or not any(x.get("anomalies") for x in m)
+
+
+def controler(article: dict, rubrique: str, fiche: dict | None = None) -> list[str]:
     """Écarts à la charte (section 5). Signalés en relecture, jamais corrigés en silence."""
     alertes = []
+    if rubrique == "une" and _sans_anomalie_mesuree(fiche):
+        fournisseurs = [f for f in (fiche.get("fournisseurs_concernes") or []) if f]
+        texte = re.sub(r"<[^>]+>", " ", " ".join([article.get("title") or ""] + [_texte(article)]))
+        for phrase in re.split(r"(?<=[.!?])\s+", texte):
+            if IMPACT_AFFIRME.search(phrase) and any(f.lower() in phrase.lower() for f in fournisseurs):
+                alertes.append(f"Affirmation non soutenue par les mesures : la sonde n'a vu aucune anomalie, "
+                               f"mais le texte dit qu'un fournisseur a été touché : « {phrase.strip()[:140]} »")
+                break
     titre = article.get("title") or ""
     if titre.count("<mark>") != 1:
         alertes.append(f"Le titre doit avoir un seul élément surligné (<mark>) : il en a {titre.count('<mark>')}.")
@@ -295,7 +313,10 @@ class Redacteur:
         systeme = (
             "Tu es rédacteur pour Iris, un média français. Tu écris en français, en respectant STRICTEMENT "
             "la charte ci-dessous.\n\nRègle absolue : tu n'utilises QUE les faits fournis dans la fiche. "
-            "Tu n'inventes aucun fait, chiffre, date, citation, nom ou source. Si une information te manque "
+            "Tu n'inventes aucun fait, chiffre, date, citation, nom ou source. Tu n'écris JAMAIS qu'un fournisseur "
+            "a été touché, impacté ou ralenti si la fiche ne contient pas d'anomalie mesurée : dis seulement qu'il "
+            "dépend de l'acteur en cause, et que la sonde n'a rien vu ou n'a pas mesuré. "
+            "Si une information te manque "
             "pour raconter l'histoire, écris « [À VÉRIFIER : ce qui manque] » à la place.\n"
             "Les heures de la fiche sont déjà en heure de Paris.\n"
             "Quand la fiche contient le texte d'articles de presse (« texte »), c'est ta source de faits : "
@@ -598,7 +619,7 @@ def _brouillon(redacteur, consigne, fiche, rubrique, format_, extra_format="") -
             art = redacteur.ecrire(consigne + "\n\n" + (FORMAT_ARTICLE % extra_format), fiche, rubrique)
             if art.get("aucun"):
                 return art, redacteur.modele, []
-            return art, redacteur.modele, controler(art, rubrique)
+            return art, redacteur.modele, controler(art, rubrique, fiche)
         except RuntimeError as e:
             return {}, "fiche", [f"Le rédacteur n'a pas répondu ({e}) : fiche à rédiger à la main."]
     return {}, "fiche", ["Pas de rédacteur disponible : fiche à rédiger à la main."]
@@ -639,7 +660,10 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture) ->
     reflexe = jour.weekday() == tc.get("reflexe_de_la_semaine", 0)
     art, auteur, alertes = _brouillon(redacteur, (
         "Rubrique : Tous connectés (édition grand public). Écris l'article sur ce sujet à partir des articles de "
-        "presse de la fiche, reformulés avec tes mots, et cite-les en sources. Le titre peut interpeller le lecteur. "
+        "presse de la fiche, reformulés avec tes mots, et cite-les en sources. Le titre peut interpeller le lecteur ; "
+        "il tient en deux phrases courtes (90 caractères au plus), modèle : « GTA VI sort aujourd'hui.<br/>Est-il "
+        "vraiment <mark>à vous ?</mark> ». Le tag commence par une majuscule (« Jeux vidéo », « Savoir »…). "
+        "N'oublie aucun fait de contexte qui change la lecture (par exemple, qui est la personne citée). "
         "Étape 3 : « Et vous ? ». Ajoute exactement 3 bons réflexes."
         + (" Ajoute aussi le bon réflexe de la semaine (une phrase-titre et une phrase d'explication)." if reflexe else "")),
         fiche_sujet, "tous_connectes", "a_chaud",
@@ -753,8 +777,10 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
             label, cle_img = CATEGORIE_PAR_TYPE.get(c["evenement"].get("type"), ("Cloud", "cloud"))
             art, auteur, alertes = _brouillon(redacteur, (
                 "Rubrique : À la une (édition entreprises). Format : À chaud. Catégorie suggérée : " + label + ".\n"
-                "Écris l'article à partir de la fiche. Titre factuel, sans « vous ». Si la sonde n'a rien mesuré, "
-                "dis-le honnêtement dans la conséquence. Étape 3 : « La dépendance révélée »."), fiche, "une", "a_chaud")
+                "Écris l'article à partir de la fiche. Titre factuel, sans « vous », en deux phrases courtes qui finissent "
+                "par un point : une situation banale, puis sa conséquence (modèle : « Une clim tombe en panne.<br/>Azure "
+                "s'est tu <mark>47 minutes.</mark> »). Si la sonde n'a rien mesuré, dis-le honnêtement dans la "
+                "conséquence. Étape 3 : « La dépendance révélée »."), fiche, "une", "a_chaud")
             if art and lus:
                 alertes += _alertes_lecture(lus, art)
             propositions.append({"rubrique": "une", "format": "a_chaud", "evenement_id": c["id"],
