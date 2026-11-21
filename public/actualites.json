@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-20T23:28:42+00:00",
+ "genere_le": "2026-11-21T00:03:41+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -17,7 +17,7 @@
   },
   "Presse (GDELT)": {
    "etat": "erreur",
-   "raison": "ValueError: GDELT : ovhcloud : Your query was too short or too long.; scaleway : Your query was too short or too long.; ionos : Your query was too short or too long.; mistral : Your query was too shor"
+   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 4 essais"
   }
  },
  "dependances": {
@@ -273,12 +273,6 @@
    "debut": "2026-11-14T05:30+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/a643zcsfc71q"
-  },
-  {
-   "titre": "Cloudflare : Issues with 1.1.1.1 public resolver in Canada",
-   "debut": "2026-11-13T23:53+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/rikplz89rpml"
   }
  ]
 }
