@@ -41,34 +41,6 @@ document.querySelectorAll("[data-chez-nous]").forEach((el) => (el.innerHTML = ch
    le fait inattendu → la conséquence technologique → la dépendance révélée,
    puis se termine par « Quel impact chez moi ? » qui renvoie vers Ma Météo. */
 const ARTICLES = {
-  clim: {
-    tag: "À la une", tagClass: "flag-red", img: "assets/une-statue.jpg", time: "6 min", demo: true,
-    title: "Une clim tombe en panne.<br/>Azure s'est tu <mark>47 minutes.</mark>",
-    chapo: "Un équipement aussi banal qu'un climatiseur a mis à l'arrêt une partie du cloud européen de Microsoft. Le statut officiel, lui, est resté vert pendant 31 minutes.",
-    fait: ["À 14:12, un groupe de refroidissement tombe en panne dans un datacenter de la région d'Amsterdam.", "Rien d'exceptionnel : ce type d'équipement casse, se répare, et d'habitude personne n'en entend parler."],
-    consequence: ["Quand la température monte dans les salles, les serveurs se protègent : ils ralentissent, puis s'arrêtent. Machines virtuelles, bases de données, API : tout ce qui est hébergé dans la zone devient injoignable, y compris les outils d'IA qui s'appuient dessus.", "Pendant 31 minutes, la page de statut officielle affiche pourtant « tout fonctionne ». Les premiers signaux viennent des utilisateurs, pas du fournisseur."],
-    lien: ["Votre disponibilité dépend d'équipements que vous ne voyez pas, chez des fournisseurs qui notent eux-mêmes leur performance.", "Iris mesure de l'extérieur, en continu, et garde les preuves horodatées. C'est ce qui permet de décider vite, de réclamer son dû et de déclarer l'incident si nécessaire."],
-    impact: {
-      status: "Vous êtes concerné", level: "red",
-      confidence: { level: "confirme", lieu: true, moment: true, symptome: true, officiel: true },
-      rows: [["Fournisseur touché", "Microsoft Azure · Amsterdam"], ["Durée mesurée", "47 min 34 s"], ["Vos services touchés", "2 sur 14"], ["Avoir estimé", "≈ 400 €"], ["Déclaration DORA", "À évaluer, rapport pré-rempli"]],
-      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#alertes", "Décider maintenant", "btn-outline"]],
-    },
-  },
-  fibre: {
-    tag: "Réseau", img: "assets/photos/reseau.jpg", time: "4 min", demo: true,
-    title: "Une pelleteuse coupe une fibre.<br/>Tout le nord <mark>ralentit.</mark>",
-    chapo: "Un chantier de voirie, un coup de godet, et des milliers d'utilisateurs voient leurs applications ramer. Rien n'est en panne. Tout est plus lent.",
-    fait: ["Sur un chantier, une pelleteuse sectionne un câble de fibre optique enterré.", "Ce genre d'accident est courant : les réseaux passent sous nos rues, et les travaux aussi."],
-    consequence: ["Le trafic se réoriente automatiquement par d'autres chemins, plus longs et plus chargés. Rien ne s'arrête, mais le temps de réponse grimpe.", "Pour une application métier ou un assistant d'IA, quelques centaines de millisecondes de plus suffisent à rendre l'usage pénible."],
-    lien: ["Une lenteur n'apparaît presque jamais sur une page de statut. Iris compare les temps de réponse de vos fournisseurs à leur niveau habituel et signale l'écart avant que vos équipes ne s'en plaignent."],
-    impact: {
-      status: "Vous êtes peut-être concerné", level: "yellow",
-      confidence: { level: "probable", lieu: true, moment: true, symptome: true, officiel: false },
-      rows: [["Fournisseur à surveiller", "OVHcloud · Roubaix"], ["Latence", "+30 % depuis 6 h"], ["Panne", "Aucune"], ["Avoir", "Non : le SLA porte sur la disponibilité"], ["Action", "Rien pour l'instant, Iris surveille"]],
-      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"]],
-    },
-  },
   maj: {
     tag: "Retour sur · juillet 2024", img: "assets/photos/logiciel.jpg", time: "5 min", demo: false,
     title: "Une mise à jour de routine.<br/><mark>8,5 millions</mark> d'écrans bleus.",
@@ -81,20 +53,6 @@ const ARTICLES = {
       confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
       rows: [["Fournisseurs surveillés", "8"], ["Incident logiciel en cours", "Aucun"], ["Registre d'informations", "À mettre à jour d'ici 12 jours"]],
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#alertes", "Mettre à jour le registre", "btn-outline"]],
-    },
-  },
-  tempete: {
-    tag: "Énergie", img: "assets/photos/energie.jpg", time: "3 min", demo: true,
-    title: "Une tempête coupe le courant.<br/>Le secours <mark>tiendra-t-il ?</mark>",
-    chapo: "Quand le réseau électrique tombe, un datacenter bascule sur ses batteries puis sur ses groupes électrogènes. En théorie.",
-    fait: ["Une tempête traverse le nord de l'Europe et prive des milliers de foyers d'électricité.", "Les datacenters de la zone perdent eux aussi leur alimentation principale."],
-    consequence: ["Les batteries prennent le relais quelques minutes, le temps que les groupes électrogènes démarrent. Si l'un d'eux démarre mal, ou si le carburant manque, des salles entières s'éteignent.", "Le scénario est rare. C'est aussi celui que les fournisseurs détaillent le moins."],
-    lien: ["Iris place chacun de vos fournisseurs sur la carte. Quand un événement touche une zone, vous savez tout de suite lesquels sont exposés."],
-    impact: {
-      status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
-      confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
-      rows: [["Fournisseurs dans la zone touchée", "0 sur 8"], ["Maintenance prévue", "AWS Dublin, samedi"]],
-      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"]],
     },
   },
   ovh: {
@@ -127,58 +85,6 @@ const ARTICLES = {
       ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#rapports", "Mettre à jour le registre", "btn-outline"]],
     },
   },
-  "azure-suite": {
-    tag: "Suite", img: "assets/card-bureau.jpg", time: "4 min", demo: true,
-    title: "Azure publie son rapport.<br/>La clim n'était <mark>pas seule.</mark>",
-    chapo: "Vingt-quatre heures après la panne d'Amsterdam, le rapport d'incident est tombé. Il raconte une histoire plus longue que celle d'un climatiseur.",
-    fait: ["Le rapport confirme la panne du groupe de refroidissement.", "Il révèle aussi que l'équipement de secours était en maintenance ce jour-là."],
-    consequence: ["Avec le secours à l'arrêt, une seule défaillance suffisait. La bascule automatique n'a pas pu se faire, et les serveurs se sont arrêtés pour se protéger.", "Le rapport annonce 41 minutes d'interruption. Iris en a mesuré 47."],
-    lien: ["Six minutes d'écart : c'est la différence entre ce que dit le fournisseur et ce que vivent vos utilisateurs.", "Pour une réclamation ou une déclaration DORA, c'est votre mesure qui compte. Celle d'Iris est horodatée."],
-    impact: {
-      status: "Votre dossier est prêt", level: "yellow",
-      confidence: { level: "confirme", lieu: true, moment: true, symptome: true, officiel: true },
-      rows: [["Durée annoncée / mesurée", "41 min / 47 min"], ["Avoir", "≈ 400 €, réclamation prête"], ["Déclaration DORA", "Rapport pré-rempli, à valider"]],
-      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"], ["#rapports", "Ouvrir le rapport", "btn-outline"]],
-    },
-  },
-  heure: {
-    tag: "Logiciel", img: "assets/card-pieces.jpg", time: "3 min", demo: true,
-    title: "L'heure d'hiver arrive.<br/>Une tâche tourne <mark>deux fois.</mark>",
-    chapo: "Une heure qui existe deux fois dans la même nuit, et un traitement automatique qui ne sait pas compter.",
-    fait: ["La nuit du passage à l'heure d'hiver, il est deux fois 2 h 30.", "Un rendez-vous banal du calendrier, que les serveurs gèrent… presque toujours."],
-    consequence: ["Une tâche planifiée à 2 h 30 s'exécute deux fois. Chez un prestataire de paiement, cela suffit à prélever certains clients en double.", "Le service client découvre le problème le lundi matin."],
-    lien: ["Ce type d'erreur ne fait tomber aucun serveur : aucune page de statut ne passe au rouge. Iris suit aussi les incidents déclarés et les anomalies de vos fournisseurs, pas seulement les pannes franches."],
-    impact: {
-      status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
-      confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
-      rows: [["Prestataires de paiement surveillés", "Aucun pour l'instant"], ["Prochain changement d'heure", "28 mars 2027"]],
-      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"]],
-    },
-  },
-  ecureuil: {
-    tag: "Infrastructure", img: "assets/card-nuages.jpg", time: "3 min", demo: true,
-    title: "Un écureuil grignote un câble.<br/>Une région <mark>bascule.</mark>",
-    chapo: "Les rongeurs comptent parmi les causes de coupure les plus anciennes des réseaux électriques. Celui-ci a testé un plan de secours.",
-    fait: ["Un écureuil s'attaque à un câble électrique près d'un poste d'alimentation.", "L'anecdote fait sourire. Les électriciens, beaucoup moins : c'est une cause de coupure bien connue."],
-    consequence: ["Le datacenter voisin perd une de ses deux arrivées électriques et bascule sur la seconde. Pendant quelques secondes, des connexions sont coupées, puis tout repart."],
-    lien: ["Un plan de secours qui fonctionne ne se voit pas, sauf si on mesure. Iris enregistre ces micro-coupures : elles signalent parfois une fragilité, et elles comptent dans vos SLA."],
-    impact: {
-      status: "Aucune anomalie mesurée chez vos fournisseurs", level: "green",
-      confidence: { level: "non", lieu: false, moment: false, symptome: false, officiel: false },
-      rows: [["Fournisseurs dans la zone", "0 sur 8"], ["Micro-coupures mesurées ce mois", "3, toutes sous 1 minute"]],
-      ctas: [["#meteo", "Voir ma météo →", "btn-yellow"]],
-    },
-  },
-  gta: {
-    audience: "public", tag: "Jeux vidéo", tagClass: "flag-cream", img: "assets/photos/jeux-video.jpg", time: "4 min",
-    title: "GTA VI sort aujourd'hui.<br/>Est-il vraiment <mark>à vous ?</mark>",
-    chapo: "GTA VI arrive enfin sur PS5 et Xbox Series, après des années d'attente et deux reports. Derrière la fête, une question que peu de joueurs se posent : qu'avez-vous acheté, au juste ?",
-    fait: ["Grand Theft Auto VI sort ce 19 novembre 2026 sur PS5 et Xbox Series X|S. Annoncé d'abord pour 2025, il a été repoussé deux fois.", "Avant même le lancement, le jeu était en tête des ventes du PlayStation Store dans toutes les régions où il était en précommande."],
-    consequence: ["Des millions de joueurs lancent le même jeu le même jour. Téléchargement, mises à jour, connexion au compte, mode en ligne : tout passe par des serveurs que personne ne voit.", "Les grands lancements mettent souvent ces infrastructures à rude épreuve. Pour le joueur, la partie commence parfois par une attente qui ne dépend pas de lui."],
-    lien: ["Un jeu acheté en téléchargement est attaché à un compte et à une boutique en ligne. Si le compte est bloqué, ou si un service ferme un jour, l'accès peut disparaître avec lui.", "Même la version en boîte de GTA VI ne contient pas de disque, seulement un code de téléchargement.", "Ce n'est pas propre à GTA : c'est le cas de la plupart des films, livres et musiques achetés en ligne."],
-    sources: [{ label: "Selectra : préchargement de GTA VI, version en boîte sans disque", url: "https://selectra.info/telecom/actualites/marche/gta-vi-prechargement-10-novembre-temps-box" }],
-    reflexes: ["Activez la double authentification sur votre compte de jeu : c'est lui qui contient votre bibliothèque.", "Faites la liste de ce que vous possédez sur disque, et de ce qui dépend d'un compte.", "Le jour d'un gros lancement, téléchargez à l'avance ou en heures creuses."],
-  },
   labubu: {
     audience: "public", tag: "Retour sur · Société · été 2025", tagClass: "flag-cream", img: "assets/photos/societe.jpg", time: "4 min",
     title: "Une peluche affole la planète.<br/>Les robots <mark>achètent avant vous.</mark>",
@@ -205,20 +111,6 @@ const ARTICLES = {
     consequence: ["Une journée chez Harper, c'est un briefing commercial, une revue des ventes, la correction d'un bug dans l'analyse automatique des devis, et le déploiement d'agents vocaux d'IA.", "Ici, l'IA n'est pas un outil parmi d'autres : c'est la chaîne de production. Si le modèle qui lit les devis se trompe, ou si le fournisseur qui fait parler les agents tombe, c'est le cœur du métier qui s'arrête."],
     lien: ["Les entreprises « nées de l'IA » montrent en accéléré ce qui arrive à toutes les autres : chaque gain de vitesse ajoute un fournisseur dont on dépend.", "Dans votre quotidien, combien d'outils s'appuient déjà sur un modèle d'IA ? Résumé de réunion, tri des mails, aide à la rédaction : la liste s'allonge sans qu'on la voie."],
     source: { label: "« 24 Hours Inside a $47M YC AI-native Insurance Startup », chaîne Will Phillips, août 2026", url: "https://www.youtube.com/watch?v=5tjNU_hsERk" },
-  },
-  "22ans": {
-    audience: "public", tag: "Jeux vidéo", tagClass: "flag-cream", img: "assets/photos/jeux-video.jpg", time: "3 min",
-    title: "22 ans pour télécharger GTA VI.<br/>La fracture numérique <mark>en une capture.</mark>",
-    chapo: "Une vidéo fait le tour des réseaux : un internaute camerounais montre l'écran de sa console, qui lui annonce 22 ans et 4 jours de téléchargement pour GTA VI. On rit. Puis on regarde le chiffre de plus près.",
-    fait: ["Sur l'écran, la barre de progression affiche 0,001 Go téléchargé sur 209,758 Go, avec cette estimation : « 22 years 4 days left ». Relayée notamment par le média Ulyces, la vidéo cumule des milliers de réactions.", "L'estimation est calculée au tout début du téléchargement, elle exagère sans doute. Mais l'ordre de grandeur, lui, dit quelque chose de vrai."],
-    consequence: ["GTA VI pèse plus de 200 Go, et même la version en boîte ne contient pas de disque, seulement un code : tout le monde doit télécharger le jeu en entier.", "Avec une bonne fibre, c'est l'affaire d'une soirée. Avec une connexion lente et chère, comme celle que décrit la presse camerounaise, ça devient presque impossible. Le jeu le plus attendu de la décennie n'est vraiment accessible qu'à ceux qui ont le bon réseau."],
-    lien: ["Quand tout passe par le téléchargement, la qualité de votre connexion décide de ce à quoi vous avez accès : un jeu, mais aussi un cours en ligne, une démarche administrative, une consultation en visio.", "Chez vous, la question n'est peut-être pas 22 ans, mais 22 heures : combien de temps tiendriez-vous si votre box tombait en panne ?"],
-    reflexes: ["Testez votre débit réel, en câble et en Wi-Fi : l'écart est souvent énorme.", "Pour les gros téléchargements, branchez la console en câble et lancez-les la nuit.", "Gardez le partage de connexion de votre téléphone en solution de secours, en surveillant votre forfait."],
-    sources: [
-      { label: "La vidéo, relayée par Ulyces (Instagram)", url: "https://www.instagram.com/ulyces.co/" },
-      { label: "Selectra : préchargement de GTA VI et temps de téléchargement", url: "https://selectra.info/telecom/actualites/marche/gta-vi-prechargement-10-novembre-temps-box" },
-      { label: "Le360 Afrique : au Cameroun, une connexion internet onéreuse et lente", url: "https://afrique.le360.ma/societe/cameroun-connexion-internet-onereuse-et-lente-on-telecharge-les-deboires-plutot-que-les-fichiers_HXCJBG2NANA3RGBUT3M2KOPQFY/" },
-    ],
   },
 };
 
@@ -338,8 +230,8 @@ renderRelecture();
 
 /* ---------- Les articles les plus lus (encart latéral) ---------- */
 const MOST_READ = {
-  pro: ["ovh", "clim", "maj"],
-  public: ["gta", "22ans", "blackout"],
+  pro: ["ovh", "maj", "cloudflare"],
+  public: ["blackout", "labubu"],
 };
 document.querySelectorAll("[data-most-read]").forEach((el) => {
   const ids = MOST_READ[el.dataset.mostRead] || [];
@@ -351,13 +243,13 @@ document.querySelectorAll("[data-most-read]").forEach((el) => {
 });
 
 /* ---------- Le Détour : sélection d'articles d'autres médias ---------- */
-const EXTERNAL = [
-  { source: "Next", cat: "Réseau", img: "reseau", title: "GTA VI peut-il casser Internet ?", why: "Ce que 200 Go téléchargés en même temps font aux réseaux.", url: "https://next.ink/265265/gta-vi-peut-il-casser-internet/" },
-  { source: "Le Grand Continent", cat: "Énergie", img: "energie", title: "Comprendre la panne d'électricité en Espagne et au Portugal", why: "Le décryptage du blackout du 28 avril 2025.", url: "https://legrandcontinent.eu/fr/2025/04/28/comprendre-la-panne-delectricite-en-espagne-et-au-portugal/" },
-  { source: "Reporterre", cat: "Société", img: "societe", title: "Panne géante en Espagne : 12 heures sans électricité", why: "Le récit d'une journée où plus rien ne passait par un écran.", url: "https://reporterre.net/Panne-geante-en-Espagne-pendant-12-heures-j-ai-vecu-sans-electricite" },
-  { source: "Le360 Afrique", cat: "Réseau", img: "savoir", title: "Cameroun : une connexion internet chère et lente", why: "La fracture numérique, vue de l'intérieur.", url: "https://afrique.le360.ma/societe/cameroun-connexion-internet-onereuse-et-lente-on-telecharge-les-deboires-plutot-que-les-fichiers_HXCJBG2NANA3RGBUT3M2KOPQFY/" },
-  { source: "Selectra", cat: "Jeux vidéo", img: "jeux-video", title: "GTA VI : combien de temps pour le télécharger ?", why: "Le calcul selon votre box, et pourquoi la boîte ne contient pas de disque.", url: "https://selectra.info/telecom/actualites/marche/gta-vi-prechargement-10-novembre-temps-box" },
-  { source: "404 Media", cat: "Média à suivre", img: "innovation", title: "Un média tech indépendant, fondé par des journalistes", why: "Leurs enquêtes sur les coulisses de la tech (en anglais).", url: "https://404media.co/about" },
+const EXTERNAL = [   // novembre 2026 au plus tôt : pas d'actualités trop anciennes dans le Détour
+  { source: "The Register", cat: "Cloud", img: "logiciel", date: "2026-11-21", title: "AWS aussi est tombé en panne. Pourquoi personne n'en a parlé (en anglais)", why: "Une panne chez le géant du cloud, passée presque inaperçue.", url: "https://www.theregister.com/columnists/2026/11/21/aws-got-hit-by-an-outage-too-heres-why-you-didnt-hear-about-it/5311511" },
+  { source: "Ars Technica", cat: "Réseau", img: "reseau", date: "2026-11-20", title: "Tous les vols arrêtés aux États-Unis : la cause bientôt connue (en anglais)", why: "Un ancien de l'aviation civile américaine explique comment moderniser un réseau vieux de plusieurs décennies sans tout clouer au sol.", url: "https://arstechnica.com/gadgets/2026/11/how-faa-can-modernize-us-national-airspace-system-without-emergency-ground-stops/" },
+  { source: "Le Monde", cat: "Cybersécurité", img: "savoir", date: "2026-11-19", title: "Cybersécurité : « il y a urgence pour la résilience de la nation » (payant ?)", why: "Après le vote de la loi, 20 000 entreprises et entités publiques auront deux ans pour appliquer leurs nouvelles obligations.", url: "https://www.lemonde.fr/pixels/article/2026/11/19/anne-le-henanff-en-matiere-de-cybersecurite-il-y-a-urgence-pour-la-resilience-de-la-nation_6813364_4408996.html" },
+  { source: "Next", cat: "Énergie", img: "energie", date: "2026-11-19", title: "Datacenters : après la course à l'énergie, la bataille de l'acceptabilité", why: "Les opérateurs de datacenters ont un nouveau mot d'ordre : se faire accepter, par le public comme par les autorités.", url: "https://next.ink/268399/les-datacenters-face-au-mur-de-lacceptabilite/" },
+  { source: "Next", cat: "Réseau", img: "reseau", date: "2026-11-18", title: "Fibre optique : après le déploiement, le déchirement", why: "Qui paiera l'entretien des réseaux de fibre construits par les collectivités ? Le bras de fer est lancé.", url: "https://next.ink/268128/fibre-optique-apres-le-deploiement-le-dechirement/" },
+  { source: "404 Media", cat: "Logiciel", img: "innovation", date: "2026-11-17", title: "« BREAKING: Everything » : quand tout repose sur la même pièce (en anglais)", why: "La célèbre tour de logiciels qui tient sur une seule brique, appliquée à tout le reste.", url: "https://www.404media.co/breaking-everything/" },
 ];
 function renderExternal() {
   const el = document.getElementById("ext-grid");
@@ -619,13 +511,13 @@ function une(a, grandPublic) {
   </article>`;
 }
 // L'ancien grand titre (écrit dans la page) devient une carte quand un article publié prend sa place.
-function carteDepuisGrandTitre(h) {
+function carteDepuisGrandTitre(h, lienTexte = "Et vous ? →") {
   const img = (h.querySelector(".une-hero-img").style.backgroundImage.match(/url\(["']?([^"')]+)/) || [])[1] || "";
   const lien = h.querySelector("a.read");
   const temps = (lien.textContent.match(/\(([^)]+)\)/) || [])[1] || "4 min";
   return `<a class="photo-card" href="${lien.getAttribute("href")}">
       <div class="pc-img pc-photo" style="background-image:url('${img}')"></div>
-      <div class="pc-body"><span class="pc-tag">${h.querySelector(".flag").textContent}</span><h3>${h.querySelector("h1").innerHTML.replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "")}</h3><span class="pc-link">Et vous ? →</span><span class="pc-time">${temps} de lecture</span></div>
+      <div class="pc-body"><span class="pc-tag">${h.querySelector(".flag").textContent}</span><h3>${h.querySelector("h1").innerHTML.replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "")}</h3><span class="pc-link">${lienTexte}</span><span class="pc-time">${temps} de lecture</span></div>
     </a>`;
 }
 fetch("publies.json", { cache: "no-store" })
@@ -640,32 +532,19 @@ fetch("publies.json", { cache: "no-store" })
       ARTICLES[a.id] = n;
     });
 
-    // À la une : une édition par jour publié (la plus récente s'affiche d'abord)
-    const parJour = {};
-    (pub.une || []).forEach((a) => (parJour[a.date] = parJour[a.date] || []).push(a));
-    const dates = Object.keys(parJour).sort().slice(-5);
-    const sw = document.querySelector(".day-switch");
-    const premiereEdition = document.querySelector("#view-une .day");
-    if (dates.length && sw && premiereEdition) {
-      dates.forEach((d) => {
-        // le grand titre : le dernier publié, sauf ceux publiés « carte seulement »
-        const tete = parJour[d].find((a) => a.place !== "carte") || parJour[d][0];
-        const autres = parJour[d].filter((a) => a !== tete);
-        const div = document.createElement("div");
-        div.className = "day";
-        div.dataset.day = "pub-" + d;
-        div.innerHTML = une(tete) + (autres.length ? `<div class="cards3">${autres.slice(0, 3).map((a) => carte(a, "Lire l'analyse →")).join("")}</div>` : "");
-        premiereEdition.parentNode.insertBefore(div, premiereEdition);
-        const b = document.createElement("button");
-        b.type = "button";
-        b.dataset.day = "pub-" + d;
-        b.textContent = etiquetteJour(d);
-        sw.appendChild(b);
-      });
-      const derniere = "pub-" + dates[dates.length - 1];
-      sw.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x.dataset.day === derniere));
-      document.querySelectorAll("#view-une .day").forEach((x) => (x.hidden = x.dataset.day !== derniere));
-      equalizeHeroes();
+    // À la une : une seule page. Le dernier article publié devient le grand titre ; l'ancien grand
+    // titre et les autres articles publiés passent en tête des cartes (comme Tous connectés).
+    const cartesUne = document.querySelector("#view-une .cards3");
+    const pubUne = [...(pub.une || [])].sort((x, y) => String(y.date || "").localeCompare(String(x.date || "")));
+    if (cartesUne && pubUne.length) {
+      const tete = pubUne.find((a) => a.place !== "carte");
+      const ancien = document.querySelector("#view-une .une-hero");
+      let cartes = pubUne.filter((a) => a !== tete).slice(0, 3).map((a) => carte(a, "Lire l'analyse →")).join("");
+      if (tete && ancien) {
+        cartes += carteDepuisGrandTitre(ancien, "Lire l'analyse →");
+        ancien.outerHTML = une(tete);
+      }
+      cartesUne.insertAdjacentHTML("afterbegin", cartes);
     }
 
     // Tous connectés : le dernier article publié devient le grand titre ; l'ancien grand titre
@@ -682,17 +561,22 @@ fetch("publies.json", { cache: "no-store" })
         ancien.outerHTML = une(tete, true);
       }
       grille.insertAdjacentHTML("afterbegin", cartes);
-      const rs = pub.tous_connectes.find((a) => a.reflexe_semaine);
+      // Le bon réflexe : celui « de la semaine » proposé par le rédacteur (moins de 7 jours),
+      // sinon le premier réflexe de l'article en grand titre. Jamais écrit à la main.
       const rc = grille.querySelector(".reflex-card");
-      if (rs && rc) {
-        rc.querySelector("h3").textContent = rs.reflexe_semaine.titre || "";
-        rc.querySelector("p").textContent = rs.reflexe_semaine.texte || "";
+      const ilYa7Jours = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
+      const rs = tc.find((a) => a.reflexe_semaine && String(a.date || "") >= ilYa7Jours);
+      const source = rs || (tete && (tete.reflexes || []).length ? tete : null);
+      if (rc && source) {
+        const titreArticle = propre(source.title).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").replace(/ \./g, ".").trim();
+        rc.querySelector("h3").textContent = rs ? rs.reflexe_semaine.titre || "" : propre(source.reflexes[0]).replace(/<[^>]+>/g, "");
+        rc.querySelector("p").textContent = rs ? rs.reflexe_semaine.texte || "" : `Tiré de « ${titreArticle} »`;
       }
     }
 
     // Le Détour : les liens publiés passent en tête de la sélection
     if ((pub.detour || []).length) {
-      EXTERNAL.unshift(...pub.detour.filter((x) => !EXTERNAL.some((e) => e.url === x.url)));
+      EXTERNAL.unshift(...pub.detour.filter((x) => (x.date || "") >= "2026-11-01" && !EXTERNAL.some((e) => e.url === x.url)));
       renderExternal();
     }
 
