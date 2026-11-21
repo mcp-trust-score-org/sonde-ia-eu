@@ -1,5 +1,17 @@
 [
  {
+  "fournisseur": "mistral",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur Mistral",
+  "texte": "Mistral AI : Temps de réponse 2,9 fois plus long que d'habitude.",
+  "horodatage": "2026-11-21T21:45:01+00:00",
+  "id": "mistral-vigilance-202611212145",
+  "canaux": [
+   "ntfy"
+  ]
+ },
+ {
   "fournisseur": "ovhcloud",
   "type": "fin_orage",
   "niveau": "vert",

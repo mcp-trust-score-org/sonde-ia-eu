@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-11-21T20:20:14+00:00",
- "phrase": "Pas encore de mesure récente.",
+ "genere_le": "2026-11-21T21:45:01+00:00",
+ "phrase": "Temps calme sur 3 fournisseurs, nuages sur Mistral.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
   {
@@ -10,16 +10,16 @@
    "pays": "FR",
    "categorie": "fournisseur",
    "offre": "porte",
-   "source": "horaire",
-   "etat": "inconnu",
-   "ciel": "Inconnu",
-   "libelle": "Pas de mesure récente",
-   "taux_erreur": null,
-   "ttft_ms": null,
+   "source": "veille",
+   "etat": "nuage",
+   "ciel": "Nuageux",
+   "libelle": "Ça ralentit",
+   "taux_erreur": 0.0,
+   "ttft_ms": 599,
    "reference_ttft_ms": 206,
-   "lenteur": null,
-   "vigilance": "vert",
-   "raison": null,
+   "lenteur": 2.91,
+   "vigilance": "orange",
+   "raison": "Temps de réponse 2,9 fois plus long que d'habitude",
    "panne_en_cours": null,
    "disponibilite": {
     "24h": 100.0,
@@ -28,13 +28,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-21T14:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-21T15:00+00:00",
      "etat": "soleil",
@@ -79,24 +72,31 @@
     },
     {
      "heure": "2026-11-21T21:00+00:00",
-     "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "etat": "nuage",
+     "ttft_ms": 599,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-21T22:00+00:00",
-     "etat": "inconnu",
+     "etat": "nuage",
      "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "certitude": "situation actuelle prolongée"
     },
     {
      "heure": "2026-11-21T23:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-22T00:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-21T16:26:00+00:00",
+   "derniere_mesure": "2026-11-21T21:44:59+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -109,14 +109,14 @@
    "pays": "FR",
    "categorie": "fournisseur",
    "offre": "porte",
-   "source": "horaire",
-   "etat": "inconnu",
-   "ciel": "Inconnu",
-   "libelle": "Pas de mesure récente",
-   "taux_erreur": null,
-   "ttft_ms": null,
+   "source": "veille",
+   "etat": "soleil",
+   "ciel": "Soleil",
+   "libelle": "Tout va bien",
+   "taux_erreur": 0.0,
+   "ttft_ms": 563,
    "reference_ttft_ms": 632,
-   "lenteur": null,
+   "lenteur": 0.89,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -127,13 +127,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-21T14:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-21T15:00+00:00",
      "etat": "soleil",
@@ -178,9 +171,10 @@
     },
     {
      "heure": "2026-11-21T21:00+00:00",
-     "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "etat": "soleil",
+     "ttft_ms": 563,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-21T22:00+00:00",
@@ -193,9 +187,15 @@
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-22T00:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-21T16:26:00+00:00",
+   "derniere_mesure": "2026-11-21T21:44:59+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -208,21 +208,21 @@
    "pays": "FR",
    "categorie": "fournisseur",
    "offre": "anonyme",
-   "source": "horaire",
-   "etat": "inconnu",
-   "ciel": "Inconnu",
-   "libelle": "Pas de mesure récente",
-   "taux_erreur": null,
-   "ttft_ms": null,
+   "source": "veille",
+   "etat": "soleil",
+   "ciel": "Soleil",
+   "libelle": "Tout va bien",
+   "taux_erreur": 0.0,
+   "ttft_ms": 310,
    "reference_ttft_ms": 614,
-   "lenteur": null,
+   "lenteur": 0.5,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
    "disponibilite": {
     "24h": 100.0,
-    "7j": 90.909,
-    "30j": 90.909
+    "7j": 91.176,
+    "30j": 91.176
    },
    "incidents_30j": [
     {
@@ -236,13 +236,6 @@
     }
    ],
    "chronologie": [
-    {
-     "heure": "2026-11-21T14:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-21T15:00+00:00",
      "etat": "inconnu",
@@ -287,9 +280,10 @@
     },
     {
      "heure": "2026-11-21T21:00+00:00",
-     "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "etat": "soleil",
+     "ttft_ms": 310,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-21T22:00+00:00",
@@ -302,9 +296,15 @@
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-22T00:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-21T16:26:00+00:00",
+   "derniere_mesure": "2026-11-21T21:44:59+00:00",
    "modele_veille": "mistral-small-3.2",
    "limites_de_debit_30j": 5,
    "acces_impossible": false,
@@ -317,14 +317,14 @@
    "pays": "DE",
    "categorie": "fournisseur",
    "offre": "porte",
-   "source": "horaire",
-   "etat": "inconnu",
-   "ciel": "Inconnu",
-   "libelle": "Pas de mesure récente",
-   "taux_erreur": null,
-   "ttft_ms": null,
+   "source": "veille",
+   "etat": "soleil",
+   "ciel": "Soleil",
+   "libelle": "Tout va bien",
+   "taux_erreur": 0.0,
+   "ttft_ms": 401,
    "reference_ttft_ms": 477,
-   "lenteur": null,
+   "lenteur": 0.84,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -335,13 +335,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-21T14:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-21T15:00+00:00",
      "etat": "soleil",
@@ -386,9 +379,10 @@
     },
     {
      "heure": "2026-11-21T21:00+00:00",
-     "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "etat": "soleil",
+     "ttft_ms": 401,
+     "taux_erreur": 0.0,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-21T22:00+00:00",
@@ -401,9 +395,15 @@
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-22T00:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-21T16:26:00+00:00",
+   "derniere_mesure": "2026-11-21T21:44:59+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
