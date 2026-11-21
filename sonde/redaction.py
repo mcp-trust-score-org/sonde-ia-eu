@@ -31,7 +31,7 @@ from zoneinfo import ZoneInfo
 
 import httpx
 
-from .coherence import titres_en_ligne
+from .coherence import techno_non_sourcee, titres_en_ligne
 
 PARIS = ZoneInfo("Europe/Paris")
 NIVEAUX = {"confirme": 4, "probable": 3, "possible": 2, "non_concerne": 1}
@@ -187,6 +187,10 @@ def _alertes_lecture(lus: list[dict], article: dict) -> list[str]:
                for a in lus if a.get("etat") != "lu"]
     if lus and not [a for a in lus if a.get("etat") == "lu"]:
         alertes.append("Aucun article n'a pu être lu : le brouillon ne repose que sur des titres.")
+    inventes = techno_non_sourcee(article, [a.get("texte") or "" for a in lus if a.get("etat") == "lu"])
+    if inventes:
+        alertes.append("Lien technologique non sourcé : le texte parle de « " + " », « ".join(inventes) + " », mais aucun "
+                       "article lu n'en parle. Le lien avec la technologie doit venir des articles, pas être supposé.")
     copies = passages_recopies(article, [a.get("texte") or "" for a in lus])
     if copies:
         alertes.append(f"{len(copies)} passage(s) recopié(s) d'un article (12 mots identiques ou plus) : à reformuler. "
@@ -255,6 +259,10 @@ def controler(article: dict, rubrique: str, fiche: dict | None = None, contexte:
     for champ in CHAMPS_ARTICLE:
         if not article.get(champ):
             alertes.append(f"Champ manquant : {champ}.")
+    a_verifier = [x for x in article.get("a_verifier") or [] if str(x).strip()]
+    if a_verifier:
+        alertes.append(f"Le rédacteur signale {len(a_verifier)} point(s) à vérifier (liste en bas de la fiche) : "
+                       "la publication est bloquée tant qu'ils restent, sauf avec « forcer ».")
     if "[À VÉRIFIER" in json.dumps(article, ensure_ascii=False).upper():
         alertes.append("Le brouillon contient des points [À VÉRIFIER] : à compléter avant publication.")
     return alertes
@@ -669,8 +677,10 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture, en
             "Rubrique : Tous connectés (édition grand public). Parmi les tendances de la fiche, choisis LE sujet "
             "qui passe le test : on peut écrire le « Et vous ? » en une phrase (une dépendance à la technologie "
             "dans la vie de tous les jours). Pas de filtre par thème : pop culture, achats, société, monde. "
-            "Il faut au moins un article de presse de la fiche qui en parle. Ne choisis jamais un sujet de la liste "
-            "« deja_en_ligne » : il est déjà sur la page. Réponds : {\"sujet\": \"…\", "
+            "Il faut au moins un article de presse de la fiche qui en parle, et la technologie doit être DANS ces "
+            "articles (une appli, un compte, un réseau, une panne, un écran…) : si tu dois la supposer, le sujet ne "
+            "passe pas le test. Écarte les affaires judiciaires ou politiques qui visent une personne nommée. "
+            "Ne choisis jamais un sujet de la liste « deja_en_ligne » : il est déjà sur la page. Réponds : {\"sujet\": \"…\", "
             "\"et_vous\": \"la phrase du test\", \"urls\": [\"jusqu'à 3 liens d'articles de la fiche sur ce sujet\"]} "
             "ou {\"aucun\": true, \"raison\": \"…\"}.", fiche, "tous_connectes")
     except RuntimeError as e:
@@ -697,6 +707,8 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture, en
         "moyen de <mark>payer son pain.</mark> ». Si l'événement a déjà eu lieu, le titre le dit au passé "
         "(« est sorti jeudi », jamais « sort ce jeudi ») : vérifie la date dans les articles. Le tag commence par une majuscule (« Jeux vidéo », « Savoir »…). "
         "N'oublie aucun fait de contexte qui change la lecture (par exemple, qui est la personne citée). "
+        "Le lien avec la technologie vient des articles : n'invente jamais un usage du numérique qui n'y figure pas, "
+        "et ne prête à personne des propos qu'il n'a pas tenus. "
         "Étape 3 : « Et vous ? ». Ajoute exactement 3 bons réflexes."
         + (" Ajoute aussi le bon réflexe de la semaine (une phrase-titre et une phrase d'explication)." if reflexe else "")),
         fiche_sujet, "tous_connectes", "a_chaud",

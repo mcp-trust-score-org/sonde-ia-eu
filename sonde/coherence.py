@@ -104,3 +104,42 @@ def doublon(titre: str, en_ligne: list[dict], sauf_id: str | None = None) -> str
             deja = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", x["titre"])).strip()
             return f"Doublon : ce sujet est déjà en ligne dans la rubrique (« {deja[:90]} »)."
     return None
+
+
+# ---------------------------------------------------------------- lien technologique sourcé
+
+# Familles de mots qui font le lien avec la technologie. Si le texte en emploie une que les
+# articles lus n'emploient jamais, le lien a peut-être été inventé pour coller à la rubrique.
+TECHNO = {
+    "numérique": r"numeriques?|digital\w*",
+    "électronique": r"electroniques?",
+    "téléphone": r"smartphones?|telephones?|iphones?|mobiles?",
+    "application": r"applis?|applications? (?:mobiles?|de messagerie)|appli\w*",
+    "messagerie": r"messageries?|sms|whatsapp|telegram|textos?",
+    "internet": r"internet|en ligne|web",
+    "intelligence artificielle": r"intelligence artificielle|ia|chatgpt|algorithmes?",
+    "serveurs": r"serveurs?|cloud|datacenters?|centres? de donnees",
+    "réseaux sociaux": r"reseaux? sociaux|reseau social|tiktok|instagram|facebook",
+    "piratage": r"cyber\w*|piratages?|pirates? informatiques?|hackers?|rancongiciels?",
+    "connecté": r"connecte(?:e|s|es)?|objets? connectes?",
+    "logiciel": r"logiciels?|ordinateurs?|informatiques?",
+    "téléchargement": r"telecharg\w+|dematerialis\w+|streaming|consoles?",
+}
+
+
+def _famille_presente(motif: str, plat: str) -> bool:
+    return re.search(rf"(?<![a-z0-9])(?:{motif})(?![a-z0-9])", plat) is not None
+
+
+def techno_non_sourcee(article: dict, textes: list[str]) -> list[str]:
+    """Les mots technologiques du titre, du chapeau, du fait et de la conséquence qui
+    n'apparaissent dans aucun des articles lus. Vide si aucun article n'a été lu."""
+    sources = " ".join(_plat(t) for t in textes if t)
+    if not sources.strip():
+        return []
+    a = article or {}
+    mini = a.get("une_mini") or {}
+    texte = _plat(" ".join([a.get("title") or "", a.get("chapo") or ""] + list(a.get("fait") or [])
+                           + list(a.get("consequence") or []) + [str(v) for v in mini.values()]))
+    return [nom for nom, motif in TECHNO.items()
+            if _famille_presente(motif, texte) and not _famille_presente(motif, sources)]

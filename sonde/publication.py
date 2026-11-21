@@ -11,7 +11,7 @@ Emplacement : par défaut, le dernier article publié devient le grand titre de 
 (l'ancien grand titre descend en première carte). Avec --carte, il ne va que dans les cartes.
 
 Garde-fous : on ne publie pas une fiche vide (le rédacteur n'a pas écrit l'article), ni —
-sauf avec --forcer — un brouillon qui contient encore des [À VÉRIFIER], un titre périmé
+sauf avec --forcer — un brouillon qui contient encore des [À VÉRIFIER] ou des points « à vérifier » du rédacteur, un titre périmé
 (« sort ce jeudi » publié un samedi) ou un sujet déjà en ligne dans la rubrique.
 Le tag de confiance n'est jamais publié : il ne sert qu'à la relecture.
 """
@@ -136,6 +136,10 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
     article = vers_le_site(p, date)
     if not forcer and "À VÉRIFIER" in _texte_brut(article).upper():
         raise RefusPublication("Le brouillon contient encore des [À VÉRIFIER]. Corrigez-les, ou cochez « forcer ».")
+    a_verifier = [str(x).strip() for x in (p.get("article") or {}).get("a_verifier") or [] if str(x).strip()]
+    if not forcer and a_verifier:
+        raise RefusPublication(f"Le rédacteur a laissé {len(a_verifier)} point(s) à vérifier : " + " ; ".join(a_verifier)[:300]
+                               + ". Vérifiez-les, puis cochez « forcer ».")
     if rub != "detour":
         if carte:
             article["place"] = "carte"
