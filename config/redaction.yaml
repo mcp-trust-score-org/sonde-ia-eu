@@ -43,6 +43,9 @@ redacteur:
       base_url: https://models.github.ai/inference
       cle_env: GITHUB_TOKEN
       modeles: [openai/gpt-4.1, openai/gpt-4o]
+      entetes:
+        Accept: application/vnd.github+json
+        X-GitHub-Api-Version: "2022-11-28"
       # Offre gratuite : 8 000 jetons au plus par requête. On raccourcit les extraits d'articles
       # pour tenir dans environ 22 000 caractères (charte + consigne + faits).
       max_caracteres_entree: 22000
