@@ -1,6 +1,7 @@
 """Publication : un brouillon validé passe sur le site.
 
     python -m sonde publier --rubrique une [--date 2026-11-22] [--numero 1] [--carte] [--forcer]
+    python -m sonde publier --rubrique detour --liens "1, 3, 4"
     python -m sonde publier --retirer <id>
 
 Le brouillon est lu dans redaction/propositions/<date>.json et ajouté à iris/publies.json,
@@ -80,11 +81,26 @@ def _impact(p: dict) -> dict:
             "ctas": [["#meteo", "Voir ma météo →", "btn-yellow"], ["#rapports", "Mes rapports", "btn-outline"]]}
 
 
-def vers_le_site(p: dict, date: str) -> dict:
+def garder_liens(liens: list, choix: str | None) -> list:
+    """« 1, 3, 4 » → ces liens-là, dans l'ordre du brouillon. Vide ou absent : tous."""
+    choix = (choix or "").strip()
+    if not choix:
+        return liens
+    try:
+        numeros = sorted({int(x) for x in choix.replace(";", ",").replace(" ", ",").split(",") if x.strip()})
+    except ValueError:
+        raise RefusPublication(f"« Liens à garder » illisible : {choix!r}. Écrivez par exemple 1, 3, 4.")
+    hors = [k for k in numeros if not 1 <= k <= len(liens)]
+    if hors:
+        raise RefusPublication(f"Ce Détour n'a que {len(liens)} lien(s) : pas de n° {', '.join(map(str, hors))}.")
+    return [liens[k - 1] for k in numeros]
+
+
+def vers_le_site(p: dict, date: str, liens_a_garder: str | None = None) -> dict:
     """Un brouillon (redaction/propositions) → un article au format du site (iris/main.js)."""
     rub = p["rubrique"]
     if rub == "detour":
-        liens = [l for l in p.get("liens") or [] if l.get("url")]
+        liens = garder_liens([l for l in p.get("liens") or [] if l.get("url")], liens_a_garder)
         if not liens:
             raise RefusPublication("Ce Détour ne contient aucun lien.")
         sans_phrase = [l["titre"] for l in liens if not l.get("pourquoi")]
@@ -121,7 +137,7 @@ def vers_le_site(p: dict, date: str) -> dict:
 
 
 def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 1, forcer: bool = False,
-            maintenant: datetime | None = None, carte: bool = False) -> dict:
+            maintenant: datetime | None = None, carte: bool = False, liens: str | None = None) -> dict:
     maintenant = maintenant or datetime.now(timezone.utc)
     rub = RUBRIQUES.get((rubrique or "").strip().lower())
     if not rub:
@@ -137,7 +153,7 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
     if not 1 <= numero <= len(candidats):
         raise RefusPublication(f"Il n'y a que {len(candidats)} brouillon(s) « {rub} » le {date}.")
     p = candidats[numero - 1]
-    article = vers_le_site(p, date)
+    article = vers_le_site(p, date, liens)
     if not forcer and "À VÉRIFIER" in _texte_brut(article).upper():
         raise RefusPublication("Le brouillon contient encore des [À VÉRIFIER]. Corrigez-les, ou cochez « forcer ».")
     ligne = [a for a in p.get("alertes_charte") or [] if str(a).startswith("Ligne éditoriale")]
@@ -161,7 +177,10 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
     publies = json.loads(sortie.read_text(encoding="utf-8")) if sortie.exists() else {"une": [], "tous_connectes": [], "detour": []}
     if rub == "detour":
         deja = {l["url"] for l in publies.get("detour") or []}
+        for l in article["liens"]:
+            l["publie_le"] = maintenant.isoformat(timespec="seconds")
         publies["detour"] = [l for l in article["liens"] if l["url"] not in deja] + (publies.get("detour") or [])
+        p["liens_gardes"] = [l["url"] for l in article["liens"]]
         ident = f"detour-{date}"
     else:
         article["publie_le"] = maintenant.isoformat(timespec="seconds")

@@ -632,7 +632,7 @@ def choisir_detour(tend: dict, deja: set, n: int) -> list[dict]:
     """Les plus récents, en variant les médias (2 par média au plus)."""
     choix, par_media = [], {}
     for a in tend.get("detour") or []:
-        if a["url"] in deja or par_media.get(a["media"], 0) >= 2:
+        if a["url"] in deja or hors_ligne(a["url"]) or par_media.get(a["media"], 0) >= 2:
             continue
         par_media[a["media"]] = par_media.get(a["media"], 0) + 1
         choix.append(a)
@@ -760,9 +760,11 @@ def _detour(redacteur, client, tend, deja, dt, lecture) -> dict:
         try:
             rep = redacteur.ecrire(
                 f"Rubrique : Le Détour. Parmi ces articles d'autres médias, choisis-en {n} qui éclairent une "
-                "dépendance à la technologie et apprennent quelque chose. Varie les médias et les sujets. "
-                "Pour chacun, écris UNE phrase « pourquoi le lire », avec tes mots, d'après le début de l'article "
-                "(ou le titre seul s'il n'a pas pu être lu), sans rien inventer. Réponds : {\"liens\": [{\"url\": \"…\", "
+                "dépendance à la technologie et apprennent quelque chose. Varie les médias et les sujets. Mêmes "
+                "exclusions que la charte : pas de politique, pas de faits divers, pas de sujet où la technologie "
+                "n'est qu'un décor. Pour chacun, écris UNE phrase « pourquoi le lire », avec tes mots, qui dit quelle "
+                "dépendance l'article éclaire, d'après le début de l'article (ou le titre seul s'il n'a pas pu être "
+                "lu), sans rien inventer. Réponds : {\"liens\": [{\"url\": \"…\", "
                 "\"categorie\": \"…\", \"pourquoi\": \"…\"}]}", {"articles": choix}, "detour")
             par_url = {a["url"]: a for a in choix}
             liens = [{**{k: v for k, v in par_url[l["url"]].items() if k != "debut_de_l_article"},
@@ -933,8 +935,9 @@ def en_markdown(s: dict) -> str:
             l += ["**À vérifier**", ""] + [f"- ⚠ {a}" for a in p["alertes_charte"]] + [""]
         a = p.get("article") or {}
         if p["rubrique"] == "detour":
-            for x in p.get("liens") or []:
-                l.append(f"- **{x['media']}** · {x.get('categorie') or '…'} · [{x['titre']}]({x['url']}) {x.get('mention', '')}".rstrip())
+            l += ["_Pour publier : Publier un brouillon → Le Détour, et indiquez les numéros à garder (par exemple 1, 3, 4)._", ""]
+            for k, x in enumerate(p.get("liens") or [], 1):
+                l.append(f"{k}. **{x['media']}** · {x.get('categorie') or '…'} · [{x['titre']}]({x['url']}) {x.get('mention', '')}".rstrip())
                 l.append(f"  {x.get('pourquoi') or '_Pourquoi le lire : à écrire._'}")
             l.append("")
             continue

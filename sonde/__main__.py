@@ -204,6 +204,7 @@ def main(argv: list[str] | None = None) -> int:
     pub.add_argument("--numero", type=int, default=1)
     pub.add_argument("--forcer", action="store_true")
     pub.add_argument("--carte", action="store_true", help="dans les cartes seulement, pas en grand titre")
+    pub.add_argument("--liens", default="", help="Détour : numéros des liens à garder, par exemple « 1, 3, 4 » (vide : tous)")
     pub.add_argument("--retirer", default="", help="dernier-une, dernier-tous_connectes, dernier-detour ou un identifiant")
     av = sous.add_parser("avoirs", help="avoirs dus selon les contrats")
     av.add_argument("--mois", default=None, help="AAAA-MM (par défaut : le mois précédent)")
@@ -261,7 +262,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"  {n} élément(s) retiré(s) du site.")
             return 0 if n else 1
         try:
-            res = publier(RACINE, args.rubrique, args.date, args.numero, args.forcer, carte=args.carte)
+            res = publier(RACINE, args.rubrique, args.date, args.numero, args.forcer, carte=args.carte, liens=args.liens)
         except RefusPublication as e:
             print(f"::error::Publication refusée : {e}")
             print(f"  Publication refusée : {e}")
