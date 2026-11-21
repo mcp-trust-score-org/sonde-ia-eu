@@ -60,6 +60,14 @@ def _gdelt_requete_souple(client, construire, liste: list, params: dict, attendr
 
 # ---------------------------------------------------------------- flux RSS des médias
 
+def _lien_propre(url: str) -> str:
+    """Retire les paramètres de suivi (#xtor=…, utm_…, at_…) : des liens plus courts et plus lisibles."""
+    from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+    morceaux = urlsplit(url)
+    requete = [(k, v) for k, v in parse_qsl(morceaux.query) if not k.startswith(("utm_", "at_", "xtor"))]
+    return urlunsplit((morceaux.scheme, morceaux.netloc, morceaux.path, urlencode(requete), ""))
+
+
 def _sans_balises(texte: str | None) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", texte or "")).strip()
 
@@ -100,7 +108,7 @@ def lire_flux(client, flux: list[dict], depuis: datetime, mots: list[str] | None
                 continue
             vus.add(_plat(titre))
             n += 1
-            articles.append({"media": nom, "titre": titre, "url": lien, "date": _iso(quand), "resume": resume or None,
+            articles.append({"media": nom, "titre": titre, "url": _lien_propre(lien), "date": _iso(quand), "resume": resume or None,
                              "langue": f.get("langue", "français")})
         etats[nom] = f"ok ({n})"
     return articles, etats

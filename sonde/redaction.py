@@ -22,6 +22,8 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
+import traceback
 from html.parser import HTMLParser
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -238,7 +240,6 @@ class Redacteur:
     """
 
     def __init__(self, conf: dict, charte: str, client: httpx.Client, env: dict, attendre=None):
-        import time
         self.charte, self.client, self.attendre = charte, client, attendre or time.sleep
         self.conf = conf
         services = conf.get("services")
@@ -254,25 +255,43 @@ class Redacteur:
                 self.services.append({**sv, "cle": cle, "modeles": modeles, "appels": 0})
         self.essais = [(sv, m) for sv in self.services for m in sv["modeles"]]
         self.modele = self.essais[0][1] if self.essais else None
+        self.journal = []                       # chaque appel : service, modèle, résultat (lisible dans le brouillon)
+        self.budget_s = conf.get("budget_s", 600)
+        self.debut = time.monotonic()
+        self.horloge = time.monotonic
 
     @property
     def actif(self) -> bool:
         return bool(self.essais)
 
-    def ecrire(self, consigne: str, fiche: dict) -> dict:
+    def charte_pour(self, rubrique: str | None) -> str:
+        """Les règles communes et la section de la rubrique : une consigne plus courte."""
+        if not rubrique:
+            return self.charte
+        garde = {"une": "## 2.", "tous_connectes": "## 3.", "detour": "## 4."}[rubrique]
+        morceaux = re.split(r"(?m)^(?=## )", self.charte)
+        return "".join(m for m in morceaux if not m.startswith("## ") or m.startswith(("## 0.", "## 1.", "## 5.", garde)))
+
+    def ecrire(self, consigne: str, fiche: dict, rubrique: str | None = None) -> dict:
         """Essaie le modèle qui a répondu en dernier, puis les autres dans l'ordre ; garde celui qui répond."""
         erreurs = []
         ordre = sorted(self.essais, key=lambda e: e[1] != self.modele)
         for sv, modele in ordre:
+            if self.horloge() - self.debut > self.budget_s:
+                erreurs.append(f"temps écoulé ({self.budget_s // 60} min) : arrêt des essais pour aujourd'hui")
+                break
+            if sv.get("sature"):
+                erreurs.append(f"{modele} : {sv.get('nom')} saturé, non réessayé")
+                continue
             try:
-                rep = self._ecrire(consigne, fiche, modele, sv)
+                rep = self._ecrire(consigne, fiche, modele, sv, rubrique)
                 self.modele = modele
                 return rep
             except RuntimeError as e:
                 erreurs.append(f"{modele} : {e}")
         raise RuntimeError(" ; ".join(erreurs)[:400])
 
-    def _ecrire(self, consigne: str, fiche: dict, modele: str, sv: dict) -> dict:
+    def _ecrire(self, consigne: str, fiche: dict, modele: str, sv: dict, rubrique: str | None = None) -> dict:
         systeme = (
             "Tu es rédacteur pour Iris, un média français. Tu écris en français, en respectant STRICTEMENT "
             "la charte ci-dessous.\n\nRègle absolue : tu n'utilises QUE les faits fournis dans la fiche. "
@@ -284,14 +303,22 @@ class Redacteur:
             "de quelques mots ; une citation, si elle est indispensable, fait moins de 15 mots, entre guillemets, "
             "avec le nom du média. Un article marqué non lu ne t'apporte que son titre.\n"
             "Tu réponds uniquement par un objet JSON valide, sans texte autour.\n\n"
-            "=== CHARTE ===\n" + self.charte
+            "=== CHARTE ===\n" + self.charte_pour(rubrique)
         )
+        if sv.get("max_caracteres_entree"):
+            # Certains services gratuits limitent la taille d'une requête : on raccourcit les textes d'articles.
+            fiche = alleger(fiche, sv["max_caracteres_entree"] - len(systeme) - len(consigne))
         corps = {"model": modele, "temperature": self.conf.get("temperature", 0.4),
                  "response_format": {"type": "json_object"},
                  "messages": [{"role": "system", "content": systeme},
                               {"role": "user", "content": consigne + "\n\n=== FICHE ===\n" + json.dumps(fiche, ensure_ascii=False, indent=1)}]}
         derniere = None
+        refus = 0
         entetes = {"Authorization": f"Bearer {sv['cle']}"} if sv.get("cle") else {}
+
+        def noter(resultat):
+            self.journal.append({"service": sv.get("nom") or sv["base_url"], "modele": modele, "rubrique": rubrique,
+                                 "resultat": resultat[:160]})
         for essai in range(self.conf.get("essais", 2)):
             if sv["appels"] and sv.get("pause_s"):
                 self.attendre(sv["pause_s"])           # services gratuits : quelques requêtes par minute
@@ -299,7 +326,12 @@ class Redacteur:
             try:
                 r = self.client.post(f"{sv['base_url'].rstrip('/')}/chat/completions", json=corps,
                                      headers=entetes, timeout=self.conf.get("delai_s", 90))
-                if r.status_code == 429 and essai + 1 < self.conf.get("essais", 2):
+                if r.status_code == 429:
+                    refus += 1
+                    noter("HTTP 429 (trop de requêtes)")
+                    if refus >= 2:
+                        sv["sature"] = True               # inutile d'insister sur ce service aujourd'hui
+                if r.status_code == 429 and essai + 1 < self.conf.get("essais", 2) and not sv.get("sature"):
                     # Trop de requêtes : on attend le délai demandé par le service (ou une minute), puis on réessaie.
                     try:
                         delai = float(r.headers.get("retry-after") or sv.get("attente_429_s", 65))
@@ -312,14 +344,60 @@ class Redacteur:
                     corps.pop("response_format")       # modèle qui ne connaît pas le mode JSON : on réessaie sans
                     derniere = f"HTTP {r.status_code}"
                     continue
+                if r.status_code >= 400:
+                    noter(f"HTTP {r.status_code} {r.text.strip()[:100]}")
                 r.raise_for_status()
                 texte = r.json()["choices"][0]["message"]["content"]
                 texte = re.sub(r"^```(?:json)?|```$", "", (texte or "").strip()).strip()
                 debut, fin = texte.find("{"), texte.rfind("}")
-                return json.loads(texte[debut:fin + 1] if debut >= 0 else texte)
+                rep = json.loads(texte[debut:fin + 1] if debut >= 0 else texte)
+                noter("ok")
+                return rep
             except (httpx.HTTPError, KeyError, IndexError, ValueError) as e:
                 derniere = f"{type(e).__name__}: {e}"[:200]
+                if not isinstance(e, httpx.HTTPStatusError):
+                    noter(derniere)
         raise RuntimeError(derniere or "réponse vide")
+
+
+def alleger(fiche, budget: int):
+    """Raccourcit les textes d'articles (puis les listes) jusqu'à tenir dans `budget` caractères."""
+    import copy
+    f = copy.deepcopy(fiche)
+    longs = ("texte", "debut_de_l_article", "resume")
+
+    def taille():
+        return len(json.dumps(f, ensure_ascii=False, indent=1))
+
+    def parcourir(x, action):
+        if isinstance(x, dict):
+            for k, v in x.items():
+                if k in longs and isinstance(v, str):
+                    x[k] = action(v)
+                else:
+                    parcourir(v, action)
+        elif isinstance(x, list):
+            for v in x:
+                parcourir(v, action)
+
+    for _ in range(12):
+        if taille() <= budget:
+            return f
+        parcourir(f, lambda t: t[: max(300, int(len(t) * 0.7))] + ("…" if len(t) > 300 else ""))
+    def couper_listes(x):
+        if isinstance(x, dict):
+            for k, v in x.items():
+                if isinstance(v, list) and len(v) > 5:
+                    x[k] = v[: max(5, int(len(v) * 0.6))]
+                couper_listes(x[k])
+        elif isinstance(x, list):
+            for v in x:
+                couper_listes(v)
+    for _ in range(6):
+        if taille() <= budget:
+            break
+        couper_listes(f)
+    return f
 
 
 FORMAT_ARTICLE = """Réponds avec ce JSON :
@@ -467,7 +545,7 @@ def _brouillon(redacteur, consigne, fiche, rubrique, format_, extra_format="") -
     """(article, auteur, alertes). Repli sur une fiche à rédiger si le rédacteur n'est pas disponible."""
     if redacteur and redacteur.actif:
         try:
-            art = redacteur.ecrire(consigne + "\n\n" + (FORMAT_ARTICLE % extra_format), fiche)
+            art = redacteur.ecrire(consigne + "\n\n" + (FORMAT_ARTICLE % extra_format), fiche, rubrique)
             if art.get("aucun"):
                 return art, redacteur.modele, []
             return art, redacteur.modele, controler(art, rubrique)
@@ -492,7 +570,7 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture) ->
             "dans la vie de tous les jours). Pas de filtre par thème : pop culture, achats, société, monde. "
             "Il faut au moins un article de presse de la fiche qui en parle. Réponds : {\"sujet\": \"…\", "
             "\"et_vous\": \"la phrase du test\", \"urls\": [\"jusqu'à 3 liens d'articles de la fiche sur ce sujet\"]} "
-            "ou {\"aucun\": true, \"raison\": \"…\"}.", fiche)
+            "ou {\"aucun\": true, \"raison\": \"…\"}.", fiche, "tous_connectes")
     except RuntimeError as e:
         return {"rubrique": "tous_connectes", "auteur": "fiche", "article": {}, "fiche": fiche,
                 "alertes_charte": [f"Le rédacteur n'a pas répondu ({e}) : choisir un sujet dans la fiche."]}
@@ -545,7 +623,7 @@ def _detour(redacteur, client, tend, deja, dt, lecture) -> dict:
                 "dépendance à la technologie et apprennent quelque chose. Varie les médias et les sujets. "
                 "Pour chacun, écris UNE phrase « pourquoi le lire », avec tes mots, d'après le début de l'article "
                 "(ou le titre seul s'il n'a pas pu être lu), sans rien inventer. Réponds : {\"liens\": [{\"url\": \"…\", "
-                "\"categorie\": \"…\", \"pourquoi\": \"…\"}]}", {"articles": choix})
+                "\"categorie\": \"…\", \"pourquoi\": \"…\"}]}", {"articles": choix}, "detour")
             par_url = {a["url"]: a for a in choix}
             liens = [{**{k: v for k, v in par_url[l["url"]].items() if k != "debut_de_l_article"},
                       "categorie": l.get("categorie"), "pourquoi": l.get("pourquoi")}
@@ -570,6 +648,16 @@ def _detour(redacteur, client, tend, deja, dt, lecture) -> dict:
     return {"rubrique": "detour", "auteur": auteur, "liens": liens, "alertes_charte": alertes}
 
 
+class _Liste(list):
+    """Une liste qui enregistre les brouillons à chaque ajout."""
+    apres_ajout = None
+
+    def append(self, x):
+        super().append(x)
+        if self.apres_ajout:
+            self.apres_ajout()
+
+
 def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: dict | None = None,
             maintenant: datetime | None = None, attendre=None) -> dict:
     env = env if env is not None else os.environ
@@ -589,7 +677,11 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
     client = client or httpx.Client(timeout=90)
     redacteur = Redacteur(conf.get("redacteur") or {}, charte, client, env, attendre)
     lecture = conf.get("lecture") or {}
-    propositions, reserve_une = [], []
+    propositions, reserve_une = _Liste(), []
+    etat = {"jour": jour, "maintenant": maintenant, "propositions": propositions, "reserve_une": reserve_une,
+            "tend": tend, "redacteur": redacteur, "racine": racine, "deja": deja, "chemin_deja": chemin_deja}
+    propositions.apres_ajout = lambda: enregistrer(etat, "en_cours")
+    enregistrer(etat, "en_cours")
 
     try:
         # ---- À la une : un sujet par jour
@@ -613,8 +705,8 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
                                  "auteur": auteur, "image": f"assets/photos/{images.get(cle_img, images.get('autre', 'innovation.jpg'))}",
                                  "article": art, "fiche": fiche, "alertes_charte": alertes})
             deja.setdefault("une", set()).add(c["id"])
-        reserve_une = [{"titre": c["evenement"].get("titre"), "tag_interne": TAGS_INTERNES.get(c["niveau"]), "score": c["score"]}
-                       for c in candidats[1: 1 + rythme.get("candidats_affiches", 10)]]
+        reserve_une[:] = [{"titre": c["evenement"].get("titre"), "tag_interne": TAGS_INTERNES.get(c["niveau"]), "score": c["score"]}
+                          for c in candidats[1: 1 + rythme.get("candidats_affiches", 10)]]
 
         # ---- À la une : le bilan du lundi
         if jour.weekday() == (rythme.get("une") or {}).get("bilan_le", 0):
@@ -635,18 +727,30 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
         dt = rythme.get("detour") or {}
         if jour.weekday() in dt.get("jours", [4]):
             propositions.append(_detour(redacteur, client, tend, deja, dt, lecture))
+    except Exception as e:   # jamais de passage muet : l'erreur est écrite dans le fichier des brouillons
+        etat["erreur"] = f"{type(e).__name__}: {e}\n" + traceback.format_exc()[-1500:]
+        print(etat["erreur"])
     finally:
         if propre:
             client.close()
 
-    sortie = {"date": jour.date().isoformat(), "genere_le": maintenant.isoformat(timespec="seconds"),
-              "statut": "a_relire", "propositions": propositions, "reserve_une": reserve_une,
-              "sources_tendances": tend.get("sources")}
-    dossier = racine / "redaction" / "propositions"
+    return enregistrer(etat, "a_relire" if not etat.get("erreur") else "erreur")
+
+
+def enregistrer(etat: dict, statut: str) -> dict:
+    """Écrit les brouillons tels qu'ils sont. Appelé à chaque étape : un passage coupé laisse quand même
+    un fichier qui dit où il s'est arrêté."""
+    sortie = {"date": etat["jour"].date().isoformat(), "genere_le": etat["maintenant"].isoformat(timespec="seconds"),
+              "statut": statut, "propositions": etat["propositions"], "reserve_une": etat["reserve_une"],
+              "sources_tendances": etat["tend"].get("sources"), "journal_redacteur": etat["redacteur"].journal}
+    if etat.get("erreur"):
+        sortie["erreur"] = etat["erreur"]
+    dossier = etat["racine"] / "redaction" / "propositions"
     dossier.mkdir(parents=True, exist_ok=True)
     (dossier / f"{sortie['date']}.json").write_text(json.dumps(sortie, ensure_ascii=False, indent=1), encoding="utf-8")
     (dossier / f"{sortie['date']}.md").write_text(en_markdown(sortie), encoding="utf-8")
-    chemin_deja.write_text(json.dumps({k: sorted(v)[-500:] for k, v in deja.items()}, ensure_ascii=False, indent=1), encoding="utf-8")
+    etat["chemin_deja"].write_text(json.dumps({k: sorted(v)[-500:] for k, v in etat["deja"].items()}, ensure_ascii=False, indent=1),
+                                   encoding="utf-8")
     return sortie
 
 
@@ -659,6 +763,11 @@ FORMATS = {"a_chaud": "À chaud", "bilan": "Bilan"}
 def en_markdown(s: dict) -> str:
     l = [f"# Propositions du {s['date']}", "",
          "Brouillons préparés par GitHub selon `redaction/CHARTE.md`. **Rien n'est publié** : à relire, retravailler ou écarter.", ""]
+    if s.get("statut") == "en_cours":
+        l += ["> ⚠ **Passage interrompu** : la rédaction n'est pas allée au bout (temps dépassé ?). "
+              "Voici ce qui était prêt.", ""]
+    if s.get("erreur"):
+        l += ["> ⚠ **Erreur pendant la rédaction** (détail en bas de page).", ""]
     for p in s["propositions"]:
         entete = f"## {NOMS[p['rubrique']]}" + (f" · {FORMATS.get(p.get('format'), '')}" if p.get("format") else "")
         l += [entete, ""]
@@ -696,6 +805,12 @@ def en_markdown(s: dict) -> str:
                 l += ["**Points à vérifier signalés par le rédacteur**", ""] + [f"- {x}" for x in a["a_verifier"]] + [""]
         l += [f"<details{' open' if p['auteur'] == 'fiche' else ''}><summary>Faits fournis au rédacteur</summary>", "", "```json",
               json.dumps(p.get("fiche"), ensure_ascii=False, indent=1)[:6000], "```", "</details>", ""]
+    if s.get("journal_redacteur"):
+        l += ["## Journal du rédacteur", "", "| Service | Modèle | Rubrique | Résultat |", "|---|---|---|---|"]
+        l += [f"| {j['service']} | {j['modele']} | {j.get('rubrique') or ''} | {j['resultat'].replace('|', '/')} |"
+              for j in s["journal_redacteur"]] + [""]
+    if s.get("erreur"):
+        l += ["## Erreur", "", "```", s["erreur"], "```", ""]
     if s.get("reserve_une"):
         l += ["## En réserve pour À la une", ""] + [f"- {r['titre']} ({r['tag_interne']})" for r in s["reserve_une"]] + [""]
     return "\n".join(l)
