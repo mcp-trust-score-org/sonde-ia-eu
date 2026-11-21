@@ -601,21 +601,32 @@ function carte(a, lien) {
       <div class="pc-body"><span class="pc-tag">${propre(a.tag)}</span><h3>${propre(a.title).replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "")}</h3><span class="pc-link">${lien}</span><span class="pc-time">${a.time} de lecture</span></div>
     </a>`;
 }
-function une(a) {
+function une(a, grandPublic) {
   const m = a.mini || {};
-  return `<article class="une-hero">
+  const dernier = grandPublic ? (m.dependance || (a.lien || []).slice(-1)[0]) : m.dependance;
+  return `<article class="une-hero${grandPublic ? " vies-hero" : ""}">
     <div class="une-hero-img" style="background-image:url('${a.img}')"></div>
     <div class="une-hero-text">
-      <span class="flag flag-red">À la une</span>
+      ${grandPublic ? `<span class="flag flag-cream">${propre(a.tag)}</span>` : `<span class="flag flag-red">À la une</span>`}
       <h1 class="display">${propre(a.title)}</h1>
       <ol class="steps-mini">
         ${m.fait ? `<li><span>Le fait</span>${propre(m.fait)}</li>` : ""}
         ${m.consequence ? `<li><span>La conséquence</span>${propre(m.consequence)}</li>` : ""}
-        ${m.dependance ? `<li><span>La dépendance</span>${propre(m.dependance)}</li>` : ""}
+        ${dernier ? `<li><span>${grandPublic ? "Et vous ?" : "La dépendance"}</span>${propre(dernier)}</li>` : ""}
       </ol>
-      <a href="#article-${a.id}" class="read">→ <u>Lire l'analyse (${a.time})</u></a>
+      <a href="#article-${a.id}" class="read">→ <u>${grandPublic ? "Lire l'histoire" : "Lire l'analyse"} (${a.time})</u></a>
     </div>
   </article>`;
+}
+// L'ancien grand titre (écrit dans la page) devient une carte quand un article publié prend sa place.
+function carteDepuisGrandTitre(h) {
+  const img = (h.querySelector(".une-hero-img").style.backgroundImage.match(/url\(["']?([^"')]+)/) || [])[1] || "";
+  const lien = h.querySelector("a.read");
+  const temps = (lien.textContent.match(/\(([^)]+)\)/) || [])[1] || "4 min";
+  return `<a class="photo-card" href="${lien.getAttribute("href")}">
+      <div class="pc-img pc-photo" style="background-image:url('${img}')"></div>
+      <div class="pc-body"><span class="pc-tag">${h.querySelector(".flag").textContent}</span><h3>${h.querySelector("h1").innerHTML.replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "")}</h3><span class="pc-link">Et vous ? →</span><span class="pc-time">${temps} de lecture</span></div>
+    </a>`;
 }
 fetch("publies.json", { cache: "no-store" })
   .then((r) => (r.ok ? r.json() : null))
@@ -637,7 +648,9 @@ fetch("publies.json", { cache: "no-store" })
     const premiereEdition = document.querySelector("#view-une .day");
     if (dates.length && sw && premiereEdition) {
       dates.forEach((d) => {
-        const [tete, ...autres] = parJour[d];
+        // le grand titre : le dernier publié, sauf ceux publiés « carte seulement »
+        const tete = parJour[d].find((a) => a.place !== "carte") || parJour[d][0];
+        const autres = parJour[d].filter((a) => a !== tete);
         const div = document.createElement("div");
         div.className = "day";
         div.dataset.day = "pub-" + d;
@@ -655,10 +668,19 @@ fetch("publies.json", { cache: "no-store" })
       equalizeHeroes();
     }
 
-    // Tous connectés : les articles publiés passent en tête des cartes
+    // Tous connectés : le dernier article publié devient le grand titre ; l'ancien grand titre
+    // et les autres articles publiés passent en tête des cartes (« carte seulement » : cartes uniquement).
     const grille = document.querySelector("#view-vies .cards4");
-    if (grille && (pub.tous_connectes || []).length) {
-      grille.insertAdjacentHTML("afterbegin", pub.tous_connectes.slice(0, 3).map((a) => carte(a, "Et vous ? →")).join(""));
+    const tc = pub.tous_connectes || [];
+    if (grille && tc.length) {
+      const tete = tc.find((a) => a.place !== "carte");
+      const ancien = document.querySelector("#view-vies .vies-hero");
+      let cartes = tc.filter((a) => a !== tete).slice(0, 3).map((a) => carte(a, "Et vous ? →")).join("");
+      if (tete && ancien) {
+        cartes += carteDepuisGrandTitre(ancien);
+        ancien.outerHTML = une(tete, true);
+      }
+      grille.insertAdjacentHTML("afterbegin", cartes);
       const rs = pub.tous_connectes.find((a) => a.reflexe_semaine);
       const rc = grille.querySelector(".reflex-card");
       if (rs && rc) {
@@ -676,5 +698,82 @@ fetch("publies.json", { cache: "no-store" })
     if (location.hash.startsWith("#article-")) show(location.hash.slice(1));
   })
   .catch(() => {});
+
+/* ---------- Être prévenu des nouveaux articles : notifications sur l'appareil ----------
+   sw.js reçoit les notifications ; /api/cle, /api/abonner (fonctions Vercel) gèrent l'abonnement. */
+(function alertesArticles() {
+  const bouton = document.querySelector("[data-cloche]");
+  const panneau = document.getElementById("panneau-alerte");
+  if (!bouton || !panneau) return;
+  const etat = panneau.querySelector("[data-push-etat]");
+  const action = panneau.querySelector("[data-push-activer]");
+  const ios = panneau.querySelector("[data-push-ios]");
+  const possible = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+  const iPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const installe = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+
+  bouton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    panneau.hidden = !panneau.hidden;
+    bouton.setAttribute("aria-expanded", String(!panneau.hidden));
+  });
+  document.addEventListener("click", (e) => {
+    if (!panneau.hidden && !panneau.contains(e.target)) { panneau.hidden = true; bouton.setAttribute("aria-expanded", "false"); }
+  });
+
+  function cle(base64) {   // clé publique VAPID → format attendu par le navigateur
+    const b = (base64 + "=".repeat((4 - (base64.length % 4)) % 4)).replace(/-/g, "+").replace(/_/g, "/");
+    return Uint8Array.from(atob(b), (c) => c.charCodeAt(0));
+  }
+  function afficher(abonne, message) {
+    bouton.classList.toggle("on", abonne);
+    etat.textContent = message || (abonne ? "Activées sur cet appareil." : "Une notification à chaque article publié.");
+    action.textContent = abonne ? "Désactiver" : "Activer les notifications";
+    action.dataset.abonne = abonne ? "1" : "";
+  }
+
+  if (!possible) {
+    if (iPhone && !installe) { ios.hidden = false; action.hidden = true; etat.textContent = "Sur iPhone, les notifications marchent une fois Iris ajouté à l'écran d'accueil."; }
+    else { action.hidden = true; etat.textContent = "Ce navigateur ne permet pas les notifications."; }
+    return;
+  }
+  let enregistrement = null;
+  navigator.serviceWorker.register("/sw.js").then(async (r) => {
+    enregistrement = r;
+    const abo = await r.pushManager.getSubscription();
+    afficher(Boolean(abo) && Notification.permission === "granted");
+  }).catch(() => { action.hidden = true; etat.textContent = "Notifications indisponibles pour l'instant."; });
+
+  action.addEventListener("click", async () => {
+    if (!enregistrement) return;
+    action.disabled = true;
+    try {
+      if (action.dataset.abonne) {
+        const abo = await enregistrement.pushManager.getSubscription();
+        if (abo) {
+          await fetch("/api/abonner", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ endpoint: abo.endpoint }) });
+          await abo.unsubscribe();
+        }
+        afficher(false, "Désactivées. Vous pouvez les réactiver à tout moment.");
+        return;
+      }
+      const permission = await Notification.requestPermission();
+      if (permission !== "granted") {
+        afficher(false, "Notifications refusées. Pour changer d'avis : réglages du site dans votre navigateur.");
+        return;
+      }
+      const r = await fetch("/api/cle", { cache: "no-store" });
+      if (!r.ok) throw new Error("clé");
+      const abo = await enregistrement.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: cle((await r.json()).cle) });
+      const ok = await fetch("/api/abonner", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(abo) });
+      if (!ok.ok) { await abo.unsubscribe(); throw new Error("abonnement"); }
+      afficher(true, "C'est fait : vous serez prévenu à chaque nouvel article.");
+    } catch (e) {
+      afficher(false, "Ça n'a pas marché. Réessayez dans un instant.");
+    } finally {
+      action.disabled = false;
+    }
+  });
+})();
 
 show(location.hash.slice(1));

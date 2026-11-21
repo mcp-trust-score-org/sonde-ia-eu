@@ -1,0 +1,9 @@
+{
+  "name": "iris-site",
+  "private": true,
+  "description": "Le site Iris est statique. Ce fichier ne sert qu'aux trois fonctions de notification (dossier api/).",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "web-push": "3.6.7"
+  }
+}

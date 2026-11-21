@@ -10,6 +10,9 @@
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0A0A0A" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Iris · les nouveaux articles" href="flux.xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -35,6 +38,28 @@
     <div class="plan-switch" role="group" aria-label="Type de compte (démo)">
       <button type="button" data-set-plan="standard">Standard</button>
       <button type="button" data-set-plan="premium">Premium</button>
+    </div>
+    <div class="alerte-wrap">
+      <button class="cloche" type="button" data-cloche aria-expanded="false" aria-controls="panneau-alerte" title="Être prévenu des nouveaux articles">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <i class="cloche-on" aria-hidden="true"></i>
+      </button>
+      <div class="panneau-alerte" id="panneau-alerte" hidden>
+        <h4>Être prévenu des nouveaux articles</h4>
+        <div class="pa-bloc">
+          <b>Sur cet appareil</b>
+          <p class="pa-etat" data-push-etat>Une notification à chaque article publié.</p>
+          <button type="button" class="btn btn-yellow btn-sm" data-push-activer>Activer les notifications</button>
+          <p class="pa-ios" data-push-ios hidden>Sur iPhone : touchez Partager → « Sur l'écran d'accueil », puis ouvrez Iris depuis l'icône et revenez ici.</p>
+        </div>
+        <div class="pa-bloc">
+          <b>Par e-mail</b>
+          <!-- FORMULAIRE BREVO : coller ici le code d'intégration du formulaire d'inscription Brevo,
+               à la place du paragraphe ci-dessous. -->
+          <p class="pa-etat" data-mail-bientot>Bientôt : un mail par jour au plus, quand il y a du nouveau.</p>
+        </div>
+        <a class="pa-rss" href="flux.xml">Flux RSS</a>
+      </div>
     </div>
     <button class="ask-btn" type="button" data-open-chat>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
