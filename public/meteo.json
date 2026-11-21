@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-11-21T21:45:01+00:00",
- "phrase": "Temps calme sur 3 fournisseurs, nuages sur Mistral.",
+ "genere_le": "2026-11-21T21:45:26+00:00",
+ "phrase": "Temps calme sur 3 fournisseurs, orage sur OVHcloud.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
   {
@@ -11,15 +11,15 @@
    "categorie": "fournisseur",
    "offre": "porte",
    "source": "veille",
-   "etat": "nuage",
-   "ciel": "Nuageux",
-   "libelle": "Ça ralentit",
+   "etat": "soleil",
+   "ciel": "Soleil",
+   "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 599,
+   "ttft_ms": 232,
    "reference_ttft_ms": 206,
-   "lenteur": 2.91,
-   "vigilance": "orange",
-   "raison": "Temps de réponse 2,9 fois plus long que d'habitude",
+   "lenteur": 1.13,
+   "vigilance": "vert",
+   "raison": null,
    "panne_en_cours": null,
    "disponibilite": {
     "24h": 100.0,
@@ -72,8 +72,8 @@
     },
     {
      "heure": "2026-11-21T21:00+00:00",
-     "etat": "nuage",
-     "ttft_ms": 599,
+     "etat": "soleil",
+     "ttft_ms": 232,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -96,7 +96,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-21T21:44:59+00:00",
+   "derniere_mesure": "2026-11-21T21:45:24+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -114,9 +114,9 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 563,
+   "ttft_ms": 535,
    "reference_ttft_ms": 632,
-   "lenteur": 0.89,
+   "lenteur": 0.85,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -172,7 +172,7 @@
     {
      "heure": "2026-11-21T21:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 563,
+     "ttft_ms": 535,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -195,7 +195,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-21T21:44:59+00:00",
+   "derniere_mesure": "2026-11-21T21:45:24+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -208,16 +208,16 @@
    "pays": "FR",
    "categorie": "fournisseur",
    "offre": "anonyme",
-   "source": "veille",
-   "etat": "soleil",
-   "ciel": "Soleil",
-   "libelle": "Tout va bien",
-   "taux_erreur": 0.0,
-   "ttft_ms": 310,
+   "source": "horaire",
+   "etat": "orage",
+   "ciel": "Orage",
+   "libelle": "En panne",
+   "taux_erreur": 0.778,
+   "ttft_ms": 4076,
    "reference_ttft_ms": 614,
-   "lenteur": 0.5,
-   "vigilance": "vert",
-   "raison": null,
+   "lenteur": 6.64,
+   "vigilance": "rouge",
+   "raison": "Panne en cours",
    "panne_en_cours": null,
    "disponibilite": {
     "24h": 100.0,
@@ -280,19 +280,25 @@
     },
     {
      "heure": "2026-11-21T21:00+00:00",
-     "etat": "soleil",
-     "ttft_ms": 310,
-     "taux_erreur": 0.0,
+     "etat": "inconnu",
+     "ttft_ms": null,
+     "taux_erreur": null,
      "nature": "mesure"
     },
     {
      "heure": "2026-11-21T22:00+00:00",
+     "etat": "orage",
+     "nature": "prevision",
+     "certitude": "situation actuelle prolongée"
+    },
+    {
+     "heure": "2026-11-21T23:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
     },
     {
-     "heure": "2026-11-21T23:00+00:00",
+     "heure": "2026-11-22T00:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -306,7 +312,7 @@
    ],
    "derniere_mesure": "2026-11-21T21:44:59+00:00",
    "modele_veille": "mistral-small-3.2",
-   "limites_de_debit_30j": 5,
+   "limites_de_debit_30j": 6,
    "acces_impossible": false,
    "derniere_erreur": "délai dépassé"
   },
@@ -322,9 +328,9 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 401,
+   "ttft_ms": 406,
    "reference_ttft_ms": 477,
-   "lenteur": 0.84,
+   "lenteur": 0.85,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -380,7 +386,7 @@
     {
      "heure": "2026-11-21T21:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 401,
+     "ttft_ms": 406,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -403,7 +409,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-21T21:44:59+00:00",
+   "derniere_mesure": "2026-11-21T21:45:24+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,

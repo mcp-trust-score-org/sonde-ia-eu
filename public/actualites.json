@@ -1,13 +1,12 @@
 {
- "genere_le": "2026-11-21T20:20:14+00:00",
+ "genere_le": "2026-11-21T21:43:13+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
    "etat": "ok"
   },
   "Meteoalarm": {
-   "etat": "partiel",
-   "raison": "FR : HTTPStatusError"
+   "etat": "ok"
   },
   "CERT-FR": {
    "etat": "ok"
