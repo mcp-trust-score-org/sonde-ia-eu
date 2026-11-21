@@ -60,17 +60,26 @@ jobs:
           python -m sonde bulletin
         continue-on-error: true
 
-      - name: Propositions d'articles du jour (selon redaction/CHARTE.md, rien n'est publié)
+      # Chaque commande a sa propre étape : si l'une échoue, les suivantes tournent quand même.
+      - name: Actualités et croisement
         run: |
           python -m sonde actualites
           python -m sonde croiser
-          python -m sonde tendances
-          python -m sonde rediger
+        continue-on-error: true
+        timeout-minutes: 10
+
+      - name: Tendances (Wikipédia, flux RSS)
+        run: python -m sonde tendances
+        continue-on-error: true
+        timeout-minutes: 8
+
+      - name: Propositions d'articles du jour (selon redaction/CHARTE.md, rien n'est publié)
+        run: python -m sonde rediger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
-        # Garde-fou : si les rédacteurs gratuits sont saturés, on abandonne les brouillons du jour
-        # plutôt que de bloquer l'enregistrement des relevés.
+        # Le rédacteur s'arrête seul au bout de 10 minutes d'essais ; ceci n'est qu'un dernier garde-fou.
+        # Les brouillons sont enregistrés au fil de l'eau : même coupé, le fichier du jour existe.
         timeout-minutes: 15
 
       - name: Preuves horodatées
