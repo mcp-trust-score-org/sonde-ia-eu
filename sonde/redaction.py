@@ -230,40 +230,49 @@ def controler(article: dict, rubrique: str) -> list[str]:
 # ---------------------------------------------------------------- le rédacteur (modèle d'IA)
 
 class Redacteur:
-    """Appelle un modèle compatible OpenAI avec la charte en consigne. None si pas de clé."""
+    """Appelle un modèle compatible OpenAI avec la charte en consigne.
+
+    Plusieurs services sont essayés dans l'ordre de config/redaction.yaml (`services`) :
+    ceux qui demandent une clé absente sont sautés ; si un modèle ne répond pas, on passe
+    au suivant, puis au service suivant. Le premier qui répond est gardé pour la suite.
+    """
 
     def __init__(self, conf: dict, charte: str, client: httpx.Client, env: dict, attendre=None):
         import time
         self.charte, self.client, self.attendre = charte, client, attendre or time.sleep
-        self.cle = env.get(conf.get("cle_env", "MISTRAL_API_KEY"))
-        secours = conf.get("secours") or {}
-        if self.cle or not secours:
-            self.conf = conf
-        else:   # pas de clé principale : le modèle de secours (OVHcloud anonyme par défaut)
-            self.conf = {**conf, **secours}
-            self.cle = env.get(secours["cle_env"]) if secours.get("cle_env") else None
-        self.sans_cle = bool(self.conf.get("sans_cle")) and not self.cle
-        self.modeles = list(self.conf.get("modeles") or [self.conf.get("modele", "mistral-medium-latest")])
-        self.modele = self.modeles[0]
-        self.appels = 0
+        self.conf = conf
+        services = conf.get("services")
+        if not services:   # ancien format : un service principal et un secours
+            services = [{k: v for k, v in conf.items() if k in ("base_url", "cle_env", "modele", "modeles", "pause_s")}]
+            if conf.get("secours"):
+                services.append(conf["secours"])
+        self.services = []
+        for sv in services:
+            cle = env.get(sv["cle_env"]) if sv.get("cle_env") else None
+            if cle or sv.get("sans_cle"):
+                modeles = list(sv.get("modeles") or [sv.get("modele", "mistral-medium-latest")])
+                self.services.append({**sv, "cle": cle, "modeles": modeles, "appels": 0})
+        self.essais = [(sv, m) for sv in self.services for m in sv["modeles"]]
+        self.modele = self.essais[0][1] if self.essais else None
 
     @property
     def actif(self) -> bool:
-        return bool(self.cle) or self.sans_cle
+        return bool(self.essais)
 
     def ecrire(self, consigne: str, fiche: dict) -> dict:
-        """Essaie le modèle en cours, puis les suivants de la liste ; garde celui qui a répondu."""
+        """Essaie le modèle qui a répondu en dernier, puis les autres dans l'ordre ; garde celui qui répond."""
         erreurs = []
-        for modele in [self.modele] + [m for m in self.modeles if m != self.modele]:
+        ordre = sorted(self.essais, key=lambda e: e[1] != self.modele)
+        for sv, modele in ordre:
             try:
-                rep = self._ecrire(consigne, fiche, modele)
+                rep = self._ecrire(consigne, fiche, modele, sv)
                 self.modele = modele
                 return rep
             except RuntimeError as e:
                 erreurs.append(f"{modele} : {e}")
-        raise RuntimeError(" ; ".join(erreurs)[:300])
+        raise RuntimeError(" ; ".join(erreurs)[:400])
 
-    def _ecrire(self, consigne: str, fiche: dict, modele: str) -> dict:
+    def _ecrire(self, consigne: str, fiche: dict, modele: str, sv: dict) -> dict:
         systeme = (
             "Tu es rédacteur pour Iris, un média français. Tu écris en français, en respectant STRICTEMENT "
             "la charte ci-dessous.\n\nRègle absolue : tu n'utilises QUE les faits fournis dans la fiche. "
@@ -282,14 +291,23 @@ class Redacteur:
                  "messages": [{"role": "system", "content": systeme},
                               {"role": "user", "content": consigne + "\n\n=== FICHE ===\n" + json.dumps(fiche, ensure_ascii=False, indent=1)}]}
         derniere = None
-        entetes = {"Authorization": f"Bearer {self.cle}"} if self.cle else {}
-        for _ in range(self.conf.get("essais", 2)):
-            if self.appels and self.conf.get("pause_s"):
-                self.attendre(self.conf["pause_s"])   # accès anonyme : 2 requêtes par minute
-            self.appels += 1
+        entetes = {"Authorization": f"Bearer {sv['cle']}"} if sv.get("cle") else {}
+        for essai in range(self.conf.get("essais", 2)):
+            if sv["appels"] and sv.get("pause_s"):
+                self.attendre(sv["pause_s"])           # services gratuits : quelques requêtes par minute
+            sv["appels"] += 1
             try:
-                r = self.client.post(f"{self.conf['base_url'].rstrip('/')}/chat/completions", json=corps,
+                r = self.client.post(f"{sv['base_url'].rstrip('/')}/chat/completions", json=corps,
                                      headers=entetes, timeout=self.conf.get("delai_s", 90))
+                if r.status_code == 429 and essai + 1 < self.conf.get("essais", 2):
+                    # Trop de requêtes : on attend le délai demandé par le service (ou une minute), puis on réessaie.
+                    try:
+                        delai = float(r.headers.get("retry-after") or sv.get("attente_429_s", 65))
+                    except ValueError:
+                        delai = sv.get("attente_429_s", 65)
+                    self.attendre(min(delai, 120))
+                    derniere = "HTTP 429 (trop de requêtes)"
+                    continue
                 if r.status_code in (400, 422) and "response_format" in corps:
                     corps.pop("response_format")       # modèle qui ne connaît pas le mode JSON : on réessaie sans
                     derniere = f"HTTP {r.status_code}"
@@ -401,6 +419,23 @@ def fiche_bilan(actus: dict, croisement: dict, maintenant: datetime) -> dict:
 
 # ---------------------------------------------------------------- Tous connectés et Détour
 
+def _parle_de(sujet: str, titre: str) -> bool:
+    """Le titre parle-t-il du sujet ? Les deux premiers mots significatifs, ou le sigle
+    (« Grand Theft Auto VI » → « GTA VI »). Le complément entre parenthèses est ignoré."""
+    sujet = re.sub(r"\s*\(.*\)", "", sujet)
+    plat = " " + " ".join(_mots(titre)) + " "
+    mots = [m for m in _mots(sujet) if len(m) > 3]
+    if mots and all(f" {m} " in plat for m in mots[:2]):
+        return True
+    brut = sujet.split()
+    suite = [x for x in brut if re.fullmatch(r"[IVX]+|\d+", x)]
+    initiales = [x for x in brut if x not in suite and x[:1].isupper()]
+    if len(initiales) >= 2:
+        sigle = "".join(x[0] for x in initiales).lower() + "".join(" " + x.lower() for x in suite)
+        return f" {sigle} " in plat
+    return False
+
+
 def fiche_tous_connectes(tend: dict, deja: set, n: int = 25) -> dict:
     """Ce qui occupe les gens, avec les titres de presse qui en parlent (seules sources de faits)."""
     presse = tend.get("presse") or []
@@ -408,8 +443,7 @@ def fiche_tous_connectes(tend: dict, deja: set, n: int = 25) -> dict:
     for w in tend.get("wikipedia") or []:
         if w["sujet"].lower() in deja:
             continue
-        mots = [m for m in re.findall(r"\w+", w["sujet"].lower()) if len(m) > 3]
-        lies = [p for p in presse if mots and all(m in p["titre"].lower() for m in mots[:2])][:4]
+        lies = [p for p in presse if _parle_de(w["sujet"], p["titre"])][:4]
         sujets.append({"sujet": w["sujet"], "langue": w["projet"][:2], "rang_wikipedia": w["rang"], "page": w["url"],
                        "titres_de_presse": [{"titre": p["titre"], "media": p["media"], "url": p["url"]} for p in lies]})
     presse_seule = [{"titre": p["titre"], "media": p["media"], "url": p["url"]} for p in presse[:40]]
