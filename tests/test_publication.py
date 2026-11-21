@@ -94,10 +94,14 @@ def test_titre_au_passe_accepte(tmp_path):
     assert publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)["rubrique"] == "tous_connectes"
 
 
-def test_aujourdhui_publie_le_lendemain_refuse(tmp_path):
+def test_brouillon_d_un_jour_passe_va_aux_archives(tmp_path):
+    import xml.etree.ElementTree as ET
     r = _brouillons_du_21(tmp_path, ARTICLE_TC)          # « GTA VI sort aujourd'hui », brouillon du 21
-    with pytest.raises(RefusPublication, match="aujourd’hui"):
-        publier(r, "tous_connectes", "2026-11-21", maintenant=datetime(2026, 11, 22, 9, tzinfo=timezone.utc))
+    res = publier(r, "tous_connectes", "2026-11-21", maintenant=datetime(2026, 11, 23, 9, tzinfo=timezone.utc))
+    assert res["archive"] is True and res["date"] == "2026-11-21"   # son « aujourd'hui » est le 21 : rien de périmé
+    item = ET.parse(r / "iris" / "flux.xml").getroot().find("channel/item")
+    assert "21 Nov 2026" in item.findtext("pubDate")                # daté du 21 dans le flux, pas du 23
+    assert publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)["archive"] is False
 
 
 def test_doublon_avec_le_grand_titre_refuse(tmp_path):
@@ -143,3 +147,14 @@ def test_points_a_verifier_bloquent_la_publication(tmp_path):
     with pytest.raises(RefusPublication, match="1 point\\(s\\) à vérifier : Confirmer la date"):
         publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI)
     assert publier(r, "tous_connectes", "2026-11-21", maintenant=SAMEDI, forcer=True)["rubrique"] == "tous_connectes"
+
+
+def test_alerte_ligne_editoriale_bloque(tmp_path):
+    d = tmp_path / "redaction" / "propositions"
+    d.mkdir(parents=True)
+    art = {**ARTICLE_TC, "title": "Un mathématicien dit avoir résolu Riemann.<br/>Avec <mark>une IA.</mark>"}
+    (d / "2026-11-21.json").write_text(json.dumps({"propositions": [{"rubrique": "tous_connectes", "article": art,
+        "alertes_charte": ["Ligne éditoriale : toutes les sources sont des rubriques faits divers, justice ou politique."]}]}))
+    with pytest.raises(RefusPublication, match="Ligne éditoriale"):
+        publier(tmp_path, "tous_connectes", "2026-11-21", maintenant=SAMEDI)
+    assert publier(tmp_path, "tous_connectes", "2026-11-21", maintenant=SAMEDI, forcer=True)["rubrique"] == "tous_connectes"

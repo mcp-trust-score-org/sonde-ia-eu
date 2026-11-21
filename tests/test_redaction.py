@@ -103,7 +103,9 @@ def _reseau(articles_llm=None, modele_en_panne=None, service_sature=None):
                 rep = {"liens": [{"url": "https://next.ink/1", "categorie": "Réseau", "pourquoi": "Pour comprendre un maillon invisible."},
                                  {"url": "https://restofworld.org/a", "categorie": "Réseau", "pourquoi": "Le câble vu d'ailleurs."}]}
             elif "Tous connectés" in consigne and "Réponds : {\"sujet\"" in consigne:
-                rep = {"sujet": "Grand Theft Auto VI", "et_vous": "Un jeu téléchargé dépend d'un compte.",
+                rep = {"sujet": "Grand Theft Auto VI", "technologie": "les serveurs du jeu saturent",
+                       "preuve": "des millions de joueurs ont tenté de se connecter en même temps aux serveurs du jeu",
+                       "et_vous": "Un jeu téléchargé dépend d'un compte.",
                        "urls": ["https://exemple.fr/gta", "https://invente.example/x"]}
             elif "Tous connectés" in consigne:
                 rep = (articles_llm or {}).get("tc") or ARTICLE_TC
@@ -404,7 +406,7 @@ def test_lien_technologique_invente():
            "texte": "Le préfet, soupçonné de fuites vers un parti, dénonce une campagne de déstabilisation. "
                     "Pour sauvegarder cet article, connectez-vous. Votre adresse e-mail sert à la newsletter."}]
     assert techno_non_sourcee(prefet, [lu[0]["texte"]]) == ["numérique", "électronique"]
-    assert any("Lien technologique non sourcé" in a for a in _alertes_lecture(lu, prefet))
+    assert any(a.startswith("Ligne éditoriale : lien technologique non sourcé") for a in _alertes_lecture(lu, prefet))
     # Le cas GTA : le téléchargement est bien dans l'article lu
     gta = {**ARTICLE_TC, "fait": ["La boîte ne contient qu'un code de téléchargement."], "consequence": ["Pas de revente."]}
     assert techno_non_sourcee(gta, ["Dans la boîte, pas de disque mais un code de téléchargement pour la console."]) == []
@@ -414,3 +416,20 @@ def test_lien_technologique_invente():
 def test_points_a_verifier_du_redacteur_signales():
     art = {**ARTICLE_TC, "a_verifier": ["Confirmer la date du communiqué"]}
     assert any("1 point(s) à vérifier" in a for a in controler(art, "tous_connectes"))
+
+
+def test_ligne_editoriale_avant_le_choix_du_sujet():
+    from sonde.coherence import hors_ligne, preuve_trouvee
+    from sonde.redaction import fiche_tous_connectes
+    # faits divers, justice et politique sont retirés avant que le rédacteur choisisse
+    assert hors_ligne("https://www.franceinfo.fr/faits-divers/comment-les-malfaiteurs-s-attaquent_1.html")
+    assert hors_ligne("https://www.franceinfo.fr/politique/front-national/le-prefet_2.html")
+    assert not hors_ligne("https://www.franceinfo.fr/culture/jeux-video/gta-vi/les-ventes_3.html")
+    tend = {"presse": [{"titre": "Deux distributeurs explosés", "media": "franceinfo", "url": "https://x.fr/faits-divers/a.html"},
+                       {"titre": "GTA VI sans disque", "media": "franceinfo", "url": "https://x.fr/culture/jeux-video/b.html"}]}
+    fiche = fiche_tous_connectes(tend, set())
+    assert [p["titre"] for p in fiche["presse_grand_public"]] == ["GTA VI sans disque"] and fiche["ecartes_hors_ligne"] == 1
+    # la preuve technologique doit être dans un article lu
+    texte = "Avec la sortie de GTA VI, les joueurs n'y trouvent aucun disque, mais un simple code de téléchargement."
+    assert preuve_trouvee("aucun disque, mais un code de téléchargement", [texte])
+    assert not preuve_trouvee("les fuites reposent sur des échanges électroniques", [texte])
