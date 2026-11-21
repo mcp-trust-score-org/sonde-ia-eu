@@ -40,7 +40,8 @@ jobs:
         run: |
           git config user.name "sonde-ia-eu"
           git config user.email "sonde-ia-eu@users.noreply.github.com"
-          git add data public
+          python -m sonde site || true   # données des onglets Premium du site (iris/donnees/)
+          git add data public iris/donnees
           git diff --cached --quiet || git commit -m "Veille $(date -u +%Y-%m-%dT%H:%MZ)"
           # Plusieurs workflows peuvent publier en même temps : on réessaie,
           # et en cas de conflit sur un fichier régénéré, notre version (la plus récente) l'emporte.
