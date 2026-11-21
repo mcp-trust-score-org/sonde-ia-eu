@@ -158,3 +158,23 @@ def test_alerte_ligne_editoriale_bloque(tmp_path):
     with pytest.raises(RefusPublication, match="Ligne éditoriale"):
         publier(tmp_path, "tous_connectes", "2026-11-21", maintenant=SAMEDI)
     assert publier(tmp_path, "tous_connectes", "2026-11-21", maintenant=SAMEDI, forcer=True)["rubrique"] == "tous_connectes"
+
+
+def test_detour_liens_a_garder(tmp_path):
+    liens = [{"media": m, "titre": f"Titre {m}", "url": f"https://{m}.example/a", "pourquoi": "Parce que.", "categorie": "Réseau"}
+             for m in ("next", "monde", "register", "ars", "404")]
+    d = tmp_path / "redaction" / "propositions"
+    d.mkdir(parents=True)
+    (d / "2026-11-24.json").write_text(json.dumps({"propositions": [{"rubrique": "detour", "liens": liens}]}))
+    with pytest.raises(RefusPublication, match="pas de n° 7"):
+        publier(tmp_path, "detour", "2026-11-24", liens="1, 7", maintenant=SAMEDI)
+    with pytest.raises(RefusPublication, match="illisible"):
+        publier(tmp_path, "detour", "2026-11-24", liens="un et trois", maintenant=SAMEDI)
+    publier(tmp_path, "detour", "2026-11-24", liens="1, 3, 4", maintenant=SAMEDI)
+    pub = json.loads((tmp_path / "iris" / "publies.json").read_text())
+    assert [l["source"] for l in pub["detour"]] == ["next", "register", "ars"]
+    assert all(l["date"] == "2026-11-24" and l["publie_le"] for l in pub["detour"])
+    # un lien sans « pourquoi » n'empêche plus rien s'il n'est pas gardé
+    liens[1]["pourquoi"] = None
+    (d / "2026-11-24.json").write_text(json.dumps({"propositions": [{"rubrique": "detour", "liens": liens}]}))
+    assert publier(tmp_path, "detour", "2026-11-24", liens="1, 5", maintenant=SAMEDI)["rubrique"] == "detour"
