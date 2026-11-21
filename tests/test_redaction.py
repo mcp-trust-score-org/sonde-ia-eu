@@ -289,3 +289,50 @@ def test_controles_de_la_charte():
     tc = {**ARTICLE_TC, "reflexes": ["un seul"]}
     assert any("3 bons réflexes" in a for a in controler(tc, "tous_connectes"))
     assert controler(ARTICLE_TC, "tous_connectes") == []
+
+
+def test_requete_tient_dans_la_limite_de_github_models():
+    """Offre gratuite de GitHub Models : 8 000 jetons par requête. Charte de la rubrique seule, extraits raccourcis."""
+    from sonde.redaction import Redacteur
+    envoyes = []
+
+    def repondre(req):
+        envoyes.append(json.loads(req.content))
+        return httpx.Response(200, json={"choices": [{"message": {"content": json.dumps(ARTICLE_TC, ensure_ascii=False)}}]})
+    client = httpx.Client(transport=httpx.MockTransport(repondre))
+    charte = (RACINE / "redaction" / "CHARTE.md").read_text(encoding="utf-8")
+    r = Redacteur(CONF["redacteur"], charte, client, {"GITHUB_TOKEN": "jeton"}, attendre=lambda s: None)
+    fiche = {"sujet": "GTA VI", "articles_de_presse": [{"url": f"https://exemple.fr/{i}", "texte": "mot " * 1500} for i in range(3)]}
+    r.ecrire("Rubrique : Tous connectés. Écris l'article.", fiche, "tous_connectes")
+    corps = envoyes[0]
+    taille = sum(len(m["content"]) for m in corps["messages"])
+    assert taille <= 23000
+    systeme = corps["messages"][0]["content"]
+    assert "Tous connectés : l'édition grand public" in systeme and "À la une : l'édition pour les entreprises" not in systeme
+    assert "Règles communes" in systeme and "Contrôles automatiques" in systeme
+
+
+def test_services_satures_on_abandonne_vite_et_on_le_dit(tmp_path):
+    """Tous les services répondent 429 : chaque service est déclaré saturé après 2 refus, on n'insiste pas,
+    et le fichier du jour explique ce qui s'est passé (journal du rédacteur)."""
+    racine = _racine(tmp_path)
+    client, _ = _reseau(service_sature="chat/completions")
+    pauses = []
+    res = rediger(CONF, racine, client=client, env={"GITHUB_TOKEN": "jeton"}, maintenant=LUNDI, attendre=pauses.append)
+    assert sum(pauses) < 200                                            # quelques minutes au pire, pas un quart d'heure
+    assert all(p["auteur"] == "fiche" for p in res["propositions"])
+    assert {j["service"] for j in res["journal_redacteur"]} == {"GitHub Models", "OVHcloud (anonyme)"}
+    md = (racine / "redaction" / "propositions" / "2026-11-23.md").read_text()
+    assert "Journal du rédacteur" in md and "429" in md
+
+
+def test_une_erreur_n_empeche_pas_le_fichier(tmp_path, monkeypatch):
+    """Une erreur imprévue en cours de route : le fichier du jour est quand même écrit, avec l'erreur."""
+    import sonde.redaction as r
+    racine = _racine(tmp_path)
+    client, _ = _reseau()
+    monkeypatch.setattr(r, "_tous_connectes", lambda *a, **k: 1 / 0)
+    res = rediger(CONF, racine, client=client, env={"GITHUB_TOKEN": "jeton"}, maintenant=LUNDI, attendre=lambda s: None)
+    assert res["statut"] == "erreur" and "ZeroDivisionError" in res["erreur"]
+    assert [p["rubrique"] for p in res["propositions"]] == ["une", "une"]   # ce qui était prêt est gardé
+    assert "Erreur pendant la rédaction" in (racine / "redaction" / "propositions" / "2026-11-23.md").read_text()
