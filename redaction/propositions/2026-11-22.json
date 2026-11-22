@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "genere_le": "2026-11-22T11:20:45+00:00",
+ "genere_le": "2026-11-22T12:10:13+00:00",
  "statut": "a_relire",
  "propositions": [],
  "reserve_une": [],
@@ -11,7 +11,7 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 158
+   "nombre": 156
   },
   "Détour (flux RSS)": {
    "etat": "ok",
