@@ -6,6 +6,8 @@ Canaux (variables d'environnement, tous facultatifs) :
   NTFY_TOPIC          notification sur le téléphone via l'application gratuite ntfy (ntfy.sh)
   NTFY_SERVEUR        autre serveur ntfy (par défaut https://ntfy.sh)
   ALERTE_WEBHOOK_URL  webhook Slack, Discord, Teams ou Mattermost (message texte)
+  NOTIF_SECRET        notifications du site Iris (appareils abonnés aux « alertes pannes »),
+                      envoyées par la fonction /api/notifier de SITE_URL
 
 Les alertes sont aussi ajoutées à public/alertes.json : l'appli les affiche.
 On n'alerte que sur un changement : début d'orage, fin d'orage, passage en vigilance orange.
@@ -128,6 +130,17 @@ def envoyer(alerte: dict, env: dict | None = None, client: httpx.Client | None =
                 r = client.post(serveur, json=corps)
                 if r.status_code < 300:
                     faits.append("ntfy")
+            except httpx.HTTPError:
+                pass
+        secret = env.get("NOTIF_SECRET")
+        if secret:
+            site = (env.get("SITE_URL") or "https://sonde-ia-eu-iris.vercel.app").rstrip("/")
+            try:
+                r = client.post(f"{site}/api/notifier", headers={"Authorization": f"Bearer {secret}"},
+                                json={"sujet": "alertes", "titre": f"Iris · {alerte['titre']}",
+                                      "texte": alerte["texte"].replace("`", "")[:240], "url": "/#alertes"})
+                if r.status_code < 300:
+                    faits.append("site")
             except httpx.HTTPError:
                 pass
         url = env.get("ALERTE_WEBHOOK_URL")

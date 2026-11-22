@@ -172,6 +172,8 @@ def main(argv: list[str] | None = None) -> int:
     m.add_argument("--echantillon", type=int, default=None, help="nombre de tâches par exécution")
     m.add_argument("--fournisseurs", nargs="*", default=None)
 
+    pn = sous.add_parser("plus-notifier", help="prévenir les abonnés IRIS Plus des nouveautés de iris/plus.json")
+    pn.add_argument("--avant", required=True, help="la version précédente de iris/plus.json")
     r = sous.add_parser("rapport", help="produire le classement")
     r.add_argument("--donnees", type=Path, default=RACINE / "data")
     r.add_argument("--sortie", type=Path, default=RACINE / "public")
@@ -282,8 +284,20 @@ def main(argv: list[str] | None = None) -> int:
                 {"titre": "Iris · " + ("À la une" if res["rubrique"] == "une" else "Tous connectés"),
                  "texte": re.sub(r"\s+", " ", res["titre"]).replace(" .", ".").strip(), "url": res["url"]},
                 ensure_ascii=False), encoding="utf-8")
+        elif res.get("nouveaux"):           # Le Détour : seulement s'il y a de vraies nouveautés
+            n = res["nouveaux"]
+            (RACINE / "notification.json").write_text(json.dumps(
+                {"titre": "Iris · Le Détour", "url": "/#detour",
+                 "texte": f"{n} nouvelle{'s' if n > 1 else ''} lecture{'s' if n > 1 else ''} sélectionnée{'s' if n > 1 else ''} pour vous."},
+                ensure_ascii=False), encoding="utf-8")
         for a in res["alertes"]:
             print(f"::warning::{a}")
+        return 0
+
+    if args.commande == "plus-notifier":
+        from .plus import notifier_nouveautes
+        envoyes = notifier_nouveautes(Path(args.avant), RACINE / "iris" / "plus.json")
+        print(f"  IRIS Plus : {len(envoyes)} notification(s) envoyée(s). " + " · ".join(envoyes))
         return 0
 
     if args.commande == "rediger":

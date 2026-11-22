@@ -175,8 +175,10 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
 
     sortie = racine / "iris" / "publies.json"
     publies = json.loads(sortie.read_text(encoding="utf-8")) if sortie.exists() else {"une": [], "tous_connectes": [], "detour": []}
+    nouveaux = 0
     if rub == "detour":
         deja = {l["url"] for l in publies.get("detour") or []}
+        nouveaux = sum(1 for l in article["liens"] if l["url"] not in deja)
         for l in article["liens"]:
             l["publie_le"] = maintenant.isoformat(timespec="seconds")
         publies["detour"] = [l for l in article["liens"] if l["url"] not in deja] + (publies.get("detour") or [])
@@ -195,7 +197,7 @@ def publier(racine: Path, rubrique: str, date: str | None = None, numero: int = 
     p["publie_le"] = maintenant.isoformat(timespec="seconds")
     chemin.write_text(json.dumps(props, ensure_ascii=False, indent=1), encoding="utf-8")
     texte = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", article.get("chapo") or "")).strip()
-    return {"id": ident, "rubrique": rub, "date": date, "alertes": p.get("alertes_charte") or [],
+    return {"id": ident, "rubrique": rub, "date": date, "alertes": p.get("alertes_charte") or [], "nouveaux": nouveaux,
             "url": f"/#article-{ident}" if rub != "detour" else "/#detour", "texte": texte[:200],
             "archive": date < maintenant.astimezone(PARIS).date().isoformat(),
             "titre": re.sub(r"<[^>]+>", " ", article.get("title") or f"{len(article.get('liens', []))} lien(s)")}
