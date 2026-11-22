@@ -4,31 +4,31 @@
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 66 | 69.7 % | 829 ms / 1122 ms | 2512 ms | 73.5 | 100 % | – |
+| 1 | ovhcloud (anonyme) | 60 | 66.7 % | 829 ms / 1178 ms | 2524 ms | 74.8 | 100 % | – |
 
 Erreurs : ovhcloud (anonyme) – HTTP 429: {
   "message":"API rate limit exceeded",
-  "reques (14) ; ovhcloud (anonyme) – réponse vide (6)
+  "reques (16) ; ovhcloud (anonyme) – réponse vide (4)
 
 ## llama-3.3-70b
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 66 | 75.8 % | 1134 ms / 128295 ms | 1802 ms | 25.1 | 96 % | – |
+| 1 | ovhcloud (anonyme) | 60 | 70 % | 1340 ms / 135670 ms | 1982 ms | 24.6 | 95.2 % | – |
 
 Erreurs : ovhcloud (anonyme) – HTTP 429: {
   "message":"API rate limit exceeded",
-  "reques (15) ; ovhcloud (anonyme) – réponse vide (1)
+  "reques (17) ; ovhcloud (anonyme) – réponse vide (1)
 
 ## mistral-small-3.2
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 66 | 78.8 % | 991 ms / 31379 ms | 1380 ms | 53.7 | 78.8 % | – |
+| 1 | ovhcloud (anonyme) | 60 | 73.3 % | 941 ms / 35372 ms | 1824 ms | 54 | 79.5 % | – |
 
 Erreurs : ovhcloud (anonyme) – HTTP 429: {
   "message":"API rate limit exceeded",
-  "reques (14)
+  "reques (16)
 
 ## Modèles absents du catalogue
 
