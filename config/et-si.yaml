@@ -1,0 +1,81 @@
+# La série « Et si… ? » d'Iris Plus : un sujet par mois pour réfléchir aux limites de la technologie.
+#
+# Le premier lundi du mois, GitHub choisit dans cette réserve le sujet qui colle le mieux à l'actualité
+# (une panne mesurée par la sonde, ou des articles récents qui contiennent les mots-clés),
+# puis le rédacteur prépare un brouillon en 5 parties (redaction/CHARTE.md, section 6).
+# Rien n'est publié automatiquement.
+#
+# Pour ajouter un sujet : copier un bloc, changer l'id (sans espace ni accent), la question, l'angle
+# et les mots-clés. Des mots-clés précis (« agent d'ia » plutôt que « agent ») : sinon un article
+# sur les agents de la SNCF compterait comme une accroche. Les « sources_de_base » sont facultatives : uniquement des pages officielles ou
+# des médias reconnus, qu'on a vérifiées soi-même. Le rédacteur n'utilise que ce qu'il a pu lire.
+#
+# Un sujet déjà proposé n'est pas reproposé. Six mois après, GitHub revérifie ses sources
+# et propose, si besoin, un encadré « Ce qui a changé depuis ».
+
+reglages:
+  jour: 0                       # 0 = lundi
+  semaine_du_mois: 1            # le premier lundi du mois
+  reverifier_apres_jours: 182   # environ six mois
+  accroches_max: 4              # articles d'actualité lus pour l'accroche
+  # Le programme annoncé sur le site (iris/plus.json, « prochains_et_si ») : date du premier lundi → id du sujet.
+  # Un mois absent du programme : le sujet est choisi selon l'actualité.
+  programme:
+    "2026-12-07": post-quantique
+    "2027-01-04": sans-mot-de-passe
+
+sujets:
+  - id: edge
+    question: "Et si votre IA marchait même quand Internet tombe ?"
+    angle: "L'IA qui tourne directement sur le téléphone ou l'ordinateur : ce qui marche déjà sans réseau, et ce qui dépend toujours du cloud."
+    mots_cles: [hors ligne, sur l'appareil, on-device, embarquée, ia locale, edge, gemini nano, apple intelligence, ministral, gemma]
+    panne_mesuree: true         # une panne vue par la sonde fait une bonne accroche
+    sources_de_base:
+      - label: "Mistral AI, documentation : Ministral 3 3B, modèle conçu pour fonctionner sur l'appareil"
+        url: https://docs.mistral.ai/models/ministral-3-3b-25-12
+      - label: "Apple Developer : l'IA sur l'appareil pour les applications"
+        url: https://developer.apple.com/business/ai/
+      - label: "Greenspector : la consommation d'énergie des modèles d'IA sur smartphone"
+        url: https://blog.greenspector.com/en/artificial-intelligence-smartphone-autonomy/
+
+  - id: post-quantique
+    question: "Et si un ordinateur quantique lisait vos messages d'aujourd'hui ?"
+    angle: "Le chiffrement « post-quantique » : pourquoi des données volées aujourd'hui pourraient être lues demain, et ce que changent déjà messageries et banques."
+    mots_cles: [quantique, post-quantique, chiffrement, cryptographie]
+    sources_de_base: []
+
+  - id: satellite
+    question: "Et si votre téléphone captait le réseau par satellite, partout ?"
+    angle: "Les messages et appels par satellite : ce qui marche déjà en zone blanche, et ce qu'on ne peut pas encore faire."
+    mots_cles: [starlink, zone blanche, direct to cell, iris², messages par satellite, appel par satellite, internet par satellite]
+    sources_de_base: []
+
+  - id: cable-sous-marin
+    question: "Et si un câble sous-marin était coupé ?"
+    angle: "Presque tout Internet passe sous la mer : ce qui se passe quand un câble lâche, et ce qui reste quand on est coupé."
+    mots_cles: [câble sous-marin, câbles sous-marins, cable sous-marin, submarine cable]
+    sources_de_base: []
+
+  - id: sans-mot-de-passe
+    question: "Et si vous n'aviez plus jamais de mot de passe ?"
+    angle: "Les clés d'accès (passkeys) remplacent les mots de passe : ce qu'on y gagne, et ce qui se passe le jour où l'on perd son téléphone."
+    mots_cles: [passkey, passkeys, clé d'accès, clés d'accès, sans mot de passe, passwordless]
+    sources_de_base: []
+
+  - id: agent-achats
+    question: "Et si votre assistant faisait vos achats à votre place ?"
+    angle: "Les agents d'IA qui réservent, commandent et paient : qui est responsable quand ils se trompent, et ce qu'ils deviennent quand le service tombe."
+    mots_cles: [agent d'ia, agents d'ia, agent ia, agents ia, ai agent, ai agents, agentique, agentic, achat automatique]
+    sources_de_base: []
+
+  - id: centres-de-donnees-chaleur
+    question: "Et si une canicule éteignait le cloud ?"
+    angle: "Les centres de données ont besoin d'électricité et de refroidissement : ce qui se passe quand il fait trop chaud, et qui passe en premier."
+    mots_cles: [centre de données, centres de données, datacenter, data center, refroidissement, canicule]
+    sources_de_base: []
+
+  - id: sans-gps
+    question: "Et si le GPS s'arrêtait une journée ?"
+    angle: "Brouillage, panne, tempête solaire : tout ce qui dépend du positionnement par satellite, bien au-delà de la carte sur le téléphone."
+    mots_cles: [gps, galileo, brouillage, géolocalisation, tempête solaire]
+    sources_de_base: []
