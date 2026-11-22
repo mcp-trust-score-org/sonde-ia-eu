@@ -924,71 +924,67 @@ show(location.hash.slice(1));
 
 /* ---------- IRIS Plus : la météo de la semaine et « Et si… ? » ----------
    Le texte vient de plus.json (écrit par la rédaction) ; les jours et les coupures de la météo viennent
-   des mesures de la sonde (figées dans l'édition, sinon donnees/semaine.json). Rien n'est déduit au-delà. */
-const SEM_ICONE = { soleil: "sun", brouillard: "fog", averse: "rain", orage: "storm", inconnu: "unknown" };
-const SEM_MOT = { soleil: "Beau fixe", brouillard: "Lenteurs", averse: "Averse", orage: "Orage", inconnu: "Pas de mesure" };
+   des mesures de la sonde (figées dans l'édition, sinon donnees/semaine.json). Rien n'est déduit au-delà.
+   Dans plus.json, **mot** met un mot en gras. */
 const SEM_JOUR = ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."];
 const echap = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const riche = (s) => echap(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
 const jourDe = (iso) => new Date(iso + "T12:00:00Z");
 const dateCourte = (iso) => jourDe(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long", timeZone: "Europe/Paris" });
 const dateMini = (iso) => jourDe(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "short", timeZone: "Europe/Paris" });
 const dateLongue = (iso) => jourDe(iso).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Paris" });
 const periode = (e) => `du ${e.du.slice(5, 7) === e.au.slice(5, 7) ? jourDe(e.du).getUTCDate() : dateCourte(e.du)} au ${dateCourte(e.au)}`;
-const svg = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
-const PLUS_IC = {
-  question: svg('<path d="M4 5h16v11H9l-5 4z"/><path d="M10 9a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2"/><path d="M12 14.2h.01"/>'),
-  existe: svg('<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>'),
-  coince: svg('<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/>'),
-  balance: svg('<path d="M12 4v16M6 20h12M4 8h16"/><path d="M6 8l-3 6a3 3 0 0 0 6 0zM18 8l-3 6a3 3 0 0 0 6 0z"/>'),
-  geste: svg('<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'),
-  ia: svg('<rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>'),
-  services: svg('<path d="M7 18h10a4 4 0 0 0 0-8 5.5 5.5 0 0 0-10.5 1.8A3.2 3.2 0 0 0 7 18z"/>'),
-  securite: svg('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'),
-  reseau: svg('<path d="M12 12v9M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/>'),
-  prevision: svg('<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>'),
-  fleche: svg('<path d="M5 12h14M13 6l6 6-6 6"/>'),
-  horloge: svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
-};
-const ETAPES = [
-  ["question", "1. La question", null],
-  ["existe", "2. Ce qui existe déjà", "Les faits observés, les solutions déjà en place, tous sourcés."],
-  ["coince", "3. Là où ça coince", "Les limites concrètes : matériel, batterie, ce qui repasse par le cloud, promesses non tenues."],
-  ["balance", "4. La vraie question", "Ce que ça change pour nous, au quotidien : ce qu'on y gagne, ce qu'on y perd. Sans avis."],
-  ["geste", "5. Le geste", "Une chose simple à tester, ou à faire, pour être mieux préparé."],
-];
 const titreSurligne = (a) => {
   const q = echap(a.question), s = echap(a.surligne || "");
   return s && q.endsWith(s) ? q.slice(0, -s.length) + `<mark>${s}</mark>` : q;
 };
+const ETAPES = [
+  ["1. La question", null],
+  ["2. Ce qui existe déjà", "Les faits observés, les solutions déjà en place, tous sourcés."],
+  ["3. Là où ça coince", "Les limites concrètes : matériel, batterie, services qui repassent par le cloud, promesses non tenues."],
+  ["4. La vraie question", "Ce que ça change pour nous, au quotidien : ce qu'on y gagne (ou on y perd), selon les usages."],
+  ["5. Le geste", "Une chose simple à tester ou à faire pour être plus préparé·e."],
+];
 var PLUS, SEMAINE, PLUS_ATTENTE;   // var sans valeur : show() peut être appelé avant cette ligne, sans que rien ne soit effacé
 
+function editionMesures(e) {
+  const m = e.mesures || {};
+  return {
+    jours: (m.jours || (SEMAINE && SEMAINE.jours) || []).filter((j) => j.date >= e.du && j.date <= e.au),
+    coupures: (m.coupures || (SEMAINE && SEMAINE.coupures) || []).filter((c) => c.jour >= e.du && c.jour <= e.au),
+    suivis: m.suivis || (SEMAINE && SEMAINE.suivis) || {},
+    methode: m.methode || (SEMAINE && SEMAINE.methode) || "",
+  };
+}
+
+/* ----- Page d'accueil d'IRIS Plus ----- */
 function plusHero(a) {
   return `
     <div class="ph-haut">
       <div class="ph-texte">
         <span class="ph-kicker">Et si…</span>
-        <h2>${titreSurligne(a)}</h2>
+        <h2 class="plus-titre">${titreSurligne(a)}</h2>
         <p class="ph-chapo">${echap(a.chapo)}</p>
-        <p class="ph-temps">${PLUS_IC.horloge}${echap(a.temps_lecture)} de lecture</p>
+        <p class="ph-temps">${echap(a.temps_lecture)} de lecture</p>
       </div>
       <div class="ph-image" style="background-image:url('${echap(a.image)}')" aria-hidden="true"></div>
     </div>
-    <ol class="ph-etapes">${ETAPES.map(([ic, t, d]) => `<li><i>${PLUS_IC[ic]}</i><b>${t}</b><span>${echap(d || a.question)}</span></li>`).join("")}</ol>
-    <a class="ph-cta" href="#plus-etsi-${echap(a.id)}">Explorer l'analyse ${PLUS_IC.fleche}</a>`;
+    <ol class="ph-etapes">${ETAPES.map(([t, d]) => `<li><b>${t}</b><span>${echap(d || a.question)}</span></li>`).join("")}</ol>
+    <a class="ph-cta" href="#plus-etsi-${echap(a.id)}">Explorer l'analyse →</a>`;
 }
 
 function plusMeteoCarte(e) {
   return `
-    <div class="pc-head">${PLUS_IC.prevision}<h4>La météo de la semaine</h4><span class="pc-pill">Chaque dimanche</span></div>
+    <div class="pc-head"><h4>La météo de la semaine</h4><span class="pc-pill">Chaque dimanche</span></div>
     <h3 class="pc-titre">Semaine ${periode(e)}</h3>
     <p class="pc-sous">L'essentiel tech en un coup d'œil.</p>
-    <ul class="pc-lignes">${(e.essentiel || []).map((x) => `<li><i>${PLUS_IC[x.icone] || PLUS_IC.services}</i><span class="pc-cat">${echap(x.categorie)}</span><span>${echap(x.texte)}</span></li>`).join("")}</ul>
-    <a class="pc-cta" href="#plus-meteo">Voir la météo complète ${PLUS_IC.fleche}</a>`;
+    <ul class="pc-lignes">${(e.essentiel || []).map((x) => `<li><span class="pc-cat">${echap(x.categorie)}</span><span>${echap(x.texte)}</span></li>`).join("")}</ul>
+    <a class="pc-cta" href="#plus-meteo">Voir la météo complète</a>`;
 }
 
 function plusProchains(liste) {
   return `
-    <div class="pc-head">${PLUS_IC.prevision}<h4>Prochains « Et si… »</h4></div>
+    <h4 class="pc-grand">Prochains « Et si… »</h4>
     <ul class="pc-prochains">${(liste || []).map((x) => `<li><span class="pc-date">${dateMini(x.date)}</span><b>${echap(x.question)}</b></li>`).join("") || `<li class="muted">Programme à venir.</li>`}</ul>`;
 }
 
@@ -1002,66 +998,93 @@ function plusCartes(plus) {
   return [...publies, ...bientot].slice(0, 3).join("");
 }
 
-function meteoComplete(e, semaine) {
-  const m = e.mesures || {};
-  const jours = (m.jours || (semaine && semaine.jours) || []).filter((j) => j.date >= e.du && j.date <= e.au);
-  const coupures = (m.coupures || (semaine && semaine.coupures) || []).filter((c) => c.jour >= e.du && c.jour <= e.au);
-  const suivis = m.suivis || (semaine && semaine.suivis) || {};
-  const bande = jours.map((j) => {
-    const detail = Object.entries(j.fournisseurs || {}).map(([f, x]) => `${suivis[f] || f} : ${SEM_MOT[x.etat] || x.etat}`).join(" · ");
-    return `<li class="sem-${j.etat}" title="${echap(detail)}"><span>${SEM_JOUR[jourDe(j.date).getUTCDay()]}</span><svg class="wx"><use href="#wx-${SEM_ICONE[j.etat] || "unknown"}"/></svg><em>${SEM_MOT[j.etat] || ""}</em></li>`;
-  }).join("");
-  const plage = (c) => c.a ? `de ${c.de} à ${c.a}` : `à partir de ${c.de}, toujours en échec au dernier passage de la sonde`;
-  const liste = coupures.map((c) => `<li><b>${SEM_JOUR[jourDe(c.jour).getUTCDay()]} ${jourDe(c.jour).getUTCDate()}</b><span>${echap(c.nom)}</span><span>${plage(c)}</span></li>`).join("");
+/* ----- La météo de la semaine, en entier ----- */
+function meteoComplete(e) {
+  const { coupures, methode } = editionMesures(e);
+  // Premier chiffre calculé sur les mesures : jours avec au moins une coupure, par fournisseur.
+  const parFour = {};
+  coupures.forEach((c) => { (parFour[c.nom] = parFour[c.nom] || new Set()).add(c.jour); });
+  const calcules = Object.entries(parFour).map(([nom, j]) => ({ chiffre: String(j.size), texte: `jour${j.size > 1 ? "s" : ""} avec des coupures chez ${nom}` }));
+  const coup = [...calcules, ...(e.coup_doeil || [])].slice(0, 3);
+  const plage = (c) => c.a ? `${c.de} → ${c.a}` : `À partir de ${c.de}<small>(toujours en échec au dernier passage)</small>`;
   const [premier, ...suite] = e.temps || [];
-  return `<article class="plus-lettre">
-    <span class="flag">La météo de la semaine · ${periode(e)}</span>
-    <h2 class="display-sm">${echap(e.titre)}</h2>
-    ${bande ? `<ul class="sem-bande" style="--n:${jours.length}">${bande}</ul>` : ""}
-    <h4>Le temps qu'il a fait</h4>
-    ${premier ? `<p>${echap(premier)}</p>` : ""}
-    <div data-acces="plus">
-      ${suite.map((x) => `<p>${echap(x)}</p>`).join("")}
-      ${liste ? `<h4>Les coupures mesurées</h4><ul class="sem-coupures">${liste}</ul><p class="plus-note">${echap(m.methode || (semaine && semaine.methode) || "")}</p>` : ""}
-      ${(e.touche || []).length ? `<h4>Ce qui a pu vous toucher</h4>` + e.touche.map((x) => `<p><b>${echap(x.titre)}</b> ${echap(x.texte)}${x.source && x.source.url ? ` <a class="plus-src" href="${echap(x.source.url)}" target="_blank" rel="noopener">${echap(x.source.label || "Source")} ↗</a>` : ""}</p>`).join("") : ""}
-      ${e.prevision ? `<h4>La prévision</h4><p>${echap(e.prevision)}</p>` : ""}
-      ${e.geste ? `<h4>Le geste de la semaine</h4><p>${echap(e.geste)}</p>` : ""}
-      <p class="impact-note">${RAPPEL}</p>
+  return `
+  <section class="pl-hero pl-hero-meteo" style="--pl-img:url('${echap(e.image || "assets/photos/meteo-semaine.jpg")}')">
+    <nav class="pl-fil"><a href="#plus">IRIS Plus</a><span>›</span>La météo de la semaine</nav>
+    <span class="pl-kicker">La météo de la semaine · ${periode(e)}</span>
+    <h1 class="pl-titre">${echap(e.titre)}</h1>
+    ${e.chapo ? `<p class="pl-chapo">${echap(e.chapo)}</p>` : ""}
+  </section>
+  <div class="pl-corps"><div class="pl-int">
+    ${coup.length ? `<div class="pl-coup"><h3><span class="barre-j"></span>En un coup d'œil</h3>${coup.map((x) => `<div>${x.chiffre ? `<strong>${echap(x.chiffre)}</strong>` : ""}<span>${x.fort ? `<b>${echap(x.fort)}</b>` : ""}${echap(x.texte)}</span></div>`).join("")}</div>` : ""}
+    <div class="pl-deux">
+      <div class="pl-gauche">
+        <h3><span class="barre-j"></span>Le temps qu'il a fait</h3>
+        ${premier ? `<p>${riche(premier)}</p>` : ""}
+        <div data-acces="plus">
+          ${suite.map((x) => `<p>${riche(x)}</p>`).join("")}
+          ${(e.touche || []).length ? `<hr/><h3><span class="barre-j"></span>Ce qui a pu vous toucher</h3>` + e.touche.map((x) => `<div class="pl-touche">${x.marque ? `<span class="pl-marque">${echap(x.marque)}</span>` : "<span></span>"}<div><p><b>${echap(x.titre)}</b> ${riche(x.texte)}</p>${x.source && x.source.url ? `<a class="pl-src" href="${echap(x.source.url)}" target="_blank" rel="noopener">${echap(x.source.label || "Source")} ↗</a>` : ""}</div></div>`).join("") : ""}
+          ${e.prevision ? `<hr/><h3><span class="barre-j"></span>La prévision</h3><p>${riche(e.prevision)}</p>` : ""}
+        </div>
+      </div>
+      <aside class="pl-droite" data-acces="plus">
+        ${coupures.length ? `<div class="pl-encart"><h3>Les coupures mesurées</h3><table class="pl-table">${coupures.map((c) => `<tr><th>${SEM_JOUR[jourDe(c.jour).getUTCDay()]} ${jourDe(c.jour).getUTCDate()}</th><td>${echap(c.nom)}</td><td>${plage(c)}</td></tr>`).join("")}</table><p class="pl-note">${echap(methode)}</p></div>` : ""}
+        ${e.geste ? `<div class="pl-geste"><h3><span class="barre-n"></span>Le geste de la semaine</h3><p>${riche(e.geste)}</p><p class="pl-rappel">À titre indicatif : mesures externes et automatisées, à vérifier avec votre équipe informatique et vos fournisseurs.</p></div>` : ""}
+      </aside>
     </div>
-  </article>
-  ${(PLUS.meteo_semaine || []).length > 1 ? `<div data-acces="plus"><p class="also">Les semaines précédentes</p><ul class="plus-archives">${PLUS.meteo_semaine.filter((x) => x !== e).map((x) => `<li><a href="#plus-meteo-${echap(x.id)}">Semaine ${periode(x)} · ${echap(x.titre)}</a></li>`).join("")}</ul></div>` : ""}`;
+    ${(PLUS.meteo_semaine || []).length > 1 ? `<div class="pl-archives" data-acces="plus"><h3><span class="barre-j"></span>Les semaines précédentes</h3><ul>${PLUS.meteo_semaine.filter((x) => x !== e).map((x) => `<li><a href="#plus-meteo-${echap(x.id)}">Semaine ${periode(x)} · ${echap(x.titre)}</a></li>`).join("")}</ul></div>` : ""}
+  </div></div>`;
 }
 
+/* ----- Un « Et si… ? », en entier ----- */
 function etSiComplet(a) {
-  const partie = (ic, titre, x) => (x && x.length ? `<h4><i>${PLUS_IC[ic]}</i>${titre}</h4>` + x.map((p) => `<p>${echap(p)}</p>`).join("") : "");
-  return `<article class="plus-lettre plus-etsi-article">
-    <div class="pe-image" style="background-image:url('${echap(a.image)}')" aria-hidden="true"></div>
-    <span class="ph-kicker">Et si… · ${dateLongue(a.publie_le)}</span>
-    <h2>${titreSurligne(a)}</h2>
-    <p class="ph-chapo">${echap(a.chapo)}</p>
-    ${partie("question", "Et si…", a.et_si)}
-    <div data-acces="plus">
-      ${partie("existe", "Ce qui existe déjà", a.existe_deja)}
-      ${partie("coince", "Là où ça coince", a.ca_coince)}
-      ${partie("balance", "La vraie question", a.vraie_question)}
-      ${a.geste ? partie("geste", "Le geste", [a.geste]) : ""}
-      ${(a.sources || []).length ? `<h4>Sources</h4><ul class="pe-sources">${a.sources.map((s) => `<li><a href="${echap(s.url)}"${s.url.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}>${echap(s.label)}</a></li>`).join("")}</ul>` : ""}
-      ${a.verifie_le ? `<p class="plus-note">Faits vérifiés le ${dateLongue(a.verifie_le)}. Ils sont revérifiés tous les six mois.</p>` : ""}
+  const st = a.sous_titres || {};
+  const puces = (x) => `<ul class="pl-puces">${(x || []).map((p) => `<li>${riche(p)}</li>`).join("")}</ul>`;
+  const partie = (n, titre, sousTitre, contenu) => `<section class="pl-partie"><div class="pl-num"><span>${n}.</span><h3>${titre}</h3></div><div class="pl-contenu">${sousTitre ? `<h4>${riche(sousTitre)}</h4>` : ""}${contenu}</div></section>`;
+  const source = (s) => { const [nom, ...reste] = String(s.label).split(" : "); return `<li><a href="${echap(s.url)}"${s.url.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}><b>${echap(nom)}</b>${reste.length ? " : " + echap(reste.join(" : ")) : ""}</a></li>`; };
+  return `
+  <section class="pl-hero pl-hero-etsi" style="--pl-img:url('${echap(a.image_entete || a.image)}')">
+    <nav class="pl-fil"><a href="#plus">← IRIS Plus</a><span>›</span>Et si…</nav>
+    <span class="pl-kicker">Et si… — ${dateLongue(a.publie_le)}</span>
+    <h1 class="pl-titre plus-titre">${titreSurligne(a)}</h1>
+    <p class="pl-chapo">${echap(a.chapo)}</p>
+    <p class="pl-temps">${echap(a.temps_lecture)} de lecture</p>
+  </section>
+  <div class="pl-corps"><div class="pl-int pl-corps-etsi">
+    <div class="pl-gauche">
+      ${partie(1, "La question", st.et_si, (a.et_si || []).map((p) => `<p>${riche(p)}</p>`).join(""))}
+      <div data-acces="plus">
+        ${partie(2, "Ce qui existe déjà", st.existe_deja, puces(a.existe_deja))}
+        ${partie(3, "Là où ça coince", st.ca_coince, puces(a.ca_coince))}
+        ${partie(4, "La vraie question", st.vraie_question, puces(a.vraie_question))}
+        ${a.geste ? partie(5, "Le geste", null, `<div class="pl-geste pl-geste-court">${st.geste ? `<h4>${riche(st.geste)}</h4>` : ""}<p>${riche(a.geste)}</p></div>`) : ""}
+      </div>
     </div>
-  </article>`;
+    <aside class="pl-droite">
+      ${(a.en_bref || []).length ? `<div class="pl-encart"><h3><span class="barre-j"></span>En bref</h3><dl class="pl-bref">${a.en_bref.map((x) => `<dt>${echap(x.label)}</dt><dd>${riche(x.texte)}</dd>`).join("")}</dl></div>` : ""}
+      ${(a.sources || []).length ? `<div class="pl-encart" data-acces="plus"><h3><span class="barre-j"></span>Sources</h3><ul class="pl-sources">${a.sources.map(source).join("")}</ul>${a.verifie_le ? `<p class="pl-note">Faits vérifiés le ${dateLongue(a.verifie_le)}.<br/>Ils sont revérifiés tous les six mois.</p>` : ""}</div>` : ""}
+    </aside>
+  </div></div>`;
 }
 
 function plusLecture(id) {
   if (!PLUS) { PLUS_ATTENTE = id; return; }
   const boite = document.getElementById("plus-lecture");
   const editions = PLUS.meteo_semaine || [];
-  if (id === "meteo" || id.startsWith("meteo-")) {
+  if (id === "analyses") {
+    boite.innerHTML = `<section class="pl-hero pl-hero-liste"><nav class="pl-fil"><a href="#plus">← IRIS Plus</a><span>›</span>Toutes les analyses</nav>
+      <span class="pl-kicker">Et si…</span><h1 class="pl-titre">Toutes les analyses</h1>
+      <p class="pl-chapo">Un fait réel, et ses conséquences à explorer. Un nouveau sujet chaque mois.</p></section>
+      <div class="plus-cartes plus-cartes-liste">${[...(PLUS.et_si || []).map((a) => `<a class="plus-mini" href="#plus-etsi-${echap(a.id)}"><div class="pm-img" style="background-image:url('${echap(a.image)}')"></div><div class="pm-corps"><b>${echap(a.question)}</b><span>${dateLongue(a.publie_le)} · ${echap(a.temps_lecture)} de lecture</span></div></a>`),
+        ...(PLUS.a_venir || []).map((a) => `<div class="plus-mini pm-bientot"><div class="pm-img" style="background-image:url('${echap(a.image)}')"></div><div class="pm-corps"><b>${echap(a.question)}</b><span>Bientôt</span></div></div>`)].join("")}</div>`;
+  } else if (id === "meteo" || id.startsWith("meteo-")) {
     const e = editions.find((x) => "meteo-" + x.id === id) || editions[0];
-    boite.innerHTML = e ? meteoComplete(e, SEMAINE) : `<p class="muted">La première météo de la semaine arrive dimanche.</p>`;
+    boite.innerHTML = e ? meteoComplete(e) : `<p class="muted">La première météo de la semaine arrive dimanche.</p>`;
   } else {
     const a = (PLUS.et_si || []).find((x) => "etsi-" + x.id === id);
     boite.innerHTML = a ? etSiComplet(a) : `<p class="muted">Cet article n'existe pas ou n'est plus en ligne.</p>`;
   }
+  window.scrollTo(0, 0);
 }
 
 Promise.all([fetch("plus.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null), lire("semaine.json")])
