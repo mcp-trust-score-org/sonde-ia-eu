@@ -53,6 +53,9 @@ def produire(racine: Path, maintenant: datetime | None = None) -> dict:
             shutil.copyfile(source, sortie / nom)
             copies.append(nom)
     corriger_fins_d_orage(sortie / "alertes.json", sortie / "meteo.json")
+    from .semaine import produire as produire_semaine   # la météo de la semaine (Iris Plus)
+    if produire_semaine(racine, sortie, maintenant):
+        copies.append("semaine.json")
 
     dossiers = []
     for f in sorted((racine / "dossiers").glob("*.json")):

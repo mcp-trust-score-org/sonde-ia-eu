@@ -7,7 +7,9 @@ Chaque jour, selon le rythme de config/redaction.yaml :
     et le bilan de la semaine le lundi ;
   - Tous connectés : un sujet tiré des tendances (Wikipédia, presse grand public),
     retenu seulement s'il passe le test du « Et vous ? » ;
-  - Le Détour : une sélection de liens vers les médias de référence.
+  - Le Détour : une sélection de liens vers les médias de référence ;
+  - Et si… ? (Iris Plus) : le premier lundi du mois, un sujet pour réfléchir aux limites de la
+    technologie (sonde/et_si.py, config/et-si.yaml).
 
 Le rédacteur est un modèle d'IA (par défaut Mistral, clé déjà dans les secrets) qui reçoit
 la charte en consigne et UNIQUEMENT les faits collectés. Sans clé, ou s'il échoue, GitHub écrit
@@ -307,7 +309,7 @@ class Redacteur:
         """Les règles communes et la section de la rubrique : une consigne plus courte."""
         if not rubrique:
             return self.charte
-        garde = {"une": "## 2.", "tous_connectes": "## 3.", "detour": "## 4."}[rubrique]
+        garde = {"une": "## 2.", "tous_connectes": "## 3.", "detour": "## 4.", "et_si": "## 6."}[rubrique]
         morceaux = re.split(r"(?m)^(?=## )", self.charte)
         return "".join(m for m in morceaux if not m.startswith("## ") or m.startswith(("## 0.", "## 1.", "## 5.", garde)))
 
@@ -881,6 +883,11 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
         dt = rythme.get("detour") or {}
         if jour.weekday() in dt.get("jours", [4]):
             propositions.append(_detour(redacteur, client, tend, deja, dt, lecture))
+
+        # ---- Et si… ? (Iris Plus) : le premier lundi du mois, et la revérification des anciens sujets
+        from .et_si import preparer
+        for p in preparer(redacteur, client, racine, tend, jour, maintenant, lecture):
+            propositions.append(p)
     except Exception as e:   # jamais de passage muet : l'erreur est écrite dans le fichier des brouillons
         etat["erreur"] = f"{type(e).__name__}: {e}\n" + traceback.format_exc()[-1500:]
         print(etat["erreur"])
@@ -910,7 +917,8 @@ def enregistrer(etat: dict, statut: str) -> dict:
 
 # ---------------------------------------------------------------- lecture humaine
 
-NOMS = {"une": "À la une", "tous_connectes": "Tous connectés", "detour": "Le Détour"}
+NOMS = {"une": "À la une", "tous_connectes": "Tous connectés", "detour": "Le Détour",
+        "et_si": "Et si… ? (Iris Plus)", "et_si_verif": "Et si… ? · revérification à six mois"}
 FORMATS = {"a_chaud": "À chaud", "bilan": "Bilan"}
 
 
@@ -934,6 +942,12 @@ def en_markdown(s: dict) -> str:
         if p.get("alertes_charte"):
             l += ["**À vérifier**", ""] + [f"- ⚠ {a}" for a in p["alertes_charte"]] + [""]
         a = p.get("article") or {}
+        if p["rubrique"] in ("et_si", "et_si_verif"):
+            from .et_si import en_markdown as et_si_md
+            l += et_si_md(p)
+            l += ["<details><summary>Faits fournis au rédacteur</summary>", "", "```json",
+                  json.dumps(p.get("fiche"), ensure_ascii=False, indent=1)[:6000], "```", "</details>", ""]
+            continue
         if p["rubrique"] == "detour":
             l += ["_Pour publier : Publier un brouillon → Le Détour, et indiquez les numéros à garder (par exemple 1, 3, 4)._", ""]
             for k, x in enumerate(p.get("liens") or [], 1):
