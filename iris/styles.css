@@ -541,6 +541,14 @@ body:not([data-plan="standard"]) [data-acces="sans-plus"] { display: none !impor
 .pa-ios { color: var(--text); }
 .pa-rss { color: var(--muted); font-size: 13px; text-decoration: underline; }
 .pa-rss:hover { color: var(--yellow); }
+.pa-option { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; font-size: 14px; color: var(--muted); cursor: pointer; }
+.pa-option input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--yellow); flex: none; }
+.pa-option b { color: var(--cream); display: inline; }
+.pa-option .prem { font-style: normal; }
+/* Sur téléphone, le panneau prend toute la largeur de l'écran (il était coupé à gauche). */
+@media (max-width: 720px) {
+  .panneau-alerte { position: fixed; left: 12px; right: 12px; width: auto; top: var(--pa-top, 120px); max-height: calc(100vh - var(--pa-top, 120px) - 16px); overflow-y: auto; }
+}
 
 /* ---------- Téléphone : titres lisibles, rien ne déborde ---------- */
 @media (max-width: 720px) {

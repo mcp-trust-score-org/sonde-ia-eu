@@ -1,4 +1,4 @@
-// Iris : reçoit les notifications « nouvel article » et ouvre l'article au clic.
+// Iris : reçoit les notifications (nouvel article, alerte panne) et ouvre la bonne page au clic.
 self.addEventListener("push", (event) => {
   let d = {};
   try { d = event.data ? event.data.json() : {}; } catch (e) { d = { titre: event.data && event.data.text() }; }
@@ -7,7 +7,7 @@ self.addEventListener("push", (event) => {
     icon: "/assets/icone-app-192.png",
     badge: "/assets/icone-app-192.png",
     data: { url: d.url || "/" },
-    tag: "iris-article",
+    tag: d.tag || "iris-article",
     renotify: true,
   }));
 });

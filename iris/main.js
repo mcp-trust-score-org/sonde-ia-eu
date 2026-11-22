@@ -826,10 +826,13 @@ fetch("publies.json", { cache: "no-store" })
   const iPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
   const installe = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
 
+  const options = [...panneau.querySelectorAll("[data-push-sujet]")];   // « plus » (Iris Plus), « alertes » (Premium)
   bouton.addEventListener("click", (e) => {
     e.stopPropagation();
     panneau.hidden = !panneau.hidden;
     bouton.setAttribute("aria-expanded", String(!panneau.hidden));
+    // Sur téléphone, le panneau est fixé à l'écran : on le place juste sous la cloche.
+    panneau.style.setProperty("--pa-top", Math.round(bouton.getBoundingClientRect().bottom + 10) + "px");
   });
   document.addEventListener("click", (e) => {
     if (!panneau.hidden && !panneau.contains(e.target)) { panneau.hidden = true; bouton.setAttribute("aria-expanded", "false"); }
@@ -839,9 +842,17 @@ fetch("publies.json", { cache: "no-store" })
     const b = (base64 + "=".repeat((4 - (base64.length % 4)) % 4)).replace(/-/g, "+").replace(/_/g, "/");
     return Uint8Array.from(atob(b), (c) => c.charCodeAt(0));
   }
+  // Sujets reçus par cet appareil : « articles » toujours ; « plus » et « alertes » en option.
+  const lireSujets = () => { try { return JSON.parse(localStorage.getItem("iris-sujets") || "null") || ["articles"]; } catch (e) { return ["articles"]; } };
+  const garderSujets = (s) => { try { localStorage.setItem("iris-sujets", JSON.stringify(s)); } catch (e) { /* navigation privée */ } };
+  async function envoyerAbonnement(abo, sujets) {
+    return fetch("/api/abonner", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...abo.toJSON(), sujets }) });
+  }
   function afficher(abonne, message) {
     bouton.classList.toggle("on", abonne);
-    etat.textContent = message || (abonne ? "Activées sur cet appareil." : "Une notification à chaque article publié.");
+    const sujets = lireSujets();
+    options.forEach((o) => { o.closest("[data-push-option]").hidden = !abonne; o.checked = sujets.includes(o.dataset.pushSujet); });
+    etat.textContent = message || (abonne ? "Activées sur cet appareil." : "Une notification à chaque article publié : À la une, Tous connectés, Le Détour.");
     action.textContent = abonne ? "Désactiver" : "Activer les notifications";
     action.dataset.abonne = abonne ? "1" : "";
   }
@@ -879,7 +890,7 @@ fetch("publies.json", { cache: "no-store" })
       const r = await fetch("/api/cle", { cache: "no-store" });
       if (!r.ok) throw new Error("clé");
       const abo = await enregistrement.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: cle((await r.json()).cle) });
-      const ok = await fetch("/api/abonner", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(abo) });
+      const ok = await envoyerAbonnement(abo, lireSujets());
       if (!ok.ok) { await abo.unsubscribe(); throw new Error("abonnement"); }
       afficher(true, "C'est fait : vous serez prévenu à chaque nouvel article.");
     } catch (e) {
@@ -888,6 +899,25 @@ fetch("publies.json", { cache: "no-store" })
       action.disabled = false;
     }
   });
+
+  const NOMS_SUJETS = { plus: "IRIS Plus", alertes: "alertes Premium" };
+  options.forEach((opt) => opt.addEventListener("change", async () => {
+    const abo = enregistrement && await enregistrement.pushManager.getSubscription();
+    if (!abo) { opt.checked = false; return; }
+    const sujets = ["articles", ...options.filter((o) => o.checked).map((o) => o.dataset.pushSujet)];
+    opt.disabled = true;
+    try {
+      const r = await envoyerAbonnement(abo, sujets);
+      if (!r.ok) throw new Error("abonnement");
+      garderSujets(sujets);
+      etat.textContent = "Activées : nouveaux articles" + sujets.slice(1).map((s) => ", " + NOMS_SUJETS[s]).join("") + ".";
+    } catch (e) {
+      opt.checked = !opt.checked;
+      etat.textContent = "Ça n'a pas marché. Réessayez dans un instant.";
+    } finally {
+      opt.disabled = false;
+    }
+  }));
 })();
 
 show(location.hash.slice(1));

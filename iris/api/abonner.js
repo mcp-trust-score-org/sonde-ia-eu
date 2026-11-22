@@ -1,4 +1,6 @@
-// POST /api/abonner   : enregistre un appareil (le navigateur envoie son abonnement).
+// POST /api/abonner   : enregistre un appareil (le navigateur envoie son abonnement et ses sujets :
+//                       « articles », et en option « plus » pour IRIS Plus
+//                       et « alertes » pour les alertes Premium).
 // DELETE /api/abonner : le retire (bouton « Désactiver »).
 const stockage = require("./_stockage");
 
@@ -12,7 +14,9 @@ module.exports = async (req, res) => {
   try {
     if (req.method === "POST") {
       if (!valide(abo)) return res.status(400).json({ erreur: "Abonnement invalide." });
-      await stockage.ajouter({ endpoint: abo.endpoint, keys: { p256dh: abo.keys.p256dh, auth: abo.keys.auth } });
+      const permis = ["articles", "alertes", "plus"];
+      const sujets = Array.isArray(abo.sujets) ? abo.sujets.filter((s) => permis.includes(s)) : ["articles"];
+      await stockage.ajouter({ endpoint: abo.endpoint, keys: { p256dh: abo.keys.p256dh, auth: abo.keys.auth }, sujets: sujets.length ? sujets : ["articles"] });
       return res.status(201).json({ ok: true });
     }
     if (req.method === "DELETE") {

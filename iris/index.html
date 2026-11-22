@@ -56,12 +56,20 @@
         <i class="cloche-on" aria-hidden="true"></i>
       </button>
       <div class="panneau-alerte" id="panneau-alerte" hidden>
-        <h4>Être prévenu des nouveaux articles</h4>
+        <h4>Être prévenu</h4>
         <div class="pa-bloc">
           <b>Sur cet appareil</b>
-          <p class="pa-etat" data-push-etat>Une notification à chaque article publié.</p>
+          <p class="pa-etat" data-push-etat>Une notification à chaque article publié : À la une, Tous connectés, Le Détour.</p>
           <button type="button" class="btn btn-yellow btn-sm" data-push-activer>Activer les notifications</button>
           <p class="pa-ios" data-push-ios hidden>Sur iPhone : touchez Partager → « Sur l'écran d'accueil », puis ouvrez Iris depuis l'icône et revenez ici.</p>
+          <label class="pa-option" data-acces="plus" data-push-option hidden>
+            <input type="checkbox" data-push-sujet="plus" />
+            <span><b>Aussi IRIS Plus</b> <i class="prem prem-plus">Plus</i><br/>La météo de la semaine, chaque dimanche, et chaque nouveau « Et si… ? ».</span>
+          </label>
+          <label class="pa-option" data-plan="premium" data-push-option hidden>
+            <input type="checkbox" data-push-sujet="alertes" />
+            <span><b>Aussi les alertes Premium</b> <i class="prem">Premium</i><br/>Tout ce qui arrive dans l'onglet Alertes, dès que la sonde le voit : pannes, lenteurs, retours au calme…</span>
+          </label>
         </div>
         <div class="pa-bloc">
           <b>Par e-mail</b>

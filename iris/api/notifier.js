@@ -1,6 +1,8 @@
 // POST /api/notifier : envoie une notification à tous les appareils abonnés.
 // Appelé par GitHub (Actions → « Publier un brouillon ») avec le secret NOTIF_SECRET.
-// Corps : { "titre": "…", "texte": "…", "url": "/#article-…" }
+// Corps : { "titre": "…", "texte": "…", "url": "/#article-…", "sujet": "articles" | "alertes" | "plus" }
+// « plus » : envoyé par GitHub (plus.yml) quand une nouvelle météo de la semaine ou un « Et si… ? » est en ligne.
+// Appelé aussi par la veille de la sonde (sonde/alertes.py) pour les alertes Premium, sujet « alertes ».
 const webpush = require("web-push");
 const stockage = require("./_stockage");
 
@@ -13,13 +15,16 @@ module.exports = async (req, res) => {
   webpush.setVapidDetails(VAPID_SUBJECT || "mailto:contact@iris.example", VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
 
   const corps = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+  const sujet = ["alertes", "plus"].includes(corps.sujet) ? corps.sujet : "articles";
   const message = JSON.stringify({
+    tag: { alertes: "iris-alerte", plus: "iris-plus" }[sujet] || "iris-article",
     titre: String(corps.titre || "Iris · nouvel article").slice(0, 120),
     texte: String(corps.texte || "").slice(0, 240),
     url: /^\/[^/]/.test(corps.url || "") ? corps.url : "/",
   });
   try {
-    const abos = await stockage.tous();
+    // Un appareil abonné avant les sujets ne reçoit que les articles.
+    const abos = (await stockage.tous()).filter((a) => (Array.isArray(a.sujets) ? a.sujets : ["articles"]).includes(sujet));
     let envoyes = 0, retires = 0, echecs = 0;
     await Promise.all(abos.map(async (abo) => {
       try {
