@@ -1,0 +1,394 @@
+{
+ "_lisez_moi": "Contenu d'IRIS Plus, écrit par la rédaction. « meteo_semaine » : une édition par dimanche, la plus récente en premier ; « essentiel » donne les lignes de la carte « L'essentiel tech en un coup d'œil » (icônes : ia, services, securite, reseau, prevision, geste). Les mesures (jours, coupures) sont figées au moment de la publication ; sans elles, le site prend iris/donnees/semaine.json. « et_si » : les articles publiés, le plus récent en premier (il passe en grand). « prochains_et_si » : le programme annoncé (à garder identique à config/et-si.yaml, réglage « programme »). « a_venir » : sujets de la réserve montrés en « Bientôt ».",
+ "meteo_semaine": [
+  {
+   "id": "2026-11-22",
+   "publie_le": "2026-11-22",
+   "du": "2026-11-16",
+   "au": "2026-11-21",
+   "titre": "Une semaine qui finit à l'orage.",
+   "temps": [
+    "Côté intelligence artificielle européenne, le service d'IA d'OVHcloud, l'hébergeur français, a connu plusieurs coupures : lundi en fin de matinée, brièvement jeudi matin, puis à répétition entre vendredi soir et samedi soir. Mistral, Scaleway et IONOS sont restés au beau fixe toute la semaine.",
+    "Vendredi matin, OVHcloud avait bien signalé un incident sur sa page officielle. Mais samedi soir, alors que notre sonde le voyait de nouveau en panne, cette même page affichait « Tout fonctionne »."
+   ],
+   "touche": [
+    {
+     "titre": "Mardi soir, chez Apple.",
+     "texte": "iCloud, l'App Store et la connexion au compte Apple ont été coupés pendant plusieurs heures, à cause d'une mise à jour interne. Apple précise qu'il ne s'agit pas d'une cyberattaque.",
+     "source": {
+      "label": "Selectra : la panne Apple du 17 novembre",
+      "url": "https://selectra.info/telecom/actualites/marche/panne-apple-2026-mise-a-jour-pas-cyberattaque"
+     }
+    },
+    {
+     "titre": "Et un mea culpa.",
+     "texte": "À l'ouverture de sa conférence Ignite, Satya Nadella a présenté ses excuses pour la panne mondiale de Microsoft 365 de la semaine précédente, qui avait coupé Outlook, Teams et Copilot.",
+     "source": {
+      "label": "ITPro : les excuses de Satya Nadella",
+      "url": "https://www.itpro.com/software/microsoft/satya-nadella-issues-apology-to-customers-in-wake-of-microsoft-365-outage"
+     }
+    }
+   ],
+   "prevision": "Aucune maintenance annoncée par les fournisseurs suivis par Iris pour les prochains jours. On garde un œil sur OVHcloud.",
+   "geste": "Vos photos vivent-elles uniquement dans iCloud ou Google Photos ? Ce week-end, faites-en une copie ailleurs : sur un disque dur, ou dans un autre service. Le jour où un compte est bloqué ou un service en panne, c'est celle-là qui compte.",
+   "mesures": {
+    "jours": [
+     {
+      "date": "2026-11-16",
+      "etat": "orage",
+      "fournisseurs": {
+       "mistral": {
+        "etat": "soleil",
+        "mesures": 3,
+        "echecs": 0
+       },
+       "scaleway": {
+        "etat": "soleil",
+        "mesures": 3,
+        "echecs": 0
+       },
+       "ovhcloud": {
+        "etat": "orage",
+        "mesures": 8,
+        "echecs": 2
+       },
+       "ionos": {
+        "etat": "soleil",
+        "mesures": 3,
+        "echecs": 0
+       }
+      }
+     },
+     {
+      "date": "2026-11-17",
+      "etat": "soleil",
+      "fournisseurs": {
+       "mistral": {
+        "etat": "soleil",
+        "mesures": 6,
+        "echecs": 0
+       },
+       "scaleway": {
+        "etat": "soleil",
+        "mesures": 6,
+        "echecs": 0
+       },
+       "ovhcloud": {
+        "etat": "soleil",
+        "mesures": 6,
+        "echecs": 0
+       },
+       "ionos": {
+        "etat": "soleil",
+        "mesures": 6,
+        "echecs": 0
+       }
+      }
+     },
+     {
+      "date": "2026-11-18",
+      "etat": "soleil",
+      "fournisseurs": {
+       "mistral": {
+        "etat": "soleil",
+        "mesures": 5,
+        "echecs": 0
+       },
+       "scaleway": {
+        "etat": "soleil",
+        "mesures": 5,
+        "echecs": 0
+       },
+       "ovhcloud": {
+        "etat": "soleil",
+        "mesures": 5,
+        "echecs": 0
+       },
+       "ionos": {
+        "etat": "soleil",
+        "mesures": 5,
+        "echecs": 0
+       }
+      }
+     },
+     {
+      "date": "2026-11-19",
+      "etat": "averse",
+      "fournisseurs": {
+       "mistral": {
+        "etat": "soleil",
+        "mesures": 5,
+        "echecs": 0
+       },
+       "scaleway": {
+        "etat": "soleil",
+        "mesures": 5,
+        "echecs": 0
+       },
+       "ovhcloud": {
+        "etat": "averse",
+        "mesures": 5,
+        "echecs": 1
+       },
+       "ionos": {
+        "etat": "soleil",
+        "mesures": 5,
+        "echecs": 0
+       }
+      }
+     },
+     {
+      "date": "2026-11-20",
+      "etat": "orage",
+      "fournisseurs": {
+       "mistral": {
+        "etat": "soleil",
+        "mesures": 8,
+        "echecs": 0
+       },
+       "scaleway": {
+        "etat": "soleil",
+        "mesures": 8,
+        "echecs": 0
+       },
+       "ovhcloud": {
+        "etat": "orage",
+        "mesures": 8,
+        "echecs": 2
+       },
+       "ionos": {
+        "etat": "soleil",
+        "mesures": 8,
+        "echecs": 0
+       }
+      }
+     },
+     {
+      "date": "2026-11-21",
+      "etat": "orage",
+      "fournisseurs": {
+       "mistral": {
+        "etat": "soleil",
+        "mesures": 7,
+        "echecs": 0
+       },
+       "scaleway": {
+        "etat": "soleil",
+        "mesures": 7,
+        "echecs": 0
+       },
+       "ovhcloud": {
+        "etat": "orage",
+        "mesures": 7,
+        "echecs": 4
+       },
+       "ionos": {
+        "etat": "soleil",
+        "mesures": 7,
+        "echecs": 0
+       }
+      }
+     }
+    ],
+    "coupures": [
+     {
+      "fournisseur": "ovhcloud",
+      "nom": "OVHcloud",
+      "debut": "2026-11-16T09:56:47+00:00",
+      "mesures_en_echec": 2,
+      "fin": "2026-11-16T11:29:42+00:00",
+      "jour": "2026-11-16",
+      "de": "10 h 56",
+      "a": "12 h 29"
+     },
+     {
+      "fournisseur": "ovhcloud",
+      "nom": "OVHcloud",
+      "debut": "2026-11-19T07:43:08+00:00",
+      "mesures_en_echec": 1,
+      "fin": "2026-11-19T08:52:51+00:00",
+      "jour": "2026-11-19",
+      "de": "8 h 43",
+      "a": "9 h 52"
+     },
+     {
+      "fournisseur": "ovhcloud",
+      "nom": "OVHcloud",
+      "debut": "2026-11-20T17:51:45+00:00",
+      "mesures_en_echec": 1,
+      "fin": "2026-11-20T20:44:52+00:00",
+      "jour": "2026-11-20",
+      "de": "18 h 51",
+      "a": "21 h 44"
+     },
+     {
+      "fournisseur": "ovhcloud",
+      "nom": "OVHcloud",
+      "debut": "2026-11-20T21:51:09+00:00",
+      "mesures_en_echec": 2,
+      "fin": "2026-11-21T01:45:59+00:00",
+      "jour": "2026-11-20",
+      "de": "22 h 51",
+      "a": "2 h 45 le lendemain"
+     },
+     {
+      "fournisseur": "ovhcloud",
+      "nom": "OVHcloud",
+      "debut": "2026-11-21T07:10:46+00:00",
+      "mesures_en_echec": 1,
+      "fin": "2026-11-21T08:48:41+00:00",
+      "jour": "2026-11-21",
+      "de": "8 h 10",
+      "a": "9 h 48"
+     },
+     {
+      "fournisseur": "ovhcloud",
+      "nom": "OVHcloud",
+      "debut": "2026-11-21T15:27:41+00:00",
+      "mesures_en_echec": 1,
+      "fin": "2026-11-21T16:26:00+00:00",
+      "jour": "2026-11-21",
+      "de": "16 h 27",
+      "a": "17 h 26"
+     },
+     {
+      "fournisseur": "ovhcloud",
+      "nom": "OVHcloud",
+      "debut": "2026-11-21T21:45:24+00:00",
+      "mesures_en_echec": 1,
+      "en_cours": true,
+      "jour": "2026-11-21",
+      "de": "22 h 45"
+     }
+    ],
+    "suivis": {
+     "mistral": "Mistral",
+     "scaleway": "Scaleway",
+     "ovhcloud": "OVHcloud",
+     "ionos": "IONOS"
+    },
+    "methode": "Veille de la sonde Iris, environ une mesure par heure et par fournisseur. Une coupure va de la première mesure en échec à la première mesure réussie : elle a pu être plus courte."
+   },
+   "essentiel": [
+    {
+     "categorie": "IA",
+     "icone": "ia",
+     "texte": "OVHcloud coupé plusieurs fois, lundi puis de vendredi à samedi."
+    },
+    {
+     "categorie": "IA",
+     "icone": "reseau",
+     "texte": "Mistral, Scaleway et IONOS au beau fixe toute la semaine."
+    },
+    {
+     "categorie": "Services",
+     "icone": "services",
+     "texte": "iCloud et l'App Store coupés mardi soir."
+    },
+    {
+     "categorie": "Services",
+     "icone": "securite",
+     "texte": "Microsoft s'excuse pour la panne d'Outlook et Teams."
+    },
+    {
+     "categorie": "Prévision",
+     "icone": "prevision",
+     "texte": "Aucune maintenance annoncée."
+    }
+   ]
+  }
+ ],
+ "et_si": [
+  {
+   "id": "edge",
+   "publie_le": "2026-11-22",
+   "verifie_le": "2026-11-22",
+   "question": "Et si votre IA marchait même quand Internet tombe ?",
+   "surligne": "Internet tombe ?",
+   "image": "assets/photos/ia.jpg",
+   "temps_lecture": "5 min",
+   "chapo": "Après les coupures mesurées cette semaine sur un service d'IA français, on explore ce que changerait une IA qui tourne directement sur nos appareils.",
+   "et_si": [
+    "Vendredi 20 et samedi 21 novembre, la sonde d'Iris a vu le service d'IA d'OVHcloud tomber à plusieurs reprises, parfois pendant plusieurs heures. Pendant ce temps, les applications qui s'en servaient attendaient une réponse qui ne venait pas.",
+    "L'IA que nous utilisons vit presque toujours dans un centre de données, loin de nous. Et si elle tournait directement dans notre poche ?"
+   ],
+   "existe_deja": [
+    "Ce n'est plus de la science-fiction. Apple ouvre aux applications le modèle de langage qui tourne directement sur ses appareils, au cœur d'Apple Intelligence.",
+    "Sur Android, Google propose AI Edge Gallery, une application qui fait tourner des modèles d'IA entièrement hors ligne, sur le téléphone lui-même : résumer un texte, poser une question sur une image, traduire. Dans le métro, en avion ou en zone blanche, elle reste disponible.",
+    "L'Europe est dans la course. Mistral AI, la start-up française, a sorti en décembre 2025 Ministral 3 3B, un petit modèle conçu pour fonctionner directement sur l'appareil."
+   ],
+   "ca_coince": [
+    "Il faut un appareil récent. Ces fonctions demandent une puce et une mémoire suffisantes : sur un téléphone de quelques années, elles sont lentes, ou n'existent pas.",
+    "Hors ligne ne veut pas dire tout hors ligne. Chez Apple, les demandes trop lourdes pour l'appareil partent vers des serveurs d'Apple. Le jour d'une panne, ce sont celles-là qui s'arrêtent.",
+    "La batterie souffre. Selon les mesures de Greenspector, une société française spécialisée dans la sobriété numérique, faire tourner un grand modèle d'IA sur un smartphone peut diviser son autonomie par 12 à 15.",
+    "Un petit modèle reste un petit modèle. Pour une longue analyse, une recherche ou un gros document, on dépend toujours du cloud."
+   ],
+   "vraie_question": [
+    "De quoi a-t-on vraiment besoin le jour où le réseau tombe : d'une IA brillante, ou d'une IA qui répond ?",
+    "Faut-il changer de téléphone pour gagner en autonomie, sachant que fabriquer un appareil neuf a lui aussi un coût ?",
+    "Si nos questions restent dans notre poche, qu'est-ce que ça change pour nos données personnelles ?",
+    "Qui décide de ce qui tourne chez nous et de ce qui part sur des serveurs : nous, ou le fabricant ?"
+   ],
+   "geste": "Mettez votre téléphone en mode avion, puis demandez à votre assistant de résumer un message ou de traduire une phrase. Ce qui fonctionne encore, c'est ce qui vous restera le jour d'une panne.",
+   "sources": [
+    {
+     "label": "Iris : la météo de la semaine du 16 au 21 novembre (mesures de la sonde)",
+     "url": "#plus-meteo"
+    },
+    {
+     "label": "Apple Developer : le modèle d'IA sur l'appareil, ouvert aux applications",
+     "url": "https://developer.apple.com/business/ai/"
+    },
+    {
+     "label": "Apple Security Research : Private Cloud Compute, les serveurs d'Apple pour les demandes plus lourdes",
+     "url": "https://security.apple.com/blog/private-cloud-compute/"
+    },
+    {
+     "label": "Korben : Google AI Edge Gallery, l'IA locale sur smartphone",
+     "url": "https://korben.info/edge-gallery-ia-locale-smartphone.html"
+    },
+    {
+     "label": "Le Monde Informatique : déployer des modèles d'IA hors ligne avec AI Edge Gallery",
+     "url": "https://www.lemondeinformatique.fr/actualites/lire-deployer-des-modeles-d-ia-hors-ligne-avec-ai-edge-gallery-97047.html"
+    },
+    {
+     "label": "Mistral AI : documentation de Ministral 3 3B",
+     "url": "https://docs.mistral.ai/models/ministral-3-3b-25-12"
+    },
+    {
+     "label": "Greenspector : les modèles d'IA sur smartphone et l'autonomie (en anglais)",
+     "url": "https://blog.greenspector.com/en/artificial-intelligence-smartphone-autonomy/"
+    }
+   ]
+  }
+ ],
+ "prochains_et_si": [
+  {
+   "date": "2026-12-07",
+   "id": "post-quantique",
+   "question": "Et si un ordinateur quantique lisait vos messages d'aujourd'hui ?"
+  },
+  {
+   "date": "2027-01-04",
+   "id": "sans-mot-de-passe",
+   "question": "Et si vous n'aviez plus jamais de mot de passe ?"
+  }
+ ],
+ "a_venir": [
+  {
+   "id": "satellite",
+   "question": "Et si votre téléphone captait le réseau par satellite, partout ?",
+   "image": "assets/photos/innovation.jpg"
+  },
+  {
+   "id": "centres-de-donnees-chaleur",
+   "question": "Et si une canicule éteignait le cloud ?",
+   "image": "assets/photos/energie.jpg"
+  },
+  {
+   "id": "sans-gps",
+   "question": "Et si le GPS s'arrêtait une journée ?",
+   "image": "assets/photos/reseau.jpg"
+  }
+ ]
+}

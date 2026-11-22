@@ -36,6 +36,7 @@
   </a>
   <nav class="tabs" aria-label="Rubriques">
     <a href="#une" data-view="une">À la une</a>
+    <a href="#plus" data-view="plus" class="tab-plus">IRIS Plus</a>
     <a href="#vies" data-view="vies">Tous connectés</a>
     <a href="#detour" data-view="detour">Le Détour</a>
     <a href="#meteo" data-view="meteo">Ma Météo<span class="prem" title="Réservé à la version Premium">Premium</span></a>
@@ -46,6 +47,7 @@
   <div class="nav-right">
     <div class="plan-switch" role="group" aria-label="Type de compte (démo)">
       <button type="button" data-set-plan="standard">Standard</button>
+      <button type="button" data-set-plan="plus">Iris Plus</button>
       <button type="button" data-set-plan="premium">Premium</button>
     </div>
     <div class="alerte-wrap">
@@ -287,6 +289,43 @@
   <p class="also">La sélection de la semaine</p>
   <div class="ext-grid" id="ext-grid"></div>
   <p class="rule">Liens externes : les articles s'ouvrent sur le site de leur éditeur. Iris ne reprend ni leurs textes ni leurs images.</p>
+</section>
+
+<!-- ================= IRIS PLUS ================= -->
+<section class="view" id="view-plus" data-view="plus">
+  <div class="plus-bandeau">
+    <div class="plus-logo" aria-label="IRIS Plus"><span class="brand-word">IRIS</span><span class="plus-box">Plus</span></div>
+    <div class="plus-intro">
+      <p class="plus-tagline">Comprendre la tech au-delà de l'actualité.</p>
+      <ul>
+        <li><i class="plus-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></i><span><b>Chaque dimanche</b>&nbsp;: la météo de la semaine.</span></li>
+        <li><i class="plus-ic plus-ic-rond">?</i><span><b>Et si…</b>&nbsp;: un fait réel, et ses conséquences à explorer.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="plus-grille">
+    <article class="plus-hero" id="plus-hero"><p class="muted">Chargement…</p></article>
+    <aside class="plus-cote">
+      <div class="plus-carte" id="plus-meteo-carte"></div>
+      <div class="plus-carte" id="plus-prochains"></div>
+    </aside>
+  </div>
+
+  <div class="plus-suite-head"><h3>Plus de questions « Et si… »</h3></div>
+  <div class="plus-cartes" id="plus-cartes"></div>
+  <p class="rule">Iris Plus · inclus dans Premium. Mesures de la sonde Iris et sources publiques citées : rien n'est publié sans preuve, et aucun avis n'est donné.</p>
+</section>
+
+<!-- Iris Plus : lecture d'un « Et si… ? » ou de la météo complète -->
+<section class="view" id="view-pluslecture" data-view="pluslecture">
+  <a class="plus-retour" href="#plus">← IRIS Plus</a>
+  <div id="plus-lecture"></div>
+  <section class="plus-teaser" data-acces="sans-plus">
+    <h3 class="display-sm">La suite est réservée aux abonnés.</h3>
+    <p>Chaque dimanche, la météo de la semaine complète. Chaque mois, un « Et si… ? » pour réfléchir aux limites de la technologie. Iris Plus est inclus dans Premium.</p>
+    <div class="impact-ctas"><button type="button" class="btn btn-yellow" data-set-plan="plus">Passer à Iris Plus</button></div>
+  </section>
 </section>
 
 <!-- ================= 06 — RAPPORTS ================= -->
