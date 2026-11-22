@@ -11,7 +11,7 @@ GitHub propose des brouillons dans `redaction/propositions/`. La rédaction choi
 - Un événement sans anomalie mesurée peut faire l'objet d'un brouillon. Il reste un brouillon jusqu'à décision de la rédaction.
 - Le tag de confiance (Confirmé, Probable, Possible, Aucune anomalie) sert à la relecture. Il n'apparaît jamais sur le site.
 
-## 1. Règles communes aux trois rubriques
+## 1. Règles communes aux rubriques
 
 ### Le style d'écriture
 
@@ -164,3 +164,28 @@ Chaque brouillon est vérifié avant d'arriver en relecture. Les écarts sont si
 - titre périmé (« sort ce jeudi » publié un samedi) et sujet déjà en ligne : publication refusée sauf « forcer » ;
 - points « à vérifier » laissés par le rédacteur : publication refusée sauf « forcer » ;
 - **ligne éditoriale** : les articles de faits divers, de justice et de politique sont retirés de la liste avant le choix du sujet ; le rédacteur doit nommer la technologie en jeu et citer la phrase de l'article qui la montre ; un mot technologique du texte absent des articles lus est signalé. Une alerte « Ligne éditoriale » bloque la publication sauf « forcer ».
+
+## 6. Et si… ? : réfléchir aux limites de la technologie (Iris Plus)
+
+**Pour qui** : les abonnés d'Iris Plus, qui veulent prendre du recul.
+
+**Rythme** : un sujet par mois, préparé le premier lundi. Les sujets sont dans `config/et-si.yaml` ; GitHub choisit celui qui colle le mieux à l'actualité (une panne mesurée par la sonde, ou des articles récents). Un sujet n'est jamais reproposé.
+
+**L'esprit** : la série aide à réfléchir. Elle ne donne **aucun avis** et ne tranche pas à la place du lecteur. Elle part toujours de la vie connectée de tous les jours, et elle dit honnêtement où la technologie s'arrête : pas de promesse, pas d'enthousiasme pour la nouveauté.
+
+**La structure, toujours la même :**
+
+1. **Et si…** : la question, posée à partir d'un fait réel (une panne mesurée par la sonde, une annonce, un article récent).
+2. **Ce qui existe déjà** : les faits, tous sourcés.
+3. **Là où ça coince** : les limites concrètes (le matériel qu'il faut, la batterie, ce qui repasse par le cloud, ce qui reste une promesse).
+4. **La vraie question** : deux à quatre questions ouvertes sur ce que ça change pour nous, ce qu'on y perd ou y gagne. **On ne répond pas à ces questions.**
+5. **Le geste** : une chose simple à tester ou à faire.
+
+**Le titre** est la question elle-même, terminée par un point d'interrogation.
+
+**Les sources** : seulement des pages officielles (documentation d'un fournisseur, organisme public) et des médias reconnus. Un blog ou un guide commercial peut donner une piste, jamais un fait.
+
+**Dans le temps** : six mois après, GitHub relit les sources de chaque sujet et dit ce qui a changé. Si un fait n'est plus vrai, la rédaction ajoute un encadré « Ce qui a changé depuis » plutôt que de laisser un article périmé en ligne.
+
+**Contrôles propres à la série** : les 5 parties sont présentes ; le titre est une question ; chaque phrase de « La vraie question » finit par un point d'interrogation ; aucune formule d'avis (« il faut », « selon nous », « mieux vaut »…) ; aucun lien absent de la fiche ; au moins une source lue.
+
