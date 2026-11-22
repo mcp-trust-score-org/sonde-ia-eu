@@ -257,8 +257,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.commande == "site":
-        from .site import produire
-        res = produire(RACINE)
+        from .site import produire as produire_site
+        res = produire_site(RACINE)
         print(f"  iris/donnees : {', '.join(res['copies'])} · {res['dossiers']} dossier(s) · {res['preuves']} preuve(s)")
         return 0
 
