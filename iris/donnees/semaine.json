@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-22T00:58:09+00:00",
+ "genere_le": "2026-11-22T01:37:41+00:00",
  "suivis": {
   "mistral": "Mistral",
   "scaleway": "Scaleway",
@@ -347,26 +347,26 @@
   },
   {
    "date": "2026-11-22",
-   "etat": "inconnu",
+   "etat": "soleil",
    "fournisseurs": {
     "mistral": {
-     "etat": "inconnu",
-     "mesures": 0,
+     "etat": "soleil",
+     "mesures": 1,
      "echecs": 0
     },
     "scaleway": {
-     "etat": "inconnu",
-     "mesures": 0,
+     "etat": "soleil",
+     "mesures": 1,
      "echecs": 0
     },
     "ovhcloud": {
-     "etat": "inconnu",
-     "mesures": 0,
+     "etat": "soleil",
+     "mesures": 1,
      "echecs": 0
     },
     "ionos": {
-     "etat": "inconnu",
-     "mesures": 0,
+     "etat": "soleil",
+     "mesures": 1,
      "echecs": 0
     }
    }
@@ -438,9 +438,10 @@
    "nom": "OVHcloud",
    "debut": "2026-11-21T21:45:24+00:00",
    "mesures_en_echec": 1,
-   "en_cours": true,
+   "fin": "2026-11-22T01:37:38+00:00",
    "jour": "2026-11-21",
-   "de": "22 h 45"
+   "de": "22 h 45",
+   "a": "2 h 37 le lendemain"
   }
  ],
  "methode": "Veille de la sonde Iris, environ une mesure par heure et par fournisseur. Une coupure va de la première mesure en échec à la première mesure réussie : elle a pu être plus courte."
