@@ -3,8 +3,8 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 63,
-      "disponibilite_pct": 73.0,
+      "appels": 66,
+      "disponibilite_pct": 69.7,
       "ttft_p50_ms": 829,
       "ttft_p95_ms": 1122,
       "duree_p50_ms": 2512,
@@ -12,39 +12,39 @@
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
-        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 12,
-        "réponse vide": 5
+        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 14,
+        "réponse vide": 6
       }
     },
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 63,
-      "disponibilite_pct": 77.8,
-      "ttft_p50_ms": 1159,
-      "ttft_p95_ms": 129217,
-      "duree_p50_ms": 1856,
-      "jetons_par_s_median": 25.0,
-      "qualite_pct": 95.9,
+      "appels": 66,
+      "disponibilite_pct": 75.8,
+      "ttft_p50_ms": 1134,
+      "ttft_p95_ms": 128295,
+      "duree_p50_ms": 1802,
+      "jetons_par_s_median": 25.1,
+      "qualite_pct": 96.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
-        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 13,
+        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 15,
         "réponse vide": 1
       }
     },
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 63,
-      "disponibilite_pct": 81.0,
-      "ttft_p50_ms": 999,
-      "ttft_p95_ms": 31878,
-      "duree_p50_ms": 1382,
-      "jetons_par_s_median": 53.6,
-      "qualite_pct": 80.4,
+      "appels": 66,
+      "disponibilite_pct": 78.8,
+      "ttft_p50_ms": 991,
+      "ttft_p95_ms": 31379,
+      "duree_p50_ms": 1380,
+      "jetons_par_s_median": 53.7,
+      "qualite_pct": 78.8,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
-        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 12
+        "HTTP 429: {\n  \"message\":\"API rate limit exceeded\",\n  \"reques": 14
       }
     }
   ],
@@ -94,8 +94,8 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-22T12:09:42+00:00",
-  "total_mesures": 189,
+  "genere_le": "2026-11-22T17:53:35+00:00",
+  "total_mesures": 198,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [
     "ovhcloud"
