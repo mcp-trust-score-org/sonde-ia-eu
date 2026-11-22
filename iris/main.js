@@ -131,6 +131,16 @@ function suiviFournisseurs(a) {
   };
 }
 
+// Le bon réflexe : le début de chaque geste en gras (« Comparez les prix » des versions…), comme sur la maquette.
+// Jusqu'à la première virgule si elle arrive tôt, sinon les trois premiers mots. Déjà du gras dans le texte : on n'y touche pas.
+function debutGras(r) {
+  if (/<b>|<strong>/.test(r)) return r;
+  const virgule = r.indexOf(",");
+  if (virgule > 0 && r.slice(0, virgule).split(/\s+/).length <= 6) return `<b>${r.slice(0, virgule)}</b>${r.slice(virgule)}`;
+  const mots = r.split(" ");
+  return mots.length > 4 ? `<b>${mots.slice(0, 3).join(" ")}</b> ${mots.slice(3).join(" ")}` : r;
+}
+
 function renderArticle(id) {
   const a = ARTICLES[id];
   const el = document.getElementById("article");
@@ -143,9 +153,10 @@ function renderArticle(id) {
   const srcHtml = srcList.length ? `<div class="art-source"><b>${srcList.length > 1 ? "Sources" : "Source"}</b>${srcList.map((x) => `<a href="${x.url}" target="_blank" rel="noopener">${x.label} ↗</a>`).join("")}</div>` : "";
   const suivi = suiviFournisseurs(a);
   const ending = pub
-    ? `${a.reflexes ? `<section class="impact impact-reflex">
-        <p class="impact-kicker">Le bon réflexe</p>
-        <ul class="reflexes">${a.reflexes.map((r) => `<li>${r}</li>`).join("")}</ul>
+    ? `${a.reflexes ? `<section class="bon-reflexe">
+        <h2>Le bon réflexe</h2>
+        <p class="br-sous">${a.reflexes_intro || `${["", "Un geste simple", "Deux gestes simples", "Trois gestes simples", "Quatre gestes simples"][a.reflexes.length] || "Des gestes simples"}, à faire tout de suite.`}</p>
+        <ol class="br-liste">${a.reflexes.map((r, i) => `<li><span class="br-num">${String(i + 1).padStart(2, "0")}</span><span>${debutGras(r)}</span></li>`).join("")}</ol>
       </section>` : ""}
       ${suivi ? suivi.premium + suivi.standard : ""}
       ${srcHtml}

@@ -850,3 +850,22 @@ body { overflow-x: clip; }
   .pl-hero-etsi .pl-titre { font-size: clamp(44px, 4.6vw, 58px); }
   .pl-hero-etsi::after { background-position: 30% center; }
 }
+
+/* Le bon réflexe (Tous connectés) : trait jaune, grand titre, gestes numérotés 01, 02, 03 */
+.bon-reflexe { margin-top: 44px; }
+.bon-reflexe::before { content: ""; display: block; width: 90px; height: 7px; background: var(--yellow); border-radius: 2px; margin-bottom: 18px; }
+.bon-reflexe h2 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: 48px; line-height: 1; color: var(--cream); margin: 0 0 8px; }
+.br-sous { font-size: 19px; color: #E6E3DC; margin: 0 0 20px; }
+.br-liste { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.br-liste li { display: grid; grid-template-columns: 88px minmax(0, 1fr); align-items: baseline; padding: 16px 0; border-top: 1px solid var(--line); font-size: 19px; line-height: 1.45; color: #EEE; }
+.br-num { font-family: var(--f-display); font-weight: 800; font-size: 32px; line-height: 1; color: var(--yellow); }
+.br-liste b { color: #fff; font-weight: 700; }
+@media (max-width: 640px) { .bon-reflexe h2 { font-size: 38px; } .br-liste li { grid-template-columns: 56px minmax(0, 1fr); font-size: 17px; } .br-num { font-size: 26px; } .br-sous { font-size: 17px; } }
+/* Sources et pont « Vous êtes une entreprise ? » sous le bon réflexe, comme sur la maquette */
+.bon-reflexe ~ .art-source { margin-top: 40px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.bon-reflexe ~ .art-source b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: 22px; letter-spacing: .02em; color: var(--cream); }
+.bon-reflexe ~ .art-source a { font-size: 18px; color: var(--cream); text-decoration: none; border-bottom: 1.5px solid var(--cream); padding-bottom: 2px; }
+.bon-reflexe ~ .bridge { margin-top: 34px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 22px 30px; }
+.bon-reflexe ~ .bridge span { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: 24px; color: var(--cream); }
+.bon-reflexe ~ .bridge b { font-size: 19px; }
+@media (max-width: 640px) { .bon-reflexe ~ .art-source a { font-size: 16px; } .bon-reflexe ~ .bridge { padding: 18px 18px; } .bon-reflexe ~ .bridge span { font-size: 21px; } .bon-reflexe ~ .bridge b { font-size: 17px; } }
