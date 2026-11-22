@@ -37,3 +37,13 @@ def test_site_copie_et_corrige(tmp_path: Path):
     r = json.loads((tmp_path / "iris" / "donnees" / "rapports.json").read_text())
     assert r["dossiers"][0]["fichier"] == "dossiers/ovhcloud.md" and r["preuves"][0]["horodatage"] == "preuves/2026-11-21.json.ots"
     assert json.loads((tmp_path / "public" / "alertes.json").read_text())[0]["texte"].endswith("57 minutes de panne.")   # l'original n'est pas touché
+
+
+def test_les_commandes_rapport_et_site_cohabitent(tmp_path):
+    """Régression : un `from .site import produire` dans main() masquait `produire` du rapport
+    et faisait échouer `python -m sonde rapport` (donc la mesure horaire et les relevés quotidiens)."""
+    import subprocess, sys
+    from sonde.mesure import RACINE
+    r = subprocess.run([sys.executable, "-m", "sonde", "rapport", "--jours", "1", "--sortie", str(tmp_path)],
+                       cwd=RACINE, capture_output=True, text=True)
+    assert "UnboundLocalError" not in r.stderr, r.stderr
