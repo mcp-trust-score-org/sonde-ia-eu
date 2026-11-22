@@ -170,11 +170,12 @@ def test_detour_liens_a_garder(tmp_path):
         publier(tmp_path, "detour", "2026-11-24", liens="1, 7", maintenant=SAMEDI)
     with pytest.raises(RefusPublication, match="illisible"):
         publier(tmp_path, "detour", "2026-11-24", liens="un et trois", maintenant=SAMEDI)
-    publier(tmp_path, "detour", "2026-11-24", liens="1, 3, 4", maintenant=SAMEDI)
+    assert publier(tmp_path, "detour", "2026-11-24", liens="1, 3, 4", maintenant=SAMEDI)["nouveaux"] == 3
     pub = json.loads((tmp_path / "iris" / "publies.json").read_text())
     assert [l["source"] for l in pub["detour"]] == ["next", "register", "ars"]
     assert all(l["date"] == "2026-11-24" and l["publie_le"] for l in pub["detour"])
     # un lien sans « pourquoi » n'empêche plus rien s'il n'est pas gardé
     liens[1]["pourquoi"] = None
     (d / "2026-11-24.json").write_text(json.dumps({"propositions": [{"rubrique": "detour", "liens": liens}]}))
-    assert publier(tmp_path, "detour", "2026-11-24", liens="1, 5", maintenant=SAMEDI)["rubrique"] == "detour"
+    res = publier(tmp_path, "detour", "2026-11-24", liens="1, 5", maintenant=SAMEDI)
+    assert res["rubrique"] == "detour" and res["nouveaux"] == 1     # « next » était déjà en ligne : la notification dira 1

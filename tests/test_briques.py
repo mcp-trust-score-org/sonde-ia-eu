@@ -164,3 +164,25 @@ def test_brouillon_du_rapport_public(tmp_path, monkeypatch):
     monkeypatch.setattr(rp, "datetime", type("D", (), {"now": staticmethod(lambda tz=None: __import__("datetime").datetime(2099, 1, 2, tzinfo=tz))}))
     texte = brouillon(d, tmp_path / "preuves", jours=30)
     assert "[À COMMENTER]" in texte and "gpt-oss-120b" in texte and "Par où passent" in texte
+
+
+def test_alerte_envoyee_aux_appareils_abonnes():
+    """Avec NOTIF_SECRET, une alerte part aussi vers le site (sujet « alertes »)."""
+    import json as _json
+    import httpx
+    from sonde.alertes import envoyer
+    recus = []
+
+    def repondre(req):
+        recus.append((str(req.url), req.headers.get("authorization"), _json.loads(req.content)))
+        return httpx.Response(200, json={"envoyes": 1})
+
+    client = httpx.Client(transport=httpx.MockTransport(repondre))
+    alerte = {"titre": "Orage sur OVHcloud", "texte": "Panne. Dossier : `python -m sonde avoirs`.", "niveau": "rouge",
+              "type": "orage", "id": "ovhcloud-orage-1"}
+    faits = envoyer(alerte, {"NOTIF_SECRET": "s", "SITE_URL": "https://iris.example/"}, client)
+    assert faits == ["site"]
+    url, auth, corps = recus[0]
+    assert url == "https://iris.example/api/notifier" and auth == "Bearer s"
+    assert corps["sujet"] == "alertes" and corps["url"] == "/#alertes" and "`" not in corps["texte"]
+    assert envoyer(alerte, {}, client) == []          # sans secret : rien n'est envoyé au site
