@@ -55,6 +55,8 @@ jobs:
           IONOS_API_TOKEN: ${{ secrets.IONOS_API_TOKEN }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           ALERTE_WEBHOOK_URL: ${{ secrets.ALERTE_WEBHOOK_URL }}
+          NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}   # alertes Premium envoyées aux appareils abonnés du site
+          SITE_URL: https://sonde-ia-eu-iris.vercel.app
           POINT_DE_MESURE: "GitHub Actions (région non garantie)"
         run: |
           python -m sonde veille

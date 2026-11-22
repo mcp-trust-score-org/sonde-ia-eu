@@ -1,0 +1,32 @@
+name: Prévenir les abonnés IRIS Plus
+
+# À chaque dépôt de iris/plus.json : une nouvelle météo de la semaine ou un nouveau « Et si… ? »
+# envoie une notification aux appareils abonnés à IRIS Plus. Une correction de texte n'envoie rien.
+on:
+  push:
+    branches: [main]
+    paths: ["iris/plus.json"]
+
+permissions:
+  contents: read
+
+jobs:
+  prevenir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}
+      SITE_URL: https://sonde-ia-eu-iris.vercel.app
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Comparer avec la version précédente et prévenir
+        run: |
+          git show HEAD~1:iris/plus.json > /tmp/plus-avant.json 2>/dev/null || echo "{}" > /tmp/plus-avant.json
+          sleep 90   # le temps que Vercel mette la page en ligne avant que les abonnés cliquent
+          python -m sonde plus-notifier --avant /tmp/plus-avant.json
