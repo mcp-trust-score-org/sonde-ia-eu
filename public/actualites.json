@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-21T21:43:13+00:00",
+ "genere_le": "2026-11-22T11:18:30+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -106,6 +106,12 @@
   }
  ],
  "ecartes_pages_de_statut": [
+  {
+   "titre": "Cloudflare : Network Performance Issues in Chicago datacenter (ORD)",
+   "debut": "2026-11-22T00:32+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/d2m4kw94ut4f"
+  },
   {
    "titre": "Cloudflare : Network Performance Issues in Washington, DC datacenter (IAD)",
    "debut": "2026-11-20T20:35+00:00",
@@ -255,12 +261,6 @@
    "debut": "2026-11-16T14:30+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/69855o2zz6kl"
-  },
-  {
-   "titre": "Cloudflare : Elevated number of errors in Bogotá",
-   "debut": "2026-11-15T03:12+00:00",
-   "raison": "localisé hors de nos zones",
-   "url": "https://www.cloudflarestatus.com/incidents/sozoycnmog2m"
   }
  ]
 }

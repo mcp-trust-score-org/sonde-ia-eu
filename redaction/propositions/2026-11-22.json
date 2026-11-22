@@ -1,0 +1,22 @@
+{
+ "date": "2026-11-22",
+ "genere_le": "2026-11-22T11:20:45+00:00",
+ "statut": "a_relire",
+ "propositions": [],
+ "reserve_une": [],
+ "sources_tendances": {
+  "Wikipédia": {
+   "etat": "ok",
+   "nombre": 60
+  },
+  "Presse grand public (flux RSS)": {
+   "etat": "ok",
+   "nombre": 158
+  },
+  "Détour (flux RSS)": {
+   "etat": "ok",
+   "nombre": 151
+  }
+ },
+ "journal_redacteur": []
+}

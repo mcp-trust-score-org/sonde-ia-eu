@@ -5,7 +5,7 @@
 <radialGradient id="nuage"><stop offset="0%" stop-color="#AEB7C2" stop-opacity=".5"/><stop offset="70%" stop-color="#AEB7C2" stop-opacity="0"/></radialGradient></defs>
 <rect width="1080" height="1350" fill="url(#ciel)"/>
 <text x="96" y="140" font-size="40" font-weight="600" fill="#F2F4F7">La météo de l'IA</text>
-<text x="984" y="140" font-size="30" fill="#8E98A5" text-anchor="end">Samedi 21 novembre</text>
+<text x="984" y="140" font-size="30" fill="#8E98A5" text-anchor="end">Dimanche 22 novembre</text>
 <text x="96" y="260" font-size="72" fill="#F2F4F7" letter-spacing="-1.5">Pas encore de mesure</text>
 <text x="96" y="344" font-size="72" fill="#F2F4F7" letter-spacing="-1.5">récente.</text>
 <circle cx="320" cy="760" r="220" fill="url(#radar)" stroke="#222A33" stroke-width="2"/>
