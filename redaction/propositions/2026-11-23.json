@@ -74,7 +74,9 @@
     "Affirmation non soutenue par les mesures : la sonde n'a vu aucune anomalie, mais le texte dit qu'un fournisseur a été touché : « Cette anomalie a touché les services transitant par Cloudflare, dont le fournisseur d’IA Mistral. »",
     "Trop de chiffres dans le texte (10) : en garder 3 au plus, le détail va dans l'encadré Premium.",
     "Le rédacteur signale 3 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer »."
-   ]
+   ],
+   "statut": "ecarte",
+   "ecarte_pourquoi": "La sonde n'a rien mesuré chez Mistral ; le titre inventait 12 minutes d'interruption."
   },
   {
    "rubrique": "une",
@@ -142,7 +144,9 @@
     "Trop de chiffres dans le texte (6) : en garder 3 au plus, le détail va dans l'encadré Premium.",
     "Le rédacteur signale 1 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer ».",
     "Le brouillon contient des points [À VÉRIFIER] : à compléter avant publication."
-   ]
+   ],
+   "statut": "ecarte",
+   "ecarte_pourquoi": "Les « coupures » OVHcloud du 20 au 23 novembre étaient des limites de débit de notre accès anonyme (HTTP 429), pas des pannes ; et les lenteurs mesurées en accès anonyme sont trop irrégulières pour en tirer un chiffre fiable."
   },
   {
    "rubrique": "tous_connectes",
@@ -151,24 +155,24 @@
    "image": "assets/photos/sante.jpg",
    "article": {
     "tag": "Santé",
-    "title": "Le CHU de Guadeloupe paralysé.<br/>Des soins <mark>déprogrammés plusieurs jours</mark>.",
-    "chapo": "Une cyberattaque a frappé le CHU de Guadeloupe le 21 novembre, paralysant ses systèmes informatiques et téléphoniques. Les consultations et interventions non urgentes sont déprogrammées jusqu’au 27 novembre. Le centre a déclenché le Plan Blanc pour assurer la continuité des urgences.",
+    "title": "Le CHU de Guadeloupe paralysé par une cyberattaque.<br/>Des soins programmés <mark>reportés jusqu'au 27 novembre</mark>.",
+    "chapo": "Une cyberattaque a frappé le CHU de Guadeloupe le 21 novembre et bloqué ses systèmes informatiques et téléphoniques. Les pirates seraient passés par un prestataire informatique de l'hôpital, attaqué en premier. Le CHU a déclenché son plan blanc : seules les urgences sont assurées normalement.",
     "fait": [
-     "Le 21 novembre, le réseau informatique du CHU de Guadeloupe a été la cible d’une cyberattaque qui a touché les sites de Chauvel et Belle‑Plaine.",
-     "Cette intrusion montre à quel point les établissements de santé dépendent désormais du numérique pour leurs activités quotidiennes."
+     "Le 21 novembre, une cyberattaque a touché les systèmes informatiques et téléphoniques du CHU, surtout sur le site de Chauvel, avec des répercussions sur celui de Belle-Plaine.",
+     "Selon le directeur général du CHU, l'attaque ne visait pas d'abord l'hôpital : un fournisseur informatique de l'établissement a été piraté, et les attaquants auraient ensuite utilisé ses adresses pour s'en prendre au CHU."
     ],
     "consequence": [
-     "Les équipes ont dû suspendre les consultations et les interventions non urgentes, tout en mobilisant l’ANSSI et en chiffrant les bases de données affectées.",
-     "Cette situation rappelle que la continuité des soins repose sur la disponibilité des systèmes informatiques."
+     "Une partie des bases de données a été chiffrée par les attaquants. Avant de relancer chaque logiciel, les équipes doivent vérifier qu'aucun programme malveillant ne traîne encore, avec l'appui de l'ANSSI.",
+     "En attendant, une partie des opérations, des consultations et des examens d'imagerie programmés est reportée. Les urgences et les soins prioritaires sont maintenus."
     ],
     "lien": [
-     "Le CHU travaille à restaurer progressivement ses outils tout en sécurisant le réseau, et invite les patients à appeler le 15 avant de se rendre à l’hôpital.",
-     "Et vous, que feriez‑vous si votre dossier médical était indisponible pendant plusieurs jours ?"
+     "Un hôpital ne choisit pas seul son niveau de sécurité : il dépend aussi de celui de ses prestataires. Ici, c'est par un fournisseur que l'attaque serait entrée.",
+     "Et vous, savez-vous comment joindre votre médecin ou votre hôpital si leurs ordinateurs s'arrêtent ?"
     ],
     "une_mini": {
-     "fait": "Cyberattaque du 21 novembre paralysant le réseau du CHU.",
-     "consequence": "Déprogrammation des soins non urgents jusqu’au 27 novembre.",
-     "dependance": "Le système de santé dépend entièrement du réseau informatique."
+     "fait": "Cyberattaque au CHU de Guadeloupe le 21 novembre.",
+     "consequence": "Soins programmés reportés, urgences maintenues.",
+     "dependance": "L'attaque serait passée par un prestataire informatique."
     },
     "sources": [
      {
@@ -176,20 +180,19 @@
       "url": "https://la1ere.franceinfo.fr/guadeloupe/cyberattaque-au-chu-de-guadeloupe-plusieurs-jours-de-perturbations-a-prevoir-l-hopital-s-organise-1760535.html"
      }
     ],
-    "a_verifier": [
-     "Confirmer le nombre exact de jours de perturbation prévus au-delà du 27 novembre."
-    ],
+    "a_verifier": [],
     "sujet": "Cyberattaque du CHU de Guadeloupe",
     "categorie": "sante",
     "reflexes": [
-     "Conservez une copie numérique sécurisée de vos documents médicaux essentiels.",
-     "Vérifiez que votre établissement de santé dispose d’un plan de continuité en cas d’incident informatique.",
-     "Suivez les alertes officielles (ANSSI, ministère de la Santé) pour être informé rapidement des incidents."
+     "En Guadeloupe, appelez le 15 avant de vous rendre à l'hôpital : c'est la consigne du SAMU tant que le CHU est perturbé.",
+     "Gardez chez vous une copie papier de l'essentiel : ordonnances en cours, traitements, allergies, derniers résultats.",
+     "Un appel ou un SMS qui dit venir de l'hôpital et vous demande un code ou un paiement ? Raccrochez et rappelez le numéro officiel."
     ],
     "reflexe_de_la_semaine": {
-     "titre": "Sauvegardez vos dossiers médicaux",
-     "texte": "Conservez une version numérique chiffrée de vos informations de santé afin de pouvoir y accéder même si le système hospitalier est indisponible."
-    }
+     "titre": "Votre santé sur papier",
+     "texte": "Une feuille avec vos traitements, vos allergies et le numéro de votre médecin, rangée chez vous : le jour où les ordinateurs s'arrêtent, c'est elle qui sert."
+    },
+    "reflexes_intro": "Trois gestes simples, à faire tout de suite."
    },
    "fiche": {
     "sujet": "Cyberattaque du CHU de Guadeloupe",
@@ -619,11 +622,8 @@
      ]
     }
    },
-   "alertes_charte": [
-    "Trop de chiffres dans le texte (4) : en garder 3 au plus, le détail va dans l'encadré Premium.",
-    "Le rédacteur signale 1 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer ».",
-    "Ligne éditoriale : lien technologique non sourcé. Le texte parle de « numérique », mais aucun article lu n'en parle. Le lien avec la technologie doit venir des articles."
-   ]
+   "alertes_charte": [],
+   "relu_par": "rédaction, 2026-11-23"
   }
  ],
  "reserve_une": [],
