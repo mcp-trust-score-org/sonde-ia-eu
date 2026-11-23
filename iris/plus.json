@@ -6,10 +6,10 @@
    "publie_le": "2026-11-22",
    "du": "2026-11-16",
    "au": "2026-11-21",
-   "titre": "Une semaine qui finit à l'orage.",
+   "titre": "Une semaine aux éclaircies fragiles.",
    "temps": [
-    "Côté intelligence artificielle européenne, le service d'IA d'OVHcloud, l'hébergeur français, a connu plusieurs coupures : lundi en fin de matinée, brièvement jeudi matin, puis à répétition entre vendredi soir et samedi soir. Mistral, Scaleway et IONOS sont restés au beau fixe toute la semaine.",
-    "Vendredi matin, OVHcloud avait bien signalé un incident sur sa page officielle. Mais samedi soir, alors que notre sonde le voyait de nouveau en panne, cette même page affichait « Tout fonctionne »."
+    "Côté intelligence artificielle européenne, le service d'IA d'OVHcloud, l'hébergeur français, a connu deux coupures courtes : lundi en fin de matinée, puis brièvement jeudi matin. Vendredi matin, OVHcloud a lui-même déclaré un incident majeur sur sa page officielle ; pendant ce temps, notre sonde a mesuré des réponses très lentes. Mistral, Scaleway et IONOS sont restés au beau fixe toute la semaine.",
+    "**Rectificatif du 23 novembre.** La première version de cette météo annonçait des coupures répétées chez OVHcloud entre vendredi soir et samedi soir, alors que sa page officielle affichait « Tout fonctionne ». C'était une erreur de notre part : notre sonde s'était heurtée à la limite de débit de l'accès gratuit qu'elle utilise. Ce n'était pas une panne d'OVHcloud. La sonde est corrigée pour que cela ne se reproduise pas."
    ],
    "touche": [
     {
@@ -31,7 +31,7 @@
      "marque": "Microsoft"
     }
    ],
-   "prevision": "Aucune maintenance annoncée par les fournisseurs suivis par Iris pour les prochains jours. On garde un œil sur OVHcloud.",
+   "prevision": "Aucune maintenance annoncée par les fournisseurs suivis par Iris pour les prochains jours.",
    "geste": "Vos photos vivent-elles uniquement dans iCloud ou Google Photos ? Ce week-end, faites-en une copie ailleurs : sur un disque dur, ou dans un autre service. Le jour où un compte est bloqué ou un service en panne, c'est celle-là qui compte.",
    "mesures": {
     "jours": [
@@ -141,7 +141,7 @@
      },
      {
       "date": "2026-11-20",
-      "etat": "orage",
+      "etat": "soleil",
       "fournisseurs": {
        "mistral": {
         "etat": "soleil",
@@ -154,9 +154,9 @@
         "echecs": 0
        },
        "ovhcloud": {
-        "etat": "orage",
-        "mesures": 8,
-        "echecs": 2
+        "etat": "soleil",
+        "mesures": 6,
+        "echecs": 0
        },
        "ionos": {
         "etat": "soleil",
@@ -167,7 +167,7 @@
      },
      {
       "date": "2026-11-21",
-      "etat": "orage",
+      "etat": "soleil",
       "fournisseurs": {
        "mistral": {
         "etat": "soleil",
@@ -180,9 +180,9 @@
         "echecs": 0
        },
        "ovhcloud": {
-        "etat": "orage",
-        "mesures": 7,
-        "echecs": 4
+        "etat": "soleil",
+        "mesures": 3,
+        "echecs": 0
        },
        "ionos": {
         "etat": "soleil",
@@ -212,55 +212,6 @@
       "jour": "2026-11-19",
       "de": "8 h 43",
       "a": "9 h 52"
-     },
-     {
-      "fournisseur": "ovhcloud",
-      "nom": "OVHcloud",
-      "debut": "2026-11-20T17:51:45+00:00",
-      "mesures_en_echec": 1,
-      "fin": "2026-11-20T20:44:52+00:00",
-      "jour": "2026-11-20",
-      "de": "18 h 51",
-      "a": "21 h 44"
-     },
-     {
-      "fournisseur": "ovhcloud",
-      "nom": "OVHcloud",
-      "debut": "2026-11-20T21:51:09+00:00",
-      "mesures_en_echec": 2,
-      "fin": "2026-11-21T01:45:59+00:00",
-      "jour": "2026-11-20",
-      "de": "22 h 51",
-      "a": "2 h 45 le lendemain"
-     },
-     {
-      "fournisseur": "ovhcloud",
-      "nom": "OVHcloud",
-      "debut": "2026-11-21T07:10:46+00:00",
-      "mesures_en_echec": 1,
-      "fin": "2026-11-21T08:48:41+00:00",
-      "jour": "2026-11-21",
-      "de": "8 h 10",
-      "a": "9 h 48"
-     },
-     {
-      "fournisseur": "ovhcloud",
-      "nom": "OVHcloud",
-      "debut": "2026-11-21T15:27:41+00:00",
-      "mesures_en_echec": 1,
-      "fin": "2026-11-21T16:26:00+00:00",
-      "jour": "2026-11-21",
-      "de": "16 h 27",
-      "a": "17 h 26"
-     },
-     {
-      "fournisseur": "ovhcloud",
-      "nom": "OVHcloud",
-      "debut": "2026-11-21T21:45:24+00:00",
-      "mesures_en_echec": 1,
-      "en_cours": true,
-      "jour": "2026-11-21",
-      "de": "22 h 45"
      }
     ],
     "suivis": {
@@ -275,7 +226,7 @@
     {
      "categorie": "IA",
      "icone": "ia",
-     "texte": "OVHcloud coupé plusieurs fois, lundi puis de vendredi à samedi."
+     "texte": "OVHcloud : deux coupures courtes et un incident déclaré vendredi."
     },
     {
      "categorie": "IA",
@@ -298,7 +249,7 @@
      "texte": "Aucune maintenance annoncée."
     }
    ],
-   "chapo": "Plusieurs coupures majeures ont touché des services clés, avec des incidents répétés chez OVHcloud.",
+   "chapo": "Deux coupures courtes et un incident déclaré chez OVHcloud, une longue panne chez Apple.",
    "coup_doeil": [
     {
      "chiffre": "2",
@@ -309,7 +260,8 @@
      "texte": "annoncée pour les prochains jours"
     }
    ],
-   "image": "assets/photos/meteo-semaine.jpg"
+   "image": "assets/photos/meteo-semaine.jpg",
+   "rectifie_le": "2026-11-23"
   }
  ],
  "et_si": [

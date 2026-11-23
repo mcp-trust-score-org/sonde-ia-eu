@@ -15,6 +15,18 @@
     {
       "path": "/api/declencher",
       "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/rappels?moment=matin",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/rappels?moment=midi",
+      "schedule": "0 10 * * *"
+    },
+    {
+      "path": "/api/rappels?moment=soir",
+      "schedule": "0 17 * * *"
     }
   ]
 }

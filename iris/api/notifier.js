@@ -15,9 +15,9 @@ module.exports = async (req, res) => {
   webpush.setVapidDetails(VAPID_SUBJECT || "mailto:contact@iris.example", VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
 
   const corps = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
-  const sujet = ["alertes", "plus"].includes(corps.sujet) ? corps.sujet : "articles";
+  const sujet = ["alertes", "plus", "redaction"].includes(corps.sujet) ? corps.sujet : "articles";
   const message = JSON.stringify({
-    tag: { alertes: "iris-alerte", plus: "iris-plus" }[sujet] || "iris-article",
+    tag: { alertes: "iris-alerte", plus: "iris-plus", redaction: "iris-redaction" }[sujet] || "iris-article",
     titre: String(corps.titre || "Iris · nouvel article").slice(0, 120),
     texte: String(corps.texte || "").slice(0, 240),
     url: /^\/[^/]/.test(corps.url || "") ? corps.url : "/",

@@ -314,7 +314,21 @@ setPlan(savedPlan);
 
 /* ---------- Navigation par onglets (hash) ---------- */
 const VIEWS = ["relecture", "une", "vies", "plus", "pluslecture", "meteo", "alertes", "indicateurs", "detour", "rapports"];
+// Compte une lecture d'article pour le tableau de pilotage (une fois par article et par visite, sans rien
+// savoir du lecteur). Rien n'est compté pour les pages de pilotage ou les rubriques.
+function compterLecture(hash) {
+  if (!/^(article-|plus-etsi-|plus-meteo)/.test(hash)) return;
+  try { if (sessionStorage.getItem("lu:" + hash)) return; sessionStorage.setItem("lu:" + hash, "1"); } catch (e) { /* navigation privée */ }
+  setTimeout(() => {
+    const h = document.querySelector(".view.active h1, .view.active h2");
+    const id = hash === "plus-meteo" ? "plus-meteo-" + (((window.PLUS || {}).meteo_semaine || [{}])[0].id || "") : hash;
+    const corps = JSON.stringify({ id, titre: h ? h.textContent : "" });
+    try { navigator.sendBeacon("/api/vue", new Blob([corps], { type: "application/json" })); } catch (e) { /* pas grave */ }
+  }, 1500);
+}
+
 function show(hash) {
+  compterLecture(hash);
   let view = hash, tab = hash;
   if (hash.startsWith("article-") && renderArticle(hash.slice(8))) {
     view = "article";
@@ -837,6 +851,7 @@ fetch("publies.json", { cache: "no-store" })
   const iPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
   const installe = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
 
+  const test = panneau.querySelector("[data-push-test]");
   const options = [...panneau.querySelectorAll("[data-push-sujet]")];   // « plus » (Iris Plus), « alertes » (Premium)
   bouton.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -866,6 +881,7 @@ fetch("publies.json", { cache: "no-store" })
     etat.textContent = message || (abonne ? "Activées sur cet appareil." : "Une notification à chaque article publié : À la une, Tous connectés, Le Détour.");
     action.textContent = abonne ? "Désactiver" : "Activer les notifications";
     action.dataset.abonne = abonne ? "1" : "";
+    if (test) test.hidden = !abonne;
   }
 
   if (!possible) {
@@ -877,7 +893,14 @@ fetch("publies.json", { cache: "no-store" })
   navigator.serviceWorker.register("/sw.js").then(async (r) => {
     enregistrement = r;
     const abo = await r.pushManager.getSubscription();
-    afficher(Boolean(abo) && Notification.permission === "granted");
+    const actif = Boolean(abo) && Notification.permission === "granted";
+    afficher(actif);
+    // À chaque ouverture, on redit au site ce que ce téléphone veut recevoir : si l'adresse d'abonnement
+    // a changé (l'iPhone la renouvelle parfois) ou si le site l'a perdue, tout se remet en place tout seul.
+    // (Seulement si ce téléphone a déjà gardé ses choix : sinon on risquerait d'effacer une option cochée.)
+    let choixGardes = false;
+    try { choixGardes = localStorage.getItem("iris-sujets") !== null; } catch (e) { /* navigation privée */ }
+    if (actif && choixGardes) envoyerAbonnement(abo, lireSujets()).catch(() => { /* hors ligne : ce sera pour la prochaine fois */ });
   }).catch(() => { action.hidden = true; etat.textContent = "Notifications indisponibles pour l'instant."; });
 
   action.addEventListener("click", async () => {
@@ -911,7 +934,29 @@ fetch("publies.json", { cache: "no-store" })
     }
   });
 
-  const NOMS_SUJETS = { plus: "IRIS Plus", alertes: "alertes Premium" };
+  const NOMS_SUJETS = { plus: "IRIS Plus", alertes: "alertes Premium", redaction: "rappels de rédaction" };
+  // « M'envoyer un test » : le site envoie une notification à ce téléphone seul et dit ce qu'il a enregistré.
+  if (test) test.addEventListener("click", async () => {
+    const abo = enregistrement && await enregistrement.pushManager.getSubscription();
+    if (!abo) return;
+    test.disabled = true;
+    etat.textContent = "Envoi d'un essai…";
+    try {
+      await envoyerAbonnement(abo, lireSujets());   // d'abord, on remet l'abonnement à jour
+      const r = await fetch("/api/tester", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ endpoint: abo.endpoint }) });
+      const j = await r.json().catch(() => ({}));
+      const liste = (j.sujets || []).filter((s) => s !== "articles").map((s) => NOMS_SUJETS[s] || s);
+      const recu = "Ce téléphone reçoit : nouveaux articles" + liste.map((s) => ", " + s).join("") + ".";
+      if (j.envoye) etat.textContent = "Essai envoyé : il doit arriver dans quelques secondes. " + recu + " Rien ne s'affiche ? Regardez le mode Concentration et Réglages → Notifications → Iris.";
+      else if (r.status === 429) etat.textContent = "Un essai par minute. " + recu;
+      else if (j.inscrit === false) { afficher(false, "Ce téléphone n'était plus inscrit. Touchez « Activer les notifications » pour le réinscrire."); }
+      else etat.textContent = (j.erreur || "L'essai n'est pas parti.") + " " + recu;
+    } catch (e) {
+      etat.textContent = "L'essai n'est pas parti. Réessayez dans un instant.";
+    } finally {
+      test.disabled = false;
+    }
+  });
   options.forEach((opt) => opt.addEventListener("change", async () => {
     const abo = enregistrement && await enregistrement.pushManager.getSubscription();
     if (!abo) { opt.checked = false; return; }

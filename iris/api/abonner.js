@@ -1,6 +1,8 @@
 // POST /api/abonner   : enregistre un appareil (le navigateur envoie son abonnement et ses sujets :
 //                       « articles », et en option « plus » pour IRIS Plus
-//                       et « alertes » pour les alertes Premium).
+//                       et « alertes » pour les alertes Premium). « redaction » (rappels de rédaction)
+//                       n'est accepté qu'avec la clé de pilotage (en-tête Authorization: Bearer PILOTAGE_CLE),
+//                       avec { "redaction": true | false } ; le site, lui, ne l'enlève jamais.
 // DELETE /api/abonner : le retire (bouton « Désactiver »).
 const stockage = require("./_stockage");
 
@@ -15,8 +17,20 @@ module.exports = async (req, res) => {
     if (req.method === "POST") {
       if (!valide(abo)) return res.status(400).json({ erreur: "Abonnement invalide." });
       const permis = ["articles", "alertes", "plus"];
-      const sujets = Array.isArray(abo.sujets) ? abo.sujets.filter((s) => permis.includes(s)) : ["articles"];
-      await stockage.ajouter({ endpoint: abo.endpoint, keys: { p256dh: abo.keys.p256dh, auth: abo.keys.auth }, sujets: sujets.length ? sujets : ["articles"] });
+      const pilote = !!process.env.PILOTAGE_CLE && req.headers.authorization === `Bearer ${process.env.PILOTAGE_CLE}`;
+      const avant = await stockage.un(abo.endpoint);
+      const avaitRedaction = !!(avant && (avant.sujets || []).includes("redaction"));
+      let sujets;
+      if (typeof abo.redaction === "boolean") {          // depuis la page de pilotage
+        if (!pilote) return res.status(401).json({ erreur: "Clé de pilotage absente ou fausse." });
+        sujets = ((avant && avant.sujets) || []).filter((s) => s !== "redaction");
+        if (abo.redaction) sujets.push("redaction");
+      } else {                                            // depuis le site
+        sujets = Array.isArray(abo.sujets) ? abo.sujets.filter((s) => permis.includes(s)) : ["articles"];
+        if (!sujets.length) sujets = ["articles"];
+        if (avaitRedaction) sujets.push("redaction");
+      }
+      await stockage.ajouter({ endpoint: abo.endpoint, keys: { p256dh: abo.keys.p256dh, auth: abo.keys.auth }, sujets });
       return res.status(201).json({ ok: true });
     }
     if (req.method === "DELETE") {

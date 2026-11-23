@@ -18,8 +18,13 @@ async function commande(...args) {
 }
 
 module.exports = {
+  commande,
   ajouter: (abo) => commande("HSET", LISTE, abo.endpoint, JSON.stringify(abo)),
   retirer: (endpoint) => commande("HDEL", LISTE, endpoint),
+  async un(endpoint) {
+    const v = await commande("HGET", LISTE, endpoint);
+    try { return v ? JSON.parse(v) : null; } catch (e) { return null; }
+  },
   async tous() {
     const plat = (await commande("HGETALL", LISTE)) || [];
     const abos = [];

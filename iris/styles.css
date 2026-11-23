@@ -539,8 +539,11 @@ body:not([data-plan="standard"]) [data-acces="sans-plus"] { display: none !impor
 .pa-bloc b { display: block; color: var(--cream); margin-bottom: 4px; }
 .pa-etat, .pa-ios { color: var(--muted); font-size: 14px; margin: 0 0 10px; }
 .pa-ios { color: var(--text); }
+.pa-test { display: block; margin: 10px 0 0; padding: 0; background: none; border: 0; color: var(--text); font: inherit; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.pa-test:disabled { opacity: .5; cursor: default; }
 .pa-rss { color: var(--muted); font-size: 13px; text-decoration: underline; }
 .pa-rss:hover { color: var(--yellow); }
+.pa-redac { float: right; opacity: .55; }
 .pa-option { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; font-size: 14px; color: var(--muted); cursor: pointer; }
 .pa-option input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--yellow); flex: none; }
 .pa-option b { color: var(--cream); display: inline; }

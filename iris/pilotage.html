@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Iris · Pilotage</title>
+<link rel="icon" href="favicon.ico?v=2" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg: #0A0A0A; --panel: #141414; --line: #2A2A2A; --cream: #F4F1EA; --muted: #8E8E8E; --yellow: #FFCC00; --red: #FF4A3D; --green: #3DD68C; --orange: #FF9F1C;
+    --f-display: "Barlow Condensed", "Arial Narrow", sans-serif; --f-body: "Barlow", system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--cream); font-family: var(--f-body); font-size: 15px; line-height: 1.45; }
+  main { max-width: 1240px; margin: 0 auto; padding: 22px 24px 60px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 16px; }
+  .logo { font-family: "Roboto Slab", Georgia, serif; font-weight: 900; font-size: 34px; letter-spacing: -.01em; }
+  .logo span { font-family: var(--f-display); font-style: italic; font-size: 26px; background: var(--yellow); color: #111; padding: 0 8px; margin-left: 6px; }
+  .maj { color: var(--muted); font-size: 13px; }
+  a { color: var(--yellow); }
+  h2 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: 26px; margin: 34px 0 12px; display: flex; align-items: center; gap: 10px; }
+  h2::before { content: ""; width: 7px; height: .85em; background: var(--yellow); transform: skewX(-18deg); }
+  .aide { color: var(--muted); font-size: 13.5px; margin: -6px 0 14px; }
+  .cartes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+  .carte { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .carte b { display: block; font-family: var(--f-display); font-size: 30px; font-weight: 800; line-height: 1.1; }
+  .carte span { color: var(--muted); font-size: 13px; }
+  .carte.rouge { border-color: var(--red); } .carte.rouge b { color: var(--red); }
+  .carte.orange { border-color: var(--orange); } .carte.orange b { color: var(--orange); }
+  .carte.vert b { color: var(--green); }
+  .afaire { list-style: none; padding: 0; margin: 14px 0 0; }
+  .afaire li { background: var(--panel); border-left: 4px solid var(--orange); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; }
+  .afaire li.rouge { border-left-color: var(--red); } .afaire li.ok { border-left-color: var(--green); }
+  table { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: 12px; overflow: hidden; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: var(--f-display); font-size: 15px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); font-weight: 700; }
+  tr.auj td { background: #1E1B10; }
+  .pastille { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: 12.5px; font-weight: 600; white-space: nowrap; margin: 2px 4px 2px 0; }
+  .p-publie { background: rgba(61,214,140,.16); color: var(--green); }
+  .p-pret { background: rgba(255,204,0,.16); color: var(--yellow); }
+  .p-verif { background: rgba(255,159,28,.18); color: var(--orange); }
+  .p-rouge { background: rgba(255,74,61,.16); color: var(--red); }
+  .p-gris { background: #222; color: var(--muted); }
+  .rub { color: var(--muted); font-size: 12.5px; }
+  .barre { height: 8px; background: #222; border-radius: 99px; overflow: hidden; min-width: 80px; }
+  .barre i { display: block; height: 100%; background: var(--yellow); }
+  .barre.faible i { background: var(--red); }
+  .deux { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+  .cle { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; background: var(--panel); border: 1px dashed var(--line); border-radius: 12px; padding: 14px 16px; }
+  .cle input { flex: 1; min-width: 200px; background: #0F0F0F; border: 1px solid var(--line); color: var(--cream); padding: 8px 10px; border-radius: 8px; font: inherit; }
+  .cle button, .btn { background: var(--yellow); color: #111; border: 0; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 700; }
+  .muted { color: var(--muted); }
+  .graph { display: flex; align-items: flex-end; gap: 6px; height: 90px; padding: 10px 0 0; }
+  .graph div { flex: 1; background: var(--yellow); border-radius: 4px 4px 0 0; min-height: 2px; position: relative; }
+  .graph div span { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .graph div em { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 11px; font-style: normal; }
+  @media (max-width: 860px) { .pastille { white-space: normal; } .cartes { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deux { grid-template-columns: minmax(0, 1fr); } table { font-size: 13.5px; } th, td { padding: 8px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="logo">IRIS<span>Pilotage</span></div>
+    <div class="maj" id="maj">Chargement…</div>
+  </header>
+
+  <div class="cartes" id="cartes"></div>
+  <ul class="afaire" id="afaire"></ul>
+  <div class="cle" id="rappels" style="margin-top:12px"></div>
+
+  <h2>Rédaction</h2>
+  <p class="aide">Ce que la charte prévoit chaque jour, et où en est chaque article. Les brouillons sont dans <a href="https://github.com/mcp-trust-score-org/sonde-ia-eu/tree/main/redaction/propositions" target="_blank" rel="noopener">redaction/propositions</a> ; on publie avec <a href="https://github.com/mcp-trust-score-org/sonde-ia-eu/actions/workflows/publier.yml" target="_blank" rel="noopener">Actions → Publier un brouillon</a>.</p>
+  <table id="redaction"><thead><tr><th>Jour</th><th>Prévu par la charte</th></tr></thead><tbody></tbody></table>
+
+  <h2>Sonde</h2>
+  <p class="aide">Passages réellement enregistrés, par rapport à ce qui est prévu. Une barre rouge veut dire que GitHub a sauté beaucoup de lancements ce jour-là.</p>
+  <div class="deux">
+    <table id="sonde"><thead><tr><th>Jour</th><th>Veille (prévue toutes les 10 min)</th><th>Mesure (prévue toutes les heures)</th></tr></thead><tbody></tbody></table>
+    <div>
+      <table id="trous"><thead><tr><th colspan="2">Interruptions de plus de 2 heures (veille)</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <h2>Site</h2>
+  <p class="aide">Dernières mises à jour visibles par les lecteurs.</p>
+  <table id="site"><tbody></tbody></table>
+
+  <h2>Audience</h2>
+  <p class="aide">Lectures d'articles comptées par le site, sans cookie ni donnée sur les lecteurs (une lecture par article et par visite).</p>
+  <div id="audience"></div>
+</main>
+
+<script>
+const echap = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const sansBalises = (s) => String(s || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+const heure = (iso) => iso ? new Date(iso).toLocaleString("fr-FR", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Paris" }) : "—";
+const jour = (iso) => new Date(iso + "T12:00:00Z").toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short", timeZone: "Europe/Paris" });
+const depuis = (iso) => { if (!iso) return ""; const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 60 ? `il y a ${m} min` : m < 1440 ? `il y a ${Math.round(m / 60)} h` : `il y a ${Math.round(m / 1440)} j`; };
+const PASTILLE = { "publié": "p-publie", "brouillon prêt": "p-pret", "à vérifier": "p-verif", "non publié": "p-rouge", "rédaction pas lancée": "p-rouge",
+  "aucun brouillon": "p-rouge", "écarté": "p-gris", "à venir": "p-gris", "rien (pas d'incident)": "p-gris", "rien (pas d'incident ?)": "p-gris", "avant le lancement": "p-gris" };
+
+fetch("donnees/pilotage.json", { cache: "no-store" }).then((r) => r.json()).then((p) => {
+  document.getElementById("maj").textContent = `Données du ${heure(p.genere_le)} (${depuis(p.genere_le)}) · mises à jour à chaque passage de la sonde`;
+  const auj = p.redaction.find((j) => j.aujourdhui) || {};
+  const afaire = [];
+  const s = p.sonde;
+  // Cartes du haut
+  const aPublier = (auj.lignes || []).filter((l) => ["brouillon prêt", "à vérifier"].includes(l.etat)).length;
+  const manques = p.redaction.filter((j) => j.date <= auj.date).flatMap((j) => j.lignes.map((l) => ({ ...l, date: j.date }))).filter((l) => ["rédaction pas lancée", "aucun brouillon", "non publié"].includes(l.etat));
+  const cartes = [
+    { t: "Veille de la sonde", v: s.veille.etat === "ok" ? "En marche" : s.veille.etat === "en retard" ? "En retard" : "Arrêtée", c: s.veille.etat === "ok" ? "vert" : s.veille.etat === "en retard" ? "orange" : "rouge", d: `dernier passage ${depuis(s.veille.derniere)}` },
+    { t: "Mesure horaire", v: s.mesure.etat === "ok" ? "En marche" : s.mesure.etat === "en retard" ? "En retard" : "Arrêtée", c: s.mesure.etat === "ok" ? "vert" : s.mesure.etat === "en retard" ? "orange" : "rouge", d: `dernier passage ${depuis(s.mesure.derniere)}` },
+    { t: "À relire aujourd'hui", v: String(aPublier), c: aPublier ? "orange" : "vert", d: aPublier ? "brouillon(s) en attente de publication" : "rien en attente" },
+    { t: "Ratés sur 14 jours", v: String(manques.length), c: manques.length ? "rouge" : "vert", d: "articles prévus non faits ou non publiés" },
+  ];
+  document.getElementById("cartes").innerHTML = cartes.map((x) => `<div class="carte ${x.c}"><span>${x.t}</span><b>${x.v}</b><span>${x.d}</span></div>`).join("");
+  if (s.veille.etat !== "ok") afaire.push({ c: "rouge", t: `La veille n'est pas passée depuis ${depuis(s.veille.derniere).replace("il y a ", "")}. Regardez Actions → Veille (sans serveur).` });
+  if (s.mesure.etat !== "ok") afaire.push({ c: "rouge", t: `La mesure horaire n'est pas passée depuis ${depuis(s.mesure.derniere).replace("il y a ", "")}. Regardez Actions → Mesure horaire.` });
+  if (!auj.redaction_lancee) afaire.push({ c: "rouge", t: "La rédaction du jour n'a pas tourné : Actions → Relevés quotidiens → Run workflow." });
+  (auj.lignes || []).filter((l) => ["brouillon prêt", "à vérifier"].includes(l.etat)).forEach((l) => afaire.push({ c: l.etat === "à vérifier" ? "" : "", t: `${l.nom} : un brouillon ${l.etat === "à vérifier" ? "avec des points à vérifier" : "est prêt"}. À relire puis publier.` }));
+  const ratio = (s.jours.slice(-1)[0] || {});
+  if (ratio.veille_prevue && ratio.veille / ratio.veille_prevue < 0.25) afaire.push({ c: "", t: `GitHub ne lance la veille que ${ratio.veille} fois sur ${ratio.veille_prevue} prévues aujourd'hui : les alertes peuvent arriver avec du retard.` });
+  if (!afaire.length) afaire.push({ c: "ok", t: "Rien à signaler : tout tourne comme prévu." });
+  document.getElementById("afaire").innerHTML = afaire.map((x) => `<li class="${x.c}">${echap(x.t)}</li>`).join("");
+
+  // Rédaction
+  document.querySelector("#redaction tbody").innerHTML = p.redaction.slice().reverse().map((j) => `<tr class="${j.aujourdhui ? "auj" : ""}"><td><b>${jour(j.date)}</b>${j.aujourdhui ? "<br/><span class='rub'>aujourd'hui</span>" : ""}</td><td>${
+    j.lignes.map((l) => `<span class="pastille ${PASTILLE[l.etat] || "p-gris"}" title="${echap(l.quoi)}">${echap(l.nom)} · ${echap(l.etat)}</span>`).join("")}</td></tr>`).join("");
+
+  // Sonde
+  const barre = (n, prevu) => { const r = Math.min(1, n / prevu); return `<div style="display:flex;gap:8px;align-items:center"><div class="barre ${r < .5 ? "faible" : ""}" style="flex:1"><i style="width:${Math.round(r * 100)}%"></i></div><span class="rub">${n}/${prevu}</span></div>`; };
+  document.querySelector("#sonde tbody").innerHTML = s.jours.slice().reverse().map((j) => `<tr><td><b>${jour(j.date)}</b></td><td>${barre(j.veille, j.veille_prevue)}</td><td>${barre(j.mesures, j.mesures_prevues)}</td></tr>`).join("");
+  document.querySelector("#trous tbody").innerHTML = s.interruptions.length ? s.interruptions.slice().reverse().map((t) => `<tr><td>${heure(t.de)} → ${t.en_cours ? "<b>en cours</b>" : heure(t.a)}</td><td><b>${t.heures} h</b></td></tr>`).join("") : `<tr><td class="muted">Aucune sur 7 jours.</td></tr>`;
+
+  // Site
+  const st = p.site, d = st.derniers;
+  const lignes = [
+    ["Données météo, alertes, indicateurs", `${heure(st.donnees_meteo)} <span class="rub">(${depuis(st.donnees_meteo)})</span>`],
+    ...Object.values(d).map((x) => [x.nom, x.publie_le ? `${echap(sansBalises(x.titre))}<br/><span class="rub">publié ${heure(x.publie_le)} · ${x.nombre} en ligne</span>` : `<span class="muted">rien publié pour l'instant</span>`]),
+    ["Iris Plus · météo de la semaine", st.iris_plus.meteo.publie_le ? `${echap(st.iris_plus.meteo.titre)}<br/><span class="rub">${jour(st.iris_plus.meteo.publie_le)}</span>` : "—"],
+    ["Iris Plus · Et si…", st.iris_plus.et_si.publie_le ? `${echap(st.iris_plus.et_si.titre)}<br/><span class="rub">${jour(st.iris_plus.et_si.publie_le)} · prochain : ${st.iris_plus.prochains[0] ? jour(st.iris_plus.prochains[0].date) : "—"}</span>` : "—"],
+  ];
+  document.querySelector("#site tbody").innerHTML = lignes.map(([a, b]) => `<tr><th style="width:34%">${a}</th><td>${b}</td></tr>`).join("");
+}).catch(() => { document.getElementById("maj").textContent = "Impossible de lire donnees/pilotage.json : la sonde ne l'a peut-être pas encore produit."; });
+
+// Audience : protégée par la clé de pilotage (gardée sur cet appareil seulement)
+function audience() {
+  const boite = document.getElementById("audience");
+  let cle = ""; try { cle = localStorage.getItem("iris-pilotage") || ""; } catch (e) { /* navigation privée */ }
+  if (!cle) {
+    boite.innerHTML = `<form class="cle" id="f-cle"><span>Clé de pilotage :</span><input type="password" id="i-cle" placeholder="la valeur de PILOTAGE_CLE dans Vercel" autocomplete="off" /><button>Voir l'audience</button></form>`;
+    document.getElementById("f-cle").addEventListener("submit", (e) => { e.preventDefault(); try { localStorage.setItem("iris-pilotage", document.getElementById("i-cle").value.trim()); } catch (x) { /* */ } audience(); });
+    return;
+  }
+  boite.innerHTML = `<p class="muted">Chargement…</p>`;
+  fetch("/api/stats", { headers: { Authorization: "Bearer " + cle }, cache: "no-store" }).then(async (r) => {
+    if (r.status === 401) { try { localStorage.removeItem("iris-pilotage"); } catch (e) { /* */ } boite.innerHTML = `<p class="muted">Clé refusée.</p>`; setTimeout(audience, 1500); return; }
+    const a = await r.json();
+    if (!r.ok) { boite.innerHTML = `<p class="muted">${echap(a.erreur || "Audience indisponible.")}</p>`; return; }
+    const max = Math.max(1, ...a.lectures_par_jour.map((x) => x.lectures));
+    boite.innerHTML = `
+      <div class="cartes" style="margin-top:0">
+        <div class="carte"><span>Lectures sur 7 jours</span><b>${a.lectures_par_jour.reduce((s, x) => s + x.lectures, 0)}</b><span>articles ouverts</span></div>
+        <div class="carte"><span>Appareils abonnés</span><b>${a.abonnes.appareils}</b><span>notifications</span></div>
+        <div class="carte"><span>Abonnés Iris Plus</span><b>${a.abonnes.sujets.plus || 0}</b><span>option cochée</span></div>
+        <div class="carte"><span>Abonnés alertes</span><b>${a.abonnes.sujets.alertes || 0}</b><span>option cochée</span></div>
+      </div>
+      <div class="carte" style="margin:12px 0 18px"><span>Lectures par jour</span><div class="graph">${a.lectures_par_jour.map((x) => `<div style="height:${Math.round(x.lectures / max * 100)}%"><em>${x.lectures}</em><span>${jour(x.date)}</span></div>`).join("")}</div><div style="height:16px"></div></div>
+      <table><thead><tr><th>Article</th><th>Aujourd'hui</th><th>7 jours</th><th>Total</th></tr></thead><tbody>${
+        a.articles.length ? a.articles.map((x) => `<tr><td><a href="/#${echap(x.id)}" target="_blank" rel="noopener">${echap(x.titre)}</a></td><td>${x.aujourdhui}</td><td><b>${x.semaine}</b></td><td>${x.total}</td></tr>`).join("") : `<tr><td colspan="4" class="muted">Aucune lecture comptée pour l'instant : le compteur démarre avec cette version du site.</td></tr>`}</tbody></table>
+      <p class="aide" style="margin-top:10px"><a href="#" id="oublier">Oublier la clé sur cet appareil</a></p>`;
+    document.getElementById("oublier").addEventListener("click", (e) => { e.preventDefault(); try { localStorage.removeItem("iris-pilotage"); } catch (x) { /* */ } audience(); });
+  }).catch(() => { boite.innerHTML = `<p class="muted">Audience indisponible pour l'instant.</p>`; });
+}
+audience();
+
+// Rappels de rédaction sur cet appareil : 7 h (rédaction pas lancée), 11 h (brouillons à relire), 18 h (pas publié).
+// Sur iPhone, ouvrir cette page depuis l'icône Iris de l'écran d'accueil (cloche → Espace rédaction).
+const cleUrlB64 = (s) => { const p = "=".repeat((4 - (s.length % 4)) % 4); const b = atob((s + p).replace(/-/g, "+").replace(/_/g, "/")); return Uint8Array.from([...b].map((c) => c.charCodeAt(0))); };
+async function rappels(action) {
+  const boite = document.getElementById("rappels");
+  let cle = ""; try { cle = localStorage.getItem("iris-pilotage") || ""; } catch (e) { /* */ }
+  let actifs = false; try { actifs = localStorage.getItem("iris-rappels") === "1"; } catch (e) { /* */ }
+  const pret = "serviceWorker" in navigator && "PushManager" in window;
+  const dessiner = (msg) => {
+    boite.innerHTML = `<span><b>Rappels de rédaction</b> sur cet appareil : 7 h si la rédaction n'a pas tourné, 11 h s'il reste des brouillons à relire, 18 h si un article prévu n'est pas publié.</span>
+      ${!pret ? `<span class="muted">Ce navigateur ne reçoit pas les notifications. Sur iPhone : ouvrez Iris depuis l'icône de l'écran d'accueil, puis cloche → Espace rédaction.</span>`
+        : !cle ? `<span class="muted">Entrez d'abord la clé de pilotage dans la partie Audience, plus bas.</span>`
+        : `<button class="btn" id="b-rappels">${actifs ? "Couper les rappels" : "Activer les rappels"}</button>`}
+      ${msg ? `<span class="muted">${msg}</span>` : ""}`;
+    const b = document.getElementById("b-rappels");
+    if (b) b.addEventListener("click", () => rappels(!actifs));
+  };
+  if (action === undefined) return dessiner(actifs ? "Activés." : "");
+  try {
+    const reg = await navigator.serviceWorker.register("/sw.js");
+    await navigator.serviceWorker.ready;
+    if (action && (await Notification.requestPermission()) !== "granted") return dessiner("Notifications refusées dans les réglages de l'appareil.");
+    let abo = await reg.pushManager.getSubscription();
+    if (!abo && action) {
+      const r = await fetch("/api/cle", { cache: "no-store" });
+      abo = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: cleUrlB64((await r.json()).cle) });
+    }
+    if (!abo) { try { localStorage.removeItem("iris-rappels"); } catch (e) { /* */ } return rappels(); }
+    const r = await fetch("/api/abonner", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + cle }, body: JSON.stringify({ ...abo.toJSON(), redaction: !!action }) });
+    if (!r.ok) return dessiner(r.status === 401 ? "Clé de pilotage refusée." : "Ça n'a pas marché. Réessayez dans un instant.");
+    try { action ? localStorage.setItem("iris-rappels", "1") : localStorage.removeItem("iris-rappels"); } catch (e) { /* */ }
+    actifs = !!action;
+    dessiner(action ? "Activés : vous serez prévenue à 7 h, 11 h et 18 h s'il y a quelque chose à faire." : "Rappels coupés sur cet appareil.");
+  } catch (e) { dessiner("Ça n'a pas marché : " + e.message); }
+}
+rappels();
+document.addEventListener("submit", () => setTimeout(() => rappels(), 50));
+</script>
+</body>
+</html>
