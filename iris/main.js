@@ -1152,6 +1152,5 @@ Promise.all([fetch("plus.json", { cache: "no-store" }).then((r) => (r.ok ? r.jso
     const e = (PLUS.meteo_semaine || [])[0];
     document.getElementById("plus-meteo-carte").innerHTML = e ? plusMeteoCarte(e) : `<p class="muted">La première météo de la semaine arrive dimanche.</p>`;
     document.getElementById("plus-prochains").innerHTML = plusProchains(PLUS.prochains_et_si);
-    document.getElementById("plus-cartes").innerHTML = plusCartes(PLUS);
     if (PLUS_ATTENTE) { plusLecture(PLUS_ATTENTE); PLUS_ATTENTE = null; }
   });
