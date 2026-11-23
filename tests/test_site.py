@@ -30,7 +30,7 @@ def test_site_copie_et_corrige(tmp_path: Path):
     (tmp_path / "preuves" / "2026-11-21.json").write_text(json.dumps({"fichiers": {"a": {}, "b": {}}}))
     (tmp_path / "preuves" / "2026-11-21.json.ots").write_text("x")
     res = produire(tmp_path)
-    assert res["copies"] == ["meteo.json", "alertes.json"] and res["dossiers"] == 1 and res["preuves"] == 1
+    assert res["copies"] == ["meteo.json", "alertes.json", "pilotage.json"] and res["dossiers"] == 1 and res["preuves"] == 1
     textes = [a["texte"] for a in json.loads((tmp_path / "iris" / "donnees" / "alertes.json").read_text())]
     assert "environ 59 minutes" in textes[0] and "environ 98 minutes" in textes[2] and "57" not in textes[0]
     assert "python -m sonde" not in " ".join(textes)
