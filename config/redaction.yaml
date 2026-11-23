@@ -20,6 +20,11 @@ rythme:
     liens: 5                    # 5 propositions ; la rédaction garde celles qu'elle veut (« liens à garder »)
   candidats_affiches: 10        # sujets en réserve listés sous chaque proposition
 
+# Le tableau de pilotage (iris/pilotage.html) ne compte les ratés qu'à partir de cette date :
+# avant, les jours apparaissent « avant le lancement ».
+pilotage:
+  suivi_depuis: "2026-11-23"
+
 # ---------------------------------------------------------------------------
 # Le rédacteur : un modèle d'IA qui écrit les brouillons à partir des faits collectés,
 # avec la charte en consigne. Format compatible OpenAI.
