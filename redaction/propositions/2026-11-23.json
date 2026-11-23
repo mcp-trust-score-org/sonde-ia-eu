@@ -623,7 +623,9 @@
     }
    },
    "alertes_charte": [],
-   "relu_par": "rédaction, 2026-11-23"
+   "relu_par": "rédaction, 2026-11-23",
+   "statut": "publie",
+   "publie_le": "2026-11-23T08:28:05+00:00"
   }
  ],
  "reserve_une": [],

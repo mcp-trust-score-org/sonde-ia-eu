@@ -2,6 +2,52 @@
  "une": [],
  "tous_connectes": [
   {
+   "id": "20261123-le-chu-de-guadeloupe-paralyse-par-une-cyberattaque",
+   "rubrique": "tous_connectes",
+   "date": "2026-11-23",
+   "tag": "Santé",
+   "tagClass": "flag-cream",
+   "img": "assets/photos/sante.jpg",
+   "time": "4 min",
+   "title": "Le CHU de Guadeloupe paralysé par une cyberattaque.<br/>Des soins programmés <mark>reportés jusqu'au 27 novembre</mark>.",
+   "chapo": "Une cyberattaque a frappé le CHU de Guadeloupe le 21 novembre et bloqué ses systèmes informatiques et téléphoniques. Les pirates seraient passés par un prestataire informatique de l'hôpital, attaqué en premier. Le CHU a déclenché son plan blanc : seules les urgences sont assurées normalement.",
+   "fait": [
+    "Le 21 novembre, une cyberattaque a touché les systèmes informatiques et téléphoniques du CHU, surtout sur le site de Chauvel, avec des répercussions sur celui de Belle-Plaine.",
+    "Selon le directeur général du CHU, l'attaque ne visait pas d'abord l'hôpital : un fournisseur informatique de l'établissement a été piraté, et les attaquants auraient ensuite utilisé ses adresses pour s'en prendre au CHU."
+   ],
+   "consequence": [
+    "Une partie des bases de données a été chiffrée par les attaquants. Avant de relancer chaque logiciel, les équipes doivent vérifier qu'aucun programme malveillant ne traîne encore, avec l'appui de l'ANSSI.",
+    "En attendant, une partie des opérations, des consultations et des examens d'imagerie programmés est reportée. Les urgences et les soins prioritaires sont maintenus."
+   ],
+   "lien": [
+    "Un hôpital ne choisit pas seul son niveau de sécurité : il dépend aussi de celui de ses prestataires. Ici, c'est par un fournisseur que l'attaque serait entrée.",
+    "Et vous, savez-vous comment joindre votre médecin ou votre hôpital si leurs ordinateurs s'arrêtent ?"
+   ],
+   "sources": [
+    {
+     "label": "Franceinfo – La 1ère : Cyberattaque au CHU de Guadeloupe",
+     "url": "https://la1ere.franceinfo.fr/guadeloupe/cyberattaque-au-chu-de-guadeloupe-plusieurs-jours-de-perturbations-a-prevoir-l-hopital-s-organise-1760535.html"
+    }
+   ],
+   "mini": {
+    "fait": "Cyberattaque au CHU de Guadeloupe le 21 novembre.",
+    "consequence": "Soins programmés reportés, urgences maintenues.",
+    "dependance": "L'attaque serait passée par un prestataire informatique."
+   },
+   "audience": "public",
+   "reflexes": [
+    "En Guadeloupe, appelez le 15 avant de vous rendre à l'hôpital : c'est la consigne du SAMU tant que le CHU est perturbé.",
+    "Gardez chez vous une copie papier de l'essentiel : ordonnances en cours, traitements, allergies, derniers résultats.",
+    "Un appel ou un SMS qui dit venir de l'hôpital et vous demande un code ou un paiement ? Raccrochez et rappelez le numéro officiel."
+   ],
+   "reflexes_intro": "Trois gestes simples, à faire tout de suite.",
+   "reflexe_semaine": {
+    "titre": "Votre santé sur papier",
+    "texte": "Une feuille avec vos traitements, vos allergies et le numéro de votre médecin, rangée chez vous : le jour où les ordinateurs s'arrêtent, c'est elle qui sert."
+   },
+   "publie_le": "2026-11-23T08:28:05+00:00"
+  },
+  {
    "id": "20261119-gta-vi-sort-aujourd-hui-sa-version-sans-disque-inq",
    "rubrique": "tous_connectes",
    "date": "2026-11-19",
@@ -102,5 +148,5 @@
   }
  ],
  "detour": [],
- "mis_a_jour": "2026-11-21T21:00:11+00:00"
+ "mis_a_jour": "2026-11-23T08:28:05+00:00"
 }
