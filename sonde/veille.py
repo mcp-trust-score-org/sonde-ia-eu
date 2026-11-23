@@ -45,8 +45,12 @@ def fichier_veille(dossier: Path, quand: datetime) -> Path:
     return dossier / "veille" / f"{quand:%Y-%m-%d}.jsonl"
 
 
-def lire_veille(dossier: Path, depuis: datetime, jusqua: datetime | None = None) -> list[dict]:
-    """Lignes de veille entre deux instants (fichiers journaliers)."""
+def lire_veille(dossier: Path, depuis: datetime, jusqua: datetime | None = None,
+                garder_limites: bool = False) -> list[dict]:
+    """Lignes de veille entre deux instants (fichiers journaliers).
+
+    Les réponses HTTP 429 (limite de débit de NOTRE accès gratuit ou anonyme) ne sont pas des mesures
+    du fournisseur : elles sont écartées, sauf si on veut justement les compter (garder_limites)."""
     jusqua = jusqua or datetime.now(timezone.utc)
     lignes = []
     jour = depuis.date()
@@ -59,6 +63,8 @@ def lire_veille(dossier: Path, depuis: datetime, jusqua: datetime | None = None)
                     if not brut:
                         continue
                     l = json.loads(brut)
+                    if l.get("statut_http") == 429 and not garder_limites:
+                        continue
                     h = datetime.fromisoformat(l["horodatage"])
                     if depuis <= h <= jusqua:
                         lignes.append(l)

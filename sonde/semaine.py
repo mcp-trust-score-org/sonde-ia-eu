@@ -36,6 +36,8 @@ def lire_veille(dossier: Path, jours: int = 15) -> list[dict]:
                 d = json.loads(l)
             except ValueError:
                 continue
+            if d.get("statut_http") == 429:   # limite de débit de notre accès : pas une mesure du fournisseur
+                continue
             if d.get("type") == "veille" and d.get("horodatage"):
                 lignes.append(d)
     return lignes

@@ -19,6 +19,10 @@ def lire_lignes(dossier: Path, depuis: datetime) -> list[dict]:
                 if not brut:
                     continue
                 l = json.loads(brut)
+                if l.get("statut_http") == 429:
+                    # Limite de débit de NOTRE accès (gratuit ou anonyme) : le fournisseur n'a pas été
+                    # mesuré. Ce n'est ni une réussite ni une panne : on l'ignore partout.
+                    continue
                 if datetime.fromisoformat(l["horodatage"]) >= depuis:
                     lignes.append(l)
     return lignes

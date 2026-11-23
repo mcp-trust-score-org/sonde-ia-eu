@@ -327,7 +327,7 @@ def calculer(config: dict, conf_veille: dict, veille: list[dict], mesures: list[
 def produire_meteo(dossier_donnees: Path, dossier_public: Path, config: dict, conf_veille: dict,
                    maintenant: datetime | None = None) -> dict:
     maintenant = maintenant or datetime.now(timezone.utc)
-    veille = lire_veille(dossier_donnees, maintenant - timedelta(days=30), maintenant)
+    veille = lire_veille(dossier_donnees, maintenant - timedelta(days=30), maintenant, garder_limites=True)
     mesures = lire_lignes(dossier_donnees, maintenant - timedelta(days=30))
     meteo = calculer(config, conf_veille, veille, mesures, maintenant)
     # Depuis quand la sonde mesure : l'historique indépendant est ce que personne ne peut rattraper.
@@ -339,7 +339,7 @@ def produire_meteo(dossier_donnees: Path, dossier_public: Path, config: dict, co
     debut = maintenant.replace(hour=0, minute=0, second=0, microsecond=0)
     minutes = {"jour": f"{debut:%Y-%m-%d}", "legende": {"1": "réussi", "0": "échec", "-": "pas de mesure"}, "fournisseurs": {}}
     for f in config["fournisseurs"] + config.get("assistants", []):
-        lf = [l for l in veille if l["fournisseur"] == f["id"] and _h(l) >= debut]
+        lf = [l for l in veille if l["fournisseur"] == f["id"] and _h(l) >= debut and l.get("statut_http") != 429]
         if lf:
             cases = statut_minutes(lf, debut, _minute(maintenant) + timedelta(minutes=1))
             minutes["fournisseurs"][f["id"]] = "".join("-" if c is None else str(c) for c in cases)

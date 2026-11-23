@@ -129,6 +129,8 @@ def vers_le_site(p: dict, date: str, liens_a_garder: str | None = None) -> dict:
     if rub == "tous_connectes":
         art["audience"] = "public"
         art["reflexes"] = a.get("reflexes") or []
+        if a.get("reflexes_intro"):
+            art["reflexes_intro"] = a["reflexes_intro"]
         if a.get("reflexe_de_la_semaine"):
             art["reflexe_semaine"] = a["reflexe_de_la_semaine"]
     else:

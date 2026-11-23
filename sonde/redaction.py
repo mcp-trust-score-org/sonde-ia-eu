@@ -733,7 +733,7 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture, en
         "Étape 3 : « Et vous ? ». Ajoute exactement 3 bons réflexes."
         + (" Ajoute aussi le bon réflexe de la semaine (une phrase-titre et une phrase d'explication)." if reflexe else "")),
         fiche_sujet, "tous_connectes", "a_chaud",
-        ',\n "sujet": "le sujet",\n "categorie": "jeux-video, musique, cinema, societe, sante, politique, medias, savoir, innovation ou autre",\n "reflexes": ["…", "…", "…"]'
+        ',\n "sujet": "le sujet",\n "categorie": "jeux-video, musique, cinema, societe, sante, politique, medias, savoir, innovation ou autre",\n "reflexes": ["…", "…", "…"],\n "reflexes_intro": "une phrase qui présente les 3 gestes, par exemple : Trois gestes simples pour garder le contrôle sur vos jeux, aujourd\'hui et demain."'
         + (',\n "reflexe_de_la_semaine": {"titre": "…", "texte": "…"}' if reflexe else ""),
         {"date": jour.date(), "en_ligne": en_ligne})
     if not urls:
@@ -961,7 +961,8 @@ def en_markdown(s: dict) -> str:
                                  ("Et vous ?" if p["rubrique"] == "tous_connectes" else "La dépendance révélée", "lien")):
                 l += [f"**{titre}**", ""] + [f"{x}\n" for x in a.get(champ) or []]
             if a.get("reflexes"):
-                l += ["**Le bon réflexe**", ""] + [f"{i}. {r}" for i, r in enumerate(a["reflexes"], 1)] + [""]
+                l += ["**Le bon réflexe**", ""] + ([a["reflexes_intro"], ""] if a.get("reflexes_intro") else []) \
+                    + [f"{i}. {r}" for i, r in enumerate(a["reflexes"], 1)] + [""]
             if a.get("reflexe_de_la_semaine"):
                 r = a["reflexe_de_la_semaine"]
                 l += [f"**Bon réflexe de la semaine** : {r.get('titre')} {r.get('texte')}", ""]

@@ -141,6 +141,13 @@ def envoyer(alerte: dict, env: dict | None = None, client: httpx.Client | None =
                                       "texte": alerte["texte"].replace("`", "")[:240], "url": "/#alertes"})
                 if r.status_code < 300:
                     faits.append("site")
+                    try:   # dans le journal des Actions : combien d'appareils abonnés aux alertes, combien servis
+                        bilan = r.json()
+                        print(f"Notification site « {alerte['titre']} » : {bilan.get('abonnes')} appareil(s) abonné(s) "
+                              f"aux alertes, {bilan.get('envoyes')} envoyée(s), {bilan.get('echecs')} échec(s), "
+                              f"{bilan.get('retires')} retiré(s).")
+                    except ValueError:
+                        pass
             except httpx.HTTPError:
                 pass
         url = env.get("ALERTE_WEBHOOK_URL")

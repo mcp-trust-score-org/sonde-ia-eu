@@ -56,6 +56,9 @@ def produire(racine: Path, maintenant: datetime | None = None) -> dict:
     from .semaine import produire as produire_semaine   # la météo de la semaine (Iris Plus)
     if produire_semaine(racine, sortie, maintenant):
         copies.append("semaine.json")
+    from .pilotage import produire as produire_pilotage   # le tableau de pilotage (iris/pilotage.html)
+    produire_pilotage(racine, sortie, maintenant)
+    copies.append("pilotage.json")
 
     dossiers = []
     for f in sorted((racine / "dossiers").glob("*.json")):
