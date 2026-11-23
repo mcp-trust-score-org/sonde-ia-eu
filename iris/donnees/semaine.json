@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-23T07:38:08+00:00",
+ "genere_le": "2026-11-23T11:11:58+00:00",
  "suivis": {
   "mistral": "Mistral",
   "scaleway": "Scaleway",
@@ -269,7 +269,7 @@
   },
   {
    "date": "2026-11-20",
-   "etat": "orage",
+   "etat": "soleil",
    "fournisseurs": {
     "mistral": {
      "etat": "soleil",
@@ -282,9 +282,9 @@
      "echecs": 0
     },
     "ovhcloud": {
-     "etat": "orage",
-     "mesures": 8,
-     "echecs": 2
+     "etat": "soleil",
+     "mesures": 6,
+     "echecs": 0
     },
     "ionos": {
      "etat": "soleil",
@@ -295,7 +295,7 @@
   },
   {
    "date": "2026-11-21",
-   "etat": "orage",
+   "etat": "soleil",
    "fournisseurs": {
     "mistral": {
      "etat": "soleil",
@@ -308,9 +308,9 @@
      "echecs": 0
     },
     "ovhcloud": {
-     "etat": "orage",
-     "mesures": 7,
-     "echecs": 4
+     "etat": "soleil",
+     "mesures": 3,
+     "echecs": 0
     },
     "ionos": {
      "etat": "soleil",
@@ -321,7 +321,7 @@
   },
   {
    "date": "2026-11-22",
-   "etat": "averse",
+   "etat": "soleil",
    "fournisseurs": {
     "mistral": {
      "etat": "soleil",
@@ -334,9 +334,9 @@
      "echecs": 0
     },
     "ovhcloud": {
-     "etat": "averse",
-     "mesures": 5,
-     "echecs": 1
+     "etat": "soleil",
+     "mesures": 4,
+     "echecs": 0
     },
     "ionos": {
      "etat": "soleil",
@@ -347,26 +347,26 @@
   },
   {
    "date": "2026-11-23",
-   "etat": "orage",
+   "etat": "soleil",
    "fournisseurs": {
     "mistral": {
      "etat": "soleil",
-     "mesures": 3,
+     "mesures": 4,
      "echecs": 0
     },
     "scaleway": {
      "etat": "soleil",
-     "mesures": 3,
+     "mesures": 4,
      "echecs": 0
     },
     "ovhcloud": {
-     "etat": "orage",
-     "mesures": 3,
-     "echecs": 2
+     "etat": "soleil",
+     "mesures": 2,
+     "echecs": 0
     },
     "ionos": {
      "etat": "soleil",
-     "mesures": 3,
+     "mesures": 4,
      "echecs": 0
     }
    }
@@ -392,85 +392,6 @@
    "jour": "2026-11-19",
    "de": "8 h 43",
    "a": "9 h 52"
-  },
-  {
-   "fournisseur": "ovhcloud",
-   "nom": "OVHcloud",
-   "debut": "2026-11-20T17:51:45+00:00",
-   "mesures_en_echec": 1,
-   "fin": "2026-11-20T20:44:52+00:00",
-   "jour": "2026-11-20",
-   "de": "18 h 51",
-   "a": "21 h 44"
-  },
-  {
-   "fournisseur": "ovhcloud",
-   "nom": "OVHcloud",
-   "debut": "2026-11-20T21:51:09+00:00",
-   "mesures_en_echec": 2,
-   "fin": "2026-11-21T01:45:59+00:00",
-   "jour": "2026-11-20",
-   "de": "22 h 51",
-   "a": "2 h 45 le lendemain"
-  },
-  {
-   "fournisseur": "ovhcloud",
-   "nom": "OVHcloud",
-   "debut": "2026-11-21T07:10:46+00:00",
-   "mesures_en_echec": 1,
-   "fin": "2026-11-21T08:48:41+00:00",
-   "jour": "2026-11-21",
-   "de": "8 h 10",
-   "a": "9 h 48"
-  },
-  {
-   "fournisseur": "ovhcloud",
-   "nom": "OVHcloud",
-   "debut": "2026-11-21T15:27:41+00:00",
-   "mesures_en_echec": 1,
-   "fin": "2026-11-21T16:26:00+00:00",
-   "jour": "2026-11-21",
-   "de": "16 h 27",
-   "a": "17 h 26"
-  },
-  {
-   "fournisseur": "ovhcloud",
-   "nom": "OVHcloud",
-   "debut": "2026-11-21T21:45:24+00:00",
-   "mesures_en_echec": 1,
-   "fin": "2026-11-22T01:37:38+00:00",
-   "jour": "2026-11-21",
-   "de": "22 h 45",
-   "a": "2 h 37 le lendemain"
-  },
-  {
-   "fournisseur": "ovhcloud",
-   "nom": "OVHcloud",
-   "debut": "2026-11-22T17:54:38+00:00",
-   "mesures_en_echec": 1,
-   "fin": "2026-11-22T22:06:51+00:00",
-   "jour": "2026-11-22",
-   "de": "18 h 54",
-   "a": "23 h 06"
-  },
-  {
-   "fournisseur": "ovhcloud",
-   "nom": "OVHcloud",
-   "debut": "2026-11-22T23:42:32+00:00",
-   "mesures_en_echec": 1,
-   "fin": "2026-11-23T02:36:29+00:00",
-   "jour": "2026-11-23",
-   "de": "0 h 42",
-   "a": "3 h 36"
-  },
-  {
-   "fournisseur": "ovhcloud",
-   "nom": "OVHcloud",
-   "debut": "2026-11-23T07:38:03+00:00",
-   "mesures_en_echec": 1,
-   "en_cours": true,
-   "jour": "2026-11-23",
-   "de": "8 h 38"
   }
  ],
  "methode": "Veille de la sonde Iris, environ une mesure par heure et par fournisseur. Une coupure va de la première mesure en échec à la première mesure réussie : elle a pu être plus courte."
