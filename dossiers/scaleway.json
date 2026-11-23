@@ -4,14 +4,14 @@
     "nom": "Scaleway Generative APIs",
     "pays": "FR"
   },
-  "genere_le": "2026-11-23T04:48:55+00:00",
+  "genere_le": "2026-11-23T13:49:45+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-23T04:48:55+00:00"
+    "fin": "2026-11-23T13:49:45+00:00"
   },
   "performance": [],
   "reseau": {
-    "dernier_releve": "2026-11-23T04:36:07+00:00",
+    "dernier_releve": "2026-11-23T13:36:52+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "ue_observe",
     "constats": [
@@ -27,7 +27,7 @@
     "verdicts_sur_periode": [
       "ue_observe"
     ],
-    "releves": 14
+    "releves": 15
   },
   "stabilite": [],
   "changements_catalogue": [],
@@ -47,6 +47,10 @@
     },
     {
       "manifeste": "2026-11-22.json",
+      "ancrage_ots": true
+    },
+    {
+      "manifeste": "2026-11-23.json",
       "ancrage_ots": true
     }
   ],

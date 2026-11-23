@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-23T07:37:02+00:00",
+ "genere_le": "2026-11-23T13:49:47+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,7 +16,8 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "ok"
+   "etat": "erreur",
+   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
   }
  },
  "dependances": {
@@ -106,24 +107,7 @@
    "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
   }
  ],
- "angles_morts_sonde": [
-  {
-   "id": "github-2zfqmghmg3s3",
-   "titre": "GitHub : Incident with Pull Requests",
-   "type": "incident_amont",
-   "debut": "2026-11-16T11:59+00:00",
-   "fin": "2026-11-16T16:26+00:00",
-   "gravite": "minor",
-   "sources": [
-    {
-     "type": "statut_fournisseur",
-     "url": "https://stspg.io/ljtn69jlt087",
-     "titre": "Incident with Pull Requests"
-    }
-   ],
-   "source_auto": "github"
-  }
- ],
+ "angles_morts_sonde": [],
  "ecartes_pages_de_statut": [
   {
    "titre": "Cloudflare : Elevated latency in Frankfurt",
@@ -293,14 +277,5 @@
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/69855o2zz6kl"
   }
- ],
- "tri_presse": {
-  "articles": 0,
-  "sans_acteur": 0,
-  "sans_incident": 0,
-  "hors_sujet": 0,
-  "doublons": 0,
-  "retenus": 0,
-  "erreurs": []
- }
+ ]
 }
