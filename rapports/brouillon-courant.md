@@ -1,6 +1,6 @@
 # Les fournisseurs d'IA européens à l'épreuve de DORA
 
-*Brouillon généré automatiquement le 22/11/2026. Période mesurée : 2026-11-15 → 2026-11-22. 189 appels mesurés, 4 hébergeur(s).*
+*Brouillon généré automatiquement le 23/11/2026. Période mesurée : 2026-11-15 → 2026-11-23. 207 appels mesurés, 4 hébergeur(s).*
 
 > À relire avant publication. Les chiffres viennent des mesures ; les passages [À COMMENTER] sont à écrire.
 
@@ -16,9 +16,9 @@ Les entités financières européennes doivent surveiller en continu leurs prest
 
 | Hébergeur | Modèle | Disponibilité | Plus longue série d'échecs | Offre mesurée |
 |---|---|---|---|---|
-| OVHcloud AI Endpoints | gpt-oss-120b | 73.02 % | 1 h | anonyme |
-| OVHcloud AI Endpoints | llama-3.3-70b | 77.78 % | 1 h | anonyme |
-| OVHcloud AI Endpoints | mistral-small-3.2 | 80.95 % | 1 h | anonyme |
+| OVHcloud AI Endpoints | gpt-oss-120b | 68.12 % | 1 h | anonyme |
+| OVHcloud AI Endpoints | llama-3.3-70b | 73.91 % | 1 h | anonyme |
+| OVHcloud AI Endpoints | mistral-small-3.2 | 76.81 % | 1 h | anonyme |
 
 [À COMMENTER]
 
@@ -35,9 +35,9 @@ Portée : ces relevés décrivent l'entrée réseau des API, pas le lieu exact d
 
 ## 3. Les modèles changent-ils sans prévenir ?
 
-- OVHcloud AI Endpoints · gpt-oss-120b : 13 empreintes, 0 alerte(s) de changement
-- OVHcloud AI Endpoints · llama-3.3-70b : 13 empreintes, 0 alerte(s) de changement
-- OVHcloud AI Endpoints · mistral-small-3.2 : 13 empreintes, 4 alerte(s) de changement
+- OVHcloud AI Endpoints · gpt-oss-120b : 14 empreintes, 0 alerte(s) de changement
+- OVHcloud AI Endpoints · llama-3.3-70b : 14 empreintes, 0 alerte(s) de changement
+- OVHcloud AI Endpoints · mistral-small-3.2 : 14 empreintes, 4 alerte(s) de changement
 - OVHcloud AI Endpoints : 1 modèle(s) retiré(s) du catalogue le 2026-11-19
 
 [À COMMENTER]

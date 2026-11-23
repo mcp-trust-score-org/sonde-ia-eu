@@ -1,11 +1,56 @@
 {
-  "genere_le": "2026-11-22T23:42:32Z",
+  "genere_le": "2026-11-23T04:51:10Z",
   "regles_version": "1.3.1",
   "periode_mesuree": {
     "debut": "2026-11-16T09:56:00Z",
-    "fin": "2026-11-22T22:06:00Z"
+    "fin": "2026-11-23T02:36:00Z"
   },
   "impacts": [
+    {
+      "impact_id": "imp-cloudflare-pnfv9wfy2q4y-mistral",
+      "client_id": "sonde-publique",
+      "regles_version": "1.3.1",
+      "evenement": {
+        "id": "cloudflare-pnfv9wfy2q4y",
+        "titre": "Cloudflare : Increased HTTP 5xx Errors in Brussels",
+        "type": "incident_amont",
+        "fournisseur": "Mistral",
+        "debut": "2026-11-23T02:34:00Z",
+        "fin": "2026-11-23T02:46:00Z",
+        "exemple": false,
+        "sources": [
+          {
+            "type": "statut_fournisseur",
+            "url": "https://www.cloudflarestatus.com/incidents/pnfv9wfy2q4y",
+            "titre": "Increased HTTP 5xx Errors in Brussels"
+          }
+        ],
+        "source_auto": "cloudflare",
+        "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+      },
+      "correlation": {
+        "lieu": true,
+        "moment": false,
+        "symptome": false,
+        "officiel": false,
+        "multi_points": false,
+        "niveau": "non_concerne",
+        "texte_propose": "Aucune anomalie mesurée chez vos fournisseurs"
+      },
+      "mesures": {
+        "mesures_dans_la_fenetre": 1,
+        "symptomes": [],
+        "anomalies": [],
+        "incident_officiel": null
+      },
+      "alertes_relecture": [
+        "Mesures depuis un seul point : une panne locale de la sonde ressemblerait à une panne du fournisseur.",
+        "Seulement 1 mesure(s) dans la fenêtre : peu de recul."
+      ],
+      "statut_editorial": "a_relire",
+      "valide_par": null,
+      "valide_le": null
+    },
     {
       "impact_id": "imp-statut-scaleway-2026-11-17T14:43+00:00-scaleway",
       "client_id": "sonde-publique",

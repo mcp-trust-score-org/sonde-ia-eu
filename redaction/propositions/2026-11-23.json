@@ -1,0 +1,670 @@
+{
+ "date": "2026-11-23",
+ "genere_le": "2026-11-23T04:51:18+00:00",
+ "statut": "a_relire",
+ "propositions": [
+  {
+   "rubrique": "une",
+   "format": "a_chaud",
+   "evenement_id": "cloudflare-pnfv9wfy2q4y",
+   "tag_interne": "Aucune anomalie",
+   "score": 9.8,
+   "auteur": "openai/gpt-oss-120b",
+   "image": "assets/photos/reseau.jpg",
+   "article": {
+    "tag": "Réseau",
+    "title": "Une hausse d’erreurs HTTP 5xx à Bruxelles.<br/>Mistral subit <mark>12 minutes</mark> d’interruption.",
+    "chapo": "Le 23 novembre, Cloudflare a signalé une augmentation soudaine des erreurs HTTP 5xx dans son réseau de Bruxelles. Cette anomalie a touché les services transitant par Cloudflare, dont le fournisseur d’IA Mistral. L’incident montre à quel point les entreprises dépendent d’infrastructures tierces pour leurs flux.",
+    "fait": [
+     "Cloudflare a publié un incident indiquant une hausse des réponses d’erreur 5xx entre 03 h 34 et 03 h 46, affectant le trafic vers Bruxelles.",
+     "Mistral, qui utilise Cloudflare comme point d’accès, a été concerné pendant cette période."
+    ],
+    "consequence": [
+     "Notre sonde n’a détecté aucune anomalie chez Mistral pendant l’incident.",
+     "Cela souligne que les perturbations externes peuvent rester invisibles aux outils de surveillance internes."
+    ],
+    "lien": [
+     "Le rapport complet est disponible sur le site de Cloudflare : https://www.cloudflarestatus.com/incidents/pnfv9wfy2q4y.",
+     "Votre organisation a‑t‑elle envisagé des alternatives pour limiter ce type de dépendance ?"
+    ],
+    "une_mini": {
+     "fait": "Cloudflare signale une hausse d’erreurs 5xx à Bruxelles.",
+     "consequence": "Aucune anomalie mesurée chez Mistral.",
+     "dependance": "Dépendance aux CDN expose les services."
+    },
+    "sources": [
+     {
+      "label": "Increased HTTP 5xx Errors in Brussels",
+      "url": "https://www.cloudflarestatus.com/incidents/pnfv9wfy2q4y"
+     }
+    ],
+    "a_verifier": [
+     "Vérifier la disponibilité du lien Cloudflare",
+     "Confirmer la durée exacte de 12 minutes",
+     "S’assurer qu’aucune donnée supplémentaire n’est disponible dans la presse"
+    ]
+   },
+   "fiche": {
+    "evenement": "Cloudflare : Increased HTTP 5xx Errors in Brussels",
+    "type": "incident_amont",
+    "debut": "lundi 23 novembre, 3 h 34",
+    "fin": "lundi 23 novembre, 3 h 46",
+    "fournisseurs_concernes": [
+     "Mistral"
+    ],
+    "pourquoi_ce_fournisseur": "mistral passe(nt) par Cloudflare (chemin réseau relevé)",
+    "mesures_de_la_sonde": [
+     {
+      "fournisseur": "Mistral",
+      "ce_que_la_sonde_a_vu": "Aucune anomalie mesurée chez vos fournisseurs",
+      "anomalies": [],
+      "nombre_de_mesures_pendant_l_evenement": 1,
+      "incident_officiel": false
+     }
+    ],
+    "presse": null,
+    "sources": [
+     {
+      "label": "Increased HTTP 5xx Errors in Brussels",
+      "url": "https://www.cloudflarestatus.com/incidents/pnfv9wfy2q4y"
+     }
+    ]
+   },
+   "alertes_charte": [
+    "Affirmation non soutenue par les mesures : la sonde n'a vu aucune anomalie, mais le texte dit qu'un fournisseur a été touché : « Cette anomalie a touché les services transitant par Cloudflare, dont le fournisseur d’IA Mistral. »",
+    "Trop de chiffres dans le texte (10) : en garder 3 au plus, le détail va dans l'encadré Premium.",
+    "Le rédacteur signale 3 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer »."
+   ]
+  },
+  {
+   "rubrique": "une",
+   "format": "bilan",
+   "auteur": "openai/gpt-oss-120b",
+   "image": "assets/photos/reseau.jpg",
+   "article": {
+    "tag": "Bilan · Réseau · semaine 47",
+    "title": "Une lenteur inattendue chez OVHcloud.<br/><mark>16 731 ms</mark> d’attente au lieu de 1 159 ms habituels",
+    "chapo": "Cette semaine, quatre incidents en amont ont été relevés, tous liés à Cloudflare. Trois d’entre eux n’ont montré aucune anomalie, mais un incident confirmé a mis en lumière une latence exceptionnelle sur un service d’IA d’OVHcloud. Cette situation rappelle la fragilité des chaînes de dépendance technologique.",
+    "fait": [
+     "Le point d’accès AI d’OVHcloud a enregistré un temps de réponse de 16 731 ms, contre 1 159 ms en temps normal.",
+     "Cette hausse soudaine illustre comment un goulot d’étranglement peut apparaître sans avertissement préalable."
+    ],
+    "consequence": [
+     "Les utilisateurs des modèles Llama‑3.3‑70b ont subi des retards notables, impactant leurs traitements de données et leurs applications d’apprentissage automatique.",
+     "Cela montre la sensibilité des services dépendant d’infrastructures tierces, même lorsqu’elles semblent stables en surface."
+    ],
+    "lien": [
+     "Bien que Cloudflare n’ait pas présenté d’anomalie mesurée, l’incident chez OVHcloud révèle une dépendance cachée aux fournisseurs d’infrastructure IA.",
+     "Votre entreprise est‑elle prête à gérer ce type d’incident ?"
+    ],
+    "une_mini": {
+     "fait": "Latence AI OVHcloud : 16 731 ms",
+     "consequence": "Retards sur les workloads IA",
+     "dependance": "Dépendance aux fournisseurs d’infrastructure IA exposée"
+    },
+    "sources": [
+     {
+      "label": "OVHcloud – AI Endpoint Incident Notification",
+      "url": "[À VÉRIFIER : lien de la notification]"
+     }
+    ],
+    "a_verifier": [
+     "Vérifier le lien exact de la notification d’incident OVHcloud"
+    ]
+   },
+   "fiche": {
+    "semaine": "du lundi 16 novembre au dimanche 22 novembre",
+    "numero_de_semaine": 47,
+    "evenements_collectes": 4,
+    "par_acteur": {
+     "Cloudflare": 4
+    },
+    "par_type": {
+     "incident_amont": 4
+    },
+    "croisements_par_niveau": {
+     "Aucune anomalie": 3,
+     "Confirmé": 1
+    },
+    "anomalies_mesurees": [
+     {
+      "fournisseur": "OVHcloud",
+      "evenement": "[GLOBAL][AI & Machine Learning] - AI Endpoint Incident Notification",
+      "anomalies": [
+       "llama-3.3-70b : 16731 ms contre 1159 ms d'habitude"
+      ]
+     }
+    ],
+    "non_couverts": 7,
+    "evenements_ecartes_pages_de_statut": 27
+   },
+   "alertes_charte": [
+    "Trop de chiffres dans le texte (6) : en garder 3 au plus, le détail va dans l'encadré Premium.",
+    "Le rédacteur signale 1 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer ».",
+    "Le brouillon contient des points [À VÉRIFIER] : à compléter avant publication."
+   ]
+  },
+  {
+   "rubrique": "tous_connectes",
+   "format": "a_chaud",
+   "auteur": "openai/gpt-oss-120b",
+   "image": "assets/photos/sante.jpg",
+   "article": {
+    "tag": "Santé",
+    "title": "Le CHU de Guadeloupe paralysé.<br/>Des soins <mark>déprogrammés plusieurs jours</mark>.",
+    "chapo": "Une cyberattaque a frappé le CHU de Guadeloupe le 21 novembre, paralysant ses systèmes informatiques et téléphoniques. Les consultations et interventions non urgentes sont déprogrammées jusqu’au 27 novembre. Le centre a déclenché le Plan Blanc pour assurer la continuité des urgences.",
+    "fait": [
+     "Le 21 novembre, le réseau informatique du CHU de Guadeloupe a été la cible d’une cyberattaque qui a touché les sites de Chauvel et Belle‑Plaine.",
+     "Cette intrusion montre à quel point les établissements de santé dépendent désormais du numérique pour leurs activités quotidiennes."
+    ],
+    "consequence": [
+     "Les équipes ont dû suspendre les consultations et les interventions non urgentes, tout en mobilisant l’ANSSI et en chiffrant les bases de données affectées.",
+     "Cette situation rappelle que la continuité des soins repose sur la disponibilité des systèmes informatiques."
+    ],
+    "lien": [
+     "Le CHU travaille à restaurer progressivement ses outils tout en sécurisant le réseau, et invite les patients à appeler le 15 avant de se rendre à l’hôpital.",
+     "Et vous, que feriez‑vous si votre dossier médical était indisponible pendant plusieurs jours ?"
+    ],
+    "une_mini": {
+     "fait": "Cyberattaque du 21 novembre paralysant le réseau du CHU.",
+     "consequence": "Déprogrammation des soins non urgents jusqu’au 27 novembre.",
+     "dependance": "Le système de santé dépend entièrement du réseau informatique."
+    },
+    "sources": [
+     {
+      "label": "Franceinfo – La 1ère : Cyberattaque au CHU de Guadeloupe",
+      "url": "https://la1ere.franceinfo.fr/guadeloupe/cyberattaque-au-chu-de-guadeloupe-plusieurs-jours-de-perturbations-a-prevoir-l-hopital-s-organise-1760535.html"
+     }
+    ],
+    "a_verifier": [
+     "Confirmer le nombre exact de jours de perturbation prévus au-delà du 27 novembre."
+    ],
+    "sujet": "Cyberattaque du CHU de Guadeloupe",
+    "categorie": "sante",
+    "reflexes": [
+     "Conservez une copie numérique sécurisée de vos documents médicaux essentiels.",
+     "Vérifiez que votre établissement de santé dispose d’un plan de continuité en cas d’incident informatique.",
+     "Suivez les alertes officielles (ANSSI, ministère de la Santé) pour être informé rapidement des incidents."
+    ],
+    "reflexe_de_la_semaine": {
+     "titre": "Sauvegardez vos dossiers médicaux",
+     "texte": "Conservez une version numérique chiffrée de vos informations de santé afin de pouvoir y accéder même si le système hospitalier est indisponible."
+    }
+   },
+   "fiche": {
+    "sujet": "Cyberattaque du CHU de Guadeloupe",
+    "technologie": "réseau informatique du centre hospitalier",
+    "preuve": "Cyberattaque au CHU de Guadeloupe : plusieurs jours de perturbations à prévoir, le plan blanc déclenché",
+    "et_vous": "Et vous, que feriez‑vous si votre dossier médical était indisponible pendant plusieurs jours ?",
+    "articles_de_presse": [
+     {
+      "titre": "Cyberattaque au CHU de Guadeloupe : plusieurs jours de perturbations à prévoir, le plan blanc déclenché",
+      "media": "franceinfo",
+      "url": "https://la1ere.franceinfo.fr/guadeloupe/cyberattaque-au-chu-de-guadeloupe-plusieurs-jours-de-perturbations-a-prevoir-l-hopital-s-organise-1760535.html",
+      "etat": "lu",
+      "texte": "Une cyberattaque touche actuellement le Centre hospitalier universitaire (CHU) de Guadeloupe et perturbe le fonctionnement de l’établissement. Survenue le 21 novembre, elle affecte les systèmes informatiques et téléphoniques, principalement sur le site de Chauvel, avec des répercussions sur celui de Belle-Plaine. Les consultations et les interventions non urgentes sont déprogrammées. Les équipes doivent désormais assurer la continuité des soins tout en travaillant à la sécurisation et à la restauration des outils informatiques.\nLe retour à la normale ne sera pas immédiat. Selon Éric Guyader, directeur général du CHU, plusieurs jours de travail seront nécessaires pour reprendre progressivement le contrôle des systèmes informatiques du CHU. Selon lui, l’origine de l'attaque a pu être identifiée : un fournisseur informatique de l’établissement a, en premier lieu, été victime d’un piratage. Les cybercriminels auraient ensuite utilisé les adresses de ce fournisseur pour attaquer le CHU.\nLes équipes informatiques ont alors été immédiatement mobilisées. Un contact a été établi avec l’Agence nationale de la sécurité des systèmes d’information (ANSSI) pour limiter les conséquences de cet incident.\nUne cellule de crise s’est réunie ce dimanche (22 novembre), à l’issue de laquelle, le déclenchement du Plan Blanc a été décidé. Plusieurs mesures ont été arrêtées, notamment la déprogrammation partielle des interventions chirurgicales, des consultations et des examens d’imagerie programmés jusqu’au vendredi 27 novembre inclus. Les prises en charge urgentes et prioritaires sont, quant à elles, maintenues.\nUne partie des bases de données de l’établissement a été chiffrée et les équipes doivent procéder à une analyse approfondie avant de réactiver les différents outils pour éviter toute nouvelle attaque.\n« On va pouvoir relancer les logiciels et les bases de données qui sont les nôtres une par une, après nous être assurés qu'il n'y a pas un virus malveillant qui traîne encore et qui viendrait compliquer davantage la tâche. »\nDans ce contexte, le CHU doit adapter son organisation : les consultations et les interventions non urgentes sont déprogrammées. La priorité est donnée à la prise en charge des urgences avant une reprise progressive des activités programmées.\nLe professeur Patrick Portecop, chef de service du SAMU et chef de pôle des soins critiques du CHU, appelle la population à la vigilance. Il invite les Guadeloupéens à faire preuve de prudence.\n« Nous déconseillons de se présenter sans avoir rappelé le centre 15. »\nPour faire face à cette crise, le CHU doit adapter ses services en fonction des capacités disponibles. Une coordination avec les autres établissements de santé du territoire doit permettre de répartir certaines prises en charge et de mobiliser les différents acteurs de santé.\n« Le plus important, c'est que nos équipes puissent travailler en sérénité et nous appellerons bien évidemment la solidarité au niveau des établissements de soins pour répartir ce que nous pouvons avec tous les offreurs de soins. »\nMalgré les perturbations, les opérations de transfert du pôle Parent-Enfant vers le site de Belle-Plaine sont maintenues. Le transfert des urgences pédiatriques est notamment prévu dans la nuit du 23 au 24 novembre, à 00h01.\nVous pouvez désormais privilégier l'affichage des articles d’Outre-mer La 1ère dans les résultats de recherche Google."
+     }
+    ],
+    "tendances": {
+     "tendances_wikipedia": [
+      {
+       "sujet": "Hunger Games (série de films)",
+       "langue": "fr",
+       "rang_wikipedia": 1,
+       "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%28s%C3%A9rie_de_films%29",
+       "titres_de_presse": [
+        {
+         "titre": "De « Hunger Games » à « Harry Potter »… C’est quand le bon moment pour réveiller une saga endormie ?",
+         "media": "20 Minutes",
+         "url": "https://www.20minutes.fr/arts-stars/culture/4263833-20261122-hunger-games-harry-potter-quand-bon-moment-reveiller-saga-endormie"
+        }
+       ]
+      },
+      {
+       "sujet": "Hunger Games : La Ballade du serpent et de l'oiseau chanteur (film)",
+       "langue": "fr",
+       "rang_wikipedia": 2,
+       "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_La_Ballade_du_serpent_et_de_l%27oiseau_chanteur_%28film%29",
+       "titres_de_presse": [
+        {
+         "titre": "De « Hunger Games » à « Harry Potter »… C’est quand le bon moment pour réveiller une saga endormie ?",
+         "media": "20 Minutes",
+         "url": "https://www.20minutes.fr/arts-stars/culture/4263833-20261122-hunger-games-harry-potter-quand-bon-moment-reveiller-saga-endormie"
+        }
+       ]
+      },
+      {
+       "sujet": "David Lisnard",
+       "langue": "fr",
+       "rang_wikipedia": 3,
+       "page": "https://fr.wikipedia.org/wiki/David_Lisnard",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Liste de sondages sur l'élection présidentielle française de 2027",
+       "langue": "fr",
+       "rang_wikipedia": 4,
+       "page": "https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Marie-Josée Gauvin",
+       "langue": "fr",
+       "rang_wikipedia": 5,
+       "page": "https://fr.wikipedia.org/wiki/Marie-Jos%C3%A9e_Gauvin",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Jean Gabin",
+       "langue": "fr",
+       "rang_wikipedia": 6,
+       "page": "https://fr.wikipedia.org/wiki/Jean_Gabin",
+       "titres_de_presse": [
+        {
+         "titre": "Jean Gabin, résistant durant la Seconde Guerre mondiale, honoré par la Marine française",
+         "media": "franceinfo Culture",
+         "url": "https://www.franceinfo.fr/societe/seconde-guerre-mondiale/jean-gabin-resistant-durant-la-seconde-guerre-mondiale-honore-par-la-marine-francaise_8294150.html"
+        }
+       ]
+      },
+      {
+       "sujet": "Camille (chanteuse)",
+       "langue": "fr",
+       "rang_wikipedia": 7,
+       "page": "https://fr.wikipedia.org/wiki/Camille_%28chanteuse%29",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Hunger Games : Lever de soleil sur la moisson (film)",
+       "langue": "fr",
+       "rang_wikipedia": 8,
+       "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_Lever_de_soleil_sur_la_moisson_%28film%29",
+       "titres_de_presse": [
+        {
+         "titre": "De « Hunger Games » à « Harry Potter »… C’est quand le bon moment pour réveiller une saga endormie ?",
+         "media": "20 Minutes",
+         "url": "https://www.20minutes.fr/arts-stars/culture/4263833-20261122-hunger-games-harry-potter-quand-bon-moment-reveiller-saga-endormie"
+        }
+       ]
+      },
+      {
+       "sujet": "Clémentine Célarié",
+       "langue": "fr",
+       "rang_wikipedia": 9,
+       "page": "https://fr.wikipedia.org/wiki/Cl%C3%A9mentine_C%C3%A9lari%C3%A9",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Affaire Michel Zecler",
+       "langue": "fr",
+       "rang_wikipedia": 10,
+       "page": "https://fr.wikipedia.org/wiki/Affaire_Michel_Zecler",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Catastrophe de Courrières",
+       "langue": "fr",
+       "rang_wikipedia": 12,
+       "page": "https://fr.wikipedia.org/wiki/Catastrophe_de_Courri%C3%A8res",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Hélène Ségara",
+       "langue": "fr",
+       "rang_wikipedia": 13,
+       "page": "https://fr.wikipedia.org/wiki/H%C3%A9l%C3%A8ne_S%C3%A9gara",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Guillaume Labbé",
+       "langue": "fr",
+       "rang_wikipedia": 14,
+       "page": "https://fr.wikipedia.org/wiki/Guillaume_Labb%C3%A9",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Jonah Lomu",
+       "langue": "fr",
+       "rang_wikipedia": 15,
+       "page": "https://fr.wikipedia.org/wiki/Jonah_Lomu",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Philippine Leroy-Beaulieu",
+       "langue": "fr",
+       "rang_wikipedia": 18,
+       "page": "https://fr.wikipedia.org/wiki/Philippine_Leroy-Beaulieu",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Federico Martín Aramburú",
+       "langue": "fr",
+       "rang_wikipedia": 19,
+       "page": "https://fr.wikipedia.org/wiki/Federico_Mart%C3%ADn_Arambur%C3%BA",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "N'avoue jamais (film)",
+       "langue": "fr",
+       "rang_wikipedia": 20,
+       "page": "https://fr.wikipedia.org/wiki/N%27avoue_jamais_%28film%29",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Michael Jackson",
+       "langue": "fr",
+       "rang_wikipedia": 21,
+       "page": "https://fr.wikipedia.org/wiki/Michael_Jackson",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Philippe Caverivière",
+       "langue": "fr",
+       "rang_wikipedia": 22,
+       "page": "https://fr.wikipedia.org/wiki/Philippe_Caverivi%C3%A8re",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Macha Méril",
+       "langue": "fr",
+       "rang_wikipedia": 23,
+       "page": "https://fr.wikipedia.org/wiki/Macha_M%C3%A9ril",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Hollie Davidson",
+       "langue": "fr",
+       "rang_wikipedia": 25,
+       "page": "https://fr.wikipedia.org/wiki/Hollie_Davidson",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Agnès Jaoui",
+       "langue": "fr",
+       "rang_wikipedia": 26,
+       "page": "https://fr.wikipedia.org/wiki/Agn%C3%A8s_Jaoui",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Joséphine Jobert",
+       "langue": "fr",
+       "rang_wikipedia": 27,
+       "page": "https://fr.wikipedia.org/wiki/Jos%C3%A9phine_Jobert",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "Dominique de Villepin",
+       "langue": "fr",
+       "rang_wikipedia": 28,
+       "page": "https://fr.wikipedia.org/wiki/Dominique_de_Villepin",
+       "titres_de_presse": []
+      },
+      {
+       "sujet": "André Dussollier",
+       "langue": "fr",
+       "rang_wikipedia": 29,
+       "page": "https://fr.wikipedia.org/wiki/Andr%C3%A9_Dussollier",
+       "titres_de_presse": []
+      }
+     ],
+     "presse_grand_public": [
+      {
+       "titre": "La tension monte entre l'Europe et la Russie après plusieurs incidents militaires",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/la-tension-monte-entre-l-europe-et-la-russie-apres-plusieurs-incidents-militaires_8295158.html"
+      },
+      {
+       "titre": "COP31 : le sommet pour le climat s’achève à Antalya sans accord final, de nombreux pays restant divisés sur la question des énergies fossiles",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/environnement/crise-climatique/cop-climat/la-cop31-s-acheve-a-antalya-sans-que-les-pays-ne-s-accordent-sur-une-declaration-finale-divises-sur-la-question-des-energies-fossiles_8295011.html"
+      },
+      {
+       "titre": "\"Ça devient lassant\" : avec la répétition des inondations dans le Pas-de-Calais, des quartiers vont-ils bientôt être désertés ?",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/ca-devient-lassant-avec-la-repetition-des-inondations-dans-le-pas-de-calais-des-quartiers-vont-ils-bientot-etre-desertes_8295173.html"
+      },
+      {
+       "titre": "Le Mans renverse Marseille au Vélodrome et met un terme à la série de l'OM en Ligue 1",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sports/foot/ligue-1/le-mans-renverse-marseille-au-velodrome-et-met-un-terme-a-la-serie-de-l-om-en-ligue-1_8295227.html"
+      },
+      {
+       "titre": "Carlos Alcaraz éteint le n°1 mondial Alexander Zverev pour décrocher le premier Masters de sa carrière",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sports/tennis/masters/carlos-alcaraz-eteint-le-n-1-mondial-alexander-zverev-pour-decrocher-le-premier-masters-de-sa-carriere_8295140.html"
+      },
+      {
+       "titre": "Cyberattaque au CHU de Guadeloupe : plusieurs jours de perturbations à prévoir, le plan blanc déclenché",
+       "media": "franceinfo",
+       "url": "https://la1ere.franceinfo.fr/guadeloupe/cyberattaque-au-chu-de-guadeloupe-plusieurs-jours-de-perturbations-a-prevoir-l-hopital-s-organise-1760535.html"
+      },
+      {
+       "titre": "En Turquie, des milliers de personnes manifestent à Istanbul contre la fermeture de médias d'opposition",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/turquie/en-turquie-des-milliers-de-personnes-manifestent-a-istanbul-contre-la-fermeture-de-medias-d-opposition_8295182.html"
+      },
+      {
+       "titre": "Au programme du sommet Choose France qui s'ouvre lundi, 273 projets valorisés et près de 15 milliards d'euros d'investissements nouveaux",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/economie/au-programme-du-sommet-choose-france-qui-s-ouvre-lundi-273-projets-valorises-et-pres-de-15-milliards-d-euros-d-investissements-nouveaux_8295146.html"
+      },
+      {
+       "titre": "Cinq choses à savoir sur Albano Olivetti et Théo Arribagé, improbables et irrésistibles vainqueurs du Masters de Turin",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sports/tennis/masters/cinq-choses-a-savoir-sur-albano-olivetti-et-theo-arribage-improbables-et-irresistibles-vainqueurs-du-masters-de-turin_8295104.html"
+      },
+      {
+       "titre": "\"Toutes les solutions méritent d’être explorées\" : l'Elysée ne confirme pas la possible inscription de la \"règle d'or\" budgétaire dans la Constitution début 2027",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/economie/budget/toutes-les-solutions-meritent-d-etre-explorees-l-elysee-ne-confirme-pas-la-possible-inscription-de-la-regle-d-or-budgetaire-dans-la-constitution-debut-2027_8295083.html"
+      },
+      {
+       "titre": "Les surprenants français Albano Olivetti et Théo Arribagé s’offrent un premier sacre au Masters de Turin, dès leur première participation",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sports/tennis/masters/les-surprenants-francais-albano-olivetti-et-theo-arribage-s-offrent-un-premier-sacre-au-masters-de-turin-des-leur-premiere-participation_8294963.html"
+      },
+      {
+       "titre": "Désiré Doué souffre d'une rupture du ligament croisé antérieur du genou droit et devra être opéré \"d'ici la fin du mois\"",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sports/foot/psg/desire-doue-souffre-d-une-rupture-du-ligament-croise-anterieur-du-genou-droit-et-devra-etre-opere-d-ici-la-fin-du-mois_8294843.html"
+      },
+      {
+       "titre": "Benjamin Millepied fait danser la pop intime de la chanteuse November Ultra sur la scène des Folies Bergère à Paris",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/culture/spectacles/danse/benjamin-millepied-fait-danser-la-pop-intime-de-la-chanteuse-november-ultra-sur-la-scene-des-folies-bergere-a-paris_8289656.html"
+      },
+      {
+       "titre": "La multiplication des incidents militaires fait craindre une escalade entre la Russie et l'Otan",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/la-multiplication-des-incidents-militaires-fait-craindre-une-escalade-entre-la-russie-et-l-otan_8294615.html"
+      },
+      {
+       "titre": "Une frappe iranienne sur un \"site industriel civil\" fait deux blessés à Bahreïn",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/moyen-orient/une-frappe-iranienne-sur-un-site-industriel-civil-fait-deux-blesses-a-bahrein_8294927.html"
+      },
+      {
+       "titre": "\"On a découvert une facette plus personnelle des candidats\" : en Espagne, un youtubeur catalan s’invite dans la campagne électorale",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/espagne/on-a-decouvert-une-facette-plus-personnelle-des-candidats-en-espagne-un-youtubeur-catalan-s-invite-dans-la-campagne-electorale_8294702.html"
+      },
+      {
+       "titre": "En Cisjordanie occupée, une enquête ouverte après des incendies imputés à des colons israéliens",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/israel/une-enquete-ouverte-apres-des-incendies-imputes-a-des-colons-israeliens-en-cisjordanie-occupee_8294669.html"
+      },
+      {
+       "titre": "Corrigée par l'Australie, la France reste en deuxième division de la Billie Jean King Cup",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sports/tennis/fed-cup/corrigee-par-l-australie-la-france-reste-en-deuxieme-division-de-la-billie-jean-king-cup_8294942.html"
+      },
+      {
+       "titre": "\"On tient le bon bout\" après les inondations, la décrue \"est très nette sur l'amont de La Canche, affirme le préfet du Pas-de-Calais",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/on-tient-le-bon-bout-apres-les-inondations-la-decrue-est-tres-nette-sur-l-amont-de-la-canche-affirme-le-prefet-du-pas-de-calais_8294786.html"
+      },
+      {
+       "titre": "\"Le même produit va être un remède ou un poison, selon les époques\" : le Musée de l'Homme consacre une exposition aux drogues",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sante/drogue-addictions/reportage-le-meme-produit-va-etre-un-remede-ou-un-poison-selon-les-epoques-le-musee-de-l-homme-consacre-une-exposition-aux-drogues_8294579.html"
+      },
+      {
+       "titre": "L'Espagnol Marc Marquez sacré champion du monde de MotoGP pour la 8e fois de sa carrière et rejoint Giacomo Agostini dans la légende",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/sports/auto-moto/le-pilote-espagnol-marc-marquez-sacre-champion-du-monde-de-motogp-pour-la-8e-fois-de-sa-carriere_8294918.html"
+      },
+      {
+       "titre": "Le Quai d'Orsay répond à la multiplication des incidents entre l'Europe et la Russie \"en étant calme, en ne se laissant pas impressionner et en renforçant notre détermination\"",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/le-quai-d-orsay-repond-a-la-multiplication-des-incidents-entre-l-europe-et-la-russie-en-etant-calme-en-ne-se-laissant-pas-impressionner-et-en-renforcant-notre-determination_8295164.html"
+      },
+      {
+       "titre": "Les objets volants tombés vendredi en Pologne étaient des missiles de croisière fabriqués en Russie, annonce le parquet de Lublin",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/les-objets-volants-tombes-vendredi-en-pologne-etaient-des-missiles-de-croisiere-fabriques-en-russie-annonce-le-parquet-de-lublin_8295188.html"
+      },
+      {
+       "titre": "L'absence d'accord à l'issue de la COP 31 est \"frustrant\", réagit Laurence Tubiana, présidente de la Fondation européenne pour le climat",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/environnement/crise-climatique/cop-climat/l-absence-d-accord-a-l-issue-de-la-cop-31-est-frustrant-reagit-laurence-tubiana-presidente-de-la-fondation-europeenne-pour-le-climat_8295074.html"
+      },
+      {
+       "titre": "COP31 : le secrétaire général de l'Onu \"profondément déçu\" par l'échec des négociations sur le climat",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/environnement/crise-climatique/cop-climat/direct-l-union-europeenne-s-oppose-a-l-adoption-de-la-declaration-finale-de-la-cop31-apres-pres-de-deux-jours-de-prolongations_8294819.html"
+      },
+      {
+       "titre": "La Corse en vigilance orange aux vents violents à partir de dimanche minuit, le Jura et l'Ain restent en alerte pour pluie-inondation et le Pas-de-Calais pour un risque de crues",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/apres-le-jura-le-departement-de-l-ain-a-son-tour-place-en-vigilance-orange-pluie-inondations-le-pas-de-calais-maintenu-en-alerte-orange-aux-crues_8294486.html"
+      },
+      {
+       "titre": "Inondations dans le Pas-de-Calais : un vaste élan de solidarité à Montreuil-sur-Mer",
+       "media": "franceinfo",
+       "url": "https://www.franceinfo.fr/replay-jt/france-2/13-heures/inondations-dans-le-pas-de-calais-vaste-elan-de-solidarite-a-montreuil-sur-mer_8294864.html"
+      },
+      {
+       "titre": "James Bond : le monde et ses bouleversements à travers les yeux de l'agent 007",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/culture/cinema/james-bond/james-bond-le-monde-et-ses-bouleversements-a-travers-les-yeux-de-l-agent-007_8295176.html"
+      },
+      {
+       "titre": "Didier Barbelivien chante ses souvenirs de Julien Clerc",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/replay-radio/ces-chansons-qui-font-l-actu/didier-barbelivien-chante-ses-souvenirs-de-julien-clerc_8250535.html"
+      },
+      {
+       "titre": "\"The Altruits\": la cryptomonnaie pour les nuls",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/replay-radio/l-empire-des-series/the-altruits-la-cryptomonnaie-pour-les-nuls_8250505.html"
+      },
+      {
+       "titre": "La châtaigne, trésor de l'automne, célébrée à Cagnes-sur-Mer",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/culture/la-chataigne-tresor-de-l-automne-celebree-a-cagnes-sur-mer_8294948.html"
+      },
+      {
+       "titre": "REPORTAGE. \"Le même produit va être un remède ou un poison, selon les époques\" : le Musée de l'Homme consacre une exposition aux drogues",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/sante/drogue-addictions/reportage-le-meme-produit-va-etre-un-remede-ou-un-poison-selon-les-epoques-le-musee-de-l-homme-consacre-une-exposition-aux-drogues_8294579.html"
+      },
+      {
+       "titre": "Sabyl Ghoussoub : \"j'ai avant tout écrit un livre d'amour\"",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/replay-radio/l-invite-culture/sabyl-ghoussoub-j-ai-avant-tout-ecrit-un-livre-d-amour_8250466.html"
+      },
+      {
+       "titre": "\"20h30 le dimanche\". La story Silver Generation",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/replay-magazine/france-2/19h-le-dimanche/20h30-le-dimanche-la-story-silver-generation_8266883.html"
+      },
+      {
+       "titre": "Divertissement dans les avions : pour Hollywood, le ciel n'est plus une limite",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/culture/cinema/divertissement-dans-les-avions-pour-hollywood-le-ciel-n-est-plus-une-limite_8294711.html"
+      },
+      {
+       "titre": "REPORTAGE. \"Il était temps\" : le hip-hop en passe d'être inscrit au patrimoine immatériel de l'Unesco",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/replay-radio/le-choix-franceinfo/reportage-il-etait-temps-le-hip-hop-en-passe-d-etre-inscrit-au-patrimoine-immateriel-de-l-unesco_8262596.html"
+      },
+      {
+       "titre": "REPLAY. \"GTA VI, le jeu vidéo qui rend la planète folle\" : regardez le documentaire de franceinfo consacré à la sortie mondiale la plus attendue des gamers",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/replay-gta-vi-le-jeu-video-qui-rend-la-planete-folle-regardez-le-documentaire-de-franceinfo-consacre-a-la-sortie-mondiale-la-plus-attendue-des-gamers_8294618.html"
+      },
+      {
+       "titre": "\"Un bon petit soldat\" : Stéphane Brizé pointe un monde du travail atteint de schizophrénie dans une farce tragique",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/un-bon-petit-soldat-stephane-brize-pointe-un-monde-du-travail-atteint-de-schizophrenie-dans-une-farce-tragique_8286950.html"
+      },
+      {
+       "titre": "\"Paper Tiger\", le thriller crépusculaire de James Gray",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/paper-tiger-le-thriller-crepusculaire-de-james-gray_8284889.html"
+      },
+      {
+       "titre": "Jean Gabin, résistant durant la Seconde Guerre mondiale, honoré par la Marine française",
+       "media": "franceinfo Culture",
+       "url": "https://www.franceinfo.fr/societe/seconde-guerre-mondiale/jean-gabin-resistant-durant-la-seconde-guerre-mondiale-honore-par-la-marine-francaise_8294150.html"
+      }
+     ],
+     "ecartes_hors_ligne": 11,
+     "deja_en_ligne": [
+      "GTA VI sort aujourd'hui. Sa version sans disque inquiète les joueurs.",
+      "1 700 distributeurs ont disparu en 2025. Votre plan B est-il toujours là ?",
+      "L'Espagne s'éteint à 12 h 33. Plus moyen de payer son pain.",
+      "Une peluche affole la planète. Les robots achètent avant vous.",
+      "Gardez un peu d'argent liquide chez vous."
+     ]
+    }
+   },
+   "alertes_charte": [
+    "Trop de chiffres dans le texte (4) : en garder 3 au plus, le détail va dans l'encadré Premium.",
+    "Le rédacteur signale 1 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer ».",
+    "Ligne éditoriale : lien technologique non sourcé. Le texte parle de « numérique », mais aucun article lu n'en parle. Le lien avec la technologie doit venir des articles."
+   ]
+  }
+ ],
+ "reserve_une": [],
+ "sources_tendances": {
+  "Wikipédia": {
+   "etat": "ok",
+   "nombre": 60
+  },
+  "Presse grand public (flux RSS)": {
+   "etat": "ok",
+   "nombre": 159
+  },
+  "Détour (flux RSS)": {
+   "etat": "ok",
+   "nombre": 151
+  }
+ },
+ "journal_redacteur": [
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "une",
+   "resultat": "ok"
+  },
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "une",
+   "resultat": "ok"
+  },
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "tous_connectes",
+   "resultat": "ok"
+  },
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "tous_connectes",
+   "resultat": "ok"
+  }
+ ]
+}

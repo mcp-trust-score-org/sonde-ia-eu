@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-22T23:40:17+00:00",
+ "genere_le": "2026-11-23T04:48:57+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -26,6 +26,26 @@
   ]
  },
  "evenements": [
+  {
+   "id": "cloudflare-pnfv9wfy2q4y",
+   "titre": "Cloudflare : Increased HTTP 5xx Errors in Brussels",
+   "type": "incident_amont",
+   "debut": "2026-11-23T02:34+00:00",
+   "fin": "2026-11-23T02:46+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/pnfv9wfy2q4y",
+     "titre": "Increased HTTP 5xx Errors in Brussels"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
   {
    "id": "cloudflare-k3r9i5tbre4i",
    "titre": "Cloudflare : Network Performance Issues in Paris",
