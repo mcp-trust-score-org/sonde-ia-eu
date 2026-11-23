@@ -19,6 +19,8 @@
   .logo { font-family: "Roboto Slab", Georgia, serif; font-weight: 900; font-size: 34px; letter-spacing: -.01em; }
   .logo span { font-family: var(--f-display); font-style: italic; font-size: 26px; background: var(--yellow); color: #111; padding: 0 8px; margin-left: 6px; }
   .maj { color: var(--muted); font-size: 13px; }
+  .retour { display: inline-block; margin-bottom: 14px; color: var(--cream); font-weight: 700; text-decoration: none; font-size: 15px; }
+  .retour:hover { color: var(--yellow); }
   a { color: var(--yellow); }
   h2 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: 26px; margin: 34px 0 12px; display: flex; align-items: center; gap: 10px; }
   h2::before { content: ""; width: 7px; height: .85em; background: var(--yellow); transform: skewX(-18deg); }
@@ -61,6 +63,7 @@
 </head>
 <body>
 <main>
+  <a class="retour" href="/">← Retour au site</a>
   <header>
     <div class="logo">IRIS<span>Pilotage</span></div>
     <div class="maj" id="maj">Chargement…</div>
@@ -187,11 +190,17 @@ async function rappels(action) {
   const dessiner = (msg) => {
     boite.innerHTML = `<span><b>Rappels de rédaction</b> sur cet appareil : 7 h si la rédaction n'a pas tourné, 11 h s'il reste des brouillons à relire, 18 h si un article prévu n'est pas publié.</span>
       ${!pret ? `<span class="muted">Ce navigateur ne reçoit pas les notifications. Sur iPhone : ouvrez Iris depuis l'icône de l'écran d'accueil, puis cloche → Espace rédaction.</span>`
-        : !cle ? `<span class="muted">Entrez d'abord la clé de pilotage dans la partie Audience, plus bas.</span>`
+        : !cle ? `<form id="f-cle-rappels" style="display:flex;gap:8px;flex-wrap:wrap;width:100%"><input type="password" id="i-cle-rappels" placeholder="Votre clé de pilotage" autocomplete="off" /><button class="btn">Valider la clé</button></form>`
         : `<button class="btn" id="b-rappels">${actifs ? "Couper les rappels" : "Activer les rappels"}</button>`}
       ${msg ? `<span class="muted">${msg}</span>` : ""}`;
     const b = document.getElementById("b-rappels");
     if (b) b.addEventListener("click", () => rappels(!actifs));
+    const f = document.getElementById("f-cle-rappels");
+    if (f) f.addEventListener("submit", (e) => {
+      e.preventDefault();
+      try { localStorage.setItem("iris-pilotage", document.getElementById("i-cle-rappels").value.trim()); } catch (x) { /* */ }
+      audience(); rappels();
+    });
   };
   if (action === undefined) return dessiner(actifs ? "Activés." : "");
   try {

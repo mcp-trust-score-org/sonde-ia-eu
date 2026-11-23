@@ -1,0 +1,606 @@
+{
+ "genere_le": "2026-11-23T09:09:08+00:00",
+ "suivi_depuis": "2026-11-23",
+ "redaction": [
+  {
+   "date": "2026-11-10",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "detour",
+     "nom": "Le Détour",
+     "quoi": "Sélection de liens",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-13",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "detour",
+     "nom": "Le Détour",
+     "quoi": "Sélection de liens",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-14",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-15",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "meteo_semaine",
+     "nom": "Météo de la semaine (Iris Plus)",
+     "quoi": "Météo de la semaine (à écrire et déposer)",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-16",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "Bilan de la semaine",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour + réflexe de la semaine",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-17",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "detour",
+     "nom": "Le Détour",
+     "quoi": "Sélection de liens",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-18",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-19",
+   "aujourdhui": false,
+   "redaction_lancee": true,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "En plus",
+     "etat": "publié"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "detour",
+     "nom": "Le Détour",
+     "quoi": "Sélection de liens",
+     "optionnel": false,
+     "etat": "avant le lancement"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "aujourdhui": false,
+   "redaction_lancee": true,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "publié",
+     "brouillons": 2
+    }
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "aujourdhui": false,
+   "redaction_lancee": true,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "avant le lancement"
+    },
+    {
+     "rubrique": "meteo_semaine",
+     "nom": "Météo de la semaine (Iris Plus)",
+     "quoi": "Météo de la semaine (à écrire et déposer)",
+     "optionnel": false,
+     "etat": "publié"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-23",
+   "aujourdhui": true,
+   "redaction_lancee": true,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "Bilan de la semaine",
+     "optionnel": false,
+     "etat": "écarté",
+     "brouillons": 2
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour + réflexe de la semaine",
+     "optionnel": false,
+     "etat": "publié",
+     "brouillons": 1
+    }
+   ]
+  },
+  {
+   "date": "2026-11-24",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "à venir"
+    },
+    {
+     "rubrique": "detour",
+     "nom": "Le Détour",
+     "quoi": "Sélection de liens",
+     "optionnel": false,
+     "etat": "à venir"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-25",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "à venir"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "à venir"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-26",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "à venir"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-27",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "à venir"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "à venir"
+    },
+    {
+     "rubrique": "detour",
+     "nom": "Le Détour",
+     "quoi": "Sélection de liens",
+     "optionnel": false,
+     "etat": "à venir"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-28",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "à venir"
+    },
+    {
+     "rubrique": "tous_connectes",
+     "nom": "Tous connectés",
+     "quoi": "Sujet du jour",
+     "optionnel": false,
+     "etat": "à venir"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-29",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "à venir"
+    },
+    {
+     "rubrique": "meteo_semaine",
+     "nom": "Météo de la semaine (Iris Plus)",
+     "quoi": "Météo de la semaine (à écrire et déposer)",
+     "optionnel": false,
+     "etat": "à venir"
+    }
+   ]
+  }
+ ],
+ "sonde": {
+  "veille": {
+   "derniere": "2026-11-23T07:38+00:00",
+   "etat": "en retard",
+   "prevue": "toutes les 10 minutes"
+  },
+  "mesure": {
+   "derniere": "2026-11-23T07:32+00:00",
+   "etat": "ok",
+   "prevue": "toutes les heures"
+  },
+  "jours": [
+   {
+    "date": "2026-11-17",
+    "veille": 6,
+    "veille_prevue": 144,
+    "mesures": 3,
+    "mesures_prevues": 24
+   },
+   {
+    "date": "2026-11-18",
+    "veille": 5,
+    "veille_prevue": 144,
+    "mesures": 2,
+    "mesures_prevues": 24
+   },
+   {
+    "date": "2026-11-19",
+    "veille": 5,
+    "veille_prevue": 144,
+    "mesures": 2,
+    "mesures_prevues": 24
+   },
+   {
+    "date": "2026-11-20",
+    "veille": 8,
+    "veille_prevue": 144,
+    "mesures": 4,
+    "mesures_prevues": 24
+   },
+   {
+    "date": "2026-11-21",
+    "veille": 7,
+    "veille_prevue": 144,
+    "mesures": 4,
+    "mesures_prevues": 24
+   },
+   {
+    "date": "2026-11-22",
+    "veille": 5,
+    "veille_prevue": 144,
+    "mesures": 1,
+    "mesures_prevues": 24
+   },
+   {
+    "date": "2026-11-23",
+    "veille": 3,
+    "veille_prevue": 144,
+    "mesures": 2,
+    "mesures_prevues": 24
+   }
+  ],
+  "interruptions": [
+   {
+    "de": "2026-11-20T21:51+00:00",
+    "a": "2026-11-21T00:06+00:00",
+    "heures": 2.2,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-21T01:45+00:00",
+    "a": "2026-11-21T07:10+00:00",
+    "heures": 5.4,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-21T08:48+00:00",
+    "a": "2026-11-21T15:27+00:00",
+    "heures": 6.7,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-21T16:26+00:00",
+    "a": "2026-11-21T21:45+00:00",
+    "heures": 5.3,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-21T21:45+00:00",
+    "a": "2026-11-22T01:37+00:00",
+    "heures": 3.9,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-22T01:37+00:00",
+    "a": "2026-11-22T08:46+00:00",
+    "heures": 7.2,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-22T08:46+00:00",
+    "a": "2026-11-22T16:40+00:00",
+    "heures": 7.9,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-22T17:54+00:00",
+    "a": "2026-11-22T22:06+00:00",
+    "heures": 4.2,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-22T23:42+00:00",
+    "a": "2026-11-23T02:36+00:00",
+    "heures": 2.9,
+    "en_cours": false
+   },
+   {
+    "de": "2026-11-23T02:36+00:00",
+    "a": "2026-11-23T07:38+00:00",
+    "heures": 5.0,
+    "en_cours": false
+   }
+  ]
+ },
+ "site": {
+  "donnees_meteo": "2026-11-23T07:38:05+00:00",
+  "articles_mis_a_jour": "2026-11-23T08:28:05+00:00",
+  "derniers": {
+   "une": {
+    "nom": "À la une",
+    "titre": null,
+    "publie_le": null,
+    "nombre": 0
+   },
+   "tous_connectes": {
+    "nom": "Tous connectés",
+    "titre": "Le CHU de Guadeloupe paralysé par une cyberattaque.<br/>Des soins programmés <mark>reportés jusqu'au 27 novembre</mark>.",
+    "publie_le": "2026-11-23T08:28:05+00:00",
+    "nombre": 3
+   },
+   "detour": {
+    "nom": "Le Détour",
+    "titre": null,
+    "publie_le": null,
+    "nombre": 0
+   }
+  },
+  "iris_plus": {
+   "meteo": {
+    "titre": "Une semaine aux éclaircies fragiles.",
+    "publie_le": "2026-11-22"
+   },
+   "et_si": {
+    "titre": "Et si votre IA marchait même quand Internet tombe ?",
+    "publie_le": "2026-11-22"
+   },
+   "prochains": [
+    {
+     "date": "2026-12-07",
+     "id": "post-quantique",
+     "question": "Et si un ordinateur quantique lisait vos messages d'aujourd'hui ?"
+    },
+    {
+     "date": "2027-01-04",
+     "id": "sans-mot-de-passe",
+     "question": "Et si vous n'aviez plus jamais de mot de passe ?"
+    }
+   ]
+  }
+ }
+}
