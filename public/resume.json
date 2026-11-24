@@ -3,12 +3,12 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 34,
-      "disponibilite_pct": 88.2,
-      "ttft_p50_ms": 764,
-      "ttft_p95_ms": 1588,
-      "duree_p50_ms": 2535,
-      "jetons_par_s_median": 79.6,
+      "appels": 35,
+      "disponibilite_pct": 88.6,
+      "ttft_p50_ms": 772,
+      "ttft_p95_ms": 1541,
+      "duree_p50_ms": 2523,
+      "jetons_par_s_median": 76.8,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
@@ -18,13 +18,13 @@
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 33,
-      "disponibilite_pct": 97.0,
-      "ttft_p50_ms": 1085,
-      "ttft_p95_ms": 126451,
-      "duree_p50_ms": 1752,
-      "jetons_par_s_median": 25.1,
-      "qualite_pct": 93.8,
+      "appels": 34,
+      "disponibilite_pct": 97.1,
+      "ttft_p50_ms": 1062,
+      "ttft_p95_ms": 125529,
+      "duree_p50_ms": 1856,
+      "jetons_par_s_median": 25.0,
+      "qualite_pct": 93.9,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
         "réponse vide": 1
@@ -33,13 +33,13 @@
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 34,
+      "appels": 35,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 726,
-      "ttft_p95_ms": 30381,
-      "duree_p50_ms": 1306,
-      "jetons_par_s_median": 58.6,
-      "qualite_pct": 76.5,
+      "ttft_p50_ms": 666,
+      "ttft_p95_ms": 29882,
+      "duree_p50_ms": 1243,
+      "jetons_par_s_median": 59.8,
+      "qualite_pct": 77.1,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     }
@@ -90,8 +90,8 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-24T04:49:04+00:00",
-  "total_mesures": 164,
+  "genere_le": "2026-11-24T04:51:27+00:00",
+  "total_mesures": 167,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [
     "ovhcloud"
