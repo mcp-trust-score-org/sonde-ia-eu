@@ -433,3 +433,24 @@ def test_ligne_editoriale_avant_le_choix_du_sujet():
     texte = "Avec la sortie de GTA VI, les joueurs n'y trouvent aucun disque, mais un simple code de téléchargement."
     assert preuve_trouvee("aucun disque, mais un code de téléchargement", [texte])
     assert not preuve_trouvee("les fuites reposent sur des échanges électroniques", [texte])
+
+
+def test_detour_le_panier_passe_en_premier(tmp_path):
+    racine = _racine(tmp_path)
+    (racine / "redaction").mkdir(exist_ok=True)
+    (racine / "redaction" / "panier.yaml").write_text(
+        "liens:\n"
+        "  - url: https://www.lemondedudroit.fr/decryptages/tribune-ia.html\n"
+        "    note: \"Tribune sur l'IA chez les avocats\"\n"
+        "  - url: https://exemple.fr/idee\n"
+        "    pour: idee\n", encoding="utf-8")
+    client, appels = _reseau()
+    produire_tendances(CONF, racine, client=client, maintenant=VENDREDI, attendre=lambda s: None)
+    rediger(CONF, racine, client=client, env={"MISTRAL_API_KEY": "x"}, maintenant=VENDREDI, attendre=lambda s: None)
+    envoye = [c for c in appels["llm"] if "Le Détour" in c["messages"][1]["content"]][0]["messages"][1]["content"]
+    assert "lemondedudroit.fr/decryptages/tribune-ia.html" in envoye and "Le Monde du Droit" in envoye
+    assert envoye.index("tribune-ia.html") < envoye.index("next.ink") if "next.ink" in envoye else True
+    assert "exemple.fr/idee" not in envoye                             # un pense-bête n'est jamais proposé
+    import json
+    deja = json.loads((racine / "redaction" / "deja-proposes.json").read_text(encoding="utf-8"))
+    assert "https://www.lemondedudroit.fr/decryptages/tribune-ia.html" in deja["detour"]   # proposé une fois seulement
