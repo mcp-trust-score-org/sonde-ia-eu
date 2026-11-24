@@ -1,6 +1,6 @@
 # Croisement événements ↔ mesures — à relire
 
-Généré le 2026-11-24T14:29:46Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-24T06:22:00Z
+Généré le 2026-11-24T15:58:20Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-24T06:22:00Z
 
 Le tag n'est jamais publié : il sert à décider. Rien n'est publié sans validation.
 
@@ -11,7 +11,7 @@ Le tag n'est jamais publié : il sert à décider. Rien n'est publié sans valid
 | **Aucune anomalie** | Scaleway | [Generative API] - [global] - GLM-5.3 timeouts | 2026-11-16T14:06:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ✓ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Confirmé** | OVHcloud | [GLOBAL][AI & Machine Learning] - AI Endpoint Incident Notification | 2026-11-20T06:53:00Z | ✓ Lieu · ✓ Moment · ✓ Symptôme · ✓ Officiel | Nos mesures montrent une interruption qui correspond à l'incident reconnu par OVHcloud. |
 
-_9 événement(s) tombent hors de la période mesurée par la sonde : non croisés._
+_8 événement(s) tombent hors de la période mesurée par la sonde : non croisés._
 
 ## Détail
 

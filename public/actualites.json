@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-24T14:27:32+00:00",
+ "genere_le": "2026-11-24T15:56:08+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -125,26 +125,6 @@
     "mistral"
    ],
    "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
-  },
-  {
-   "id": "cloudflare-1ip2m5rvk7vb",
-   "titre": "Cloudflare : Elevated number of 5xx and 499 errors",
-   "type": "incident_amont",
-   "debut": "2026-11-17T15:50+00:00",
-   "fin": "2026-11-17T14:35+00:00",
-   "gravite": "minor",
-   "sources": [
-    {
-     "type": "statut_fournisseur",
-     "url": "https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb",
-     "titre": "Elevated number of 5xx and 499 errors"
-    }
-   ],
-   "source_auto": "cloudflare",
-   "fournisseurs": [
-    "mistral"
-   ],
-   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
   }
  ],
  "angles_morts_sonde": [],
@@ -262,12 +242,6 @@
    "debut": "2026-11-18T08:04+00:00",
    "raison": "localisé hors de nos zones",
    "url": "https://www.cloudflarestatus.com/incidents/njt9j3k2zdfw"
-  },
-  {
-   "titre": "Cloudflare : Errors and stalled predictions on some models",
-   "debut": "2026-11-17T15:02+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/sv9tnfpjiojf"
   },
   {
    "titre": "Cloudflare : Elevated 5xx error rates and latency in Mumbai",
