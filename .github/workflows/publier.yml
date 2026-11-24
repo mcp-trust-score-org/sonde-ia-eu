@@ -64,7 +64,7 @@ jobs:
           DATE_BROUILLON: ${{ inputs.date }}
           NUMERO: ${{ inputs.numero }}
           LIENS: ${{ inputs.liens }}
-          SITE_URL: ${{ vars.SITE_URL }}
+          SITE_URL: https://sonde-ia-eu-iris.vercel.app   # en dur, comme veille, mesure et plus (la variable GitHub renvoyait vers une redirection)
         run: |
           case "$RUBRIQUE" in
             "À la une") R=une ;;
@@ -94,7 +94,7 @@ jobs:
       - name: Prévenir les abonnés (notification sur leur appareil)
         if: ${{ !inputs.retirer }}
         env:
-          SITE_URL: ${{ vars.SITE_URL }}
+          SITE_URL: https://sonde-ia-eu-iris.vercel.app   # en dur, comme veille, mesure et plus (la variable GitHub renvoyait vers une redirection)
           NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}
         run: |
           if [ -z "$NOTIF_SECRET" ] || [ -z "$SITE_URL" ]; then
@@ -102,6 +102,17 @@ jobs:
           fi
           if [ ! -f notification.json ]; then echo "Rien de nouveau publié : pas de notification."; exit 0; fi
           sleep 90   # le temps que Vercel mette l'article en ligne avant que les abonnés cliquent
-          curl -sS --fail-with-body -X POST "${SITE_URL%/}/api/notifier" \
+          REPONSE=$(curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/notifier" \
             -H "Authorization: Bearer $NOTIF_SECRET" -H "Content-Type: application/json" \
-            --data @notification.json
+            --data @notification.json) || { echo "::warning::La notification n'est pas partie : $REPONSE"; exit 0; }
+          echo "Réponse du site : $REPONSE"
+          python3 - "$REPONSE" <<'PY'
+          import json, sys
+          try:
+              r = json.loads(sys.argv[1])
+          except ValueError:
+              print("::warning::Le site n'a pas répondu comme prévu : notification probablement non envoyée."); sys.exit(0)
+          print(f"Notification : {r.get('envoyes', 0)} appareil(s) prévenu(s) sur {r.get('abonnes', 0)} abonné(s), {r.get('echecs', 0)} échec(s).")
+          if not r.get("envoyes"):
+              print("::warning::Aucun appareil prévenu : vérifiez la cloche → « M'envoyer une notification d'essai » sur votre téléphone.")
+          PY
