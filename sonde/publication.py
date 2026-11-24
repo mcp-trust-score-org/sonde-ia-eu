@@ -37,9 +37,44 @@ PARIS = ZoneInfo("Europe/Paris")
 RUBRIQUES = {"une": "une", "a la une": "une", "à la une": "une", "tous_connectes": "tous_connectes",
              "tous connectes": "tous_connectes", "tous connectés": "tous_connectes", "detour": "detour",
              "le detour": "detour", "le détour": "detour", "détour": "detour"}
-IMAGES_DETOUR = {"réseau": "reseau", "reseau": "reseau", "énergie": "energie", "energie": "energie",
-                 "ia": "innovation", "jeux vidéo": "jeux-video", "société": "societe", "societe": "societe",
-                 "cybersécurité": "savoir", "santé": "sante", "politique": "politique", "médias": "medias-tv"}
+# Catégorie du lien (écrite librement par le rédacteur) → image de la banque iris/assets/photos.
+# On compare sans accents ni majuscules ; si la catégorie est inconnue, on cherche aussi dans le titre.
+IMAGES_DETOUR = [
+    (("regulation", "reglementation", "droit", "justice", "loi", "juridique", "tribunal", "dma", "rgpd",
+      "concurrence", "amende"), "regulation"),
+    (("cinema", "film", "serie", "streaming video"), "pop-culture-cinema"),
+    (("musique", "audio", "podcast"), "pop-culture-vinyle"),
+    (("concert", "festival", "spectacle"), "pop-culture-concert"),
+    (("bd", "bande dessinee", "manga", "livre", "edition", "litterature"), "pop-culture-bd"),
+    (("jeu video", "jeux video", "jeux", "gaming"), "jeux-video"),
+    (("logiciel", "cloud", "open source", "developpement", "application", "ia", "intelligence artificielle",
+      "algorithme"), "logiciel"),
+    (("reseau", "telecom", "internet", "fibre", "cable", "satellite", "5g", "connectivite"), "reseau"),
+    (("energie", "electricite", "datacenter", "data center", "climat", "panne de courant"), "energie"),
+    (("sante", "hopital", "medecin", "medical"), "sante"),
+    (("politique", "election", "gouvernement", "souverainete"), "politique"),
+    (("media", "medias", "presse", "television", "journalisme"), "medias-tv"),
+    (("cybersecurite", "securite", "piratage", "cyberattaque", "donnees", "vie privee"), "savoir"),
+    (("savoir", "science", "sciences", "mathematiques", "recherche", "education", "ecole"), "savoir"),
+    (("societe", "travail", "emploi", "consommation", "vie quotidienne"), "societe"),
+    (("espace", "innovation", "futur", "prospective"), "innovation"),
+]
+
+
+def _sans_accents(t: str) -> str:
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", (t or "").lower()) if unicodedata.category(c) != "Mn")
+
+
+def image_detour(categorie: str | None, titre: str | None = None) -> str:
+    """L'image la plus parlante pour un lien du Détour : d'abord par sa catégorie, sinon par les mots de son titre."""
+    import re
+    for texte in (categorie, titre):
+        mots = " " + re.sub(r"[^a-z0-9]+", " ", _sans_accents(texte or "")) + " "
+        for cles, image in IMAGES_DETOUR:
+            if any(f" {c} " in mots for c in cles):
+                return image
+    return "innovation"
 NIVEAUX_SITE = {  # tag interne → encadré Premium (le tag lui-même n'est jamais affiché)
     "Confirmé": ("red", "Les fournisseurs suivis par Iris ont été touchés"),
     "Probable": ("orange", "Les fournisseurs suivis ont probablement été touchés"),
@@ -108,7 +143,7 @@ def vers_le_site(p: dict, date: str, liens_a_garder: str | None = None) -> dict:
             raise RefusPublication(f"{len(sans_phrase)} lien(s) sans phrase « pourquoi le lire » : à écrire avant publication.")
         return {"rubrique": "detour", "date": date, "liens": [{
             "source": l["media"], "cat": l.get("categorie") or "À lire",
-            "img": IMAGES_DETOUR.get((l.get("categorie") or "").lower(), "innovation"),
+            "img": image_detour(l.get("categorie"), l.get("titre")),
             "title": l["titre"] + (f" {l['mention']}" if l.get("mention") else ""), "why": l["pourquoi"], "url": l["url"],
             "date": date,
         } for l in liens]}
