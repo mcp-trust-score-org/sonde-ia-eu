@@ -147,6 +147,27 @@
    "publie_le": "2026-11-21T20:57:28+00:00"
   }
  ],
- "detour": [],
- "mis_a_jour": "2026-11-23T08:28:05+00:00"
+ "detour": [
+  {
+   "source": "Next",
+   "cat": "Régulation",
+   "img": "innovation",
+   "title": "DMA : la conformité de façade des géants du numérique épinglée par le BEUC",
+   "why": "Un an après, Google, Apple, Meta et Microsoft contournent encore les règles censées nous laisser choisir nos services.",
+   "url": "https://next.ink/269443/dma-la-conformite-de-facade-des-geants-du-numerique-epinglee-par-le-beuc/",
+   "date": "2026-11-24",
+   "publie_le": "2026-11-24T07:24:02+00:00"
+  },
+  {
+   "source": "Usbek & Rica",
+   "cat": "Cinéma",
+   "img": "innovation",
+   "title": "IA et cinéma : 8 milliards d'humains, mais un seul récit ?",
+   "why": "Il montre comment l’industrie cinématographique s’appuie sur l’IA pour créer des images, au risque de réduire la diversité des récits.",
+   "url": "https://usbeketrica.com/fr/article/ia-et-cinema-huit-milliards-d-humains-un-seul-recit",
+   "date": "2026-11-24",
+   "publie_le": "2026-11-24T07:24:02+00:00"
+  }
+ ],
+ "mis_a_jour": "2026-11-24T07:24:02+00:00"
 }
