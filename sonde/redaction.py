@@ -143,11 +143,26 @@ def lire_article(client, url: str, conf: dict) -> dict:
         ex.feed(r.text)
     except Exception:   # page mal formée : on garde ce qui a été lu
         pass
+    titre = titre_de_page(r.text)
     paragraphes = ex.p_article or ex.p_tous
     texte = "\n".join(paragraphes)[: conf.get("max_caracteres", 6000)]
     if len(texte) < conf.get("min_caracteres", 400):
-        return {"url": url, "etat": "texte trop court (article payant ou page protégée ?)", "texte": texte or None}
-    return {"url": url, "etat": "lu", "texte": texte}
+        return {"url": url, "etat": "texte trop court (article payant ou page protégée ?)", "texte": texte or None,
+                "titre": titre}
+    return {"url": url, "etat": "lu", "texte": texte, "titre": titre}
+
+
+def titre_de_page(html: str) -> str | None:
+    """Le titre d'une page web (balise og:title, sinon <title>), sans le nom du site collé à la fin."""
+    import html as _html
+    m = (re.search(r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)', html or "", re.I)
+         or re.search(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:title', html or "", re.I)
+         or re.search(r"<title[^>]*>(.*?)</title>", html or "", re.I | re.S))
+    if not m:
+        return None
+    t = re.sub(r"\s+", " ", _html.unescape(m.group(1))).strip()
+    t = re.sub(r"\s+[|–—-]\s+[^|–—-]{2,40}$", "", t)   # « Titre – Nom du média » → « Titre »
+    return t or None
 
 
 def _mots(texte: str) -> list[str]:
@@ -636,6 +651,45 @@ def fiche_tous_connectes(tend: dict, deja: set, n: int = 25, en_ligne: list[str]
     return fiche
 
 
+# Noms de médias pour les liens collés dans le panier (sinon : le nom de domaine).
+MEDIAS_CONNUS = {"francetvinfo.fr": "franceinfo", "franceinfo.fr": "franceinfo", "lemondedudroit.fr": "Le Monde du Droit",
+                 "youtube.com": "YouTube", "youtu.be": "YouTube", "ouest-france.fr": "Ouest-France",
+                 "itforbusiness.fr": "IT for Business", "usine-digitale.fr": "L'Usine Digitale",
+                 "conseil-ia-numerique.fr": "Conseil de l'IA et du numérique", "next.ink": "Next",
+                 "numerama.com": "Numerama", "usbeketrica.com": "Usbek & Rica", "lemonde.fr": "Le Monde",
+                 "lemondeinformatique.fr": "Le Monde Informatique", "cnil.fr": "CNIL", "arcep.fr": "Arcep",
+                 "inria.fr": "Inria", "cnrs.fr": "CNRS", "polytechnique.edu": "École polytechnique",
+                 "dauphine.psl.eu": "Université Paris Dauphine-PSL", "insee.fr": "Insee"}
+
+
+def media_de(url: str) -> str:
+    from urllib.parse import urlparse
+    hote = (urlparse(url or "").hostname or "").removeprefix("www.").removeprefix("m.")
+    for dom, nom in MEDIAS_CONNUS.items():
+        if hote == dom or hote.endswith("." + dom):
+            return nom
+    return hote or "lien"
+
+
+def lire_panier(racine) -> list[dict]:
+    """Les trouvailles collées à la main dans redaction/panier.yaml (« pour: detour » par défaut).
+    Les « idées » (pour: idee) ne sont pas proposées automatiquement : elles restent un pense-bête."""
+    try:
+        import yaml
+        brut = yaml.safe_load((racine / "redaction" / "panier.yaml").read_text(encoding="utf-8")) or {}
+    except (OSError, ValueError, ImportError):
+        return []
+    sortie = []
+    for x in brut.get("liens") or []:
+        x = {"url": x} if isinstance(x, str) else dict(x or {})
+        if not str(x.get("url", "")).startswith("http") or (x.get("pour") or "detour") != "detour":
+            continue
+        sortie.append({"url": x["url"].strip(), "media": x.get("media") or media_de(x["url"]),
+                       "titre": x.get("titre"), "note": x.get("note"), "langue": x.get("langue", "français"),
+                       "date": None, "panier": True})
+    return sortie
+
+
 def choisir_detour(tend: dict, deja: set, n: int) -> list[dict]:
     """Les plus récents, en variant les médias (2 par média au plus)."""
     choix, par_media = [], {}
@@ -755,30 +809,47 @@ def _tous_connectes(redacteur, client, tend, deja, tc, jour, images, lecture, en
             "article": art, "fiche": {**fiche_sujet, "tendances": fiche}, "alertes_charte": alertes}
 
 
-def _detour(redacteur, client, tend, deja, dt, lecture) -> dict:
+def _detour(redacteur, client, tend, deja, dt, lecture, panier=None) -> dict:
     n = dt.get("liens", 6)
-    choix = choisir_detour(tend, deja.get("detour", set()), n)
+    vus = deja.get("detour", set())
+    # Les trouvailles du panier passent en premier (une seule fois : ensuite elles sont « déjà proposées »).
+    du_panier = [a for a in (panier or []) if a["url"] not in vus]
+    urls_panier = {a["url"] for a in du_panier}
+    choix = du_panier + [a for a in choisir_detour(tend, vus, n) if a["url"] not in urls_panier]
     liens, auteur, alertes = [], "fiche", []
     if choix and lecture.get("actif", True):
         for a in choix:
             lu = lire_article(client, a["url"], lecture)
             a["debut_de_l_article"] = (lu.get("texte") or "")[: lecture.get("detour_caracteres", 1500)] or None
             a["etat_lecture"] = lu["etat"]
+            if not a.get("titre"):
+                a["titre"] = lu.get("titre") or a.get("note") or a["url"]
     if choix and redacteur.actif:
         try:
             rep = redacteur.ecrire(
                 f"Rubrique : Le Détour. Parmi ces articles d'autres médias, choisis-en {n} qui éclairent une "
-                "dépendance à la technologie et apprennent quelque chose. Varie les médias et les sujets. Mêmes "
+                "dépendance à la technologie et apprennent quelque chose. Les articles marqués « panier » ont été "
+                "repérés par la rédactrice : garde-les en priorité, sauf s'ils sont hors ligne éditoriale (alors, "
+                "ajoute-les dans « ecartes » avec la raison). Une étude ou un sondage d'un cabinet de conseil ou d'une "
+                "entreprise : la phrase nomme toujours qui l'a faite (« selon le cabinet… »). Varie les médias et les sujets. Mêmes "
                 "exclusions que la charte : pas de politique, pas de faits divers, pas de sujet où la technologie "
                 "n'est qu'un décor. Pour chacun, écris UNE phrase « pourquoi le lire », avec tes mots, qui dit quelle "
                 "dépendance l'article éclaire, d'après le début de l'article (ou le titre seul s'il n'a pas pu être "
                 "lu), sans rien inventer. Réponds : {\"liens\": [{\"url\": \"…\", "
-                "\"categorie\": \"…\", \"pourquoi\": \"…\"}]}", {"articles": choix}, "detour")
+                "\"categorie\": \"…\", \"pourquoi\": \"…\"}], \"ecartes\": [{\"url\": \"…\", \"raison\": \"…\"}]}", {"articles": choix}, "detour")
             par_url = {a["url"]: a for a in choix}
             liens = [{**{k: v for k, v in par_url[l["url"]].items() if k != "debut_de_l_article"},
                       "categorie": l.get("categorie"), "pourquoi": l.get("pourquoi")}
                      for l in rep.get("liens") or [] if l.get("url") in par_url][:n]
             auteur = redacteur.modele
+            gardes = {l["url"] for l in liens}
+            for e in rep.get("ecartes") or []:
+                if e.get("url") in urls_panier and e["url"] not in gardes:
+                    alertes.append(f"Panier : « {e['url'][:90]} » écarté par le rédacteur ({e.get('raison', 'sans raison')}).")
+            oublies = [u for u in urls_panier if u not in gardes
+                       and u not in {e.get("url") for e in rep.get("ecartes") or []}]
+            if oublies:
+                alertes.append(f"Panier : {len(oublies)} trouvaille(s) non retenue(s) par le rédacteur, à regarder vous-même.")
         except RuntimeError as e:
             alertes.append(f"Le rédacteur n'a pas répondu ({e}).")
     if not liens:
@@ -795,6 +866,7 @@ def _detour(redacteur, client, tend, deja, dt, lecture) -> dict:
         if l.get("etat_lecture") and "payant" in l["etat_lecture"]:
             l["mention"] = (l.get("mention", "") + " (payant ?)").strip()
         deja.setdefault("detour", set()).add(l["url"])
+    deja.setdefault("detour", set()).update(urls_panier)   # une trouvaille du panier n'est proposée qu'une fois
     return {"rubrique": "detour", "auteur": auteur, "liens": liens, "alertes_charte": alertes}
 
 
@@ -888,7 +960,7 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
         # ---- Le Détour
         dt = rythme.get("detour") or {}
         if jour.weekday() in dt.get("jours", [4]):
-            propositions.append(_detour(redacteur, client, tend, deja, dt, lecture))
+            propositions.append(_detour(redacteur, client, tend, deja, dt, lecture, lire_panier(racine)))
 
         # ---- Et si… ? (Iris Plus) : le premier lundi du mois, et la revérification des anciens sujets
         from .et_si import preparer
