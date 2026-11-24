@@ -1,0 +1,161 @@
+{
+ "date": "2026-11-24",
+ "genere_le": "2026-11-24T04:51:28+00:00",
+ "statut": "a_relire",
+ "propositions": [
+  {
+   "rubrique": "une",
+   "format": "a_chaud",
+   "evenement_id": "cloudflare-00dp7cliyqqt",
+   "tag_interne": "Non mesuré",
+   "score": -1.2,
+   "auteur": "openai/gpt-oss-120b",
+   "image": "assets/photos/reseau.jpg",
+   "article": {
+    "tag": "Réseau",
+    "title": "Un problème d'API chez Cloudflare.<br/>Aucune mesure <mark>détectée</mark>.",
+    "chapo": "Cloudflare a signalé des réponses retardées ou incohérentes de son API Workers dès le lundi 23 novembre à 14 h 52. Ce service alimente de nombreux fournisseurs, dont Mistral, qui transitent par le réseau de Cloudflare. Notre sonde n’a rien relevé pendant l’incident.",
+    "fait": [
+     "Cloudflare a publié un incident indiquant des réponses retardées ou incohérentes de son API Workers à partir de 14 h 52 le 23 novembre.",
+     "Cela montre que même les services d’infrastructure les plus répandus peuvent connaître des perturbations inattendues."
+    ],
+    "consequence": [
+     "Notre sonde n’a enregistré aucune anomalie pendant la période concernée, donc aucun impact mesurable n’a été détecté sur le fournisseur Mistral.",
+     "Les entreprises dépendantes de Mistral devraient tout de même vérifier leurs propres performances pour s’assurer qu’aucune latence n’est passée inaperçue."
+    ],
+    "lien": [
+     "Pour plus de détails, consultez la page d’incident officielle de Cloudflare : https://www.cloudflarestatus.com/incidents/00dp7cliyqqt",
+     "Comment votre organisation gère‑t‑elle les dépendances à des services d’infrastructure tierce ?"
+    ],
+    "une_mini": {
+     "fait": "Cloudflare Workers API en retard",
+     "consequence": "Aucune anomalie mesurée",
+     "dependance": "Dépendance aux fournisseurs d’infrastructure"
+    },
+    "sources": [
+     {
+      "label": "Cloudflare Workers API – Delayed or Inconsistent Responses",
+      "url": "https://www.cloudflarestatus.com/incidents/00dp7cliyqqt"
+     }
+    ],
+    "a_verifier": [
+     "Vérifier que le titre ne comporte qu’un seul <mark>",
+     "Confirmer l’absence de mesures de la sonde pendant l’incident"
+    ]
+   },
+   "fiche": {
+    "evenement": "Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses",
+    "type": "incident_amont",
+    "debut": "lundi 23 novembre, 14 h 52",
+    "fin": null,
+    "fournisseurs_concernes": [
+     "mistral"
+    ],
+    "pourquoi_ce_fournisseur": "mistral passe(nt) par Cloudflare (chemin réseau relevé)",
+    "mesures_de_la_sonde": "aucune mesure de la sonde pendant l'événement",
+    "presse": null,
+    "sources": [
+     {
+      "label": "Cloudflare Workers API – Delayed or Inconsistent Responses",
+      "url": "https://www.cloudflarestatus.com/incidents/00dp7cliyqqt"
+     }
+    ]
+   },
+   "alertes_charte": [
+    "Trop de chiffres dans le texte (8) : en garder 3 au plus, le détail va dans l'encadré Premium.",
+    "Le rédacteur signale 2 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer »."
+   ]
+  },
+  {
+   "rubrique": "detour",
+   "auteur": "openai/gpt-oss-120b",
+   "liens": [
+    {
+     "media": "Next",
+     "titre": "DMA : la conformité de façade des géants du numérique épinglée par le BEUC",
+     "url": "https://next.ink/269443/dma-la-conformite-de-facade-des-geants-du-numerique-epinglee-par-le-beuc/",
+     "date": "2026-11-23T16:45+00:00",
+     "resume": "Deux ans et demi après sa mise en route, le règlement sur les marchés numériques (DMA) a encore beaucoup de chemin à parcourir pour rééquilibrer la concurrence dans le paysage numérique européen. Les contrôleurs d&#8217;accès ont encore de sérieux problèmes de non conformité, selon le BEUC. Les contrôleurs d&#8217;accès peuvent et doivent mieux faire, assène [&#8230;]",
+     "langue": "français",
+     "etat_lecture": "lu",
+     "categorie": "Régulation",
+     "pourquoi": "Il montre comment notre marché numérique repose sur la capacité réelle des géants à appliquer le DMA, sinon la concurrence reste menacée."
+    },
+    {
+     "media": "Next",
+     "titre": "Olala : on a disséqué le modèle d’OVH",
+     "url": "https://next.ink/268967/olala-on-a-disseque-le-modele-dovh-avec-trois-tetes-folles/",
+     "date": "2026-11-23T16:07+00:00",
+     "resume": "La semaine dernière, OVHcloud a présenté son premier modèle Olala mini. Il est souverain, de la conception à l’entrainement… mais un bastion résiste encore et toujours. Dans cette première partie nous analysons l’architecture du modèle, son fonctionnement et ses déconvenues après l’entrainement. Trois responsables d’OVHai étaient présents pour nous donner des explications. Olala est issu [&#8230;]",
+     "langue": "français",
+     "etat_lecture": "lu",
+     "categorie": "IA",
+     "pourquoi": "Il révèle à quel point les services cloud français dépendent d’une maîtrise complète de leurs modèles d’IA, même lorsqu’ils rencontrent des limites techniques."
+    },
+    {
+     "media": "Numerama",
+     "titre": "Les regards se tournent vers P vs NP : après Riemann, l’IA s’attaque à une autre énigme à un million de dollars",
+     "url": "https://www.numerama.com/tech/2382757-les-regards-se-tournent-vers-p-vs-np-apres-riemann-lia-sattaque-a-une-autre-enigme-a-un-million-de-dollars.html",
+     "date": "2026-11-23T16:25+00:00",
+     "resume": "Le 20 novembre 2026, un mathématicien d’Anthropic a annoncé avoir démontré avec Claude l’hypothèse de Riemann, l’une des énigmes les plus célèbres des mathématiques. À peine l’annonce faite, les regards se tournent vers P vs NP.",
+     "langue": "français",
+     "etat_lecture": "lu",
+     "categorie": "Mathématiques",
+     "pourquoi": "Il illustre la dépendance croissante des mathématiciens à l’intelligence artificielle pour aborder des conjectures jugées inaccessibles aux méthodes classiques."
+    },
+    {
+     "media": "Usbek & Rica",
+     "titre": "Musique et IA : les Français veulent plus de transparence",
+     "url": "https://usbeketrica.com/fr/article/musique-et-ia-les-francais-veulent-plus-de-transparence",
+     "date": "2026-11-20T13:01+00:00",
+     "resume": "La deuxième édition de l’enquête internationale menée par la plateforme Deezer et l’institut Ipsos sur les perceptions et les attitudes à l’égard de la musique générée par IA ont été publiées mardi 17 septembre. Voici 5 chiffres à retenir de cette étude.",
+     "langue": "français",
+     "etat_lecture": "lu",
+     "categorie": "Musique",
+     "pourquoi": "Il met en évidence la dépendance du secteur musical à l’IA, tout en soulignant que les auditeurs réclament davantage de transparence sur les créations générées."
+    },
+    {
+     "media": "Usbek & Rica",
+     "titre": "IA et cinéma : 8 milliards d'humains, mais un seul récit ?",
+     "url": "https://usbeketrica.com/fr/article/ia-et-cinema-huit-milliards-d-humains-un-seul-recit",
+     "date": "2026-11-17T09:55+00:00",
+     "resume": "Alors que les images générées par IA envahissent nos écrans, une question reste dans l’angle mort du débat : qui, désormais, raconte le monde ? C’est la question que pose dans cette tribune Michael Swierczynski, cofondateur et président de We Are Human, festival international de films consacré aux droits humains et à la création à l’ère de l’IA. Sa première édition, placée sous l’article premier d",
+     "langue": "français",
+     "etat_lecture": "lu",
+     "categorie": "Cinéma",
+     "pourquoi": "Il montre comment l’industrie cinématographique s’appuie sur l’IA pour créer des images, au risque de réduire la diversité des récits."
+    }
+   ],
+   "alertes_charte": []
+  }
+ ],
+ "reserve_une": [],
+ "sources_tendances": {
+  "Wikipédia": {
+   "etat": "ok",
+   "nombre": 60
+  },
+  "Presse grand public (flux RSS)": {
+   "etat": "ok",
+   "nombre": 161
+  },
+  "Détour (flux RSS)": {
+   "etat": "ok",
+   "nombre": 147
+  }
+ },
+ "journal_redacteur": [
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "une",
+   "resultat": "ok"
+  },
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "detour",
+   "resultat": "ok"
+  }
+ ]
+}

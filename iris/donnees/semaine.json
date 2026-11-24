@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-23T22:39:59+00:00",
+ "genere_le": "2026-11-24T04:52:40+00:00",
  "suivis": {
   "mistral": "Mistral",
   "scaleway": "Scaleway",
@@ -7,32 +7,6 @@
   "ionos": "IONOS"
  },
  "jours": [
-  {
-   "date": "2026-11-10",
-   "etat": "inconnu",
-   "fournisseurs": {
-    "mistral": {
-     "etat": "inconnu",
-     "mesures": 0,
-     "echecs": 0
-    },
-    "scaleway": {
-     "etat": "inconnu",
-     "mesures": 0,
-     "echecs": 0
-    },
-    "ovhcloud": {
-     "etat": "inconnu",
-     "mesures": 0,
-     "echecs": 0
-    },
-    "ionos": {
-     "etat": "inconnu",
-     "mesures": 0,
-     "echecs": 0
-    }
-   }
-  },
   {
    "date": "2026-11-11",
    "etat": "inconnu",
@@ -367,6 +341,32 @@
     "ionos": {
      "etat": "soleil",
      "mesures": 6,
+     "echecs": 0
+    }
+   }
+  },
+  {
+   "date": "2026-11-24",
+   "etat": "inconnu",
+   "fournisseurs": {
+    "mistral": {
+     "etat": "inconnu",
+     "mesures": 0,
+     "echecs": 0
+    },
+    "scaleway": {
+     "etat": "inconnu",
+     "mesures": 0,
+     "echecs": 0
+    },
+    "ovhcloud": {
+     "etat": "inconnu",
+     "mesures": 0,
+     "echecs": 0
+    },
+    "ionos": {
+     "etat": "inconnu",
+     "mesures": 0,
      "echecs": 0
     }
    }

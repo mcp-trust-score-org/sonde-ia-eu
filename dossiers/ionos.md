@@ -1,6 +1,6 @@
 # Dossier de surveillance – IONOS AI Model Hub
 
-Période : 2026-11-15 → 2026-11-23 · généré le 2026-11-23 13:49 UTC
+Période : 2026-11-15 → 2026-11-24 · généré le 2026-11-24 04:49 UTC
 
 > Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives.
 
@@ -30,14 +30,14 @@ Aucune mesure sur la période.
 
 ## 2. Chemin réseau observé
 
-**Constat au 2026-11-23 : Entrées réseau opérées et localisées dans l'UE/EEE**
+**Constat au 2026-11-24 : Entrées réseau opérées et localisées dans l'UE/EEE**
 
 - Toutes les entrées réseau observées sont opérées et localisées dans l'UE/EEE
 
 - Pays des points d'entrée observés : DE
 - Opérateurs réseau : ?, IONOS
 - Intermédiaires visibles : aucun
-- Relevés sur la période : 15 · constats distincts : indetermine, ue_observe
+- Relevés sur la période : 16 · constats distincts : indetermine, ue_observe
 
 Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent. Il ne prouve pas à lui seul le lieu de traitement du modèle, à confirmer contractuellement (champ B_02.02.0160).
 

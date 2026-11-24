@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-23T20:15:50+00:00",
+ "genere_le": "2026-11-24T04:49:06+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,7 +16,8 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "ok"
+   "etat": "erreur",
+   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
   }
  },
  "dependances": {
@@ -277,27 +278,6 @@
    "debut": "2026-11-17T08:51+00:00",
    "raison": "localisé hors de nos zones",
    "url": "https://www.cloudflarestatus.com/incidents/1nqok7v173qg"
-  },
-  {
-   "titre": "Cloudflare : Network Performance Issues in Ashburn, US",
-   "debut": "2026-11-17T00:41+00:00",
-   "raison": "sans impact déclaré",
-   "url": "https://www.cloudflarestatus.com/incidents/3l6q71x7a37k"
-  },
-  {
-   "titre": "Cloudflare : Network Performance Issues in Montreal, Canada",
-   "debut": "2026-11-16T21:36+00:00",
-   "raison": "localisé hors de nos zones",
-   "url": "https://www.cloudflarestatus.com/incidents/wscmdyvmpb5d"
   }
- ],
- "tri_presse": {
-  "articles": 0,
-  "sans_acteur": 0,
-  "sans_incident": 0,
-  "hors_sujet": 0,
-  "doublons": 0,
-  "retenus": 0,
-  "erreurs": []
- }
+ ]
 }

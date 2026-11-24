@@ -1,6 +1,6 @@
 # Croisement événements ↔ mesures — à relire
 
-Généré le 2026-11-23T20:16:13Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-23T11:11:00Z
+Généré le 2026-11-24T04:51:20Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-23T22:39:00Z
 
 Le tag n'est jamais publié : il sert à décider. Rien n'est publié sans validation.
 
