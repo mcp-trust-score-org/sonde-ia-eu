@@ -1,0 +1,36 @@
+# Le panier de la rédaction
+# ------------------------
+# Colle ici les liens que tu croises (veille, études, vidéos, rapports publics).
+# Au prochain Détour (mardi ou vendredi), ils sont proposés EN PREMIER, avec leur phrase « pourquoi le lire ».
+# Le rédacteur signale ceux qui sortent de la ligne éditoriale. Un lien n'est proposé qu'une fois.
+#
+# Le plus simple : une ligne « - url: … ». Le reste est facultatif :
+#   note  : ce que tu en penses, ou le sujet (aide le rédacteur, surtout si la page ne s'ouvre pas : vidéo, PDF)
+#   media : le nom à afficher, s'il n'est pas reconnu tout seul
+#   pour  : detour (par défaut) ou idee (pense-bête pour Iris Plus / Retour sur : jamais proposé automatiquement)
+
+liens:
+  - url: https://www.franceinfo.fr/replay-radio/le-choix-franceinfo/reportage-maitre-ce-que-vous-avez-fait-chatgpt-me-l-a-fait-en-cinq-minutes-comment-l-intelligence-artificielle-bouscule-la-profession-d-avocat_8275346.html
+    note: "Reportage : comment l'IA bouscule la profession d'avocat."
+
+  - url: https://www.lemondedudroit.fr/decryptages/380-tribunes/106741-chief-cognitive-officer-la-fonction-que-lia-rend-necessaire-dans-les-cabinets-davocats.html
+    note: "Tribune : le « Chief Cognitive Officer », nouvelle fonction dans les cabinets d'avocats. À associer au reportage franceinfo."
+
+  - url: https://www.conseil-ia-numerique.fr/files/uploads/2026/Rapport_Commission_IA_generative_vulnerabilites_2026.pdf
+    media: Conseil de l'IA et du numérique
+    note: "Rapport public « IA générative et vulnérabilités » (2026) : dette cognitive, dépendance affective des jeunes, IA moins fiable hors anglais et en version gratuite."
+
+  - url: https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445
+    note: "Revolut fait tourner l'IA sur ses propres serveurs et dit payer dix fois moins. Chiffre fourni par Revolut, non détaillé : le dire."
+
+  - url: https://www.youtube.com/watch?v=Ok6QdZHCcI8
+    note: "Vidéo signalée par la rédaction : sujet à préciser."
+
+  # Pense-bêtes (jamais proposés automatiquement)
+  - url: https://www.ouest-france.fr/societe/cyberattaque/une-cyberattaque-touche-les-systemes-frigorifiques-de-magasins-super-u-intermarche-et-leclerc-57838856-c61e-11f1-92e9-819eb738846b
+    pour: idee
+    note: "Tous connectés « Retour sur » : la cyberattaque des frigos de supermarchés (12 octobre 2026, systèmes Danfoss)."
+
+  - url: https://www.usine-digitale.fr/intelligence-artificielle/openai/bientot-des-collegues-virtuels-crees-par-ia-openai-sallie-a-accenture-bcg-capgemini-et-mckinsey-pour-accelerer-le-deploiement-des-agents-ia-dans-les-grandes-entreprises.VNEPFJSFBNDWVOA2EXJKNPVU6I.html
+    pour: idee
+    note: "Iris Plus : « Qui vous vend l'IA ? » — OpenAI s'allie à Accenture, BCG, Capgemini et McKinsey (février 2026)."

@@ -33,6 +33,16 @@ GitHub propose des brouillons dans `redaction/propositions/`. La rédaction choi
 - On lit les articles avant d'écrire : GitHub ouvre les articles de presse retenus et en donne le texte au rédacteur. Un article payant ou protégé reste non lu, et le brouillon le signale : ce qui en vient est à vérifier à la main.
 - On ne recopie pas les articles des autres médias : on raconte avec nos mots. Une citation, si elle est indispensable, fait moins de 15 mots, entre guillemets, avec le nom du média.
 
+### Les études, sondages et chiffres d'entreprises
+
+Les cabinets de conseil (McKinsey, BCG, Bain, Deloitte, EY, KPMG, PwC, Wavestone…), Gartner et les entreprises de la tech **vendent** de la transformation numérique et de l'IA, et beaucoup ont des partenariats avec les géants du secteur. Leurs études peuvent être citées, à quatre conditions :
+- **on nomme toujours qui parle** : « selon une étude du cabinet BCG », jamais « selon une étude » ;
+- **on donne la méthode** quand on cite un chiffre (combien de personnes interrogées, qui, où) ; sans méthode publiée, pas de chiffre ;
+- **un sondage ou une prévision n'est jamais présenté comme un fait** : « 67 % des dirigeants pensent que… » n'est pas « 67 % des entreprises font… » ;
+- **on recoupe** avec une source publique ou indépendante quand c'est possible.
+
+Ces cabinets ne font pas partie des sources lues automatiquement par le rédacteur : leurs études passent par le panier de la rédaction (voir section 4). Les écoles, les universités et les organismes publics (CNIL, ANSSI, Arcep, Inria, CNRS, Insee, Conseil de l'IA et du numérique) sont privilégiés : ils n'ont rien à vendre.
+
 ### Les images
 
 Elles viennent de la banque de photos par catégorie (`iris/assets/photos/`) : les mains pour l'IA et le logiciel, la borne d'arcade pour les jeux vidéo, l'antenne pour le réseau, etc. Jamais de logo, de produit de marque ni de personnage connu.
@@ -144,7 +154,9 @@ Un article est retenu s'il :
 
 On varie les formats : enquête, explication, vidéo, podcast.
 
-**Médias de référence** (liste dans `config/redaction.yaml`, à ajuster) : Next, Numerama, Usbek & Rica, Pixels (Le Monde), Le Grand Continent, Reporterre ; en anglais, Rest of World, 404 Media, Ars Technica, The Register.
+**Médias de référence** (liste dans `config/redaction.yaml`, à ajuster) : Next, Numerama, Usbek & Rica, Pixels (Le Monde), Le Grand Continent, Reporterre, franceinfo, IT for Business, L'Usine Digitale, Ouest-France, Le Monde du Droit ; sources publiques et académiques : CNIL, CNRS Le journal ; en anglais, Rest of World, 404 Media, Ars Technica, The Register. Les médias généralistes ne sont lus que sur les sujets technologiques (liste de mots dans le même fichier).
+
+**Le panier de la rédaction** (`redaction/panier.yaml`) : la rédaction y colle les liens qu'elle croise (veille, études, vidéos, rapports publics). Au Détour suivant, ils sont proposés en premier, avec leur phrase « pourquoi le lire » ; le rédacteur signale ceux qui sortent de la ligne éditoriale au lieu de les retenir. Un lien du panier n'est proposé qu'une fois. Les lignes marquées `pour: idee` ne sont jamais proposées automatiquement : c'est un pense-bête pour Iris Plus ou un « Retour sur ».
 
 **La série « 24 h chez… »** : une journée, par écran interposé, dans une entreprise qui vit de l'IA. Elle est racontée à partir d'une vidéo ou d'un reportage public, toujours cité, avec la même structure en trois temps. Elle est choisie à la main par la rédaction.
 
