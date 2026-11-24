@@ -4,18 +4,18 @@
     "nom": "OVHcloud AI Endpoints",
     "pays": "FR"
   },
-  "genere_le": "2026-11-24T04:49:04+00:00",
+  "genere_le": "2026-11-24T14:27:31+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-24T04:49:04+00:00"
+    "fin": "2026-11-24T14:27:30+00:00"
   },
   "performance": [
     {
       "modele": "gpt-oss-120b",
-      "appels": 55,
-      "disponibilite_pct": 89.09,
-      "ttft_median_ms": 841,
-      "ttft_p95_ms": 1115,
+      "appels": 56,
+      "disponibilite_pct": 89.29,
+      "ttft_median_ms": 829,
+      "ttft_p95_ms": 1113,
       "heures_avec_echec": 6,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
@@ -24,10 +24,10 @@
     },
     {
       "modele": "llama-3.3-70b",
-      "appels": 54,
-      "disponibilite_pct": 98.15,
-      "ttft_median_ms": 1108,
-      "ttft_p95_ms": 125529,
+      "appels": 55,
+      "disponibilite_pct": 98.18,
+      "ttft_median_ms": 1085,
+      "ttft_p95_ms": 124607,
       "heures_avec_echec": 1,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
@@ -36,10 +36,10 @@
     },
     {
       "modele": "mistral-small-3.2",
-      "appels": 55,
+      "appels": 56,
       "disponibilite_pct": 100.0,
-      "ttft_median_ms": 975,
-      "ttft_p95_ms": 29882,
+      "ttft_median_ms": 971,
+      "ttft_p95_ms": 29383,
       "heures_avec_echec": 0,
       "plus_longue_serie_echecs_h": 0,
       "offres": [
@@ -48,7 +48,7 @@
     }
   ],
   "reseau": {
-    "dernier_releve": "2026-11-24T04:36:12+00:00",
+    "dernier_releve": "2026-11-24T14:14:30+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "ue_observe",
     "constats": [
@@ -77,14 +77,14 @@
     {
       "modele": "llama-3.3-70b",
       "empreintes": 16,
-      "derniere_similarite": 0.9294,
+      "derniere_similarite": 0.6026,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "mistral-small-3.2",
       "empreintes": 16,
-      "derniere_similarite": 0.7273,
+      "derniere_similarite": 0.5829,
       "alertes": [
         {
           "horodatage": "2026-11-21T16:43:28+00:00",
@@ -107,8 +107,8 @@
           "raison": "similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96)"
         },
         {
-          "horodatage": "2026-11-24T04:40:30+00:00",
-          "raison": "similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96)"
+          "horodatage": "2026-11-24T14:18:47+00:00",
+          "raison": "similarité 0.58 sous la variation normale (médiane 1.00, limite 0.96)"
         }
       ],
       "changements_identifiant": []
@@ -185,6 +185,10 @@
     },
     {
       "manifeste": "2026-11-23.json",
+      "ancrage_ots": true
+    },
+    {
+      "manifeste": "2026-11-24.json",
       "ancrage_ots": true
     }
   ],

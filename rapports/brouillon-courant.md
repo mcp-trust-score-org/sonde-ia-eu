@@ -1,6 +1,6 @@
 # Les fournisseurs d'IA européens à l'épreuve de DORA
 
-*Brouillon généré automatiquement le 24/11/2026. Période mesurée : 2026-11-15 → 2026-11-24. 164 appels mesurés, 4 hébergeur(s).*
+*Brouillon généré automatiquement le 24/11/2026. Période mesurée : 2026-11-15 → 2026-11-24. 167 appels mesurés, 4 hébergeur(s).*
 
 > À relire avant publication. Les chiffres viennent des mesures ; les passages [À COMMENTER] sont à écrire.
 
@@ -16,8 +16,8 @@ Les entités financières européennes doivent surveiller en continu leurs prest
 
 | Hébergeur | Modèle | Disponibilité | Plus longue série d'échecs | Offre mesurée |
 |---|---|---|---|---|
-| OVHcloud AI Endpoints | gpt-oss-120b | 89.09 % | 1 h | anonyme |
-| OVHcloud AI Endpoints | llama-3.3-70b | 98.15 % | 1 h | anonyme |
+| OVHcloud AI Endpoints | gpt-oss-120b | 89.29 % | 1 h | anonyme |
+| OVHcloud AI Endpoints | llama-3.3-70b | 98.18 % | 1 h | anonyme |
 | OVHcloud AI Endpoints | mistral-small-3.2 | 100 % | 0 h | anonyme |
 
 [À COMMENTER]

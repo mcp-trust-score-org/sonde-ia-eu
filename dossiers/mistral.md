@@ -1,6 +1,6 @@
 # Dossier de surveillance – Mistral AI
 
-Période : 2026-11-15 → 2026-11-24 · généré le 2026-11-24 04:49 UTC
+Période : 2026-11-15 → 2026-11-24 · généré le 2026-11-24 14:27 UTC
 
 > Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives.
 
@@ -54,5 +54,5 @@ Pas encore d'empreinte.
 
 ## 5. Preuves horodatées
 
-5 manifestes quotidiens sur la période, dont 5 ancrés via OpenTimestamps.
+6 manifestes quotidiens sur la période, dont 6 ancrés via OpenTimestamps.
 Méthode de vérification : voir `sonde/horodatage.py`.

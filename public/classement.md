@@ -4,7 +4,7 @@
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 35 | 88.6 % | 772 ms / 1541 ms | 2523 ms | 76.8 | 100 % | – |
+| 1 | ovhcloud (anonyme) | 32 | 87.5 % | 784 ms / 1680 ms | 2518 ms | 82.5 | 100 % | – |
 
 Erreurs : ovhcloud (anonyme) – réponse vide (4)
 
@@ -12,7 +12,7 @@ Erreurs : ovhcloud (anonyme) – réponse vide (4)
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 34 | 97.1 % | 1062 ms / 125529 ms | 1856 ms | 25 | 93.9 % | – |
+| 1 | ovhcloud (anonyme) | 31 | 96.8 % | 1085 ms / 128295 ms | 1752 ms | 25.2 | 93.3 % | – |
 
 Erreurs : ovhcloud (anonyme) – réponse vide (1)
 
@@ -20,7 +20,7 @@ Erreurs : ovhcloud (anonyme) – réponse vide (1)
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 35 | 100 % | 666 ms / 29882 ms | 1243 ms | 59.8 | 77.1 % | – |
+| 1 | ovhcloud (anonyme) | 32 | 100 % | 646 ms / 26139 ms | 1100 ms | 60.3 | 75 % | – |
 
 ## Modèles absents du catalogue
 
@@ -28,6 +28,5 @@ Erreurs : ovhcloud (anonyme) – réponse vide (1)
 
 ## Changements de catalogue
 
-- 2026-11-17T18:32:32+00:00 · ovhcloud : +9 / -0
 - 2026-11-19T01:12:08+00:00 · ovhcloud : +3 / -0
 - 2026-11-19T08:46:02+00:00 · ovhcloud : +1 / -1 (retirés : Olala-v1.0-summarize)

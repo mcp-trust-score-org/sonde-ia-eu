@@ -3,12 +3,12 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 35,
-      "disponibilite_pct": 88.6,
-      "ttft_p50_ms": 772,
-      "ttft_p95_ms": 1541,
-      "duree_p50_ms": 2523,
-      "jetons_par_s_median": 76.8,
+      "appels": 32,
+      "disponibilite_pct": 87.5,
+      "ttft_p50_ms": 784,
+      "ttft_p95_ms": 1680,
+      "duree_p50_ms": 2518,
+      "jetons_par_s_median": 82.5,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
@@ -18,13 +18,13 @@
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 34,
-      "disponibilite_pct": 97.1,
-      "ttft_p50_ms": 1062,
-      "ttft_p95_ms": 125529,
-      "duree_p50_ms": 1856,
-      "jetons_par_s_median": 25.0,
-      "qualite_pct": 93.9,
+      "appels": 31,
+      "disponibilite_pct": 96.8,
+      "ttft_p50_ms": 1085,
+      "ttft_p95_ms": 128295,
+      "duree_p50_ms": 1752,
+      "jetons_par_s_median": 25.2,
+      "qualite_pct": 93.3,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
         "réponse vide": 1
@@ -33,34 +33,18 @@
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 35,
+      "appels": 32,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 666,
-      "ttft_p95_ms": 29882,
-      "duree_p50_ms": 1243,
-      "jetons_par_s_median": 59.8,
-      "qualite_pct": 77.1,
+      "ttft_p50_ms": 646,
+      "ttft_p95_ms": 26139,
+      "duree_p50_ms": 1100,
+      "jetons_par_s_median": 60.3,
+      "qualite_pct": 75.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     }
   ],
   "changements_catalogue": [
-    {
-      "fournisseur": "ovhcloud",
-      "horodatage": "2026-11-17T18:32:32+00:00",
-      "ajoutes": [
-        "DeepSeek-V4.1-Flash-1017",
-        "clef-flash",
-        "gemma-4-26b-a4b",
-        "laguna-xs-2.1",
-        "nemotron3-nano-30b",
-        "nemotron3-omni-30b",
-        "qwen3-vl-30b-a3b",
-        "qwen3.6-35b-a3b",
-        "solaria-3"
-      ],
-      "retires": []
-    },
     {
       "fournisseur": "ovhcloud",
       "horodatage": "2026-11-19T01:12:08+00:00",
@@ -90,7 +74,7 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-24T04:51:27+00:00",
+  "genere_le": "2026-11-24T14:27:31+00:00",
   "total_mesures": 167,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [

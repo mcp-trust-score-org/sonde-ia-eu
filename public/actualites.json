@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-24T04:51:27+00:00",
+ "genere_le": "2026-11-24T14:27:32+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -26,6 +26,26 @@
   ]
  },
  "evenements": [
+  {
+   "id": "cloudflare-no721jcnlrbh",
+   "titre": "Cloudflare : Magic Transit Degraded Performance",
+   "type": "incident_amont",
+   "debut": "2026-11-24T11:29+00:00",
+   "fin": null,
+   "gravite": "major",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/no721jcnlrbh",
+     "titre": "Magic Transit Degraded Performance"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
   {
    "id": "cloudflare-00dp7cliyqqt",
    "titre": "Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses",
@@ -129,6 +149,18 @@
  ],
  "angles_morts_sonde": [],
  "ecartes_pages_de_statut": [
+  {
+   "titre": "Cloudflare : Issues with Email Routing in France",
+   "debut": "2026-11-24T13:38+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/x5ma22sji8wi"
+  },
+  {
+   "titre": "Cloudflare : Increased Errors for Durable Objects in Seattle",
+   "debut": "2026-11-24T07:25+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/idlaxmxz4unz"
+  },
   {
    "titre": "Cloudflare : Elevated latency in Frankfurt",
    "debut": "2026-11-23T04:52+00:00",
@@ -260,24 +292,6 @@
    "debut": "2026-11-17T20:05+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/gcn9xop0f7zm"
-  },
-  {
-   "titre": "Cloudflare : Turnstile verification failures",
-   "debut": "2026-11-17T10:24+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/5831aw44ia7i"
-  },
-  {
-   "titre": "Cloudflare : Cloudflare One Gateway traffic unable to connect to Cloudflare domains that are regionalized",
-   "debut": "2026-11-17T13:54+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/tawn3zx7wh0z"
-  },
-  {
-   "titre": "Cloudflare : Elevated number of 52x origin connectivity errors in Seoul",
-   "debut": "2026-11-17T08:51+00:00",
-   "raison": "localisé hors de nos zones",
-   "url": "https://www.cloudflarestatus.com/incidents/1nqok7v173qg"
   }
  ]
 }
