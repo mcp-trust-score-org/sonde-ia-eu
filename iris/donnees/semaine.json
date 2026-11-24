@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-24T15:58:24+00:00",
+ "genere_le": "2026-11-24T18:00:25+00:00",
  "suivis": {
   "mistral": "Mistral",
   "scaleway": "Scaleway",
@@ -191,7 +191,7 @@
   },
   {
    "date": "2026-11-18",
-   "etat": "soleil",
+   "etat": "brouillard",
    "fournisseurs": {
     "mistral": {
      "etat": "soleil",
@@ -204,7 +204,7 @@
      "echecs": 0
     },
     "ovhcloud": {
-     "etat": "soleil",
+     "etat": "brouillard",
      "mesures": 5,
      "echecs": 0
     },
@@ -351,22 +351,22 @@
    "fournisseurs": {
     "mistral": {
      "etat": "soleil",
-     "mesures": 3,
+     "mesures": 4,
      "echecs": 0
     },
     "scaleway": {
      "etat": "soleil",
-     "mesures": 3,
+     "mesures": 4,
      "echecs": 0
     },
     "ovhcloud": {
      "etat": "soleil",
-     "mesures": 1,
+     "mesures": 2,
      "echecs": 0
     },
     "ionos": {
      "etat": "soleil",
-     "mesures": 3,
+     "mesures": 4,
      "echecs": 0
     }
    }
