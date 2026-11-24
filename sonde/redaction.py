@@ -524,6 +524,10 @@ def candidats_une(actus: dict, croisement: dict, maintenant: datetime, deja: set
         if hors_sonde and meilleur == "non_concerne":
             meilleur = "non_mesure"          # « aucune anomalie » ne vaut que pour les modèles mesurés
             c["modele_non_suivi"] = hors_sonde
+        if meilleur == "non_mesure" and ((e.get("presse") or {}).get("nb_medias") or 0) < 2:
+            # Ni mesure de la sonde, ni reprise par au moins deux médias : il n'y a rien de vérifié à raconter.
+            # (Sinon le rédacteur finit par écrire « la sonde n'a rien vu », alors qu'elle n'a rien mesuré.)
+            continue
         score = NIVEAUX.get(meilleur, 0) * 10
         score += 6 if e.get("type") in TYPES_EXTERIEURS else 0
         score += min(4, ((e.get("presse") or {}).get("nb_medias") or 0))
@@ -556,7 +560,9 @@ def fiche_une(c: dict) -> dict:
         "debut": _paris(debut), "fin": _paris(fin) if fin and fin > (debut or fin) else None,
         "fournisseurs_concernes": sorted({i["evenement"]["fournisseur"] for i in c["impacts"]}) or e.get("fournisseurs"),
         "pourquoi_ce_fournisseur": e.get("pourquoi"),
-        "mesures_de_la_sonde": mesures or "aucune mesure de la sonde pendant l'événement",
+        "mesures_de_la_sonde": mesures or ("AUCUNE mesure de la sonde pendant l'événement : impossible de dire si le "
+                                           "fournisseur a été touché. N'écris jamais que la sonde « n'a rien vu », "
+                                           "« n'a rien relevé » ou « aucune anomalie » : elle n'a pas mesuré."),
         "presse": e.get("presse"),
         "sources": [{"label": s.get("titre"), "url": s.get("url")} for s in e.get("sources") or [] if s.get("url")],
     }
