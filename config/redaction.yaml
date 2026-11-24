@@ -117,7 +117,8 @@ detour:
   mots: [IA, intelligence artificielle, panne, cloud, données, numérique, internet, cyber, algorithme,
          plateforme, serveurs, électricité, câble, satellite, datacenter, centre de données, réseau,
          technologie, écran, application, smartphone, réseaux sociaux, AI, outage, data, chips, platform,
-         algorithm, tech, internet, software, network]
+         algorithm, tech, internet, software, network, ChatGPT, Mistral, numérisation, dématérialisation,
+         données personnelles, RGPD, DMA, DSA, cyberattaque, piratage, objet connecté]
   medias:
     - { nom: Next,               flux: "https://next.ink/feed/", tout: true }
     - { nom: Numerama,           flux: "https://www.numerama.com/feed/" }
@@ -129,6 +130,17 @@ detour:
     - { nom: 404 Media,          flux: "https://www.404media.co/rss/", langue: anglais, tout: true }
     - { nom: Ars Technica,       flux: "https://feeds.arstechnica.com/arstechnica/index", langue: anglais }
     - { nom: The Register,       flux: "https://www.theregister.com/headlines.atom", langue: anglais, tout: true }
+    # Ajouts du 24 novembre 2026 (sources signalées par la rédaction).
+    - { nom: franceinfo,         flux: "https://www.francetvinfo.fr/internet.rss", tout: true }   # rubrique Internet
+    - { nom: franceinfo,         flux: "https://www.francetvinfo.fr/titres.rss" }                  # le reste : filtré par les mots
+    - { nom: IT for Business,    flux: "https://www.itforbusiness.fr/feed", tout: true }           # vérifié le 24/11
+    - { nom: L'Usine Digitale,   flux: "https://www.usine-digitale.fr/rss" }                       # à confirmer au premier passage
+    - { nom: Ouest-France,       flux: "https://www.ouest-france.fr/rss/une" }                     # à confirmer ; filtré par les mots
+    - { nom: Le Monde du Droit,  flux: "https://www.lemondedudroit.fr/decryptages.feed?type=rss" } # à confirmer ; filtré par les mots
+    # Sources publiques et académiques : rien à vendre. (Sans flux : Polytechnique, Dauphine, Inria, Arcep, Conseil de l'IA
+    # et du numérique → leurs publications passent par redaction/panier.yaml.)
+    - { nom: CNIL,               flux: "https://www.cnil.fr/fr/rss.xml", tout: true }              # vérifié le 24/11
+    - { nom: CNRS Le journal,    flux: "https://lejournal.cnrs.fr/rss" }                           # vérifié le 24/11 ; filtré par les mots
 
 # ---------------------------------------------------------------------------
 # Images : la catégorie de l'article choisit la photo de la banque (iris/assets/photos/).
