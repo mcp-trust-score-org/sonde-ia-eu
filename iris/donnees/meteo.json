@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-25T20:03:10+00:00",
+ "genere_le": "2026-11-25T20:18:01+00:00",
  "phrase": "Temps calme sur 3 fournisseurs, nuages sur OVHcloud.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
@@ -15,8 +15,8 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 170,
-   "reference_ttft_ms": 214,
+   "ttft_ms": 165,
+   "reference_ttft_ms": 210,
    "lenteur": 0.79,
    "vigilance": "vert",
    "raison": null,
@@ -73,7 +73,7 @@
     {
      "heure": "2026-11-25T20:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 170,
+     "ttft_ms": 165,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -96,7 +96,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-25T20:03:09+00:00",
+   "derniere_mesure": "2026-11-25T20:18:00+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -114,9 +114,9 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 402,
-   "reference_ttft_ms": 618,
-   "lenteur": 0.65,
+   "ttft_ms": 417,
+   "reference_ttft_ms": 615,
+   "lenteur": 0.68,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -172,7 +172,7 @@
     {
      "heure": "2026-11-25T20:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 402,
+     "ttft_ms": 417,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -195,7 +195,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-25T20:03:09+00:00",
+   "derniere_mesure": "2026-11-25T20:18:00+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
@@ -208,21 +208,21 @@
    "pays": "FR",
    "categorie": "fournisseur",
    "offre": "anonyme",
-   "source": "horaire",
+   "source": "veille",
    "etat": "eclaircie",
    "ciel": "Éclaircies",
    "libelle": "Ça marche, un peu lent",
    "taux_erreur": 0.0,
-   "ttft_ms": 494,
+   "ttft_ms": 590,
    "reference_ttft_ms": 306,
-   "lenteur": 1.62,
+   "lenteur": 1.93,
    "vigilance": "jaune",
-   "raison": "Temps de réponse 1,6 fois plus long que d'habitude",
+   "raison": "Temps de réponse 1,9 fois plus long que d'habitude",
    "panne_en_cours": null,
    "disponibilite": {
     "24h": 100.0,
-    "7j": 96.0,
-    "30j": 93.182
+    "7j": 96.154,
+    "30j": 93.333
    },
    "incidents_30j": [
     {
@@ -280,9 +280,9 @@
     },
     {
      "heure": "2026-11-25T20:00+00:00",
-     "etat": "inconnu",
-     "ttft_ms": null,
-     "taux_erreur": null,
+     "etat": "eclaircie",
+     "ttft_ms": 590,
+     "taux_erreur": 0.0,
      "nature": "mesure"
     },
     {
@@ -304,7 +304,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-25T10:53:18+00:00",
+   "derniere_mesure": "2026-11-25T20:18:00+00:00",
    "modele_veille": "mistral-small-3.2",
    "limites_de_debit_30j": 15,
    "acces_impossible": false,
@@ -322,9 +322,9 @@
    "ciel": "Soleil",
    "libelle": "Tout va bien",
    "taux_erreur": 0.0,
-   "ttft_ms": 390,
-   "reference_ttft_ms": 470,
-   "lenteur": 0.83,
+   "ttft_ms": 404,
+   "reference_ttft_ms": 468,
+   "lenteur": 0.86,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -380,7 +380,7 @@
     {
      "heure": "2026-11-25T20:00+00:00",
      "etat": "soleil",
-     "ttft_ms": 390,
+     "ttft_ms": 404,
      "taux_erreur": 0.0,
      "nature": "mesure"
     },
@@ -403,7 +403,7 @@
      "certitude": "rien d'annoncé"
     }
    ],
-   "derniere_mesure": "2026-11-25T20:03:09+00:00",
+   "derniere_mesure": "2026-11-25T20:18:00+00:00",
    "modele_veille": null,
    "limites_de_debit_30j": 0,
    "acces_impossible": false,
