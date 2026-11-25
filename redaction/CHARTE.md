@@ -43,6 +43,13 @@ Les cabinets de conseil (McKinsey, BCG, Bain, Deloitte, EY, KPMG, PwC, Wavestone
 
 Ces cabinets ne font pas partie des sources lues automatiquement par le rédacteur : leurs études passent par le panier de la rédaction (voir section 4). Les écoles, les universités et les organismes publics (CNIL, ANSSI, Arcep, Inria, CNRS, Insee, Conseil de l'IA et du numérique) sont privilégiés : ils n'ont rien à vendre.
 
+### L'essentiel en 2 minutes
+
+Chaque article d'À la une et de Tous connectés a un résumé en trois lignes (le fait, la conséquence, la dépendance). Il s'affiche seul quand le lecteur choisit « 2 min », dans « L'essentiel du jour » et dans les notifications. Donc chaque ligne :
+- **se lit seule** : elle nomme qui ou quoi (« OVHcloud signale… »), jamais « il », « elle » ou « cela » en tête ;
+- **tient en une phrase**, 140 caractères au plus ;
+- **dit la même chose que l'article**, sans chiffre ou fait qui n'y serait pas.
+
 ### Les images
 
 Elles viennent de la banque de photos par catégorie (`iris/assets/photos/`) : les mains pour l'IA et le logiciel, la borne d'arcade pour les jeux vidéo, l'antenne pour le réseau, etc. Jamais de logo, de produit de marque ni de personnage connu.
@@ -165,6 +172,7 @@ On varie les formats : enquête, explication, vidéo, podcast.
 Chaque brouillon est vérifié avant d'arriver en relecture. Les écarts sont signalés, jamais corrigés en silence :
 
 - un seul `<mark>` dans le titre ;
+- l'essentiel en 2 min (trois lignes) présent, une phrase par ligne, 140 caractères au plus, sans pronom en tête ;
 - pas de « vous » dans un titre d'À la une ;
 - le texte se termine par une question ;
 - pas plus de 3 chiffres dans le corps de l'article ;
