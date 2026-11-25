@@ -1,19 +1,25 @@
 # Croisement événements ↔ mesures — à relire
 
-Généré le 2026-11-24T15:58:20Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-24T06:22:00Z
+Généré le 2026-11-25T00:48:30Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-24T17:59:00Z
 
 Le tag n'est jamais publié : il sert à décider. Rien n'est publié sans validation.
 
 | Tag | Fournisseur | Événement | Début (UTC) | Critères | Texte proposé |
 |---|---|---|---|---|---|
+| **Aucune anomalie** | Mistral | Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses | 2026-11-23T13:52:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Mistral | Cloudflare : Increased HTTP 5xx Errors in Brussels | 2026-11-23T02:34:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Scaleway | [GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017 | 2026-11-17T14:43:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ✓ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Scaleway | [Generative API] - [global] - GLM-5.3 timeouts | 2026-11-16T14:06:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ✓ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Confirmé** | OVHcloud | [GLOBAL][AI & Machine Learning] - AI Endpoint Incident Notification | 2026-11-20T06:53:00Z | ✓ Lieu · ✓ Moment · ✓ Symptôme · ✓ Officiel | Nos mesures montrent une interruption qui correspond à l'incident reconnu par OVHcloud. |
 
-_8 événement(s) tombent hors de la période mesurée par la sonde : non croisés._
+_4 événement(s) tombent hors de la période mesurée par la sonde : non croisés._
 
 ## Détail
+
+### Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses — Mistral
+- Tag : **Aucune anomalie**
+- Mesures dans la fenêtre : 6
+- ⚠️ Mesures depuis un seul point : une panne locale de la sonde ressemblerait à une panne du fournisseur.
 
 ### Cloudflare : Increased HTTP 5xx Errors in Brussels — Mistral
 - Tag : **Aucune anomalie**

@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-24T15:56:08+00:00",
+ "genere_le": "2026-11-25T00:46:20+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -51,7 +51,7 @@
    "titre": "Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses",
    "type": "incident_amont",
    "debut": "2026-11-23T13:52+00:00",
-   "fin": null,
+   "fin": "2026-11-24T21:35+00:00",
    "gravite": "minor",
    "sources": [
     {
@@ -105,35 +105,27 @@
     "mistral"
    ],
    "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
-  },
-  {
-   "id": "cloudflare-du63c25qjgjs",
-   "titre": "Cloudflare : Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
-   "type": "incident_amont",
-   "debut": "2026-11-17T17:12+00:00",
-   "fin": "2026-11-17T18:00+00:00",
-   "gravite": "minor",
-   "sources": [
-    {
-     "type": "statut_fournisseur",
-     "url": "https://www.cloudflarestatus.com/incidents/du63c25qjgjs",
-     "titre": "Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters"
-    }
-   ],
-   "source_auto": "cloudflare",
-   "fournisseurs": [
-    "mistral"
-   ],
-   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
   }
  ],
  "angles_morts_sonde": [],
  "ecartes_pages_de_statut": [
   {
+   "titre": "Cloudflare : R2 elevated errors and timeouts for requests from South America",
+   "debut": "2026-11-24T21:54+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/k8utv1c3ubf2"
+  },
+  {
    "titre": "Cloudflare : Issues with Email Routing in France",
    "debut": "2026-11-24T13:38+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/x5ma22sji8wi"
+  },
+  {
+   "titre": "Cloudflare : Increased HTTP 530 Errors in Seattle",
+   "debut": "2026-11-24T22:55+00:00",
+   "raison": "sans impact déclaré",
+   "url": "https://www.cloudflarestatus.com/incidents/kwqke6nmketa"
   },
   {
    "titre": "Cloudflare : Increased Errors for Durable Objects in Seattle",
@@ -254,18 +246,6 @@
    "debut": "2026-11-18T01:10+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/0jozucwnpzy0"
-  },
-  {
-   "titre": "Cloudflare : Issues with Durable Objects and Dependent Services",
-   "debut": "2026-11-17T21:56+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/ylj5po752g6h"
-  },
-  {
-   "titre": "Cloudflare : R2 elevated errors and timeouts for requests from South America",
-   "debut": "2026-11-17T20:05+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/gcn9xop0f7zm"
   }
  ]
 }

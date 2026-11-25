@@ -3,28 +3,28 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 33,
-      "disponibilite_pct": 87.9,
-      "ttft_p50_ms": 757,
-      "ttft_p95_ms": 1634,
-      "duree_p50_ms": 2523,
-      "jetons_par_s_median": 82.4,
+      "appels": 31,
+      "disponibilite_pct": 83.9,
+      "ttft_p50_ms": 784,
+      "ttft_p95_ms": 1772,
+      "duree_p50_ms": 2535,
+      "jetons_par_s_median": 76.3,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
-        "réponse vide": 4
+        "réponse vide": 5
       }
     },
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 32,
-      "disponibilite_pct": 96.9,
-      "ttft_p50_ms": 1087,
-      "ttft_p95_ms": 127373,
-      "duree_p50_ms": 1856,
-      "jetons_par_s_median": 25.1,
-      "qualite_pct": 93.5,
+      "appels": 30,
+      "disponibilite_pct": 96.7,
+      "ttft_p50_ms": 1062,
+      "ttft_p95_ms": 114156,
+      "duree_p50_ms": 1648,
+      "jetons_par_s_median": 25.2,
+      "qualite_pct": 93.1,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
         "réponse vide": 1
@@ -33,13 +33,13 @@
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 33,
+      "appels": 31,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 626,
-      "ttft_p95_ms": 25163,
-      "duree_p50_ms": 1243,
-      "jetons_par_s_median": 60.2,
-      "qualite_pct": 75.8,
+      "ttft_p50_ms": 603,
+      "ttft_p95_ms": 27114,
+      "duree_p50_ms": 1370,
+      "jetons_par_s_median": 60.4,
+      "qualite_pct": 71.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     }
@@ -74,8 +74,8 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-24T15:56:08+00:00",
-  "total_mesures": 170,
+  "genere_le": "2026-11-25T00:46:20+00:00",
+  "total_mesures": 173,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [
     "ovhcloud"

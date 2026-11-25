@@ -1,11 +1,55 @@
 {
-  "genere_le": "2026-11-24T15:58:20Z",
+  "genere_le": "2026-11-25T00:48:30Z",
   "regles_version": "1.3.1",
   "periode_mesuree": {
     "debut": "2026-11-16T09:56:00Z",
-    "fin": "2026-11-24T06:22:00Z"
+    "fin": "2026-11-24T17:59:00Z"
   },
   "impacts": [
+    {
+      "impact_id": "imp-cloudflare-00dp7cliyqqt-mistral",
+      "client_id": "sonde-publique",
+      "regles_version": "1.3.1",
+      "evenement": {
+        "id": "cloudflare-00dp7cliyqqt",
+        "titre": "Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses",
+        "type": "incident_amont",
+        "fournisseur": "Mistral",
+        "debut": "2026-11-23T13:52:00Z",
+        "fin": "2026-11-24T21:35:00Z",
+        "exemple": false,
+        "sources": [
+          {
+            "type": "statut_fournisseur",
+            "url": "https://www.cloudflarestatus.com/incidents/00dp7cliyqqt",
+            "titre": "Cloudflare Workers API – Delayed or Inconsistent Responses"
+          }
+        ],
+        "source_auto": "cloudflare",
+        "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+      },
+      "correlation": {
+        "lieu": true,
+        "moment": false,
+        "symptome": false,
+        "officiel": false,
+        "multi_points": false,
+        "niveau": "non_concerne",
+        "texte_propose": "Aucune anomalie mesurée chez vos fournisseurs"
+      },
+      "mesures": {
+        "mesures_dans_la_fenetre": 6,
+        "symptomes": [],
+        "anomalies": [],
+        "incident_officiel": null
+      },
+      "alertes_relecture": [
+        "Mesures depuis un seul point : une panne locale de la sonde ressemblerait à une panne du fournisseur."
+      ],
+      "statut_editorial": "a_relire",
+      "valide_par": null,
+      "valide_le": null
+    },
     {
       "impact_id": "imp-cloudflare-pnfv9wfy2q4y-mistral",
       "client_id": "sonde-publique",
@@ -219,24 +263,12 @@
       "evenement": "Cloudflare : Magic Transit Degraded Performance",
       "fournisseur": "Mistral",
       "debut": "2026-11-24T11:29:00Z",
-      "raison": "aucune mesure de la sonde sur cette période"
-    },
-    {
-      "evenement": "Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses",
-      "fournisseur": "Mistral",
-      "debut": "2026-11-23T13:52:00Z",
       "raison": "aucune mesure de la sonde pendant l'événement (trou entre deux relevés)"
     },
     {
       "evenement": "Cloudflare : Network Performance Issues in Paris",
       "fournisseur": "Mistral",
       "debut": "2026-11-18T03:39:00Z",
-      "raison": "aucune mesure de la sonde pendant l'événement (trou entre deux relevés)"
-    },
-    {
-      "evenement": "Cloudflare : Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters",
-      "fournisseur": "Mistral",
-      "debut": "2026-11-17T17:12:00Z",
       "raison": "aucune mesure de la sonde pendant l'événement (trou entre deux relevés)"
     },
     {
@@ -249,18 +281,6 @@
       "evenement": "[GenerativeAPI] - Deepseek-v4/v4.1-flash timeouts",
       "fournisseur": "Scaleway",
       "debut": "2026-10-26T17:34:00Z",
-      "raison": "aucune mesure de la sonde sur cette période"
-    },
-    {
-      "evenement": "[Generative APIs] Model mistral-small-3.2-24b-instruct-2506 unavailable.",
-      "fournisseur": "Scaleway",
-      "debut": "2026-11-02T08:19:00Z",
-      "raison": "aucune mesure de la sonde sur cette période"
-    },
-    {
-      "evenement": "[Generative APIs] - GLM-5.3 model unavailability",
-      "fournisseur": "Scaleway",
-      "debut": "2026-10-27T11:03:00Z",
       "raison": "aucune mesure de la sonde sur cette période"
     }
   ]
