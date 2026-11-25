@@ -1,0 +1,38 @@
+name: Mettre le site en ligne
+
+# Vercel ne redéploie plus le site à chaque enregistrement (vercel.json : git.deploymentEnabled = false),
+# sinon la sonde (toutes les 10 minutes) dépasserait la limite de 100 déploiements par jour.
+# Ce workflow le redéploie seulement quand le CODE du site change (tes dépôts de zip).
+# Les mesures, les articles publiés et plus.json, eux, sont lus en direct sur GitHub : pas besoin de redéployer.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "iris/**"
+      - "!iris/donnees/**"
+      - "!iris/publies.json"
+      - "!iris/plus.json"
+  workflow_dispatch: {}   # bouton « Run workflow » : redéployer à la main si besoin
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deployer-site
+  cancel-in-progress: true   # deux dépôts rapprochés : un seul déploiement, le dernier
+
+jobs:
+  deployer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Demander à Vercel de mettre le site en ligne
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "::error::Le secret VERCEL_DEPLOY_HOOK manque (Vercel → Settings → Git → Deploy Hooks)."
+            exit 1
+          fi
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
+          echo
+          echo "Déploiement demandé : le site est en ligne d'ici une minute environ."
