@@ -464,3 +464,19 @@ def test_essentiel_en_deux_minutes():
     alertes = " ".join(controler_essentiel({"fait": "Il signale un incident.", "consequence": "x" * 150}))
     assert "commence par « Il »" in alertes and "150 caractères" in alertes
     assert controler_essentiel({"fait": "Seul."})[0].startswith("L'essentiel en 2 min : « le fait » et « la conséquence »")
+
+
+def test_pistes_qui_font_reflechir():
+    from datetime import datetime, timezone
+    from sonde.redaction import pistes_reflexion
+    m = datetime(2026, 11, 25, 7, tzinfo=timezone.utc)
+    tend = {"detour": [
+        {"titre": "Revolut quitte OpenAI et fait tourner des modèles chinois GLM sur ses propres serveurs",
+         "url": "https://ex.fr/revolut", "media": "IT for Business", "date": "2026-11-20", "resume": ""},
+        {"titre": "Un nouveau smartphone pliable", "url": "https://ex.fr/pliable", "media": "X", "date": "2026-11-24"},
+        {"titre": "Souveraineté : le cloud européen face au Cloud Act", "url": "https://ex.fr/vieux", "media": "Y", "date": "2026-10-01"},
+    ]}
+    p = pistes_reflexion(tend, m, set())
+    assert [x["url"] for x in p] == ["https://ex.fr/revolut"]          # deux thèmes au moins, et de la semaine
+    assert {"modèles chinois", "changer de fournisseur"} <= set(p[0]["themes"])
+    assert pistes_reflexion(tend, m, {"https://ex.fr/revolut"}) == []   # jamais deux fois la même piste
