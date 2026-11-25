@@ -3,12 +3,12 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 29,
-      "disponibilite_pct": 82.8,
-      "ttft_p50_ms": 844,
-      "ttft_p95_ms": 1884,
-      "duree_p50_ms": 2627,
-      "jetons_par_s_median": 70.1,
+      "appels": 26,
+      "disponibilite_pct": 80.8,
+      "ttft_p50_ms": 841,
+      "ttft_p95_ms": 1204,
+      "duree_p50_ms": 2548,
+      "jetons_par_s_median": 60.1,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
@@ -18,13 +18,13 @@
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 28,
-      "disponibilite_pct": 96.4,
-      "ttft_p50_ms": 1062,
-      "ttft_p95_ms": 64816,
-      "duree_p50_ms": 1561,
-      "jetons_par_s_median": 25.2,
-      "qualite_pct": 92.6,
+      "appels": 25,
+      "disponibilite_pct": 96.0,
+      "ttft_p50_ms": 1098,
+      "ttft_p95_ms": 72659,
+      "duree_p50_ms": 1709,
+      "jetons_par_s_median": 25.1,
+      "qualite_pct": 91.7,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
         "réponse vide": 1
@@ -33,28 +33,18 @@
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 29,
+      "appels": 26,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 580,
-      "ttft_p95_ms": 29065,
-      "duree_p50_ms": 1370,
-      "jetons_par_s_median": 60.2,
-      "qualite_pct": 69.0,
+      "ttft_p50_ms": 353,
+      "ttft_p95_ms": 14878,
+      "duree_p50_ms": 1040,
+      "jetons_par_s_median": 60.7,
+      "qualite_pct": 69.2,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     }
   ],
   "changements_catalogue": [
-    {
-      "fournisseur": "ovhcloud",
-      "horodatage": "2026-11-19T01:12:08+00:00",
-      "ajoutes": [
-        "Olala-v1.0-mini-7A1B",
-        "Olala-v1.0-summarize",
-        "Olala-v1.0-translate"
-      ],
-      "retires": []
-    },
     {
       "fournisseur": "ovhcloud",
       "horodatage": "2026-11-19T08:46:02+00:00",
@@ -74,7 +64,7 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-25T09:55:21+00:00",
+  "genere_le": "2026-11-25T13:40:27+00:00",
   "total_mesures": 176,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [

@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-25T09:55:21+00:00",
+ "genere_le": "2026-11-25T13:40:29+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -241,12 +241,6 @@
    "debut": "2026-11-18T13:45+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/2wjvsj2kqt07"
-  },
-  {
-   "titre": "Cloudflare : Network Performance Issues in North America",
-   "debut": "2026-11-18T10:56+00:00",
-   "raison": "localisé hors de nos zones",
-   "url": "https://www.cloudflarestatus.com/incidents/76lqmua6x3tk"
   }
  ],
  "tri_presse": {

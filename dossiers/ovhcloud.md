@@ -1,6 +1,6 @@
 # Dossier de surveillance – OVHcloud AI Endpoints
 
-Période : 2026-11-15 → 2026-11-25 · généré le 2026-11-25 04:49 UTC
+Période : 2026-11-15 → 2026-11-25 · généré le 2026-11-25 13:40 UTC
 
 > Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives.
 
@@ -28,9 +28,9 @@ Période : 2026-11-15 → 2026-11-25 · généré le 2026-11-25 04:49 UTC
 
 | Modèle | Appels | Disponibilité | 1er mot médian | 1er mot p95 | Heures avec échec | Plus longue série d'échecs | Offre mesurée |
 |---|---|---|---|---|---|---|---|
-| gpt-oss-120b | 58 | 87.93 % | 817 ms | 1,1 s | 7 | 1 h | anonyme |
-| llama-3.3-70b | 57 | 98.25 % | 1,1 s | 122,8 s | 1 | 1 h | anonyme |
-| mistral-small-3.2 | 58 | 100 % | 937 ms | 28,4 s | 0 | 0 h | anonyme |
+| gpt-oss-120b | 59 | 88.14 % | 829 ms | 1,2 s | 7 | 1 h | anonyme |
+| llama-3.3-70b | 58 | 98.28 % | 1,1 s | 121,8 s | 1 | 1 h | anonyme |
+| mistral-small-3.2 | 59 | 100 % | 908 ms | 27,9 s | 0 | 0 h | anonyme |
 
 Les mesures en offre gratuite ou anonyme subissent des limites de débit propres à ces offres : elles ne reflètent pas forcément le service contractuel d'un client payant.
 
@@ -43,7 +43,7 @@ Les mesures en offre gratuite ou anonyme subissent des limites de débit propres
 - Pays des points d'entrée observés : FR
 - Opérateurs réseau : OVHcloud
 - Intermédiaires visibles : aucun
-- Relevés sur la période : 17 · constats distincts : ue_observe
+- Relevés sur la période : 18 · constats distincts : ue_observe
 
 Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent. Il ne prouve pas à lui seul le lieu de traitement du modèle, à confirmer contractuellement (champ B_02.02.0160).
 
@@ -51,9 +51,9 @@ Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent.
 
 | Modèle | Empreintes | Similarité avec la référence | Alertes de changement | Changements d'identifiant |
 |---|---|---|---|---|
-| gpt-oss-120b | 17 | référence en cours | 0 | 0 |
-| llama-3.3-70b | 17 | 0.58 | 0 | 0 |
-| mistral-small-3.2 | 17 | 0.71 | 7 | 0 |
+| gpt-oss-120b | 18 | référence en cours | 0 | 0 |
+| llama-3.3-70b | 18 | 0.58 | 0 | 0 |
+| mistral-small-3.2 | 18 | 0.59 | 8 | 0 |
 - 2026-11-21 16:43 · mistral-small-3.2 : changement probable (similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96))
 - 2026-11-21 17:11 · mistral-small-3.2 : changement probable (similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96))
 - 2026-11-21 19:49 · mistral-small-3.2 : changement probable (similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96))
@@ -61,6 +61,7 @@ Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent.
 - 2026-11-23 13:41 · mistral-small-3.2 : changement probable (similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96))
 - 2026-11-24 14:18 · mistral-small-3.2 : changement probable (similarité 0.58 sous la variation normale (médiane 1.00, limite 0.96))
 - 2026-11-25 04:40 · mistral-small-3.2 : changement probable (similarité 0.71 sous la variation normale (médiane 1.00, limite 0.96))
+- 2026-11-25 13:31 · mistral-small-3.2 : changement probable (similarité 0.59 sous la variation normale (médiane 1.00, limite 0.96))
 
 Changements de catalogue :
 - 2026-11-17 : +9 / -0
@@ -75,5 +76,5 @@ Changements de catalogue :
 
 ## 5. Preuves horodatées
 
-6 manifestes quotidiens sur la période, dont 6 ancrés via OpenTimestamps.
+7 manifestes quotidiens sur la période, dont 7 ancrés via OpenTimestamps.
 Méthode de vérification : voir `sonde/horodatage.py`.

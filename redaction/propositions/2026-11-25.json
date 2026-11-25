@@ -1,60 +1,86 @@
 {
  "date": "2026-11-25",
- "genere_le": "2026-11-25T04:49:55+00:00",
+ "genere_le": "2026-11-25T13:41:54+00:00",
  "statut": "a_relire",
  "propositions": [
   {
-   "rubrique": "tous_connectes",
-   "auteur": "rédaction (relu le 2026-11-25)",
+   "rubrique": "une",
+   "format": "a_chaud",
+   "evenement_id": "cloudflare-no721jcnlrbh",
+   "tag_interne": "Aucune anomalie",
+   "score": 10.8,
+   "auteur": "openai/gpt-oss-120b",
+   "image": "assets/photos/reseau.jpg",
    "article": {
-    "tag": "Société",
-    "title": "On demande tout à l'IA.<br/><mark>Un sur cinq</mark> vérifie ses réponses à chaque fois.",
-    "chapo": "Chercher une information, écrire un courrier, aider aux devoirs : la moitié des Français se servent désormais de l'IA générative. Mais rares sont ceux qui vérifient à chaque fois ce qu'elle répond. Un rapport remis au président de la République le 10 novembre parle de « dette cognitive ».",
+    "tag": "Réseau",
+    "title": "Cloudflare signale des performances dégradées.<br/>Aucune anomalie mesurée chez vos fournisseurs <mark>0 minute</mark>.",
+    "chapo": "Le service Magic Transit de Cloudflare a affiché une dégradation de ses performances du 24 au 25 novembre. Mistral, qui utilise ce réseau, aurait pu être impacté. Notre sonde n’a toutefois rien détecté.",
     "fait": [
-     "Selon le Baromètre du numérique, l'enquête publique de référence publiée en février par l'Arcep, l'Arcom, le Conseil général de l'économie et l'ANCT, près d'une personne sur deux a utilisé l'IA générative l'an dernier. Chercher une information est son premier usage.",
-     "Mais seul un utilisateur sur cinq dit vérifier systématiquement les réponses. Au total, moins des deux tiers les vérifient souvent ou toujours."
+     "Cloudflare a indiqué une performance dégradée de son service Magic Transit entre le 24 novembre 12 h 29 et le 25 novembre 9 h 16.",
+     "Cette interruption montre à quel point les entreprises s’appuient sur des fournisseurs de réseau tiers."
     ],
     "consequence": [
-     "Le rapport « Protéger sans empêcher », écrit par neuf experts pour le Conseil de l'IA et du numérique, met en garde contre cette « dette cognitive » : à force de confier la réflexion à la machine, on s'exerce moins à chercher, à comparer et à douter.",
-     "Il rappelle aussi que ces outils se trompent avec assurance, et qu'ils sont en général moins fiables dans d'autres langues que l'anglais."
+     "Mistral, qui passe par Cloudflare, aurait pu subir des ralentissements, mais aucune anomalie n’a été relevée par notre sonde.",
+     "Cela rappelle la visibilité limitée que les organisations ont sur les maillons intermédiaires de leur chaîne d’approvisionnement numérique."
     ],
     "lien": [
-     "Nous dépendons d'outils qui répondent à tout, vite et avec aplomb. Garder l'habitude de vérifier, c'est garder la main.",
-     "Et vous, quand l'IA vous répond, prenez-vous le temps de vérifier ?"
+     "Pour les DSI, il est crucial de cartographier les dépendances invisibles comme les services de transit réseau.",
+     "Comment vos équipes évaluent‑elles la résilience de leurs fournisseurs de réseau ?"
     ],
     "une_mini": {
-     "fait": "La moitié des Français utilisent l'IA générative.",
-     "consequence": "Un utilisateur sur cinq seulement vérifie systématiquement ses réponses.",
-     "dependance": "Un rapport public parle de « dette cognitive »."
+     "fait": "Cloudflare signale une dégradation de Magic Transit",
+     "consequence": "Aucune anomalie détectée chez Mistral",
+     "dependance": "Dépendance aux services de transit réseau"
     },
     "sources": [
      {
-      "label": "Arcep, Arcom, CGE, ANCT – Baromètre du numérique, édition 2026 (enquête du Crédoc)",
-      "url": "https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/barometre-du-numerique/le-barometre-du-numerique-edition-2026.html"
-     },
-     {
-      "label": "Baromètre du numérique 2026 – infographie (vérification des réponses de l'IA)",
-      "url": "https://www.arcep.fr/uploads/tx_gspublication/barometre-du-numerique-edition-2026_INFOGRAPHIE.pdf"
-     },
-     {
-      "label": "Conseil de l'IA et du numérique – rapport « Protéger sans empêcher : nos vulnérabilités à l'ère de l'IA générative »",
-      "url": "https://www.vie-publique.fr/rapport/305341-proteger-sans-empecher-nos-vulnerabilites-au-temps-de-l-ia-generative"
+      "label": "Magic Transit Degraded Performance",
+      "url": "https://www.cloudflarestatus.com/incidents/no721jcnlrbh"
      }
     ],
-    "a_verifier": [],
-    "sujet": "La « dette cognitive » : peu d'utilisateurs vérifient les réponses de l'IA",
-    "categorie": "ia",
-    "reflexes_intro": "Trois gestes simples, à faire tout de suite.",
-    "reflexes": [
-     "Demandez-lui ses sources, puis ouvrez-les : une source introuvable, ou qui dit autre chose, doit vous alerter.",
-     "Pour un chiffre, une date, un conseil de santé ou d'argent, vérifiez sur un site officiel ou dans un média connu.",
-     "Posez la même question autrement, ou à une autre IA : si les réponses divergent, il faut creuser."
-    ],
-    "reflexe_de_la_semaine": {
-     "titre": "La règle des deux sources",
-     "texte": "Avant de reprendre une réponse de l'IA dans un mail, un devoir ou une décision, retrouvez l'information dans deux sources fiables."
-    }
+    "a_verifier": [
+     "Vérifier que le texte de la source ne comporte pas de citation à reprendre mot‑pour‑mot",
+     "Confirmer l’absence d’autres fournisseurs impactés au-delà de Mistral"
+    ]
    },
+   "fiche": {
+    "evenement": "Cloudflare : Magic Transit Degraded Performance",
+    "type": "incident_amont",
+    "debut": "mardi 24 novembre, 12 h 29",
+    "fin": "mercredi 25 novembre, 9 h 16",
+    "fournisseurs_concernes": [
+     "Mistral"
+    ],
+    "pourquoi_ce_fournisseur": "mistral passe(nt) par Cloudflare (chemin réseau relevé)",
+    "mesures_de_la_sonde": [
+     {
+      "fournisseur": "Mistral",
+      "ce_que_la_sonde_a_vu": "Aucune anomalie mesurée chez vos fournisseurs",
+      "anomalies": [],
+      "nombre_de_mesures_pendant_l_evenement": 4,
+      "incident_officiel": false
+     }
+    ],
+    "presse": null,
+    "sources": [
+     {
+      "label": "Magic Transit Degraded Performance",
+      "url": "https://www.cloudflarestatus.com/incidents/no721jcnlrbh"
+     }
+    ]
+   },
+   "alertes_charte": [
+    "Affirmation non soutenue par les mesures : la sonde n'a vu aucune anomalie, mais le texte dit qu'un fournisseur a été touché : « Mistral, qui utilise ce réseau, aurait pu être impacté. »",
+    "À la une : le titre ne doit pas interpeller le lecteur (pas de « vous »).",
+    "Titre long (plus de 90 caractères) : deux phrases courtes.",
+    "Trop de chiffres dans le texte (8) : en garder 3 au plus, le détail va dans l'encadré Premium.",
+    "Le rédacteur signale 2 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer »."
+   ]
+  },
+  {
+   "rubrique": "tous_connectes",
+   "auteur": "openai/gpt-oss-120b",
+   "article": {},
    "fiche": {
     "tendances_wikipedia": [
      {
@@ -64,14 +90,14 @@
       "page": "https://fr.wikipedia.org/wiki/David_Lisnard",
       "titres_de_presse": [
        {
-        "titre": "Présidentielle 2027 : Edouard Philippe souhaite un débat télévisé avec David Lisnard, qu’il soupçonne de ne pas être « étanche » vis-à-vis de l’extrême droite",
-        "media": "Le Monde",
-        "url": "https://www.lemonde.fr/election-presidentielle-2027/article/2026/11/24/edouard-philippe-a-vote-pour-david-lisnard-a-la-presidence-de-l-amf-mais-fustige-sa-posture-dans-la-course-a-l-elysee_6814832_6205049.html"
+        "titre": "🔴 David Lisnard annonce sur X sa réélection à la tête de l'Association des maires de France",
+        "media": "France 24",
+        "url": "https://www.france24.com/fr/france/20261125-france-david-lisnard-annonce-sa-reelection-a-la-tete-de-l-association-des-maires-de-france"
        },
        {
-        "titre": "David Lisnard, le candidat ultralibéral qui chamboule la campagne à droite",
+        "titre": "David Lisnard largement réélu à la tête de l'Association des maires de France",
         "media": "France 24",
-        "url": "https://www.france24.com/fr/france/20261124-france-presidentielle-2027-david-lisnard-candidat-ultraliberal-chamboule-campagne-droite"
+        "url": "https://www.france24.com/fr/france/20261125-france-david-lisnard-annonce-sa-reelection-a-la-tete-de-l-association-des-maires-de-france"
        }
       ]
      },
@@ -83,67 +109,49 @@
       "titres_de_presse": []
      },
      {
-      "sujet": "Dominique de Villepin",
+      "sujet": "Michel Dumas (cuisinier)",
       "langue": "fr",
       "rang_wikipedia": 3,
-      "page": "https://fr.wikipedia.org/wiki/Dominique_de_Villepin",
+      "page": "https://fr.wikipedia.org/wiki/Michel_Dumas_%28cuisinier%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Coupe d'Afrique des nations de football 2025",
+      "langue": "fr",
+      "rang_wikipedia": 5,
+      "page": "https://fr.wikipedia.org/wiki/Coupe_d%27Afrique_des_nations_de_football_2025",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Nicolas Hulot",
+      "langue": "fr",
+      "rang_wikipedia": 6,
+      "page": "https://fr.wikipedia.org/wiki/Nicolas_Hulot",
       "titres_de_presse": []
      },
      {
       "sujet": "La Comtesse de Monte-Cristo",
       "langue": "fr",
-      "rang_wikipedia": 4,
-      "page": "https://fr.wikipedia.org/wiki/La_Comtesse_de_Monte-Cristo",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Affaire Michel Zecler",
-      "langue": "fr",
-      "rang_wikipedia": 6,
-      "page": "https://fr.wikipedia.org/wiki/Affaire_Michel_Zecler",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Hunger Games (série de films)",
-      "langue": "fr",
       "rang_wikipedia": 7,
-      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%28s%C3%A9rie_de_films%29",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Dylan Larkin",
-      "langue": "fr",
-      "rang_wikipedia": 8,
-      "page": "https://fr.wikipedia.org/wiki/Dylan_Larkin",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "General Sherman (arbre)",
-      "langue": "fr",
-      "rang_wikipedia": 9,
-      "page": "https://fr.wikipedia.org/wiki/General_Sherman_%28arbre%29",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Quantum of Solace",
-      "langue": "fr",
-      "rang_wikipedia": 11,
-      "page": "https://fr.wikipedia.org/wiki/Quantum_of_Solace",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Je suis toujours là",
-      "langue": "fr",
-      "rang_wikipedia": 12,
-      "page": "https://fr.wikipedia.org/wiki/Je_suis_toujours_l%C3%A0",
+      "page": "https://fr.wikipedia.org/wiki/La_Comtesse_de_Monte-Cristo",
       "titres_de_presse": []
      },
      {
       "sujet": "Jensen Huang",
       "langue": "fr",
-      "rang_wikipedia": 14,
+      "rang_wikipedia": 8,
       "page": "https://fr.wikipedia.org/wiki/Jensen_Huang",
       "titres_de_presse": [
+       {
+        "titre": "Jensen Huang a lâché sa veste en cuir, et ce n'est pas un hasard",
+        "media": "franceinfo Internet",
+        "url": "https://www.franceinfo.fr/replay-radio/l-il-de-constance/jensen-huang-a-lache-sa-veste-en-cuir-et-ce-n-est-pas-un-hasard_8277116.html"
+       },
+       {
+        "titre": "Le patron de Nvidia, Jensen Huang, s'excuse auprès des salariés pour ses infidélités et dit suivre une thérapie",
+        "media": "franceinfo Internet",
+        "url": "https://www.franceinfo.fr/internet/nvidia/le-patron-de-nvidia-jensen-huang-s-excuse-aupres-des-salaries-et-dit-suivre-une-therapie_8298642.html"
+       },
        {
         "titre": "Donald Trump s'est-il enrichi avec le retour de Jensen Huang à la tête de Nvidia ?",
         "media": "franceinfo Internet",
@@ -153,224 +161,303 @@
         "titre": "Donald Trump s'est-il enrichi avec le retour surprise de Jensen Huang à la tête de Nvidia ?",
         "media": "franceinfo Internet",
         "url": "https://www.franceinfo.fr/internet/nvidia/donald-trump-s-est-il-enrichi-avec-le-retour-surprise-de-jensen-huang-a-la-tete-de-nvidia_8298000.html"
-       },
-       {
-        "titre": "Le retour fracassant de Jensen Huang à la tête de Nvidia entraîne un rebond spectaculaire de l'action",
-        "media": "franceinfo Internet",
-        "url": "https://www.franceinfo.fr/monde/usa/le-retour-fracassant-de-jensen-huang-a-la-tete-de-nvidia-entraine-un-rebond-spectaculaire-de-l-action_8297784.html"
-       },
-       {
-        "titre": "Nvidia : Jensen Huang redevient PDG, Donald Trump aux commandes de l'opération ?",
-        "media": "franceinfo Internet",
-        "url": "https://www.franceinfo.fr/monde/usa/presidentielle/donald-trump/nvidia-jensen-huang-redevient-pdg-donald-trump-aux-commandes-de-l-operation_8296710.html"
        }
       ]
      },
      {
-      "sujet": "Hunger Games : Lever de soleil sur la moisson (film)",
+      "sujet": "Xavier de Rosnay",
       "langue": "fr",
-      "rang_wikipedia": 15,
-      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_Lever_de_soleil_sur_la_moisson_%28film%29",
+      "rang_wikipedia": 9,
+      "page": "https://fr.wikipedia.org/wiki/Xavier_de_Rosnay",
       "titres_de_presse": []
      },
      {
-      "sujet": "Sarah Knafo",
+      "sujet": "Sabine Prokhoris",
       "langue": "fr",
-      "rang_wikipedia": 16,
-      "page": "https://fr.wikipedia.org/wiki/Sarah_Knafo",
+      "rang_wikipedia": 10,
+      "page": "https://fr.wikipedia.org/wiki/Sabine_Prokhoris",
       "titres_de_presse": []
      },
      {
-      "sujet": "Hunger Games : La Ballade du serpent et de l'oiseau chanteur (film)",
+      "sujet": "Mort de Nahel Merzouk",
       "langue": "fr",
-      "rang_wikipedia": 17,
-      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_La_Ballade_du_serpent_et_de_l%27oiseau_chanteur_%28film%29",
+      "rang_wikipedia": 11,
+      "page": "https://fr.wikipedia.org/wiki/Mort_de_Nahel_Merzouk",
       "titres_de_presse": []
      },
      {
-      "sujet": "Michel Dumas (cuisinier)",
+      "sujet": "Chloé Jouannet",
       "langue": "fr",
-      "rang_wikipedia": 18,
-      "page": "https://fr.wikipedia.org/wiki/Michel_Dumas_%28cuisinier%29",
-      "titres_de_presse": [
-       {
-        "titre": "Le chef Michel Dumas, connu pour ses vidéos de cuisine sur les réseaux sociaux, est mort à l'âge de 72 ans, annonce son fils",
-        "media": "franceinfo Internet",
-        "url": "https://www.franceinfo.fr/culture/cuisine/le-chef-michel-dumas-connu-pour-ses-videos-de-cuisine-sur-les-reseaux-sociaux-est-mort-a-l-age-de-72-ans-annonce-son-fils_8297175.html"
-       }
-      ]
-     },
-     {
-      "sujet": "Élisabeth de Wittelsbach",
-      "langue": "fr",
-      "rang_wikipedia": 19,
-      "page": "https://fr.wikipedia.org/wiki/%C3%89lisabeth_de_Wittelsbach",
+      "rang_wikipedia": 12,
+      "page": "https://fr.wikipedia.org/wiki/Chlo%C3%A9_Jouannet",
       "titres_de_presse": []
      },
      {
-      "sujet": "Fabien Lecœuvre",
+      "sujet": "Dominique de Villepin",
       "langue": "fr",
-      "rang_wikipedia": 20,
-      "page": "https://fr.wikipedia.org/wiki/Fabien_Lec%C5%93uvre",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Rebecca (film, 1940)",
-      "langue": "fr",
-      "rang_wikipedia": 21,
-      "page": "https://fr.wikipedia.org/wiki/Rebecca_%28film%2C_1940%29",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Audrey Fleurot",
-      "langue": "fr",
-      "rang_wikipedia": 22,
-      "page": "https://fr.wikipedia.org/wiki/Audrey_Fleurot",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Liste des films de James Bond",
-      "langue": "fr",
-      "rang_wikipedia": 23,
-      "page": "https://fr.wikipedia.org/wiki/Liste_des_films_de_James_Bond",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Rubens Paiva",
-      "langue": "fr",
-      "rang_wikipedia": 24,
-      "page": "https://fr.wikipedia.org/wiki/Rubens_Paiva",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Dictature militaire au Brésil (1964-1985)",
-      "langue": "fr",
-      "rang_wikipedia": 25,
-      "page": "https://fr.wikipedia.org/wiki/Dictature_militaire_au_Br%C3%A9sil_%281964-1985%29",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Michael Jackson",
-      "langue": "fr",
-      "rang_wikipedia": 26,
-      "page": "https://fr.wikipedia.org/wiki/Michael_Jackson",
-      "titres_de_presse": []
-     },
-     {
-      "sujet": "Olga Kurylenko",
-      "langue": "fr",
-      "rang_wikipedia": 27,
-      "page": "https://fr.wikipedia.org/wiki/Olga_Kurylenko",
+      "rang_wikipedia": 13,
+      "page": "https://fr.wikipedia.org/wiki/Dominique_de_Villepin",
       "titres_de_presse": []
      },
      {
       "sujet": "Seb Mellia",
       "langue": "fr",
-      "rang_wikipedia": 28,
+      "rang_wikipedia": 14,
       "page": "https://fr.wikipedia.org/wiki/Seb_Mellia",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Hunger Games (série de films)",
+      "langue": "fr",
+      "rang_wikipedia": 15,
+      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%28s%C3%A9rie_de_films%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Les choses qu'on dit, les choses qu'on fait",
+      "langue": "fr",
+      "rang_wikipedia": 16,
+      "page": "https://fr.wikipedia.org/wiki/Les_choses_qu%27on_dit%2C_les_choses_qu%27on_fait",
+      "titres_de_presse": [
+       {
+        "titre": "La sortie de \"GTA VI\" a changé des choses à votre vie de famille ou vos relations avec vos amis ? Racontez-nous !",
+        "media": "franceinfo",
+        "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/appel-a-temoignages-la-sortie-de-gta-vi-a-t-elle-bouleverse-vos-rapports-avec-votre-famille-ou-vos-amis-racontez-nous_8297517.html"
+       }
+      ]
+     },
+     {
+      "sujet": "General Sherman (arbre)",
+      "langue": "fr",
+      "rang_wikipedia": 18,
+      "page": "https://fr.wikipedia.org/wiki/General_Sherman_%28arbre%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Justice (groupe)",
+      "langue": "fr",
+      "rang_wikipedia": 19,
+      "page": "https://fr.wikipedia.org/wiki/Justice_%28groupe%29",
+      "titres_de_presse": [
+       {
+        "titre": "La Ligue des droits de l'homme saisit la justice contre la suspension des aides aux auteurs de dégradations dans les lycées, voulue par Valérie Pécresse",
+        "media": "franceinfo",
+        "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/la-ldh-saisit-la-justice-contre-la-suspension-des-aides-aux-auteurs-de-degradations-dans-les-lycees-voulue-par-valerie-pecresse_8299473.html"
+       },
+       {
+        "titre": "Logement, justice, soins… Le départ d'une victime de violences conjugales de son foyer lui coûte presque une année de salaire",
+        "media": "franceinfo",
+        "url": "https://www.franceinfo.fr/societe/violences-faites-aux-femmes/logement-justice-soins-le-depart-d-une-victime-de-violences-conjugales-de-son-foyer-represente-presque-une-annee-de-salaire_8297718.html"
+       },
+       {
+        "titre": "L'histoire de la musique composée par le groupe français Justice pour le jeu vidéo GTA 6",
+        "media": "franceinfo Culture",
+        "url": "https://www.franceinfo.fr/l-actu-pour-les-jeunes/l-histoire-de-la-musique-composee-par-le-groupe-francais-justice-pour-le-jeu-video-gta-6_8299584.html"
+       },
+       {
+        "titre": "La présence d’un procureur au siège du RN suscite l’émoi au sein de la magistrature et du ministère de la justice",
+        "media": "Le Monde",
+        "url": "https://www.lemonde.fr/societe/article/2026/11/25/la-presence-d-un-procureur-au-siege-du-rn-suscite-l-emoi-au-sein-de-la-magistrature_6815091_3224.html"
+       }
+      ]
+     },
+     {
+      "sujet": "Anne Charrier",
+      "langue": "fr",
+      "rang_wikipedia": 20,
+      "page": "https://fr.wikipedia.org/wiki/Anne_Charrier",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Coupe d'Afrique des nations de football",
+      "langue": "fr",
+      "rang_wikipedia": 21,
+      "page": "https://fr.wikipedia.org/wiki/Coupe_d%27Afrique_des_nations_de_football",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Élisabeth de Wittelsbach",
+      "langue": "fr",
+      "rang_wikipedia": 22,
+      "page": "https://fr.wikipedia.org/wiki/%C3%89lisabeth_de_Wittelsbach",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Abeille Bourbon",
+      "langue": "fr",
+      "rang_wikipedia": 23,
+      "page": "https://fr.wikipedia.org/wiki/Abeille_Bourbon",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Sarah Knafo",
+      "langue": "fr",
+      "rang_wikipedia": 24,
+      "page": "https://fr.wikipedia.org/wiki/Sarah_Knafo",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "XNXX",
+      "langue": "fr",
+      "rang_wikipedia": 25,
+      "page": "https://fr.wikipedia.org/wiki/XNXX",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "5G",
+      "langue": "fr",
+      "rang_wikipedia": 26,
+      "page": "https://fr.wikipedia.org/wiki/5G",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Manuel Bompard",
+      "langue": "fr",
+      "rang_wikipedia": 27,
+      "page": "https://fr.wikipedia.org/wiki/Manuel_Bompard",
       "titres_de_presse": []
      }
     ],
     "presse_grand_public": [
      {
-      "titre": "\"Les ménages ont été amenés à puiser dans leur épargne\" : on vous explique pourquoi le livret A est laissé pour compte",
+      "titre": "\"J'espère que ça ne montera pas plus\" : la Côte d'Azur une nouvelle fois sous les eaux, les habitants d'une commune du Var tentent de faire avec les inondations",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/votre-argent/livret-a/les-menages-ont-ete-amenes-a-puiser-dans-leur-epargne-on-vous-explique-pourquoi-le-livret-a-est-laisse-pour-compte_8297343.html"
+      "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/la-cote-d-azur-sous-les-eaux-des-sacs-de-sable-au-paddle-les-habitants-d-une-commune-du-var-tentent-de-faire-avec-les-inondations_8299611.html"
      },
      {
-      "titre": "\"Mayotte appelle au secours, encore et encore !\" : la députée Estelle Youssouffa interpelle le ministre de l'Intérieur à l'Assemblée nationale",
+      "titre": "Patrick Bruel visé par une nouvelle plainte pour un viol remontant à 2006, en marge d'un concert des Enfoirés",
       "media": "franceinfo",
-      "url": "https://la1ere.franceinfo.fr/mayotte/mayotte-appelle-au-secours-encore-et-encore-estelle-youssouffa-interpelle-le-ministre-de-l-interieur-a-l-assemblee-nationale-1761155.html"
+      "url": "https://www.franceinfo.fr/culture/musique/patrick-bruel/une-nouvelle-plainte-pour-viol-deposee-contre-patrick-bruel-pour-des-faits-remontant-a-2006-en-marge-d-un-concert-des-enfoires_8299338.html"
      },
      {
-      "titre": "Une enquête ouverte pour tentative de meurtre sur un adolescent à Paris lors de la manifestation du 17 octobre",
+      "titre": "La Coordination rurale va demander à Emmanuel Macron de refuser tout accord sur la PAC qui ne permette pas aux \"agriculteurs de vivre de leur production\"",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/mobilisation-du-17-octobre/une-enquete-ouverte-pour-tentative-de-meurtre-sur-un-adolescent-a-paris-lors-de-la-manifestation-du-17-octobre_8298381.html"
+      "url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/la-coordination-rurale-va-demander-a-emmanuel-macron-de-refuser-tout-accord-sur-la-pac-qui-ne-permette-pas-aux-agriculteurs-de-vivre-de-leur-production_8299683.html"
      },
      {
-      "titre": "L'usine Stellantis de Sochaux arrête l'activité de son équipe de nuit à partir de janvier 2027, 500 emplois sont concernés",
+      "titre": "L'ONU alerte sur le risque de nouveaux \"crimes atroces\" d'Israël contre les Palestiniens à Gaza et en Cisjordanie",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/automobile/l-usine-stellantis-de-sochaux-arrete-l-activite-de-son-equipe-de-nuit-a-partir-de-janvier-2027-500-emplois-sont-concernes_8298177.html"
+      "url": "https://www.franceinfo.fr/monde/proche-orient/guerre/l-onu-alerte-sur-le-risque-de-nouveaux-crimes-atroces-d-israel-contre-les-palestiniens-a-gaza-et-en-cisjordanie_8299557.html"
      },
      {
-      "titre": "Sébastien Lecornu recevra les présidents des groupes parlementaires début décembre pour prolonger les discussions sur le budget 2027",
+      "titre": "Le trafic des trains Eurostar entre Londres et Paris fortement perturbé dans les deux sens en raison d'une \"grève imprévue\"",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/budget/sebastien-lecornu-recevra-les-presidents-des-groupes-parlementaires-la-semaine-prochaine-pour-prolonger-les-discussions-sur-le-budget-2027_8298285.html"
+      "url": "https://www.franceinfo.fr/economie/transports/le-trafic-des-trains-eurostar-entre-londres-et-paris-fortement-perturbe-en-raison-d-une-greve-imprevue_8299053.html"
      },
      {
-      "titre": "Plombé par une entame ratée, Lens s'incline à Leipzig et enchaîne une quatrième défaite en Ligue des champions",
+      "titre": "La Cour des comptes alerte sur des risques de fraude et d'abus dans les formations en apprentissage",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/foot/ligue-des-champions/plombe-par-une-entame-ratee-lens-s-incline-a-leipzig-et-enchaine-une-quatrieme-defaite-en-ligue-des-champions_8298393.html"
+      "url": "https://www.franceinfo.fr/economie/emploi/la-cour-des-comptes-epingle-des-fraudes-et-des-abus-dans-les-formations-en-apprentissage_8299608.html"
      },
      {
-      "titre": "Cinq morts dans le crash d'un hélicoptère militaire en Turquie",
+      "titre": "Vous êtes lycéen ou parent d'élève d'un établissement bloqué ? Racontez-nous comment vous palliez le manque de cours",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/turquie/cinq-morts-dans-le-crash-d-un-helicoptere-militaire-en-turquie_8298399.html"
+      "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/appel-a-temoignages-vous-etes-lyceen-ou-parent-d-eleve-d-un-etablissement-bloque-racontez-nous-comment-vous-palliez-le-manque-de-cours_8299068.html"
      },
      {
-      "titre": "\"C'est un peu comme le syndrome du bébé secoué chez l'adulte\" : les manèges à sensations, un danger pour le cerveau ?",
+      "titre": "\"Être étiqueté, c'est de plus en plus mal vu\" : avant la présidentielle 2027, des maires refusent de parrainer un candidat",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/sport-et-loisirs/c-est-un-peu-comme-le-syndrome-du-bebe-secoue-chez-l-adulte-les-maneges-a-sensations-un-danger-pour-le-cerveau_8298414.html"
+      "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/creuse/gueret/etre-etiquete-c-est-de-plus-en-plus-mal-vu-avant-la-presidentielle-2027-des-maires-refusent-de-parrainer-un-candidat-3455297.html"
      },
      {
-      "titre": "Le constructeur chinois BYD annonce être entré en négociations exclusives pour l'acquisition de l'usine Ineos Automotive d'Hambach en Moselle",
+      "titre": "La Ligue des droits de l'homme saisit la justice contre la suspension des aides aux auteurs de dégradations dans les lycées, voulue par Valérie Pécresse",
       "media": "franceinfo",
-      "url": "https://france3-regions.franceinfo.fr/grand-est/moselle/metz/le-constructeur-chinois-byd-annonce-etre-entre-en-negociations-exclusives-pour-l-acquisition-de-l-usine-ineos-automotive-d-hambach-en-moselle-3455360.html"
+      "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/la-ldh-saisit-la-justice-contre-la-suspension-des-aides-aux-auteurs-de-degradations-dans-les-lycees-voulue-par-valerie-pecresse_8299473.html"
      },
      {
-      "titre": "La marine française saisit plus de 3,3 tonnes de méthamphétamine dans l'océan Pacifique",
+      "titre": "Valberg, Auron, Isola 2000... Un manteau neigeux recouvre les stations des Alpes du Sud",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/drogue/la-marine-francaise-saisit-plus-de-3-3-tonnes-de-methamphetamine-dans-l-ocean-pacifique_8298438.html"
+      "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/en-images-valberg-auron-isola-2-000-un-manteau-neigeux-recouvre-les-stations-des-alpes-du-sud-3455687.html"
      },
      {
-      "titre": "Plus de 300 gendarmes blessés depuis le début de la crise sociale, selon la gendarmerie nationale",
+      "titre": "Le groupe de spiritueux Rémy Cointreau veut réduire ses effectifs de 12% à 15%",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/armee-securite-defense/plus-de-300-gendarmes-blesses-depuis-le-debut-de-la-crise-sociale-selon-la-gendarmerie-nationale_8297913.html"
+      "url": "https://www.franceinfo.fr/economie/le-groupe-de-spiritueux-remy-cointreau-veut-reduire-ses-effectifs-de-12-a-15_8299707.html"
      },
      {
-      "titre": "Victoire du Sénégal à la CAN : la Confédération africaine de football déclare \"respecter la décision\" du Tribunal arbitral du sport",
+      "titre": "Le youtubeur Tibo InShape porte plainte après l’intimidation d’identitaires devant son domicile",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/foot/can/direct-senegal-vainqueur-de-la-can-le-tribunal-arbitral-du-sport-a-rendu-justice-au-sport-estime-le-president-de-la-federation-senegalaise_8298138.html"
+      "url": "https://www.franceinfo.fr/l-actu-pour-les-jeunes/le-youtubeur-tibo-inshape-porte-plainte-apres-l-intimidation-d-identitaires-devant-son-domicile_8299452.html"
      },
      {
-      "titre": "Le ministre de la Défense israélien affirme que l'Iran développe \"des armes chimiques\"",
+      "titre": "Logement, justice, soins… Le départ d'une victime de violences conjugales de son foyer lui coûte presque une année de salaire",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/conflit-israel-iran/le-ministre-de-la-defense-israelien-affirme-que-l-iran-developpe-des-armes-chimiques_8298327.html"
+      "url": "https://www.franceinfo.fr/societe/violences-faites-aux-femmes/logement-justice-soins-le-depart-d-une-victime-de-violences-conjugales-de-son-foyer-represente-presque-une-annee-de-salaire_8297718.html"
      },
      {
-      "titre": "En Guadeloupe, une femme tuée par son mari, qui s'est ensuite suicidé",
+      "titre": "La sortie de \"GTA VI\" a changé des choses à votre vie de famille ou vos relations avec vos amis ? Racontez-nous !",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/france/guadeloupe/en-guadeloupe-une-femme-tuee-par-son-mari-qui-s-est-ensuite-suicide_8298480.html"
+      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/appel-a-temoignages-la-sortie-de-gta-vi-a-t-elle-bouleverse-vos-rapports-avec-votre-famille-ou-vos-amis-racontez-nous_8297517.html"
      },
      {
-      "titre": "La Révolution haïtienne va intégrer les programmes des collèges en France, salue la Fondation pour la mémoire de l’esclavage",
+      "titre": "Arthur Rinderknech accusé d'avoir refusé un contrôle antidopage, le tennisman français se dit \"convaincu\" d'être \"innocenté\"",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/education/la-revolution-haitienne-va-integrer-les-programmes-des-colleges-en-france-salue-la-fondation-pour-la-memoire-de-l-esclavage_8298450.html"
+      "url": "https://www.franceinfo.fr/sports/tennis/je-suis-convaincu-que-je-serai-innocente-arthur-rinderknech-rejette-les-accusations-de-refus-de-se-soumettre-a-un-controle-antidopage_8298981.html"
      },
      {
-      "titre": "Les visiteurs de l'Assemblée nationale peuvent-ils tourner une vidéo à connotation politique dans l'hémicycle ?",
+      "titre": "Pete Edochie, l'une des légendes du cinéma nigérian, est mort à 79 ans",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-les-visiteurs-de-l-assemblee-nationale-peuvent-ils-tourner-une-video-a-connotation-politique-dans-l-hemicycle_8297472.html"
+      "url": "https://www.franceinfo.fr/culture/cinema/pete-edochie-l-une-des-legendes-du-cinema-nigerian-est-mort-a-79-ans_8299065.html"
      },
      {
-      "titre": "Projet français, dépendance chinoise, exemple américain… Quatre questions sur les \"stocks stratégiques de terres rares et métaux\"",
+      "titre": "Pour protéger la Cour pénale internationale des pressions étrangères, le Parlement européen exige de la Commission une \"stratégie globale\"",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/projet-francais-dependance-chinoise-exemple-americain-quatre-questions-sur-les-stocks-strategiques-de-terres-rares-et-metaux_8297829.html"
+      "url": "https://www.franceinfo.fr/monde/europe/union-europeenne/leurs-vies-sont-devenues-du-jour-au-lendemain-un-enfer-pour-proteger-la-cpi-des-pressions-etrangeres-le-parlement-europeen-exige-de-la-commission-une-strategie-globale_8298972.html"
      },
      {
-      "titre": "La Libye nie toute \"entente\" avec Kiev après les attaques ukrainiennes contre des navires russes",
+      "titre": "Parrainages présidentiels : pourquoi les élus sont-ils de moins en moins nombreux à les accorder, et comment font nos voisins européens ?",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/afrique/libye/la-libye-nie-toute-entente-avec-kiev-apres-les-attaques-ukrainiennes-contre-des-navires-russes_8298132.html"
+      "url": "https://www.franceinfo.fr/replay-radio/le-vrai-du-faux/vrai-ou-faux-parrainages-presidentiels-pourquoi-les-elus-signent-ils-moins-et-comment-font-nos-voisins-europeens_8277125.html"
      },
      {
-      "titre": "La baisse de l'encours du livret A en 2026 est \"un signal réel\" de la baisse du pouvoir d'achat des Français",
+      "titre": "Routes coupées, cours d'eau qui débordent : le point sur les perturbations liées à l'épisode méditerranéen dans le Var",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/votre-argent/livret-a/la-baisse-de-l-encours-du-livret-a-en-2026-est-un-signal-reel-de-la-baisse-du-pouvoir-d-achat-des-francais-explique-un-economiste_8297811.html"
+      "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/var/saint-tropez/routes-coupees-cours-d-eau-qui-debordent-etat-des-lieux-de-l-episode-mediterraneen-dans-le-var-3455510.html"
      },
      {
-      "titre": "Depuis janvier, les Français ont retiré de leur livret A près de 10 milliards d'euros de plus qu'ils n'en ont déposé",
+      "titre": "Le Var passe en vigilance orange \"crues\", l'alerte \"pluie-inondation\" se poursuit dans ce département et dans les Alpes-Maritimes",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/votre-argent/livret-a/depuis-janvier-les-francais-ont-retire-pres-de-10-milliards-d-euros-de-leurs-livrets-a-qui-connait-sa-pire-annee-depuis-2008_8297058.html"
+      "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/le-var-passe-en-vigilance-orange-crues-l-alerte-pluie-inondation-se-poursuit-dans-ce-departement-et-dans-les-alpes-maritimes_8298813.html"
+     },
+     {
+      "titre": "L'histoire de la musique composée par le groupe français Justice pour le jeu vidéo GTA 6",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/l-actu-pour-les-jeunes/l-histoire-de-la-musique-composee-par-le-groupe-francais-justice-pour-le-jeu-video-gta-6_8299584.html"
+     },
+     {
+      "titre": "Prix franceinfo de la bande dessinée d'actualité et de reportage : découvrez la sélection de l'édition 2027",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/bd/prix-franceinfo-de-la-bande-dessinee-d-actualite-et-de-reportage-decouvrez-la-selection-de-l-edition-2027_8293730.html"
+     },
+     {
+      "titre": "Guy Savoy : \"J'ai décidé de balayer l'état civil et de ne conserver que l'état d'esprit\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/guy-savoy-j-ai-decide-de-balayer-l-etat-civil-et-de-ne-conserver-que-l-etat-d-esprit_8277107.html"
+     },
+     {
+      "titre": "\"Je sais quelle joie c'est, pour un enfant, d'imaginer un ami comme lui\" : l'autrice Nadja donne une suite à \"Chien Bleu\", presque quarante ans après le premier tome",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/livres/je-sais-quelle-joie-c-est-pour-un-enfant-d-imaginer-un-ami-comme-lui-l-autrice-nadja-donne-une-suite-a-chien-bleu-presque-quarante-ans-apres-le-premier-tome_8299011.html"
+     },
+     {
+      "titre": "L'architecte catalan Antoni Gaudí a sacrifié tout son héritage pour construire la Sagrada Familia",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/monde/espagne/l-architecte-catalan-antoni-gaudi-a-sacrifie-tout-son-heritage-pour-construire-la-sagrada-familia_8297973.html"
+     },
+     {
+      "titre": "Le hip-hop, de la rue à l'Unesco ?",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-magazine/franceinfo/a-suivre-avec-loic-de-la-mornais/le-hip-hop-de-la-rue-a-l-unesco_8298861.html"
+     },
+     {
+      "titre": "ENTRETIEN. \"La pensée libérale irrigue l'ensemble de la psyché collective\" : dans \"Un bon petit soldat\", Stéphane Brizé ausculte la brutalité du monde du travail",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/entretien-la-pensee-liberale-irrigue-l-ensemble-de-la-psyche-collective-dans-un-bon-petit-soldat-stephane-brize-ausculte-la-brutalite-du-monde-du-travail_8297961.html"
+     },
+     {
+      "titre": "\"El crimen de Pazos\", \"L'Affaire Kim Wall\", \"The Long Shadow\" : les féminicides au cœur de trois séries saisissantes",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/series/el-crimen-de-pazos-l-affaire-kim-wall-the-long-shadow-les-feminicides-au-c-ur-de-trois-series-saisissantes_8274503.html"
      },
      {
       "titre": "Ateliers de cuisine, vidéos sur Internet… Les chefs partagent leurs astuces pour des plats réussis",
@@ -423,58 +510,19 @@
       "url": "https://www.franceinfo.fr/culture/cuisine-et-gastronomie/hugo-riboulet-est-sacre-champion-du-monde-de-l-uf-mayo-un-plat-traditionnel-de-cuisine-francaise_8297928.html"
      },
      {
-      "titre": "Nils Ahl, un \"couteau suisse\" franco-danois aux commandes du Salon du livre et de la presse jeunesse de Montreuil",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/livres/salon-du-livre-et-de-la-presse-jeunesse-de-montreuil/nils-ahl-un-couteau-suisse-franco-danois-aux-commandes-du-salon-du-livre-et-de-la-presse-jeunesse-de-montreuil_8207645.html"
+      "titre": "Le retour des bandes magnétiques au Japon",
+      "media": "franceinfo Internet",
+      "url": "https://www.franceinfo.fr/replay-radio/bientot-chez-vous/le-retour-des-bandes-magnetiques-au-japon_8277110.html"
      },
      {
-      "titre": "Le dernier numéro du magazine jeunesse \"Je Bouquine\" partira à l'impression jeudi",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/livres/le-dernier-numero-du-magazine-jeunesse-je-bouquine-partira-a-l-impression-jeudi_8297859.html"
-     },
-     {
-      "titre": "Les écoutes d'une chanson de Sylvie Vartan présente dans \"GTA VI\", ont augmenté de plus de 2 500% sur Spotify en une semaine",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/les-ecoutes-d-une-chanson-de-sylvie-vartan-presente-dans-gta-vi-ont-augmente-de-plus-de-2-500-sur-spotify-en-une-semaine_8297832.html"
-     },
-     {
-      "titre": "APPEL A TEMOIGNAGES. La sortie de \"GTA VI\" a-t-elle bouleversé vos rapports avec votre famille ou vos amis ? Racontez-nous !",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/appel-a-temoignages-la-sortie-de-gta-vi-a-t-elle-bouleverse-vos-rapports-avec-votre-famille-ou-vos-amis-racontez-nous_8297517.html"
-     },
-     {
-      "titre": "\"Les gens pensent qu'elles sont réelles\" : sur les réseaux sociaux, de fausses humoristes générées par IA volent les blagues de vraies stand-uppeuses",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/les-gens-pensent-qu-elles-sont-reelles-sur-les-reseaux-sociaux-de-fausses-humoristes-generees-par-ia-volent-les-blagues-de-vraies-stand-uppeuses_8297454.html"
-     },
-     {
-      "titre": "\"J'ai découvert que le démon rôdait\" : le journal du pape François publié par un ancien proche collaborateur révèle sa foi profonde, mais aussi ses travers et ses fragilités",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/livres/j-ai-decouvert-que-le-demon-rodait-le-journal-du-pape-francois-revele-sa-foi-profonde-mais-aussi-ses-travers-et-ses-fragilites_8297319.html"
-     },
-     {
-      "titre": "Sam Sauvage plus intime dans la réédition de \"Mesdames, Messieurs\" : \"L'indifférence m'a un peu sauvé de la scène\"",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/sam-sauvage-plus-intime-dans-la-reedition-de-mesdames-messieurs-l-indifference-m-a-un-peu-sauve-de-la-scene_8275364.html"
-     },
-     {
-      "titre": "Les sauveteurs d'\"Alerte à Malibu\" reprennent du service à Los Angeles",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-radio/bientot-chez-vous/les-sauveteurs-d-alerte-a-malibu-reprennent-du-service-a-los-angeles_8275367.html"
-     },
-     {
-      "titre": "Face à la sous-représentation des femmes aux postes d'encadrement dans le cinéma, le CNC va mettre en place un nouveau système de bonus-malus",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/cinema/face-a-la-sous-representation-des-femmes-aux-postes-d-encadrement-dans-le-cinema-le-cnc-va-mettre-en-place-un-nouveau-systeme-de-bonus-malus_8297346.html"
-     },
-     {
-      "titre": "Lego investit plus d’un milliard d’euros dans une nouvelle usine au Portugal",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-radio/le-decryptage-eco/lego-investit-plus-d-un-milliard-d-euros-dans-une-nouvelle-usine-au-portugal_8275343.html"
+      "titre": "Jensen Huang a lâché sa veste en cuir, et ce n'est pas un hasard",
+      "media": "franceinfo Internet",
+      "url": "https://www.franceinfo.fr/replay-radio/l-il-de-constance/jensen-huang-a-lache-sa-veste-en-cuir-et-ce-n-est-pas-un-hasard_8277116.html"
      }
     ],
-    "ecartes_hors_ligne": 20,
+    "ecartes_hors_ligne": 23,
     "deja_en_ligne": [
+     "On demande tout à l'IA. Un sur cinq vérifie ses réponses à chaque fois.",
      "Le CHU de Guadeloupe paralysé par une cyberattaque. Des soins programmés reportés jusqu'au 27 novembre .",
      "GTA VI sort aujourd'hui. Sa version sans disque inquiète les joueurs.",
      "1 700 distributeurs ont disparu en 2025. Votre plan B est-il toujours là ?",
@@ -483,11 +531,9 @@
      "Gardez un peu d'argent liquide chez vous."
     ]
    },
-   "alertes_charte": [],
-   "format": "a_chaud",
-   "image": "assets/photos/ia.jpg",
-   "statut": "publie",
-   "publie_le": "2026-11-25T07:19:06+00:00"
+   "alertes_charte": [
+    "Aucun sujet retenu : Aucun des articles de presse fournis ne décrit un événement technologique concret (application, compte, réseau, panne, écran, etc.) répondant aux trois questions de la charte, sans être politique ou judiciaire, et qui ne figure pas déjà parmi les sujets déjà en ligne."
+   ]
   }
  ],
  "reserve_une": [],
@@ -502,10 +548,16 @@
   },
   "Détour (flux RSS)": {
    "etat": "ok",
-   "nombre": 190
+   "nombre": 193
   }
  },
  "journal_redacteur": [
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "une",
+   "resultat": "ok"
+  },
   {
    "service": "Groq",
    "modele": "openai/gpt-oss-120b",
