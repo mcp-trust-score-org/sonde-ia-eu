@@ -43,6 +43,18 @@ Les cabinets de conseil (McKinsey, BCG, Bain, Deloitte, EY, KPMG, PwC, Wavestone
 
 Ces cabinets ne font pas partie des sources lues automatiquement par le rédacteur : leurs études passent par le panier de la rédaction (voir section 4). Les écoles, les universités et les organismes publics (CNIL, ANSSI, Arcep, Inria, CNRS, Insee, Conseil de l'IA et du numérique) sont privilégiés : ils n'ont rien à vendre.
 
+### Les sujets qui font réfléchir
+
+Iris cherche en priorité les sujets où l'évidence se retourne : ceux où « plus souverain », « plus sûr » ou « moins dépendant » ne veut pas dire ce qu'on croit. Exemple : un modèle chinois ouvert, installé chez soi, peut être plus difficile à couper qu'un modèle américain loué sur un cloud européen, mais on ne sait pas ce qu'il contient et personne ne le met à jour.
+
+**Les repérer.** Chaque matin, le rédacteur liste dans les brouillons les articles de la semaine qui touchent au moins deux de ces débats : souveraineté, modèles ouverts, modèles chinois, lois étrangères (Cloud Act, interdictions d'exporter), changer de fournisseur (rapatrier, réversibilité), IA chez soi, concentration. Ce sont des pistes : rien n'est rédigé. La rédaction garde celles qui l'intéressent dans le panier (`pour: idee`).
+
+**Les présenter.** Jamais de verdict. On découpe la question en sous-questions concrètes (qui peut couper ? où vont les données ? que contient le modèle ? qui le met à jour ? de quoi dépend-on encore ?) et on montre, preuve à l'appui, ce que chaque option gagne et perd sur chacune. On cite les deux camps avec leurs meilleurs arguments, et on rappelle les options que le débat oublie. Le lecteur conclut seul.
+
+**Où.** D'abord dans Iris Plus (« Et si… ? »), qui est fait pour ça. Une version courte peut aller dans Tous connectés ou À la une quand l'actualité s'y prête.
+
+**La notification.** Une question, jamais une réponse ni un avis : « Plus souverain, un modèle chinois chez soi ? », pas « Les modèles chinois sont plus souverains ».
+
 ### L'essentiel en 2 minutes
 
 Chaque article d'À la une et de Tous connectés a un résumé en trois lignes (le fait, la conséquence, la dépendance). Il s'affiche seul quand le lecteur choisit « 2 min », dans « L'essentiel du jour » et dans les notifications. Donc chaque ligne :
