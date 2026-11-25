@@ -480,3 +480,9 @@ def test_pistes_qui_font_reflechir():
     assert [x["url"] for x in p] == ["https://ex.fr/revolut"]          # deux thèmes au moins, et de la semaine
     assert {"modèles chinois", "changer de fournisseur"} <= set(p[0]["themes"])
     assert pistes_reflexion(tend, m, {"https://ex.fr/revolut"}) == []   # jamais deux fois la même piste
+    # Une idée notée dans le panier : un seul article qui s'en approche suffit, et il passe en tête.
+    import re as _re
+    tend["detour"].append({"titre": "Nvidia, passage obligé des clouds européens", "url": "https://ex.fr/puces", "media": "Z", "date": "2026-11-24"})
+    sujets = [{"question": "Un cloud européen sur des puces américaines, souverain sur quoi ?", "_motif": _re.compile(r"nvidia|puces?", _re.I)}]
+    p = pistes_reflexion(tend, m, set(), sujets=sujets)
+    assert p[0]["url"] == "https://ex.fr/puces" and p[0]["sujet"].startswith("Un cloud européen")
