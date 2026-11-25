@@ -485,7 +485,9 @@
    },
    "alertes_charte": [],
    "format": "a_chaud",
-   "image": "assets/photos/ia.jpg"
+   "image": "assets/photos/ia.jpg",
+   "statut": "publie",
+   "publie_le": "2026-11-25T07:19:06+00:00"
   }
  ],
  "reserve_une": [],

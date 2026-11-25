@@ -2,6 +2,60 @@
  "une": [],
  "tous_connectes": [
   {
+   "id": "20261125-on-demande-tout-a-l-ia-un-sur-cinq-verifie-ses-rep",
+   "rubrique": "tous_connectes",
+   "date": "2026-11-25",
+   "tag": "Société",
+   "tagClass": "flag-cream",
+   "img": "assets/photos/ia.jpg",
+   "time": "4 min",
+   "title": "On demande tout à l'IA.<br/><mark>Un sur cinq</mark> vérifie ses réponses à chaque fois.",
+   "chapo": "Chercher une information, écrire un courrier, aider aux devoirs : la moitié des Français se servent désormais de l'IA générative. Mais rares sont ceux qui vérifient à chaque fois ce qu'elle répond. Un rapport remis au président de la République le 10 novembre parle de « dette cognitive ».",
+   "fait": [
+    "Selon le Baromètre du numérique, l'enquête publique de référence publiée en février par l'Arcep, l'Arcom, le Conseil général de l'économie et l'ANCT, près d'une personne sur deux a utilisé l'IA générative l'an dernier. Chercher une information est son premier usage.",
+    "Mais seul un utilisateur sur cinq dit vérifier systématiquement les réponses. Au total, moins des deux tiers les vérifient souvent ou toujours."
+   ],
+   "consequence": [
+    "Le rapport « Protéger sans empêcher », écrit par neuf experts pour le Conseil de l'IA et du numérique, met en garde contre cette « dette cognitive » : à force de confier la réflexion à la machine, on s'exerce moins à chercher, à comparer et à douter.",
+    "Il rappelle aussi que ces outils se trompent avec assurance, et qu'ils sont en général moins fiables dans d'autres langues que l'anglais."
+   ],
+   "lien": [
+    "Nous dépendons d'outils qui répondent à tout, vite et avec aplomb. Garder l'habitude de vérifier, c'est garder la main.",
+    "Et vous, quand l'IA vous répond, prenez-vous le temps de vérifier ?"
+   ],
+   "sources": [
+    {
+     "label": "Arcep, Arcom, CGE, ANCT – Baromètre du numérique, édition 2026 (enquête du Crédoc)",
+     "url": "https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/barometre-du-numerique/le-barometre-du-numerique-edition-2026.html"
+    },
+    {
+     "label": "Baromètre du numérique 2026 – infographie (vérification des réponses de l'IA)",
+     "url": "https://www.arcep.fr/uploads/tx_gspublication/barometre-du-numerique-edition-2026_INFOGRAPHIE.pdf"
+    },
+    {
+     "label": "Conseil de l'IA et du numérique – rapport « Protéger sans empêcher : nos vulnérabilités à l'ère de l'IA générative »",
+     "url": "https://www.vie-publique.fr/rapport/305341-proteger-sans-empecher-nos-vulnerabilites-au-temps-de-l-ia-generative"
+    }
+   ],
+   "mini": {
+    "fait": "La moitié des Français utilisent l'IA générative.",
+    "consequence": "Un utilisateur sur cinq seulement vérifie systématiquement ses réponses.",
+    "dependance": "Un rapport public parle de « dette cognitive »."
+   },
+   "audience": "public",
+   "reflexes": [
+    "Demandez-lui ses sources, puis ouvrez-les : une source introuvable, ou qui dit autre chose, doit vous alerter.",
+    "Pour un chiffre, une date, un conseil de santé ou d'argent, vérifiez sur un site officiel ou dans un média connu.",
+    "Posez la même question autrement, ou à une autre IA : si les réponses divergent, il faut creuser."
+   ],
+   "reflexes_intro": "Trois gestes simples, à faire tout de suite.",
+   "reflexe_semaine": {
+    "titre": "La règle des deux sources",
+    "texte": "Avant de reprendre une réponse de l'IA dans un mail, un devoir ou une décision, retrouvez l'information dans deux sources fiables."
+   },
+   "publie_le": "2026-11-25T07:19:06+00:00"
+  },
+  {
    "id": "20261123-le-chu-de-guadeloupe-paralyse-par-une-cyberattaque",
    "rubrique": "tous_connectes",
    "date": "2026-11-23",
@@ -169,5 +223,5 @@
    "publie_le": "2026-11-24T07:24:02+00:00"
   }
  ],
- "mis_a_jour": "2026-11-24T07:24:02+00:00"
+ "mis_a_jour": "2026-11-25T07:19:06+00:00"
 }
