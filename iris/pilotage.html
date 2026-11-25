@@ -104,7 +104,10 @@ const depuis = (iso) => { if (!iso) return ""; const m = Math.round((Date.now() 
 const PASTILLE = { "publié": "p-publie", "brouillon prêt": "p-pret", "à vérifier": "p-verif", "non publié": "p-rouge", "rédaction pas lancée": "p-rouge",
   "aucun brouillon": "p-rouge", "écarté": "p-gris", "à venir": "p-gris", "rien (pas d'incident)": "p-gris", "rien (pas d'incident ?)": "p-gris", "avant le lancement": "p-gris" };
 
-fetch("donnees/pilotage.json", { cache: "no-store" }).then((r) => r.json()).then((p) => {
+fetch("/d/donnees/pilotage.json?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" })
+  .then((r) => (r.ok ? r : Promise.reject(r)))
+  .catch(() => fetch("donnees/pilotage.json", { cache: "no-store" }))
+  .then((r) => r.json()).then((p) => {
   document.getElementById("maj").textContent = `Données du ${heure(p.genere_le)} (${depuis(p.genere_le)}) · mises à jour à chaque passage de la sonde`;
   const auj = p.redaction.find((j) => j.aujourdhui) || {};
   const afaire = [];
@@ -169,10 +172,11 @@ function audience() {
         <div class="carte"><span>Appareils abonnés</span><b>${a.abonnes.appareils}</b><span>notifications</span></div>
         <div class="carte"><span>Abonnés Iris Plus</span><b>${a.abonnes.sujets.plus || 0}</b><span>option cochée</span></div>
         <div class="carte"><span>Abonnés alertes</span><b>${a.abonnes.sujets.alertes || 0}</b><span>option cochée</span></div>
+        <div class="carte"><span>« L'essentiel en 2 min »</span><b>${(a.essentiel || {}).ouvertes || 0}</b><span>ouvertures · ${(a.essentiel || {}).jusqu_au_bout || 0} jusqu'au bout</span></div>
       </div>
       <div class="carte" style="margin:12px 0 18px"><span>Lectures par jour</span><div class="graph">${a.lectures_par_jour.map((x) => `<div style="height:${Math.round(x.lectures / max * 100)}%"><em>${x.lectures}</em><span>${jour(x.date)}</span></div>`).join("")}</div><div style="height:16px"></div></div>
-      <table><thead><tr><th>Article</th><th>Aujourd'hui</th><th>7 jours</th><th>Total</th></tr></thead><tbody>${
-        a.articles.length ? a.articles.map((x) => `<tr><td><a href="/#${echap(x.id)}" target="_blank" rel="noopener">${echap(x.titre)}</a></td><td>${x.aujourdhui}</td><td><b>${x.semaine}</b></td><td>${x.total}</td></tr>`).join("") : `<tr><td colspan="4" class="muted">Aucune lecture comptée pour l'instant : le compteur démarre avec cette version du site.</td></tr>`}</tbody></table>
+      <table><thead><tr><th>Article</th><th>Aujourd'hui</th><th>7 jours</th><th>Total</th><th title="Lecteurs passés de l'essentiel en 2 min à l'article en entier">2 min → entier</th></tr></thead><tbody>${
+        a.articles.length ? a.articles.map((x) => `<tr><td><a href="/#${echap(x.id)}" target="_blank" rel="noopener">${echap(x.titre)}</a></td><td>${x.aujourdhui}</td><td><b>${x.semaine}</b></td><td>${x.total}</td><td>${x.en_entier || 0}</td></tr>`).join("") : `<tr><td colspan="5" class="muted">Aucune lecture comptée pour l'instant : le compteur démarre avec cette version du site.</td></tr>`}</tbody></table>
       <p class="aide" style="margin-top:10px"><a href="#" id="oublier">Oublier la clé sur cet appareil</a></p>`;
     document.getElementById("oublier").addEventListener("click", (e) => { e.preventDefault(); try { localStorage.removeItem("iris-pilotage"); } catch (x) { /* */ } audience(); });
   }).catch(() => { boite.innerHTML = `<p class="muted">Audience indisponible pour l'instant.</p>`; });

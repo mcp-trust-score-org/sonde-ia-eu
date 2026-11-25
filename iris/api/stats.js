@@ -17,7 +17,9 @@ module.exports = async (req, res) => {
     for (const j of jours) parJour[j] = enObjet(await commande("HGETALL", `iris:vues:${j}`));
     const semaine = {};
     Object.values(parJour).forEach((o) => Object.entries(o).forEach(([id, n]) => { semaine[id] = (semaine[id] || 0) + n; }));
-    const articles = Object.keys(total).map((id) => ({ id, titre: titres[id] || id, total: total[id], semaine: semaine[id] || 0, aujourdhui: parJour[jours[0]][id] || 0 }))
+    const entier = enObjet(await commande("HGETALL", "iris:entier"));
+    const stories = enObjet(await commande("HGETALL", "iris:stories"));
+    const articles = Object.keys(total).map((id) => ({ id, titre: titres[id] || id, total: total[id], semaine: semaine[id] || 0, aujourdhui: parJour[jours[0]][id] || 0, en_entier: entier[id] || 0 }))
       .sort((a, b) => b.semaine - a.semaine || b.total - a.total);
     const abos = enObjet(await commande("HGETALL", "iris:abonnes"));
     const sujets = { articles: 0, plus: 0, alertes: 0 };
@@ -26,6 +28,7 @@ module.exports = async (req, res) => {
       genere_le: new Date().toISOString(), articles: articles.slice(0, 30),
       lectures_par_jour: jours.map((j) => ({ date: j, lectures: Object.values(parJour[j]).reduce((a, b) => a + b, 0) })).reverse(),
       abonnes: { appareils: Object.keys(abos).length, sujets },
+      essentiel: { ouvertes: stories.debut || 0, jusqu_au_bout: stories.fin || 0 },
     });
   } catch (e) {
     return res.status(503).json({ erreur: "Compteurs indisponibles : " + e.message });

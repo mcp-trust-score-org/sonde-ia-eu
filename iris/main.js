@@ -141,10 +141,51 @@ function debutGras(r) {
   return mots.length > 4 ? `<b>${mots.slice(0, 3).join(" ")}</b> ${mots.slice(3).join(" ")}` : r;
 }
 
+/* ---------- Temps de lecture : « 2 min » (l'essentiel) ou l'article en entier ----------
+   Réglage dans la cloche : « Me laisser choisir » (par défaut), « Toujours 2 min », « Toujours en entier ».
+   Il reste sur l'appareil (localStorage) : Iris ne sait rien du lecteur.
+   Une notification ouvre l'article avec ?lecture=2, ?lecture=10 ou ?lecture=notif (= selon le réglage, sinon 2 min). */
+const DUREE_CLE = "iris-duree";
+const lireDuree = () => { try { return localStorage.getItem(DUREE_CLE) || "choisir"; } catch (e) { return "choisir"; } };
+let MODE_DEMANDE = null;
+(function lectureDepuisUrl() {
+  const p = new URLSearchParams(location.search).get("lecture");
+  if (!p) return;
+  MODE_DEMANDE = p === "10" ? "long" : p === "2" ? "court" : (lireDuree() === "10" ? "long" : "court");
+  try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) { /* pas grave */ }
+})();
+const MODES = {};   // le mode choisi pour chaque article pendant la visite
+const aLEssentiel = (a) => Boolean(a && a.mini && a.mini.fait && a.mini.consequence);
+function modeDe(id, a) {
+  if (!aLEssentiel(a)) return "long";
+  if (!MODES[id]) {
+    MODES[id] = MODE_DEMANDE || (lireDuree() === "2" ? "court" : "long");
+    MODE_DEMANDE = null;
+  }
+  return MODES[id];
+}
+const ICONE_CHRONO = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>';
+const ICONE_LIVRE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2zM22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>';
+function compterEvenement(evenement, id) {   // pour le pilotage : sans rien savoir du lecteur
+  try { navigator.sendBeacon("/api/vue", new Blob([JSON.stringify({ id, evenement })], { type: "application/json" })); } catch (e) { /* pas grave */ }
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-mode]");
+  if (!b) return;
+  const id = (location.hash.match(/^#article-(.+)$/) || [])[1];
+  if (!id || !ARTICLES[id]) return;
+  const avant = MODES[id];
+  MODES[id] = b.dataset.mode;
+  if (avant === "court" && b.dataset.mode === "long") compterEvenement("entier", "article-" + id);
+  renderArticle(id);
+  window.scrollTo(0, 0);
+});
+
 function renderArticle(id) {
   const a = ARTICLES[id];
   const el = document.getElementById("article");
   if (!a || !el) return false;
+  const mode = modeDe(id, a);
   const paras = (arr) => arr.map((p) => `<p>${p}</p>`).join("");
   const pub = a.audience === "public" || a.audience === "detour";
   const backTo = a.audience === "public" ? ["#vies", "Tous connectés"] : a.audience === "detour" ? ["#detour", "Le Détour"] : ["#une", "À la une"];
@@ -152,12 +193,42 @@ function renderArticle(id) {
   const srcList = a.sources || (a.source ? [a.source] : []);
   const srcHtml = srcList.length ? `<div class="art-source"><b>${srcList.length > 1 ? "Sources" : "Source"}</b>${srcList.map((x) => `<a href="${x.url}" target="_blank" rel="noopener">${x.label} ↗</a>`).join("")}</div>` : "";
   const suivi = suiviFournisseurs(a);
-  const ending = pub
-    ? `${a.reflexes ? `<section class="bon-reflexe">
+  const bonReflexe = a.reflexes ? `<section class="bon-reflexe">
         <h2>Le bon réflexe</h2>
         <p class="br-sous">${a.reflexes_intro || `${["", "Un geste simple", "Deux gestes simples", "Trois gestes simples", "Quatre gestes simples"][a.reflexes.length] || "Des gestes simples"}, à faire tout de suite.`}</p>
         <ol class="br-liste">${a.reflexes.map((r, i) => `<li><span class="br-num">${String(i + 1).padStart(2, "0")}</span><span>${debutGras(r)}</span></li>`).join("")}</ol>
-      </section>` : ""}
+      </section>` : "";
+  const bascule = aLEssentiel(a) ? `<div class="duree-bascule" role="group" aria-label="Temps de lecture">
+        <button type="button" data-mode="court" aria-pressed="${mode === "court"}">${ICONE_CHRONO}2 min</button>
+        <button type="button" data-mode="long" aria-pressed="${mode === "long"}">${ICONE_LIVRE}En entier</button>
+      </div>` : "";
+  if (mode === "court") {
+    const m = a.mini;
+    const dernier = pub ? (m.dependance || (a.lien || []).slice(-1)[0]) : m.dependance;
+    el.innerHTML = `
+    <div class="art-haut"><a href="${backTo[0]}" class="back">← ${backTo[1]}</a>${bascule}</div>
+    <header class="art-head">
+      <span class="flag ${a.tagClass || ""}">${a.tag}</span>
+      <h1 class="display art-title">${a.title}</h1>
+      <p class="art-meta">L'essentiel en 2 min${a.audience === "public" ? " · Édition grand public" : ""}</p>
+    </header>
+    <div class="art-body art-court">
+      <section class="essentiel" aria-label="L'essentiel">
+        <p class="ess-kicker">L'essentiel</p>
+        <ol>
+          <li><span class="ess-n">01</span><p><b>Le fait.</b> ${m.fait}</p></li>
+          <li><span class="ess-n">02</span><p><b>La conséquence.</b> ${m.consequence}</p></li>
+          ${dernier ? `<li><span class="ess-n">03</span><p><b>${pub ? "Et vous ?" : "La dépendance."}</b> ${dernier}</p></li>` : ""}
+        </ol>
+      </section>
+      ${pub ? bonReflexe : `<p class="ess-sonde" data-plan="premium"><b>Ce que la sonde a mesuré :</b> ${a.impact.status}.</p>`}
+      <button type="button" class="btn-entier" data-mode="long">${ICONE_LIVRE}Lire en entier · ${a.time}</button>
+      <p class="ess-note">Votre choix se règle dans la cloche. Il reste sur cet appareil : Iris ne sait rien de vous.</p>
+    </div>`;
+    return true;
+  }
+  const ending = pub
+    ? `${bonReflexe}
       ${suivi ? suivi.premium + suivi.standard : ""}
       ${srcHtml}
       ${a.audience === "public" ? `<a class="bridge" href="#une"><span>Vous êtes une entreprise ?</span><b>La même dépendance existe chez vos fournisseurs. Voir l'édition pro →</b></a>` : ""}`
@@ -177,7 +248,7 @@ function renderArticle(id) {
       ${suivi ? suivi.premium : ""}
       ${srcHtml}`;
   el.innerHTML = `
-    <a href="${backTo[0]}" class="back">← ${backTo[1]}</a>
+    <div class="art-haut"><a href="${backTo[0]}" class="back">← ${backTo[1]}</a>${bascule}</div>
     <header class="art-head">
       <span class="flag ${a.tagClass || ""}">${a.tag}</span>
       <h1 class="display art-title">${a.title}</h1>
@@ -375,7 +446,15 @@ const ilYa = (iso) => {
   return `il y a ${Math.round(min / 1440)} j`;
 };
 const heureParis = (iso) => new Date(iso).toLocaleTimeString("fr-FR", { hour: "2-digit", timeZone: "Europe/Paris" }).replace(/\s*h?$/, " h");
-const lire = (f) => fetch("donnees/" + f, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+// Les mesures et les articles ne sont plus copiés dans le site à chaque passage de la sonde (sinon Vercel
+// redéploierait 150 fois par jour, au-delà de sa limite) : on les lit à jour sur GitHub, via /d/ (voir vercel.json).
+// Repli : la copie du site, si GitHub ne répond pas (ou en local).
+function frais(chemin) {
+  return fetch("/d/" + chemin + "?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" })
+    .then((r) => (r.ok ? r : Promise.reject(r)))
+    .catch(() => fetch(chemin, { cache: "no-store" }));
+}
+const lire = (f) => frais("donnees/" + f).then((r) => (r.ok ? r.json() : null)).catch(() => null);
 
 // Les pannes des 30 derniers jours : chaque alerte « orage » ouvre une panne, la « fin de l'orage » qui suit la ferme.
 // Les incidents mesurés avant le début du journal (meteo.json) complètent, sans doublon. Durées : entre deux passages.
@@ -774,10 +853,12 @@ function carteDepuisGrandTitre(h, lienTexte = "Et vous ? →") {
       <div class="pc-body"><span class="pc-tag">${h.querySelector(".flag").textContent}</span><h3>${h.querySelector("h1").innerHTML.replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "")}</h3><span class="pc-link">${lienTexte}</span><span class="pc-time">${temps} de lecture</span></div>
     </a>`;
 }
-fetch("publies.json", { cache: "no-store" })
+var PUB = null;   // les articles publiés, pour « L'essentiel du jour »
+frais("publies.json")
   .then((r) => (r.ok ? r.json() : null))
   .then((pub) => {
     if (!pub) return;
+    PUB = pub;
     const nettoyer = (x) => (Array.isArray(x) ? x.map(nettoyer) : typeof x === "string" ? propre(x) : x);
     [...(pub.une || []), ...(pub.tous_connectes || [])].forEach((a) => {
       if (!a || !a.id) return;
@@ -1143,7 +1224,7 @@ function plusLecture(id) {
   window.scrollTo(0, 0);
 }
 
-Promise.all([fetch("plus.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null), lire("semaine.json")])
+Promise.all([frais("plus.json").then((r) => (r.ok ? r.json() : null)).catch(() => null), lire("semaine.json")])
   .then(([plus, semaine]) => {
     PLUS = plus || { meteo_semaine: [], et_si: [] };
     SEMAINE = semaine;
@@ -1154,3 +1235,122 @@ Promise.all([fetch("plus.json", { cache: "no-store" }).then((r) => (r.ok ? r.jso
     document.getElementById("plus-prochains").innerHTML = plusProchains(PLUS.prochains_et_si);
     if (PLUS_ATTENTE) { plusLecture(PLUS_ATTENTE); PLUS_ATTENTE = null; }
   });
+
+
+/* ---------- Le réglage « Temps de lecture » (cloche) ---------- */
+(function reglageDuree() {
+  const choix = [...document.querySelectorAll('input[name="iris-duree"]')];
+  if (!choix.length) return;
+  const actuel = lireDuree();
+  choix.forEach((c) => {
+    c.checked = c.value === actuel;
+    c.addEventListener("change", () => {
+      try { localStorage.setItem(DUREE_CLE, c.value); } catch (e) { /* navigation privée */ }
+      Object.keys(MODES).forEach((k) => delete MODES[k]);   // le nouveau réglage vaut pour les prochains articles ouverts
+    });
+  });
+})();
+
+/* ---------- « L'essentiel du jour en 2 minutes » : les stories d'Iris ----------
+   Seulement ce qui est nouveau depuis la dernière fois (mémorisé sur l'appareil), à son rythme :
+   aucun défilement automatique. La météo dit « pas de mesure récente » quand la sonde n'a pas tourné. */
+const ESS_VU = "iris-essentiel-vu";
+const echapE = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const texteSeul = (h) => propre(h).replace(/<br\s*\/?>/g, " ").replace(/<\/?mark>/g, "").replace(/\s+/g, " ").replace(/ \./g, ".").trim();
+function diapositivesEssentiel() {
+  let vu = null;
+  try { vu = localStorage.getItem(ESS_VU); } catch (e) { /* */ }
+  const depuis = vu || new Date(Date.now() - 2 * 864e5).toISOString();
+  const nouveau = (x) => String(x.publie_le || (x.date ? x.date + "T23:59:59" : "")) > depuis;
+  const d = [];
+  const m = IRIS_METEO;
+  if (m && (m.fournisseurs || []).length && document.body.dataset.plan === "premium") {   // Ma Météo est réservée à Premium
+    const recente = Date.now() - new Date(m.genere_le) < 3 * 3600e3;
+    d.push({ type: "meteo", kicker: "La météo des IA", titre: recente ? (m.phrase || "La météo du jour") : "Pas de mesure récente",
+      lignes: m.fournisseurs.map((f) => [f.nom_court || f.nom, recente ? (METEO_MOT[f.etat] || "Pas de mesure.").replace(/\.$/, "") : "pas de mesure récente"]),
+      note: recente ? `Mesures de la sonde Iris, ${ilYa(m.genere_le)}.` : `Dernière mesure de la sonde ${ilYa(m.genere_le)}.`, lien: "#meteo", libelle: "Voir la météo" });
+  }
+  const pub = PUB || {};
+  const articles = [...(pub.une || []).map((a) => ({ ...a, rub: "À la une" })), ...(pub.tous_connectes || []).map((a) => ({ ...a, rub: "Tous connectés" }))]
+    .filter((a) => a.id && a.mini && a.mini.fait && nouveau(a))
+    .sort((x, y) => String(y.publie_le || y.date).localeCompare(String(x.publie_le || x.date))).slice(0, 4);
+  articles.forEach((a) => d.push({ type: "article", kicker: a.rub, img: a.img, titre: texteSeul(a.title),
+    texte: `${a.mini.fait} ${a.mini.consequence}`, reflexe: (a.reflexes || [])[0], lien: `#article-${a.id}`, libelle: "Lire en entier", id: a.id }));
+  const det = (pub.detour || []).filter(nouveau).sort((x, y) => String(y.publie_le || "").localeCompare(String(x.publie_le || "")))[0];
+  if (det) d.push({ type: "detour", kicker: `Le Détour · ${det.source}`, img: `assets/photos/${det.img}.jpg`, titre: det.title, texte: det.why, lien: det.url, externe: true, libelle: "Lire chez " + det.source });
+  const P = window.PLUS || {};
+  const abonne = document.body.dataset.plan !== "standard";
+  const ms = (P.meteo_semaine || [])[0];
+  if (ms && String(ms.id || ms.au || "") + "T23:59:59" > depuis) d.push({ type: "plus", kicker: "Iris Plus · La météo de la semaine", img: ms.image,
+    titre: ms.titre, texte: abonne ? ms.chapo : "Réservé aux abonnés Iris Plus.", lien: abonne ? "#plus-meteo" : "#plus", libelle: abonne ? "Lire la météo" : "Découvrir Iris Plus" });
+  const es = (P.et_si || [])[0];
+  if (es && String(es.publie_le || "") + "T23:59:59" > depuis) d.push({ type: "plus", kicker: "Iris Plus · Et si… ?", img: es.image,
+    titre: es.question, texte: abonne ? (es.en_bref || []).slice(0, 2).map((x) => (x && x.texte) || x).join(" ") : "Réservé aux abonnés Iris Plus.", lien: abonne ? `#plus-etsi-${es.id}` : "#plus", libelle: abonne ? "Lire l'analyse" : "Découvrir Iris Plus" });
+  if (d.every((x) => x.type === "meteo")) d.push({ type: "rien", titre: "Rien de neuf depuis votre dernière visite.", texte: "Iris publie quand il y a quelque chose à dire. Revenez demain matin." });
+  const rs = [...(pub.tous_connectes || [])].filter((a) => a.reflexe_semaine).sort((x, y) => String(y.date || "").localeCompare(String(x.date || "")))[0];
+  d.push({ type: "fin", titre: "Vous êtes à jour.", texte: rs ? `Le réflexe de la semaine : <b>${echapE(rs.reflexe_semaine.titre)}.</b> ${echapE(rs.reflexe_semaine.texte)}` : "L'essentiel d'Iris en 2 minutes, chaque jour." });
+  return d;
+}
+(function essentiel() {
+  const ecran = document.getElementById("essentiel");
+  if (!ecran) return;
+  const barres = document.getElementById("ess-barres");
+  const zone = document.getElementById("ess-slide");
+  const lire = document.getElementById("ess-lire");
+  const suivant = document.getElementById("ess-suivant");
+  const precedent = document.getElementById("ess-precedent");
+  let d = [], i = 0, dernierFocus = null, fini = false;
+  const peindre = () => {
+    const s = d[i];
+    barres.innerHTML = d.map((_, k) => `<span class="${k <= i ? "on" : ""}"></span>`).join("");
+    const img = s.img ? `<div class="ess-img" style="background-image:url('${echapE(s.img)}')" role="img" aria-label=""></div>` : "";
+    if (s.type === "meteo") zone.innerHTML = `<span class="ess-tag ess-tag-j">${s.kicker}</span><h2>${echapE(s.titre)}</h2>
+      <ul class="ess-meteo">${s.lignes.map(([n, e]) => `<li><b>${echapE(n)}</b><span>${echapE(e)}</span></li>`).join("")}</ul><p class="ess-petit">${s.note}</p>`;
+    else if (s.type === "fin" || s.type === "rien") zone.innerHTML = `<div class="ess-barre-j"></div><h2>${echapE(s.titre)}</h2><p>${s.texte}</p>`;
+    else zone.innerHTML = `${img}<span class="ess-tag">${echapE(s.kicker)}</span><h2>${echapE(s.titre)}</h2><p>${echapE(s.texte)}</p>
+      ${s.reflexe ? `<p class="ess-reflexe"><b>Le bon réflexe :</b> ${propre(s.reflexe)}</p>` : ""}`;
+    lire.hidden = !s.lien;
+    lire.textContent = s.libelle || "";
+    precedent.disabled = i === 0;
+    suivant.textContent = i === d.length - 1 ? "Terminer" : "Suivant";
+    if (s.type === "fin" && !fini) {
+      fini = true;
+      try { localStorage.setItem(ESS_VU, new Date().toISOString()); } catch (e) { /* */ }
+      compterEvenement("stories_fin", "article-essentiel");
+    }
+  };
+  const ouvrir = () => {
+    d = diapositivesEssentiel(); i = 0; fini = false;
+    dernierFocus = document.activeElement;
+    ecran.hidden = false;
+    document.body.classList.add("ess-ouvert");
+    peindre();
+    compterEvenement("stories_debut", "article-essentiel");
+    ecran.querySelector("[data-fermer-essentiel]").focus();
+  };
+  const fermer = () => {
+    ecran.hidden = true;
+    document.body.classList.remove("ess-ouvert");
+    if (dernierFocus) dernierFocus.focus();
+  };
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-ouvrir-essentiel]")) { e.preventDefault(); ouvrir(); }
+    else if (e.target.closest("[data-fermer-essentiel]")) fermer();
+  });
+  suivant.addEventListener("click", () => { if (i < d.length - 1) { i++; peindre(); } else fermer(); });
+  precedent.addEventListener("click", () => { if (i > 0) { i--; peindre(); } });
+  lire.addEventListener("click", () => {
+    const s = d[i];
+    if (!s || !s.lien) return;
+    if (s.externe) { window.open(s.lien, "_blank", "noopener"); return; }
+    if (s.id) MODES[s.id] = "long";
+    fermer();
+    location.hash = s.lien;
+  });
+  document.addEventListener("keydown", (e) => {
+    if (ecran.hidden) return;
+    if (e.key === "Escape") fermer();
+    else if (e.key === "ArrowRight") suivant.click();
+    else if (e.key === "ArrowLeft") precedent.click();
+  });
+})();

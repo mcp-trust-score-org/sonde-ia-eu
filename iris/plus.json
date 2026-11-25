@@ -273,9 +273,10 @@
    "surligne": "Internet tombe ?",
    "image": "assets/photos/ia.jpg",
    "temps_lecture": "5 min",
-   "chapo": "Après les coupures mesurées cette semaine sur un service d'IA français, on explore ce que changerait une IA qui tourne directement sur nos appareils.",
+   "chapo": "Après l'incident déclaré cette semaine sur un service d'IA français, on explore ce que changerait une IA qui tourne directement sur nos appareils.",
    "et_si": [
-    "Vendredi 20 et samedi 21 novembre, la sonde d'Iris a vu le service d'IA d'OVHcloud tomber à plusieurs reprises, parfois pendant plusieurs heures. Pendant ce temps, les applications qui s'en servaient attendaient une réponse qui ne venait pas.",
+    "Vendredi 20 novembre au matin, OVHcloud a déclaré un incident majeur sur son service d'IA : pendant plusieurs heures, notre sonde a mesuré des réponses très lentes. Pendant ce temps, les applications qui s'en servaient attendaient une réponse qui tardait à venir.",
+    "**Rectificatif du 25 novembre.** Une première version évoquait des coupures répétées les 20 et 21 novembre. Il s'agissait d'une limite de débit de l'accès gratuit utilisé par notre sonde, pas de pannes d'OVHcloud.",
     "L'IA que nous utilisons vit presque toujours dans un centre de données, loin de nous. Et si elle tournait directement dans notre poche ?"
    ],
    "existe_deja": [
@@ -336,7 +337,7 @@
    "en_bref": [
     {
      "label": "Le fait",
-     "texte": "Plusieurs coupures d'un service d'IA (OVHcloud) les 20 et 21 novembre."
+     "texte": "Un incident majeur déclaré par OVHcloud sur son service d'IA, le 20 novembre."
     },
     {
      "label": "Ce qui existe",
@@ -350,7 +351,8 @@
      "label": "L'enjeu",
      "texte": "Savoir ce qui reste utilisable quand le réseau tombe."
     }
-   ]
+   ],
+   "rectifie_le": "2026-11-25"
   }
  ],
  "prochains_et_si": [

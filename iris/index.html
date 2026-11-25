@@ -73,6 +73,15 @@
           </label>
         </div>
         <div class="pa-bloc">
+          <b>Temps de lecture</b>
+          <div class="pa-duree" role="radiogroup" aria-label="Temps de lecture des articles">
+            <label><input type="radio" name="iris-duree" value="choisir" /> <span>Me laisser choisir</span></label>
+            <label><input type="radio" name="iris-duree" value="2" /> <span>Toujours l'essentiel (2 min)</span></label>
+            <label><input type="radio" name="iris-duree" value="10" /> <span>Toujours l'article en entier</span></label>
+          </div>
+          <p class="pa-etat">Gardé sur cet appareil : Iris ne sait rien de vous.</p>
+        </div>
+        <div class="pa-bloc">
           <b>Par e-mail</b>
           <!-- FORMULAIRE BREVO : coller ici le code d'intégration du formulaire d'inscription Brevo,
                à la place du paragraphe ci-dessous. -->
@@ -93,7 +102,7 @@
 
 <!-- ================= 01 — À LA UNE ================= -->
 <section class="view" id="view-une" data-view="une">
-  <div class="caption une-caption"><span class="cap-label">À la une</span><p>Les événements inattendus qui révèlent notre dépendance à la technologie.</p>
+  <div class="caption une-caption"><span class="cap-label">À la une</span><p>Les événements inattendus qui révèlent notre dépendance à la technologie.</p><button type="button" class="btn-essentiel" data-ouvrir-essentiel><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>L'essentiel en 2 min</button>
   </div>
   <div class="with-aside">
     <div class="main-col">
@@ -131,7 +140,7 @@
 
 <!-- ================= DANS NOS VIES (grand public) ================= -->
 <section class="view" id="view-vies" data-view="vies">
-  <div class="caption"><span class="cap-label cap-cream">Tous connectés</span><p>Les événements inattendus qui révèlent notre dépendance à la technologie. L'édition grand public.</p></div>
+  <div class="caption"><span class="cap-label cap-cream">Tous connectés</span><p>Les événements inattendus qui révèlent notre dépendance à la technologie. L'édition grand public.</p><button type="button" class="btn-essentiel" data-ouvrir-essentiel><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>L'essentiel en 2 min</button></div>
   <div class="with-aside">
     <div class="main-col">
 
@@ -354,6 +363,23 @@
 </section>
 
 </main>
+
+<!-- « L'essentiel du jour en 2 minutes » : les stories d'Iris (main.js, fonction essentiel) -->
+<div class="essentiel-ecran" id="essentiel" role="dialog" aria-modal="true" aria-labelledby="ess-titre" hidden>
+  <div class="ess-cadre">
+    <div class="ess-barres" id="ess-barres"></div>
+    <div class="ess-haut">
+      <p id="ess-titre">L'essentiel du jour · 2 min</p>
+      <button type="button" class="ess-fermer" data-fermer-essentiel aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="ess-slide" id="ess-slide" aria-live="polite"></div>
+    <div class="ess-bas">
+      <button type="button" class="ess-prec" id="ess-precedent" aria-label="Précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button type="button" class="ess-lire" id="ess-lire"></button>
+      <button type="button" class="ess-suiv" id="ess-suivant">Suivant</button>
+    </div>
+  </div>
+</div>
 
 <footer class="foot">
   <span class="brand brand-lg" aria-label="IRIS"><span class="brand-word">IRIS</span><span class="brand-dot" aria-hidden="true"></span></span>

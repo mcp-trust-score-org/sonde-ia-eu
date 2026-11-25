@@ -1,4 +1,7 @@
 {
+  "git": {
+    "deploymentEnabled": false
+  },
   "cleanUrls": true,
   "headers": [
     {
@@ -7,6 +10,19 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/d/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=60"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
         }
       ]
     }
@@ -27,6 +43,20 @@
     {
       "path": "/api/rappels?moment=soir",
       "schedule": "0 17 * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/d/donnees/:fichier",
+      "destination": "https://raw.githubusercontent.com/mcp-trust-score-org/sonde-ia-eu/main/iris/donnees/:fichier"
+    },
+    {
+      "source": "/d/publies.json",
+      "destination": "https://raw.githubusercontent.com/mcp-trust-score-org/sonde-ia-eu/main/iris/publies.json"
+    },
+    {
+      "source": "/d/plus.json",
+      "destination": "https://raw.githubusercontent.com/mcp-trust-score-org/sonde-ia-eu/main/iris/plus.json"
     }
   ]
 }
