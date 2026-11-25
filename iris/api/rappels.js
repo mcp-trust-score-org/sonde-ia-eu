@@ -42,6 +42,12 @@ function message(moment, jour, propositions, plus) {
   if (moment === "midi") {
     if (enAttente.length) morceaux.push(`${enAttente.length} brouillon${enAttente.length > 1 ? "s" : ""} à relire : ${[...new Set(enAttente.map((p) => NOMS[p.rubrique]))].join(", ")}.`);
     if (sansBrouillon.length) morceaux.push(`Pas de brouillon pour ${sansBrouillon.map((r) => NOMS[r]).join(", ")}.`);
+    // Les sujets qui font réfléchir (CHARTE, « Et si… ? ») : une piste à garder ou non, jamais publiée telle quelle.
+    const pistes = (propositions && propositions.pistes_reflexion) || [];
+    if (pistes.length) {
+      const p = pistes[0];
+      morceaux.push(`Sujet qui fait réfléchir : « ${String(p.titre || "").slice(0, 90)} »${p.media ? ` (${p.media})` : ""}${pistes.length > 1 ? ` et ${pistes.length - 1} autre${pistes.length > 2 ? "s" : ""}` : ""}. À garder dans le panier ?`);
+    }
   }
   if (moment === "soir") {
     const pasPublies = attendus.filter((r) => r !== "et_si" && !publies.has(r));
