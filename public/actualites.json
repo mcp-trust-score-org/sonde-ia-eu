@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-25T04:49:14+00:00",
+ "genere_le": "2026-11-25T09:55:21+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -26,6 +26,26 @@
  },
  "evenements": [
   {
+   "id": "cloudflare-xufkpdtfdglk",
+   "titre": "Cloudflare : Firewall Configuration Delay",
+   "type": "incident_amont",
+   "debut": "2026-11-25T07:24+00:00",
+   "fin": "2026-11-25T09:11+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/xufkpdtfdglk",
+     "titre": "Firewall Configuration Delay"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
+  {
    "id": "cloudflare-lqojvojhdcjv",
    "titre": "Cloudflare : Elevated number of 5xx errors in Frankfurt",
    "type": "incident_amont",
@@ -50,7 +70,7 @@
    "titre": "Cloudflare : Magic Transit Degraded Performance",
    "type": "incident_amont",
    "debut": "2026-11-24T11:29+00:00",
-   "fin": null,
+   "fin": "2026-11-25T08:16+00:00",
    "gravite": "major",
    "sources": [
     {
@@ -227,12 +247,6 @@
    "debut": "2026-11-18T10:56+00:00",
    "raison": "localisé hors de nos zones",
    "url": "https://www.cloudflarestatus.com/incidents/76lqmua6x3tk"
-  },
-  {
-   "titre": "Cloudflare : Network disruption across multiple colocations in India",
-   "debut": "2026-11-18T08:04+00:00",
-   "raison": "localisé hors de nos zones",
-   "url": "https://www.cloudflarestatus.com/incidents/njt9j3k2zdfw"
   }
  ],
  "tri_presse": {

@@ -1,11 +1,12 @@
 # Croisement événements ↔ mesures — à relire
 
-Généré le 2026-11-25T04:49:42Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-25T01:58:00Z
+Généré le 2026-11-25T09:57:34Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-25T01:58:00Z
 
 Le tag n'est jamais publié : il sert à décider. Rien n'est publié sans validation.
 
 | Tag | Fournisseur | Événement | Début (UTC) | Critères | Texte proposé |
 |---|---|---|---|---|---|
+| **Aucune anomalie** | Mistral | Cloudflare : Magic Transit Degraded Performance | 2026-11-24T11:29:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Mistral | Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses | 2026-11-23T13:52:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Mistral | Cloudflare : Increased HTTP 5xx Errors in Brussels | 2026-11-23T02:34:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Scaleway | [GENERATIVE API] - [GLOBAL] - Increased error rate for model DeepSeek v4.1 Flash 1017 | 2026-11-17T14:43:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ✓ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
@@ -15,6 +16,11 @@ Le tag n'est jamais publié : il sert à décider. Rien n'est publié sans valid
 _4 événement(s) tombent hors de la période mesurée par la sonde : non croisés._
 
 ## Détail
+
+### Cloudflare : Magic Transit Degraded Performance — Mistral
+- Tag : **Aucune anomalie**
+- Mesures dans la fenêtre : 4
+- ⚠️ Mesures depuis un seul point : une panne locale de la sonde ressemblerait à une panne du fournisseur.
 
 ### Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses — Mistral
 - Tag : **Aucune anomalie**

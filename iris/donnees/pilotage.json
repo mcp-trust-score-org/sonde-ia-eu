@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-25T04:50:00+00:00",
+ "genere_le": "2026-11-25T09:57:39+00:00",
  "suivi_depuis": "2026-11-23",
  "redaction": [
   {
@@ -302,7 +302,7 @@
      "nom": "Tous connectés",
      "quoi": "Sujet du jour",
      "optionnel": false,
-     "etat": "à vérifier",
+     "etat": "publié",
      "brouillons": 1
     }
    ]
@@ -436,13 +436,13 @@
  ],
  "sonde": {
   "veille": {
-   "derniere": "2026-11-25T01:58+00:00",
-   "etat": "en retard",
+   "derniere": "2026-11-25T09:57+00:00",
+   "etat": "ok",
    "prevue": "toutes les 10 minutes"
   },
   "mesure": {
-   "derniere": "2026-11-25T00:41+00:00",
-   "etat": "en retard",
+   "derniere": "2026-11-25T09:50+00:00",
+   "etat": "ok",
    "prevue": "toutes les heures"
   },
   "jours": [
@@ -490,9 +490,9 @@
    },
    {
     "date": "2026-11-25",
-    "veille": 2,
+    "veille": 3,
     "veille_prevue": 144,
-    "mesures": 1,
+    "mesures": 2,
     "mesures_prevues": 24
    }
   ],
@@ -553,15 +553,15 @@
    },
    {
     "de": "2026-11-25T01:58+00:00",
-    "a": "2026-11-25T04:50+00:00",
-    "heures": 2.9,
-    "en_cours": true
+    "a": "2026-11-25T09:57+00:00",
+    "heures": 8.0,
+    "en_cours": false
    }
   ]
  },
  "site": {
-  "donnees_meteo": "2026-11-25T04:49:13+00:00",
-  "articles_mis_a_jour": "2026-11-24T07:24:02+00:00",
+  "donnees_meteo": "2026-11-25T09:57:36+00:00",
+  "articles_mis_a_jour": "2026-11-25T07:19:06+00:00",
   "derniers": {
    "une": {
     "nom": "À la une",
@@ -571,9 +571,9 @@
    },
    "tous_connectes": {
     "nom": "Tous connectés",
-    "titre": "Le CHU de Guadeloupe paralysé par une cyberattaque.<br/>Des soins programmés <mark>reportés jusqu'au 27 novembre</mark>.",
-    "publie_le": "2026-11-23T08:28:05+00:00",
-    "nombre": 3
+    "titre": "On demande tout à l'IA.<br/><mark>Un sur cinq</mark> vérifie ses réponses à chaque fois.",
+    "publie_le": "2026-11-25T07:19:06+00:00",
+    "nombre": 4
    },
    "detour": {
     "nom": "Le Détour",
