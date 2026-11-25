@@ -143,6 +143,7 @@ ARTICLE_TC = {
     "reflexes": ["Activez la double authentification.", "Listez vos jeux sur disque.", "Téléchargez la nuit."],
     "reflexe_de_la_semaine": {"titre": "Activez la double authentification.", "texte": "C'est votre bibliothèque."},
     "sources": [{"label": "Exemple : serveurs saturés", "url": "https://exemple.fr/gta"}],
+    "une_mini": {"fait": "GTA VI sort aujourd'hui.", "consequence": "Les joueurs attendent.", "dependance": "Le jeu dépend d'un compte."},
 }
 
 
@@ -454,3 +455,12 @@ def test_detour_le_panier_passe_en_premier(tmp_path):
     import json
     deja = json.loads((racine / "redaction" / "deja-proposes.json").read_text(encoding="utf-8"))
     assert "https://www.lemondedudroit.fr/decryptages/tribune-ia.html" in deja["detour"]   # proposé une fois seulement
+
+
+
+def test_essentiel_en_deux_minutes():
+    from sonde.redaction import controler_essentiel
+    assert controler_essentiel({"fait": "OVHcloud signale un incident.", "consequence": "Les réponses ralentissent."}) == []
+    alertes = " ".join(controler_essentiel({"fait": "Il signale un incident.", "consequence": "x" * 150}))
+    assert "commence par « Il »" in alertes and "150 caractères" in alertes
+    assert controler_essentiel({"fait": "Seul."})[0].startswith("L'essentiel en 2 min : « le fait » et « la conséquence »")
