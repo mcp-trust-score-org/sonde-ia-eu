@@ -161,6 +161,20 @@ def _commandes_direct(args, donnees: Path, preuves: Path) -> int:
     return 1
 
 
+def notification_article(res: dict) -> dict:
+    """La notification d'un article : « Tous connectés · <1re phrase du titre> » puis la suite, et « 2 min ».
+    Le texte tient dans une notification (environ 110 caractères) ; « deux_modes » ajoute les boutons
+    « 2 min » / « En entier » là où le téléphone les affiche (Android, ordinateur)."""
+    rubrique = "À la une" if res["rubrique"] == "une" else "Tous connectés"
+    titre = re.sub(r"\s+", " ", res["titre"]).replace(" .", ".").strip()
+    m = re.match(r"^(.+?[.!?…])\s+(.+)$", titre)
+    tete, suite = (m.group(1), m.group(2)) if m else (titre, "")
+    texte = (suite + " " if suite else "") + "L'essentiel en 2 min."
+    if len(texte) > 120:
+        texte = texte[:110].rsplit(" ", 1)[0] + "… L'essentiel en 2 min."
+    return {"titre": f"{rubrique} · {tete}", "texte": texte, "url": res["url"], "deux_modes": True}
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="sonde", description="Mesure des API d'IA européennes")
     sous = p.add_subparsers(dest="commande", required=True)
@@ -281,9 +295,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"  Article daté du {res['date']} : ajouté aux archives, sans notification.")
         elif res["rubrique"] != "detour":   # pour la notification envoyée par GitHub (publier.yml)
             (RACINE / "notification.json").write_text(json.dumps(
-                {"titre": "Iris · " + ("À la une" if res["rubrique"] == "une" else "Tous connectés"),
-                 "texte": re.sub(r"\s+", " ", res["titre"]).replace(" .", ".").strip(), "url": res["url"]},
-                ensure_ascii=False), encoding="utf-8")
+                notification_article(res), ensure_ascii=False), encoding="utf-8")
         elif res.get("nouveaux"):           # Le Détour : seulement s'il y a de vraies nouveautés
             n = res["nouveaux"]
             (RACINE / "notification.json").write_text(json.dumps(

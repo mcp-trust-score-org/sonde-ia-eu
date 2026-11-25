@@ -227,6 +227,26 @@ def _sans_anomalie_mesuree(fiche: dict | None) -> bool:
     return isinstance(m, str) or not any(x.get("anomalies") for x in m)
 
 
+PRONOM_SEUL = re.compile(r"^(il|elle|ils|elles|cela|ça|ce|cette|ces|celui|celle|ceux|lui|leur|eux)\b", re.I)
+
+
+def controler_essentiel(mini: dict) -> list[str]:
+    """Le résumé en trois lignes (« L'essentiel en 2 min », notifications) doit se lire seul et rester court."""
+    alertes = []
+    noms = {"fait": "Le fait", "consequence": "La conséquence", "dependance": "La dépendance"}
+    if not (mini.get("fait") and mini.get("consequence")):
+        return ["L'essentiel en 2 min : « le fait » et « la conséquence » sont obligatoires (une_mini)."]
+    for cle, nom in noms.items():
+        t = re.sub(r"<[^>]+>", "", mini.get(cle) or "").strip()
+        if not t:
+            continue
+        if len(t) > 140:
+            alertes.append(f"L'essentiel en 2 min : « {nom} » fait {len(t)} caractères, 140 au plus (une phrase).")
+        if PRONOM_SEUL.match(t):
+            alertes.append(f"L'essentiel en 2 min : « {nom} » commence par « {t.split()[0]} » : nommez qui ou quoi, la ligne doit se lire seule.")
+    return alertes
+
+
 def controler(article: dict, rubrique: str, fiche: dict | None = None, contexte: dict | None = None) -> list[str]:
     """Écarts à la charte (section 5). Signalés en relecture, jamais corrigés en silence.
     contexte : {"date": jour de rédaction, "en_ligne": ce qui est déjà sur le site dans la rubrique}."""
@@ -268,6 +288,7 @@ def controler(article: dict, rubrique: str, fiche: dict | None = None, contexte:
         alertes.append(f"Trop de chiffres dans le texte ({len(chiffres)}) : en garder 3 au plus, le détail va dans l'encadré Premium.")
     if not [s for s in article.get("sources") or [] if s.get("url")]:
         alertes.append("Aucune source avec un lien.")
+    alertes += controler_essentiel(article.get("une_mini") or {})
     if rubrique == "tous_connectes":
         if len(article.get("reflexes") or []) != 3:
             alertes.append("Tous connectés : il faut exactement 3 bons réflexes.")
@@ -492,7 +513,7 @@ FORMAT_ARTICLE = """Réponds avec ce JSON :
  "fait": ["paragraphe court", "phrase de recul"],
  "consequence": ["paragraphe court", "phrase de recul"],
  "lien": ["paragraphe", "question finale au lecteur, terminée par ?"],
- "une_mini": {"fait": "une ligne", "consequence": "une ligne", "dependance": "une ligne"},
+ "une_mini": {"fait": "une phrase qui se lit seule, 140 caractères au plus, qui nomme qui ou quoi (jamais « il » ou « cela » en tête)", "consequence": "idem", "dependance": "idem"},
  "sources": [{"label": "Média ou organisme : de quoi il s'agit", "url": "…"}],
  "a_verifier": ["ce que la rédaction doit vérifier avant publication"]%s
 }"""
