@@ -1,0 +1,466 @@
+{
+ "date": "2026-11-25",
+ "genere_le": "2026-11-25T04:49:55+00:00",
+ "statut": "a_relire",
+ "propositions": [
+  {
+   "rubrique": "tous_connectes",
+   "auteur": "openai/gpt-oss-120b",
+   "article": {},
+   "fiche": {
+    "tendances_wikipedia": [
+     {
+      "sujet": "David Lisnard",
+      "langue": "fr",
+      "rang_wikipedia": 1,
+      "page": "https://fr.wikipedia.org/wiki/David_Lisnard",
+      "titres_de_presse": [
+       {
+        "titre": "Présidentielle 2027 : Edouard Philippe souhaite un débat télévisé avec David Lisnard, qu’il soupçonne de ne pas être « étanche » vis-à-vis de l’extrême droite",
+        "media": "Le Monde",
+        "url": "https://www.lemonde.fr/election-presidentielle-2027/article/2026/11/24/edouard-philippe-a-vote-pour-david-lisnard-a-la-presidence-de-l-amf-mais-fustige-sa-posture-dans-la-course-a-l-elysee_6814832_6205049.html"
+       },
+       {
+        "titre": "David Lisnard, le candidat ultralibéral qui chamboule la campagne à droite",
+        "media": "France 24",
+        "url": "https://www.france24.com/fr/france/20261124-france-presidentielle-2027-david-lisnard-candidat-ultraliberal-chamboule-campagne-droite"
+       }
+      ]
+     },
+     {
+      "sujet": "Liste de sondages sur l'élection présidentielle française de 2027",
+      "langue": "fr",
+      "rang_wikipedia": 2,
+      "page": "https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Dominique de Villepin",
+      "langue": "fr",
+      "rang_wikipedia": 3,
+      "page": "https://fr.wikipedia.org/wiki/Dominique_de_Villepin",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "La Comtesse de Monte-Cristo",
+      "langue": "fr",
+      "rang_wikipedia": 4,
+      "page": "https://fr.wikipedia.org/wiki/La_Comtesse_de_Monte-Cristo",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Affaire Michel Zecler",
+      "langue": "fr",
+      "rang_wikipedia": 6,
+      "page": "https://fr.wikipedia.org/wiki/Affaire_Michel_Zecler",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Hunger Games (série de films)",
+      "langue": "fr",
+      "rang_wikipedia": 7,
+      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%28s%C3%A9rie_de_films%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Dylan Larkin",
+      "langue": "fr",
+      "rang_wikipedia": 8,
+      "page": "https://fr.wikipedia.org/wiki/Dylan_Larkin",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "General Sherman (arbre)",
+      "langue": "fr",
+      "rang_wikipedia": 9,
+      "page": "https://fr.wikipedia.org/wiki/General_Sherman_%28arbre%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Quantum of Solace",
+      "langue": "fr",
+      "rang_wikipedia": 11,
+      "page": "https://fr.wikipedia.org/wiki/Quantum_of_Solace",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Je suis toujours là",
+      "langue": "fr",
+      "rang_wikipedia": 12,
+      "page": "https://fr.wikipedia.org/wiki/Je_suis_toujours_l%C3%A0",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Jensen Huang",
+      "langue": "fr",
+      "rang_wikipedia": 14,
+      "page": "https://fr.wikipedia.org/wiki/Jensen_Huang",
+      "titres_de_presse": [
+       {
+        "titre": "Donald Trump s'est-il enrichi avec le retour de Jensen Huang à la tête de Nvidia ?",
+        "media": "franceinfo Internet",
+        "url": "https://www.franceinfo.fr/monde/usa/presidentielle/donald-trump/donald-trump-s-est-il-enrichi-avec-le-retour-de-jensen-huang-a-la-tete-de-nvidia_8298372.html"
+       },
+       {
+        "titre": "Donald Trump s'est-il enrichi avec le retour surprise de Jensen Huang à la tête de Nvidia ?",
+        "media": "franceinfo Internet",
+        "url": "https://www.franceinfo.fr/internet/nvidia/donald-trump-s-est-il-enrichi-avec-le-retour-surprise-de-jensen-huang-a-la-tete-de-nvidia_8298000.html"
+       },
+       {
+        "titre": "Le retour fracassant de Jensen Huang à la tête de Nvidia entraîne un rebond spectaculaire de l'action",
+        "media": "franceinfo Internet",
+        "url": "https://www.franceinfo.fr/monde/usa/le-retour-fracassant-de-jensen-huang-a-la-tete-de-nvidia-entraine-un-rebond-spectaculaire-de-l-action_8297784.html"
+       },
+       {
+        "titre": "Nvidia : Jensen Huang redevient PDG, Donald Trump aux commandes de l'opération ?",
+        "media": "franceinfo Internet",
+        "url": "https://www.franceinfo.fr/monde/usa/presidentielle/donald-trump/nvidia-jensen-huang-redevient-pdg-donald-trump-aux-commandes-de-l-operation_8296710.html"
+       }
+      ]
+     },
+     {
+      "sujet": "Hunger Games : Lever de soleil sur la moisson (film)",
+      "langue": "fr",
+      "rang_wikipedia": 15,
+      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_Lever_de_soleil_sur_la_moisson_%28film%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Sarah Knafo",
+      "langue": "fr",
+      "rang_wikipedia": 16,
+      "page": "https://fr.wikipedia.org/wiki/Sarah_Knafo",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Hunger Games : La Ballade du serpent et de l'oiseau chanteur (film)",
+      "langue": "fr",
+      "rang_wikipedia": 17,
+      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%3A_La_Ballade_du_serpent_et_de_l%27oiseau_chanteur_%28film%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Michel Dumas (cuisinier)",
+      "langue": "fr",
+      "rang_wikipedia": 18,
+      "page": "https://fr.wikipedia.org/wiki/Michel_Dumas_%28cuisinier%29",
+      "titres_de_presse": [
+       {
+        "titre": "Le chef Michel Dumas, connu pour ses vidéos de cuisine sur les réseaux sociaux, est mort à l'âge de 72 ans, annonce son fils",
+        "media": "franceinfo Internet",
+        "url": "https://www.franceinfo.fr/culture/cuisine/le-chef-michel-dumas-connu-pour-ses-videos-de-cuisine-sur-les-reseaux-sociaux-est-mort-a-l-age-de-72-ans-annonce-son-fils_8297175.html"
+       }
+      ]
+     },
+     {
+      "sujet": "Élisabeth de Wittelsbach",
+      "langue": "fr",
+      "rang_wikipedia": 19,
+      "page": "https://fr.wikipedia.org/wiki/%C3%89lisabeth_de_Wittelsbach",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Fabien Lecœuvre",
+      "langue": "fr",
+      "rang_wikipedia": 20,
+      "page": "https://fr.wikipedia.org/wiki/Fabien_Lec%C5%93uvre",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Rebecca (film, 1940)",
+      "langue": "fr",
+      "rang_wikipedia": 21,
+      "page": "https://fr.wikipedia.org/wiki/Rebecca_%28film%2C_1940%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Audrey Fleurot",
+      "langue": "fr",
+      "rang_wikipedia": 22,
+      "page": "https://fr.wikipedia.org/wiki/Audrey_Fleurot",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Liste des films de James Bond",
+      "langue": "fr",
+      "rang_wikipedia": 23,
+      "page": "https://fr.wikipedia.org/wiki/Liste_des_films_de_James_Bond",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Rubens Paiva",
+      "langue": "fr",
+      "rang_wikipedia": 24,
+      "page": "https://fr.wikipedia.org/wiki/Rubens_Paiva",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Dictature militaire au Brésil (1964-1985)",
+      "langue": "fr",
+      "rang_wikipedia": 25,
+      "page": "https://fr.wikipedia.org/wiki/Dictature_militaire_au_Br%C3%A9sil_%281964-1985%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Michael Jackson",
+      "langue": "fr",
+      "rang_wikipedia": 26,
+      "page": "https://fr.wikipedia.org/wiki/Michael_Jackson",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Olga Kurylenko",
+      "langue": "fr",
+      "rang_wikipedia": 27,
+      "page": "https://fr.wikipedia.org/wiki/Olga_Kurylenko",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Seb Mellia",
+      "langue": "fr",
+      "rang_wikipedia": 28,
+      "page": "https://fr.wikipedia.org/wiki/Seb_Mellia",
+      "titres_de_presse": []
+     }
+    ],
+    "presse_grand_public": [
+     {
+      "titre": "\"Les ménages ont été amenés à puiser dans leur épargne\" : on vous explique pourquoi le livret A est laissé pour compte",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/votre-argent/livret-a/les-menages-ont-ete-amenes-a-puiser-dans-leur-epargne-on-vous-explique-pourquoi-le-livret-a-est-laisse-pour-compte_8297343.html"
+     },
+     {
+      "titre": "\"Mayotte appelle au secours, encore et encore !\" : la députée Estelle Youssouffa interpelle le ministre de l'Intérieur à l'Assemblée nationale",
+      "media": "franceinfo",
+      "url": "https://la1ere.franceinfo.fr/mayotte/mayotte-appelle-au-secours-encore-et-encore-estelle-youssouffa-interpelle-le-ministre-de-l-interieur-a-l-assemblee-nationale-1761155.html"
+     },
+     {
+      "titre": "Une enquête ouverte pour tentative de meurtre sur un adolescent à Paris lors de la manifestation du 17 octobre",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/mobilisation-du-17-octobre/une-enquete-ouverte-pour-tentative-de-meurtre-sur-un-adolescent-a-paris-lors-de-la-manifestation-du-17-octobre_8298381.html"
+     },
+     {
+      "titre": "L'usine Stellantis de Sochaux arrête l'activité de son équipe de nuit à partir de janvier 2027, 500 emplois sont concernés",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/automobile/l-usine-stellantis-de-sochaux-arrete-l-activite-de-son-equipe-de-nuit-a-partir-de-janvier-2027-500-emplois-sont-concernes_8298177.html"
+     },
+     {
+      "titre": "Sébastien Lecornu recevra les présidents des groupes parlementaires début décembre pour prolonger les discussions sur le budget 2027",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/budget/sebastien-lecornu-recevra-les-presidents-des-groupes-parlementaires-la-semaine-prochaine-pour-prolonger-les-discussions-sur-le-budget-2027_8298285.html"
+     },
+     {
+      "titre": "Plombé par une entame ratée, Lens s'incline à Leipzig et enchaîne une quatrième défaite en Ligue des champions",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/ligue-des-champions/plombe-par-une-entame-ratee-lens-s-incline-a-leipzig-et-enchaine-une-quatrieme-defaite-en-ligue-des-champions_8298393.html"
+     },
+     {
+      "titre": "Cinq morts dans le crash d'un hélicoptère militaire en Turquie",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/turquie/cinq-morts-dans-le-crash-d-un-helicoptere-militaire-en-turquie_8298399.html"
+     },
+     {
+      "titre": "\"C'est un peu comme le syndrome du bébé secoué chez l'adulte\" : les manèges à sensations, un danger pour le cerveau ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/sport-et-loisirs/c-est-un-peu-comme-le-syndrome-du-bebe-secoue-chez-l-adulte-les-maneges-a-sensations-un-danger-pour-le-cerveau_8298414.html"
+     },
+     {
+      "titre": "Le constructeur chinois BYD annonce être entré en négociations exclusives pour l'acquisition de l'usine Ineos Automotive d'Hambach en Moselle",
+      "media": "franceinfo",
+      "url": "https://france3-regions.franceinfo.fr/grand-est/moselle/metz/le-constructeur-chinois-byd-annonce-etre-entre-en-negociations-exclusives-pour-l-acquisition-de-l-usine-ineos-automotive-d-hambach-en-moselle-3455360.html"
+     },
+     {
+      "titre": "La marine française saisit plus de 3,3 tonnes de méthamphétamine dans l'océan Pacifique",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/drogue/la-marine-francaise-saisit-plus-de-3-3-tonnes-de-methamphetamine-dans-l-ocean-pacifique_8298438.html"
+     },
+     {
+      "titre": "Plus de 300 gendarmes blessés depuis le début de la crise sociale, selon la gendarmerie nationale",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/armee-securite-defense/plus-de-300-gendarmes-blesses-depuis-le-debut-de-la-crise-sociale-selon-la-gendarmerie-nationale_8297913.html"
+     },
+     {
+      "titre": "Victoire du Sénégal à la CAN : la Confédération africaine de football déclare \"respecter la décision\" du Tribunal arbitral du sport",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/can/direct-senegal-vainqueur-de-la-can-le-tribunal-arbitral-du-sport-a-rendu-justice-au-sport-estime-le-president-de-la-federation-senegalaise_8298138.html"
+     },
+     {
+      "titre": "Le ministre de la Défense israélien affirme que l'Iran développe \"des armes chimiques\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/conflit-israel-iran/le-ministre-de-la-defense-israelien-affirme-que-l-iran-developpe-des-armes-chimiques_8298327.html"
+     },
+     {
+      "titre": "En Guadeloupe, une femme tuée par son mari, qui s'est ensuite suicidé",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/france/guadeloupe/en-guadeloupe-une-femme-tuee-par-son-mari-qui-s-est-ensuite-suicide_8298480.html"
+     },
+     {
+      "titre": "La Révolution haïtienne va intégrer les programmes des collèges en France, salue la Fondation pour la mémoire de l’esclavage",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/education/la-revolution-haitienne-va-integrer-les-programmes-des-colleges-en-france-salue-la-fondation-pour-la-memoire-de-l-esclavage_8298450.html"
+     },
+     {
+      "titre": "Les visiteurs de l'Assemblée nationale peuvent-ils tourner une vidéo à connotation politique dans l'hémicycle ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-les-visiteurs-de-l-assemblee-nationale-peuvent-ils-tourner-une-video-a-connotation-politique-dans-l-hemicycle_8297472.html"
+     },
+     {
+      "titre": "Projet français, dépendance chinoise, exemple américain… Quatre questions sur les \"stocks stratégiques de terres rares et métaux\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/projet-francais-dependance-chinoise-exemple-americain-quatre-questions-sur-les-stocks-strategiques-de-terres-rares-et-metaux_8297829.html"
+     },
+     {
+      "titre": "La Libye nie toute \"entente\" avec Kiev après les attaques ukrainiennes contre des navires russes",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/afrique/libye/la-libye-nie-toute-entente-avec-kiev-apres-les-attaques-ukrainiennes-contre-des-navires-russes_8298132.html"
+     },
+     {
+      "titre": "La baisse de l'encours du livret A en 2026 est \"un signal réel\" de la baisse du pouvoir d'achat des Français",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/votre-argent/livret-a/la-baisse-de-l-encours-du-livret-a-en-2026-est-un-signal-reel-de-la-baisse-du-pouvoir-d-achat-des-francais-explique-un-economiste_8297811.html"
+     },
+     {
+      "titre": "Depuis janvier, les Français ont retiré de leur livret A près de 10 milliards d'euros de plus qu'ils n'en ont déposé",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/votre-argent/livret-a/depuis-janvier-les-francais-ont-retire-pres-de-10-milliards-d-euros-de-leurs-livrets-a-qui-connait-sa-pire-annee-depuis-2008_8297058.html"
+     },
+     {
+      "titre": "Ateliers de cuisine, vidéos sur Internet… Les chefs partagent leurs astuces pour des plats réussis",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cuisine-et-gastronomie/ateliers-de-cuisine-videos-sur-internet-les-chefs-partagent-leurs-astuces-pour-des-plats-reussis_8298444.html"
+     },
+     {
+      "titre": "\"C'est la madeleine de Proust du cuisinier\" : la folie du pâté en croûte",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cuisine-et-gastronomie/c-est-la-madeleine-de-proust-du-cuisinier-la-folie-du-pate-en-croute_8298387.html"
+     },
+     {
+      "titre": "Bûche, menu traditionnel ou option végétarienne… Les boulangers et les traiteurs sont prêts pour Noël",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/noel-fetes-de-fin-annees/buche-menu-traditionnel-ou-option-vegetarienne-les-boulangers-et-les-traiteurs-sont-prets-pour-noel_8298426.html"
+     },
+     {
+      "titre": "Fiodor Dostoïevski ressuscité par une chaîne de TV russe",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/monde/russie/fiodor-dostoievski-ressuscite-par-une-chaine-de-tv-russe_8298219.html"
+     },
+     {
+      "titre": "\"Billie, à la croisée des mondes\", le film Disney de Noël présenté par ses voix françaises",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/films-animation/billie-a-la-croisee-des-mondes-le-film-disney-de-noel-presente-par-ses-voix-francaises_8297814.html"
+     },
+     {
+      "titre": "Avec le musée Kanal-Centre Pompidou, Bruxelles veut se placer sur la carte mondiale de l'art contemporain",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/arts-expos/art-contemporain/avec-le-musee-kanal-centre-pompidou-bruxelles-veut-se-placer-sur-la-carte-mondiale-de-l-art-contemporain_8297940.html"
+     },
+     {
+      "titre": "Une chanteuse iranienne subit 74 coups de fouet pour avoir chanté sans voile",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/monde/iran/une-chanteuse-iranienne-subit-74-coups-de-fouet-pour-avoir-chante-sans-voile_8298069.html"
+     },
+     {
+      "titre": "\"Snake Killer\" : une série danoise hyper rythmée qui brouille les frontières entre policiers et criminels",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/series/snake-killer-une-serie-danoise-hyper-rythmee-qui-brouille-les-frontieres-entre-policiers-et-criminels_8297607.html"
+     },
+     {
+      "titre": "Une exposition immersive dévoile les secrets de l'Alhambra de Grenade à l'Institut du monde arabe",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/arts-expos/une-exposition-immersive-devoile-les-secrets-de-l-alhambra-de-grenade-a-l-institut-du-monde-arabe_8297823.html"
+     },
+     {
+      "titre": "Hugo Riboulet est sacré champion du monde de l'œuf mayo, un \"plat traditionnel de cuisine française\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cuisine-et-gastronomie/hugo-riboulet-est-sacre-champion-du-monde-de-l-uf-mayo-un-plat-traditionnel-de-cuisine-francaise_8297928.html"
+     },
+     {
+      "titre": "Nils Ahl, un \"couteau suisse\" franco-danois aux commandes du Salon du livre et de la presse jeunesse de Montreuil",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/livres/salon-du-livre-et-de-la-presse-jeunesse-de-montreuil/nils-ahl-un-couteau-suisse-franco-danois-aux-commandes-du-salon-du-livre-et-de-la-presse-jeunesse-de-montreuil_8207645.html"
+     },
+     {
+      "titre": "Le dernier numéro du magazine jeunesse \"Je Bouquine\" partira à l'impression jeudi",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/livres/le-dernier-numero-du-magazine-jeunesse-je-bouquine-partira-a-l-impression-jeudi_8297859.html"
+     },
+     {
+      "titre": "Les écoutes d'une chanson de Sylvie Vartan présente dans \"GTA VI\", ont augmenté de plus de 2 500% sur Spotify en une semaine",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/les-ecoutes-d-une-chanson-de-sylvie-vartan-presente-dans-gta-vi-ont-augmente-de-plus-de-2-500-sur-spotify-en-une-semaine_8297832.html"
+     },
+     {
+      "titre": "APPEL A TEMOIGNAGES. La sortie de \"GTA VI\" a-t-elle bouleversé vos rapports avec votre famille ou vos amis ? Racontez-nous !",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/gta-vi/appel-a-temoignages-la-sortie-de-gta-vi-a-t-elle-bouleverse-vos-rapports-avec-votre-famille-ou-vos-amis-racontez-nous_8297517.html"
+     },
+     {
+      "titre": "\"Les gens pensent qu'elles sont réelles\" : sur les réseaux sociaux, de fausses humoristes générées par IA volent les blagues de vraies stand-uppeuses",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/les-gens-pensent-qu-elles-sont-reelles-sur-les-reseaux-sociaux-de-fausses-humoristes-generees-par-ia-volent-les-blagues-de-vraies-stand-uppeuses_8297454.html"
+     },
+     {
+      "titre": "\"J'ai découvert que le démon rôdait\" : le journal du pape François publié par un ancien proche collaborateur révèle sa foi profonde, mais aussi ses travers et ses fragilités",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/livres/j-ai-decouvert-que-le-demon-rodait-le-journal-du-pape-francois-revele-sa-foi-profonde-mais-aussi-ses-travers-et-ses-fragilites_8297319.html"
+     },
+     {
+      "titre": "Sam Sauvage plus intime dans la réédition de \"Mesdames, Messieurs\" : \"L'indifférence m'a un peu sauvé de la scène\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/sam-sauvage-plus-intime-dans-la-reedition-de-mesdames-messieurs-l-indifference-m-a-un-peu-sauve-de-la-scene_8275364.html"
+     },
+     {
+      "titre": "Les sauveteurs d'\"Alerte à Malibu\" reprennent du service à Los Angeles",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/bientot-chez-vous/les-sauveteurs-d-alerte-a-malibu-reprennent-du-service-a-los-angeles_8275367.html"
+     },
+     {
+      "titre": "Face à la sous-représentation des femmes aux postes d'encadrement dans le cinéma, le CNC va mettre en place un nouveau système de bonus-malus",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/face-a-la-sous-representation-des-femmes-aux-postes-d-encadrement-dans-le-cinema-le-cnc-va-mettre-en-place-un-nouveau-systeme-de-bonus-malus_8297346.html"
+     },
+     {
+      "titre": "Lego investit plus d’un milliard d’euros dans une nouvelle usine au Portugal",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/le-decryptage-eco/lego-investit-plus-d-un-milliard-d-euros-dans-une-nouvelle-usine-au-portugal_8275343.html"
+     }
+    ],
+    "ecartes_hors_ligne": 20,
+    "deja_en_ligne": [
+     "Le CHU de Guadeloupe paralysé par une cyberattaque. Des soins programmés reportés jusqu'au 27 novembre .",
+     "GTA VI sort aujourd'hui. Sa version sans disque inquiète les joueurs.",
+     "1 700 distributeurs ont disparu en 2025. Votre plan B est-il toujours là ?",
+     "L'Espagne s'éteint à 12 h 33. Plus moyen de payer son pain.",
+     "Une peluche affole la planète. Les robots achètent avant vous.",
+     "Gardez un peu d'argent liquide chez vous."
+    ]
+   },
+   "alertes_charte": [
+    "Aucun sujet retenu : Aucun article de la fiche ne met en avant une technologie (application, compte, réseau, panne, écran, etc.) vécue par le public cette semaine, ni ne permet de formuler un « Et vous ? » révélant une dépendance quotidienne. Les titres disponibles portent sur des sujets financiers, politiques, judiciaires ou sportifs sans lien technologique exploitable, ou relèvent de faits divers ou de la sécurité, ce qui les exclut selon la charte."
+   ]
+  }
+ ],
+ "reserve_une": [],
+ "sources_tendances": {
+  "Wikipédia": {
+   "etat": "ok",
+   "nombre": 60
+  },
+  "Presse grand public (flux RSS)": {
+   "etat": "ok",
+   "nombre": 164
+  },
+  "Détour (flux RSS)": {
+   "etat": "ok",
+   "nombre": 190
+  }
+ },
+ "journal_redacteur": [
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "tous_connectes",
+   "resultat": "ok"
+  }
+ ]
+}

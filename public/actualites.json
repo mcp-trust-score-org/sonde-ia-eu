@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-25T00:46:20+00:00",
+ "genere_le": "2026-11-25T04:49:14+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,8 +16,7 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "erreur",
-   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
+   "etat": "ok"
   }
  },
  "dependances": {
@@ -26,6 +25,26 @@
   ]
  },
  "evenements": [
+  {
+   "id": "cloudflare-lqojvojhdcjv",
+   "titre": "Cloudflare : Elevated number of 5xx errors in Frankfurt",
+   "type": "incident_amont",
+   "debut": "2026-11-25T03:03+00:00",
+   "fin": "2026-11-25T02:45+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/lqojvojhdcjv",
+     "titre": "Elevated number of 5xx errors in Frankfurt"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
   {
    "id": "cloudflare-no721jcnlrbh",
    "titre": "Cloudflare : Magic Transit Degraded Performance",
@@ -78,26 +97,6 @@
      "type": "statut_fournisseur",
      "url": "https://www.cloudflarestatus.com/incidents/pnfv9wfy2q4y",
      "titre": "Increased HTTP 5xx Errors in Brussels"
-    }
-   ],
-   "source_auto": "cloudflare",
-   "fournisseurs": [
-    "mistral"
-   ],
-   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
-  },
-  {
-   "id": "cloudflare-k3r9i5tbre4i",
-   "titre": "Cloudflare : Network Performance Issues in Paris",
-   "type": "incident_amont",
-   "debut": "2026-11-18T03:39+00:00",
-   "fin": "2026-11-18T04:51+00:00",
-   "gravite": "minor",
-   "sources": [
-    {
-     "type": "statut_fournisseur",
-     "url": "https://www.cloudflarestatus.com/incidents/k3r9i5tbre4i",
-     "titre": "Network Performance Issues in Paris"
     }
    ],
    "source_auto": "cloudflare",
@@ -234,18 +233,15 @@
    "debut": "2026-11-18T08:04+00:00",
    "raison": "localisé hors de nos zones",
    "url": "https://www.cloudflarestatus.com/incidents/njt9j3k2zdfw"
-  },
-  {
-   "titre": "Cloudflare : Elevated 5xx error rates and latency in Mumbai",
-   "debut": "2026-11-18T04:05+00:00",
-   "raison": "localisé hors de nos zones",
-   "url": "https://www.cloudflarestatus.com/incidents/pi6wgeh78wsn"
-  },
-  {
-   "titre": "Cloudflare : Cloudflare Access Issue",
-   "debut": "2026-11-18T01:10+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/0jozucwnpzy0"
   }
- ]
+ ],
+ "tri_presse": {
+  "articles": 1,
+  "sans_acteur": 1,
+  "sans_incident": 0,
+  "hors_sujet": 0,
+  "doublons": 0,
+  "retenus": 0,
+  "erreurs": []
+ }
 }
