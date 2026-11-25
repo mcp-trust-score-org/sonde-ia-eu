@@ -901,6 +901,37 @@ class _Liste(list):
             self.apres_ajout()
 
 
+# Les sujets « qui font réfléchir » (charte, section 2) : paradoxes et débats sur nos dépendances
+# (souveraineté, modèles ouverts, interdictions, rapatriement…). Repérés chaque jour dans les articles lus,
+# sans rédacteur : ce sont des pistes pour Iris Plus ou un « Et si… ? », jamais publiées telles quelles.
+THEMES_REFLEXION = {
+    "souveraineté": r"souverain\w*|sovereign\w*|ind[ée]pendance (num[ée]rique|technologique)",
+    "modèles ouverts": r"open[- ]?source|open[- ]weights?|poids ouverts?|mod[èe]les? ouverts?",
+    "modèles chinois": r"mod[èe]les? chinois|chinese (ai|models?|open)|deepseek|qwen|\bglm\b|z\.ai|moonshot|minimax",
+    "lois étrangères": r"cloud act|extraterritorial\w*|export (control|ban)|contr[ôo]le des exportations|interdi\w+ (d'|de )?(export|acc[èe]s)",
+    "changer de fournisseur": r"lock-?in|verrouillage|r[ée]versibilit[ée]|rapatri\w+|quitte[rnt]* (openai|anthropic|google|microsoft|aws|amazon)|in-?house|en interne|sur (ses|nos|leurs) propres serveurs",
+    "IA chez soi": r"en local|hors ligne|offline|on-?device|sur l'appareil|edge ai",
+    "concentration": r"monopole|concentration|d[ée]pend\w* (d'un|d'une|de quelques)|single point of failure|point unique",
+}
+
+
+def pistes_reflexion(tend: dict, maintenant: datetime, vus: set, n: int = 5) -> list[dict]:
+    """Les articles de la semaine qui touchent au moins deux de ces thèmes : les plus « débat »."""
+    depuis = (maintenant - timedelta(days=7)).date().isoformat()
+    pistes, urls = [], set()
+    for a in (tend.get("detour") or []) + (tend.get("presse") or []):
+        url = a.get("url")
+        if not url or url in vus or url in urls or str(a.get("date") or "") < depuis:
+            continue
+        texte = f"{a.get('titre') or ''} {a.get('resume') or ''}".lower()
+        themes = [t for t, motif in THEMES_REFLEXION.items() if re.search(motif, texte)]
+        if len(themes) >= 2:
+            urls.add(url)
+            pistes.append({"titre": a.get("titre"), "url": url, "media": a.get("media"), "date": a.get("date"), "themes": themes})
+    pistes.sort(key=lambda p: (len(p["themes"]), str(p.get("date") or "")), reverse=True)
+    return pistes[:n]
+
+
 def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: dict | None = None,
             maintenant: datetime | None = None, attendre=None) -> dict:
     env = env if env is not None else os.environ
@@ -983,6 +1014,10 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
         if jour.weekday() in dt.get("jours", [4]):
             propositions.append(_detour(redacteur, client, tend, deja, dt, lecture, lire_panier(racine)))
 
+        # ---- Les sujets qui font réfléchir : des pistes, pas des brouillons
+        etat["pistes"] = pistes_reflexion(tend, maintenant, deja.get("pistes", set()))
+        deja.setdefault("pistes", set()).update(p["url"] for p in etat["pistes"])
+
         # ---- Et si… ? (Iris Plus) : le premier lundi du mois, et la revérification des anciens sujets
         from .et_si import preparer
         for p in preparer(redacteur, client, racine, tend, jour, maintenant, lecture):
@@ -1002,7 +1037,8 @@ def enregistrer(etat: dict, statut: str) -> dict:
     un fichier qui dit où il s'est arrêté."""
     sortie = {"date": etat["jour"].date().isoformat(), "genere_le": etat["maintenant"].isoformat(timespec="seconds"),
               "statut": statut, "propositions": etat["propositions"], "reserve_une": etat["reserve_une"],
-              "sources_tendances": etat["tend"].get("sources"), "journal_redacteur": etat["redacteur"].journal}
+              "sources_tendances": etat["tend"].get("sources"), "journal_redacteur": etat["redacteur"].journal,
+              "pistes_reflexion": etat.get("pistes") or []}
     if etat.get("erreur"):
         sortie["erreur"] = etat["erreur"]
     dossier = etat["racine"] / "redaction" / "propositions"
@@ -1080,6 +1116,11 @@ def en_markdown(s: dict) -> str:
               for j in s["journal_redacteur"]] + [""]
     if s.get("erreur"):
         l += ["## Erreur", "", "```", s["erreur"], "```", ""]
+    if s.get("pistes_reflexion"):
+        l += ["## Sujets qui font réfléchir (pistes pour Iris Plus ou un « Et si… ? »)", "",
+              "_Repérés automatiquement : des articles qui touchent à plusieurs débats sur nos dépendances. "
+              "Rien n'est rédigé. Une piste qui vous plaît : ajoutez-la à `redaction/panier.yaml` avec `pour: idee`._", ""]
+        l += [f"- **{p.get('media') or '?'}** · [{p['titre']}]({p['url']}) · _{', '.join(p['themes'])}_" for p in s["pistes_reflexion"]] + [""]
     if s.get("reserve_une"):
         l += ["## En réserve pour À la une", ""] + [f"- {r['titre']} ({r['tag_interne']})" for r in s["reserve_une"]] + [""]
     return "\n".join(l)
