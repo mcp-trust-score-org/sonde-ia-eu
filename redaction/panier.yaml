@@ -38,3 +38,97 @@ liens:
   - url: https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445#souverainete
     pour: idee
     note: "Iris Plus / « Et si… ? » : le paradoxe de la souveraineté. Un modèle chinois ouvert chez soi est-il plus souverain qu'un modèle américain sur un cloud européen ? Grille : qui peut couper, où vont les données, que contient le modèle, qui le met à jour, de quoi dépend-on encore. Sans verdict. Sources : Revolut (IT for Business, 5 nov.), l'interdiction d'exporter les modèles d'Anthropic en juin 2026 (Fortune), Pixels/Le Monde sur le succès des IA chinoises en entreprise."
+
+# Idées de sujets « qui font réfléchir » (CHARTE : « Les sujets qui font réfléchir »)
+# ------------------------------------------------------------------------------
+# Jamais rédigées automatiquement. Quand un article de la semaine contient les « mots », le brouillon du jour
+# le signale (« rejoint l'idée : … ») et le rappel de midi te prévient : l'actualité s'en approche.
+#   question : la question telle qu'on l'enverrait en notification (jamais un avis)
+#   angle    : ce qui fait le sujet
+#   preuve   : ce qu'il faut trouver ou mesurer avant de publier
+#   mots     : pour le reconnaître dans l'actualité (entre apostrophes, « | » veut dire « ou »)
+
+sujets:
+  # Les paradoxes
+  - question: "Un cloud européen sur des puces américaines, souverain sur quoi ?"
+    angle: "Données en Europe, mais matériel, pilotes et mises à jour américains. Lien avec l'À la une Nvidia."
+    preuve: "Ce que chaque fournisseur déclare publiquement sur ses puces ; ce qu'impliquent les contrôles à l'export."
+    mots: '(nvidia|gpu|puces?).{0,80}(europ|souverain|mistral|ovh|scaleway|ionos)|(europ|souverain|mistral|ovh|scaleway|ionos).{0,80}(nvidia|gpu|puces?)'
+  - question: "Hébergé en France, à l'abri pour autant ?"
+    angle: "Un serveur à Paris détenu par une filiale américaine reste soumis au Cloud Act. Ce que « hébergé en Europe » garantit, et ce qu'il ne garantit pas."
+    preuve: "Texte du Cloud Act, qualification SecNumCloud, déclarations des fournisseurs."
+    mots: 'cloud act|secnumcloud|h[ée]berg\w* en (france|europe)'
+  - question: "Un modèle « ouvert », ouvert à quel point ?"
+    angle: "On télécharge le modèle, sans savoir sur quoi ni comment il a été entraîné. Ouvert ne veut pas dire transparent."
+    preuve: "Licences et fiches des modèles (ce qui est publié, ce qui ne l'est pas)."
+    mots: "open[- ]weights?|poids ouverts?|(mod[èe]le|\\bia\\b) (ouvert|open[- ]source).{0,60}(donn[ée]es d'entra[îi]nement|transparen)"
+  - question: "Deux fournisseurs, deux fois plus fiable ?"
+    angle: "Changer de fournisseur en cas de panne protège, mais ajoute complexité et points de rupture."
+    preuve: "La sonde : les pannes des fournisseurs tombent-elles en même temps ou non ?"
+    mots: 'multi-?cloud|multi-?fournisseurs?|plan de (secours|continuit[ée])|redondance'
+  - question: "L'IA chez soi, plus écolo ?"
+    angle: "Un modèle sur son ordinateur évite le centre de données ; un centre mutualisé consomme peut-être moins par réponse."
+    preuve: "Mesures publiées et sourcées uniquement (les chiffres sans source circulent beaucoup). Aucune conclusion d'avance."
+    mots: '(consommation|[ée]nergie|empreinte|eau).{0,60}(par (requ[êe]te|r[ée]ponse|question)|en local|centres? de donn[ée]es)'
+  - question: "Gagner du temps avec l'IA… pour en passer à vérifier ?"
+    angle: "Suite de la « dette cognitive » (Tous connectés du 25 novembre)."
+    preuve: "Études sur le temps gagné et le temps de vérification ; baromètres d'usage."
+    mots: 'dette cognitive|temps (gagn[ée]|de v[ée]rification)|v[ée]rifi\w+ (les|ses) r[ée]ponses'
+  - question: "Des règles pour protéger, qui avantagent les géants ?"
+    angle: "Se mettre en conformité avec l'AI Act coûte cher : plus facile pour un grand groupe que pour une start-up européenne ? Les deux camps, sans avis."
+    preuve: "Coûts de conformité publiés, positions des deux camps, calendrier officiel."
+    mots: "(ai act|r[èe]glement (europ[ée]en )?sur l'ia).{0,80}(co[ûu]t|start-?up|pme|conformit[ée])"
+  # Les exclusivités Iris (prouvables par la sonde)
+  - question: "La souveraineté se perd-elle en millisecondes ?"
+    angle: "Personne ne décide de quitter l'IA européenne ; si elle répond deux fois plus lentement, les développeurs repartent sans y penser."
+    preuve: "La sonde, avec les clés d'API (mesures équivalentes) : temps de réponse européens contre références."
+    mots: '(latence|lenteur|temps de r[ée]ponse).{0,80}(europ|souverain|mistral)|(europ|souverain|mistral).{0,80}(latence|lenteur|temps de r[ée]ponse)'
+  - question: "Le fournisseur le plus honnête a-t-il l'air le moins fiable ?"
+    angle: "Celui qui affiche toutes ses pannes paraît moins solide que celui qui n'en affiche aucune."
+    preuve: "Pages d'état des fournisseurs comparées à ce que la sonde a vu."
+    mots: "page (d'[ée]tat|de statut)|status page|panne non (d[ée]clar|signal)"
+  - question: "Le modèle d'aujourd'hui est-il le même qu'hier ?"
+    angle: "Un modèle peut changer de comportement sans changer de nom."
+    preuve: "La sonde, avec les clés d'API : mêmes questions chaque semaine, réponses comparées."
+    mots: "(mod[èe]le|\\bia\\b).{0,60}(chang\\w+ sans pr[ée]venir|mise à jour silencieuse|d[ée]grad\\w+)|model drift"
+  - question: "Une IA européenne peut-elle tomber à cause d'une panne américaine ?"
+    angle: "Entre le modèle et l'utilisateur : réseau, protection, DNS… souvent pas européens. La souveraineté s'arrête au maillon le plus faible."
+    preuve: "La sonde : pannes européennes qui coïncident avec celles d'intermédiaires (pages d'état publiques)."
+    mots: 'cloudflare|panne (g[ée]ante|mondiale)|outage'
+  - question: "Plus l'IA est fiable, plus ses erreurs sont dangereuses ?"
+    angle: "« Ironies of Automation » (Bainbridge, 1983) : moins la machine se trompe, moins on vérifie, plus la rare erreur passe."
+    preuve: "La recherche publiée sur l'automatisation ; le baromètre « un sur cinq vérifie »."
+    mots: "(confiance|exc[èe]s de confiance|complaisance).{0,60}(automatis|\\bia\\b)|automation bias"
+  - question: "Même chez soi, de qui dépend-on encore ?"
+    angle: "Un modèle sur son propre serveur dépend encore de la plateforme de téléchargement, du logiciel et des pilotes, presque tous américains."
+    preuve: "La chaîne logicielle publique d'un modèle local, maillon par maillon."
+    mots: 'hugging ?face|cuda|pytorch|(en local|propres serveurs).{0,80}d[ée]pend'
+  - question: "Mesurer, est-ce changer ce qu'on mesure ?"
+    angle: "Un fournisseur pourrait soigner les réponses aux sondes plutôt que le vrai service. Comment Iris s'en protège : du sérieux affiché."
+    preuve: "Notre méthode (CHARTE, page Méthode)."
+    mots: 'benchmark.{0,60}(triche|gonfl|manipul|optimis)|(classement|score).{0,40}(manipul|truqu)'
+  # Les tendances : ce que font les gens et les entreprises
+  - question: "Qui quitte qui ? Le mercato de l'IA"
+    angle: "Les entreprises qui changent publiquement de fournisseur d'IA (ex. Revolut). Un tableau tenu à jour, chaque ligne avec sa source."
+    preuve: "Une annonce publique par ligne. Une entreprise, c'est une anecdote ; plusieurs, une tendance."
+    mots: "(quitte|abandonn\\w+|remplac\\w+|bascul\\w+|migr\\w+).{0,60}(openai|anthropic|chatgpt|claude|gemini|mistral|azure|aws)"
+  - question: "L'IA au travail, en cachette ?"
+    angle: "Les salariés qui utilisent leur IA personnelle sans le dire (« shadow AI »). Ce que ça change pour les données de l'entreprise."
+    preuve: "Baromètres et enquêtes (nommer qui parle, la méthode ; un sondage n'est pas un fait)."
+    mots: 'shadow ai|ia (fant[ôo]me|en cachette)|sans le dire.{0,40}(\bia\b|chatgpt)|(\bia\b|chatgpt).{0,40}sans le dire'
+  - question: "Tout louer ou tout installer chez soi ?"
+    angle: "Les entreprises qui rapatrient l'IA sur leurs propres serveurs, et celles qui restent sur les API. Ce que chacune dit y gagner."
+    preuve: "Ce que l'entreprise dit, présenté comme tel (ex. « dix fois moins cher » chez Revolut, non détaillé)."
+    mots: 'internalis\w+|rapatri\w+|propres serveurs|on-?premise|sur site'
+  - question: "Remplacer par l'IA… puis réembaucher ?"
+    angle: "Les entreprises qui reviennent en arrière après avoir confié un métier à l'IA. Pourquoi, d'après elles."
+    preuve: "Déclarations publiques datées ; recouper avant de parler de tendance."
+    mots: "(r[ée]embauch\\w+|fait machine arri[èe]re|revien\\w+ (sur|en arri[èe]re)).{0,80}(\\bia\\b|automatis|intelligence artificielle|chatgpt)|(\\bia\\b|automatis|intelligence artificielle|chatgpt).{0,80}(r[ée]embauch\\w+|fait machine arri[èe]re)"
+  - question: "Un modèle par tâche ?"
+    angle: "Les entreprises qui utilisent plusieurs modèles selon le besoin plutôt qu'un seul fournisseur."
+    preuve: "Annonces et retours d'expérience publics."
+    mots: 'multi-?mod[èe]les?|plusieurs mod[èe]les|routage de mod[èe]les|model routing'
+  - question: "Quelle IA choisit le public ?"
+    angle: "Administrations et collectivités : quels fournisseurs d'IA retiennent-elles ? Données publiques, donc vérifiables."
+    preuve: "Marchés publics (BOAMP, TED), annonces officielles."
+    mots: "(minist[èe]re|administration|collectivit[ée]|mairie|r[ée]gion|march[ée] public).{0,80}(\\bia\\b|intelligence artificielle|mistral|openai|chatgpt)"

@@ -51,6 +51,12 @@ Iris cherche en priorité les sujets où l'évidence se retourne : ceux où « p
 
 **Les présenter.** Jamais de verdict. On découpe la question en sous-questions concrètes (qui peut couper ? où vont les données ? que contient le modèle ? qui le met à jour ? de quoi dépend-on encore ?) et on montre, preuve à l'appui, ce que chaque option gagne et perd sur chacune. On cite les deux camps avec leurs meilleurs arguments, et on rappelle les options que le débat oublie. Le lecteur conclut seul.
 
+**Les tendances aussi.** Ce que font les gens et les entreprises compte autant que les débats : qui quitte quel fournisseur, qui installe l'IA chez soi, qui revient en arrière, ce que les salariés font sans le dire, ce que choisissent les administrations. Règles : une entreprise, c'est une anecdote, et on le dit ; on ne parle de tendance qu'à partir de plusieurs cas sourcés ou d'une donnée mesurée. Une stratégie annoncée est présentée comme ce que l'entreprise dit (« Revolut dit payer dix fois moins »), pas comme un fait. Les études suivent les règles des cabinets (qui parle, quelle méthode, un sondage n'est pas un fait).
+
+**Le mercato de l'IA.** L'encadré « Qui quitte qui ? » de l'À la une (`iris/mercato.json`, lu en direct : le modifier ne redéploie pas le site). Une ligne = un changement de fournisseur annoncé publiquement ou rapporté par un média reconnu, avec sa source. « Ce qu'elle dit » reste ce que l'entreprise affirme. « En partie » quand elle garde une partie de l'ancien fournisseur. Même couleur pour tous les pays : l'encadré constate, il ne juge pas. Une rumeur ou une source anonyme seule n'y entre pas.
+
+**Le panier d'idées.** Les idées de sujets sont notées dans `redaction/panier.yaml` (rubrique `sujets` : la question, l'angle, la preuve à trouver, des mots pour les reconnaître). Quand l'actualité s'en approche, le brouillon du jour le signale (« rejoint l'idée : … ») et le rappel de midi prévient la rédaction. Une idée n'est jamais rédigée automatiquement. En priorité, celles que seule la sonde peut prouver : ce sont nos exclusivités.
+
 **Où.** D'abord dans Iris Plus (« Et si… ? »), qui est fait pour ça. Une version courte peut aller dans Tous connectés ou À la une quand l'actualité s'y prête.
 
 **La notification.** Une question, jamais une réponse ni un avis : « Plus souverain, un modèle chinois chez soi ? », pas « Les modèles chinois sont plus souverains ».
