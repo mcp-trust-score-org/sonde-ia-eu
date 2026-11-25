@@ -1,0 +1,42 @@
+name: Mercato de l'IA
+
+# Quand un transfert est ajouté à iris/mercato.json (zip déposé ou fichier modifié sur GitHub),
+# les lecteurs abonnés aux articles reçoivent une notification. Le site n'est pas redéployé :
+# l'encadré lit le fichier en direct (/d/mercato.json).
+on:
+  push:
+    branches: [main]
+    paths: ["iris/mercato.json"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  notifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Quels transferts sont nouveaux ?
+        run: |
+          git show HEAD~1:iris/mercato.json > ancien.json 2>/dev/null || echo "" > ancien.json
+          python -m sonde.mercato ancien.json iris/mercato.json > notification.json
+          if [ -s notification.json ]; then echo "À envoyer :"; cat notification.json; else rm notification.json; echo "Aucun nouveau transfert (ou premier dépôt) : pas de notification."; fi
+      - name: Prévenir les abonnés
+        env:
+          SITE_URL: https://sonde-ia-eu-iris.vercel.app
+          NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}
+        run: |
+          if [ ! -f notification.json ]; then exit 0; fi
+          if [ -z "$NOTIF_SECRET" ]; then echo "NOTIF_SECRET absent : rien envoyé."; exit 0; fi
+          sleep 30   # le temps que GitHub serve le nouveau fichier au site
+          REPONSE=$(curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/notifier" \
+            -H "Authorization: Bearer $NOTIF_SECRET" -H "Content-Type: application/json" \
+            --data @notification.json) || { echo "::warning::La notification n'est pas partie : $REPONSE"; exit 0; }
+          echo "Réponse du site : $REPONSE"
