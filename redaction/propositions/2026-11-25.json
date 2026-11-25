@@ -5,8 +5,56 @@
  "propositions": [
   {
    "rubrique": "tous_connectes",
-   "auteur": "openai/gpt-oss-120b",
-   "article": {},
+   "auteur": "rédaction (relu le 2026-11-25)",
+   "article": {
+    "tag": "Société",
+    "title": "On demande tout à l'IA.<br/><mark>Un sur cinq</mark> vérifie ses réponses à chaque fois.",
+    "chapo": "Chercher une information, écrire un courrier, aider aux devoirs : la moitié des Français se servent désormais de l'IA générative. Mais rares sont ceux qui vérifient à chaque fois ce qu'elle répond. Un rapport remis au président de la République le 10 novembre parle de « dette cognitive ».",
+    "fait": [
+     "Selon le Baromètre du numérique, l'enquête publique de référence publiée en février par l'Arcep, l'Arcom, le Conseil général de l'économie et l'ANCT, près d'une personne sur deux a utilisé l'IA générative l'an dernier. Chercher une information est son premier usage.",
+     "Mais seul un utilisateur sur cinq dit vérifier systématiquement les réponses. Au total, moins des deux tiers les vérifient souvent ou toujours."
+    ],
+    "consequence": [
+     "Le rapport « Protéger sans empêcher », écrit par neuf experts pour le Conseil de l'IA et du numérique, met en garde contre cette « dette cognitive » : à force de confier la réflexion à la machine, on s'exerce moins à chercher, à comparer et à douter.",
+     "Il rappelle aussi que ces outils se trompent avec assurance, et qu'ils sont en général moins fiables dans d'autres langues que l'anglais."
+    ],
+    "lien": [
+     "Nous dépendons d'outils qui répondent à tout, vite et avec aplomb. Garder l'habitude de vérifier, c'est garder la main.",
+     "Et vous, quand l'IA vous répond, prenez-vous le temps de vérifier ?"
+    ],
+    "une_mini": {
+     "fait": "La moitié des Français utilisent l'IA générative.",
+     "consequence": "Un utilisateur sur cinq seulement vérifie systématiquement ses réponses.",
+     "dependance": "Un rapport public parle de « dette cognitive »."
+    },
+    "sources": [
+     {
+      "label": "Arcep, Arcom, CGE, ANCT – Baromètre du numérique, édition 2026 (enquête du Crédoc)",
+      "url": "https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/barometre-du-numerique/le-barometre-du-numerique-edition-2026.html"
+     },
+     {
+      "label": "Baromètre du numérique 2026 – infographie (vérification des réponses de l'IA)",
+      "url": "https://www.arcep.fr/uploads/tx_gspublication/barometre-du-numerique-edition-2026_INFOGRAPHIE.pdf"
+     },
+     {
+      "label": "Conseil de l'IA et du numérique – rapport « Protéger sans empêcher : nos vulnérabilités à l'ère de l'IA générative »",
+      "url": "https://www.vie-publique.fr/rapport/305341-proteger-sans-empecher-nos-vulnerabilites-au-temps-de-l-ia-generative"
+     }
+    ],
+    "a_verifier": [],
+    "sujet": "La « dette cognitive » : peu d'utilisateurs vérifient les réponses de l'IA",
+    "categorie": "ia",
+    "reflexes_intro": "Trois gestes simples, à faire tout de suite.",
+    "reflexes": [
+     "Demandez-lui ses sources, puis ouvrez-les : une source introuvable, ou qui dit autre chose, doit vous alerter.",
+     "Pour un chiffre, une date, un conseil de santé ou d'argent, vérifiez sur un site officiel ou dans un média connu.",
+     "Posez la même question autrement, ou à une autre IA : si les réponses divergent, il faut creuser."
+    ],
+    "reflexe_de_la_semaine": {
+     "titre": "La règle des deux sources",
+     "texte": "Avant de reprendre une réponse de l'IA dans un mail, un devoir ou une décision, retrouvez l'information dans deux sources fiables."
+    }
+   },
    "fiche": {
     "tendances_wikipedia": [
      {
@@ -435,9 +483,9 @@
      "Gardez un peu d'argent liquide chez vous."
     ]
    },
-   "alertes_charte": [
-    "Aucun sujet retenu : Aucun article de la fiche ne met en avant une technologie (application, compte, réseau, panne, écran, etc.) vécue par le public cette semaine, ni ne permet de formuler un « Et vous ? » révélant une dépendance quotidienne. Les titres disponibles portent sur des sujets financiers, politiques, judiciaires ou sportifs sans lien technologique exploitable, ou relèvent de faits divers ou de la sécurité, ce qui les exclut selon la charte."
-   ]
+   "alertes_charte": [],
+   "format": "a_chaud",
+   "image": "assets/photos/ia.jpg"
   }
  ],
  "reserve_une": [],
