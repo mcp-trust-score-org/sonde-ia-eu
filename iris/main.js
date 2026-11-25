@@ -1354,3 +1354,70 @@ function diapositivesEssentiel() {
     else if (e.key === "ArrowLeft") precedent.click();
   });
 })();
+
+
+/* ---------- Le mercato de l'IA : qui quitte qui (encadré de l'À la une) ----------
+   Une ligne = un changement de fournisseur annoncé publiquement, avec sa source (iris/mercato.json, lu en direct).
+   « Ce qu'elle dit » reste ce que l'entreprise affirme : jamais présenté comme un fait. */
+function htmlSur(t) {
+  return String(t == null ? "" : t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function moisCourt(aaaaMm) {
+  const [a, m] = String(aaaaMm || "").split("-").map(Number);
+  return a && m ? `${MOIS[m - 1]} ${a}` : "";
+}
+// Une ligne du mercato. complet : avec « Ce qu'elle dit » et la source (tableau complet).
+function ligneMercato(x, complet) {
+  return `<li class="mx">
+      <div class="mx-top"><b>${htmlSur(x.entreprise)}</b><span>${htmlSur(x.secteur)} · ${htmlSur(x.pays)} · ${moisCourt(x.date)}</span></div>
+      <div class="mx-move"><span class="mx-from">${htmlSur((x.quitte || []).join(", "))}</span><span class="mx-arrow" aria-label="vers">→</span><span class="mx-to">${htmlSur(x.pour)}</span></div>
+      ${x.en_partie || complet ? `<p class="mx-how">${complet ? htmlSur(x.comment) : ""}${x.en_partie ? ' <em class="mx-partie">en partie</em>' : ""}</p>` : ""}
+      ${complet ? `<div class="mx-dit"><p><b>Ce qu'elle dit.</b> ${htmlSur(x.dit)}</p>${x.source && /^https:\/\//.test(x.source.url || "") ? `<a href="${htmlSur(x.source.url)}" target="_blank" rel="noopener">Source : ${htmlSur(x.source.media)} ↗</a>` : ""}</div>` : ""}
+    </li>`;
+}
+function constatMercato(t) {
+  const noms = { chine: "chinois", usa: "américains", europe: "européens" };
+  const parOrigine = {};
+  t.forEach((x) => { parOrigine[x.pour_origine] = (parOrigine[x.pour_origine] || 0) + 1; });
+  const [orig, nb] = Object.entries(parOrigine).sort((a, b) => b[1] - a[1])[0] || [];
+  return nb > 1 && noms[orig] ? `<p class="mx-constat"><b>${nb} transferts sur ${t.length}</b> vont vers des modèles ${noms[orig]}.</p>` : "";
+}
+function rendreMercato(d, complet = false) {
+  const t = (d && d.transferts) || [];
+  if (!t.length) return "";
+  const maj = d.mis_a_jour ? new Date(d.mis_a_jour + "T12:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) : "";
+  return `${complet ? "" : `<div class="mx-image" role="img" aria-label="Une main robotique déplace un pion sur un échiquier"></div>`}
+    <div class="mx-corps">
+    <p class="mx-titre"${complet ? ' id="mxc-titre"' : ""}>Le mercato de l'IA</p>
+    ${constatMercato(t)}
+    <ol class="mx-list">${(complet ? t : t.slice(0, 4)).map((x) => ligneMercato(x, complet)).join("")}</ol>
+    ${complet ? `<p class="mx-pied">Une entreprise, c'est une anecdote. Plusieurs, une tendance. Chaque transfert a sa source : un changement annoncé publiquement ou rapporté par un média reconnu. « Ce qu'elle dit » est ce que l'entreprise affirme, pas un fait vérifié par Iris.${maj ? ` <span>Mis à jour le ${maj}.</span>` : ""}</p>`
+      : `<button type="button" class="mx-tout" data-ouvrir-mercato>Voir le tableau complet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg></button>`}
+    </div>`;
+}
+(function mercato() {
+  const el = document.querySelector("[data-mercato]");
+  const ecran = document.getElementById("mercato-complet");
+  if (!el) return;
+  let donnees = null;
+  const ouvrir = () => {
+    if (!ecran || !donnees) return;
+    document.getElementById("mxc-contenu").innerHTML = rendreMercato(donnees, true);
+    ecran.hidden = false; document.body.style.overflow = "hidden";
+    ecran.querySelector("[data-fermer-mercato]").focus();
+  };
+  const fermer = () => { if (ecran) { ecran.hidden = true; document.body.style.overflow = ""; } };
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-ouvrir-mercato]")) { e.preventDefault(); ouvrir(); }
+    else if (e.target.closest("[data-fermer-mercato]") || e.target === ecran) fermer();
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ecran && !ecran.hidden) fermer(); });
+  frais("mercato.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
+    const h = rendreMercato(d);
+    if (!h) return;
+    donnees = d; el.innerHTML = h; el.hidden = false;
+    // Depuis une notification du mercato : /?mercato=1#une ouvre le tableau complet.
+    if (new URLSearchParams(location.search).get("mercato") === "1") ouvrir();
+  }).catch(() => {});
+})();
+if (typeof module !== "undefined") module.exports = { rendreMercato };

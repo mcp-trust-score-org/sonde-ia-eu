@@ -46,7 +46,10 @@ function message(moment, jour, propositions, plus) {
     const pistes = (propositions && propositions.pistes_reflexion) || [];
     if (pistes.length) {
       const p = pistes[0];
-      morceaux.push(`Sujet qui fait réfléchir : « ${String(p.titre || "").slice(0, 90)} »${p.media ? ` (${p.media})` : ""}${pistes.length > 1 ? ` et ${pistes.length - 1} autre${pistes.length > 2 ? "s" : ""}` : ""}. À garder dans le panier ?`);
+      const autres = pistes.length > 1 ? ` (+${pistes.length - 1} autre${pistes.length > 2 ? "s" : ""})` : "";
+      morceaux.push(p.sujet
+        ? `L'actualité rejoint ton idée « ${p.sujet} » : ${p.media || "un article"}${autres}. Voir les brouillons.`
+        : `Sujet qui fait réfléchir : « ${String(p.titre || "").slice(0, 90)} »${p.media ? ` (${p.media})` : ""}${autres}. À garder dans le panier ?`);
     }
   }
   if (moment === "soir") {

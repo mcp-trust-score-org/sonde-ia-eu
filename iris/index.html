@@ -134,8 +134,11 @@
   </div>
 
     </div>
-    <aside class="most-read" data-most-read="pro" aria-label="Les articles les plus lus"></aside>
+    <div class="aside-col">
+      <section class="mercato" data-mercato aria-label="Le mercato de l'IA" hidden></section>
+    </div>
   </div>
+  <aside class="most-read most-read-bas" data-most-read="pro" aria-label="Les articles les plus lus"></aside>
 </section>
 
 <!-- ================= DANS NOS VIES (grand public) ================= -->
@@ -365,6 +368,13 @@
 </main>
 
 <!-- « L'essentiel du jour en 2 minutes » : les stories d'Iris (main.js, fonction essentiel) -->
+<div class="mercato-ecran" id="mercato-complet" role="dialog" aria-modal="true" aria-labelledby="mxc-titre" hidden>
+  <div class="mxc-cadre">
+    <button type="button" class="ess-fermer mxc-fermer" data-fermer-mercato aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="mxc-contenu" id="mxc-contenu"></div>
+  </div>
+</div>
+
 <div class="essentiel-ecran" id="essentiel" role="dialog" aria-modal="true" aria-labelledby="ess-titre" hidden>
   <div class="ess-cadre">
     <div class="ess-barres" id="ess-barres"></div>
