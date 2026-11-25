@@ -912,23 +912,50 @@ THEMES_REFLEXION = {
     "changer de fournisseur": r"lock-?in|verrouillage|r[ée]versibilit[ée]|rapatri\w+|quitte[rnt]* (openai|anthropic|google|microsoft|aws|amazon)|in-?house|en interne|sur (ses|nos|leurs) propres serveurs",
     "IA chez soi": r"en local|hors ligne|offline|on-?device|sur l'appareil|edge ai",
     "concentration": r"monopole|concentration|d[ée]pend\w* (d'un|d'une|de quelques)|single point of failure|point unique",
+    # Les tendances : ce que font les gens et les entreprises, et les choix qu'elles font.
+    "usages": r"sondage|barom[èe]tre|enqu[êe]te|\d+ ?% des (fran[çc]ais|salari[ée]s|entreprises|utilisateurs|jeunes|dirigeants|d[ée]veloppeurs)|shadow ai|en cachette|sans le dire",
+    "stratégies": r"strat[ée]gie|abandonn\w+|bascul\w+|migr\w+ vers|se tourn\w+ vers|pari\w* sur|internalis\w+|r[ée]embauch\w+|fait machine arri[èe]re|revien\w+ (sur|en arri[èe]re)",
 }
 
 
-def pistes_reflexion(tend: dict, maintenant: datetime, vus: set, n: int = 5) -> list[dict]:
-    """Les articles de la semaine qui touchent au moins deux de ces thèmes : les plus « débat »."""
+def lire_sujets(racine) -> list[dict]:
+    """Les idées de sujets notées dans redaction/panier.yaml (rubrique « sujets ») :
+    une question, l'angle, la preuve à trouver, et des mots pour les reconnaître dans l'actualité."""
+    try:
+        import yaml
+        brut = yaml.safe_load((racine / "redaction" / "panier.yaml").read_text(encoding="utf-8")) or {}
+    except (OSError, ValueError, ImportError):
+        return []
+    sortie = []
+    for x in brut.get("sujets") or []:
+        if not isinstance(x, dict) or not x.get("question") or not x.get("mots"):
+            continue
+        try:
+            sortie.append({**x, "_motif": re.compile(x["mots"], re.I)})
+        except re.error:
+            continue
+    return sortie
+
+
+def pistes_reflexion(tend: dict, maintenant: datetime, vus: set, n: int = 5, sujets: list | None = None) -> list[dict]:
+    """Les articles de la semaine qui touchent au moins deux de ces thèmes (les plus « débat »),
+    ou qui rejoignent une idée de sujet notée dans le panier (on la signale : l'actualité s'en approche)."""
     depuis = (maintenant - timedelta(days=7)).date().isoformat()
     pistes, urls = [], set()
     for a in (tend.get("detour") or []) + (tend.get("presse") or []):
         url = a.get("url")
-        if not url or url in vus or url in urls or str(a.get("date") or "") < depuis:
-            continue
+        if not url or url in vus or url in urls or str(a.get("date") or "") < depuis or hors_ligne(url):
+            continue                                       # faits divers, justice, politique : jamais
         texte = f"{a.get('titre') or ''} {a.get('resume') or ''}".lower()
         themes = [t for t, motif in THEMES_REFLEXION.items() if re.search(motif, texte)]
-        if len(themes) >= 2:
+        sujet = next((x["question"] for x in sujets or [] if x["_motif"].search(texte)), None)
+        if len(themes) >= 2 or sujet:
             urls.add(url)
-            pistes.append({"titre": a.get("titre"), "url": url, "media": a.get("media"), "date": a.get("date"), "themes": themes})
-    pistes.sort(key=lambda p: (len(p["themes"]), str(p.get("date") or "")), reverse=True)
+            piste = {"titre": a.get("titre"), "url": url, "media": a.get("media"), "date": a.get("date"), "themes": themes}
+            if sujet:
+                piste["sujet"] = sujet
+            pistes.append(piste)
+    pistes.sort(key=lambda p: (bool(p.get("sujet")), len(p["themes"]), str(p.get("date") or "")), reverse=True)
     return pistes[:n]
 
 
@@ -1015,7 +1042,7 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
             propositions.append(_detour(redacteur, client, tend, deja, dt, lecture, lire_panier(racine)))
 
         # ---- Les sujets qui font réfléchir : des pistes, pas des brouillons
-        etat["pistes"] = pistes_reflexion(tend, maintenant, deja.get("pistes", set()))
+        etat["pistes"] = pistes_reflexion(tend, maintenant, deja.get("pistes", set()), sujets=lire_sujets(racine))
         deja.setdefault("pistes", set()).update(p["url"] for p in etat["pistes"])
 
         # ---- Et si… ? (Iris Plus) : le premier lundi du mois, et la revérification des anciens sujets
@@ -1120,7 +1147,8 @@ def en_markdown(s: dict) -> str:
         l += ["## Sujets qui font réfléchir (pistes pour Iris Plus ou un « Et si… ? »)", "",
               "_Repérés automatiquement : des articles qui touchent à plusieurs débats sur nos dépendances. "
               "Rien n'est rédigé. Une piste qui vous plaît : ajoutez-la à `redaction/panier.yaml` avec `pour: idee`._", ""]
-        l += [f"- **{p.get('media') or '?'}** · [{p['titre']}]({p['url']}) · _{', '.join(p['themes'])}_" for p in s["pistes_reflexion"]] + [""]
+        l += [f"- **{p.get('media') or '?'}** · [{p['titre']}]({p['url']}) · _{', '.join(p['themes'])}_"
+              + (f" · **rejoint l'idée : {p['sujet']}**" if p.get("sujet") else "") for p in s["pistes_reflexion"]] + [""]
     if s.get("reserve_une"):
         l += ["## En réserve pour À la une", ""] + [f"- {r['titre']} ({r['tag_interne']})" for r in s["reserve_une"]] + [""]
     return "\n".join(l)
