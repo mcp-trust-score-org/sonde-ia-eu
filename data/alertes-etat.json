@@ -1,1 +1,1 @@
-{"mistral": {"etat": "soleil", "vigilance": "vert"}, "scaleway": {"etat": "eclaircie", "vigilance": "jaune"}, "ovhcloud": {"etat": "nuage", "vigilance": "orange"}, "ionos": {"etat": "soleil", "vigilance": "vert"}}
+{"mistral": {"etat": "soleil", "vigilance": "vert"}, "scaleway": {"etat": "soleil", "vigilance": "vert"}, "ovhcloud": {"etat": "eclaircie", "vigilance": "jaune"}, "ionos": {"etat": "soleil", "vigilance": "vert"}}

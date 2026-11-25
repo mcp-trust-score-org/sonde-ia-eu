@@ -3,12 +3,12 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 26,
-      "disponibilite_pct": 80.8,
-      "ttft_p50_ms": 841,
-      "ttft_p95_ms": 1204,
-      "duree_p50_ms": 2548,
-      "jetons_par_s_median": 60.1,
+      "appels": 27,
+      "disponibilite_pct": 81.5,
+      "ttft_p50_ms": 827,
+      "ttft_p95_ms": 1198,
+      "duree_p50_ms": 2535,
+      "jetons_par_s_median": 66.2,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
@@ -18,13 +18,13 @@
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 25,
-      "disponibilite_pct": 96.0,
-      "ttft_p50_ms": 1098,
-      "ttft_p95_ms": 72659,
-      "duree_p50_ms": 1709,
+      "appels": 26,
+      "disponibilite_pct": 96.2,
+      "ttft_p50_ms": 1087,
+      "ttft_p95_ms": 70044,
+      "duree_p50_ms": 1561,
       "jetons_par_s_median": 25.1,
-      "qualite_pct": 91.7,
+      "qualite_pct": 92.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
         "réponse vide": 1
@@ -33,13 +33,13 @@
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 26,
+      "appels": 27,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 353,
-      "ttft_p95_ms": 14878,
-      "duree_p50_ms": 1040,
-      "jetons_par_s_median": 60.7,
-      "qualite_pct": 69.2,
+      "ttft_p50_ms": 338,
+      "ttft_p95_ms": 14382,
+      "duree_p50_ms": 836,
+      "jetons_par_s_median": 60.4,
+      "qualite_pct": 70.4,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     }
@@ -64,8 +64,8 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-25T13:40:27+00:00",
-  "total_mesures": 176,
+  "genere_le": "2026-11-25T20:00:35+00:00",
+  "total_mesures": 179,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [
     "ovhcloud"

@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-25T13:40:29+00:00",
+ "genere_le": "2026-11-25T20:00:35+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,7 +16,8 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "ok"
+   "etat": "erreur",
+   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
   }
  },
  "dependances": {
@@ -25,6 +26,26 @@
   ]
  },
  "evenements": [
+  {
+   "id": "cloudflare-vk87u9j2g6if",
+   "titre": "Cloudflare : Some customers cannot create monitors",
+   "type": "incident_amont",
+   "debut": "2026-11-25T16:42+00:00",
+   "fin": "2026-11-25T17:48+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/vk87u9j2g6if",
+     "titre": "Some customers cannot create monitors"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
   {
    "id": "cloudflare-xufkpdtfdglk",
    "titre": "Cloudflare : Firewall Configuration Delay",
@@ -126,8 +147,31 @@
    "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
   }
  ],
- "angles_morts_sonde": [],
+ "angles_morts_sonde": [
+  {
+   "id": "github-qn8mfv6q5hlx",
+   "titre": "GitHub : Investigating degraded experiences across GitHub products",
+   "type": "incident_amont",
+   "debut": "2026-11-25T15:55+00:00",
+   "fin": "2026-11-25T16:52+00:00",
+   "gravite": "critical",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://stspg.io/5qj9j0p5g4cr",
+     "titre": "Investigating degraded experiences across GitHub products"
+    }
+   ],
+   "source_auto": "github"
+  }
+ ],
  "ecartes_pages_de_statut": [
+  {
+   "titre": "Cloudflare : Elevated R2 errors for buckets in APAC region",
+   "debut": "2026-11-25T16:50+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/2quqh864hxdi"
+  },
   {
    "titre": "Cloudflare : R2 elevated errors and timeouts for requests from South America",
    "debut": "2026-11-24T21:54+00:00",
@@ -235,21 +279,6 @@
    "debut": "2026-11-18T20:35+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/9zpa7own49hb"
-  },
-  {
-   "titre": "Cloudflare : R2 Downloads Stalling in Japan",
-   "debut": "2026-11-18T13:45+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/2wjvsj2kqt07"
   }
- ],
- "tri_presse": {
-  "articles": 1,
-  "sans_acteur": 1,
-  "sans_incident": 0,
-  "hors_sujet": 0,
-  "doublons": 0,
-  "retenus": 0,
-  "erreurs": []
- }
+ ]
 }

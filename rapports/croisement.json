@@ -1,5 +1,5 @@
 {
-  "genere_le": "2026-11-25T13:41:41Z",
+  "genere_le": "2026-11-25T20:03:08Z",
   "regles_version": "1.3.1",
   "periode_mesuree": {
     "debut": "2026-11-16T09:56:00Z",
@@ -303,6 +303,12 @@
     }
   ],
   "non_couverts": [
+    {
+      "evenement": "Cloudflare : Some customers cannot create monitors",
+      "fournisseur": "Mistral",
+      "debut": "2026-11-25T16:42:00Z",
+      "raison": "aucune mesure de la sonde sur cette période"
+    },
     {
       "evenement": "Cloudflare : Firewall Configuration Delay",
       "fournisseur": "Mistral",

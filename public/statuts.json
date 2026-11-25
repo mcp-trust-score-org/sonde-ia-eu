@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-25T10:53:19+00:00",
+ "genere_le": "2026-11-25T20:03:10+00:00",
  "fournisseurs": {
   "mistral": {
    "type": "lien",
@@ -32,13 +32,6 @@
      "fin": "2026-11-12T09:50+00:00",
      "impact": "minor",
      "lien": "https://stspg.io/x5j54cj4bds9"
-    },
-    {
-     "titre": "[GenerativeAPI] - Deepseek-v4/v4.1-flash timeouts",
-     "debut": "2026-10-26T17:34+00:00",
-     "fin": "2026-11-06T10:44+00:00",
-     "impact": "minor",
-     "lien": "https://stspg.io/4jq53sf7mx0d"
     }
    ],
    "composants_suivis": [
