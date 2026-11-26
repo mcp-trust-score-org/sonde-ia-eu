@@ -118,7 +118,8 @@ detour:
          plateforme, serveurs, électricité, câble, satellite, datacenter, centre de données, réseau,
          technologie, écran, application, smartphone, réseaux sociaux, AI, outage, data, chips, platform,
          algorithm, tech, internet, software, network, ChatGPT, Mistral, numérisation, dématérialisation,
-         données personnelles, RGPD, DMA, DSA, cyberattaque, piratage, objet connecté]
+         données personnelles, RGPD, DMA, DSA, cyberattaque, piratage, objet connecté,
+         Anthropic, Claude, OpenAI, Gemini, Copilot, LLM, Nvidia, GPU]
   medias:
     - { nom: Next,               flux: "https://next.ink/feed/", tout: true }
     - { nom: Numerama,           flux: "https://www.numerama.com/feed/" }
@@ -140,6 +141,10 @@ detour:
     # Sources publiques et académiques : rien à vendre. (Sans flux : Polytechnique, Dauphine, Inria, Arcep, Conseil de l'IA
     # et du numérique → leurs publications passent par redaction/panier.yaml.)
     - { nom: CNIL,               flux: "https://www.cnil.fr/fr/rss.xml", tout: true }              # vérifié le 24/11
+    # Ajouts du 26 novembre 2026 : l'annonce Mousquetaires × Anthropic (25/11) n'est passée que par eux.
+    # Les annonces d'entreprises (mercato de l'IA) sortent souvent dans la presse économique et sectorielle.
+    - { nom: Clubic,             flux: "https://www.clubic.com/feed/news.rss" }                    # à confirmer ; filtré par les mots
+    - { nom: LSA,                flux: "https://www.lsa-conso.fr/rss/" }                           # à confirmer ; filtré par les mots (commerce)
     - { nom: CNRS Le journal,    flux: "https://lejournal.cnrs.fr/rss" }                           # vérifié le 24/11 ; filtré par les mots
 
 # ---------------------------------------------------------------------------
