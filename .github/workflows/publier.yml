@@ -76,12 +76,14 @@ jobs:
           else
             python -m sonde publier --rubrique "$R" --date "$DATE_BROUILLON" --numero "${NUMERO:-1}" ${{ inputs.forcer && '--forcer' || '' }} ${{ inputs.emplacement == 'Carte seulement' && '--carte' || '' }} --liens "$LIENS"
           fi
+          # Le tableau de pilotage suit tout de suite (sinon il attend le prochain passage de la sonde)
+          python -c "from pathlib import Path; from sonde.pilotage import produire; produire(Path('.'), Path('iris/donnees'))"
 
       - name: Enregistrer (le site se met à jour tout seul)
         run: |
           git config user.name "sonde-ia-eu"
           git config user.email "sonde-ia-eu@users.noreply.github.com"
-          git add iris/publies.json iris/flux.xml redaction/propositions
+          git add iris/publies.json iris/flux.xml redaction/propositions iris/donnees/pilotage.json
           if git diff --cached --quiet; then rm -f notification.json; exit 0; fi
           git commit -m "Publication : ${{ inputs.rubrique }} ${{ inputs.date }}"
           for essai in 1 2 3 4 5; do
