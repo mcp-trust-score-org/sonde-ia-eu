@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-26T13:19:08+00:00",
+ "genere_le": "2026-11-26T22:25:21+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,8 +16,7 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "erreur",
-   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
+   "etat": "ok"
   }
  },
  "dependances": {
@@ -187,6 +186,24 @@
  ],
  "ecartes_pages_de_statut": [
   {
+   "titre": "Cloudflare : Cloudflare Dashboard and Cloudflare API service issues",
+   "debut": "2026-11-26T16:03+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/xiqj67vl5pqm"
+  },
+  {
+   "titre": "Cloudflare : AI Gateway – Elevated errors for Gemini 4 models using Unified Billing",
+   "debut": "2026-11-26T14:19+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/filussqshtfq"
+  },
+  {
+   "titre": "Cloudflare : Workers AI - Deepseek Flash increased errors",
+   "debut": "2026-11-26T14:41+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/6crqy1zulybd"
+  },
+  {
    "titre": "Cloudflare : Cloudflare Billing Issues",
    "debut": "2026-11-26T09:28+00:00",
    "raison": "service non utilisé par nos fournisseurs",
@@ -281,12 +298,15 @@
    "debut": "2026-11-20T02:52+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/pfwuex7qix27"
-  },
-  {
-   "titre": "Cloudflare : Observability ingestion delay and query failures",
-   "debut": "2026-11-19T16:30+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/ljrvdciu7syf"
   }
- ]
+ ],
+ "tri_presse": {
+  "articles": 1,
+  "sans_acteur": 1,
+  "sans_incident": 0,
+  "hors_sujet": 0,
+  "doublons": 0,
+  "retenus": 0,
+  "erreurs": []
+ }
 }
