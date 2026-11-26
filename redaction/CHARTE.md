@@ -55,6 +55,8 @@ Iris cherche en priorité les sujets où l'évidence se retourne : ceux où « p
 
 **Le mercato de l'IA.** L'encadré « Qui quitte qui ? » de l'À la une (`iris/mercato.json`, lu en direct : le modifier ne redéploie pas le site). Une ligne = un changement de fournisseur annoncé publiquement ou rapporté par un média reconnu, avec sa source. « Ce qu'elle dit » reste ce que l'entreprise affirme. « En partie » quand elle garde une partie de l'ancien fournisseur. Même couleur pour tous les pays : l'encadré constate, il ne juge pas. Une rumeur ou une source anonyme seule n'y entre pas.
 
+**Les marchés publics.** Chaque matin, la sonde lit les avis du BOAMP (France) et de TED (Union européenne) dont l'objet parle d'IA. Un **marché attribué** est une signature officielle, publiée par l'acheteur avec le nom du titulaire : après lecture de l'avis, il peut entrer au mercato avec le tampon OFFICIEL et l'avis comme source. Un **appel d'offres en cours** n'est le choix de personne : on peut dire qu'un acheteur public cherche une solution d'IA, jamais deviner qui gagnera. Rien n'entre au mercato sans relecture.
+
 **Le panier d'idées.** Les idées de sujets sont notées dans `redaction/panier.yaml` (rubrique `sujets` : la question, l'angle, la preuve à trouver, des mots pour les reconnaître). Quand l'actualité s'en approche, le brouillon du jour le signale (« rejoint l'idée : … ») et le rappel de midi prévient la rédaction. Une idée n'est jamais rédigée automatiquement. En priorité, celles que seule la sonde peut prouver : ce sont nos exclusivités.
 
 **Où.** D'abord dans Iris Plus (« Et si… ? »), qui est fait pour ça. Une version courte peut aller dans Tous connectés ou À la une quand l'actualité s'y prête.
