@@ -10,7 +10,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write   # les cartes partageables sont enregistrées dans iris/cartes/
 
 jobs:
   notifier:
@@ -18,14 +18,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          ref: main
+          fetch-depth: 0
+      # Un zip déposé arrive souvent en plusieurs envois : on attend la fin du dépôt, puis on prend la dernière
+      # version du code ET du fichier. Sinon, le mercato peut être lu avec l'ancien code (26/11 : la signature des
+      # Mousquetaires annoncée comme un départ).
+      - name: Attendre la fin du dépôt
+        run: sleep 120 && git pull --quiet origin main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - name: Quels transferts sont nouveaux ?
         run: |
-          git show HEAD~1:iris/mercato.json > ancien.json 2>/dev/null || echo "" > ancien.json
+          AVANT="${{ github.event.before }}"
+          if [ -z "$AVANT" ] || [ "$AVANT" = "0000000000000000000000000000000000000000" ]; then AVANT="HEAD~1"; fi
+          git show "$AVANT:iris/mercato.json" > ancien.json 2>/dev/null || echo "" > ancien.json
           python -m sonde.mercato ancien.json iris/mercato.json > notification.json
           if [ -s notification.json ]; then echo "À envoyer :"; cat notification.json; else rm notification.json; echo "Aucun nouveau transfert (ou premier dépôt) : pas de notification."; fi
       - name: Prévenir les abonnés
@@ -35,8 +43,21 @@ jobs:
         run: |
           if [ ! -f notification.json ]; then exit 0; fi
           if [ -z "$NOTIF_SECRET" ]; then echo "NOTIF_SECRET absent : rien envoyé."; exit 0; fi
-          sleep 30   # le temps que GitHub serve le nouveau fichier au site
           REPONSE=$(curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/notifier" \
             -H "Authorization: Bearer $NOTIF_SECRET" -H "Content-Type: application/json" \
             --data @notification.json) || { echo "::warning::La notification n'est pas partie : $REPONSE"; exit 0; }
           echo "Réponse du site : $REPONSE"
+      - name: Dessiner les cartes partageables (iris/cartes/)
+        run: |
+          python -m sonde.cartes
+          git config user.name "sonde-ia-eu"
+          git config user.email "sonde-ia-eu@users.noreply.github.com"
+          git add iris/cartes
+          git diff --cached --quiet && exit 0
+          git commit -m "Cartes du mercato"
+          for essai in 1 2 3 4 5; do
+            git pull --rebase -X theirs --quiet && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((essai * 5))
+          done
+          exit 1

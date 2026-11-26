@@ -72,6 +72,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 8
 
+      - name: Marchés publics de l'IA (BOAMP, TED) pour le mercato
+        continue-on-error: true
+        run: python -m sonde marches
+
       - name: Propositions d'articles du jour (selon redaction/CHARTE.md, rien n'est publié)
         run: python -m sonde rediger
         env:

@@ -13,6 +13,7 @@ on:
       - "!iris/publies.json"
       - "!iris/plus.json"
       - "!iris/mercato.json"
+      - "!iris/cartes/**"
   workflow_dispatch: {}   # bouton « Run workflow » : redéployer à la main si besoin
 
 permissions:

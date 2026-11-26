@@ -1,0 +1,37 @@
+name: Le point mercato du vendredi
+
+# Chaque vendredi en fin d'après-midi : une notification qui résume les mouvements de la semaine du mercato
+# de l'IA (iris/mercato.json, date de la source sur les 7 derniers jours). Aucun mouvement : rien n'est envoyé.
+# Le lecteur arrive sur « Le point mercato » du site (/?point=1#une), avec le vote « Vous auriez fait le même choix ? ».
+on:
+  schedule:
+    - cron: "37 15 * * 5"      # vendredi, 16 h 37 à Paris (heure d'hiver)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  point:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Les mouvements de la semaine
+        run: |
+          python -m sonde.mercato --point iris/mercato.json > notification.json
+          if [ -s notification.json ]; then cat notification.json; else rm notification.json; echo "Aucun mouvement cette semaine : pas de point."; fi
+      - name: Prévenir les abonnés
+        env:
+          SITE_URL: https://sonde-ia-eu-iris.vercel.app
+          NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}
+        run: |
+          if [ ! -f notification.json ]; then exit 0; fi
+          if [ -z "$NOTIF_SECRET" ]; then echo "NOTIF_SECRET absent : rien envoyé."; exit 0; fi
+          REPONSE=$(curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/notifier" \
+            -H "Authorization: Bearer $NOTIF_SECRET" -H "Content-Type: application/json" \
+            --data @notification.json) || { echo "::warning::La notification n'est pas partie : $REPONSE"; exit 0; }
+          echo "Réponse du site : $REPONSE"
