@@ -72,7 +72,9 @@
     "Trop de chiffres dans le texte (6) : en garder 3 au plus, le détail va dans l'encadré Premium.",
     "Le rédacteur signale 3 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer ».",
     "Le brouillon contient des points [À VÉRIFIER] : à compléter avant publication."
-   ]
+   ],
+   "statut": "ecarte",
+   "ecarte_pourquoi": "Écarté par la rédaction le 23 novembre (on a publié le CHU de Guadeloupe à la place)."
   },
   {
    "rubrique": "tous_connectes",
