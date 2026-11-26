@@ -102,13 +102,13 @@ const heure = (iso) => iso ? new Date(iso).toLocaleString("fr-FR", { weekday: "s
 const jour = (iso) => new Date(iso + "T12:00:00Z").toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short", timeZone: "Europe/Paris" });
 const depuis = (iso) => { if (!iso) return ""; const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 60 ? `il y a ${m} min` : m < 1440 ? `il y a ${Math.round(m / 60)} h` : `il y a ${Math.round(m / 1440)} j`; };
 const PASTILLE = { "publié": "p-publie", "brouillon prêt": "p-pret", "à vérifier": "p-verif", "non publié": "p-rouge", "rédaction pas lancée": "p-rouge",
-  "aucun brouillon": "p-rouge", "écarté": "p-gris", "à venir": "p-gris", "rien (pas d'incident)": "p-gris", "rien (pas d'incident ?)": "p-gris", "avant le lancement": "p-gris" };
+  "aucun brouillon": "p-rouge", "écarté": "p-gris", "non retenu": "p-gris", "à venir": "p-gris", "rien (pas d'incident)": "p-gris", "rien (pas d'incident ?)": "p-gris", "avant le lancement": "p-gris" };
 
 fetch("/d/donnees/pilotage.json?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" })
   .then((r) => (r.ok ? r : Promise.reject(r)))
   .catch(() => fetch("donnees/pilotage.json", { cache: "no-store" }))
   .then((r) => r.json()).then((p) => {
-  document.getElementById("maj").textContent = `Données du ${heure(p.genere_le)} (${depuis(p.genere_le)}) · mises à jour à chaque passage de la sonde`;
+  document.getElementById("maj").textContent = `Données du ${heure(p.genere_le)} (${depuis(p.genere_le)}) · mises à jour à chaque passage de la sonde et après chaque publication`;
   const auj = p.redaction.find((j) => j.aujourdhui) || {};
   const afaire = [];
   const s = p.sonde;
@@ -133,7 +133,7 @@ fetch("/d/donnees/pilotage.json?t=" + Math.floor(Date.now() / 60000), { cache: "
 
   // Rédaction
   document.querySelector("#redaction tbody").innerHTML = p.redaction.slice().reverse().map((j) => `<tr class="${j.aujourdhui ? "auj" : ""}"><td><b>${jour(j.date)}</b>${j.aujourdhui ? "<br/><span class='rub'>aujourd'hui</span>" : ""}</td><td>${
-    j.lignes.map((l) => `<span class="pastille ${PASTILLE[l.etat] || "p-gris"}" title="${echap(l.quoi)}">${echap(l.nom)} · ${echap(l.etat)}</span>`).join("")}</td></tr>`).join("");
+    j.lignes.map((l) => `<span class="pastille ${PASTILLE[l.etat] || "p-gris"}" title="${echap(l.titre ? l.quoi + " : " + l.titre : l.quoi)}">${echap(l.nom)} · ${echap(l.etat)}</span>`).join("")}</td></tr>`).join("");
 
   // Sonde
   const barre = (n, prevu) => { const r = Math.min(1, n / prevu); return `<div style="display:flex;gap:8px;align-items:center"><div class="barre ${r < .5 ? "faible" : ""}" style="flex:1"><i style="width:${Math.round(r * 100)}%"></i></div><span class="rub">${n}/${prevu}</span></div>`; };
