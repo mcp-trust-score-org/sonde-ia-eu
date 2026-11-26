@@ -1,6 +1,6 @@
 # Dossier de surveillance – IONOS AI Model Hub
 
-Période : 2026-11-15 → 2026-11-26 · généré le 2026-11-26 04:49 UTC
+Période : 2026-11-15 → 2026-11-26 · généré le 2026-11-26 13:19 UTC
 
 > Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives.
 
@@ -37,7 +37,7 @@ Aucune mesure sur la période.
 - Pays des points d'entrée observés : DE
 - Opérateurs réseau : ?, IONOS
 - Intermédiaires visibles : aucun
-- Relevés sur la période : 19 · constats distincts : indetermine, ue_observe
+- Relevés sur la période : 20 · constats distincts : indetermine, ue_observe
 
 Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent. Il ne prouve pas à lui seul le lieu de traitement du modèle, à confirmer contractuellement (champ B_02.02.0160).
 
@@ -50,5 +50,5 @@ Pas encore d'empreinte.
 
 ## 5. Preuves horodatées
 
-7 manifestes quotidiens sur la période, dont 7 ancrés via OpenTimestamps.
+8 manifestes quotidiens sur la période, dont 8 ancrés via OpenTimestamps.
 Méthode de vérification : voir `sonde/horodatage.py`.

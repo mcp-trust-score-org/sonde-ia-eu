@@ -1,11 +1,11 @@
 La météo de l'IA, jeudi 26 novembre.
 
-Nuages sur OVHcloud.
+Temps calme sur 2 fournisseurs, nuages sur Scaleway et OVHcloud.
 
-• Mistral : inconnu, pas de mesure récente · 100,0 % sur 24 h
-• Scaleway : inconnu, pas de mesure récente · 100,0 % sur 24 h
+• Mistral : soleil, tout va bien · 100,0 % sur 24 h
+• Scaleway : éclaircies, ça marche, un peu lent · 100,0 % sur 24 h
 • OVHcloud : nuageux, ça ralentit · 100,0 % sur 24 h
-• IONOS : inconnu, pas de mesure récente · 100,0 % sur 24 h
+• IONOS : soleil, tout va bien · 100,0 % sur 24 h
 
 Mesure indépendante, chaque minute, des fournisseurs d'IA européens.
 La météo en direct : [ADRESSE DU SITE]
