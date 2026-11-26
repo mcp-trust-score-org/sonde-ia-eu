@@ -28,10 +28,16 @@ def notification(ajouts: list[dict]) -> dict | None:
         return None
     if len(ajouts) == 1:
         x = ajouts[0]
-        quitte = " et ".join(x.get("quitte") or []) or "son fournisseur"
+        source = x.get("source", {}).get("media")
+        officiel = "OFFICIEL · " if x.get("annonce") == "entreprise" else ""
+        if not x.get("quitte"):          # une signature : on ne sait pas ce que l'entreprise utilisait avant
+            return {"titre": f"Le mercato de l'IA · {officiel}{x['entreprise']} signe avec {x.get('pour')}",
+                    "texte": f"{x.get('comment') or ''}. Source : {source}.".lstrip(". "),
+                    "url": "/?mercato=1#une", "sujet": "articles"}
+        quitte = " et ".join(x["quitte"])
         partie = " en partie" if x.get("en_partie") else ""
-        return {"titre": f"Le mercato de l'IA · {x['entreprise']} quitte{partie} {quitte}",
-                "texte": f"Pour {x.get('pour')}. Source : {x.get('source', {}).get('media')}.",
+        return {"titre": f"Le mercato de l'IA · {officiel}{x['entreprise']} quitte{partie} {quitte}",
+                "texte": f"Pour {x.get('pour')}. Source : {source}.",
                 "url": "/?mercato=1#une", "sujet": "articles"}
     noms = ", ".join(dict.fromkeys(x["entreprise"] for x in ajouts))
     return {"titre": f"Le mercato de l'IA · {len(ajouts)} nouveaux transferts",
