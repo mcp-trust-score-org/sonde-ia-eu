@@ -40,6 +40,8 @@ RUBRIQUES = {"une": "une", "a la une": "une", "à la une": "une", "tous_connecte
 # Catégorie du lien (écrite librement par le rédacteur) → image de la banque iris/assets/photos.
 # On compare sans accents ni majuscules ; si la catégorie est inconnue, on cherche aussi dans le titre.
 IMAGES_DETOUR = [
+    (("puce", "puces", "semi conducteur", "semi conducteurs", "semiconducteur", "semiconducteurs", "gpu", "gpus",
+      "processeur", "processeurs", "nvidia", "materiel", "hardware", "chip", "chips", "tsmc"), "puces"),
     (("regulation", "reglementation", "droit", "justice", "loi", "juridique", "tribunal", "dma", "rgpd",
       "concurrence", "amende"), "regulation"),
     (("cinema", "film", "serie", "streaming video"), "pop-culture-cinema"),

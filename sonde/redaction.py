@@ -1147,7 +1147,7 @@ def en_markdown(s: dict) -> str:
         l += ["## Sujets qui font réfléchir (pistes pour Iris Plus ou un « Et si… ? »)", "",
               "_Repérés automatiquement : des articles qui touchent à plusieurs débats sur nos dépendances. "
               "Rien n'est rédigé. Une piste qui vous plaît : ajoutez-la à `redaction/panier.yaml` avec `pour: idee`._", ""]
-        l += [f"- **{p.get('media') or '?'}** · [{p['titre']}]({p['url']}) · _{', '.join(p['themes'])}_"
+        l += [f"- **{p.get('media') or '?'}** · [{p['titre']}]({p['url']})" + (f" · _{', '.join(p['themes'])}_" if p['themes'] else "")
               + (f" · **rejoint l'idée : {p['sujet']}**" if p.get("sujet") else "") for p in s["pistes_reflexion"]] + [""]
     if s.get("reserve_une"):
         l += ["## En réserve pour À la une", ""] + [f"- {r['titre']} ({r['tag_interne']})" for r in s["reserve_une"]] + [""]
