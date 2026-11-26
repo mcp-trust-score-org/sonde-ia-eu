@@ -1,71 +1,126 @@
 {
-  "_regles": "Le mercato de l'IA (CHARTE, « Les sujets qui font réfléchir »). Une ligne = un changement de fournisseur ANNONCÉ publiquement ou rapporté par un média reconnu, avec sa source. « dit » = ce que l'entreprise affirme, présenté comme tel. « en_partie » = l'entreprise garde une partie de l'ancien fournisseur. Du plus récent au plus ancien. Ce fichier est lu en direct (/d/mercato.json) : le modifier ne redéploie pas le site.",
-  "mis_a_jour": "2026-11-25",
+  "_regles": "Le mercato de l'IA (CHARTE, « Les sujets qui font réfléchir »). Une ligne = un changement de fournisseur (ou une « signature » : quitte vide, quand on ne sait pas ce que l'entreprise utilisait avant) ANNONCÉ publiquement ou rapporté par un média reconnu, avec sa source. « dit » = ce que l'entreprise affirme, présenté comme tel. « en_partie » = l'entreprise garde une partie de l'ancien fournisseur. Du plus récent au plus ancien. Ce fichier est lu en direct (/d/mercato.json) : le modifier ne redéploie pas le site. « annonce » : « entreprise » (annoncé par l'entreprise elle-même ou son dirigeant, tampon OFFICIEL) ou « presse » (rapporté par un média, tampon PRESSE).",
+  "mis_a_jour": "2026-11-26",
   "transferts": [
+    {
+      "entreprise": "Groupement Mousquetaires",
+      "secteur": "Grande distribution (Intermarché, Netto…)",
+      "pays": "France",
+      "date": "2026-11",
+      "quitte": [],
+      "pour": "Claude (Anthropic, États-Unis)",
+      "pour_origine": "usa",
+      "comment": "Via le cloud d'Amazon (AWS). Test dans 500 magasins et pour 300 salariés dès janvier 2027",
+      "en_partie": false,
+      "dit": "Le groupe parle d'un déploiement prudent, d'abord en test, avant de l'étendre à tout le groupe.",
+      "source": {
+        "media": "LSA",
+        "date": "2026-11-25",
+        "url": "https://www.lsa-conso.fr/distributeurs-alimentaires/les-mousquetaires/intermarche/exclusif-les-grandes-annonces-de-thierry-cotillard-au-congres-des-mousquetaires-rachat-de-chronodrive-partenariat-anthropic-retail-media-achats-cybersecurite.55XW52C7DZEM7BHCL4RZDJ5MLM.html"
+      },
+      "annonce": "entreprise"
+    },
     {
       "entreprise": "Revolut",
       "secteur": "Banque en ligne",
       "pays": "Royaume-Uni",
       "date": "2026-11",
-      "quitte": ["Anthropic", "OpenAI"],
+      "quitte": [
+        "Anthropic",
+        "OpenAI"
+      ],
       "pour": "GLM-5.3 (Z.ai, Chine)",
       "pour_origine": "chine",
       "comment": "Modèle ouvert, installé sur ses propres serveurs",
       "en_partie": true,
       "dit": "« Environ dix fois moins cher » pour le code de ses 2 000 ingénieurs. Chiffre de Revolut, non détaillé.",
-      "source": { "media": "IT for Business", "date": "2026-11-05", "url": "https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445" }
+      "source": {
+        "media": "IT for Business",
+        "date": "2026-11-05",
+        "url": "https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445"
+      },
+      "annonce": "presse"
     },
     {
       "entreprise": "Ecosia",
       "secteur": "Moteur de recherche",
       "pays": "Allemagne",
       "date": "2026-10",
-      "quitte": ["Mistral"],
+      "quitte": [
+        "Mistral"
+      ],
       "pour": "Qwen, GLM, Kimi (Chine)",
       "pour_origine": "chine",
       "comment": "Modèles ouverts, via la plateforme Melious",
       "en_partie": false,
       "dit": "Son PDG juge Mistral en retard et dit avoir divisé ses coûts par deux environ. Mistral n'a pas répondu.",
-      "source": { "media": "MacGeneration, d'après Politico", "date": "2026-10-08", "url": "https://www.macg.co/intelligence-artificielle/2026/10/ecosia-lache-mistral-pour-des-ia-chinoises-la-souverainete-europeenne-prend-un-coup-de-bambou-311521" }
+      "source": {
+        "media": "MacGeneration, d'après Politico",
+        "date": "2026-10-08",
+        "url": "https://www.macg.co/intelligence-artificielle/2026/10/ecosia-lache-mistral-pour-des-ia-chinoises-la-souverainete-europeenne-prend-un-coup-de-bambou-311521"
+      },
+      "annonce": "entreprise"
     },
     {
       "entreprise": "AT&T",
       "secteur": "Télécoms",
       "pays": "États-Unis",
       "date": "2026-08",
-      "quitte": ["Anthropic", "OpenAI"],
+      "quitte": [
+        "Anthropic",
+        "OpenAI"
+      ],
       "pour": "Nemotron, Llama, Gemma",
       "pour_origine": "usa",
       "comment": "Modèles ouverts, pour 40 % des requêtes de ses salariés",
       "en_partie": true,
       "dit": "Vise 60 à 70 % des requêtes, et veut garder stable sa facture Anthropic et OpenAI.",
-      "source": { "media": "PYMNTS, d'après The Information", "date": "2026-08", "url": "https://pymnts.com/news/artificial-intelligence/2026/att-slashes-ai-costs-by-adopting-model-routers-and-open-source" }
+      "source": {
+        "media": "PYMNTS, d'après The Information",
+        "date": "2026-08",
+        "url": "https://pymnts.com/news/artificial-intelligence/2026/att-slashes-ai-costs-by-adopting-model-routers-and-open-source"
+      },
+      "annonce": "presse"
     },
     {
       "entreprise": "Harvey",
       "secteur": "IA pour avocats",
       "pays": "États-Unis",
       "date": "2026-08",
-      "quitte": ["Modèles loués"],
+      "quitte": [
+        "Modèles loués"
+      ],
       "pour": "Son propre modèle, bâti sur Kimi K3 (Moonshot, Chine)",
       "pour_origine": "chine",
       "comment": "Garde Claude Opus d'Anthropic pour les tâches les plus difficiles",
       "en_partie": true,
       "dit": "Harvey n'a pas commenté. Selon Bloomberg, ses marges sont redevenues positives après ce changement.",
-      "source": { "media": "The Next Web, d'après Bloomberg", "date": "2026-09-21", "url": "https://thenextweb.com/news/model-costs-startups-open-weights" }
+      "source": {
+        "media": "The Next Web, d'après Bloomberg",
+        "date": "2026-09-21",
+        "url": "https://thenextweb.com/news/model-costs-startups-open-weights"
+      },
+      "annonce": "presse"
     },
     {
       "entreprise": "Ecosia",
       "secteur": "Moteur de recherche",
       "pays": "Allemagne",
       "date": "2026-05",
-      "quitte": ["OpenAI"],
+      "quitte": [
+        "OpenAI"
+      ],
       "pour": "Mistral (France)",
       "pour_origine": "europe",
       "comment": "Pour ses fonctions d'IA",
       "en_partie": false,
       "dit": "Cinq mois plus tard, Ecosia quittait Mistral (voir plus haut).",
-      "source": { "media": "MacGeneration", "date": "2026-10-08", "url": "https://www.macg.co/intelligence-artificielle/2026/10/ecosia-lache-mistral-pour-des-ia-chinoises-la-souverainete-europeenne-prend-un-coup-de-bambou-311521" }
+      "source": {
+        "media": "MacGeneration",
+        "date": "2026-10-08",
+        "url": "https://www.macg.co/intelligence-artificielle/2026/10/ecosia-lache-mistral-pour-des-ia-chinoises-la-souverainete-europeenne-prend-un-coup-de-bambou-311521"
+      },
+      "annonce": "presse"
     }
   ]
 }

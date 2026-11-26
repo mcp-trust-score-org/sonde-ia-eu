@@ -1368,9 +1368,13 @@ function moisCourt(aaaaMm) {
 }
 // Une ligne du mercato. complet : avec « Ce qu'elle dit » et la source (tableau complet).
 function ligneMercato(x, complet) {
-  return `<li class="mx">
+  const tampon = x.annonce === "entreprise" ? '<span class="mx-tampon mx-officiel" title="Annoncé par l\'entreprise">Officiel</span>'
+    : x.annonce === "presse" ? '<span class="mx-tampon mx-presse" title="Rapporté par un média">Presse</span>' : "";
+  return `<li class="mx">${tampon}
       <div class="mx-top"><b>${htmlSur(x.entreprise)}</b><span>${htmlSur(x.secteur)} · ${htmlSur(x.pays)} · ${moisCourt(x.date)}</span></div>
-      <div class="mx-move"><span class="mx-from">${htmlSur((x.quitte || []).join(", "))}</span><span class="mx-arrow" aria-label="vers">→</span><span class="mx-to">${htmlSur(x.pour)}</span></div>
+      <div class="mx-move">${(x.quitte || []).length
+        ? `<span class="mx-from">${htmlSur(x.quitte.join(", "))}</span><span class="mx-arrow" aria-label="vers">→</span>`
+        : `<span class="mx-signe">Signe avec</span>`}<span class="mx-to">${htmlSur(x.pour)}</span></div>
       ${x.en_partie || complet ? `<p class="mx-how">${complet ? htmlSur(x.comment) : ""}${x.en_partie ? ' <em class="mx-partie">en partie</em>' : ""}</p>` : ""}
       ${complet ? `<div class="mx-dit"><p><b>Ce qu'elle dit.</b> ${htmlSur(x.dit)}</p>${x.source && /^https:\/\//.test(x.source.url || "") ? `<a href="${htmlSur(x.source.url)}" target="_blank" rel="noopener">Source : ${htmlSur(x.source.media)} ↗</a>` : ""}</div>` : ""}
     </li>`;
@@ -1380,7 +1384,7 @@ function constatMercato(t) {
   const parOrigine = {};
   t.forEach((x) => { parOrigine[x.pour_origine] = (parOrigine[x.pour_origine] || 0) + 1; });
   const [orig, nb] = Object.entries(parOrigine).sort((a, b) => b[1] - a[1])[0] || [];
-  return nb > 1 && noms[orig] ? `<p class="mx-constat"><b>${nb} transferts sur ${t.length}</b> vont vers des modèles ${noms[orig]}.</p>` : "";
+  return nb > 1 && noms[orig] ? `<p class="mx-constat"><b>${nb} mouvements sur ${t.length}</b> vont vers des modèles ${noms[orig]}.</p>` : "";
 }
 function rendreMercato(d, complet = false) {
   const t = (d && d.transferts) || [];
@@ -1390,6 +1394,7 @@ function rendreMercato(d, complet = false) {
     <div class="mx-corps">
     <p class="mx-titre"${complet ? ' id="mxc-titre"' : ""}>Le mercato de l'IA</p>
     ${constatMercato(t)}
+    <p class="mx-legende"><span class="mx-tampon mx-officiel">Officiel</span> annoncé par l'entreprise <span class="mx-tampon mx-presse">Presse</span> rapporté par un média</p>
     <ol class="mx-list">${(complet ? t : t.slice(0, 4)).map((x) => ligneMercato(x, complet)).join("")}</ol>
     ${complet ? `<p class="mx-pied">Une entreprise, c'est une anecdote. Plusieurs, une tendance. Chaque transfert a sa source : un changement annoncé publiquement ou rapporté par un média reconnu. « Ce qu'elle dit » est ce que l'entreprise affirme, pas un fait vérifié par Iris.${maj ? ` <span>Mis à jour le ${maj}.</span>` : ""}</p>`
       : `<button type="button" class="mx-tout" data-ouvrir-mercato>Voir le tableau complet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg></button>`}
