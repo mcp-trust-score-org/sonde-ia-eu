@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-26T04:49:18+00:00",
+ "genere_le": "2026-11-26T12:30:59+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -26,6 +26,26 @@
   ]
  },
  "evenements": [
+  {
+   "id": "cloudflare-mkudgr09g9ax",
+   "titre": "Cloudflare : RealTimeKit Recording Delays",
+   "type": "incident_amont",
+   "debut": "2026-11-26T09:26+00:00",
+   "fin": "2026-11-26T10:05+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/mkudgr09g9ax",
+     "titre": "RealTimeKit Recording Delays"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
   {
    "id": "cloudflare-vk87u9j2g6if",
    "titre": "Cloudflare : Some customers cannot create monitors",
@@ -167,6 +187,12 @@
  ],
  "ecartes_pages_de_statut": [
   {
+   "titre": "Cloudflare : Cloudflare Billing Issues",
+   "debut": "2026-11-26T09:28+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/qlwszxx4667e"
+  },
+  {
    "titre": "Cloudflare : Elevated R2 Latency",
    "debut": "2026-11-25T20:08+00:00",
    "raison": "service non utilisé par nos fournisseurs",
@@ -267,12 +293,6 @@
    "debut": "2026-11-19T13:05+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/5pe5mb9fefi8"
-  },
-  {
-   "titre": "Cloudflare : Cloudflare Access Issue",
-   "debut": "2026-11-19T06:48+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/sd2sya0mc6df"
   }
  ]
 }

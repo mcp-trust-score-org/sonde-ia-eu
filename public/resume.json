@@ -3,28 +3,28 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 25,
-      "disponibilite_pct": 84.0,
-      "ttft_p50_ms": 750,
-      "ttft_p95_ms": 1204,
-      "duree_p50_ms": 2548,
-      "jetons_par_s_median": 60.1,
+      "appels": 23,
+      "disponibilite_pct": 87.0,
+      "ttft_p50_ms": 781,
+      "ttft_p95_ms": 1988,
+      "duree_p50_ms": 2755,
+      "jetons_par_s_median": 64.8,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
-        "réponse vide": 4
+        "réponse vide": 3
       }
     },
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 24,
-      "disponibilite_pct": 95.8,
-      "ttft_p50_ms": 1038,
-      "ttft_p95_ms": 27843,
-      "duree_p50_ms": 1561,
-      "jetons_par_s_median": 24.6,
-      "qualite_pct": 91.3,
+      "appels": 22,
+      "disponibilite_pct": 95.5,
+      "ttft_p50_ms": 897,
+      "ttft_p95_ms": 16731,
+      "duree_p50_ms": 1415,
+      "jetons_par_s_median": 25.2,
+      "qualite_pct": 90.5,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
         "réponse vide": 1
@@ -33,13 +33,13 @@
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 25,
+      "appels": 23,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 325,
-      "ttft_p95_ms": 7242,
-      "duree_p50_ms": 821,
+      "ttft_p50_ms": 304,
+      "ttft_p95_ms": 3043,
+      "duree_p50_ms": 710,
       "jetons_par_s_median": 61.0,
-      "qualite_pct": 72.0,
+      "qualite_pct": 73.9,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     }
@@ -53,8 +53,8 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-26T04:49:16+00:00",
-  "total_mesures": 182,
+  "genere_le": "2026-11-26T12:30:59+00:00",
+  "total_mesures": 185,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [
     "ovhcloud"
