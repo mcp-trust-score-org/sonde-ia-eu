@@ -13,6 +13,7 @@ lue par la page de pilotage avec sa clé (api/stats.js).
 from __future__ import annotations
 
 import json
+import re
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -59,6 +60,12 @@ def attendus(jour: date, rythme: dict) -> list[dict]:
     return sortie
 
 
+def _titre(article: dict) -> str:
+    """Le titre d'un article en ligne, sans balises (le Détour : celui du premier lien)."""
+    t = article.get("title") or ""
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", re.sub(r"<br\s*/?>", " ", t))).strip()
+
+
 def _etat_proposition(p: dict) -> str:
     if p.get("statut") == "publie":
         return "publié"
@@ -74,6 +81,14 @@ def redaction(racine: Path, aujourd_hui: date, rythme: dict, avant: int = 13, ap
     plus = _lire(racine / "iris" / "plus.json", {}) or {}
     meteos = {e.get("publie_le") for e in plus.get("meteo_semaine") or []}
     etsis = {a.get("publie_le"): a for a in plus.get("et_si") or []}
+    # Ce qui est vraiment en ligne fait foi (iris/publies.json) : un article peut avoir été publié sans passer
+    # par « Publier un brouillon » (article écrit à la main et déposé), et son brouillon n'est alors jamais marqué.
+    publies = _lire(racine / "iris" / "publies.json", {}) or {}
+    en_ligne = {}
+    for rub in ("une", "tous_connectes", "detour"):
+        for x in publies.get(rub) or []:
+            if x.get("date"):
+                en_ligne.setdefault((rub, str(x["date"])[:10]), x)
     jours = []
     for i in range(-avant, apres + 1):
         jour = aujourd_hui + timedelta(days=i)
@@ -88,6 +103,9 @@ def redaction(racine: Path, aujourd_hui: date, rythme: dict, avant: int = 13, ap
             if suivi_depuis and iso < suivi_depuis and not any(p.get("rubrique") == rub for p in props) \
                     and not (rub == "meteo_semaine" and iso in meteos):
                 ligne["etat"] = "avant le lancement"
+            elif (rub, iso) in en_ligne:
+                ligne["etat"] = "publié"
+                ligne["titre"] = _titre(en_ligne[(rub, iso)])
             elif rub == "meteo_semaine":
                 ligne["etat"] = "publié" if iso in meteos else ("à venir" if jour >= aujourd_hui else "non publié")
             elif rub == "et_si" and iso in etsis:
@@ -102,12 +120,17 @@ def redaction(racine: Path, aujourd_hui: date, rythme: dict, avant: int = 13, ap
                     ligne["etat"] = next((e for e in ("publié", "à vérifier", "brouillon prêt") if e in etats), etats[0])
                     ligne["brouillons"] = len(trouves)
                     if ligne["etat"] in ("brouillon prêt", "à vérifier") and jour < aujourd_hui:
-                        ligne["etat"] = "non publié"
+                        # « À chaud » est facultatif : ne pas le publier est un choix de la rédaction, pas un raté.
+                        ligne["etat"] = "non retenu" if ligne["optionnel"] else "non publié"
                 elif not lancee and jour <= aujourd_hui:
                     ligne["etat"] = "rédaction pas lancée" if not ligne["optionnel"] else "rien (pas d'incident ?)"
                 else:
                     ligne["etat"] = "rien (pas d'incident)" if ligne["optionnel"] else "aucun brouillon"
             lignes.append(ligne)
+        for (rub, d), x in en_ligne.items():  # publié un jour où la charte ne l'attendait pas
+            if d == iso and rub not in [l["rubrique"] for l in lignes]:
+                lignes.append({"rubrique": rub, "nom": NOMS.get(rub, rub), "quoi": "En plus", "etat": "publié",
+                               "titre": _titre(x)})
         for p in props:                      # brouillons en plus de la charte (revérification, etc.)
             if id(p) not in vues and p.get("rubrique") not in [l["rubrique"] for l in lignes]:
                 lignes.append({"rubrique": p.get("rubrique"), "nom": NOMS.get(p.get("rubrique"), p.get("rubrique")),
