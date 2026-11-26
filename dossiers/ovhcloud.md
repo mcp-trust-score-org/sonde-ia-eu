@@ -1,6 +1,6 @@
 # Dossier de surveillance – OVHcloud AI Endpoints
 
-Période : 2026-11-15 → 2026-11-25 · généré le 2026-11-25 13:40 UTC
+Période : 2026-11-15 → 2026-11-26 · généré le 2026-11-26 04:49 UTC
 
 > Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives.
 
@@ -28,22 +28,22 @@ Période : 2026-11-15 → 2026-11-25 · généré le 2026-11-25 13:40 UTC
 
 | Modèle | Appels | Disponibilité | 1er mot médian | 1er mot p95 | Heures avec échec | Plus longue série d'échecs | Offre mesurée |
 |---|---|---|---|---|---|---|---|
-| gpt-oss-120b | 59 | 88.14 % | 829 ms | 1,2 s | 7 | 1 h | anonyme |
-| llama-3.3-70b | 58 | 98.28 % | 1,1 s | 121,8 s | 1 | 1 h | anonyme |
-| mistral-small-3.2 | 59 | 100 % | 908 ms | 27,9 s | 0 | 0 h | anonyme |
+| gpt-oss-120b | 61 | 88.52 % | 815 ms | 1,2 s | 7 | 1 h | anonyme |
+| llama-3.3-70b | 60 | 98.33 % | 1,0 s | 120,0 s | 1 | 1 h | anonyme |
+| mistral-small-3.2 | 61 | 100 % | 885 ms | 26,9 s | 0 | 0 h | anonyme |
 
 Les mesures en offre gratuite ou anonyme subissent des limites de débit propres à ces offres : elles ne reflètent pas forcément le service contractuel d'un client payant.
 
 ## 2. Chemin réseau observé
 
-**Constat au 2026-11-25 : Entrées réseau opérées et localisées dans l'UE/EEE**
+**Constat au 2026-11-26 : Entrées réseau opérées et localisées dans l'UE/EEE**
 
 - Toutes les entrées réseau observées sont opérées et localisées dans l'UE/EEE
 
 - Pays des points d'entrée observés : FR
 - Opérateurs réseau : OVHcloud
 - Intermédiaires visibles : aucun
-- Relevés sur la période : 18 · constats distincts : ue_observe
+- Relevés sur la période : 19 · constats distincts : ue_observe
 
 Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent. Il ne prouve pas à lui seul le lieu de traitement du modèle, à confirmer contractuellement (champ B_02.02.0160).
 
@@ -51,9 +51,9 @@ Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent.
 
 | Modèle | Empreintes | Similarité avec la référence | Alertes de changement | Changements d'identifiant |
 |---|---|---|---|---|
-| gpt-oss-120b | 18 | référence en cours | 0 | 0 |
-| llama-3.3-70b | 18 | 0.58 | 0 | 0 |
-| mistral-small-3.2 | 18 | 0.59 | 8 | 0 |
+| gpt-oss-120b | 19 | référence en cours | 0 | 0 |
+| llama-3.3-70b | 19 | 0.58 | 0 | 0 |
+| mistral-small-3.2 | 19 | 0.73 | 9 | 0 |
 - 2026-11-21 16:43 · mistral-small-3.2 : changement probable (similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96))
 - 2026-11-21 17:11 · mistral-small-3.2 : changement probable (similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96))
 - 2026-11-21 19:49 · mistral-small-3.2 : changement probable (similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96))
@@ -62,6 +62,7 @@ Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent.
 - 2026-11-24 14:18 · mistral-small-3.2 : changement probable (similarité 0.58 sous la variation normale (médiane 1.00, limite 0.96))
 - 2026-11-25 04:40 · mistral-small-3.2 : changement probable (similarité 0.71 sous la variation normale (médiane 1.00, limite 0.96))
 - 2026-11-25 13:31 · mistral-small-3.2 : changement probable (similarité 0.59 sous la variation normale (médiane 1.00, limite 0.96))
+- 2026-11-26 04:40 · mistral-small-3.2 : changement probable (similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96))
 
 Changements de catalogue :
 - 2026-11-17 : +9 / -0
