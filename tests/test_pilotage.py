@@ -41,3 +41,30 @@ def test_sonde_interruptions(tmp_path):
     assert s["veille"]["etat"] == "ok" and s["mesure"]["etat"] == "ok"
     assert [t["heures"] for t in s["interruptions"]] == [4.8]
     assert s["jours"][-1]["veille"] == 3 and s["jours"][-1]["mesures"] == 1
+
+
+def test_publies_font_foi(tmp_path):
+    """Un article en ligne compte comme publié, même si son brouillon n'a jamais été marqué (dépôt à la main)."""
+    d = tmp_path / "redaction" / "propositions"
+    d.mkdir(parents=True)
+    (d / "2026-11-25.json").write_text(json.dumps({"propositions": [{"rubrique": "tous_connectes"}]}))
+    (tmp_path / "iris").mkdir()
+    (tmp_path / "iris" / "publies.json").write_text(json.dumps({
+        "une": [{"date": "2026-11-26", "title": "Quatre clouds.<br/>Des <mark>puces</mark>."}],
+        "tous_connectes": [{"date": "2026-11-25", "title": "Un sur cinq"}],
+        "detour": [{"date": "2026-11-24", "url": "https://x"}]}))
+    jours = {j["date"]: {l["rubrique"]: l for l in j["lignes"]}
+             for j in redaction(tmp_path, date(2026, 11, 26), RYTHME, avant=2, apres=0)}
+    assert jours["2026-11-25"]["tous_connectes"]["etat"] == "publié"      # et non « non publié »
+    assert jours["2026-11-24"]["detour"]["etat"] == "publié"
+    assert jours["2026-11-26"]["une"]["etat"] == "publié"                 # et non « rien (pas d'incident) »
+    assert jours["2026-11-26"]["une"]["titre"] == "Quatre clouds. Des puces."
+
+
+def test_a_chaud_non_publie_nest_pas_un_rate(tmp_path):
+    d = tmp_path / "redaction" / "propositions"
+    d.mkdir(parents=True)
+    (d / "2026-11-24.json").write_text(json.dumps({"propositions": [{"rubrique": "une"}]}))   # mardi : À chaud facultatif
+    jours = {j["date"]: {l["rubrique"]: l["etat"] for l in j["lignes"]}
+             for j in redaction(tmp_path, date(2026, 11, 26), RYTHME, avant=2, apres=0)}
+    assert jours["2026-11-24"]["une"] == "non retenu"
