@@ -32,3 +32,23 @@ def test_fichier_du_site_valide():
     d = json.loads((Path(__file__).parent.parent / "iris" / "mercato.json").read_text(encoding="utf-8"))
     for x in d["transferts"]:
         assert x["source"]["url"].startswith("https://") and x["entreprise"] and x["pour"] and x["dit"]
+
+
+def test_signature():
+    sig = {**T, "entreprise": "Les Mousquetaires", "quitte": [], "pour": "Claude (Anthropic, États-Unis)",
+           "comment": "Via AWS", "source": {"media": "LSA", "url": "https://ex.fr/m"}}
+    n = notification(nouveaux({"transferts": []}, {"transferts": [sig]}))
+    assert n["titre"] == "Le mercato de l'IA · Les Mousquetaires signe avec Claude (Anthropic, États-Unis)"
+    assert n["texte"] == "Via AWS. Source : LSA."
+
+
+def test_officiel_dans_la_notification():
+    sig = {**T, "entreprise": "Groupement Mousquetaires", "quitte": [], "pour": "Claude (Anthropic, États-Unis)",
+           "comment": "Via AWS", "annonce": "entreprise", "source": {"media": "LSA", "url": "https://ex.fr/m"}}
+    n = notification(nouveaux({"transferts": []}, {"transferts": [sig]}))
+    assert n["titre"] == "Le mercato de l'IA · OFFICIEL · Groupement Mousquetaires signe avec Claude (Anthropic, États-Unis)"
+
+
+def test_annonce_renseignee():
+    d = json.loads((Path(__file__).parent.parent / "iris" / "mercato.json").read_text(encoding="utf-8"))
+    assert all(x.get("annonce") in ("entreprise", "presse") for x in d["transferts"])
