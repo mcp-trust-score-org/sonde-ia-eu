@@ -52,3 +52,19 @@ def test_officiel_dans_la_notification():
 def test_annonce_renseignee():
     d = json.loads((Path(__file__).parent.parent / "iris" / "mercato.json").read_text(encoding="utf-8"))
     assert all(x.get("annonce") in ("entreprise", "presse") for x in d["transferts"])
+
+
+def test_fournisseurs_et_point():
+    from datetime import date
+    from sonde.mercato import fournisseurs_de, point_du_vendredi
+    from sonde.cartes import identifiant
+    sig = {"entreprise": "Groupement Mousquetaires", "date": "2026-11", "quitte": [], "pour": "Claude (Anthropic, États-Unis)",
+           "source": {"media": "LSA", "date": "2026-11-25", "url": "https://ex.fr/m"}}
+    rev = {"entreprise": "Revolut", "date": "2026-11", "quitte": ["Anthropic", "OpenAI"], "pour": "GLM-5.3 (Z.ai, Chine)",
+           "source": {"media": "IT for Business", "date": "2026-11-05", "url": "https://ex.fr/r"}}
+    assert fournisseurs_de(sig) == ["anthropic"] and fournisseurs_de(rev) == ["anthropic", "openai"]
+    n = point_du_vendredi({"transferts": [sig, rev]}, date(2026, 11, 27))
+    assert n["titre"] == "Le point mercato · semaine 48"
+    assert n["texte"] == "C'est signé : Groupement Mousquetaires × Claude. La semaine en 2 min."
+    assert point_du_vendredi({"transferts": [rev]}, date(2026, 11, 27)) is None      # rien cette semaine : rien
+    assert identifiant(sig) == "groupement-mousquetaires-2026-11-claude-anthropic-etats-unis"
