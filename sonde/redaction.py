@@ -1045,6 +1045,11 @@ def rediger(conf: dict, racine: Path, client: httpx.Client | None = None, env: d
         etat["pistes"] = pistes_reflexion(tend, maintenant, deja.get("pistes", set()), sujets=lire_sujets(racine))
         deja.setdefault("pistes", set()).update(p["url"] for p in etat["pistes"])
 
+        # ---- Les marchés publics de l'IA (BOAMP, TED) : candidats au mercato, jamais ajoutés tout seuls
+        from .marches import a_signaler
+        etat["marches"] = a_signaler(racine, deja.get("marches", set()))
+        deja.setdefault("marches", set()).update(a["id"] for a in etat["marches"])
+
         # ---- Et si… ? (Iris Plus) : le premier lundi du mois, et la revérification des anciens sujets
         from .et_si import preparer
         for p in preparer(redacteur, client, racine, tend, jour, maintenant, lecture):
@@ -1065,7 +1070,7 @@ def enregistrer(etat: dict, statut: str) -> dict:
     sortie = {"date": etat["jour"].date().isoformat(), "genere_le": etat["maintenant"].isoformat(timespec="seconds"),
               "statut": statut, "propositions": etat["propositions"], "reserve_une": etat["reserve_une"],
               "sources_tendances": etat["tend"].get("sources"), "journal_redacteur": etat["redacteur"].journal,
-              "pistes_reflexion": etat.get("pistes") or []}
+              "pistes_reflexion": etat.get("pistes") or [], "marches_publics": etat.get("marches") or []}
     if etat.get("erreur"):
         sortie["erreur"] = etat["erreur"]
     dossier = etat["racine"] / "redaction" / "propositions"
@@ -1149,6 +1154,21 @@ def en_markdown(s: dict) -> str:
               "Rien n'est rédigé. Une piste qui vous plaît : ajoutez-la à `redaction/panier.yaml` avec `pour: idee`._", ""]
         l += [f"- **{p.get('media') or '?'}** · [{p['titre']}]({p['url']})" + (f" · _{', '.join(p['themes'])}_" if p['themes'] else "")
               + (f" · **rejoint l'idée : {p['sujet']}**" if p.get("sujet") else "") for p in s["pistes_reflexion"]] + [""]
+    if s.get("marches_publics"):
+        attrib = [a for a in s["marches_publics"] if a["type"] == "attribution"]
+        appels = [a for a in s["marches_publics"] if a["type"] != "attribution"]
+        l += ["## Marchés publics de l'IA (BOAMP, TED)", "",
+              "_Un marché attribué est une signature officielle : candidat au mercato (« C'est signé. », OFFICIEL), "
+              "après lecture de l'avis. Un appel d'offres en cours n'est pas un choix : rien n'est signé._", ""]
+        def ligne(a):
+            qui = f" · cite : **{', '.join(a['fournisseurs'])}**" if a.get("fournisseurs") else ""
+            tit = f" · titulaire : {a['titulaire']}" if a.get("titulaire") else ""
+            lim = f" · réponses jusqu'au {a['date_limite']}" if a.get("date_limite") else ""
+            return f"- {a['date']} · **{a['acheteur'] or '?'}** ({a['base']}{', ' + a['pays'] if a.get('pays') else ''}) : [{a['objet']}]({a['url']}){tit}{qui}{lim}"
+        if attrib:
+            l += ["**Attribués : candidats au mercato**", ""] + [ligne(a) for a in attrib] + [""]
+        if appels:
+            l += ["**Appels d'offres en cours : à surveiller**", ""] + [ligne(a) for a in appels] + [""]
     if s.get("reserve_une"):
         l += ["## En réserve pour À la une", ""] + [f"- {r['titre']} ({r['tag_interne']})" for r in s["reserve_une"]] + [""]
     return "\n".join(l)

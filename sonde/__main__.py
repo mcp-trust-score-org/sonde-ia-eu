@@ -20,6 +20,7 @@
     python -m sonde actualites              # événements inattendus collectés (public/actualites.json)
     python -m sonde croiser                 # croise événements et mesures (rapports/croisement.md)
     python -m sonde tendances               # sujets grand public et liens du Détour (public/tendances.json)
+    python -m sonde marches                 # marchés publics de l'IA, BOAMP et TED (public/marches.json)
     python -m sonde rediger                 # propositions d'articles du jour (redaction/propositions/)
 """
 
@@ -213,6 +214,7 @@ def main(argv: list[str] | None = None) -> int:
     sous.add_parser("actualites", help="collecter les événements inattendus")
     sous.add_parser("croiser", help="croiser les événements avec les mesures")
     sous.add_parser("tendances", help="sujets grand public et articles pour le Détour")
+    sous.add_parser("marches", help="marchés publics de l'IA (BOAMP, TED) pour le mercato (public/marches.json)")
     sous.add_parser("rediger", help="propositions d'articles du jour, selon la charte")
     sous.add_parser("site", help="données des onglets Premium du site (iris/donnees/)")
     pub = sous.add_parser("publier", help="publier un brouillon validé sur le site (iris/publies.json)")
@@ -310,6 +312,14 @@ def main(argv: list[str] | None = None) -> int:
         from .plus import notifier_nouveautes
         envoyes = notifier_nouveautes(Path(args.avant), RACINE / "iris" / "plus.json")
         print(f"  IRIS Plus : {len(envoyes)} notification(s) envoyée(s). " + " · ".join(envoyes))
+        return 0
+
+    if args.commande == "marches":
+        from .marches import collecter
+        res = collecter(RACINE)
+        for nom, etat in res["sources"].items():
+            print(f"  - {nom} : {etat['etat']}" + (f" ({etat.get('nombre')})" if "nombre" in etat else f" ({etat.get('raison')})"))
+        print(f"  → public/marches.json : {len(res['avis'])} avis sur 60 jours")
         return 0
 
     if args.commande == "rediger":
