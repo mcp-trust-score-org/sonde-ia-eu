@@ -1,5 +1,92 @@
 {
- "une": [],
+ "une": [
+  {
+   "id": "20261126-quatre-clouds-europeens-des-puces-concues-aux-etat",
+   "rubrique": "une",
+   "date": "2026-11-26",
+   "tag": "Matériel",
+   "tagClass": "flag-red",
+   "img": "assets/photos/puces.jpg",
+   "time": "4 min",
+   "title": "Quatre clouds européens.<br/>Des puces <mark>conçues aux États-Unis</mark>.",
+   "chapo": "Le 17 novembre, OVHcloud a présenté Olala, son premier modèle d'IA, qui, selon son patron, pourra tourner sur un ordinateur sans carte graphique. Un détail qui en dit long : les quatre fournisseurs européens que suit Iris s'appuient sur des puces conçues aux États-Unis.",
+   "fait": [
+    "OVHcloud, Scaleway, IONOS et Mistral se présentent comme des alternatives européennes aux géants américains. Leurs propres pages le montrent : leurs offres de calcul pour l'IA reposent sur des cartes Nvidia, une entreprise américaine. IONOS propose aussi des cartes Intel, américain lui aussi.",
+    "Mistral a même construit son propre centre de calcul, dans l'Essonne, avec des milliers de systèmes Nvidia Grace Blackwell."
+   ],
+   "consequence": [
+    "Une puce ne vient pas seule : elle arrive avec ses pilotes, ses mises à jour et ses outils de programmation. Changer de fabricant oblige à réécrire une partie des logiciels, ce qui prend du temps.",
+    "Les centres de données s'adaptent même à ces puces. Lors de son OVH Summit, OVHcloud a présenté un refroidissement à eau conçu pour des cartes graphiques toujours plus gourmandes en énergie."
+   ],
+   "lien": [
+    "Un cloud européen garantit l'endroit où sont les données. Il ne dit rien de qui fabrique la machine qui les calcule. C'est le maillon que l'on oublie souvent quand on parle de souveraineté.",
+    "Olala, qui se passe de carte graphique, montre une autre piste : des modèles plus petits, qui tournent sur du matériel ordinaire. Ce qu'ils savent faire reste à mesurer.",
+    "Et chez vous, sait-on sur quelles puces tourne l'IA que vous utilisez ?"
+   ],
+   "sources": [
+    {
+     "label": "AFP (via La DH) – OVHcloud dévoile Olala, son premier modèle d'IA, 17 novembre 2026",
+     "url": "https://www.dhnet.be/dernieres-depeches/2026/11/17/lentreprise-francaise-ovhcloud-se-lance-dans-la-bataille-de-lia-NVUCNMTWLREXNEO63TEHNUVHBE/"
+    },
+    {
+     "label": "OVHcloud – GPU Nvidia H100, H200, A100, L40S et L4 dans ses centres européens",
+     "url": "https://www.ovhcloud.com/en/public-cloud/uc-train-generative-ai-models-without-physical-servers/"
+    },
+    {
+     "label": "Scaleway – Solutions cloud pour l'IA (supercalculateurs Nvidia DGX H100, instances L40S et L4)",
+     "url": "https://www.scaleway.com/fr/solutions-cloud-pour-lia/"
+    },
+    {
+     "label": "IONOS – Serveurs GPU (cartes Nvidia et Intel)",
+     "url": "https://www.ionos.com/servers/gpu-server"
+    },
+    {
+     "label": "Mistral AI – Mistral Compute (GB200, GB300, B300)",
+     "url": "https://mistral.ai/products/compute"
+    },
+    {
+     "label": "The Decoder – Mistral Compute, centre de calcul de l'Essonne",
+     "url": "https://the-decoder.com/mistral-ai-launches-mistral-compute-to-deliver-private-ai-infrastructure-for-european-institutions/"
+    },
+    {
+     "label": "Next – « Eau chaude, GPU froids » : le refroidissement présenté à l'OVH Summit 2026",
+     "url": "https://next.ink/269774/eau-chaude-gpu-froids-ovh-ne-veut-plus-consommer-deau-dans-ses-datacenters/"
+    }
+   ],
+   "mini": {
+    "fait": "OVHcloud, Scaleway, IONOS et Mistral proposent leur calcul pour l'IA sur des puces Nvidia.",
+    "consequence": "Les données restent en Europe, mais le matériel et ses logiciels sont conçus aux États-Unis.",
+    "dependance": "La souveraineté s'arrête souvent à l'endroit où sont stockées les données."
+   },
+   "impact": {
+    "status": "Aucune anomalie mesurée chez les fournisseurs suivis",
+    "level": "green",
+    "rows": [
+     [
+      "Fournisseur concerné",
+      "Mistral, OVHcloud, Scaleway, IONOS"
+     ],
+     [
+      "Ce que la sonde a vu",
+      "Pas de mesure en jeu : l'article porte sur le matériel, pas sur une panne."
+     ]
+    ],
+    "ctas": [
+     [
+      "#meteo",
+      "Voir ma météo →",
+      "btn-yellow"
+     ],
+     [
+      "#rapports",
+      "Mes rapports",
+      "btn-outline"
+     ]
+    ]
+   },
+   "publie_le": "2026-11-26T08:29:42+00:00"
+  }
+ ],
  "tous_connectes": [
   {
    "id": "20261125-on-demande-tout-a-l-ia-un-sur-cinq-verifie-ses-rep",
@@ -223,5 +310,5 @@
    "publie_le": "2026-11-24T07:24:02+00:00"
   }
  ],
- "mis_a_jour": "2026-11-25T07:19:06+00:00"
+ "mis_a_jour": "2026-11-26T08:29:42+00:00"
 }

@@ -73,7 +73,9 @@
     ],
     "mesures_de_la_sonde": "Pas de mesure en jeu : l'article porte sur le matériel, pas sur une panne."
    },
-   "alertes_charte": []
+   "alertes_charte": [],
+   "statut": "publie",
+   "publie_le": "2026-11-26T08:29:42+00:00"
   }
  ],
  "reserve_une": [],
