@@ -1,5 +1,5 @@
 {
-  "_regles": "Le mercato de l'IA (CHARTE, « Les sujets qui font réfléchir »). Une ligne = un changement de fournisseur (ou une « signature » : quitte vide, quand on ne sait pas ce que l'entreprise utilisait avant) ANNONCÉ publiquement ou rapporté par un média reconnu, avec sa source. « dit » = ce que l'entreprise affirme, présenté comme tel. « en_partie » = l'entreprise garde une partie de l'ancien fournisseur. Du plus récent au plus ancien. Ce fichier est lu en direct (/d/mercato.json) : le modifier ne redéploie pas le site. « annonce » : « entreprise » (annoncé par l'entreprise elle-même ou son dirigeant, tampon OFFICIEL) ou « presse » (rapporté par un média, tampon PRESSE).",
+  "_regles": "Le mercato de l'IA (CHARTE, « Les sujets qui font réfléchir »). Une ligne = un changement de fournisseur (ou une « signature » : quitte vide, quand on ne sait pas ce que l'entreprise utilisait avant) ANNONCÉ publiquement ou rapporté par un média reconnu, avec sa source. « dit » = ce que l'entreprise affirme, présenté comme tel. « en_partie » = l'entreprise garde une partie de l'ancien fournisseur. Du plus récent au plus ancien. Ce fichier est lu en direct (/d/mercato.json) : le modifier ne redéploie pas le site. « annonce » : « entreprise » (annoncé par l'entreprise elle-même ou son dirigeant, tampon OFFICIEL) ou « presse » (rapporté par un média, tampon PRESSE). « enjeu » (facultatif) : une phrase, sourcée, affichée dans l'encadré « L'enjeu » de la carte partageable.",
   "mis_a_jour": "2026-11-26",
   "transferts": [
     {
@@ -10,7 +10,7 @@
       "quitte": [],
       "pour": "Claude (Anthropic, États-Unis)",
       "pour_origine": "usa",
-      "comment": "Via le cloud d'Amazon (AWS). Test dans 500 magasins et pour 300 salariés dès janvier 2027",
+      "comment": "Via le cloud d'Amazon. Test dans 500 magasins Intermarché, Netto… et pour 300 salariés dès janvier 2027",
       "en_partie": false,
       "dit": "Le groupe parle d'un déploiement prudent, d'abord en test, avant de l'étendre à tout le groupe.",
       "source": {
@@ -18,7 +18,8 @@
         "date": "2026-11-25",
         "url": "https://www.lsa-conso.fr/distributeurs-alimentaires/les-mousquetaires/intermarche/exclusif-les-grandes-annonces-de-thierry-cotillard-au-congres-des-mousquetaires-rachat-de-chronodrive-partenariat-anthropic-retail-media-achats-cybersecurite.55XW52C7DZEM7BHCL4RZDJ5MLM.html"
       },
-      "annonce": "entreprise"
+      "annonce": "entreprise",
+      "enjeu": "Déployer l'IA dans les opérations et les services des enseignes du groupe."
     },
     {
       "entreprise": "Revolut",

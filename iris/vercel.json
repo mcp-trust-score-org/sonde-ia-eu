@@ -25,6 +25,19 @@
           "value": "application/json; charset=utf-8"
         }
       ]
+    },
+    {
+      "source": "/d/cartes/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/jpeg"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        }
+      ]
     }
   ],
   "crons": [
@@ -61,6 +74,10 @@
     {
       "source": "/d/mercato.json",
       "destination": "https://raw.githubusercontent.com/mcp-trust-score-org/sonde-ia-eu/main/iris/mercato.json"
+    },
+    {
+      "source": "/d/cartes/:fichier",
+      "destination": "https://raw.githubusercontent.com/mcp-trust-score-org/sonde-ia-eu/main/iris/cartes/:fichier"
     }
   ]
 }

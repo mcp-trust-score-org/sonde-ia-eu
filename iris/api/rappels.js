@@ -42,6 +42,12 @@ function message(moment, jour, propositions, plus) {
   if (moment === "midi") {
     if (enAttente.length) morceaux.push(`${enAttente.length} brouillon${enAttente.length > 1 ? "s" : ""} à relire : ${[...new Set(enAttente.map((p) => NOMS[p.rubrique]))].join(", ")}.`);
     if (sansBrouillon.length) morceaux.push(`Pas de brouillon pour ${sansBrouillon.map((r) => NOMS[r]).join(", ")}.`);
+    // Les marchés publics attribués (BOAMP, TED) : des signatures officielles, candidates au mercato
+    const attrib = ((propositions && propositions.marches_publics) || []).filter((a) => a.type === "attribution");
+    if (attrib.length) {
+      const a = attrib[0];
+      morceaux.push(`Marché public attribué : ${String(a.acheteur || "un acheteur public").slice(0, 60)}${a.fournisseurs && a.fournisseurs.length ? ` (${a.fournisseurs.join(", ")})` : ""}${attrib.length > 1 ? ` (+${attrib.length - 1})` : ""}. Pour le mercato ?`);
+    }
     // Les sujets qui font réfléchir (CHARTE, « Et si… ? ») : une piste à garder ou non, jamais publiée telle quelle.
     const pistes = (propositions && propositions.pistes_reflexion) || [];
     if (pistes.length) {

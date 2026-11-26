@@ -989,3 +989,56 @@ body.ess-ouvert { overflow: hidden; }
   .most-read-bas .mr-list { grid-template-columns: 1fr; }
 }
 .mxc-fermer { border-radius: 50%; z-index: 1; }
+
+/* Mercato : partage de la carte, le point du vendredi et le vote */
+.mx-partager { display: flex; width: fit-content; align-items: center; gap: 8px; margin-top: 10px; min-height: 40px; padding: 0 14px; border: 2px solid #111; border-radius: 99px; background: transparent; color: #111; font: 700 14px/1 var(--f-body); cursor: pointer; }
+.mx-partager svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.mx-partager:hover { background: #111; color: var(--yellow); }
+.mx-point { display: block; width: 100%; margin-top: 8px; padding: 10px 16px; border: 2px solid #111; border-radius: 99px; background: transparent; color: #111; font: 700 15px/1 var(--f-body); cursor: pointer; }
+.mx-point:hover { background: #111; color: var(--yellow); }
+.pv-cadre { background: var(--bg); color: var(--cream); border: 1px solid var(--line); }
+.pv-cadre .mx-label { background: var(--yellow); color: #111; }
+.pv-cadre .mx-titre { color: var(--cream); font-size: 44px; }
+.pv-coup { margin-top: 18px; }
+.pv-coup .mx-list { background: var(--paper); color: #111; border-radius: 14px; padding: 2px 14px 4px; margin: 0; }
+.pv-coup .mx-list .mx { border-top: 0; }
+.pv-pourvous { margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: #DCDAD4; }
+.pv-pourvous b { color: var(--cream); }
+.pv-vote { margin-top: 12px; border: 1px solid #3A3A3A; border-radius: 14px; padding: 14px; }
+.pv-question { margin: 0; font-weight: 700; font-size: 16px; }
+.pv-boutons { display: flex; gap: 8px; margin-top: 10px; }
+.pv-boutons button { flex: 1; min-height: 46px; border-radius: 99px; border: 2px solid #3A3A3A; background: transparent; color: var(--cream); font: 700 16px/1 var(--f-body); cursor: pointer; }
+.pv-boutons button[aria-pressed="true"] { border-color: var(--yellow); color: var(--yellow); }
+.pv-merci { margin: 8px 0 0; font-size: 13px; color: var(--yellow); }
+.pv-note { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+.pv-resultats, .pv-verrou { margin-top: 12px; padding-top: 12px; border-top: 1px solid #2A2A2A; }
+.pv-chiffres { display: flex; justify-content: space-between; font-family: var(--f-display); font-weight: 800; font-size: 46px; line-height: 1; }
+.pv-chiffres b:first-child { color: var(--yellow); }
+.pv-barre { height: 12px; border-radius: 99px; background: #7A7A7A; overflow: hidden; margin-top: 8px; }
+.pv-barre i { display: block; height: 100%; background: var(--yellow); }
+.pv-legende { display: flex; justify-content: space-between; margin-top: 6px; font-weight: 700; font-size: 14px; }
+.pv-attente { margin: 0; font-size: 14px; color: #DCDAD4; }
+.pv-verrou { position: relative; }
+.pv-flou { filter: blur(6px); opacity: .6; }
+.pv-verrou p { position: absolute; inset: 12px 0 0; margin: 0; display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center; font-weight: 700; font-size: 14px; }
+.pv-verrou svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--yellow); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.pv-coup .mx-partager { border-color: var(--yellow); color: var(--yellow); }
+.pv-coup .mx-partager:hover { background: var(--yellow); color: #111; }
+.pv-sous { margin: 26px 0 10px; font-family: var(--f-display); font-weight: 800; font-size: 24px; text-transform: uppercase; }
+.pv-saison { list-style: none; margin: 0; padding: 2px 14px; border: 1px solid #3A3A3A; border-radius: 14px; }
+.pv-saison li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #3A3A3A; }
+.pv-saison li:last-child { border-bottom: 0; }
+.pv-saison span { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pv-saison span b { font-family: var(--f-display); font-weight: 800; font-size: 19px; text-transform: uppercase; }
+.pv-saison span i { font-style: normal; font-size: 13px; color: #DCDAD4; }
+.pv-saison em { width: 70px; height: 8px; border-radius: 99px; background: #2F2F2F; overflow: hidden; flex: none; }
+.pv-saison em u { display: block; height: 100%; background: var(--yellow); }
+.pv-saison strong { width: 48px; text-align: right; font-family: var(--f-display); font-weight: 800; font-size: 20px; color: var(--yellow); }
+.pv-info { margin: 18px 0 0; font-size: 13px; font-style: italic; line-height: 1.4; color: #DCDAD4; }
+/* Iris Club dans la cloche : les fournisseurs suivis */
+.pa-club { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pa-club label { position: relative; }
+.pa-club input { position: absolute; opacity: 0; }
+.pa-club span { display: inline-block; padding: 7px 12px; border: 1px solid var(--line); border-radius: 99px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.pa-club input:checked + span { background: var(--yellow); border-color: var(--yellow); color: #111; }
+.pa-club input:focus-visible + span { outline: 2px solid var(--yellow); outline-offset: 2px; }

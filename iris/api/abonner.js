@@ -5,6 +5,8 @@
 //                       avec { "redaction": true | false } ; le site, lui, ne l'enlève jamais.
 // DELETE /api/abonner : le retire (bouton « Désactiver »).
 const stockage = require("./_stockage");
+// Iris Club : les fournisseurs que ce lecteur suit (il reçoit leur mercato, même sans les autres articles).
+const FOURNISSEURS = ["mistral", "ovhcloud", "scaleway", "ionos", "anthropic", "openai", "google", "meta"];
 
 function valide(abo) {
   return abo && typeof abo.endpoint === "string" && /^https:\/\//.test(abo.endpoint) && abo.endpoint.length < 1000
@@ -30,7 +32,9 @@ module.exports = async (req, res) => {
         if (!sujets.length) sujets = ["articles"];
         if (avaitRedaction) sujets.push("redaction");
       }
-      await stockage.ajouter({ endpoint: abo.endpoint, keys: { p256dh: abo.keys.p256dh, auth: abo.keys.auth }, sujets });
+      const fournisseurs = Array.isArray(abo.fournisseurs) ? abo.fournisseurs.filter((f) => FOURNISSEURS.includes(f))
+        : ((avant && avant.fournisseurs) || []);
+      await stockage.ajouter({ endpoint: abo.endpoint, keys: { p256dh: abo.keys.p256dh, auth: abo.keys.auth }, sujets, fournisseurs });
       return res.status(201).json({ ok: true });
     }
     if (req.method === "DELETE") {

@@ -72,6 +72,20 @@
             <span><b>Aussi les alertes Premium</b> <i class="prem">Premium</i><br/>Tout ce qui arrive dans l'onglet Alertes, dès que la sonde le voit : pannes, lenteurs, retours au calme…</span>
           </label>
         </div>
+        <div class="pa-bloc" data-acces="plus" data-push-club hidden>
+          <b>Iris Club · mes fournisseurs</b>
+          <p class="pa-etat">Suivez-les : dès qu'une entreprise les rejoint ou les quitte, vous êtes prévenu.</p>
+          <div class="pa-club">
+            <label><input type="checkbox" data-club="mistral" /><span>Mistral AI</span></label>
+            <label><input type="checkbox" data-club="ovhcloud" /><span>OVHcloud</span></label>
+            <label><input type="checkbox" data-club="scaleway" /><span>Scaleway</span></label>
+            <label><input type="checkbox" data-club="ionos" /><span>IONOS</span></label>
+            <label><input type="checkbox" data-club="anthropic" /><span>Anthropic</span></label>
+            <label><input type="checkbox" data-club="openai" /><span>OpenAI</span></label>
+            <label><input type="checkbox" data-club="google" /><span>Google</span></label>
+            <label><input type="checkbox" data-club="meta" /><span>Meta</span></label>
+          </div>
+        </div>
         <div class="pa-bloc">
           <b>Temps de lecture</b>
           <div class="pa-duree" role="radiogroup" aria-label="Temps de lecture des articles">
@@ -368,6 +382,13 @@
 </main>
 
 <!-- « L'essentiel du jour en 2 minutes » : les stories d'Iris (main.js, fonction essentiel) -->
+<div class="mercato-ecran" id="point-mercato" role="dialog" aria-modal="true" aria-labelledby="pv-titre" hidden>
+  <div class="mxc-cadre pv-cadre">
+    <button type="button" class="ess-fermer mxc-fermer" data-fermer-point aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="mx-corps" id="pv-contenu"></div>
+  </div>
+</div>
+
 <div class="mercato-ecran" id="mercato-complet" role="dialog" aria-modal="true" aria-labelledby="mxc-titre" hidden>
   <div class="mxc-cadre">
     <button type="button" class="ess-fermer mxc-fermer" data-fermer-mercato aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>

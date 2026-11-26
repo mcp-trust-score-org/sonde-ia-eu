@@ -952,13 +952,20 @@ frais("publies.json")
   // Sujets reçus par cet appareil : « articles » toujours ; « plus » et « alertes » en option.
   const lireSujets = () => { try { return JSON.parse(localStorage.getItem("iris-sujets") || "null") || ["articles"]; } catch (e) { return ["articles"]; } };
   const garderSujets = (s) => { try { localStorage.setItem("iris-sujets", JSON.stringify(s)); } catch (e) { /* navigation privée */ } };
+  // Iris Club : les fournisseurs suivis (leur mercato arrive en notification, même sans les autres articles).
+  const club = Array.from(document.querySelectorAll("[data-club]"));
+  const lireClub = () => { try { return JSON.parse(localStorage.getItem("iris-fournisseurs") || "[]"); } catch (e) { return []; } };
   async function envoyerAbonnement(abo, sujets) {
-    return fetch("/api/abonner", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...abo.toJSON(), sujets }) });
+    return fetch("/api/abonner", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...abo.toJSON(), sujets, fournisseurs: lireClub() }) });
   }
   function afficher(abonne, message) {
     bouton.classList.toggle("on", abonne);
     const sujets = lireSujets();
     options.forEach((o) => { o.closest("[data-push-option]").hidden = !abonne; o.checked = sujets.includes(o.dataset.pushSujet); });
+    const suivis = lireClub();
+    club.forEach((c) => { c.checked = suivis.includes(c.dataset.club); });
+    const blocClub = document.querySelector("[data-push-club]");
+    if (blocClub) blocClub.hidden = !abonne;
     etat.textContent = message || (abonne ? "Activées sur cet appareil." : "Une notification à chaque article publié : À la une, Tous connectés, Le Détour.");
     action.textContent = abonne ? "Désactiver" : "Activer les notifications";
     action.dataset.abonne = abonne ? "1" : "";
@@ -1038,6 +1045,25 @@ frais("publies.json")
       test.disabled = false;
     }
   });
+  club.forEach((c) => c.addEventListener("change", async () => {
+    const abo = enregistrement && await enregistrement.pushManager.getSubscription();
+    if (!abo) { c.checked = false; return; }
+    const avant = lireClub();
+    const suivis = club.filter((x) => x.checked).map((x) => x.dataset.club);
+    try { localStorage.setItem("iris-fournisseurs", JSON.stringify(suivis)); } catch (e) { /* navigation privée */ }
+    c.disabled = true;
+    try {
+      const r = await envoyerAbonnement(abo, lireSujets());
+      if (!r.ok) throw new Error("abonnement");
+      etat.textContent = suivis.length ? `Iris Club : vous suivez ${suivis.length} fournisseur${suivis.length > 1 ? "s" : ""}.` : "Iris Club : aucun fournisseur suivi.";
+    } catch (e) {
+      c.checked = !c.checked;
+      try { localStorage.setItem("iris-fournisseurs", JSON.stringify(avant)); } catch (err) { /* navigation privée */ }
+      etat.textContent = "Ça n'a pas marché. Réessayez dans un instant.";
+    } finally {
+      c.disabled = false;
+    }
+  }));
   options.forEach((opt) => opt.addEventListener("change", async () => {
     const abo = enregistrement && await enregistrement.pushManager.getSubscription();
     if (!abo) { opt.checked = false; return; }
@@ -1366,6 +1392,12 @@ function moisCourt(aaaaMm) {
   const [a, m] = String(aaaaMm || "").split("-").map(Number);
   return a && m ? `${MOIS[m - 1]} ${a}` : "";
 }
+// L'identifiant d'un mouvement : le même calcul que sonde/cartes.py (cartes partageables, votes).
+function idMercato(x) {
+  return `${x.entreprise || ""}-${x.date || ""}-${x.pour || ""}`.normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
+}
+const partagerCarte = (x) => `<button type="button" class="mx-partager" data-partager-carte="${idMercato(x)}" data-nom="${htmlSur(x.entreprise)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/></svg>Partager la carte « C'est signé. »</button>`;
 // Une ligne du mercato. complet : avec « Ce qu'elle dit » et la source (tableau complet).
 function ligneMercato(x, complet) {
   const tampon = x.annonce === "entreprise" ? '<span class="mx-tampon mx-officiel" title="Annoncé par l\'entreprise">Officiel</span>'
@@ -1376,7 +1408,7 @@ function ligneMercato(x, complet) {
         ? `<span class="mx-from">${htmlSur(x.quitte.join(", "))}</span><span class="mx-arrow" aria-label="vers">→</span>`
         : `<span class="mx-signe">Signe avec</span>`}<span class="mx-to">${htmlSur(x.pour)}</span></div>
       ${x.en_partie || complet ? `<p class="mx-how">${complet ? htmlSur(x.comment) : ""}${x.en_partie ? ' <em class="mx-partie">en partie</em>' : ""}</p>` : ""}
-      ${complet ? `<div class="mx-dit"><p><b>Ce qu'elle dit.</b> ${htmlSur(x.dit)}</p>${x.source && /^https:\/\//.test(x.source.url || "") ? `<a href="${htmlSur(x.source.url)}" target="_blank" rel="noopener">Source : ${htmlSur(x.source.media)} ↗</a>` : ""}</div>` : ""}
+      ${complet ? `<div class="mx-dit"><p><b>Ce qu'elle dit.</b> ${htmlSur(x.dit)}</p>${x.source && /^https:\/\//.test(x.source.url || "") ? `<a href="${htmlSur(x.source.url)}" target="_blank" rel="noopener">Source : ${htmlSur(x.source.media)} ↗</a>` : ""}${partagerCarte(x)}</div>` : ""}
     </li>`;
 }
 function constatMercato(t) {
@@ -1397,9 +1429,70 @@ function rendreMercato(d, complet = false) {
     <p class="mx-legende"><span class="mx-tampon mx-officiel">Officiel</span> annoncé par l'entreprise <span class="mx-tampon mx-presse">Presse</span> rapporté par un média</p>
     <ol class="mx-list">${(complet ? t : t.slice(0, 4)).map((x) => ligneMercato(x, complet)).join("")}</ol>
     ${complet ? `<p class="mx-pied">Une entreprise, c'est une anecdote. Plusieurs, une tendance. Chaque transfert a sa source : un changement annoncé publiquement ou rapporté par un média reconnu. « Ce qu'elle dit » est ce que l'entreprise affirme, pas un fait vérifié par Iris.${maj ? ` <span>Mis à jour le ${maj}.</span>` : ""}</p>`
-      : `<button type="button" class="mx-tout" data-ouvrir-mercato>Voir le tableau complet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg></button>`}
+      : `<button type="button" class="mx-tout" data-ouvrir-mercato>Voir le tableau complet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg></button>
+        ${deLaSemaine(d).length ? `<button type="button" class="mx-point" data-ouvrir-point>Le point de la semaine · votez</button>` : ""}`}
     </div>`;
 }
+/* ---------- Le point mercato du vendredi et le vote des lecteurs ----------
+   « Vous auriez fait le même choix ? » : Oui / Non, un vote par appareil (on peut changer d'avis).
+   Les résultats (en pour cent, sans nombre de votes ni dates) sont réservés à l'Iris Club (Iris Plus, Premium)
+   et n'apparaissent qu'une fois assez de votes réunis (seuil côté serveur, /api/vote). */
+function deLaSemaine(d, jour = new Date()) {
+  const fin = jour.toISOString().slice(0, 10);
+  const debut = new Date(jour.getTime() - 6 * 864e5).toISOString().slice(0, 10);
+  return ((d && d.transferts) || []).filter((x) => { const s = String((x.source || {}).date || "").slice(0, 10); return s >= debut && s <= fin; });
+}
+function semaineIso(j) {
+  const d = new Date(Date.UTC(j.getFullYear(), j.getMonth(), j.getDate()));
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  return Math.ceil(((d - Date.UTC(d.getUTCFullYear(), 0, 1)) / 864e5 + 1) / 7);
+}
+const votesGardes = () => { try { return JSON.parse(localStorage.getItem("iris-votes") || "{}"); } catch (e) { return {}; } };
+function votant() {
+  try {
+    let v = localStorage.getItem("iris-votant");
+    if (!v) { v = Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) => b.toString(16).padStart(2, "0")).join(""); localStorage.setItem("iris-votant", v); }
+    return v;
+  } catch (e) { return ""; }
+}
+function barreResultat(r) {
+  return r ? `<div class="pv-chiffres"><b>${r.oui} %</b><b>${r.non} %</b></div>
+      <div class="pv-barre" aria-hidden="true"><i style="width:${r.oui}%"></i></div>
+      <div class="pv-legende"><span>Oui</span><span>Non</span></div>`
+    : `<p class="pv-attente">Les résultats s'affichent dès qu'assez de lecteurs ont voté.</p>`;
+}
+function rendrePoint(d, resultats) {
+  const semaine = deLaSemaine(d), vus = votesGardes(), auj = new Date();
+  const coups = (d.transferts || []).slice(0, 6);
+  return `<p class="mx-label">Le point mercato · vendredi</p>
+    <p class="mx-titre" id="pv-titre">Semaine ${semaineIso(auj)}</p>
+    ${semaine.map((x) => { const id = idMercato(x), choix = vus[id]; return `
+      <section class="pv-coup">
+        <ol class="mx-list">${ligneMercato(x, false)}</ol>
+        ${x.pour_vous ? `<p class="pv-pourvous"><b>Et pour vous ?</b> ${htmlSur(x.pour_vous)}</p>` : ""}
+        <div class="pv-vote" data-vote="${id}">
+          <p class="pv-question">Vous auriez fait le même choix ?</p>
+          <div class="pv-boutons">
+            <button type="button" data-choix="oui" aria-pressed="${choix === "oui"}">Oui</button>
+            <button type="button" data-choix="non" aria-pressed="${choix === "non"}">Non</button>
+          </div>
+          <p class="pv-merci" ${choix ? "" : "hidden"}>Merci, votre vote est compté. Vous pouvez changer d'avis.</p>
+          <p class="pv-note">L'avis des lecteurs, pas celui d'Iris.</p>
+          <div class="pv-resultats" data-acces="plus">${barreResultat(resultats[id])}</div>
+          <div class="pv-verrou" data-acces="sans-plus">
+            <div class="pv-flou" aria-hidden="true"><div class="pv-chiffres"><b>00 %</b><b>00 %</b></div><div class="pv-barre"><i style="width:58%"></i></div></div>
+            <p><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Les résultats sont réservés à l'Iris Club (Iris Plus et Premium).</p>
+          </div>
+        </div>
+        ${partagerCarte(x)}
+      </section>`; }).join("")}
+    <div data-acces="plus">
+      <p class="pv-sous">Les coups de la saison</p>
+      <ul class="pv-saison">${coups.map((x) => { const r = resultats[idMercato(x)]; return `<li><span><b>${htmlSur(x.entreprise)}</b><i>${(x.quitte || []).length ? "Vers " : "Signe avec "}${htmlSur(String(x.pour || "").split(" (")[0].replace(/^(Son|Sa|Ses|Des|Les) /, (m) => m.toLowerCase()))}</i></span><em aria-hidden="true"><u style="width:${r ? r.oui : 0}%"></u></em><strong>${r ? r.oui + " %" : "–"}</strong></li>`; }).join("")}</ul>
+    </div>
+    <p class="pv-info">Avis des lecteurs d'Iris. Ce n'est pas un sondage représentatif : seuls ceux qui le veulent votent.</p>`;
+}
+
 (function mercato() {
   const el = document.querySelector("[data-mercato]");
   const ecran = document.getElementById("mercato-complet");
@@ -1411,18 +1504,60 @@ function rendreMercato(d, complet = false) {
     ecran.hidden = false; document.body.style.overflow = "hidden";
     ecran.querySelector("[data-fermer-mercato]").focus();
   };
-  const fermer = () => { if (ecran) { ecran.hidden = true; document.body.style.overflow = ""; } };
-  document.addEventListener("click", (e) => {
-    if (e.target.closest("[data-ouvrir-mercato]")) { e.preventDefault(); ouvrir(); }
-    else if (e.target.closest("[data-fermer-mercato]") || e.target === ecran) fermer();
+  const ecranPoint = document.getElementById("point-mercato");
+  const resultats = async (ids) => {
+    try { const r = await fetch("/api/vote?ids=" + ids.join(","), { cache: "no-store" }); return r.ok ? await r.json() : {}; } catch (e) { return {}; }
+  };
+  const ouvrirPoint = async () => {
+    if (!ecranPoint || !donnees) return;
+    const ids = (donnees.transferts || []).slice(0, 6).map(idMercato);
+    document.getElementById("pv-contenu").innerHTML = rendrePoint(donnees, await resultats(ids));
+    ecranPoint.hidden = false; document.body.style.overflow = "hidden";
+    ecranPoint.querySelector("[data-fermer-point]").focus();
+  };
+  const fermer = () => {
+    [ecran, ecranPoint].forEach((x) => { if (x) x.hidden = true; });
+    document.body.style.overflow = "";
+  };
+  async function partager(bouton) {
+    const id = bouton.dataset.partagerCarte, url = `/d/cartes/${id}.jpg`;
+    const titre = `C'est signé · ${bouton.dataset.nom} · Le mercato de l'IA`;
+    try {
+      const blob = await (await fetch(url)).blob();
+      const fichier = new File([blob], `iris-mercato-${id}.jpg`, { type: "image/jpeg" });
+      if (navigator.canShare && navigator.canShare({ files: [fichier] })) {
+        await navigator.share({ files: [fichier], title: titre, text: titre + " " + location.origin + "/?mercato=1#une" });
+        return;
+      }
+    } catch (e) { if (e && e.name === "AbortError") return; }
+    window.open(url, "_blank", "noopener");          // ordinateur : la carte s'ouvre, prête à enregistrer
+  }
+  document.addEventListener("click", async (e) => {
+    const vote = e.target.closest("[data-vote] [data-choix]");
+    if (vote) {
+      const bloc = vote.closest("[data-vote]"), id = bloc.dataset.vote, choix = vote.dataset.choix;
+      bloc.querySelectorAll("[data-choix]").forEach((b) => b.setAttribute("aria-pressed", String(b === vote)));
+      bloc.querySelector(".pv-merci").hidden = false;
+      const v = votesGardes(); v[id] = choix;
+      try { localStorage.setItem("iris-votes", JSON.stringify(v)); } catch (err) { /* navigation privée */ }
+      fetch("/api/vote", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, choix, votant: votant() }) }).catch(() => {});
+      return;
+    }
+    const carte = e.target.closest("[data-partager-carte]");
+    if (carte) { e.preventDefault(); partager(carte); return; }
+    if (e.target.closest("[data-ouvrir-point]")) { e.preventDefault(); ouvrirPoint(); }
+    else if (e.target.closest("[data-ouvrir-mercato]")) { e.preventDefault(); ouvrir(); }
+    else if (e.target.closest("[data-fermer-mercato], [data-fermer-point]") || e.target === ecran || e.target === ecranPoint) fermer();
   });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ecran && !ecran.hidden) fermer(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ((ecran && !ecran.hidden) || (ecranPoint && !ecranPoint.hidden))) fermer(); });
   frais("mercato.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
     const h = rendreMercato(d);
     if (!h) return;
     donnees = d; el.innerHTML = h; el.hidden = false;
     // Depuis une notification du mercato : /?mercato=1#une ouvre le tableau complet.
-    if (new URLSearchParams(location.search).get("mercato") === "1") ouvrir();
+    const q = new URLSearchParams(location.search);
+    if (q.get("point") === "1") ouvrirPoint();          // la notification du vendredi
+    else if (q.get("mercato") === "1") ouvrir();
   }).catch(() => {});
 })();
-if (typeof module !== "undefined") module.exports = { rendreMercato };
+if (typeof module !== "undefined") module.exports = { rendreMercato, rendrePoint, idMercato, deLaSemaine };

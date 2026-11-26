@@ -1,6 +1,7 @@
 // POST /api/notifier : envoie une notification à tous les appareils abonnés.
 // Appelé par GitHub (Actions → « Publier un brouillon ») avec le secret NOTIF_SECRET.
-// Corps : { "titre": "…", "texte": "…", "url": "/#article-…", "sujet": "articles" | "alertes" | "plus", "deux_modes": true }
+// Corps : { "titre": "…", "texte": "…", "url": "/#article-…", "sujet": "articles" | "alertes" | "plus", "deux_modes": true,
+//          "fournisseurs": ["anthropic", …] }  ← un mouvement du mercato : reçu aussi par ceux qui suivent ces fournisseurs (Iris Club)
 // « plus » : envoyé par GitHub (plus.yml) quand une nouvelle météo de la semaine ou un « Et si… ? » est en ligne.
 // Appelé aussi par la veille de la sonde (sonde/alertes.py) pour les alertes Premium, sujet « alertes ».
 const webpush = require("web-push");
@@ -25,7 +26,9 @@ module.exports = async (req, res) => {
   });
   try {
     // Un appareil abonné avant les sujets ne reçoit que les articles.
-    const abos = (await stockage.tous()).filter((a) => (Array.isArray(a.sujets) ? a.sujets : ["articles"]).includes(sujet));
+    const concernes = Array.isArray(corps.fournisseurs) ? corps.fournisseurs : [];
+    const abos = (await stockage.tous()).filter((a) => (Array.isArray(a.sujets) ? a.sujets : ["articles"]).includes(sujet)
+      || (concernes.length && (a.fournisseurs || []).some((f) => concernes.includes(f))));
     let envoyes = 0, retires = 0, echecs = 0;
     await Promise.all(abos.map(async (abo) => {
       try {
