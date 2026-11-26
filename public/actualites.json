@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-25T20:00:35+00:00",
+ "genere_le": "2026-11-26T02:54:37+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,8 +16,7 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "erreur",
-   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
+   "etat": "ok"
   }
  },
  "dependances": {
@@ -167,6 +166,12 @@
  ],
  "ecartes_pages_de_statut": [
   {
+   "titre": "Cloudflare : Elevated R2 Latency",
+   "debut": "2026-11-25T20:08+00:00",
+   "raison": "service non utilisé par nos fournisseurs",
+   "url": "https://www.cloudflarestatus.com/incidents/ef6928vi0mic"
+  },
+  {
    "titre": "Cloudflare : Elevated R2 errors for buckets in APAC region",
    "debut": "2026-11-25T16:50+00:00",
    "raison": "service non utilisé par nos fournisseurs",
@@ -267,18 +272,15 @@
    "debut": "2026-11-19T06:48+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/sd2sya0mc6df"
-  },
-  {
-   "titre": "Cloudflare : Degraded connectivity between Europe and Asia Pacific",
-   "debut": "2026-11-18T22:26+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/f33c51cw0ojd"
-  },
-  {
-   "titre": "Cloudflare : Increased latency on Analytics API (GraphQL) queries",
-   "debut": "2026-11-18T20:35+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/9zpa7own49hb"
   }
- ]
+ ],
+ "tri_presse": {
+  "articles": 1,
+  "sans_acteur": 1,
+  "sans_incident": 0,
+  "hors_sujet": 0,
+  "doublons": 0,
+  "retenus": 0,
+  "erreurs": []
+ }
 }
