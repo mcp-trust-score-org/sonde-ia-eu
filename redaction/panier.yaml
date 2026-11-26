@@ -111,7 +111,7 @@ sujets:
   - question: "Qui quitte qui ? Le mercato de l'IA"
     angle: "Les entreprises qui changent publiquement de fournisseur d'IA (ex. Revolut). Un tableau tenu à jour, chaque ligne avec sa source."
     preuve: "Une annonce publique par ligne. Une entreprise, c'est une anecdote ; plusieurs, une tendance."
-    mots: "(quitte|abandonn\\w+|remplac\\w+|bascul\\w+|migr\\w+).{0,60}(openai|anthropic|chatgpt|claude|gemini|mistral|azure|aws)"
+    mots: "(quitte|abandonn\\w+|remplac\\w+|bascul\\w+|migr\\w+|choisi\\w*|sign\\w+|partenariat|accord|d[ée]ploi\\w+).{0,60}(openai|anthropic|chatgpt|claude|gemini|mistral|azure|aws|copilot)"
   - question: "L'IA au travail, en cachette ?"
     angle: "Les salariés qui utilisent leur IA personnelle sans le dire (« shadow AI »). Ce que ça change pour les données de l'entreprise."
     preuve: "Baromètres et enquêtes (nommer qui parle, la méthode ; un sondage n'est pas un fait)."
