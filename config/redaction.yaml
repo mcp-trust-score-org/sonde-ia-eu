@@ -135,16 +135,19 @@ detour:
     - { nom: franceinfo,         flux: "https://www.francetvinfo.fr/internet.rss", tout: true }   # rubrique Internet
     - { nom: franceinfo,         flux: "https://www.francetvinfo.fr/titres.rss" }                  # le reste : filtré par les mots
     - { nom: IT for Business,    flux: "https://www.itforbusiness.fr/feed", tout: true }           # vérifié le 24/11
-    - { nom: L'Usine Digitale,   flux: "https://www.usine-digitale.fr/rss" }                       # à confirmer au premier passage
+    # L'Usine Digitale : son flux (https://www.usine-digitale.fr/rss) ne répond plus depuis le 6/11/2026 (côté éditeur).
+    # Ses articles restent bienvenus via le panier. À remettre quand le flux revient.
     - { nom: Ouest-France,       flux: "https://www.ouest-france.fr/rss/une" }                     # à confirmer ; filtré par les mots
-    - { nom: Le Monde du Droit,  flux: "https://www.lemondedudroit.fr/decryptages.feed?type=rss" } # à confirmer ; filtré par les mots
+    - { nom: Le Monde du Droit,  flux: "https://www.lemondedudroit.fr/mag.feed?type=rss" }         # 27/11 : l'ancienne adresse ne donnait pas un flux ; à confirmer
     # Sources publiques et académiques : rien à vendre. (Sans flux : Polytechnique, Dauphine, Inria, Arcep, Conseil de l'IA
     # et du numérique → leurs publications passent par redaction/panier.yaml.)
     - { nom: CNIL,               flux: "https://www.cnil.fr/fr/rss.xml", tout: true }              # vérifié le 24/11
     # Ajouts du 26 novembre 2026 : l'annonce Mousquetaires × Anthropic (25/11) n'est passée que par eux.
     # Les annonces d'entreprises (mercato de l'IA) sortent souvent dans la presse économique et sectorielle.
     - { nom: Clubic,             flux: "https://www.clubic.com/feed/news.rss" }                    # à confirmer ; filtré par les mots
-    - { nom: LSA,                flux: "https://www.lsa-conso.fr/rss/" }                           # à confirmer ; filtré par les mots (commerce)
+    # LSA : pas de flux public trouvé (27/11). Les annonces d'entreprises passent aussi par les médias IA ci-dessous.
+    - { nom: ActuIA,             flux: "https://www.actuia.com/feed" }                             # média IA français ; filtré par les mots
+    - { nom: Les Numériques,     flux: "https://www.lesnumeriques.com/intelligence-artificielle/rss.xml" }  # rubrique IA ; filtré par les mots
     - { nom: CNRS Le journal,    flux: "https://lejournal.cnrs.fr/rss" }                           # vérifié le 24/11 ; filtré par les mots
 
 # ---------------------------------------------------------------------------
