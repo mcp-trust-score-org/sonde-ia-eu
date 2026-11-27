@@ -1,35 +1,7 @@
 {
- "genere_le": "2026-11-26T22:27:45+00:00",
+ "genere_le": "2026-11-27T03:12:47+00:00",
  "suivi_depuis": "2026-11-23",
  "redaction": [
-  {
-   "date": "2026-11-13",
-   "aujourdhui": false,
-   "redaction_lancee": false,
-   "lignes": [
-    {
-     "rubrique": "une",
-     "nom": "À la une",
-     "quoi": "À chaud, s'il y a un incident",
-     "optionnel": true,
-     "etat": "avant le lancement"
-    },
-    {
-     "rubrique": "tous_connectes",
-     "nom": "Tous connectés",
-     "quoi": "Sujet du jour",
-     "optionnel": false,
-     "etat": "avant le lancement"
-    },
-    {
-     "rubrique": "detour",
-     "nom": "Le Détour",
-     "quoi": "Sélection de liens",
-     "optionnel": false,
-     "etat": "avant le lancement"
-    }
-   ]
-  },
   {
    "date": "2026-11-14",
    "aujourdhui": false,
@@ -297,7 +269,7 @@
   },
   {
    "date": "2026-11-26",
-   "aujourdhui": true,
+   "aujourdhui": false,
    "redaction_lancee": true,
    "lignes": [
     {
@@ -312,7 +284,7 @@
   },
   {
    "date": "2026-11-27",
-   "aujourdhui": false,
+   "aujourdhui": true,
    "redaction_lancee": false,
    "lignes": [
     {
@@ -320,21 +292,21 @@
      "nom": "À la une",
      "quoi": "À chaud, s'il y a un incident",
      "optionnel": true,
-     "etat": "à venir"
+     "etat": "rien (pas d'incident ?)"
     },
     {
      "rubrique": "tous_connectes",
      "nom": "Tous connectés",
      "quoi": "Sujet du jour",
      "optionnel": false,
-     "etat": "à venir"
+     "etat": "rédaction pas lancée"
     },
     {
      "rubrique": "detour",
      "nom": "Le Détour",
      "quoi": "Sélection de liens",
      "optionnel": false,
-     "etat": "à venir"
+     "etat": "rédaction pas lancée"
     }
    ]
   },
@@ -442,27 +414,34 @@
      "etat": "à venir"
     }
    ]
+  },
+  {
+   "date": "2026-12-03",
+   "aujourdhui": false,
+   "redaction_lancee": false,
+   "lignes": [
+    {
+     "rubrique": "une",
+     "nom": "À la une",
+     "quoi": "À chaud, s'il y a un incident",
+     "optionnel": true,
+     "etat": "à venir"
+    }
+   ]
   }
  ],
  "sonde": {
   "veille": {
-   "derniere": "2026-11-26T22:27+00:00",
+   "derniere": "2026-11-27T03:12+00:00",
    "etat": "ok",
    "prevue": "toutes les 10 minutes"
   },
   "mesure": {
    "derniere": "2026-11-26T22:19+00:00",
-   "etat": "ok",
+   "etat": "en retard",
    "prevue": "toutes les heures"
   },
   "jours": [
-   {
-    "date": "2026-11-20",
-    "veille": 8,
-    "veille_prevue": 144,
-    "mesures": 4,
-    "mesures_prevues": 24
-   },
    {
     "date": "2026-11-21",
     "veille": 7,
@@ -504,15 +483,16 @@
     "veille_prevue": 144,
     "mesures": 3,
     "mesures_prevues": 24
+   },
+   {
+    "date": "2026-11-27",
+    "veille": 1,
+    "veille_prevue": 144,
+    "mesures": 0,
+    "mesures_prevues": 24
    }
   ],
   "interruptions": [
-   {
-    "de": "2026-11-23T20:16+00:00",
-    "a": "2026-11-23T22:39+00:00",
-    "heures": 2.4,
-    "en_cours": false
-   },
    {
     "de": "2026-11-23T22:39+00:00",
     "a": "2026-11-24T04:53+00:00",
@@ -566,11 +546,17 @@
     "a": "2026-11-26T20:31+00:00",
     "heures": 8.0,
     "en_cours": false
+   },
+   {
+    "de": "2026-11-26T22:27+00:00",
+    "a": "2026-11-27T03:12+00:00",
+    "heures": 4.8,
+    "en_cours": false
    }
   ]
  },
  "site": {
-  "donnees_meteo": "2026-11-26T22:27:42+00:00",
+  "donnees_meteo": "2026-11-27T03:12:44+00:00",
   "articles_mis_a_jour": "2026-11-26T08:29:42+00:00",
   "derniers": {
    "une": {
