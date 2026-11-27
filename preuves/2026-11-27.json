@@ -1,0 +1,58 @@
+{
+  "genere_le": "2026-11-27T04:53:46+00:00",
+  "methode": "SHA-256 du contenu des N premières lignes de chaque fichier de mesures",
+  "fichiers": {
+    "2026-11.jsonl": {
+      "sha256": "51537cf4f53bd96d33d085c36a072d8d15b8b1d38e8fffb451f4d781e65d4784",
+      "lignes": 509
+    },
+    "veille/2026-11-16.jsonl": {
+      "sha256": "94f1a747cb39866a04e95007a429dd83372e4fb80571567ed18fbd3265b32c5c",
+      "lignes": 17
+    },
+    "veille/2026-11-17.jsonl": {
+      "sha256": "980dec68203a472df9dd6b2a0de042432ada4a4376792d580cfd0ba1ade32fe5",
+      "lignes": 28
+    },
+    "veille/2026-11-18.jsonl": {
+      "sha256": "4f1e6bd3330462f4bd3f8e702834f1c87056ac009bd01adb60d6e3e12013d126",
+      "lignes": 20
+    },
+    "veille/2026-11-19.jsonl": {
+      "sha256": "4ddede74d43bff5465c4608cd82f6e747ada7752ef961217792dc1ff9a279132",
+      "lignes": 24
+    },
+    "veille/2026-11-20.jsonl": {
+      "sha256": "639abe6c00baa3bb8e6924b91ae226298df99ca03a018de248f716aaa149c212",
+      "lignes": 28
+    },
+    "veille/2026-11-21.jsonl": {
+      "sha256": "980a00ea973456b527bf1409a8ddf300fc583902ce499ed4dbc7fccd0400d72c",
+      "lignes": 28
+    },
+    "veille/2026-11-22.jsonl": {
+      "sha256": "6315895558830c245658625b8d00bc93084b7fa6cf6c9cb446ab9adbad749932",
+      "lignes": 24
+    },
+    "veille/2026-11-23.jsonl": {
+      "sha256": "709c95083adfe3d39a05ca4d1290dedc26f594e8033b4de41027109783324f93",
+      "lignes": 20
+    },
+    "veille/2026-11-24.jsonl": {
+      "sha256": "543a43c06b2405c131a08257474dcdd2bb8d4a432d07e0d017002f1161512180",
+      "lignes": 16
+    },
+    "veille/2026-11-25.jsonl": {
+      "sha256": "178b6530c54da039d9f4ada3c39d9ab91e227a3dfd34c22e5357a40e7cc2fe8a",
+      "lignes": 24
+    },
+    "veille/2026-11-26.jsonl": {
+      "sha256": "869a9cd94537d4d7be3801d66f3a6c00b4c4d5edb50021785935ccf79ccfbd91",
+      "lignes": 20
+    },
+    "veille/2026-11-27.jsonl": {
+      "sha256": "4c64b9727df25fd3c51ce37cc8e154cdf9f2e558a241b3749b8de6571b269b72",
+      "lignes": 4
+    }
+  }
+}

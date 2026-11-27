@@ -4,14 +4,14 @@
     "nom": "IONOS AI Model Hub",
     "pays": "DE"
   },
-  "genere_le": "2026-11-26T13:19:06+00:00",
+  "genere_le": "2026-11-27T04:48:59+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-26T13:19:06+00:00"
+    "fin": "2026-11-27T04:48:59+00:00"
   },
   "performance": [],
   "reseau": {
-    "dernier_releve": "2026-11-26T13:06:08+00:00",
+    "dernier_releve": "2026-11-27T04:36:14+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "ue_observe",
     "constats": [
@@ -29,7 +29,7 @@
       "indetermine",
       "ue_observe"
     ],
-    "releves": 20
+    "releves": 21
   },
   "stabilite": [],
   "changements_catalogue": [],

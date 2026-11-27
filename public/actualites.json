@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-26T22:25:21+00:00",
+ "genere_le": "2026-11-27T04:49:01+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,7 +16,8 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "ok"
+   "etat": "erreur",
+   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
   }
  },
  "dependances": {
@@ -292,21 +293,6 @@
    "debut": "2026-11-20T05:00+00:00",
    "raison": "localisé hors de nos zones",
    "url": "https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm"
-  },
-  {
-   "titre": "Cloudflare : R2 and Durable Objects availability issues",
-   "debut": "2026-11-20T02:52+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/pfwuex7qix27"
   }
- ],
- "tri_presse": {
-  "articles": 1,
-  "sans_acteur": 1,
-  "sans_incident": 0,
-  "hors_sujet": 0,
-  "doublons": 0,
-  "retenus": 0,
-  "erreurs": []
- }
+ ]
 }

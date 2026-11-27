@@ -1,14 +1,14 @@
 {
- "genere_le": "2026-11-27T03:12:47+00:00",
+ "genere_le": "2026-11-27T04:53:48+00:00",
  "depot": "https://github.com/mcp-trust-score-org/sonde-ia-eu",
  "dossiers": [
   {
    "fournisseur": "ionos",
    "nom": "IONOS AI Model Hub",
-   "genere_le": "2026-11-26T13:19:06+00:00",
+   "genere_le": "2026-11-27T04:48:59+00:00",
    "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-26T13:19:06+00:00"
+    "fin": "2026-11-27T04:48:59+00:00"
    },
    "fichier": "dossiers/ionos.md",
    "verdict_reseau": "ue_observe"
@@ -16,10 +16,10 @@
   {
    "fournisseur": "mistral",
    "nom": "Mistral AI",
-   "genere_le": "2026-11-26T13:19:06+00:00",
+   "genere_le": "2026-11-27T04:48:59+00:00",
    "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-26T13:19:06+00:00"
+    "fin": "2026-11-27T04:48:59+00:00"
    },
    "fichier": "dossiers/mistral.md",
    "verdict_reseau": "intermediaire_non_ue"
@@ -27,10 +27,10 @@
   {
    "fournisseur": "ovhcloud",
    "nom": "OVHcloud AI Endpoints",
-   "genere_le": "2026-11-26T13:19:06+00:00",
+   "genere_le": "2026-11-27T04:48:59+00:00",
    "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-26T13:19:06+00:00"
+    "fin": "2026-11-27T04:48:59+00:00"
    },
    "fichier": "dossiers/ovhcloud.md",
    "verdict_reseau": "ue_observe"
@@ -38,16 +38,24 @@
   {
    "fournisseur": "scaleway",
    "nom": "Scaleway Generative APIs",
-   "genere_le": "2026-11-26T13:19:06+00:00",
+   "genere_le": "2026-11-27T04:48:59+00:00",
    "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-26T13:19:06+00:00"
+    "fin": "2026-11-27T04:48:59+00:00"
    },
    "fichier": "dossiers/scaleway.md",
    "verdict_reseau": "ue_observe"
   }
  ],
  "preuves": [
+  {
+   "jour": "2026-11-27",
+   "genere_le": "2026-11-27T04:53:46+00:00",
+   "fichiers": 13,
+   "methode": "SHA-256 du contenu des N premières lignes de chaque fichier de mesures",
+   "fichier": "preuves/2026-11-27.json",
+   "horodatage": "preuves/2026-11-27.json.ots"
+  },
   {
    "jour": "2026-11-26",
    "genere_le": "2026-11-26T13:21:40+00:00",
