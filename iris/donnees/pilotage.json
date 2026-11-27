@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-27T15:09:15+00:00",
+ "genere_le": "2026-11-27T21:29:56+00:00",
  "suivi_depuis": "2026-11-23",
  "redaction": [
   {
@@ -434,13 +434,13 @@
  ],
  "sonde": {
   "veille": {
-   "derniere": "2026-11-27T15:09+00:00",
+   "derniere": "2026-11-27T21:29+00:00",
    "etat": "ok",
    "prevue": "toutes les 10 minutes"
   },
   "mesure": {
    "derniere": "2026-11-27T15:01+00:00",
-   "etat": "ok",
+   "etat": "arrêtée",
    "prevue": "toutes les heures"
   },
   "jours": [
@@ -488,19 +488,13 @@
    },
    {
     "date": "2026-11-27",
-    "veille": 4,
+    "veille": 5,
     "veille_prevue": 144,
     "mesures": 2,
     "mesures_prevues": 24
    }
   ],
   "interruptions": [
-   {
-    "de": "2026-11-24T15:58+00:00",
-    "a": "2026-11-24T17:59+00:00",
-    "heures": 2.0,
-    "en_cours": false
-   },
    {
     "de": "2026-11-24T17:59+00:00",
     "a": "2026-11-25T00:48+00:00",
@@ -554,11 +548,17 @@
     "a": "2026-11-27T15:09+00:00",
     "heures": 2.8,
     "en_cours": false
+   },
+   {
+    "de": "2026-11-27T15:09+00:00",
+    "a": "2026-11-27T21:29+00:00",
+    "heures": 6.3,
+    "en_cours": false
    }
   ]
  },
  "site": {
-  "donnees_meteo": "2026-11-27T15:09:11+00:00",
+  "donnees_meteo": "2026-11-27T21:29:54+00:00",
   "articles_mis_a_jour": "2026-11-27T08:26:14+00:00",
   "derniers": {
    "une": {
