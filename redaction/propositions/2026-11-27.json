@@ -497,8 +497,8 @@
      "date": null,
      "panier": true,
      "etat_lecture": "lu",
-     "categorie": "franceinfo",
-     "pourquoi": "Illustre comment les avocats s’appuient de plus en plus à l’IA, révélant une dépendance croissante du secteur juridique aux outils génératifs."
+     "categorie": "IA",
+     "pourquoi": "Des clients comparent désormais le travail de leur avocat à celui de ChatGPT : un reportage sur un métier qui s'adapte."
     },
     {
      "url": "https://www.lemondedudroit.fr/decryptages/380-tribunes/106741-chief-cognitive-officer-la-fonction-que-lia-rend-necessaire-dans-les-cabinets-davocats.html",
@@ -509,8 +509,8 @@
      "date": null,
      "panier": true,
      "etat_lecture": "lu",
-     "categorie": "Le Monde du Droit",
-     "pourquoi": "Met en lumière la création du poste de Chief Cognitive Officer, signe que les cabinets d’avocats doivent structurer leur dépendance à l’intelligence artificielle."
+     "categorie": "IA",
+     "pourquoi": "Une tribune : des cabinets d'avocats créent un poste dédié à l'IA, le « Chief Cognitive Officer »."
     },
     {
      "url": "https://www.conseil-ia-numerique.fr/files/uploads/2026/Rapport_Commission_IA_generative_vulnerabilites_2026.pdf",
@@ -521,8 +521,8 @@
      "date": null,
      "panier": true,
      "etat_lecture": "pas une page web",
-     "categorie": "Conseil de l'IA et du numérique",
-     "pourquoi": "Analyse les vulnérabilités de l’IA générative, montrant la dépendance des jeunes et des utilisateurs à des modèles souvent peu fiables et en anglais."
+     "categorie": "Régulation",
+     "pourquoi": "Le rapport public du Conseil de l'IA et du numérique : dette cognitive, attachement des jeunes aux IA, et des réponses moins fiables hors de l'anglais et en version gratuite."
     },
     {
      "url": "https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445",
@@ -532,15 +532,14 @@
      "langue": "français",
      "date": null,
      "panier": true,
-     "etat_lecture": "texte trop court (article payant ou page protégée ?)",
-     "categorie": "IT for Business",
-     "pourquoi": "Décrit la décision de Revolut de réinternaliser son IA pour réduire sa dépendance à un fournisseur externe et diminuer les coûts.",
+     "etat_lecture": "lu",
+     "categorie": "Matériel",
+     "pourquoi": "Revolut fait tourner un modèle ouvert sur ses propres serveurs et dit payer dix fois moins cher qu'avec Claude.",
      "mention": "(payant ?)"
     }
    ],
    "alertes_charte": [
-    "Panier : « https://www.youtube.com/watch?v=Ok6QdZHCcI8 » écarté par le rédacteur (contenu non vérifiable, aucune information disponible sur la dépendance technologique).",
-    "2 article(s) non lu(s) (payant ou protégé ?) : leur « pourquoi le lire » vient du titre seul."
+    "Panier : « https://www.youtube.com/watch?v=Ok6QdZHCcI8 » écarté par le rédacteur (contenu non vérifiable, aucune information disponible sur la dépendance technologique)."
    ]
   }
  ],
