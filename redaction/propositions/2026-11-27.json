@@ -540,7 +540,15 @@
    ],
    "alertes_charte": [
     "Panier : « https://www.youtube.com/watch?v=Ok6QdZHCcI8 » écarté par le rédacteur (contenu non vérifiable, aucune information disponible sur la dépendance technologique)."
-   ]
+   ],
+   "liens_gardes": [
+    "https://www.franceinfo.fr/replay-radio/le-choix-franceinfo/reportage-maitre-ce-que-vous-avez-fait-chatgpt-me-l-a-fait-en-cinq-minutes-comment-l-intelligence-artificielle-bouscule-la-profession-d-avocat_8275346.html",
+    "https://www.lemondedudroit.fr/decryptages/380-tribunes/106741-chief-cognitive-officer-la-fonction-que-lia-rend-necessaire-dans-les-cabinets-davocats.html",
+    "https://www.conseil-ia-numerique.fr/files/uploads/2026/Rapport_Commission_IA_generative_vulnerabilites_2026.pdf",
+    "https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445"
+   ],
+   "statut": "publie",
+   "publie_le": "2026-11-27T08:26:14+00:00"
   }
  ],
  "reserve_une": [],

@@ -290,6 +290,46 @@
  ],
  "detour": [
   {
+   "source": "franceinfo",
+   "cat": "IA",
+   "img": "logiciel",
+   "title": "REPORTAGE. \"Maître, ce que vous avez fait, ChatGPT me l'a fait en cinq minutes\" : comment l'intelligence artificielle bouscule la profession d'avocat",
+   "why": "Des clients comparent désormais le travail de leur avocat à celui de ChatGPT : un reportage sur un métier qui s'adapte.",
+   "url": "https://www.franceinfo.fr/replay-radio/le-choix-franceinfo/reportage-maitre-ce-que-vous-avez-fait-chatgpt-me-l-a-fait-en-cinq-minutes-comment-l-intelligence-artificielle-bouscule-la-profession-d-avocat_8275346.html",
+   "date": "2026-11-27",
+   "publie_le": "2026-11-27T08:26:14+00:00"
+  },
+  {
+   "source": "Le Monde du Droit",
+   "cat": "IA",
+   "img": "logiciel",
+   "title": "Chief Cognitive Officer : la fonction que l’IA rend nécessaire dans les cabinets d’avocats",
+   "why": "Une tribune : des cabinets d'avocats créent un poste dédié à l'IA, le « Chief Cognitive Officer ».",
+   "url": "https://www.lemondedudroit.fr/decryptages/380-tribunes/106741-chief-cognitive-officer-la-fonction-que-lia-rend-necessaire-dans-les-cabinets-davocats.html",
+   "date": "2026-11-27",
+   "publie_le": "2026-11-27T08:26:14+00:00"
+  },
+  {
+   "source": "Conseil de l'IA et du numérique",
+   "cat": "Régulation",
+   "img": "regulation",
+   "title": "Rapport public « IA générative et vulnérabilités » (2026) : dette cognitive, dépendance affective des jeunes, IA moins fiable hors anglais et en version gratuite.",
+   "why": "Le rapport public du Conseil de l'IA et du numérique : dette cognitive, attachement des jeunes aux IA, et des réponses moins fiables hors de l'anglais et en version gratuite.",
+   "url": "https://www.conseil-ia-numerique.fr/files/uploads/2026/Rapport_Commission_IA_generative_vulnerabilites_2026.pdf",
+   "date": "2026-11-27",
+   "publie_le": "2026-11-27T08:26:14+00:00"
+  },
+  {
+   "source": "IT for Business",
+   "cat": "Matériel",
+   "img": "puces",
+   "title": "Chez Revolut, l'IA réinternalisée coûte dix fois moins cher que Claude (payant ?)",
+   "why": "Revolut fait tourner un modèle ouvert sur ses propres serveurs et dit payer dix fois moins cher qu'avec Claude.",
+   "url": "https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445",
+   "date": "2026-11-27",
+   "publie_le": "2026-11-27T08:26:14+00:00"
+  },
+  {
    "source": "Next",
    "cat": "Régulation",
    "img": "regulation",
@@ -310,5 +350,5 @@
    "publie_le": "2026-11-24T07:24:02+00:00"
   }
  ],
- "mis_a_jour": "2026-11-26T08:29:42+00:00"
+ "mis_a_jour": "2026-11-27T08:26:14+00:00"
 }

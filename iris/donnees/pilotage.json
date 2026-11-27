@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-27T05:06:53+00:00",
+ "genere_le": "2026-11-27T08:26:14+00:00",
  "suivi_depuis": "2026-11-23",
  "redaction": [
   {
@@ -307,8 +307,8 @@
      "nom": "Le Détour",
      "quoi": "Sélection de liens",
      "optionnel": false,
-     "etat": "à vérifier",
-     "brouillons": 1
+     "etat": "publié",
+     "titre": "REPORTAGE. \"Maître, ce que vous avez fait, ChatGPT me l'a fait en cinq minutes\" : comment l'intelligence artificielle bouscule la profession d'avocat"
     }
    ]
   },
@@ -435,12 +435,12 @@
  "sonde": {
   "veille": {
    "derniere": "2026-11-27T05:06+00:00",
-   "etat": "ok",
+   "etat": "arrêtée",
    "prevue": "toutes les 10 minutes"
   },
   "mesure": {
    "derniere": "2026-11-27T05:01+00:00",
-   "etat": "ok",
+   "etat": "en retard",
    "prevue": "toutes les heures"
   },
   "jours": [
@@ -496,12 +496,6 @@
   ],
   "interruptions": [
    {
-    "de": "2026-11-23T22:39+00:00",
-    "a": "2026-11-24T04:53+00:00",
-    "heures": 6.2,
-    "en_cours": false
-   },
-   {
     "de": "2026-11-24T06:22+00:00",
     "a": "2026-11-24T15:58+00:00",
     "heures": 9.6,
@@ -554,12 +548,18 @@
     "a": "2026-11-27T03:12+00:00",
     "heures": 4.8,
     "en_cours": false
+   },
+   {
+    "de": "2026-11-27T05:06+00:00",
+    "a": "2026-11-27T08:26+00:00",
+    "heures": 3.3,
+    "en_cours": true
    }
   ]
  },
  "site": {
   "donnees_meteo": "2026-11-27T05:06:51+00:00",
-  "articles_mis_a_jour": "2026-11-26T08:29:42+00:00",
+  "articles_mis_a_jour": "2026-11-27T08:26:14+00:00",
   "derniers": {
    "une": {
     "nom": "À la une",
@@ -575,9 +575,9 @@
    },
    "detour": {
     "nom": "Le Détour",
-    "titre": "DMA : la conformité de façade des géants du numérique épinglée par le BEUC",
-    "publie_le": "2026-11-24T07:24:02+00:00",
-    "nombre": 2
+    "titre": "REPORTAGE. \"Maître, ce que vous avez fait, ChatGPT me l'a fait en cinq minutes\" : comment l'intelligence artificielle bouscule la profession d'avocat",
+    "publie_le": "2026-11-27T08:26:14+00:00",
+    "nombre": 6
    }
   },
   "iris_plus": {
