@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-27T15:06:51+00:00",
+ "genere_le": "2026-11-27T23:31:01+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,8 +16,7 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "erreur",
-   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
+   "etat": "ok"
   }
  },
  "dependances": {
@@ -283,30 +282,15 @@
    "debut": "2026-11-22T00:32+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/d2m4kw94ut4f"
-  },
-  {
-   "titre": "Cloudflare : Network Performance Issues in Washington, DC datacenter (IAD)",
-   "debut": "2026-11-20T20:35+00:00",
-   "raison": "localisé hors de nos zones",
-   "url": "https://www.cloudflarestatus.com/incidents/oz6to8yacrxe"
-  },
-  {
-   "titre": "Cloudflare : Cache Purging Delays in Milan",
-   "debut": "2026-11-20T20:51+00:00",
-   "raison": "sans impact déclaré",
-   "url": "https://www.cloudflarestatus.com/incidents/akjr7qn5o622"
-  },
-  {
-   "titre": "Cloudflare : Cache Purging Delays in Amsterdam",
-   "debut": "2026-11-20T18:00+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/xsgbfncq7of7"
-  },
-  {
-   "titre": "Cloudflare : Cloudflare Dashboard and Cloudflare API service issues in EU region",
-   "debut": "2026-11-20T18:24+00:00",
-   "raison": "service non utilisé par nos fournisseurs",
-   "url": "https://www.cloudflarestatus.com/incidents/iysf3fasf7wn"
   }
- ]
+ ],
+ "tri_presse": {
+  "articles": 1,
+  "sans_acteur": 1,
+  "sans_incident": 0,
+  "hors_sujet": 0,
+  "doublons": 0,
+  "retenus": 0,
+  "erreurs": []
+ }
 }

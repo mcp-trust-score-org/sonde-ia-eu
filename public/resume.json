@@ -3,29 +3,29 @@
     {
       "modele": "gpt-oss-120b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 22,
-      "disponibilite_pct": 77.3,
-      "ttft_p50_ms": 841,
-      "ttft_p95_ms": 2311,
-      "duree_p50_ms": 2509,
+      "appels": 21,
+      "disponibilite_pct": 81.0,
+      "ttft_p50_ms": 812,
+      "ttft_p95_ms": 2036,
+      "duree_p50_ms": 2498,
       "jetons_par_s_median": 86.2,
       "qualite_pct": 100.0,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
-        "réponse vide": 3,
+        "réponse vide": 2,
         "délai dépassé": 2
       }
     },
     {
       "modele": "llama-3.3-70b",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 20,
-      "disponibilite_pct": 90.0,
-      "ttft_p50_ms": 851,
-      "ttft_p95_ms": 1883,
-      "duree_p50_ms": 1250,
-      "jetons_par_s_median": 25.9,
-      "qualite_pct": 94.4,
+      "appels": 19,
+      "disponibilite_pct": 89.5,
+      "ttft_p50_ms": 748,
+      "ttft_p95_ms": 1951,
+      "duree_p50_ms": 1189,
+      "jetons_par_s_median": 25.7,
+      "qualite_pct": 88.2,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {
         "réponse vide": 1,
@@ -35,13 +35,13 @@
     {
       "modele": "mistral-small-3.2",
       "fournisseur": "ovhcloud (anonyme)",
-      "appels": 20,
+      "appels": 19,
       "disponibilite_pct": 100.0,
-      "ttft_p50_ms": 273,
-      "ttft_p95_ms": 786,
-      "duree_p50_ms": 660,
-      "jetons_par_s_median": 60.6,
-      "qualite_pct": 75.0,
+      "ttft_p50_ms": 302,
+      "ttft_p95_ms": 1136,
+      "duree_p50_ms": 710,
+      "jetons_par_s_median": 60.2,
+      "qualite_pct": 78.9,
       "cout_moyen_eur_par_1000_taches": null,
       "principales_erreurs": {}
     }
@@ -55,8 +55,8 @@
   ],
   "incidents_catalogue": {},
   "periode_jours": 7,
-  "genere_le": "2026-11-27T15:06:51+00:00",
-  "total_mesures": 197,
+  "genere_le": "2026-11-27T23:31:01+00:00",
+  "total_mesures": 200,
   "premiere_mesure": "2026-11-15T19:39:19+00:00",
   "fournisseurs_mesures": [
     "ovhcloud"
