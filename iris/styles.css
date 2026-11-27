@@ -1042,3 +1042,8 @@ body.ess-ouvert { overflow: hidden; }
 .pa-club span { display: inline-block; padding: 7px 12px; border: 1px solid var(--line); border-radius: 99px; font-size: 13px; font-weight: 600; cursor: pointer; }
 .pa-club input:checked + span { background: var(--yellow); border-color: var(--yellow); color: #111; }
 .pa-club input:focus-visible + span { outline: 2px solid var(--yellow); outline-offset: 2px; }
+
+/* « 24 h chez… » : le lien vers l'épisode précédent */
+.series-prec { margin: 10px 0 0; font-size: 14px; }
+.series-prec a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.series-prec a:hover { color: var(--yellow); }

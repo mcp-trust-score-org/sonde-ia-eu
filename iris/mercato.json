@@ -1,6 +1,6 @@
 {
   "_regles": "Le mercato de l'IA (CHARTE, « Les sujets qui font réfléchir »). Une ligne = un changement de fournisseur (ou une « signature » : quitte vide, quand on ne sait pas ce que l'entreprise utilisait avant) ANNONCÉ publiquement ou rapporté par un média reconnu, avec sa source. « dit » = ce que l'entreprise affirme, présenté comme tel. « en_partie » = l'entreprise garde une partie de l'ancien fournisseur. Du plus récent au plus ancien. Ce fichier est lu en direct (/d/mercato.json) : le modifier ne redéploie pas le site. « annonce » : « entreprise » (annoncé par l'entreprise elle-même ou son dirigeant, tampon OFFICIEL) ou « presse » (rapporté par un média, tampon PRESSE). « enjeu » (facultatif) : une phrase, sourcée, affichée dans l'encadré « L'enjeu » de la carte partageable.",
-  "mis_a_jour": "2026-11-26",
+  "mis_a_jour": "2026-11-27",
   "transferts": [
     {
       "entreprise": "Groupement Mousquetaires",
@@ -34,13 +34,13 @@
       "pour_origine": "chine",
       "comment": "Modèle ouvert, installé sur ses propres serveurs",
       "en_partie": true,
-      "dit": "« Environ dix fois moins cher » pour le code de ses 2 000 ingénieurs. Chiffre de Revolut, non détaillé.",
+      "dit": "Selon David Abitbol, qui dirige ses opérations d'IA : environ dix fois moins cher, et des livraisons 60 à 70 % plus rapides, pour ses 2 000 ingénieurs.",
       "source": {
-        "media": "IT for Business",
-        "date": "2026-11-05",
-        "url": "https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445"
+        "media": "Conférence de David Abitbol (Revolut)",
+        "date": "2026-10-29",
+        "url": "https://www.youtube.com/watch?v=Ok6QdZHCcI8"
       },
-      "annonce": "presse"
+      "annonce": "entreprise"
     },
     {
       "entreprise": "Ecosia",

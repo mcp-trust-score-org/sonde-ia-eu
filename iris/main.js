@@ -84,6 +84,18 @@ const ARTICLES = {
     lien: ["Les entreprises « nées de l'IA » montrent en accéléré ce qui arrive à toutes les autres : chaque gain de vitesse ajoute un fournisseur dont on dépend.", "Dans votre quotidien, combien d'outils s'appuient déjà sur un modèle d'IA ? Résumé de réunion, tri des mails, aide à la rédaction : la liste s'allonge sans qu'on la voie."],
     source: { label: "« 24 Hours Inside a $47M YC AI-native Insurance Startup », chaîne Will Phillips, août 2026", url: "https://www.youtube.com/watch?v=5tjNU_hsERk" },
   },
+  revolut: {
+    audience: "detour", tag: "24 h chez… · IA · Épisode 2", img: "assets/photos/puces.jpg", time: "5 min",
+    title: "La banque qui a ramené<br/>son IA <mark>à la maison.</mark>",
+    chapo: "Dans « 24 h chez… », Iris passe une journée, par écran interposé, dans une entreprise qui vit de l'IA. Deuxième épisode : Revolut, la banque en ligne, racontée par celui qui dirige ses opérations d'IA.",
+    fait: ["Chez Revolut, 2 000 ingénieurs écrivent leur code avec l'aide de l'IA. Fin octobre, devant une conférence de développeurs, David Abitbol, qui dirige les opérations d'IA de la banque, a raconté comment elle s'y prend.", "Le grand changement : la banque ne loue plus l'essentiel de son IA aux grands laboratoires américains. Elle fait tourner GLM, un modèle ouvert conçu par le chinois Z.ai, sur ses propres serveurs équipés de cartes graphiques Nvidia. Selon Revolut, la facture est environ dix fois plus basse."],
+    consequence: ["Une journée chez Revolut, vue de l'intérieur : des ingénieurs qui attendent une réponse de l'IA en quelques secondes, une équipe qui règle les machines pour aller plus vite avec le même matériel, et des contrôles pour rester dans les règles bancaires européennes.", "Tout ne passe pas par la maison : un aiguillage envoie encore certaines demandes, celles qui demandent par exemple de lire une image, vers les modèles de Google ou d'OpenAI."],
+    lien: ["Installer son IA chez soi, c'est ne plus dépendre d'un abonnement qu'un fournisseur peut couper ou augmenter. Mais la dépendance se déplace : vers les cartes graphiques d'un fabricant américain, vers un modèle conçu en Chine, et vers l'équipe qui doit tout faire tourner.", "Et chez vous, entre louer une IA et l'installer sur vos propres machines, de quoi préféreriez-vous dépendre ?"],
+    sources: [
+      { label: "« How Revolut Cut AI Coding Costs 90% With Self-Hosted Open Models », David Abitbol (Revolut), conférence filmée, 29 octobre 2026", url: "https://www.youtube.com/watch?v=Ok6QdZHCcI8" },
+      { label: "« Chez Revolut, l'IA réinternalisée coûte dix fois moins cher que Claude », IT for Business, 5 novembre 2026", url: "https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445" },
+    ],
+  },
 };
 
 /* ---------- Tag de relecture ----------
