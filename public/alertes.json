@@ -4,6 +4,32 @@
   "type": "vigilance",
   "niveau": "orange",
   "titre": "Vigilance orange sur OVHcloud",
+  "texte": "OVHcloud AI Endpoints : Temps de réponse 3,7 fois plus long que d'habitude.",
+  "horodatage": "2026-11-27T15:09:11+00:00",
+  "id": "ovhcloud-vigilance-202611271509",
+  "canaux": [
+   "ntfy",
+   "site"
+  ]
+ },
+ {
+  "fournisseur": "mistral",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur Mistral",
+  "texte": "Mistral AI : Temps de réponse 2,0 fois plus long que d'habitude.",
+  "horodatage": "2026-11-27T15:09:11+00:00",
+  "id": "mistral-vigilance-202611271509",
+  "canaux": [
+   "ntfy",
+   "site"
+  ]
+ },
+ {
+  "fournisseur": "ovhcloud",
+  "type": "vigilance",
+  "niveau": "orange",
+  "titre": "Vigilance orange sur OVHcloud",
   "texte": "OVHcloud AI Endpoints : Temps de réponse 2,7 fois plus long que d'habitude.",
   "horodatage": "2026-11-27T05:06:51+00:00",
   "id": "ovhcloud-vigilance-202611270506",

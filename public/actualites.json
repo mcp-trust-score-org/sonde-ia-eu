@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-27T13:17:19+00:00",
+ "genere_le": "2026-11-27T15:06:51+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -26,6 +26,26 @@
   ]
  },
  "evenements": [
+  {
+   "id": "cloudflare-955xa7dtx0ca",
+   "titre": "Cloudflare : Cloudflare University website unavailable",
+   "type": "incident_amont",
+   "debut": "2026-11-27T14:49+00:00",
+   "fin": "2026-11-27T15:05+00:00",
+   "gravite": "minor",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/955xa7dtx0ca",
+     "titre": "Cloudflare University website unavailable"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
   {
    "id": "cloudflare-mkudgr09g9ax",
    "titre": "Cloudflare : RealTimeKit Recording Delays",
