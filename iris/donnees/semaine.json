@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-27T04:53:48+00:00",
+ "genere_le": "2026-11-27T05:06:53+00:00",
  "suivis": {
   "mistral": "Mistral",
   "scaleway": "Scaleway",
@@ -351,12 +351,12 @@
    "fournisseurs": {
     "mistral": {
      "etat": "soleil",
-     "mesures": 1,
+     "mesures": 2,
      "echecs": 0
     },
     "scaleway": {
      "etat": "soleil",
-     "mesures": 1,
+     "mesures": 2,
      "echecs": 0
     },
     "ovhcloud": {
@@ -366,7 +366,7 @@
     },
     "ionos": {
      "etat": "soleil",
-     "mesures": 1,
+     "mesures": 2,
      "echecs": 0
     }
    }

@@ -4,7 +4,7 @@
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 23 | 78.3 % | 863 ms / 2309 ms | 2614 ms | 72.7 | 100 % | – |
+| 1 | ovhcloud (anonyme) | 24 | 79.2 % | 884 ms / 2307 ms | 2523 ms | 75.9 | 100 % | – |
 
 Erreurs : ovhcloud (anonyme) – réponse vide (3) ; ovhcloud (anonyme) – délai dépassé (2)
 
@@ -12,7 +12,7 @@ Erreurs : ovhcloud (anonyme) – réponse vide (3) ; ovhcloud (anonyme) – dél
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 21 | 90.5 % | 979 ms / 28717 ms | 1454 ms | 25.1 | 94.7 % | – |
+| 1 | ovhcloud (anonyme) | 22 | 90.9 % | 938 ms / 22724 ms | 1383 ms | 25.1 | 95 % | – |
 
 Erreurs : ovhcloud (anonyme) – réponse vide (1) ; ovhcloud (anonyme) – HTTP 500: {"error":{"code":null,"message":"Something happene (1)
 
@@ -20,7 +20,7 @@ Erreurs : ovhcloud (anonyme) – réponse vide (1) ; ovhcloud (anonyme) – HTTP
 
 | Rang | Fournisseur | Appels | Dispo | 1er mot (médiane / p95) | Durée médiane | Jetons/s | Qualité FR | Coût / 1000 tâches |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ovhcloud (anonyme) | 21 | 100 % | 304 ms / 3294 ms | 710 ms | 61 | 76.2 % | – |
+| 1 | ovhcloud (anonyme) | 22 | 100 % | 303 ms / 3162 ms | 766 ms | 60.6 | 72.7 % | – |
 
 ## Modèles absents du catalogue
 

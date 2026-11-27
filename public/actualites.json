@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-27T04:49:01+00:00",
+ "genere_le": "2026-11-27T05:06:24+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,8 +16,7 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "erreur",
-   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
+   "etat": "ok"
   }
  },
  "dependances": {
@@ -287,12 +286,15 @@
    "debut": "2026-11-20T18:24+00:00",
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/iysf3fasf7wn"
-  },
-  {
-   "titre": "Cloudflare : Network Performance Issues in Miami",
-   "debut": "2026-11-20T05:00+00:00",
-   "raison": "localisé hors de nos zones",
-   "url": "https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm"
   }
- ]
+ ],
+ "tri_presse": {
+  "articles": 1,
+  "sans_acteur": 1,
+  "sans_incident": 0,
+  "hors_sujet": 0,
+  "doublons": 0,
+  "retenus": 0,
+  "erreurs": []
+ }
 }
