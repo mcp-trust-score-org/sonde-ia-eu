@@ -58,3 +58,15 @@ def test_collecter_et_signaler(tmp_path):
     liste = a_signaler(tmp_path, set())
     assert [a["id"] for a in liste] == ["boamp:26-123456", "boamp:26-654321"]   # l'attribution d'abord
     assert a_signaler(tmp_path, {"boamp:26-123456", "boamp:26-654321"}) == []   # jamais deux fois
+
+
+def test_client_par_defaut_sans_reseau(tmp_path, monkeypatch):
+    """Le client créé par collecter() doit pouvoir partir : en-têtes en ASCII (bug du 27/11)."""
+    from sonde import marches
+    assert marches.AGENT.isascii()
+    vrai_client = httpx.Client
+    def client(**kw):
+        return vrai_client(transport=httpx.MockTransport(lambda r: httpx.Response(200, json={"results": [], "notices": []})), **kw)
+    monkeypatch.setattr(marches.httpx, "Client", client)
+    res = collecter(tmp_path, maintenant=datetime(2026, 11, 27, 6, tzinfo=timezone.utc))
+    assert res["sources"]["BOAMP"]["etat"] == "ok" and (tmp_path / "public" / "marches.json").exists()
