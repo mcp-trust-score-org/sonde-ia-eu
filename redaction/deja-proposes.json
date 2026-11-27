@@ -16,13 +16,16 @@
   "grand theft auto vi",
   "hugues moutouh",
   "hypothèse de riemann",
-  "les japonais adoptent les dumbphones sans internet"
+  "les japonais adoptent les dumbphones sans internet",
+  "suspension du chantier d'un data center google en belgique"
  ],
  "detour": [
   "https://legrandcontinent.eu/fr/2026/11/24/en-chine-les-offres-demploi-seffondrent-face-a-lia/",
+  "https://next.ink/268574/olala-on-a-teste-des-ia-generatives-sur-cpu-avec-5-machines-et-plus-de-1-000-prompts/",
   "https://next.ink/268967/olala-on-a-disseque-le-modele-dovh-avec-trois-tetes-folles/",
   "https://next.ink/269443/dma-la-conformite-de-facade-des-geants-du-numerique-epinglee-par-le-beuc/",
   "https://next.ink/269535/panne-microsoft-plus-precis-le-rapport-final-nie-toute-cyberattaque-ou-usage-de-lia/",
+  "https://next.ink/270502/nextquick-comment-fonctionnent-les-ia-generatives-en-5-minutes/",
   "https://next.ink/brief-article/le-lancement-de-tous-les-records-pour-gta-vi/",
   "https://restofworld.org/2026/ibm-consulting-ends-us-visa-green-card-sponsorship/",
   "https://usbeketrica.com/fr/article/ia-et-cinema-huit-milliards-d-humains-un-seul-recit",
@@ -31,8 +34,10 @@
   "https://www.franceinfo.fr/replay-radio/le-choix-franceinfo/reportage-maitre-ce-que-vous-avez-fait-chatgpt-me-l-a-fait-en-cinq-minutes-comment-l-intelligence-artificielle-bouscule-la-profession-d-avocat_8275346.html",
   "https://www.itforbusiness.fr/revolut-ia-inference-glm-cout-divise-par-dix-109445",
   "https://www.lemondedudroit.fr/decryptages/380-tribunes/106741-chief-cognitive-officer-la-fonction-que-lia-rend-necessaire-dans-les-cabinets-davocats.html",
+  "https://www.numerama.com/sciences/2385919-einstein-mecanique-quantique-et-trous-noirs-ce-physicien-propose-une-nouvelle-theorie-et-gpt-6-astra-y-est-pour-quelque-chose.html",
   "https://www.numerama.com/tech/2382757-les-regards-se-tournent-vers-p-vs-np-apres-riemann-lia-sattaque-a-une-autre-enigme-a-un-million-de-dollars.html",
   "https://www.numerama.com/tech/2383601-ils-ont-plie-liphone-duo-634-000-fois-en-un-mois-voici-son-etat.html",
+  "https://www.numerama.com/tech/2386319-la-france-se-dote-de-ses-premiers-drones-intercepteurs-qui-filent-a-350-km-h-pour-percuter-dautres-drones.html",
   "https://www.youtube.com/watch?v=Ok6QdZHCcI8"
  ],
  "pistes": [
@@ -40,10 +45,19 @@
   "https://next.ink/269535/panne-microsoft-plus-precis-le-rapport-final-nie-toute-cyberattaque-ou-usage-de-lia/",
   "https://next.ink/269774/eau-chaude-gpu-froids-ovh-ne-veut-plus-consommer-deau-dans-ses-datacenters/",
   "https://next.ink/270124/claude-sait-maintenant-produire-des-applications-a-partir-dartefacts/",
+  "https://next.ink/270438/messages-sexuels-et-chantage-affectif-apple-retire-le-chatbot-talkie-de-lapp-store/",
+  "https://www.actuia.com/actualite/mistral-fait-de-singapour-son-siege-asie-pacifique-et-un-pole-de-recherche/",
+  "https://www.actuia.com/actualite/openrouter-durcit-son-option-zero-data-retention-apres-lenquete-de-dragos/",
   "https://www.france24.com/fr/%C3%A9missions/parlons-en-les-invit%C3%A9s/20261126-ouverture-du-proc%C3%A8s-de-l-%C3%A9g%C3%A9rie-du-jihad",
   "https://www.lemonde.fr/economie/article/2026/11/25/le-succes-des-ia-chinoises-aupres-des-entreprises-met-les-leaders-anthropic-et-openai-sous-pression_6815050_3234.html",
+  "https://www.lemonde.fr/pixels/article/2026/11/27/royaume-uni-le-ministere-du-travail-declare-un-cyberincident-et-met-plusieurs-de-ses-services-hors-ligne_6815850_4408996.html",
   "https://www.theregister.com/research/2026/11/26/techs-outage-problem-needs-maintenance-not-conspiracy-theories/5312180",
   "https://www.theregister.com/saas/2026/11/23/microsoft-mega-outage-report-reveals-testing-gaps-and-emails-that-never-arrived/5311656"
  ],
- "marches": []
+ "marches": [
+  "boamp:26-113483",
+  "ted:814500-2026",
+  "ted:819989-2026",
+  "ted:821175-2026"
+ ]
 }

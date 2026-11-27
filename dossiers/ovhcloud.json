@@ -4,18 +4,18 @@
     "nom": "OVHcloud AI Endpoints",
     "pays": "FR"
   },
-  "genere_le": "2026-11-27T04:48:59+00:00",
+  "genere_le": "2026-11-27T13:17:17+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-27T04:48:59+00:00"
+    "fin": "2026-11-27T13:17:17+00:00"
   },
   "performance": [
     {
       "modele": "gpt-oss-120b",
-      "appels": 65,
-      "disponibilite_pct": 86.15,
-      "ttft_median_ms": 829,
-      "ttft_p95_ms": 1978,
+      "appels": 66,
+      "disponibilite_pct": 86.36,
+      "ttft_median_ms": 841,
+      "ttft_p95_ms": 1976,
       "heures_avec_echec": 8,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
@@ -24,10 +24,10 @@
     },
     {
       "modele": "llama-3.3-70b",
-      "appels": 63,
-      "disponibilite_pct": 96.83,
-      "ttft_median_ms": 1043,
-      "ttft_p95_ms": 118153,
+      "appels": 64,
+      "disponibilite_pct": 96.88,
+      "ttft_median_ms": 1041,
+      "ttft_p95_ms": 117855,
       "heures_avec_echec": 2,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
@@ -36,10 +36,10 @@
     },
     {
       "modele": "mistral-small-3.2",
-      "appels": 63,
+      "appels": 64,
       "disponibilite_pct": 100.0,
-      "ttft_median_ms": 866,
-      "ttft_p95_ms": 26567,
+      "ttft_median_ms": 826,
+      "ttft_p95_ms": 26407,
       "heures_avec_echec": 0,
       "plus_longue_serie_echecs_h": 0,
       "offres": [
@@ -48,7 +48,7 @@
     }
   ],
   "reseau": {
-    "dernier_releve": "2026-11-27T04:36:12+00:00",
+    "dernier_releve": "2026-11-27T13:04:22+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "ue_observe",
     "constats": [
@@ -64,27 +64,27 @@
     "verdicts_sur_periode": [
       "ue_observe"
     ],
-    "releves": 21
+    "releves": 22
   },
   "stabilite": [
     {
       "modele": "gpt-oss-120b",
-      "empreintes": 21,
+      "empreintes": 22,
       "derniere_similarite": null,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "llama-3.3-70b",
-      "empreintes": 21,
-      "derniere_similarite": null,
+      "empreintes": 22,
+      "derniere_similarite": 0.6026,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "mistral-small-3.2",
-      "empreintes": 21,
-      "derniere_similarite": null,
+      "empreintes": 22,
+      "derniere_similarite": 0.7273,
       "alertes": [
         {
           "horodatage": "2026-11-21T16:43:28+00:00",
@@ -213,6 +213,10 @@
     },
     {
       "manifeste": "2026-11-26.json",
+      "ancrage_ots": true
+    },
+    {
+      "manifeste": "2026-11-27.json",
       "ancrage_ots": true
     }
   ],

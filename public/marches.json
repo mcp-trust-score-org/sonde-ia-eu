@@ -1,0 +1,67 @@
+{
+ "maj": "2026-11-27T13:19:53+00:00",
+ "sources": {
+  "BOAMP": {
+   "etat": "ok",
+   "nombre": 1
+  },
+  "TED": {
+   "etat": "ok",
+   "nombre": 3
+  }
+ },
+ "avis": [
+  {
+   "id": "ted:821175-2026",
+   "base": "TED",
+   "pays": "LUX",
+   "type": "appel_offres",
+   "date": "2026-11-26",
+   "acheteur": "European High-Performance Computing Joint Undertaking",
+   "objet": "Luxembourg – Services informatiques – Call for Tenders for the selection of Artificial Intelligence Gigafactory Consortia and the establishment of AI Gigafactories",
+   "fournisseurs": [],
+   "titulaire": null,
+   "url": "https://ted.europa.eu/fr/notice/-/detail/821175-2026",
+   "vu_le": "2026-11-27"
+  },
+  {
+   "id": "ted:819989-2026",
+   "base": "TED",
+   "pays": "FRA",
+   "type": "appel_offres",
+   "date": "2026-11-25",
+   "acheteur": "CD des A-M - Secrétariat Général",
+   "objet": "France – Services d'organisation d'expositions, de foires et de congrès – 2026A0293 Conception, réalisation, aménagement, montage et démontage du stand du Département des Alpes-Maritimes à l’occasion du Salon International de l'Intelligence Artificielle de Cannes - WAICF 2027",
+   "fournisseurs": [],
+   "titulaire": null,
+   "url": "https://ted.europa.eu/fr/notice/-/detail/819989-2026",
+   "vu_le": "2026-11-27"
+  },
+  {
+   "id": "boamp:26-113483",
+   "base": "BOAMP",
+   "pays": "France",
+   "type": "appel_offres",
+   "date": "2026-11-25",
+   "acheteur": "CD des A-M - Secrétariat Général",
+   "objet": "2026A0293 Conception, réalisation, aménagement, montage et démontage du stand du Département des Alpes-Maritimes à l’occasion du Salon International de l'Intelligence Artificielle de Cannes - WAICF...",
+   "fournisseurs": [],
+   "date_limite": "2026-11-25",
+   "url": "https://www.boamp.fr/pages/avis/?q=idweb:26-113483",
+   "vu_le": "2026-11-27"
+  },
+  {
+   "id": "ted:814500-2026",
+   "base": "TED",
+   "pays": "IRL",
+   "type": "appel_offres",
+   "date": "2026-11-24",
+   "acheteur": "The Office of Government Procurement",
+   "objet": "Irlande – Services de technologies de l'information, conseil, développement de logiciels, internet et appui – AI (Artificial Intelligence) Systems and Solutions, AI Literacy Training, AI Governance, and AI Development and Consultancy Services.",
+   "fournisseurs": [],
+   "titulaire": null,
+   "url": "https://ted.europa.eu/fr/notice/-/detail/814500-2026",
+   "vu_le": "2026-11-27"
+  }
+ ]
+}
