@@ -23,6 +23,8 @@ import httpx
 
 BOAMP = "https://boamp-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/boamp/records"
 TED = "https://api.ted.europa.eu/v3/notices/search"
+# En-tête HTTP : ASCII seulement (un « é » ici a empêché la toute première collecte, le 27/11).
+AGENT = "Iris (sonde-ia-eu) - veille des marches publics de l'IA"
 
 # Ce que l'objet de l'avis doit contenir pour parler d'IA (mots entiers, insensible à la casse).
 MOTS_IA = re.compile(
@@ -165,7 +167,7 @@ def collecter(racine: Path, client: httpx.Client | None = None, maintenant: date
     avis = {a["id"]: a for a in ancien.get("avis") or []}
     sources = {}
     propre = client is None
-    client = client or httpx.Client(timeout=60, headers={"User-Agent": "Iris (sonde-ia-eu) - veille des marchés publics"})
+    client = client or httpx.Client(timeout=60, headers={"User-Agent": AGENT})
     try:
         for nom, lire in (("BOAMP", lire_boamp), ("TED", lire_ted)):
             try:
