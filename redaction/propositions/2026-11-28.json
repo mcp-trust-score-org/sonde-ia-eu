@@ -560,7 +560,9 @@
     ]
    },
    "alertes_charte": [],
-   "image": "assets/photos/societe.jpg"
+   "image": "assets/photos/societe.jpg",
+   "statut": "publie",
+   "publie_le": "2026-11-28T11:43:41+00:00"
   }
  ],
  "reserve_une": [],

@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-28T07:50:27+00:00",
+ "genere_le": "2026-11-28T11:43:41+00:00",
  "suivi_depuis": "2026-11-23",
  "redaction": [
   {
@@ -309,8 +309,8 @@
      "nom": "Tous connectés",
      "quoi": "Sujet du jour",
      "optionnel": false,
-     "etat": "à vérifier",
-     "brouillons": 1
+     "etat": "publié",
+     "titre": "On laisse l'IA comparer les prix. Pas acheter à notre place."
     }
    ]
   },
@@ -444,12 +444,12 @@
  "sonde": {
   "veille": {
    "derniere": "2026-11-28T07:50+00:00",
-   "etat": "ok",
+   "etat": "arrêtée",
    "prevue": "toutes les 10 minutes"
   },
   "mesure": {
    "derniere": "2026-11-28T07:43+00:00",
-   "etat": "ok",
+   "etat": "en retard",
    "prevue": "toutes les heures"
   },
   "jours": [
@@ -505,12 +505,6 @@
   ],
   "interruptions": [
    {
-    "de": "2026-11-25T20:18+00:00",
-    "a": "2026-11-26T02:56+00:00",
-    "heures": 6.6,
-    "en_cours": false
-   },
-   {
     "de": "2026-11-26T02:56+00:00",
     "a": "2026-11-26T11:40+00:00",
     "heures": 8.7,
@@ -563,12 +557,18 @@
     "a": "2026-11-28T07:50+00:00",
     "heures": 4.4,
     "en_cours": false
+   },
+   {
+    "de": "2026-11-28T07:50+00:00",
+    "a": "2026-11-28T11:43+00:00",
+    "heures": 3.9,
+    "en_cours": true
    }
   ]
  },
  "site": {
   "donnees_meteo": "2026-11-28T07:50:24+00:00",
-  "articles_mis_a_jour": "2026-11-27T08:26:14+00:00",
+  "articles_mis_a_jour": "2026-11-28T11:43:41+00:00",
   "derniers": {
    "une": {
     "nom": "À la une",
@@ -578,9 +578,9 @@
    },
    "tous_connectes": {
     "nom": "Tous connectés",
-    "titre": "On demande tout à l'IA.<br/><mark>Un sur cinq</mark> vérifie ses réponses à chaque fois.",
-    "publie_le": "2026-11-25T07:19:06+00:00",
-    "nombre": 4
+    "titre": "On laisse l'IA comparer les prix.<br/>Pas <mark>acheter à notre place.</mark>",
+    "publie_le": "2026-11-28T11:43:41+00:00",
+    "nombre": 5
    },
    "detour": {
     "nom": "Le Détour",
