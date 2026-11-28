@@ -509,7 +509,9 @@
    },
    "alertes_charte": [
     "Le rédacteur signale 1 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer »."
-   ]
+   ],
+   "statut": "ecarte",
+   "ecarte_pourquoi": "Écarté par la rédaction le 27 novembre : aucun sujet du jour dans la ligne éditoriale (politique, justice, sport)."
   },
   {
    "rubrique": "detour",
