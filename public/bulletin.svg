@@ -5,36 +5,34 @@
 <radialGradient id="nuage"><stop offset="0%" stop-color="#AEB7C2" stop-opacity=".5"/><stop offset="70%" stop-color="#AEB7C2" stop-opacity="0"/></radialGradient></defs>
 <rect width="1080" height="1350" fill="url(#ciel)"/>
 <text x="96" y="140" font-size="40" font-weight="600" fill="#F2F4F7">La météo de l'IA</text>
-<text x="984" y="140" font-size="30" fill="#8E98A5" text-anchor="end">Vendredi 27 novembre</text>
-<text x="96" y="260" font-size="72" fill="#F2F4F7" letter-spacing="-1.5">Temps calme sur 3</text>
-<text x="96" y="344" font-size="72" fill="#F2F4F7" letter-spacing="-1.5">fournisseurs, nuages sur</text>
-<text x="96" y="428" font-size="72" fill="#F2F4F7" letter-spacing="-1.5">OVHcloud.</text>
+<text x="984" y="140" font-size="30" fill="#8E98A5" text-anchor="end">Samedi 28 novembre</text>
+<text x="96" y="260" font-size="72" fill="#F2F4F7" letter-spacing="-1.5">Pas encore de mesure</text>
+<text x="96" y="344" font-size="72" fill="#F2F4F7" letter-spacing="-1.5">récente.</text>
 <circle cx="320" cy="760" r="220" fill="url(#radar)" stroke="#222A33" stroke-width="2"/>
 <circle cx="320" cy="760" r="145" fill="none" stroke="#1C2530" stroke-width="2"/>
 <circle cx="320" cy="760" r="73" fill="none" stroke="#1C2530" stroke-width="2"/>
 <line x1="100" y1="760" x2="540" y2="760" stroke="#1C2530" stroke-width="2"/>
 <line x1="320" y1="540" x2="320" y2="980" stroke="#1C2530" stroke-width="2"/>
-<circle cx="354" cy="667" r="9" fill="#7BD3A4" stroke="#0B0F14" stroke-width="5"/>
-<circle cx="464" cy="812" r="9" fill="#7BD3A4" stroke="#0B0F14" stroke-width="5"/>
-<circle cx="275" cy="882" r="9" fill="#FFD25E" stroke="#0B0F14" stroke-width="5"/>
-<circle cx="220" cy="723" r="9" fill="#7BD3A4" stroke="#0B0F14" stroke-width="5"/>
-<circle cx="610" cy="590" r="10" fill="#7BD3A4"/>
+<circle cx="354" cy="667" r="9" fill="#5B6470" stroke="#0B0F14" stroke-width="5"/>
+<circle cx="464" cy="812" r="9" fill="#5B6470" stroke="#0B0F14" stroke-width="5"/>
+<circle cx="275" cy="882" r="9" fill="#5B6470" stroke="#0B0F14" stroke-width="5"/>
+<circle cx="220" cy="723" r="9" fill="#5B6470" stroke="#0B0F14" stroke-width="5"/>
+<circle cx="610" cy="590" r="10" fill="#5B6470"/>
 <text x="636" y="600" font-size="36" font-weight="500" fill="#F2F4F7">Mistral</text>
-<text x="636" y="640" font-size="27" fill="#C3CAD3">Soleil, tout va bien</text>
+<text x="636" y="640" font-size="27" fill="#C3CAD3">Inconnu, pas de mesure récente</text>
 <line x1="600" y1="666" x2="984" y2="666" stroke="#1C2530" stroke-width="2"/>
-<circle cx="610" cy="694" r="10" fill="#7BD3A4"/>
+<circle cx="610" cy="694" r="10" fill="#5B6470"/>
 <text x="636" y="704" font-size="36" font-weight="500" fill="#F2F4F7">Scaleway</text>
-<text x="636" y="744" font-size="27" fill="#C3CAD3">Soleil, tout va bien</text>
+<text x="636" y="744" font-size="27" fill="#C3CAD3">Inconnu, pas de mesure récente</text>
 <line x1="600" y1="770" x2="984" y2="770" stroke="#1C2530" stroke-width="2"/>
-<circle cx="610" cy="798" r="10" fill="#FFD25E"/>
+<circle cx="610" cy="798" r="10" fill="#5B6470"/>
 <text x="636" y="808" font-size="36" font-weight="500" fill="#F2F4F7">OVHcloud</text>
-<text x="636" y="848" font-size="27" fill="#C3CAD3">Éclaircies, ça marche, un peu lent</text>
+<text x="636" y="848" font-size="27" fill="#C3CAD3">Inconnu, pas de mesure récente</text>
 <line x1="600" y1="874" x2="984" y2="874" stroke="#1C2530" stroke-width="2"/>
-<circle cx="610" cy="902" r="10" fill="#7BD3A4"/>
+<circle cx="610" cy="902" r="10" fill="#5B6470"/>
 <text x="636" y="912" font-size="36" font-weight="500" fill="#F2F4F7">IONOS</text>
-<text x="636" y="952" font-size="27" fill="#C3CAD3">Soleil, tout va bien</text>
+<text x="636" y="952" font-size="27" fill="#C3CAD3">Inconnu, pas de mesure récente</text>
 <line x1="600" y1="978" x2="984" y2="978" stroke="#1C2530" stroke-width="2"/>
-<text x="96" y="1110" font-size="30" fill="#C3CAD3">À surveiller : OVHcloud, temps de réponse 1,5 fois plus long que d'habitude.</text>
 <line x1="96" y1="1210" x2="984" y2="1210" stroke="#222A33" stroke-width="2"/>
 <text x="96" y="1262" font-size="28" font-weight="500" fill="#F2F4F7">[TON NOM] · [ADRESSE DU SITE]</text>
 <text x="984" y="1262" font-size="24" fill="#8E98A5" text-anchor="end">Mesuré chaque minute depuis GitHub Actions (région non garantie)</text>

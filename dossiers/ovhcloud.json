@@ -4,18 +4,18 @@
     "nom": "OVHcloud AI Endpoints",
     "pays": "FR"
   },
-  "genere_le": "2026-11-27T13:17:17+00:00",
+  "genere_le": "2026-11-28T04:49:03+00:00",
   "periode": {
     "debut": "2026-11-15T19:39:19+00:00",
-    "fin": "2026-11-27T13:17:17+00:00"
+    "fin": "2026-11-28T04:49:03+00:00"
   },
   "performance": [
     {
       "modele": "gpt-oss-120b",
-      "appels": 66,
-      "disponibilite_pct": 86.36,
+      "appels": 68,
+      "disponibilite_pct": 86.76,
       "ttft_median_ms": 841,
-      "ttft_p95_ms": 1976,
+      "ttft_p95_ms": 1973,
       "heures_avec_echec": 8,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
@@ -24,10 +24,10 @@
     },
     {
       "modele": "llama-3.3-70b",
-      "appels": 64,
-      "disponibilite_pct": 96.88,
+      "appels": 66,
+      "disponibilite_pct": 96.97,
       "ttft_median_ms": 1041,
-      "ttft_p95_ms": 117855,
+      "ttft_p95_ms": 117259,
       "heures_avec_echec": 2,
       "plus_longue_serie_echecs_h": 1,
       "offres": [
@@ -36,10 +36,10 @@
     },
     {
       "modele": "mistral-small-3.2",
-      "appels": 64,
+      "appels": 66,
       "disponibilite_pct": 100.0,
-      "ttft_median_ms": 826,
-      "ttft_p95_ms": 26407,
+      "ttft_median_ms": 786,
+      "ttft_p95_ms": 26086,
       "heures_avec_echec": 0,
       "plus_longue_serie_echecs_h": 0,
       "offres": [
@@ -48,7 +48,7 @@
     }
   ],
   "reseau": {
-    "dernier_releve": "2026-11-27T13:04:22+00:00",
+    "dernier_releve": "2026-11-28T04:36:13+00:00",
     "point_de_mesure": "GitHub Actions (runner hébergé, région non garantie)",
     "verdict": "ue_observe",
     "constats": [
@@ -64,26 +64,26 @@
     "verdicts_sur_periode": [
       "ue_observe"
     ],
-    "releves": 22
+    "releves": 23
   },
   "stabilite": [
     {
       "modele": "gpt-oss-120b",
-      "empreintes": 22,
+      "empreintes": 23,
       "derniere_similarite": null,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "llama-3.3-70b",
-      "empreintes": 22,
-      "derniere_similarite": 0.6026,
+      "empreintes": 23,
+      "derniere_similarite": 0.6076,
       "alertes": [],
       "changements_identifiant": []
     },
     {
       "modele": "mistral-small-3.2",
-      "empreintes": 22,
+      "empreintes": 23,
       "derniere_similarite": 0.7273,
       "alertes": [
         {
@@ -125,6 +125,10 @@
         {
           "horodatage": "2026-11-26T13:10:25+00:00",
           "raison": "similarité 0.58 sous la variation normale (médiane 1.00, limite 0.96)"
+        },
+        {
+          "horodatage": "2026-11-28T04:40:30+00:00",
+          "raison": "similarité 0.73 sous la variation normale (médiane 1.00, limite 0.96)"
         }
       ],
       "changements_identifiant": []

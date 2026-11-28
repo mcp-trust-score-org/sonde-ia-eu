@@ -1,6 +1,6 @@
 # Dossier de surveillance – Mistral AI
 
-Période : 2026-11-15 → 2026-11-27 · généré le 2026-11-27 13:17 UTC
+Période : 2026-11-15 → 2026-11-28 · généré le 2026-11-28 04:49 UTC
 
 > Ce dossier rassemble des mesures externes indépendantes. Il aide à documenter la surveillance d'un prestataire TIC ; il ne constitue ni une évaluation des risques de l'entité, ni un audit, ni un avis juridique. Les correspondances réglementaires sont indicatives.
 
@@ -30,7 +30,7 @@ Aucune mesure sur la période.
 
 ## 2. Chemin réseau observé
 
-**Constat au 2026-11-27 : Intermédiaire ou opérateur non européen observé**
+**Constat au 2026-11-28 : Intermédiaire ou opérateur non européen observé**
 
 - Entrée réseau 162.159.142.207 opérée par Cloudflare (société mère : US)
 - Entrée réseau 172.66.2.203 opérée par Cloudflare (société mère : US)
@@ -41,7 +41,7 @@ Aucune mesure sur la période.
 - Pays des points d'entrée observés : US
 - Opérateurs réseau : Cloudflare
 - Intermédiaires visibles : Cloudflare
-- Relevés sur la période : 22 · constats distincts : intermediaire_non_ue
+- Relevés sur la période : 23 · constats distincts : intermediaire_non_ue
 
 Portée : ce relevé montre l'infrastructure par laquelle les requêtes entrent. Il ne prouve pas à lui seul le lieu de traitement du modèle, à confirmer contractuellement (champ B_02.02.0160).
 

@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-28T03:27:26+00:00",
+ "genere_le": "2026-11-28T04:52:50+00:00",
  "suivi_depuis": "2026-11-23",
  "redaction": [
   {
@@ -294,21 +294,23 @@
   {
    "date": "2026-11-28",
    "aujourdhui": true,
-   "redaction_lancee": false,
+   "redaction_lancee": true,
    "lignes": [
     {
      "rubrique": "une",
      "nom": "À la une",
      "quoi": "À chaud, s'il y a un incident",
      "optionnel": true,
-     "etat": "rien (pas d'incident ?)"
+     "etat": "à vérifier",
+     "brouillons": 1
     },
     {
      "rubrique": "tous_connectes",
      "nom": "Tous connectés",
      "quoi": "Sujet du jour",
      "optionnel": false,
-     "etat": "rédaction pas lancée"
+     "etat": "à vérifier",
+     "brouillons": 1
     }
    ]
   },
@@ -442,7 +444,7 @@
  "sonde": {
   "veille": {
    "derniere": "2026-11-28T03:27+00:00",
-   "etat": "ok",
+   "etat": "en retard",
    "prevue": "toutes les 10 minutes"
   },
   "mesure": {
@@ -565,7 +567,7 @@
   ]
  },
  "site": {
-  "donnees_meteo": "2026-11-28T03:27:25+00:00",
+  "donnees_meteo": "2026-11-28T04:49:03+00:00",
   "articles_mis_a_jour": "2026-11-27T08:26:14+00:00",
   "derniers": {
    "une": {

@@ -1,0 +1,573 @@
+{
+ "date": "2026-11-28",
+ "genere_le": "2026-11-28T04:51:41+00:00",
+ "statut": "a_relire",
+ "propositions": [
+  {
+   "rubrique": "une",
+   "format": "a_chaud",
+   "evenement_id": "cloudflare-955xa7dtx0ca",
+   "tag_interne": "Aucune anomalie",
+   "score": 8.8,
+   "auteur": "openai/gpt-oss-120b",
+   "image": "assets/photos/reseau.jpg",
+   "article": {
+    "tag": "Réseau",
+    "title": "Le site Cloudflare University devient indisponible.<br/>Mistral n’a pas montré d’anomalie <mark>16 minutes</mark>.",
+    "chapo": "Le 27 novembre, le site d’information de Cloudflare, Cloudflare University, a été indisponible pendant quelques minutes. Cette interruption a concerné le trafic vers Mistral, qui utilise l’infrastructure de Cloudflare. Notre sonde n’a toutefois détecté aucune anomalie chez le fournisseur.",
+    "fait": [
+     "Le site Cloudflare University est tombé en panne le vendredi 27 novembre à 15 h 49, et le problème a été résolu à 16 h 05.",
+     "L’incident a duré 16 minutes, affectant les requêtes transitant par le réseau de Cloudflare."
+    ],
+    "consequence": [
+     "Mistral, qui dépend de Cloudflare pour son acheminement, n’a enregistré aucune anomalie selon notre sonde.",
+     "Le service de Mistral est resté fonctionnel malgré la coupure du site intermédiaire."
+    ],
+    "lien": [
+     "Cet épisode montre que la dépendance à des services tiers comme Cloudflare peut exposer les fournisseurs à des perturbations indirectes.",
+     "Comment évaluer la résilience de vos chaînes d’approvisionnement numériques ?"
+    ],
+    "une_mini": {
+     "fait": "Cloudflare University a été indisponible 16 minutes le 27 novembre 2026.",
+     "consequence": "Mistral n’a enregistré aucune anomalie pendant cet incident.",
+     "dependance": "L’incident révèle la dépendance des services IA à l’infrastructure Cloudflare."
+    },
+    "sources": [
+     {
+      "label": "Cloudflare University website unavailable",
+      "url": "https://www.cloudflarestatus.com/incidents/955xa7dtx0ca"
+     }
+    ],
+    "a_verifier": [
+     "Vérifier que le site Cloudflare University était bien indisponible aux horaires indiqués",
+     "Confirmer que Mistral utilise effectivement le réseau Cloudflare comme indiqué"
+    ]
+   },
+   "fiche": {
+    "evenement": "Cloudflare : Cloudflare University website unavailable",
+    "type": "incident_amont",
+    "debut": "vendredi 27 novembre, 15 h 49",
+    "fin": "vendredi 27 novembre, 16 h 05",
+    "fournisseurs_concernes": [
+     "Mistral"
+    ],
+    "pourquoi_ce_fournisseur": "mistral passe(nt) par Cloudflare (chemin réseau relevé)",
+    "mesures_de_la_sonde": [
+     {
+      "fournisseur": "Mistral",
+      "ce_que_la_sonde_a_vu": "Aucune anomalie mesurée chez vos fournisseurs",
+      "anomalies": [],
+      "nombre_de_mesures_pendant_l_evenement": 1,
+      "incident_officiel": false
+     }
+    ],
+    "presse": null,
+    "sources": [
+     {
+      "label": "Cloudflare University website unavailable",
+      "url": "https://www.cloudflarestatus.com/incidents/955xa7dtx0ca"
+     }
+    ]
+   },
+   "alertes_charte": [
+    "Titre long (plus de 90 caractères) : deux phrases courtes.",
+    "Trop de chiffres dans le texte (7) : en garder 3 au plus, le détail va dans l'encadré Premium.",
+    "Le rédacteur signale 2 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer »."
+   ]
+  },
+  {
+   "rubrique": "tous_connectes",
+   "auteur": "openai/gpt-oss-120b",
+   "article": {},
+   "fiche": {
+    "tendances_wikipedia": [
+     {
+      "sujet": "David Lisnard",
+      "langue": "fr",
+      "rang_wikipedia": 1,
+      "page": "https://fr.wikipedia.org/wiki/David_Lisnard",
+      "titres_de_presse": [
+       {
+        "titre": "Présidentielle 2027: la dynamique David Lisnard à la loupe",
+        "media": "France 24",
+        "url": "https://www.france24.com/fr/vid%C3%A9o/20261127-pr%C3%A9sidentielle-2027-la-dynamique-david-lisnard-%C3%A0-la-loupe"
+       }
+      ]
+     },
+     {
+      "sujet": "Liste de sondages sur l'élection présidentielle française de 2027",
+      "langue": "fr",
+      "rang_wikipedia": 2,
+      "page": "https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Sur la route de Madison",
+      "langue": "fr",
+      "rang_wikipedia": 3,
+      "page": "https://fr.wikipedia.org/wiki/Sur_la_route_de_Madison",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Charlotte Arnould",
+      "langue": "fr",
+      "rang_wikipedia": 4,
+      "page": "https://fr.wikipedia.org/wiki/Charlotte_Arnould",
+      "titres_de_presse": [
+       {
+        "titre": "PODCAST. Faux médicaments en promo, affrontements au stade Vélodrome et Marylin Manson au Hellfest : ça dit quoi ce 27 novembre ?",
+        "media": "franceinfo Culture",
+        "url": "https://www.franceinfo.fr/replay-radio/ca-dit-quoi/podcast-faux-medicaments-en-promo-affrontements-au-stade-velodrome-et-marylin-manson-au-hellfest-ca-dit-quoi-ce-27-novembre_8292986.html"
+       }
+      ]
+     },
+     {
+      "sujet": "Marc Márquez",
+      "langue": "fr",
+      "rang_wikipedia": 5,
+      "page": "https://fr.wikipedia.org/wiki/Marc_M%C3%A1rquez",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Gabriel Matzneff",
+      "langue": "fr",
+      "rang_wikipedia": 6,
+      "page": "https://fr.wikipedia.org/wiki/Gabriel_Matzneff",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Benoît Assou-Ekotto",
+      "langue": "fr",
+      "rang_wikipedia": 7,
+      "page": "https://fr.wikipedia.org/wiki/Beno%C3%AEt_Assou-Ekotto",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Clint Eastwood",
+      "langue": "fr",
+      "rang_wikipedia": 8,
+      "page": "https://fr.wikipedia.org/wiki/Clint_Eastwood",
+      "titres_de_presse": [
+       {
+        "titre": "PODCAST. Faux médicaments en promo, affrontements au stade Vélodrome et Marylin Manson au Hellfest : ça dit quoi ce 27 novembre ?",
+        "media": "franceinfo Culture",
+        "url": "https://www.franceinfo.fr/replay-radio/ca-dit-quoi/podcast-faux-medicaments-en-promo-affrontements-au-stade-velodrome-et-marylin-manson-au-hellfest-ca-dit-quoi-ce-27-novembre_8292986.html"
+       },
+       {
+        "titre": "Deux syndicats du jeu vidéo appellent les candidats à la présidentielle à considérer cette industrie \"à la hauteur de ce qu'elle représente dans la société\"",
+        "media": "franceinfo Culture",
+        "url": "https://www.franceinfo.fr/culture/jeux-video/deux-syndicats-du-jeu-video-appellent-les-candidats-a-la-presidentielle-a-considerer-cette-industrie-a-la-hauteur-de-ce-qu-elle-represente-dans-la-societe_8302608.html"
+       },
+       {
+        "titre": "Espagne : Un mort, pollution, remorquage… Ce que l’on sait du naufrage d’un pétrolier au large d’Ibiza",
+        "media": "20 Minutes",
+        "url": "https://www.20minutes.fr/monde/espagne/4266319-20261127-espagne-mort-pollution-remorquage-sait-naufrage-petrolier-large-ibiza"
+       },
+       {
+        "titre": "Dans le Pas-de-Calais inondé, la colère des sinistrés : « Ce n’est plus possible. Je ne vais pas attendre tous les hivers le moment où l’eau monte chez moi »",
+        "media": "Le Monde",
+        "url": "https://www.lemonde.fr/planete/article/2026/11/27/dans-le-pas-de-calais-inonde-le-ras-le-bol-des-sinistres-faut-imaginer-ce-que-c-est-l-eau-boueuse-qui-monte-chez-vous_6815928_3244.html"
+       }
+      ]
+     },
+     {
+      "sujet": "General Sherman (arbre)",
+      "langue": "fr",
+      "rang_wikipedia": 9,
+      "page": "https://fr.wikipedia.org/wiki/General_Sherman_%28arbre%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Meryl Streep",
+      "langue": "fr",
+      "rang_wikipedia": 10,
+      "page": "https://fr.wikipedia.org/wiki/Meryl_Streep",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Quasimodo, l'âme de Paris",
+      "langue": "fr",
+      "rang_wikipedia": 11,
+      "page": "https://fr.wikipedia.org/wiki/Quasimodo%2C_l%27%C3%A2me_de_Paris",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Louis IX",
+      "langue": "fr",
+      "rang_wikipedia": 12,
+      "page": "https://fr.wikipedia.org/wiki/Louis_IX",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Christelle Chollet",
+      "langue": "fr",
+      "rang_wikipedia": 13,
+      "page": "https://fr.wikipedia.org/wiki/Christelle_Chollet",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Jean-Claude Vannier",
+      "langue": "fr",
+      "rang_wikipedia": 14,
+      "page": "https://fr.wikipedia.org/wiki/Jean-Claude_Vannier",
+      "titres_de_presse": [
+       {
+        "titre": "Le compositeur Jean-Claude Vannier, arrangeur indissociable de Gainsbourg, est mort",
+        "media": "franceinfo Culture",
+        "url": "https://www.franceinfo.fr/culture/musique/le-compositeur-jean-claude-vannier-arrangeur-indissociable-de-gainsbourg-est-mort_8303085.html"
+       }
+      ]
+     },
+     {
+      "sujet": "Audrey Fleurot",
+      "langue": "fr",
+      "rang_wikipedia": 15,
+      "page": "https://fr.wikipedia.org/wiki/Audrey_Fleurot",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Adèle Castillon",
+      "langue": "fr",
+      "rang_wikipedia": 16,
+      "page": "https://fr.wikipedia.org/wiki/Ad%C3%A8le_Castillon",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Marine Le Pen",
+      "langue": "fr",
+      "rang_wikipedia": 17,
+      "page": "https://fr.wikipedia.org/wiki/Marine_Le_Pen",
+      "titres_de_presse": [
+       {
+        "titre": "Fuite d’informations confidentielles vers le RN : Ambroise de Rancourt, le responsable du programme présidentiel de Marine Le Pen, soupçonné d’être le principal destinataire",
+        "media": "Le Monde",
+        "url": "https://www.lemonde.fr/societe/article/2026/11/27/ambroise-de-rancourt-le-responsable-du-programme-presidentiel-de-marine-le-pen-soupconne-d-etre-le-principal-destinataire-de-la-fuite-de-documents-de-beauvau-vers-le-rn_6815924_3224.html"
+       }
+      ]
+     },
+     {
+      "sujet": "Sarah Knafo",
+      "langue": "fr",
+      "rang_wikipedia": 18,
+      "page": "https://fr.wikipedia.org/wiki/Sarah_Knafo",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Chiara Mastroianni",
+      "langue": "fr",
+      "rang_wikipedia": 19,
+      "page": "https://fr.wikipedia.org/wiki/Chiara_Mastroianni",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Hunger Games (série de films)",
+      "langue": "fr",
+      "rang_wikipedia": 20,
+      "page": "https://fr.wikipedia.org/wiki/Hunger_Games_%28s%C3%A9rie_de_films%29",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Sylvain Durif",
+      "langue": "fr",
+      "rang_wikipedia": 21,
+      "page": "https://fr.wikipedia.org/wiki/Sylvain_Durif",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Jenifer",
+      "langue": "fr",
+      "rang_wikipedia": 22,
+      "page": "https://fr.wikipedia.org/wiki/Jenifer",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Teddy Riner",
+      "langue": "fr",
+      "rang_wikipedia": 23,
+      "page": "https://fr.wikipedia.org/wiki/Teddy_Riner",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "Thierry Le Luron",
+      "langue": "fr",
+      "rang_wikipedia": 24,
+      "page": "https://fr.wikipedia.org/wiki/Thierry_Le_Luron",
+      "titres_de_presse": []
+     },
+     {
+      "sujet": "XNXX",
+      "langue": "fr",
+      "rang_wikipedia": 25,
+      "page": "https://fr.wikipedia.org/wiki/XNXX",
+      "titres_de_presse": []
+     }
+    ],
+    "presse_grand_public": [
+     {
+      "titre": "Un calcul \"technique\" qui illustre un \"décrochage\" économique : que signifie l'annonce de l'entrée en récession de la France ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/croissance/un-calcul-technique-qui-illustre-un-decrochage-economique-que-signifie-l-annonce-de-l-entree-en-recession-de-la-france_8303169.html"
+     },
+     {
+      "titre": "L'agence de notation Standard &amp; Poor's menace de dégrader prochainement la note de la France",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/budget/l-agende-de-notation-standard-poor-s-menace-de-degrader-prochainement-la-note-de-la-france_8302788.html"
+     },
+     {
+      "titre": "Les footballeuses françaises renversent le Venezuela (4-2) en match amical",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/l-equipe-de-france-feminine-renversent-le-venezuela-4-2-en-match-amical_8303850.html"
+     },
+     {
+      "titre": "Volodymyr Zelensky compare la relation de Donald Trump avec Vladimir Poutine à une amitié avec Hitler pendant la Seconde Guerre mondiale",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/volodymyr-zelensky-compare-la-relation-de-donald-trump-avec-vladimir-poutine-a-une-amitie-avec-hitler-pendant-la-seconde-guerre-mondiale_8303130.html"
+     },
+     {
+      "titre": "Le Costa Rica refoule la rapporteuse de l'ONU pour les Palestiniens, Francesca Albanese",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/proche-orient/israel-palestine/le-costa-rica-refoule-la-rapporteure-de-l-onu-pour-les-palestiniens-francesca-albanese_8302353.html"
+     },
+     {
+      "titre": "Franck Haise, l'entraîneur de l'équipe de football du Stade rennais, est mis à pied",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/l-entraineur-de-l-equipe-de-football-du-stade-rennais-franck-haise-est-mis-a-pied_8303727.html"
+     },
+     {
+      "titre": "Le bateau naufragé au large d'Ibiza sera remorqué vers le port espagnol de Carthagène",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/espagne/le-bateau-naufrage-au-large-d-ibiza-sera-remorque-vers-le-port-espagnol-de-carthagene_8303865.html"
+     },
+     {
+      "titre": "L'activité de l'abattoir de Haute-Saône suspendue par le préfet après avoir été visé par une enquête",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/biodiversite/animaux/l-activite-de-l-abattoir-de-haute-saone-suspendue-par-le-prefet-apres-avoir-ete-vise-par-une-enquete_8303862.html"
+     },
+     {
+      "titre": "Brest bat le Paris FC (1-0) et grimpe provisoirement sur le podium de la Ligue 1",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/brest-bat-le-paris-fc-1-0-et-grimpe-provisoirement-sur-le-podium-de-la-ligue-1_8303847.html"
+     },
+     {
+      "titre": "Troisième de l'individuel de Kontiolahti, Julia Simon décroche le premier podium français de la saison en Coupe du monde de biathlon",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/sports-d-hiver/biathlon/troisieme-de-l-individuel-de-kontiolahti-julia-simon-decroche-le-premier-podium-francais-de-la-saison-en-coupe-du-monde-de-biathlon_8303388.html"
+     },
+     {
+      "titre": "La commission de sécurité valide la réouverture du BHV Marais à Paris après trois semaines de fermeture",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/la-commission-de-securite-valide-la-reouverture-du-bhv-marais-a-paris-apres-trois-semaines-de-fermeture_8303787.html"
+     },
+     {
+      "titre": "\"La nouvelle génération a des goûts extrêmement larges\" : quand les vieux tubes retrouvent une nouvelle jeunesse",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/musique/la-nouvelle-generation-a-des-gouts-extremement-larges-quand-les-vieux-tubes-retrouvent-une-nouvelle-jeunesse_8303766.html"
+     },
+     {
+      "titre": "Le mode de calcul d'une aide à l'autonomie des seniors modifié à partir de 2027, augmentant le reste à charge de certains bénéficiaires",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sante/le-mode-de-calcul-d-une-aide-a-l-autonomie-des-seniors-modifie-a-partir-de-2027-augmentant-le-reste-a-charge-de-certains-beneficiaires_8303703.html"
+     },
+     {
+      "titre": "Agriculture, guerre en Ukraine, présidentielle en France... On vous explique pourquoi les négociations sur le budget de l'Union européenne sont dans l'impasse",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/europe/union-europeenne/agriculture-guerre-en-ukraine-presidentielle-en-france-on-vous-explique-pourquoi-les-negociations-sur-le-budget-de-l-union-europeenne-sont-dans-l-impasse_8302635.html"
+     },
+     {
+      "titre": "Vladimir Poutine inaugure un nouveau sous-marin nucléaire",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/russie/vladimir-poutine-inaugure-un-nouveau-sous-marin-nucleaire_8303691.html"
+     },
+     {
+      "titre": "La mairie de Paris va augmenter de deux euros le prix du stationnement dans ses rues pour les \"non-résidents\" en avril 2027",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/automobile/la-mairie-de-paris-va-augmenter-de-deux-euros-le-prix-du-stationnement-dans-ses-rues-pour-les-non-residents-en-avril-2027_8303736.html"
+     },
+     {
+      "titre": "Une pétition lancée pour dénoncer les \"conditions de détention moyenâgeuses\" d'un Français au Cambodge",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/asie/une-petition-lancee-pour-denoncer-les-conditions-de-detention-moyenageuses-d-un-francais-au-cambodge_8303580.html"
+     },
+     {
+      "titre": "La couverture vaccinale des adolescents contre le papillomavirus reste loin de l'objectif, après une campagne 2025-2026 au bilan stable selon Santé publique France",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sante/vaccins/la-couverture-vaccinale-des-adolescents-contre-le-papillomavirus-reste-loin-de-l-objectif-apres-une-campagne-2025-2026-au-bilan-stable-selon-sante-publique-france_8303136.html"
+     },
+     {
+      "titre": "La France est officiellement entrée en récession après deux trimestres de recul du PIB",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/croissance/le-pib-recule-de-0-2-en-france-au-troisieme-trimestre-apres-une-revision-a-la-baisse-de-l-insee_8302671.html"
+     },
+     {
+      "titre": "\"J'ai vraiment honte\" : au premier jour de son procès, Emilie König, ex-propagandiste de l'Etat islamique, présente ses excuses \"à toute la nation française\"",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/terrorisme-djihadistes/j-ai-vraiment-honte-au-premier-jour-de-son-proces-emilie-konig-ex-propagandiste-de-l-etat-islamique-presente-ses-excuses-a-toute-la-nation-francaise_8301402.html"
+     },
+     {
+      "titre": "Jodie Foster \"J'ai toujours voulu jouer une méchante\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/jodie-foster-j-ai-toujours-voulu-jouer-une-mechante_8303235.html"
+     },
+     {
+      "titre": "\"La nouvelle génération a (...) des goûts extrêmement larges\" : quand les vieux tubes retrouvent une nouvelle jeunesse",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/musique/la-nouvelle-generation-a-des-gouts-extremement-larges-quand-les-vieux-tubes-retrouvent-une-nouvelle-jeunesse_8303766.html"
+     },
+     {
+      "titre": "Bruce Lee, un mythe né un 27 novembre et fait roi du kung-fu au cinéma par \"Opération Dragon\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/bruce-lee-un-mythe-ne-un-27-novembre-et-fait-roi-du-kung-fu-au-cinema-par-operation-dragon_8302965.html"
+     },
+     {
+      "titre": "Flamands roses, fiadone et musique... Bastia, une ville magique pour le plaisir des sens",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/flamands-roses-fiadone-et-musique-bastia-une-ville-magique-pour-le-plaisir-des-sens_8303325.html"
+     },
+     {
+      "titre": "\"La vraie interaction, c'est avec le public\" : Garou monte seul sur scène pour ses 30 ans de carrière",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/musique/la-vraie-interaction-c-est-avec-le-public-garou-monte-seul-sur-scene-pour-ses-30-ans-de-carriere_8303373.html"
+     },
+     {
+      "titre": "Avec son album \"O/I\", Peter Gabriel met la dernière touche à un diptyque foisonnant entamé en 2023",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/musique/rock/avec-son-album-o-i-peter-gabriel-met-la-derniere-touche-a-un-diptyque-foisonnant-entame-en-2023_8279285.html"
+     },
+     {
+      "titre": "La cuisine chinoise et l'oud arabe vont entrer au patrimoine immatériel de l'Unesco",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/patrimoine/la-cuisine-chinoise-et-l-oud-arabe-vont-entrer-au-patrimoine-immateriel-de-l-unesco_8303190.html"
+     },
+     {
+      "titre": "Le compositeur Jean-Claude Vannier, arrangeur indissociable de Gainsbourg, est mort",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/musique/le-compositeur-jean-claude-vannier-arrangeur-indissociable-de-gainsbourg-est-mort_8303085.html"
+     },
+     {
+      "titre": "Une jatte-téton commandée pour Marie-Antoinette vendue près de 3 millions d'euros aux enchères à Paris",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/patrimoine/une-jatte-teton-commandee-pour-marie-antoinette-vendue-pres-de-3-millions-d-euros-aux-encheres-a-paris_8302878.html"
+     },
+     {
+      "titre": "REPORTAGE. Plonger \"dans le sous-sol de Londres pour en explorer l'histoire\" : un immense musée consacré à la capitale britannique ouvre ses portes",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/monde/royaume-uni/reportage-plonger-dans-le-sous-sol-de-londres-pour-en-explorer-l-histoire-un-immense-musee-consacre-a-la-capitale-britannique-ouvre-ses-portes_8301906.html"
+     },
+     {
+      "titre": "Un village du Maine-et-Loire reçoit un legs de 400 000 euros de la part d'une femme décédée depuis quatre ans",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/patrimoine/un-village-du-maine-et-loire-recoit-un-legs-de-400-000-euros-de-la-part-d-une-femme-decedee-depuis-quatre-ans_8302866.html"
+     },
+     {
+      "titre": "Kits sensoriels, flâneuses, lectures en LSF ou audiodécrites, \"Mobibulle\"... le Salon du livre jeunesse fait plonger tout le monde dans un grand bain de littérature",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/livres/salon-du-livre-et-de-la-presse-jeunesse-de-montreuil/kits-sensoriels-flaneuses-lectures-en-lsf-ou-audiodecrites-mobibulle-le-salon-du-livre-jeunesse-fait-plonger-tout-le-monde-dans-un-grand-bain-de-litterature_8301513.html"
+     },
+     {
+      "titre": "Enriqué, le premier chanteur de \"Goldorak\", voit enfin sa version sortir : \"C'est une grande fierté\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/enrique-le-premier-chanteur-de-goldorak-voit-enfin-sa-version-sortir-c-est-une-grande-fierte_8280206.html"
+     },
+     {
+      "titre": "Line Renaud publie \"Les Archives de ma vie\" et retrace quatre-vingts ans de carrière",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/livres/line-renaud-publie-les-archives-de-ma-vie-et-retrace-quatre-vingts-ans-de-carriere_8302695.html"
+     },
+     {
+      "titre": "La playlist franceinfo : le nouvel album de Bloc Party",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/la-playlist-franceinfo/la-playlist-franceinfo-le-nouvel-album-de-bloc-party_8262653.html"
+     },
+     {
+      "titre": "VIDEO. Dans les fauteuils rouges de \"Complément d'enquête\" : Yoann Barbereau, écrivain, ancien fugitif sous notice rouge Interpol",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-magazine/france-2/complement-d-enquete/video-dans-les-fauteuils-rouges-de-complement-d-enquete-yoann-barbereau-ecrivain-ancien-fugitif-sous-notice-rouge-interpol_8301843.html"
+     },
+     {
+      "titre": "PODCAST. Faux médicaments en promo, affrontements au stade Vélodrome et Marylin Manson au Hellfest : ça dit quoi ce 27 novembre ?",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/ca-dit-quoi/podcast-faux-medicaments-en-promo-affrontements-au-stade-velodrome-et-marylin-manson-au-hellfest-ca-dit-quoi-ce-27-novembre_8292986.html"
+     },
+     {
+      "titre": "Deux syndicats du jeu vidéo appellent les candidats à la présidentielle à considérer cette industrie \"à la hauteur de ce qu'elle représente dans la société\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/jeux-video/deux-syndicats-du-jeu-video-appellent-les-candidats-a-la-presidentielle-a-considerer-cette-industrie-a-la-hauteur-de-ce-qu-elle-represente-dans-la-societe_8302608.html"
+     },
+     {
+      "titre": "Robots, caméras... Alerte sur la sécurité de nos objets connectés",
+      "media": "franceinfo Internet",
+      "url": "https://www.franceinfo.fr/internet/robots-cameras-alerte-sur-la-securite-de-nos-objets-connectes_8303745.html"
+     },
+     {
+      "titre": "Des photos générées par IA pour soutirer de l'argent",
+      "media": "franceinfo Internet",
+      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/des-photos-generees-par-ia-pour-soutirer-de-l-argent_8303754.html"
+     }
+    ],
+    "ecartes_hors_ligne": 19,
+    "deja_en_ligne": [
+     "On demande tout à l'IA. Un sur cinq vérifie ses réponses à chaque fois.",
+     "Le CHU de Guadeloupe paralysé par une cyberattaque. Des soins programmés reportés jusqu'au 27 novembre .",
+     "GTA VI sort aujourd'hui. Sa version sans disque inquiète les joueurs.",
+     "1 700 distributeurs ont disparu en 2025. Votre plan B est-il toujours là ?",
+     "L'Espagne s'éteint à 12 h 33. Plus moyen de payer son pain.",
+     "Une peluche affole la planète. Les robots achètent avant vous.",
+     "Gardez un peu d'argent liquide chez vous."
+    ]
+   },
+   "alertes_charte": [
+    "Aucun sujet retenu : Aucun article de la fiche ne mentionne une technologie concrète (appli, compte, réseau, panne, écran, etc.) permettant de formuler un « Et vous ? » sur une dépendance quotidienne."
+   ]
+  }
+ ],
+ "reserve_une": [],
+ "sources_tendances": {
+  "Wikipédia": {
+   "etat": "ok",
+   "nombre": 60
+  },
+  "Presse grand public (flux RSS)": {
+   "etat": "ok",
+   "nombre": 164
+  },
+  "Détour (flux RSS)": {
+   "etat": "ok",
+   "nombre": 245
+  }
+ },
+ "journal_redacteur": [
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "une",
+   "resultat": "ok"
+  },
+  {
+   "service": "Groq",
+   "modele": "openai/gpt-oss-120b",
+   "rubrique": "tous_connectes",
+   "resultat": "ok"
+  }
+ ],
+ "pistes_reflexion": [
+  {
+   "titre": "Black Friday smartphones : Pixel 11, Galaxy S26 Ultra, iPhone Air… les 7 meilleures offres qui disparaitront ce soir",
+   "url": "https://www.clubic.com/bons-plans-641509-black-friday-smartphones-pixel-11-galaxy-s26-ultra-iphone-air-les-7-meilleures-offres-qui-disparaitront-ce-soir.html",
+   "media": "Clubic",
+   "date": "2026-11-27T15:45+00:00",
+   "themes": [],
+   "sujet": "Un modèle par tâche ?"
+  },
+  {
+   "titre": "Des pneus à nos assiettes : enquête sur une pollution toxique invisible",
+   "url": "https://www.france24.com/fr/%C3%A9missions/%C3%A9l%C3%A9ment-terre-le-reportage/20261127-des-pneus-%C3%A0-nos-assiettes-enqu%C3%AAte-sur-une-pollution-toxique-invisible",
+   "media": "France 24",
+   "date": "2026-11-27T16:03+00:00",
+   "themes": [
+    "usages",
+    "stratégies"
+   ]
+  }
+ ],
+ "marches_publics": []
+}

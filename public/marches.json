@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-27T13:19:53+00:00",
+ "maj": "2026-11-28T04:51:39+00:00",
  "sources": {
   "BOAMP": {
    "etat": "ok",
@@ -22,7 +22,7 @@
    "fournisseurs": [],
    "titulaire": null,
    "url": "https://ted.europa.eu/fr/notice/-/detail/821175-2026",
-   "vu_le": "2026-11-27"
+   "vu_le": "2026-11-28"
   },
   {
    "id": "ted:819989-2026",
@@ -35,7 +35,7 @@
    "fournisseurs": [],
    "titulaire": null,
    "url": "https://ted.europa.eu/fr/notice/-/detail/819989-2026",
-   "vu_le": "2026-11-27"
+   "vu_le": "2026-11-28"
   },
   {
    "id": "boamp:26-113483",
@@ -48,7 +48,7 @@
    "fournisseurs": [],
    "date_limite": "2026-11-25",
    "url": "https://www.boamp.fr/pages/avis/?q=idweb:26-113483",
-   "vu_le": "2026-11-27"
+   "vu_le": "2026-11-28"
   },
   {
    "id": "ted:814500-2026",
@@ -61,7 +61,7 @@
    "fournisseurs": [],
    "titulaire": null,
    "url": "https://ted.europa.eu/fr/notice/-/detail/814500-2026",
-   "vu_le": "2026-11-27"
+   "vu_le": "2026-11-28"
   }
  ]
 }

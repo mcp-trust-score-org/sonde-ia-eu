@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-11-28T03:27:25+00:00",
- "phrase": "Temps calme sur 3 fournisseurs, nuages sur IONOS.",
+ "genere_le": "2026-11-28T04:49:03+00:00",
+ "phrase": "Pas encore de mesure récente.",
  "point_de_mesure": "GitHub Actions (région non garantie)",
  "fournisseurs": [
   {
@@ -10,14 +10,14 @@
    "pays": "FR",
    "categorie": "fournisseur",
    "offre": "porte",
-   "source": "veille",
-   "etat": "soleil",
-   "ciel": "Soleil",
-   "libelle": "Tout va bien",
-   "taux_erreur": 0.0,
-   "ttft_ms": 224,
-   "reference_ttft_ms": 204,
-   "lenteur": 1.1,
+   "source": "horaire",
+   "etat": "inconnu",
+   "ciel": "Inconnu",
+   "libelle": "Pas de mesure récente",
+   "taux_erreur": null,
+   "ttft_ms": null,
+   "reference_ttft_ms": 206,
+   "lenteur": null,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -28,13 +28,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-27T21:00+00:00",
-     "etat": "soleil",
-     "ttft_ms": 203,
-     "taux_erreur": 0.0,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-27T22:00+00:00",
      "etat": "inconnu",
@@ -80,8 +73,9 @@
     {
      "heure": "2026-11-28T04:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-28T05:00+00:00",
@@ -91,6 +85,12 @@
     },
     {
      "heure": "2026-11-28T06:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-28T07:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -109,14 +109,14 @@
    "pays": "FR",
    "categorie": "fournisseur",
    "offre": "porte",
-   "source": "veille",
-   "etat": "soleil",
-   "ciel": "Soleil",
-   "libelle": "Tout va bien",
-   "taux_erreur": 0.0,
-   "ttft_ms": 828,
-   "reference_ttft_ms": 642,
-   "lenteur": 1.29,
+   "source": "horaire",
+   "etat": "inconnu",
+   "ciel": "Inconnu",
+   "libelle": "Pas de mesure récente",
+   "taux_erreur": null,
+   "ttft_ms": null,
+   "reference_ttft_ms": 648,
+   "lenteur": null,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -127,13 +127,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-27T21:00+00:00",
-     "etat": "soleil",
-     "ttft_ms": 701,
-     "taux_erreur": 0.0,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-27T22:00+00:00",
      "etat": "inconnu",
@@ -179,8 +172,9 @@
     {
      "heure": "2026-11-28T04:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-28T05:00+00:00",
@@ -190,6 +184,12 @@
     },
     {
      "heure": "2026-11-28T06:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-28T07:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -208,14 +208,14 @@
    "pays": "FR",
    "categorie": "fournisseur",
    "offre": "anonyme",
-   "source": "veille",
-   "etat": "soleil",
-   "ciel": "Soleil",
-   "libelle": "Tout va bien",
-   "taux_erreur": 0.0,
-   "ttft_ms": 201,
-   "reference_ttft_ms": 285,
-   "lenteur": 0.7,
+   "source": "horaire",
+   "etat": "inconnu",
+   "ciel": "Inconnu",
+   "libelle": "Pas de mesure récente",
+   "taux_erreur": null,
+   "ttft_ms": null,
+   "reference_ttft_ms": 282,
+   "lenteur": null,
    "vigilance": "vert",
    "raison": null,
    "panne_en_cours": null,
@@ -236,13 +236,6 @@
     }
    ],
    "chronologie": [
-    {
-     "heure": "2026-11-27T21:00+00:00",
-     "etat": "soleil",
-     "ttft_ms": 225,
-     "taux_erreur": 0.0,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-27T22:00+00:00",
      "etat": "inconnu",
@@ -288,8 +281,9 @@
     {
      "heure": "2026-11-28T04:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-28T05:00+00:00",
@@ -299,6 +293,12 @@
     },
     {
      "heure": "2026-11-28T06:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-28T07:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
@@ -317,16 +317,16 @@
    "pays": "DE",
    "categorie": "fournisseur",
    "offre": "porte",
-   "source": "veille",
-   "etat": "eclaircie",
-   "ciel": "Éclaircies",
-   "libelle": "Ça marche, un peu lent",
-   "taux_erreur": 0.0,
-   "ttft_ms": 692,
-   "reference_ttft_ms": 467,
-   "lenteur": 1.48,
-   "vigilance": "jaune",
-   "raison": "Temps de réponse 1,5 fois plus long que d'habitude",
+   "source": "horaire",
+   "etat": "inconnu",
+   "ciel": "Inconnu",
+   "libelle": "Pas de mesure récente",
+   "taux_erreur": null,
+   "ttft_ms": null,
+   "reference_ttft_ms": 468,
+   "lenteur": null,
+   "vigilance": "vert",
+   "raison": null,
    "panne_en_cours": null,
    "disponibilite": {
     "24h": 100.0,
@@ -335,13 +335,6 @@
    },
    "incidents_30j": [],
    "chronologie": [
-    {
-     "heure": "2026-11-27T21:00+00:00",
-     "etat": "soleil",
-     "ttft_ms": 443,
-     "taux_erreur": 0.0,
-     "nature": "mesure"
-    },
     {
      "heure": "2026-11-27T22:00+00:00",
      "etat": "inconnu",
@@ -387,8 +380,9 @@
     {
      "heure": "2026-11-28T04:00+00:00",
      "etat": "inconnu",
-     "nature": "prevision",
-     "certitude": "rien d'annoncé"
+     "ttft_ms": null,
+     "taux_erreur": null,
+     "nature": "mesure"
     },
     {
      "heure": "2026-11-28T05:00+00:00",
@@ -398,6 +392,12 @@
     },
     {
      "heure": "2026-11-28T06:00+00:00",
+     "etat": "inconnu",
+     "nature": "prevision",
+     "certitude": "rien d'annoncé"
+    },
+    {
+     "heure": "2026-11-28T07:00+00:00",
      "etat": "inconnu",
      "nature": "prevision",
      "certitude": "rien d'annoncé"
