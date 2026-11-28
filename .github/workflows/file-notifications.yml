@@ -1,0 +1,25 @@
+name: Notifications programmées
+
+# Toutes les 15 minutes : fait partir les notifications que la rédaction a programmées dans le pilotage
+# (« À venir ») et dont l'heure est passée. Ouvrir le pilotage le fait aussi. GitHub saute parfois un passage :
+# pour l'heure près, un réveil externe (cron-job.org) peut appeler la même adresse.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  tic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Envoyer ce qui est dû
+        env:
+          SITE_URL: https://sonde-ia-eu-iris.vercel.app
+          NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}
+        run: |
+          if [ -z "$NOTIF_SECRET" ]; then echo "NOTIF_SECRET absent."; exit 0; fi
+          curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/file" \
+            -H "Authorization: Bearer $NOTIF_SECRET" -H "Content-Type: application/json" --data '{"action":"tic"}' \
+            || echo "::warning::Le site n'a pas répondu."

@@ -1,11 +1,12 @@
 name: Le point mercato du vendredi
 
-# Chaque vendredi en fin d'après-midi : une notification qui résume les mouvements de la semaine du mercato
-# de l'IA (iris/mercato.json, date de la source sur les 7 derniers jours). Aucun mouvement : rien n'est envoyé.
+# Chaque vendredi vers 16 h : la notification qui résume les mouvements de la semaine du mercato de l'IA
+# (iris/mercato.json, date de la source sur les 7 derniers jours) est PRÉPARÉE et attend le feu vert de la rédaction
+# dans le pilotage (« À valider »). Aucun mouvement : rien n'est préparé.
 # Le lecteur arrive sur « Le point mercato » du site (/?point=1#une), avec le vote « Vous auriez fait le même choix ? ».
 on:
   schedule:
-    - cron: "37 15 * * 5"      # vendredi, 16 h 37 à Paris (heure d'hiver)
+    - cron: "7 15 * * 5"       # vendredi, 16 h 07 à Paris (heure d'hiver) : préparée, pas envoyée
   workflow_dispatch: {}
 
 permissions:
@@ -24,14 +25,16 @@ jobs:
         run: |
           python -m sonde.mercato --point iris/mercato.json > notification.json
           if [ -s notification.json ]; then cat notification.json; else rm notification.json; echo "Aucun mouvement cette semaine : pas de point."; fi
-      - name: Prévenir les abonnés
+      - name: Proposer la notification à la rédaction (pilotage → À valider)
         env:
           SITE_URL: https://sonde-ia-eu-iris.vercel.app
           NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}
         run: |
+          # Rien ne part vers les lecteurs : la notification attend le feu vert de la rédaction, qui est prévenue sur son téléphone.
           if [ ! -f notification.json ]; then exit 0; fi
-          if [ -z "$NOTIF_SECRET" ]; then echo "NOTIF_SECRET absent : rien envoyé."; exit 0; fi
-          REPONSE=$(curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/notifier" \
+          if [ -z "$NOTIF_SECRET" ]; then echo "NOTIF_SECRET absent : rien proposé."; exit 0; fi
+          jq '{action: "proposer", item: .}' notification.json > proposition.json
+          REPONSE=$(curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/file" \
             -H "Authorization: Bearer $NOTIF_SECRET" -H "Content-Type: application/json" \
-            --data @notification.json) || { echo "::warning::La notification n'est pas partie : $REPONSE"; exit 0; }
+            --data @proposition.json) || { echo "::warning::La proposition n'est pas arrivée : $REPONSE"; exit 0; }
           echo "Réponse du site : $REPONSE"

@@ -1,7 +1,7 @@
 name: Mercato de l'IA
 
-# Quand un transfert est ajouté à iris/mercato.json (zip déposé ou fichier modifié sur GitHub),
-# les lecteurs abonnés aux articles reçoivent une notification. Le site n'est pas redéployé :
+# Quand un mouvement est ajouté à iris/mercato.json (zip déposé ou fichier modifié sur GitHub), sa notification
+# est préparée et attend le feu vert de la rédaction dans le pilotage (« À valider »). Le site n'est pas redéployé :
 # l'encadré lit le fichier en direct (/d/mercato.json).
 on:
   push:
@@ -36,17 +36,20 @@ jobs:
           git show "$AVANT:iris/mercato.json" > ancien.json 2>/dev/null || echo "" > ancien.json
           python -m sonde.mercato ancien.json iris/mercato.json > notification.json
           if [ -s notification.json ]; then echo "À envoyer :"; cat notification.json; else rm notification.json; echo "Aucun nouveau transfert (ou premier dépôt) : pas de notification."; fi
-      - name: Prévenir les abonnés
+      - name: Proposer la notification à la rédaction (pilotage → À valider)
         env:
           SITE_URL: https://sonde-ia-eu-iris.vercel.app
           NOTIF_SECRET: ${{ secrets.NOTIF_SECRET }}
         run: |
+          # Rien ne part vers les lecteurs : la notification attend le feu vert de la rédaction, qui est prévenue sur son téléphone.
           if [ ! -f notification.json ]; then exit 0; fi
-          if [ -z "$NOTIF_SECRET" ]; then echo "NOTIF_SECRET absent : rien envoyé."; exit 0; fi
-          REPONSE=$(curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/notifier" \
+          if [ -z "$NOTIF_SECRET" ]; then echo "NOTIF_SECRET absent : rien proposé."; exit 0; fi
+          jq '{action: "proposer", item: .}' notification.json > proposition.json
+          REPONSE=$(curl -sS -L --post301 --post302 --post303 --fail-with-body -X POST "${SITE_URL%/}/api/file" \
             -H "Authorization: Bearer $NOTIF_SECRET" -H "Content-Type: application/json" \
-            --data @notification.json) || { echo "::warning::La notification n'est pas partie : $REPONSE"; exit 0; }
+            --data @proposition.json) || { echo "::warning::La proposition n'est pas arrivée : $REPONSE"; exit 0; }
           echo "Réponse du site : $REPONSE"
+
       - name: Dessiner les cartes partageables (iris/cartes/)
         run: |
           python -m sonde.cartes
