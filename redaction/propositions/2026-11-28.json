@@ -77,8 +77,52 @@
   },
   {
    "rubrique": "tous_connectes",
-   "auteur": "openai/gpt-oss-120b",
-   "article": {},
+   "auteur": "Claude (rédaction Iris), relu par la rédaction",
+   "article": {
+    "tag": "Société",
+    "title": "On laisse l'IA comparer les prix.<br/>Pas <mark>acheter à notre place.</mark>",
+    "chapo": "Pendant le Black Friday, beaucoup de Français ont demandé à une IA de leur trouver la meilleure offre. Deux enquêtes publiées cet automne montrent la même limite : on lui confie la recherche, beaucoup moins la décision.",
+    "fait": [
+     "Selon une enquête du cabinet BCG menée en septembre auprès de plus de mille Français, un consommateur sur deux a déjà utilisé, ou compte utiliser, l'IA générative pour ses achats. Il s'en sert d'abord pour comparer des produits et dénicher les meilleures offres.",
+     "Une enquête YouGov réalisée cet été va dans le même sens. Ce sont des déclarations recueillies par sondage, pas des achats mesurés, mais les deux études se rejoignent."
+    ],
+    "consequence": [
+     "La confiance s'arrête au panier. Dans l'enquête YouGov, 42 % des acheteurs seraient à l'aise pour laisser l'IA chercher le meilleur prix, mais seulement 9 % pour la laisser ajouter des produits au panier. Chez BCG, 7 % accepteraient qu'elle passe commande sans leur accord.",
+     "Quand l'IA fait le tri, les offres qu'elle écarte ne passent plus sous nos yeux. On voit sa sélection, pas la manière dont elle l'a faite."
+    ],
+    "lien": [
+     "Comparer les prix, c'était le réflexe de l'acheteur prudent. En le confiant à une IA, on gagne du temps, mais on dépend de ses choix et de ses sources, que l'on ne voit pas.",
+     "Et vous, laisseriez-vous une IA faire vos achats de Noël à votre place ?"
+    ],
+    "une_mini": {
+     "fait": "Un Français sur deux utilise ou compte utiliser l'IA pour ses achats, selon le cabinet BCG.",
+     "consequence": "La confiance s'arrête au panier : comparer les prix, oui ; acheter à notre place, rarement.",
+     "dependance": "Quand l'IA fait le tri, ses choix deviennent les nôtres sans qu'on les voie."
+    },
+    "sources": [
+     {
+      "label": "BCG – « Black Friday 2026 : moins d'un Français sur deux fait confiance aux remises affichées » (enquête de septembre 2026, plus de 10 000 consommateurs dans dix pays, dont 1 006 en France)",
+      "url": "https://www.bcg.com/press/11november2026-black-friday-2026-moins-dun-francais-sur-deux-fait-confiance-aux-remises-affichees"
+     },
+     {
+      "label": "YouGov – « The bots and the basket : le rôle de l'IA durant le Black Friday / Cyber Monday 2026 » (enquête en ligne, juillet-août 2026)",
+      "url": "https://yougov.com/fr-fr/rapports/55678-fr-mega-sales-report-2026"
+     },
+     {
+      "label": "The Media Leader – « YouGov : 49 % des Français prêts à utiliser l'IA pour le Black Friday », 12 octobre 2026",
+      "url": "https://fr.themedialeader.com/?p=220239"
+     }
+    ],
+    "reflexes_intro": "Trois gestes simples pour garder la main sur vos achats quand l'IA vous aide.",
+    "reflexes": [
+     "Demandez-lui d'où viennent les prix qu'elle annonce, puis ouvrez la page du vendeur : le prix affiché là est celui qui compte.",
+     "Comparez sa sélection avec une recherche faite vous-même : si elle ne cite toujours que les mêmes enseignes, élargissez.",
+     "Gardez la dernière étape pour vous : le panier, le paiement et l'adresse de livraison se valident à la main."
+    ],
+    "sujet": "L'IA et le Black Friday",
+    "categorie": "societe",
+    "a_verifier": []
+   },
    "fiche": {
     "tendances_wikipedia": [
      {
@@ -515,9 +559,8 @@
      "Gardez un peu d'argent liquide chez vous."
     ]
    },
-   "alertes_charte": [
-    "Aucun sujet retenu : Aucun article de la fiche ne mentionne une technologie concrète (appli, compte, réseau, panne, écran, etc.) permettant de formuler un « Et vous ? » sur une dépendance quotidienne."
-   ]
+   "alertes_charte": [],
+   "image": "assets/photos/societe.jpg"
   }
  ],
  "reserve_une": [],
