@@ -78,6 +78,10 @@
     {
       "source": "/d/cartes/:fichier",
       "destination": "https://raw.githubusercontent.com/mcp-trust-score-org/sonde-ia-eu/main/iris/cartes/:fichier"
+    },
+    {
+      "source": "/d/marches.json",
+      "destination": "https://raw.githubusercontent.com/mcp-trust-score-org/sonde-ia-eu/main/public/marches.json"
     }
   ]
 }

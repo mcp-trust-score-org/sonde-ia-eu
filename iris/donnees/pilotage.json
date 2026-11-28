@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-27T23:31:36+00:00",
+ "genere_le": "2026-11-28T00:37:01+00:00",
  "suivi_depuis": "2026-11-23",
  "redaction": [
   {
@@ -278,7 +278,7 @@
      "nom": "Tous connectés",
      "quoi": "Sujet du jour",
      "optionnel": false,
-     "etat": "non publié",
+     "etat": "écarté",
      "brouillons": 1
     },
     {
@@ -442,7 +442,7 @@
  "sonde": {
   "veille": {
    "derniere": "2026-11-27T23:31+00:00",
-   "etat": "ok",
+   "etat": "en retard",
    "prevue": "toutes les 10 minutes"
   },
   "mesure": {

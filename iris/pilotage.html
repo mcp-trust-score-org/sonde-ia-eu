@@ -58,6 +58,29 @@
   .graph div { flex: 1; background: var(--yellow); border-radius: 4px 4px 0 0; min-height: 2px; position: relative; }
   .graph div span { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--muted); white-space: nowrap; }
   .graph div em { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 11px; font-style: normal; }
+  /* Notifications : la file de validation */
+  .onglets { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 14px; }
+  .onglets button { background: transparent; color: var(--cream); border: 2px solid var(--line); border-radius: 99px; padding: 8px 16px; font: inherit; font-weight: 700; cursor: pointer; }
+  .onglets button[aria-selected="true"] { background: var(--yellow); border-color: var(--yellow); color: #111; }
+  .nf { border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 18px; }
+  .nf.attend { border: 2px solid var(--yellow); }
+  .nf-corps { flex: 999 1 420px; min-width: 0; }
+  .nf-actions { flex: 1 1 240px; display: flex; flex-direction: column; gap: 8px; }
+  .nf-badge { display: inline-block; font-family: var(--f-display); font-weight: 800; font-size: 13px; text-transform: uppercase; padding: 2px 8px; background: var(--yellow); color: #111; margin-right: 8px; }
+  .nf-badge.gris { background: #2A2A2A; color: var(--cream); }
+  .nf-badge.bleu { background: #1F4FD8; color: #fff; }
+  .nf-apercu { margin-top: 8px; background: #1C1C1C; border-radius: 16px; padding: 12px 14px; max-width: 560px; font-size: 14px; line-height: 1.35; }
+  .nf-apercu span { color: #C9C9C9; }
+  .nf-actions button, .nf-actions a { border-radius: 99px; padding: 10px 14px; font: inherit; font-weight: 700; cursor: pointer; text-align: center; text-decoration: none; }
+  .nf-envoyer { background: var(--yellow); color: #111; border: 0; }
+  .nf-sec { background: transparent; color: var(--cream); border: 2px solid var(--line); }
+  .nf-prog { display: flex; gap: 8px; align-items: flex-end; }
+  .nf-prog label { flex: 1; display: flex; flex-direction: column; font-size: 12px; color: var(--muted); }
+  .nf-prog input { margin-top: 4px; background: #141414; color: var(--cream); border: 1px solid var(--line); border-radius: 10px; padding: 8px; font: inherit; }
+  .nf-prog button { background: transparent; color: var(--yellow); border: 2px solid var(--yellow); }
+  .nf-annuler { background: transparent; color: #FF4A3D; border: 0; text-decoration: underline; }
+  .nf-vide { color: var(--muted); }
+  .tableau { overflow-x: auto; }
   @media (max-width: 860px) { .pastille { white-space: normal; } .cartes { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deux { grid-template-columns: minmax(0, 1fr); } table { font-size: 13.5px; } th, td { padding: 8px; } }
 </style>
 </head>
@@ -72,6 +95,11 @@
   <div class="cartes" id="cartes"></div>
   <ul class="afaire" id="afaire"></ul>
   <div class="cle" id="rappels" style="margin-top:12px"></div>
+
+  <h2 id="notifications">Notifications</h2>
+  <p class="aide">Rien ne part vers les lecteurs sans votre feu vert : mercato et point du vendredi attendent ici. Testez sur votre téléphone, puis envoyez, programmez ou annulez. Les articles, eux, partent à la publication.</p>
+  <div class="onglets" role="tablist" id="nf-onglets"></div>
+  <div id="nf-liste"><p class="nf-vide">Chargement…</p></div>
 
   <h2>Rédaction</h2>
   <p class="aide">Ce que la charte prévoit chaque jour, et où en est chaque article. Les brouillons sont dans <a href="https://github.com/mcp-trust-score-org/sonde-ia-eu/tree/main/redaction/propositions" target="_blank" rel="noopener">redaction/propositions</a> ; on publie avec <a href="https://github.com/mcp-trust-score-org/sonde-ia-eu/actions/workflows/publier.yml" target="_blank" rel="noopener">Actions → Publier un brouillon</a>.</p>
@@ -192,7 +220,7 @@ async function rappels(action) {
   let actifs = false; try { actifs = localStorage.getItem("iris-rappels") === "1"; } catch (e) { /* */ }
   const pret = "serviceWorker" in navigator && "PushManager" in window;
   const dessiner = (msg) => {
-    boite.innerHTML = `<span><b>Rappels de rédaction</b> sur cet appareil : 7 h si la rédaction n'a pas tourné, 11 h s'il reste des brouillons à relire, 18 h si un article prévu n'est pas publié.</span>
+    boite.innerHTML = `<span><b>Rappels de rédaction</b> sur cet appareil : dès qu'une notification attend votre feu vert, et à 7 h si la rédaction n'a pas tourné, 11 h s'il reste des brouillons à relire, 18 h si un article prévu n'est pas publié.</span>
       ${!pret ? `<span class="muted">Ce navigateur ne reçoit pas les notifications. Sur iPhone : ouvrez Iris depuis l'icône de l'écran d'accueil, puis cloche → Espace rédaction.</span>`
         : !cle ? `<form id="f-cle-rappels" style="display:flex;gap:8px;flex-wrap:wrap;width:100%"><input type="password" id="i-cle-rappels" placeholder="Votre clé de pilotage" autocomplete="off" /><button class="btn">Valider la clé</button></form>`
         : `<button class="btn" id="b-rappels">${actifs ? "Couper les rappels" : "Activer les rappels"}</button>`}
@@ -221,11 +249,105 @@ async function rappels(action) {
     if (!r.ok) return dessiner(r.status === 401 ? "Clé de pilotage refusée." : "Ça n'a pas marché. Réessayez dans un instant.");
     try { action ? localStorage.setItem("iris-rappels", "1") : localStorage.removeItem("iris-rappels"); } catch (e) { /* */ }
     actifs = !!action;
-    dessiner(action ? "Activés : vous serez prévenue à 7 h, 11 h et 18 h s'il y a quelque chose à faire." : "Rappels coupés sur cet appareil.");
+    dessiner(action ? "Activés : vous serez prévenue dès qu'une notification attend votre feu vert, et à 7 h, 11 h et 18 h s'il y a quelque chose à faire." : "Rappels coupés sur cet appareil.");
   } catch (e) { dessiner("Ça n'a pas marché : " + e.message); }
 }
 rappels();
 document.addEventListener("submit", () => setTimeout(() => rappels(), 50));
+
+/* ---------- Notifications : à valider, à venir, envoyées (/api/file, clé de pilotage) ---------- */
+const NF = { onglet: "valider", donnees: null, marches: [] };
+const nfEchap = (t) => String(t == null ? "" : t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const nfQuand = (iso) => new Date(iso).toLocaleString("fr-FR", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+const NF_NOMS = { mistral: "Mistral AI", ovhcloud: "OVHcloud", scaleway: "Scaleway", ionos: "IONOS", anthropic: "Anthropic", openai: "OpenAI", google: "Google", meta: "Meta" };
+const NF_TYPES = { mercato: ["Mercato", ""], point: ["Point du vendredi", "bleu"], autre: ["Notification", "gris"] };
+const nfIgnores = () => { try { return JSON.parse(localStorage.getItem("iris-marches-ignores") || "[]"); } catch (e) { return []; } };
+function nfCle() { try { return localStorage.getItem("iris-pilotage") || ""; } catch (e) { return ""; } }
+async function nfAppel(methode, corps) {
+  const r = await fetch("/api/file", { method: methode, cache: "no-store", headers: { Authorization: "Bearer " + nfCle(), "Content-Type": "application/json" }, body: corps ? JSON.stringify(corps) : undefined });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.erreur || "Erreur " + r.status);
+  return j;
+}
+function nfDessiner(msg) {
+  const d = NF.donnees || { a_valider: [], a_venir: [], envoyees: [] };
+  const marches = NF.marches.filter((a) => a.type === "attribution" && !nfIgnores().includes(a.id));
+  const nb = { valider: d.a_valider.length + marches.length, venir: d.a_venir.length };
+  document.getElementById("nf-onglets").innerHTML = [["valider", `À valider · ${nb.valider}`], ["venir", `À venir · ${nb.venir}`], ["envoyees", "Envoyées"]]
+    .map(([k, t]) => `<button type="button" role="tab" data-onglet="${k}" aria-selected="${NF.onglet === k}">${t}</button>`).join("");
+  const liste = document.getElementById("nf-liste");
+  if (!nfCle()) { liste.innerHTML = `<p class="nf-vide">Entrez votre clé de pilotage (section Audience, plus bas) pour voir les notifications.</p>`; return; }
+  const badge = (t) => { const [n, c] = NF_TYPES[t] || NF_TYPES.autre; return `<span class="nf-badge ${c}">${n}</span>`; };
+  const apercu = (it) => `<div class="nf-apercu"><b>${nfEchap(it.titre)}</b><br/><span>${nfEchap(it.texte)}</span></div>`;
+  let h = "";
+  if (NF.onglet === "valider") {
+    const demain8 = new Date(Date.now() + 864e5); demain8.setHours(8, 0, 0, 0);
+    const defaut = new Date(demain8.getTime() - demain8.getTimezoneOffset() * 6e4).toISOString().slice(0, 16);
+    h = d.a_valider.map((it) => `<div class="nf attend" data-id="${nfEchap(it.id)}"><div class="nf-corps">${badge(it.type)}<span class="muted">Proposée ${nfQuand(it.cree_le)} · attend votre feu vert</span>
+        <p class="muted" style="margin:10px 0 0;font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:700">Ce que recevront les lecteurs</p>${apercu(it)}
+        <p class="muted" style="margin:8px 0 0;font-size:13px">Destinataires : abonnés aux articles${(it.fournisseurs || []).length ? `, et suiveurs Iris Club de ${it.fournisseurs.map((f) => nfEchap(NF_NOMS[f] || f)).join(", ")}` : ""}.</p></div>
+      <div class="nf-actions"><button class="nf-envoyer" data-action="envoyer">Envoyer maintenant</button>
+        <div class="nf-prog"><label>Programmer le<input type="datetime-local" value="${defaut}" /></label><button data-action="programmer">Programmer</button></div>
+        <button class="nf-sec" data-action="tester">Tester sur mon téléphone</button>
+        <button class="nf-annuler" data-action="annuler">Annuler cette notification</button></div></div>`).join("")
+      + marches.map((a) => `<div class="nf" data-marche="${nfEchap(a.id)}"><div class="nf-corps"><span class="nf-badge gris">Marché public</span><span class="muted">${nfEchap(a.base)} · attribué, publié le ${nfEchap(a.date)}</span>
+        <p style="margin:8px 0 0"><b>${nfEchap(a.acheteur)}</b> : ${nfEchap(a.objet)}${a.titulaire ? ` · titulaire : ${nfEchap(a.titulaire)}` : ""}${(a.fournisseurs || []).length ? ` · cite : <b>${a.fournisseurs.map(nfEchap).join(", ")}</b>` : ""}</p>
+        <p class="muted" style="margin:4px 0 0;font-size:13px">Proposé par la sonde. Lisez l'avis officiel avant d'en faire un mouvement du mercato : envoyez-en le lien à Claude, qui rédige la ligne.</p></div>
+      <div class="nf-actions"><a class="nf-sec" href="${nfEchap(a.url)}" target="_blank" rel="noopener">Lire l'avis ↗</a><button class="nf-annuler" data-action="ignorer">Ignorer</button></div></div>`).join("");
+    if (!h) h = `<p class="nf-vide">Rien à valider. Un mouvement ajouté au mercato, le point du vendredi ou un marché public attribué apparaîtront ici, et vous serez prévenue sur votre téléphone.</p>`;
+  } else if (NF.onglet === "venir") {
+    h = d.a_venir.map((it) => `<div class="nf" data-id="${nfEchap(it.id)}"><div class="nf-corps">${badge(it.type)}<b>${nfQuand(it.quand)}</b>${apercu(it)}</div>
+      <div class="nf-actions"><button class="nf-envoyer" data-action="envoyer">Envoyer maintenant</button><button class="nf-sec" data-action="remettre">Reprendre (retour dans À valider)</button><button class="nf-annuler" data-action="annuler">Annuler</button></div></div>`).join("")
+      || `<p class="nf-vide">Rien de programmé. Les envois programmés partent à 15 minutes près.</p>`;
+  } else {
+    h = d.envoyees.length ? `<div class="tableau"><table><thead><tr><th>Envoyée</th><th>Quoi</th><th>Texte</th><th>Reçue par</th></tr></thead><tbody>${
+      d.envoyees.map((e) => `<tr><td><b>${nfQuand(e.quand)}</b></td><td>${nfEchap(e.type)}</td><td>${nfEchap(e.titre)}</td><td>${e.recus} appareil${e.recus > 1 ? "s" : ""}</td></tr>`).join("")}</tbody></table></div>`
+      : `<p class="nf-vide">L'historique commence avec ce nouveau système : les prochains envois apparaîtront ici.</p>`;
+  }
+  liste.innerHTML = (msg ? `<p class="muted" style="margin:0 0 10px">${nfEchap(msg)}</p>` : "") + h;
+}
+async function nfCharger(msg) {
+  try {
+    const [d, m] = await Promise.all([nfCle() ? nfAppel("GET") : null, fetch("/d/marches.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}))]);
+    NF.donnees = d; NF.marches = (m && m.avis) || [];
+    nfDessiner(msg);
+  } catch (e) {
+    if (/401|Clé/.test(e.message)) { try { localStorage.removeItem("iris-pilotage"); } catch (x) { /* */ } }
+    NF.donnees = null; nfDessiner("Impossible de charger : " + e.message);
+  }
+}
+document.addEventListener("click", async (e) => {
+  const onglet = e.target.closest("[data-onglet]");
+  if (onglet) { NF.onglet = onglet.dataset.onglet; return nfDessiner(); }
+  const b = e.target.closest("#nf-liste [data-action]");
+  if (!b) return;
+  const action = b.dataset.action;
+  if (action === "ignorer") {
+    const id = b.closest("[data-marche]").dataset.marche;
+    try { localStorage.setItem("iris-marches-ignores", JSON.stringify([...nfIgnores(), id])); } catch (x) { /* */ }
+    return nfDessiner("Marché ignoré.");
+  }
+  const bloc = b.closest("[data-id]"), id = bloc.dataset.id;
+  if (action === "envoyer" && !confirm("Envoyer cette notification à tous les lecteurs concernés, maintenant ?")) return;
+  if (action === "annuler" && !confirm("Annuler cette notification ? Elle ne partira pas.")) return;
+  const corps = { action, id };
+  if (action === "programmer") {
+    const v = bloc.querySelector("input[type=datetime-local]").value;
+    if (!v) return;
+    corps.quand = new Date(v).toISOString();
+  }
+  b.disabled = true;
+  try {
+    const r = await nfAppel("POST", corps);
+    const msg = { envoyer: `Envoyée : reçue par ${r.envoyes} appareil${r.envoyes > 1 ? "s" : ""}.`, tester: `Test envoyé à vos appareils (${r.envoyes}).`,
+      programmer: `Programmée pour ${r.quand ? nfQuand(r.quand) : "l'heure choisie"}.`, annuler: "Annulée.", remettre: "Remise dans « À valider »." }[action];
+    if (action === "tester") { b.disabled = false; return nfDessiner(msg); }
+    await nfCharger(msg);
+  } catch (err) { b.disabled = false; nfDessiner("Ça n'a pas marché : " + err.message); }
+});
+nfCharger();
+document.addEventListener("submit", () => setTimeout(() => nfCharger(), 80));
+
 </script>
 </body>
 </html>
