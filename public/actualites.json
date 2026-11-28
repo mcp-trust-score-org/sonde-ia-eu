@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-28T04:49:05+00:00",
+ "genere_le": "2026-11-28T07:48:09+00:00",
  "fenetre_jours": 7,
  "sources": {
   "pages de statut en amont": {
@@ -16,8 +16,7 @@
    "raison": "pas de jeton (facultatif)"
   },
   "Presse (GDELT)": {
-   "etat": "erreur",
-   "raison": "ValueError: GDELT : HTTP 429 Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com après 3 essais"
+   "etat": "ok"
   }
  },
  "dependances": {
@@ -26,6 +25,26 @@
   ]
  },
  "evenements": [
+  {
+   "id": "cloudflare-27xnfvjy0n6j",
+   "titre": "Cloudflare : Email Delivery Delays",
+   "type": "incident_amont",
+   "debut": "2026-11-28T07:21+00:00",
+   "fin": null,
+   "gravite": "critical",
+   "sources": [
+    {
+     "type": "statut_fournisseur",
+     "url": "https://www.cloudflarestatus.com/incidents/27xnfvjy0n6j",
+     "titre": "Email Delivery Delays"
+    }
+   ],
+   "source_auto": "cloudflare",
+   "fournisseurs": [
+    "mistral"
+   ],
+   "pourquoi": "mistral passe(nt) par Cloudflare (chemin réseau relevé)"
+  },
   {
    "id": "cloudflare-955xa7dtx0ca",
    "titre": "Cloudflare : Cloudflare University website unavailable",
@@ -290,5 +309,14 @@
    "raison": "service non utilisé par nos fournisseurs",
    "url": "https://www.cloudflarestatus.com/incidents/d2m4kw94ut4f"
   }
- ]
+ ],
+ "tri_presse": {
+  "articles": 1,
+  "sans_acteur": 1,
+  "sans_incident": 0,
+  "hors_sujet": 0,
+  "doublons": 0,
+  "retenus": 0,
+  "erreurs": []
+ }
 }
