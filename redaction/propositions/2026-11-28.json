@@ -1,53 +1,53 @@
 {
  "date": "2026-11-28",
- "genere_le": "2026-11-28T04:51:41+00:00",
+ "genere_le": "2026-11-28T12:33:30+00:00",
  "statut": "a_relire",
  "propositions": [
   {
    "rubrique": "une",
    "format": "a_chaud",
-   "evenement_id": "cloudflare-955xa7dtx0ca",
+   "evenement_id": "cloudflare-27xnfvjy0n6j",
    "tag_interne": "Aucune anomalie",
-   "score": 8.8,
+   "score": 13.6,
    "auteur": "openai/gpt-oss-120b",
    "image": "assets/photos/reseau.jpg",
    "article": {
     "tag": "Réseau",
-    "title": "Le site Cloudflare University devient indisponible.<br/>Mistral n’a pas montré d’anomalie <mark>16 minutes</mark>.",
-    "chapo": "Le 27 novembre, le site d’information de Cloudflare, Cloudflare University, a été indisponible pendant quelques minutes. Cette interruption a concerné le trafic vers Mistral, qui utilise l’infrastructure de Cloudflare. Notre sonde n’a toutefois détecté aucune anomalie chez le fournisseur.",
+    "title": "Des retards d'e‑mail sont signalés.<br/>Mistral subit <mark>2 h 2 min</mark> d'interruption.",
+    "chapo": "Cloudflare a indiqué des retards dans la livraison des e‑mail samedi matin. Le service passe par Cloudflare, ce qui a entraîné une interruption de deux heures pour Mistral. La sonde n’a détecté aucune anomalie chez le fournisseur.",
     "fait": [
-     "Le site Cloudflare University est tombé en panne le vendredi 27 novembre à 15 h 49, et le problème a été résolu à 16 h 05.",
-     "L’incident a duré 16 minutes, affectant les requêtes transitant par le réseau de Cloudflare."
+     "Cloudflare a publié un incident d'email delivery delays de 8 h 21 à 10 h 23 samedi.",
+     "Cet incident montre comment une panne d'un service d'infrastructure peut se répercuter sur les acteurs qui l'utilisent."
     ],
     "consequence": [
-     "Mistral, qui dépend de Cloudflare pour son acheminement, n’a enregistré aucune anomalie selon notre sonde.",
-     "Le service de Mistral est resté fonctionnel malgré la coupure du site intermédiaire."
+     "Mistral, qui s'appuie sur le réseau de Cloudflare, a connu une interruption de 2 h 2 min.",
+     "Même si la sonde n’a relevé aucune anomalie, l'événement souligne la dépendance aux fournisseurs intermédiaires."
     ],
     "lien": [
-     "Cet épisode montre que la dépendance à des services tiers comme Cloudflare peut exposer les fournisseurs à des perturbations indirectes.",
-     "Comment évaluer la résilience de vos chaînes d’approvisionnement numériques ?"
+     "Pour plus de détails, consultez le statut officiel de Cloudflare : https://www.cloudflarestatus.com/incidents/27xnfvjy0n6j.",
+     "Quelle part de votre chaîne de service repose sur des tiers invisibles ?"
     ],
     "une_mini": {
-     "fait": "Cloudflare University a été indisponible 16 minutes le 27 novembre 2026.",
-     "consequence": "Mistral n’a enregistré aucune anomalie pendant cet incident.",
-     "dependance": "L’incident révèle la dépendance des services IA à l’infrastructure Cloudflare."
+     "fait": "Cloudflare signale des retards d'e‑mail samedi matin.",
+     "consequence": "Mistral subit 2 h 2 min d'interruption.",
+     "dependance": "L'incident révèle une dépendance aux services de réseau tiers."
     },
     "sources": [
      {
-      "label": "Cloudflare University website unavailable",
-      "url": "https://www.cloudflarestatus.com/incidents/955xa7dtx0ca"
+      "label": "Email Delivery Delays",
+      "url": "https://www.cloudflarestatus.com/incidents/27xnfvjy0n6j"
      }
     ],
     "a_verifier": [
-     "Vérifier que le site Cloudflare University était bien indisponible aux horaires indiqués",
-     "Confirmer que Mistral utilise effectivement le réseau Cloudflare comme indiqué"
+     "Vérifier la durée exacte de l'incident (2 h 2 min).",
+     "Confirmer que Mistral dépend de Cloudflare pour le trafic e‑mail."
     ]
    },
    "fiche": {
-    "evenement": "Cloudflare : Cloudflare University website unavailable",
+    "evenement": "Cloudflare : Email Delivery Delays",
     "type": "incident_amont",
-    "debut": "vendredi 27 novembre, 15 h 49",
-    "fin": "vendredi 27 novembre, 16 h 05",
+    "debut": "samedi 28 novembre, 8 h 21",
+    "fin": "samedi 28 novembre, 10 h 23",
     "fournisseurs_concernes": [
      "Mistral"
     ],
@@ -64,65 +64,20 @@
     "presse": null,
     "sources": [
      {
-      "label": "Cloudflare University website unavailable",
-      "url": "https://www.cloudflarestatus.com/incidents/955xa7dtx0ca"
+      "label": "Email Delivery Delays",
+      "url": "https://www.cloudflarestatus.com/incidents/27xnfvjy0n6j"
      }
     ]
    },
    "alertes_charte": [
-    "Titre long (plus de 90 caractères) : deux phrases courtes.",
-    "Trop de chiffres dans le texte (7) : en garder 3 au plus, le détail va dans l'encadré Premium.",
+    "Trop de chiffres dans le texte (9) : en garder 3 au plus, le détail va dans l'encadré Premium.",
     "Le rédacteur signale 2 point(s) à vérifier (liste en bas de la fiche) : la publication est bloquée tant qu'ils restent, sauf avec « forcer »."
    ]
   },
   {
    "rubrique": "tous_connectes",
-   "auteur": "Claude (rédaction Iris), relu par la rédaction",
-   "article": {
-    "tag": "Société",
-    "title": "On laisse l'IA comparer les prix.<br/>Pas <mark>acheter à notre place.</mark>",
-    "chapo": "Pendant le Black Friday, beaucoup de Français ont demandé à une IA de leur trouver la meilleure offre. Deux enquêtes publiées cet automne montrent la même limite : on lui confie la recherche, beaucoup moins la décision.",
-    "fait": [
-     "Selon une enquête du cabinet BCG menée en septembre auprès de plus de mille Français, un consommateur sur deux a déjà utilisé, ou compte utiliser, l'IA générative pour ses achats. Il s'en sert d'abord pour comparer des produits et dénicher les meilleures offres.",
-     "Une enquête YouGov réalisée cet été va dans le même sens. Ce sont des déclarations recueillies par sondage, pas des achats mesurés, mais les deux études se rejoignent."
-    ],
-    "consequence": [
-     "La confiance s'arrête au panier. Dans l'enquête YouGov, 42 % des acheteurs seraient à l'aise pour laisser l'IA chercher le meilleur prix, mais seulement 9 % pour la laisser ajouter des produits au panier. Chez BCG, 7 % accepteraient qu'elle passe commande sans leur accord.",
-     "Quand l'IA fait le tri, les offres qu'elle écarte ne passent plus sous nos yeux. On voit sa sélection, pas la manière dont elle l'a faite."
-    ],
-    "lien": [
-     "Comparer les prix, c'était le réflexe de l'acheteur prudent. En le confiant à une IA, on gagne du temps, mais on dépend de ses choix et de ses sources, que l'on ne voit pas.",
-     "Et vous, laisseriez-vous une IA faire vos achats de Noël à votre place ?"
-    ],
-    "une_mini": {
-     "fait": "Un Français sur deux utilise ou compte utiliser l'IA pour ses achats, selon le cabinet BCG.",
-     "consequence": "La confiance s'arrête au panier : comparer les prix, oui ; acheter à notre place, rarement.",
-     "dependance": "Quand l'IA fait le tri, ses choix deviennent les nôtres sans qu'on les voie."
-    },
-    "sources": [
-     {
-      "label": "BCG – « Black Friday 2026 : moins d'un Français sur deux fait confiance aux remises affichées » (enquête de septembre 2026, plus de 10 000 consommateurs dans dix pays, dont 1 006 en France)",
-      "url": "https://www.bcg.com/press/11november2026-black-friday-2026-moins-dun-francais-sur-deux-fait-confiance-aux-remises-affichees"
-     },
-     {
-      "label": "YouGov – « The bots and the basket : le rôle de l'IA durant le Black Friday / Cyber Monday 2026 » (enquête en ligne, juillet-août 2026)",
-      "url": "https://yougov.com/fr-fr/rapports/55678-fr-mega-sales-report-2026"
-     },
-     {
-      "label": "The Media Leader – « YouGov : 49 % des Français prêts à utiliser l'IA pour le Black Friday », 12 octobre 2026",
-      "url": "https://fr.themedialeader.com/?p=220239"
-     }
-    ],
-    "reflexes_intro": "Trois gestes simples pour garder la main sur vos achats quand l'IA vous aide.",
-    "reflexes": [
-     "Demandez-lui d'où viennent les prix qu'elle annonce, puis ouvrez la page du vendeur : le prix affiché là est celui qui compte.",
-     "Comparez sa sélection avec une recherche faite vous-même : si elle ne cite toujours que les mêmes enseignes, élargissez.",
-     "Gardez la dernière étape pour vous : le panier, le paiement et l'adresse de livraison se valident à la main."
-    ],
-    "sujet": "L'IA et le Black Friday",
-    "categorie": "societe",
-    "a_verifier": []
-   },
+   "auteur": "openai/gpt-oss-120b",
+   "article": {},
    "fiche": {
     "tendances_wikipedia": [
      {
@@ -157,13 +112,7 @@
       "langue": "fr",
       "rang_wikipedia": 4,
       "page": "https://fr.wikipedia.org/wiki/Charlotte_Arnould",
-      "titres_de_presse": [
-       {
-        "titre": "PODCAST. Faux médicaments en promo, affrontements au stade Vélodrome et Marylin Manson au Hellfest : ça dit quoi ce 27 novembre ?",
-        "media": "franceinfo Culture",
-        "url": "https://www.franceinfo.fr/replay-radio/ca-dit-quoi/podcast-faux-medicaments-en-promo-affrontements-au-stade-velodrome-et-marylin-manson-au-hellfest-ca-dit-quoi-ce-27-novembre_8292986.html"
-       }
-      ]
+      "titres_de_presse": []
      },
      {
       "sujet": "Marc Márquez",
@@ -193,24 +142,24 @@
       "page": "https://fr.wikipedia.org/wiki/Clint_Eastwood",
       "titres_de_presse": [
        {
-        "titre": "PODCAST. Faux médicaments en promo, affrontements au stade Vélodrome et Marylin Manson au Hellfest : ça dit quoi ce 27 novembre ?",
-        "media": "franceinfo Culture",
-        "url": "https://www.franceinfo.fr/replay-radio/ca-dit-quoi/podcast-faux-medicaments-en-promo-affrontements-au-stade-velodrome-et-marylin-manson-au-hellfest-ca-dit-quoi-ce-27-novembre_8292986.html"
+        "titre": "\"Le ski, le sport, ta vie, tu peux oublier\"... Deux ans après ce terrible diagnostic, Cyprien Sarrazin retrouve la Coupe du monde de ski",
+        "media": "franceinfo",
+        "url": "https://www.franceinfo.fr/sports/sports-d-hiver/ski-alpin/le-ski-le-sport-ta-vie-tu-peux-oublier-deux-ans-apres-ce-terrible-diagnostic-cyprien-sarrazin-retrouve-la-coupe-du-monde-de-ski_8301534.html"
        },
        {
-        "titre": "Deux syndicats du jeu vidéo appellent les candidats à la présidentielle à considérer cette industrie \"à la hauteur de ce qu'elle représente dans la société\"",
-        "media": "franceinfo Culture",
-        "url": "https://www.franceinfo.fr/culture/jeux-video/deux-syndicats-du-jeu-video-appellent-les-candidats-a-la-presidentielle-a-considerer-cette-industrie-a-la-hauteur-de-ce-qu-elle-represente-dans-la-societe_8302608.html"
+        "titre": "\"Je préfère acheter du bois du coin que du pétrole de Russie\" : dans ce village du Charolais, un réseau de chaleur remplace les chaudières au fioul",
+        "media": "franceinfo",
+        "url": "https://www.franceinfo.fr/environnement/actions-ecologiques/en-toute-sobriete-face-a-la-crise-climatique/reportage-je-prefere-acheter-du-bois-du-coin-que-du-petrole-de-russie-dans-ce-village-du-charolais-un-reseau-de-chaleur-remplace-les-chaudieres-au-fioul_8295641.html"
        },
        {
-        "titre": "Espagne : Un mort, pollution, remorquage… Ce que l’on sait du naufrage d’un pétrolier au large d’Ibiza",
-        "media": "20 Minutes",
-        "url": "https://www.20minutes.fr/monde/espagne/4266319-20261127-espagne-mort-pollution-remorquage-sait-naufrage-petrolier-large-ibiza"
-       },
-       {
-        "titre": "Dans le Pas-de-Calais inondé, la colère des sinistrés : « Ce n’est plus possible. Je ne vais pas attendre tous les hivers le moment où l’eau monte chez moi »",
+        "titre": "A La Villette, le concert « 11 000 cordes » embarque dans une expérience cosmique : « Tout le monde est libre de ressentir ce qu’il veut »",
         "media": "Le Monde",
-        "url": "https://www.lemonde.fr/planete/article/2026/11/27/dans-le-pas-de-calais-inonde-le-ras-le-bol-des-sinistres-faut-imaginer-ce-que-c-est-l-eau-boueuse-qui-monte-chez-vous_6815928_3244.html"
+        "url": "https://www.lemonde.fr/culture/article/2026/11/28/a-la-villette-le-concert-11-000-cordes-embarque-dans-une-experience-cosmique-tout-le-monde-est-libre-de-ressentir-ce-qu-il-veut_6816075_3246.html"
+       },
+       {
+        "titre": "Journalistes et secret de l’instruction : comprendre ce que dit le droit après les déclarations de Marine Le Pen",
+        "media": "Le Monde",
+        "url": "https://www.lemonde.fr/societe/article/2026/11/27/journalistes-et-secret-de-l-instruction-comprendre-ce-que-dit-le-droit-apres-les-declarations-de-marine-le-pen_6815927_3224.html"
        }
       ]
      },
@@ -267,7 +216,18 @@
       "langue": "fr",
       "rang_wikipedia": 15,
       "page": "https://fr.wikipedia.org/wiki/Audrey_Fleurot",
-      "titres_de_presse": []
+      "titres_de_presse": [
+       {
+        "titre": "\"On est cinq personnages à être rajeunis\" : Audrey Fleurot justifie le recours à l'IA dans la série \"La Comtesse de Monte-Cristo\"",
+        "media": "franceinfo Culture",
+        "url": "https://www.franceinfo.fr/culture/series/on-est-cinq-personnages-a-etre-rajeunis-audrey-fleurot-justifie-le-recours-a-l-ia-dans-la-serie-la-comtesse-de-monte-cristo_8304525.html"
+       },
+       {
+        "titre": "Audrey Fleurot « comprend tout à fait les critiques » suite à la polémique sur le rajeunissement par l’IA",
+        "media": "20 Minutes",
+        "url": "https://www.20minutes.fr/arts-stars/serie/4266460-20261128-audrey-fleurot-comprend-tout-fait-critiques-suite-polemique-rajeunissement-ia"
+       }
+      ]
      },
      {
       "sujet": "Adèle Castillon",
@@ -283,9 +243,9 @@
       "page": "https://fr.wikipedia.org/wiki/Marine_Le_Pen",
       "titres_de_presse": [
        {
-        "titre": "Fuite d’informations confidentielles vers le RN : Ambroise de Rancourt, le responsable du programme présidentiel de Marine Le Pen, soupçonné d’être le principal destinataire",
+        "titre": "Journalistes et secret de l’instruction : comprendre ce que dit le droit après les déclarations de Marine Le Pen",
         "media": "Le Monde",
-        "url": "https://www.lemonde.fr/societe/article/2026/11/27/ambroise-de-rancourt-le-responsable-du-programme-presidentiel-de-marine-le-pen-soupconne-d-etre-le-principal-destinataire-de-la-fuite-de-documents-de-beauvau-vers-le-rn_6815924_3224.html"
+        "url": "https://www.lemonde.fr/societe/article/2026/11/27/journalistes-et-secret-de-l-instruction-comprendre-ce-que-dit-le-droit-apres-les-declarations-de-marine-le-pen_6815927_3224.html"
        }
       ]
      },
@@ -348,9 +308,119 @@
     ],
     "presse_grand_public": [
      {
-      "titre": "Un calcul \"technique\" qui illustre un \"décrochage\" économique : que signifie l'annonce de l'entrée en récession de la France ?",
+      "titre": "\"Ma première préoccupation, c'est que Sánchez s'en aille\" : en Espagne, le rejet du gouvernement profite au parti d'extrême droite Vox",
       "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/croissance/un-calcul-technique-qui-illustre-un-decrochage-economique-que-signifie-l-annonce-de-l-entree-en-recession-de-la-france_8303169.html"
+      "url": "https://www.franceinfo.fr/replay-radio/le-choix-franceinfo/reportage-ma-premiere-preoccupation-c-est-que-sanchez-s-en-aille-en-espagne-le-rejet-du-gouvernement-profite-au-parti-d-extreme-droite-vox_8281901.html"
+     },
+     {
+      "titre": "La note de la France menacée de dégradation : \"La faute à une politique économique qui soigne le mal par le mal\", selon Eric Coquerel",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/s-p-maintient-la-note-de-la-france-mais-menace-de-la-degrader-la-faute-a-une-politique-economique-qui-soigne-le-mal-par-le-mal-selon-eric-coquerel_8304498.html"
+     },
+     {
+      "titre": "Des criminels recherchés par Interpol auraient fait suspendre leur notice rouge contre des millions de dollars",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-magazine/france-2/complement-d-enquete/video-des-criminels-recherches-par-interpol-auraient-fait-suspendre-leur-notice-rouge-contre-des-millions-de-dollars_8299014.html"
+     },
+     {
+      "titre": "\"Le petit Grégory américain\" : on vous raconte l'histoire du meurtre non élucidé de JonBenét Ramsey, 6 ans, au cœur d'une nouvelle série Netflix",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/series/netflix/le-petit-gregory-americain-on-vous-raconte-l-histoire-du-meurtre-non-elucide-de-jonbenet-ramsey-6-ans-au-c-ur-d-une-nouvelle-serie-netflix_8301855.html"
+     },
+     {
+      "titre": "Deux syndicats d'Aéroports de Paris appellent à la grève le premier week-end des vacances de Noël",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/greve/deux-syndicats-d-aeroports-de-paris-appellent-a-la-greve-le-premier-week-end-des-vacances-de-noel_8304435.html"
+     },
+     {
+      "titre": "L'état de catastrophe naturelle reconnu pour 227 communes du Pas-de-Calais après les intempéries du mois de novembre",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/l-etat-de-catastrophe-naturelle-reconnu-pour-227-communes-du-pas-de-calais-apres-les-intemperies-du-mois-de-novembre_8304426.html"
+     },
+     {
+      "titre": "\"Le ski, le sport, ta vie, tu peux oublier\"... Deux ans après ce terrible diagnostic, Cyprien Sarrazin retrouve la Coupe du monde de ski",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/sports-d-hiver/ski-alpin/le-ski-le-sport-ta-vie-tu-peux-oublier-deux-ans-apres-ce-terrible-diagnostic-cyprien-sarrazin-retrouve-la-coupe-du-monde-de-ski_8301534.html"
+     },
+     {
+      "titre": "Manifestations : nouvelle journée de mobilisation samedi, notamment contre les violences faites aux femmes",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/direct-manifestations-nouvelle-journee-de-mobilisation-samedi-notamment-contre-les-violences-faites-aux-femmes_8304345.html"
+     },
+     {
+      "titre": "\"Je préfère acheter du bois du coin que du pétrole de Russie\" : dans ce village du Charolais, un réseau de chaleur remplace les chaudières au fioul",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/actions-ecologiques/en-toute-sobriete-face-a-la-crise-climatique/reportage-je-prefere-acheter-du-bois-du-coin-que-du-petrole-de-russie-dans-ce-village-du-charolais-un-reseau-de-chaleur-remplace-les-chaudieres-au-fioul_8295641.html"
+     },
+     {
+      "titre": "\"Le travail n'est jamais fini\" : à 86 ans, Lucinda Childs, légende de la danse contemporaine, revient à l'Opéra de Paris pour une création",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/spectacles/danse/le-travail-n-est-jamais-fini-a-86-ans-lucinda-childs-legende-de-la-danse-contemporaine-revient-a-l-opera-de-paris-pour-une-creation_8300022.html"
+     },
+     {
+      "titre": "La Russie annonce l'interception de plus de 1 200 drones ukrainiens sur son territoire",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/la-russie-annonce-l-interception-de-plus-de-1-200-drones-ukrainiens-sur-son-territoire_8304321.html"
+     },
+     {
+      "titre": "Deux employés de Médecins sans frontières tués par une frappe israélienne à Gaza",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/proche-orient/israel-palestine/deux-employes-de-medecins-sans-frontieres-tues-par-une-frappe-israelienne-a-gaza_8304309.html"
+     },
+     {
+      "titre": "Au Vélodrome jeudi soir à Marseille, \"une dizaine de personnes m'a entouré et frappé\", raconte un supporter bulgare blessé au Vélodrome",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/ligue-europa/temoignage-au-velodrome-jeudi-soir-a-marseille-une-dizaine-de-personnes-m-a-entoure-et-frappe-raconte-un-supporter-bulgare-blesse-au-velodrome_8304294.html"
+     },
+     {
+      "titre": "\"Un peu avant minuit\" : Melvil Poupaud en marche dans la peau d'un homme prêt à revisiter sa masculinité",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/un-peu-avant-minuit-melvil-poupaud-en-marche-dans-la-peau-d-un-homme-pret-a-revisiter-sa-masculinite_8299350.html"
+     },
+     {
+      "titre": "La star du catch Bronson Reed meurt à l'âge de 38 ans",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/la-star-du-catch-bronson-reed-decede-a-38-ans_8304387.html"
+     },
+     {
+      "titre": "\"Un bon petit soldat\", \"Paper Tiger\", \"Congo Boy\" : quels sont les films à voir (ou pas) cette semaine au cinéma ?",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/un-bon-petit-soldat-paper-tiger-congo-boy-quels-sont-les-films-a-voir-ou-pas-cette-semaine-au-cinema_8301162.html"
+     },
+     {
+      "titre": "Attention aux fausses publicités générées par intelligence artificielle pendant le Black Friday",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/attention-aux-fausses-publicites-generees-par-intelligence-artificielle-pendant-le-black-friday_8303706.html"
+     },
+     {
+      "titre": "Le Hamas affirme qu'Israël a essayé de tuer le fils de son chef",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/proche-orient/israel-palestine/le-hamas-affirme-qu-israel-a-essaye-de-tuer-le-fils-de-son-chef_8304414.html"
+     },
+     {
+      "titre": "Des inondations font au moins 34 morts en Equateur, des milliers de familles touchées aussi au Pérou",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/crise-climatique/el-nino/des-milliers-de-personnes-affectees-par-des-inondations-au-perou-et-en-equateur-au-moins-34-morts_8304369.html"
+     },
+     {
+      "titre": "Inauguré par de Gaulle il y a 60 ans, le barrage de la Rance reste une exception dans le paysage énergétique français",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/energie/reportage-inaugure-par-de-gaulle-il-y-a-60-ans-le-barrage-de-la-rance-reste-une-exception-dans-le-paysage-energetique-francais_8303355.html"
+     },
+     {
+      "titre": "\"Les immigrés sont instrumentalisés par les politiques\" : en Espagne, le modèle d'immigration défendu par Pedro Sanchez au cœur de la campagne des législatives",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/espagne/reportage-les-immigres-sont-instrumentalises-par-les-politiques-en-espagne-le-modele-d-immigration-defendu-par-pedro-sanchez-au-c-ur-de-la-campagne-des-legislatives_8303004.html"
+     },
+     {
+      "titre": "\"Ils jouent avec nos vies\" : en Espagne, la crise du logement pousse les locataires à se mobiliser à l'approche des élections législatives",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/espagne/reportage-ils-jouent-avec-nos-vies-en-espagne-la-crise-du-logement-pousse-les-locataires-a-se-mobiliser-a-l-approche-des-elections-legislatives_8297727.html"
+     },
+     {
+      "titre": "Roland Lescure voit un \"avertissement\" dans la décision de S&amp;P et maintient l'objectif d'un déficit public à 5% en 2027",
+      "media": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/roland-lescure-voit-un-avertissement-dans-la-decision-de-s-p-et-maintient-l-objectif-d-un-deficit-public-a-5-en-2027_8304339.html"
      },
      {
       "titre": "L'agence de notation Standard &amp; Poor's menace de dégrader prochainement la note de la France",
@@ -358,94 +428,24 @@
       "url": "https://www.franceinfo.fr/economie/budget/l-agende-de-notation-standard-poor-s-menace-de-degrader-prochainement-la-note-de-la-france_8302788.html"
      },
      {
-      "titre": "Les footballeuses françaises renversent le Venezuela (4-2) en match amical",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/foot/l-equipe-de-france-feminine-renversent-le-venezuela-4-2-en-match-amical_8303850.html"
+      "titre": "\"On est cinq personnages à être rajeunis\" : Audrey Fleurot justifie le recours à l'IA dans la série \"La Comtesse de Monte-Cristo\"",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/series/on-est-cinq-personnages-a-etre-rajeunis-audrey-fleurot-justifie-le-recours-a-l-ia-dans-la-serie-la-comtesse-de-monte-cristo_8304525.html"
      },
      {
-      "titre": "Volodymyr Zelensky compare la relation de Donald Trump avec Vladimir Poutine à une amitié avec Hitler pendant la Seconde Guerre mondiale",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/volodymyr-zelensky-compare-la-relation-de-donald-trump-avec-vladimir-poutine-a-une-amitie-avec-hitler-pendant-la-seconde-guerre-mondiale_8303130.html"
+      "titre": "Anticiper son budget pour les fêtes",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/c-est-mon-budget/anticiper-son-budget-pour-les-fetes_8281910.html"
      },
      {
-      "titre": "Le Costa Rica refoule la rapporteuse de l'ONU pour les Palestiniens, Francesca Albanese",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/proche-orient/israel-palestine/le-costa-rica-refoule-la-rapporteure-de-l-onu-pour-les-palestiniens-francesca-albanese_8302353.html"
+      "titre": "\"Paper Tiger\" : James Gray signe un nouveau grand polar élégant",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/replay-radio/les-experts-cinema/paper-tiger-james-gray-signe-un-nouveau-grand-polar-elegant_8281874.html"
      },
      {
-      "titre": "Franck Haise, l'entraîneur de l'équipe de football du Stade rennais, est mis à pied",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/foot/l-entraineur-de-l-equipe-de-football-du-stade-rennais-franck-haise-est-mis-a-pied_8303727.html"
-     },
-     {
-      "titre": "Le bateau naufragé au large d'Ibiza sera remorqué vers le port espagnol de Carthagène",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/espagne/le-bateau-naufrage-au-large-d-ibiza-sera-remorque-vers-le-port-espagnol-de-carthagene_8303865.html"
-     },
-     {
-      "titre": "L'activité de l'abattoir de Haute-Saône suspendue par le préfet après avoir été visé par une enquête",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/environnement/biodiversite/animaux/l-activite-de-l-abattoir-de-haute-saone-suspendue-par-le-prefet-apres-avoir-ete-vise-par-une-enquete_8303862.html"
-     },
-     {
-      "titre": "Brest bat le Paris FC (1-0) et grimpe provisoirement sur le podium de la Ligue 1",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/foot/brest-bat-le-paris-fc-1-0-et-grimpe-provisoirement-sur-le-podium-de-la-ligue-1_8303847.html"
-     },
-     {
-      "titre": "Troisième de l'individuel de Kontiolahti, Julia Simon décroche le premier podium français de la saison en Coupe du monde de biathlon",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/sports-d-hiver/biathlon/troisieme-de-l-individuel-de-kontiolahti-julia-simon-decroche-le-premier-podium-francais-de-la-saison-en-coupe-du-monde-de-biathlon_8303388.html"
-     },
-     {
-      "titre": "La commission de sécurité valide la réouverture du BHV Marais à Paris après trois semaines de fermeture",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/la-commission-de-securite-valide-la-reouverture-du-bhv-marais-a-paris-apres-trois-semaines-de-fermeture_8303787.html"
-     },
-     {
-      "titre": "\"La nouvelle génération a des goûts extrêmement larges\" : quand les vieux tubes retrouvent une nouvelle jeunesse",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/culture/musique/la-nouvelle-generation-a-des-gouts-extremement-larges-quand-les-vieux-tubes-retrouvent-une-nouvelle-jeunesse_8303766.html"
-     },
-     {
-      "titre": "Le mode de calcul d'une aide à l'autonomie des seniors modifié à partir de 2027, augmentant le reste à charge de certains bénéficiaires",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sante/le-mode-de-calcul-d-une-aide-a-l-autonomie-des-seniors-modifie-a-partir-de-2027-augmentant-le-reste-a-charge-de-certains-beneficiaires_8303703.html"
-     },
-     {
-      "titre": "Agriculture, guerre en Ukraine, présidentielle en France... On vous explique pourquoi les négociations sur le budget de l'Union européenne sont dans l'impasse",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/europe/union-europeenne/agriculture-guerre-en-ukraine-presidentielle-en-france-on-vous-explique-pourquoi-les-negociations-sur-le-budget-de-l-union-europeenne-sont-dans-l-impasse_8302635.html"
-     },
-     {
-      "titre": "Vladimir Poutine inaugure un nouveau sous-marin nucléaire",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/russie/vladimir-poutine-inaugure-un-nouveau-sous-marin-nucleaire_8303691.html"
-     },
-     {
-      "titre": "La mairie de Paris va augmenter de deux euros le prix du stationnement dans ses rues pour les \"non-résidents\" en avril 2027",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/automobile/la-mairie-de-paris-va-augmenter-de-deux-euros-le-prix-du-stationnement-dans-ses-rues-pour-les-non-residents-en-avril-2027_8303736.html"
-     },
-     {
-      "titre": "Une pétition lancée pour dénoncer les \"conditions de détention moyenâgeuses\" d'un Français au Cambodge",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/asie/une-petition-lancee-pour-denoncer-les-conditions-de-detention-moyenageuses-d-un-francais-au-cambodge_8303580.html"
-     },
-     {
-      "titre": "La couverture vaccinale des adolescents contre le papillomavirus reste loin de l'objectif, après une campagne 2025-2026 au bilan stable selon Santé publique France",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/sante/vaccins/la-couverture-vaccinale-des-adolescents-contre-le-papillomavirus-reste-loin-de-l-objectif-apres-une-campagne-2025-2026-au-bilan-stable-selon-sante-publique-france_8303136.html"
-     },
-     {
-      "titre": "La France est officiellement entrée en récession après deux trimestres de recul du PIB",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/economie/croissance/le-pib-recule-de-0-2-en-france-au-troisieme-trimestre-apres-une-revision-a-la-baisse-de-l-insee_8302671.html"
-     },
-     {
-      "titre": "\"J'ai vraiment honte\" : au premier jour de son procès, Emilie König, ex-propagandiste de l'Etat islamique, présente ses excuses \"à toute la nation française\"",
-      "media": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/terrorisme-djihadistes/j-ai-vraiment-honte-au-premier-jour-de-son-proces-emilie-konig-ex-propagandiste-de-l-etat-islamique-presente-ses-excuses-a-toute-la-nation-francaise_8301402.html"
+      "titre": "Gérard Depardieu bientôt jugé pour viol",
+      "media": "franceinfo Culture",
+      "url": "https://www.franceinfo.fr/culture/cinema/depardieu/gerard-depardieu-bientot-juge-pour-viol_8304312.html"
      },
      {
       "titre": "Jodie Foster \"J'ai toujours voulu jouer une méchante\"",
@@ -498,58 +498,19 @@
       "url": "https://www.franceinfo.fr/monde/royaume-uni/reportage-plonger-dans-le-sous-sol-de-londres-pour-en-explorer-l-histoire-un-immense-musee-consacre-a-la-capitale-britannique-ouvre-ses-portes_8301906.html"
      },
      {
-      "titre": "Un village du Maine-et-Loire reçoit un legs de 400 000 euros de la part d'une femme décédée depuis quatre ans",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/patrimoine/un-village-du-maine-et-loire-recoit-un-legs-de-400-000-euros-de-la-part-d-une-femme-decedee-depuis-quatre-ans_8302866.html"
-     },
-     {
-      "titre": "Kits sensoriels, flâneuses, lectures en LSF ou audiodécrites, \"Mobibulle\"... le Salon du livre jeunesse fait plonger tout le monde dans un grand bain de littérature",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/livres/salon-du-livre-et-de-la-presse-jeunesse-de-montreuil/kits-sensoriels-flaneuses-lectures-en-lsf-ou-audiodecrites-mobibulle-le-salon-du-livre-jeunesse-fait-plonger-tout-le-monde-dans-un-grand-bain-de-litterature_8301513.html"
-     },
-     {
-      "titre": "Enriqué, le premier chanteur de \"Goldorak\", voit enfin sa version sortir : \"C'est une grande fierté\"",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/enrique-le-premier-chanteur-de-goldorak-voit-enfin-sa-version-sortir-c-est-une-grande-fierte_8280206.html"
-     },
-     {
-      "titre": "Line Renaud publie \"Les Archives de ma vie\" et retrace quatre-vingts ans de carrière",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/livres/line-renaud-publie-les-archives-de-ma-vie-et-retrace-quatre-vingts-ans-de-carriere_8302695.html"
-     },
-     {
-      "titre": "La playlist franceinfo : le nouvel album de Bloc Party",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-radio/la-playlist-franceinfo/la-playlist-franceinfo-le-nouvel-album-de-bloc-party_8262653.html"
-     },
-     {
-      "titre": "VIDEO. Dans les fauteuils rouges de \"Complément d'enquête\" : Yoann Barbereau, écrivain, ancien fugitif sous notice rouge Interpol",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-magazine/france-2/complement-d-enquete/video-dans-les-fauteuils-rouges-de-complement-d-enquete-yoann-barbereau-ecrivain-ancien-fugitif-sous-notice-rouge-interpol_8301843.html"
-     },
-     {
-      "titre": "PODCAST. Faux médicaments en promo, affrontements au stade Vélodrome et Marylin Manson au Hellfest : ça dit quoi ce 27 novembre ?",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/replay-radio/ca-dit-quoi/podcast-faux-medicaments-en-promo-affrontements-au-stade-velodrome-et-marylin-manson-au-hellfest-ca-dit-quoi-ce-27-novembre_8292986.html"
-     },
-     {
-      "titre": "Deux syndicats du jeu vidéo appellent les candidats à la présidentielle à considérer cette industrie \"à la hauteur de ce qu'elle représente dans la société\"",
-      "media": "franceinfo Culture",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/deux-syndicats-du-jeu-video-appellent-les-candidats-a-la-presidentielle-a-considerer-cette-industrie-a-la-hauteur-de-ce-qu-elle-represente-dans-la-societe_8302608.html"
-     },
-     {
-      "titre": "Robots, caméras... Alerte sur la sécurité de nos objets connectés",
+      "titre": "Tout est politique, même nos coupes de cheveux ?",
       "media": "franceinfo Internet",
-      "url": "https://www.franceinfo.fr/internet/robots-cameras-alerte-sur-la-securite-de-nos-objets-connectes_8303745.html"
+      "url": "https://www.franceinfo.fr/replay-radio/l-il-de-julie/tout-est-politique-meme-nos-coupes-de-cheveux_8281871.html"
      },
      {
-      "titre": "Des photos générées par IA pour soutirer de l'argent",
+      "titre": "Jensen Huang, patron de Nvidia : un homme de contradictions",
       "media": "franceinfo Internet",
-      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/des-photos-generees-par-ia-pour-soutirer-de-l-argent_8303754.html"
+      "url": "https://www.franceinfo.fr/replay-radio/portraits-d-actu/jensen-huang-patron-de-nvidia-un-homme-de-contradictions_8281856.html"
      }
     ],
-    "ecartes_hors_ligne": 19,
+    "ecartes_hors_ligne": 17,
     "deja_en_ligne": [
+     "On laisse l'IA comparer les prix. Pas acheter à notre place.",
      "On demande tout à l'IA. Un sur cinq vérifie ses réponses à chaque fois.",
      "Le CHU de Guadeloupe paralysé par une cyberattaque. Des soins programmés reportés jusqu'au 27 novembre .",
      "GTA VI sort aujourd'hui. Sa version sans disque inquiète les joueurs.",
@@ -559,10 +520,9 @@
      "Gardez un peu d'argent liquide chez vous."
     ]
    },
-   "alertes_charte": [],
-   "image": "assets/photos/societe.jpg",
-   "statut": "publie",
-   "publie_le": "2026-11-28T11:43:41+00:00"
+   "alertes_charte": [
+    "Aucun sujet retenu : Aucun article de la fiche ne mentionne une technologie (appli, compte, réseau, panne, écran, etc.) et les sujets présents sont politiques, économiques ou criminels, donc aucun ne passe le test."
+   ]
   }
  ],
  "reserve_une": [],
@@ -573,11 +533,11 @@
   },
   "Presse grand public (flux RSS)": {
    "etat": "ok",
-   "nombre": 164
+   "nombre": 152
   },
   "Détour (flux RSS)": {
    "etat": "ok",
-   "nombre": 245
+   "nombre": 242
   }
  },
  "journal_redacteur": [
@@ -594,25 +554,6 @@
    "resultat": "ok"
   }
  ],
- "pistes_reflexion": [
-  {
-   "titre": "Black Friday smartphones : Pixel 11, Galaxy S26 Ultra, iPhone Air… les 7 meilleures offres qui disparaitront ce soir",
-   "url": "https://www.clubic.com/bons-plans-641509-black-friday-smartphones-pixel-11-galaxy-s26-ultra-iphone-air-les-7-meilleures-offres-qui-disparaitront-ce-soir.html",
-   "media": "Clubic",
-   "date": "2026-11-27T15:45+00:00",
-   "themes": [],
-   "sujet": "Un modèle par tâche ?"
-  },
-  {
-   "titre": "Des pneus à nos assiettes : enquête sur une pollution toxique invisible",
-   "url": "https://www.france24.com/fr/%C3%A9missions/%C3%A9l%C3%A9ment-terre-le-reportage/20261127-des-pneus-%C3%A0-nos-assiettes-enqu%C3%AAte-sur-une-pollution-toxique-invisible",
-   "media": "France 24",
-   "date": "2026-11-27T16:03+00:00",
-   "themes": [
-    "usages",
-    "stratégies"
-   ]
-  }
- ],
+ "pistes_reflexion": [],
  "marches_publics": []
 }

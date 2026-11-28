@@ -1,11 +1,12 @@
 # Croisement événements ↔ mesures — à relire
 
-Généré le 2026-11-28T07:50:23Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-28T03:27:00Z
+Généré le 2026-11-28T12:33:13Z · règles 1.3.1 · mesures du 2026-11-16T09:56:00Z au 2026-11-28T12:06:00Z
 
 Le tag n'est jamais publié : il sert à décider. Rien n'est publié sans validation.
 
 | Tag | Fournisseur | Événement | Début (UTC) | Critères | Texte proposé |
 |---|---|---|---|---|---|
+| **Aucune anomalie** | Mistral | Cloudflare : Email Delivery Delays | 2026-11-28T07:21:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Mistral | Cloudflare : Cloudflare University website unavailable | 2026-11-27T14:49:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Mistral | Cloudflare : Magic Transit Degraded Performance | 2026-11-24T11:29:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Aucune anomalie** | Mistral | Cloudflare : Cloudflare Workers API – Delayed or Inconsistent Responses | 2026-11-23T13:52:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ○ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
@@ -14,9 +15,15 @@ Le tag n'est jamais publié : il sert à décider. Rien n'est publié sans valid
 | **Aucune anomalie** | Scaleway | [Generative API] - [global] - GLM-5.3 timeouts | 2026-11-16T14:06:00Z | ✓ Lieu · ○ Moment · ○ Symptôme · ✓ Officiel | Aucune anomalie mesurée chez vos fournisseurs |
 | **Confirmé** | OVHcloud | [GLOBAL][AI & Machine Learning] - AI Endpoint Incident Notification | 2026-11-20T06:53:00Z | ✓ Lieu · ✓ Moment · ✓ Symptôme · ✓ Officiel | Nos mesures montrent une interruption qui correspond à l'incident reconnu par OVHcloud. |
 
-_6 événement(s) tombent hors de la période mesurée par la sonde : non croisés._
+_5 événement(s) tombent hors de la période mesurée par la sonde : non croisés._
 
 ## Détail
+
+### Cloudflare : Email Delivery Delays — Mistral
+- Tag : **Aucune anomalie**
+- Mesures dans la fenêtre : 1
+- ⚠️ Mesures depuis un seul point : une panne locale de la sonde ressemblerait à une panne du fournisseur.
+- ⚠️ Seulement 1 mesure(s) dans la fenêtre : peu de recul.
 
 ### Cloudflare : Cloudflare University website unavailable — Mistral
 - Tag : **Aucune anomalie**
