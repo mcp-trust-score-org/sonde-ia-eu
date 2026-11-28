@@ -13,7 +13,8 @@ def test_premier_depot_ne_notifie_rien():
 
 def test_un_ajout():
     n = notification(nouveaux({"transferts": []}, {"transferts": [T]}))
-    assert n["titre"] == "Le mercato de l'IA · Revolut quitte en partie Anthropic et OpenAI"
+    assert n["titre"] == "Le mercato de l'IA · C'est signé · Revolut quitte en partie Anthropic et OpenAI"
+    assert n["texte"] == "Pour GLM-5.3 (Z.ai). Source : IT for Business." and n["cle"].startswith("mercato-revolut")
     assert "IT for Business" in n["texte"] and n["url"] == "/?mercato=1#une"
 
 
@@ -25,7 +26,7 @@ def test_sans_source_ou_deja_vu():
 def test_plusieurs_ajouts_une_seule_notification():
     u = {**T, "entreprise": "Ecosia", "pour": "Qwen"}
     n = notification(nouveaux({"transferts": []}, {"transferts": [T, u]}))
-    assert n["titre"].endswith("2 nouveaux transferts") and "Revolut, Ecosia" in n["texte"]
+    assert n["titre"].endswith("2 nouveaux mouvements") and "Revolut, Ecosia" in n["texte"]
 
 
 def test_fichier_du_site_valide():
@@ -38,7 +39,7 @@ def test_signature():
     sig = {**T, "entreprise": "Les Mousquetaires", "quitte": [], "pour": "Claude (Anthropic, États-Unis)",
            "comment": "Via AWS", "source": {"media": "LSA", "url": "https://ex.fr/m"}}
     n = notification(nouveaux({"transferts": []}, {"transferts": [sig]}))
-    assert n["titre"] == "Le mercato de l'IA · Les Mousquetaires signe avec Claude (Anthropic, États-Unis)"
+    assert n["titre"] == "Le mercato de l'IA · C'est signé · Les Mousquetaires signe avec Claude (Anthropic)"
     assert n["texte"] == "Via AWS. Source : LSA."
 
 
@@ -46,7 +47,8 @@ def test_officiel_dans_la_notification():
     sig = {**T, "entreprise": "Groupement Mousquetaires", "quitte": [], "pour": "Claude (Anthropic, États-Unis)",
            "comment": "Via AWS", "annonce": "entreprise", "source": {"media": "LSA", "url": "https://ex.fr/m"}}
     n = notification(nouveaux({"transferts": []}, {"transferts": [sig]}))
-    assert n["titre"] == "Le mercato de l'IA · OFFICIEL · Groupement Mousquetaires signe avec Claude (Anthropic, États-Unis)"
+    assert n["titre"] == "Le mercato de l'IA · C'est signé · Groupement Mousquetaires signe avec Claude (Anthropic)"
+    assert n["type"] == "mercato" and n["fournisseurs"] == ["anthropic"]
 
 
 def test_annonce_renseignee():
