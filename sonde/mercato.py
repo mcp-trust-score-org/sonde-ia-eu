@@ -1,4 +1,5 @@
-"""Le mercato de l'IA (iris/mercato.json) : prévenir les lecteurs quand un transfert est ajouté.
+"""Le mercato de l'IA (iris/mercato.json) : préparer la notification quand un mouvement est ajouté.
+Elle ne part pas toute seule : elle attend le feu vert de la rédaction dans le pilotage (/api/file, « À valider »).
 
 Appelé par .github/workflows/mercato.yml après un dépôt qui modifie iris/mercato.json :
     python -m sonde.mercato ANCIEN.json NOUVEAU.json   → écrit la notification (JSON) ou rien.
@@ -39,27 +40,33 @@ def nouveaux(ancien: dict | None, nouveau: dict) -> list[dict]:
     return [x for x in nouveau.get("transferts") or [] if _cle(x) not in vus and x.get("source", {}).get("url")]
 
 
+def court(pour: str) -> str:
+    """« Claude (Anthropic, États-Unis) » → « Claude (Anthropic) » (comme sur la carte partageable)."""
+    return re.sub(r"\(([^,()]+),[^()]*\)", r"(\1)", str(pour or ""))
+
+
 def notification(ajouts: list[dict]) -> dict | None:
+    """La notification d'un ou plusieurs mouvements, avec la signature d'Iris « C'est signé ». `cle` et `type` servent
+    à la file de validation (une même cle n'est jamais proposée deux fois)."""
     if not ajouts:
         return None
+    from .cartes import identifiant
+    base = {"url": "/?mercato=1#une", "sujet": "articles", "type": "mercato",
+            "cle": "mercato-" + "-".join(identifiant(x) for x in ajouts)[:90],
+            "fournisseurs": sorted({f for x in ajouts for f in fournisseurs_de(x)})}
     if len(ajouts) == 1:
         x = ajouts[0]
         source = x.get("source", {}).get("media")
-        officiel = "OFFICIEL · " if x.get("annonce") == "entreprise" else ""
         if not x.get("quitte"):          # une signature : on ne sait pas ce que l'entreprise utilisait avant
-            return {"titre": f"Le mercato de l'IA · {officiel}{x['entreprise']} signe avec {x.get('pour')}",
-                    "texte": f"{x.get('comment') or ''}. Source : {source}.".lstrip(". "),
-                    "url": "/?mercato=1#une", "sujet": "articles", "fournisseurs": fournisseurs_de(x)}
+            return {**base, "titre": f"Le mercato de l'IA · C'est signé · {x['entreprise']} signe avec {court(x.get('pour'))}",
+                    "texte": f"{(x.get('comment') or '').rstrip('.')}. Source : {source}.".lstrip(". ")}
         quitte = " et ".join(x["quitte"])
         partie = " en partie" if x.get("en_partie") else ""
-        return {"titre": f"Le mercato de l'IA · {officiel}{x['entreprise']} quitte{partie} {quitte}",
-                "texte": f"Pour {x.get('pour')}. Source : {source}.",
-                "url": "/?mercato=1#une", "sujet": "articles", "fournisseurs": fournisseurs_de(x)}
+        return {**base, "titre": f"Le mercato de l'IA · C'est signé · {x['entreprise']} quitte{partie} {quitte}",
+                "texte": f"Pour {court(x.get('pour'))}. Source : {source}."}
     noms = ", ".join(dict.fromkeys(x["entreprise"] for x in ajouts))
-    return {"titre": f"Le mercato de l'IA · {len(ajouts)} nouveaux transferts",
-            "texte": f"{noms}. Qui quitte qui, chaque transfert avec sa source.",
-            "url": "/?mercato=1#une", "sujet": "articles",
-            "fournisseurs": sorted({f for x in ajouts for f in fournisseurs_de(x)})}
+    return {**base, "titre": f"Le mercato de l'IA · {len(ajouts)} nouveaux mouvements",
+            "texte": f"{noms}. Qui quitte qui, chaque mouvement avec sa source."}
 
 
 def de_la_semaine(donnees: dict, jour: date) -> list[dict]:
@@ -80,7 +87,7 @@ def point_du_vendredi(donnees: dict, jour: date) -> dict | None:
     autres = f" et {len(semaine) - 1} autre{'s' if len(semaine) > 2 else ''} mouvement{'s' if len(semaine) > 2 else ''}" if len(semaine) > 1 else ""
     return {"titre": f"Le point mercato · semaine {n}",
             "texte": f"C'est signé : {coup}{autres}. La semaine en 2 min.",
-            "url": "/?point=1#une", "sujet": "articles"}
+            "url": "/?point=1#une", "sujet": "articles", "type": "point", "cle": f"point-{jour.isocalendar()[0]}-{n}"}
 
 
 def _lire(chemin: str) -> dict | None:
